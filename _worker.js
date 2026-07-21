@@ -161,16 +161,50 @@ function knowledgeText(entries) {
 }
 
 function extractOutputText(result) {
-  if (typeof result.output_text === "string" && result.output_text.trim()) {
-    return result.output_text.trim();
+  const candidates = [];
+
+  if (typeof result?.output_text === "string") {
+    candidates.push(result.output_text);
   }
-  const parts = [];
-  for (const item of result.output || []) {
-    for (const content of item.content || []) {
-      if (content.type === "output_text" && content.text) parts.push(content.text);
+
+  for (const item of result?.output || []) {
+    if (typeof item?.text === "string") candidates.push(item.text);
+
+    for (const content of item?.content || []) {
+      if (typeof content?.text === "string") candidates.push(content.text);
+      if (typeof content?.output_text === "string") candidates.push(content.output_text);
+      if (typeof content?.value === "string") candidates.push(content.value);
     }
   }
-  return parts.join("\n").trim();
+
+  function collectStrings(value, key = "") {
+    if (typeof value === "string") {
+      if (
+        ["text", "output_text", "value", "content"].includes(key) &&
+        value.trim()
+      ) {
+        candidates.push(value);
+      }
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((item) => collectStrings(item));
+      return;
+    }
+
+    if (value && typeof value === "object") {
+      for (const [childKey, childValue] of Object.entries(value)) {
+        collectStrings(childValue, childKey);
+      }
+    }
+  }
+
+  collectStrings(result);
+
+  return [...new Set(candidates.map((text) => text.trim()).filter(Boolean))]
+    .join("\n")
+    .trim();
 }
 
 async function handleChat(request, env) {
@@ -178,7 +212,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "1.1-flat",
+      version: "1.2-flat",
       method: "POST"
     });
   }
@@ -256,7 +290,13 @@ REGLER:
         model: env.OPENAI_MODEL || DEFAULT_MODEL,
         instructions,
         input,
-        max_output_tokens: 450,
+        reasoning: {
+          effort: env.OPENAI_REASONING_EFFORT || "low"
+        },
+        text: {
+          verbosity: env.OPENAI_VERBOSITY || "low"
+        },
+        max_output_tokens: Number(env.OPENAI_MAX_OUTPUT_TOKENS || 1200),
         store: false
       })
     });
@@ -273,7 +313,20 @@ REGLER:
 
     const answer = extractOutputText(result);
     if (!answer) {
-      return json({ error: "Casa Amar AI returnerede ikke et læsbart svar." }, 502);
+      console.error("OpenAI response without readable text", {
+        id: result?.id,
+        status: result?.status,
+        incomplete_details: result?.incomplete_details,
+        output_types: (result?.output || []).map((item) => item?.type),
+        usage: result?.usage
+      });
+
+      return json({
+        error: "Casa Amar AI returnerede ikke et læsbart svar.",
+        detail:
+          result?.incomplete_details?.reason ||
+          `Status: ${result?.status || "unknown"}`
+      }, 502);
     }
 
     const needsHuman =
@@ -286,7 +339,9 @@ REGLER:
       confidence: relevant.length ? "medium" : "low",
       knowledgeVersion: bundle.version,
       sourcesLoaded: bundle.sources.map((source) => source.id),
-      webSearchUsed: false
+      webSearchUsed: false,
+      model: result?.model || env.OPENAI_MODEL || DEFAULT_MODEL,
+      responseId: result?.id || null
     });
   } catch (error) {
     console.error("Casa Amar AI exception", error);
