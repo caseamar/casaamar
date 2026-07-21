@@ -1,5 +1,5 @@
-const SITE_VERSION = 'v2026.07.21.02';
-const SITE_BUILD = '2026-07-21 18:45';
+const SITE_VERSION = 'v2026.07.21.03';
+const SITE_BUILD = '2026-07-21 19:35';
 
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-button]');
@@ -34,7 +34,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
 document.querySelectorAll('[data-slider]').forEach((slider, sliderIndex) => {
-  const slides = Array.from(slider.querySelectorAll('.hero-slide, .story-slide, .patio-slide, .roof-slide'));
+  const slides = Array.from(slider.querySelectorAll('.hero-slide, .story-slide, .patio-slide, .roof-slide, .kitchen-slide, .location-slide'));
   const dotsHost = slider.querySelector('[data-dots]');
   const status = slider.querySelector('[data-slider-status]');
   const previousButton = slider.querySelector('[data-prev]');
@@ -149,3 +149,19 @@ document.addEventListener('keydown', (event) => {
 });
 
 console.info(`Casa Amar ${SITE_VERSION} – ${SITE_BUILD}`);
+
+
+window.addEventListener('load', () => {
+  const sliders = Array.from(document.querySelectorAll('[data-slider]'));
+  const qa = {
+    version: SITE_VERSION,
+    sliders: sliders.length,
+    sliderImages: sliders.map((slider) =>
+      slider.querySelectorAll('.hero-slide, .story-slide, .patio-slide, .roof-slide, .kitchen-slide, .location-slide').length
+    ),
+    missingImages: Array.from(document.images).filter((img) => !img.complete || img.naturalWidth === 0).map((img) => img.src)
+  };
+  document.documentElement.dataset.qaSliders = String(qa.sliders);
+  document.documentElement.dataset.qaMissingImages = String(qa.missingImages.length);
+  console.info('Casa Amar QA', qa);
+});

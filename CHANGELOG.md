@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v2026.07.21.03 — 2026-07-21 19:35
+
+### Billedsektioner
+- Køkkenet er ændret til et dynamisk billedfelt med et tydeligt billede af køkkenet og ovnen samt et separat kaffebillede.
+- Patioen beholder billeder af spiseplads, solsenge og beplantning; skiftehastigheden er øget.
+- Tagterrassen skifter nu hurtigere mellem dag, udsigt, projektoraften og solnedgang.
+- Projektorbilledet vises i fuld størrelse uden beskæring, så billedet på væggen forbliver synligt.
+- Beliggenhedssektionen skifter mellem pool, bakker/udsigt og aftenlys.
+
+### Dynamik
+- Hero: 5,0 sekunder.
+- Stueetage: 4,6 sekunder.
+- Køkken: 4,3 sekunder.
+- Patio: 4,2 sekunder.
+- Tagterrasse: 4,0 sekunder.
+- Beliggenhed: 4,5 sekunder.
+- Alle dynamiske felter har pile, indikator og billedtæller.
+
+### Kvalitetssikring
+- Sliderkoden er gjort generisk, så alle seks dynamiske sektioner bruger samme testede funktion.
+- Tilføjet automatisk kontrol af antal sliders og manglende billeder i browserens konsol.
+- Ingen nye billedfiler; kun billeder, der allerede ligger i GitHub, genbruges.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+
+
 ## v2026.07.21.02 — 2026-07-21 18:45
 
 ### Rettelse af dynamiske billeder
