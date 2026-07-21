@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## v2026.07.21.12 — 2026-07-21 23:10
+
+### Galleri
+- Galleriet er bygget om til en samlet billedrejse gennem huset.
+- Tilføjet filtre for Huset, Patio, Tagterrasse samt Pool og udsigt.
+- Tilføjet 15 billeder fra det eksisterende billedbibliotek.
+- Tilføjet billedtekster og et mere varieret magasinlayout.
+- Lightbox har nu forrige/næste, tæller, billedtekst, tastaturstyring og swipe på mobil.
+
+### Kontakt
+- Den korrekte kontaktmail er lagt bag knappen `Skriv en mail`.
+- Tilføjet knappen `Send besked på Messenger`.
+- Telefonnummer vises ikke.
+- Mailen åbner med en enkel forespørgselsskabelon.
+- Kontaktsektionen er redesignet og gjort mere tydelig.
+
+### Footer og SEO
+- Ny komplet footer med navigation og kontaktmuligheder.
+- Tilføjet canonical URL, Open Graph, Twitter metadata og strukturerede data.
+- Tilføjet robots.txt, sitemap.xml og opdateret favicon.
+- Hero-billedet preloads; øvrige billeder lazy-loader.
+
+### Kvalitet
+- JavaScript syntakskontrolleret.
+- Galleri, filtre, lightbox, kontaktlinks og versionscache kontrolleret.
+- Ingen nye fotografier er nødvendige i denne version.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+- Ny: `favicon.svg`
+- Ny: `robots.txt`
+- Ny: `sitemap.xml`
+
+
 ## v2026.07.21.11 — 2026-07-21 22:40
 
 ### Praktisk – færdiggjort offentlig information

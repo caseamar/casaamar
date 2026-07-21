@@ -1,26 +1,29 @@
 # ROADMAP
 
-## Offentlig hjemmeside – tæt på færdig
-- Forside
+## Offentlig hjemmeside – release candidate
+- Forside og navigation
 - Huset
 - Beliggenhed
 - Din ferie
 - Området og rejsehorisonter
 - Praktisk information
-- Galleri
-- Kontaktflow
+- Filtrérbart galleri og lightbox
+- Kontakt via e-mail og Messenger
+- Footer
+- Grundlæggende SEO og delingsmetadata
 - GitHub, Cloudflare, versionering og dokumentation
 
-## Mangler før offentlig lancering
-- Endelig billedopdatering efter næste Spanien-tur
-- Gennemgang af priser, kontaktoplysninger og bookingproces
-- Mobil- og browserkontrol på den publicerede side
-- SEO-titler, delingsbillede og favicon
-- Fjernelse af DEV-mærke ved lancering
+## Før offentlig lancering
+- Udskift og supplér billeder efter næste Spanien-tur
+- Bekræft priser, kontaktflow og eventuelle lejevilkår
+- Test publiceret side på mobil, tablet, Edge, Chrome og Safari
+- Kontroller delingsbillede på Facebook og Messenger
+- Knyt domænet casaamar.es til den endelige Cloudflare-side
+- Fjern DEV-mærket
 
 ## Næste milepæl
 - Digital gæsteguide
-- Korte videovejledninger
+- Korte videovejledninger via ikke-listede videoer
 - FAQ
 - QR/NFC-adgang
-- Flersproget hjemmeside
+- Dansk, engelsk og spansk
