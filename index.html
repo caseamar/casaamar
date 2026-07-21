@@ -4,216 +4,206 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Casa Amar – feriehus i bakkerne ved Fuengirola</title>
-  <meta name="description" content="Casa Amar er et feriehus med tre soveværelser, patio, tagterrasse og fælles pool i bakkerne ved Fuengirola på Costa del Sol.">
+  <meta name="description" content="Casa Amar er et feriehus med tre soveværelser, patio, tagterrasse og fælles pool i bakkerne ved Fuengirola.">
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="Casa Amar – gå til toppen">
-      <span>Casa</span><strong>Amar</strong>
-    </a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button>
-      <span></span><span></span><span></span><span class="sr-only">Åbn menu</span>
-    </button>
-    <nav id="main-nav" class="main-nav" data-menu>
-      <a href="#huset">Huset</a>
-      <a href="#udeliv">Udeliv</a>
-      <a href="#sovevaerelser">Soveværelser</a>
-      <a href="#belliggenhed">Beliggenhed</a>
-      <a href="#praktisk">Praktisk</a>
-      <a class="nav-cta" href="#kontakt">Kontakt</a>
-    </nav>
-  </header>
+<header class="site-header" data-header>
+  <a class="brand" href="#top"><span>Casa</span><strong>Amar</strong></a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button>
+    <span></span><span></span><span></span><span class="sr-only">Åbn menu</span>
+  </button>
+  <nav id="main-nav" class="main-nav" data-menu>
+    <a href="#huset">Huset</a>
+    <a href="#udeliv">Udeliv</a>
+    <a href="#sovevaerelser">Soveværelser</a>
+    <a href="#beliggenhed">Beliggenhed</a>
+    <a href="#galleri">Billeder</a>
+    <a class="nav-cta" href="#kontakt">Kontakt</a>
+  </nav>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <img src="images/casa-amar-v2-hero-patio.webp" alt="Patioen ved Casa Amar med bougainvillea, solsenge og spisebord">
-      <div class="hero-shade"></div>
-      <div class="hero-content reveal">
-        <p class="kicker">Cerros del Águila · Mijas Costa</p>
-        <h1>En god ramme om ferien.</h1>
-        <p class="hero-lead">Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#huset">Se huset</a>
-          <a class="button button-ghost" href="#belliggenhed">Se beliggenheden</a>
-        </div>
+<main id="top">
+  <section class="hero-slider" data-slider data-interval="6500">
+    <article class="hero-slide active"><img src="images/casa-amar-v2-hero-patio.webp" alt="Patioen ved Casa Amar"></article>
+    <article class="hero-slide"><img src="images/casa-amar-v2-stue.webp" alt="Stuen i Casa Amar"></article>
+    <article class="hero-slide"><img src="images/casa-amar-v2-tagterrasse.webp" alt="Tagterrassen ved Casa Amar"></article>
+    <div class="hero-shade"></div>
+    <div class="hero-content reveal">
+      <p class="kicker">Cerros del Águila · Mijas Costa</p>
+      <h1>En god ramme om ferien.</h1>
+      <p class="hero-lead">Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#huset">Se huset</a>
+        <a class="button button-ghost" href="#galleri">Se billeder</a>
       </div>
-      <a class="scroll-cue" href="#intro" aria-label="Rul ned">↓</a>
-    </section>
+    </div>
+    <div class="slider-dots" data-dots></div>
+  </section>
 
-    <section class="fact-bar" aria-label="Nøgletal">
-      <div><strong>6</strong><span>gæster</span></div>
-      <div><strong>3</strong><span>soveværelser</span></div>
-      <div><strong>2</strong><span>badeværelser</span></div>
-      <div><strong>2</strong><span>terrasser</span></div>
-      <div><strong>Pool</strong><span>i sæson</span></div>
-      <div><strong>Hele året</strong><span>køling og varme</span></div>
-    </section>
+  <section class="fact-bar">
+    <div><strong>6</strong><span>gæster</span></div>
+    <div><strong>3</strong><span>soveværelser</span></div>
+    <div><strong>2</strong><span>badeværelser</span></div>
+    <div><strong>2</strong><span>terrasser</span></div>
+    <div><strong>Pool</strong><span>i sæson</span></div>
+    <div><strong>Hele året</strong><span>køling og varme</span></div>
+  </section>
 
-    <section id="intro" class="section intro-grid">
-      <div class="section-heading reveal">
-        <p class="kicker dark">Casa Amar</p>
-        <h2>Rart at komme til. Nemt at være i.</h2>
-      </div>
-      <div class="intro-copy reveal">
-        <p>Casa Amar er indrettet som en base, der fungerer i praksis. Her er plads til at være sammen, mulighed for at trække sig tilbage og flere forskellige steder at opholde sig inde og ude.</p>
-        <p>Om sommeren flytter meget af livet ud på patioen. I de køligere måneder får stuen og spisepladsen en større rolle. Huset kan bruges hele året – bare på forskellige måder.</p>
-      </div>
-    </section>
+  <section class="section intro-grid">
+    <div class="section-heading reveal">
+      <p class="kicker dark">Casa Amar</p>
+      <h2>Rart at komme til. Nemt at være i.</h2>
+    </div>
+    <div class="intro-copy reveal">
+      <p>Casa Amar er indrettet som en base, der fungerer i praksis. Her er plads til at være sammen, mulighed for at trække sig tilbage og flere forskellige steder at opholde sig inde og ude.</p>
+      <p>Om sommeren flytter meget af livet ud på patioen. I de køligere måneder får stuen og spisepladsen en større rolle. Huset kan bruges hele året – bare på forskellige måder.</p>
+    </div>
+  </section>
 
-    <section id="huset" class="split-section">
-      <div class="media-panel reveal">
-        <img src="images/casa-amar-v2-stue.webp" alt="Stuen i Casa Amar med hjørnesofa, TV og egetræsbord">
-      </div>
-      <div class="text-panel reveal">
-        <p class="kicker dark">Stueetagen</p>
-        <h2>Stue, køkken og patio hænger sammen.</h2>
-        <p>Fra entréen går man direkte ind i den åbne stueetage. Køkkenet ligger til højre, spisepladsen midt i rummet og sofaområdet ud mod patioen.</p>
-        <p>Den store hjørnesofa, et nyere 55-tommers TV, bøger og spil gør stuen til et rart sted at lande efter en dag ude. Spisebordet kan udvides fra fire til seks personer.</p>
-        <ul class="clean-list">
-          <li>Aircondition og varme i stuen</li>
-          <li>Bluetooth-højttaler til inde og ude</li>
-          <li>Badeværelse med bruser ved entréen</li>
-        </ul>
-      </div>
-    </section>
+  <section id="huset" class="story-section">
+    <div class="story-slider" data-slider data-interval="7000">
+      <article class="story-slide active"><img src="images/casa-amar-v2-stue.webp" alt="Stuen i Casa Amar"></article>
+      <article class="story-slide"><img src="images/casa-amar-v2-koekken.webp" alt="Køkkenet i Casa Amar"></article>
+      <article class="story-slide"><img src="images/casa-amar-v2-entre.webp" alt="Entréen i Casa Amar"></article>
+      <div class="slider-dots dark-dots" data-dots></div>
+    </div>
+    <div class="story-copy reveal">
+      <p class="kicker dark">Stueetagen</p>
+      <h2>Stue, køkken og patio hænger sammen.</h2>
+      <p>Fra entréen går man direkte ind i den åbne stueetage. Køkkenet ligger til højre, spisepladsen midt i rummet og sofaområdet ud mod patioen.</p>
+      <p>Den store hjørnesofa, et nyere 55-tommers TV, bøger og spil gør stuen til et rart sted at lande efter en dag ude. Spisebordet kan udvides fra fire til seks personer.</p>
+      <ul class="clean-list">
+        <li>Aircondition og varme i stuen</li>
+        <li>Bluetooth-højttaler til inde og ude</li>
+        <li>Badeværelse med bruser ved entréen</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="section kitchen-section">
-      <div class="section-heading narrow reveal">
-        <p class="kicker dark">Køkkenet</p>
-        <h2>Indrettet til at blive brugt.</h2>
-        <p>Ikke bare til morgenmad, men også når man har lyst til at lave et rigtigt måltid hjemme.</p>
-      </div>
-      <div class="image-pair">
-        <figure class="reveal">
-          <img src="images/casa-amar-v2-koekken.webp" alt="Det lyse køkken i Casa Amar">
-          <figcaption>Ovn, kogeplade, opvaskemaskine og almindeligt køkkenudstyr.</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="images/casa-amar-v2-kaffe.webp" alt="Espressomaskine og kaffekværn i køkkenet">
-          <figcaption>Espressomaskine og kværn – plus Nespresso som et nemt alternativ.</figcaption>
-        </figure>
-      </div>
-    </section>
+  <section class="section kitchen-section">
+    <div class="section-heading narrow reveal">
+      <p class="kicker dark">Køkkenet</p>
+      <h2>Indrettet til at blive brugt.</h2>
+      <p>Ikke bare til morgenmad, men også når man har lyst til at lave et rigtigt måltid hjemme.</p>
+    </div>
+    <div class="image-pair">
+      <figure class="reveal"><img src="images/casa-amar-v2-koekken.webp" alt="Køkkenet"><figcaption>Ovn, kogeplade, opvaskemaskine og almindeligt køkkenudstyr.</figcaption></figure>
+      <figure class="reveal"><img src="images/casa-amar-v2-kaffe.webp" alt="Espressomaskine og kaffekværn"><figcaption>Espressomaskine og kværn – plus Nespresso som et nemt alternativ.</figcaption></figure>
+    </div>
+  </section>
 
-    <section id="udeliv" class="feature-hero">
-      <img src="images/casa-amar-v2-patio-spiseplads.webp" alt="Patioen med spiseplads til seks personer">
+  <section id="udeliv" class="patio-section">
+    <div class="patio-slider" data-slider data-interval="7200">
+      <article class="patio-slide active"><img src="images/casa-amar-v2-patio-spiseplads.webp" alt="Patioens spiseplads"></article>
+      <article class="patio-slide"><img src="images/casa-amar-v2-hero-patio.webp" alt="Patio med solsenge og bougainvillea"></article>
+      <article class="patio-slide"><img src="images/casa-amar-v2-patio-detalje.webp" alt="Planter og blomster i patioen"></article>
       <div class="feature-shade"></div>
       <div class="feature-copy reveal">
         <p class="kicker">Patioen</p>
         <h2>Om sommeren foregår meget af livet herude.</h2>
-        <p>Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft uden at gøre området formelt.</p>
+        <p>Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.</p>
       </div>
-    </section>
+      <div class="slider-dots" data-dots></div>
+    </div>
+  </section>
 
-    <section class="section terrace-grid">
-      <div class="terrace-copy reveal">
-        <p class="kicker dark">Tagterrassen</p>
-        <h2>Et ekstra sted med udsigt og ro.</h2>
-        <p>Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.</p>
-        <p>Tagterrassen bruges forskelligt gennem året. Om sommeren ofte tidligt og sent på dagen. Om vinteren kan dagtimerne være behagelige, mens aftenerne bliver køligere og mere fugtige.</p>
-      </div>
-      <div class="terrace-gallery">
-        <img class="large reveal" src="images/casa-amar-v2-tagterrasse.webp" alt="Hjørnesofa og planter på tagterrassen">
-        <img class="reveal" src="images/casa-amar-v2-udsigt.webp" alt="Udsigt fra tagterrassen">
-        <img class="reveal" src="images/casa-amar-v2-projektor.webp" alt="Projektor i brug på tagterrassen om aftenen">
-      </div>
-    </section>
+  <section class="section terrace-grid">
+    <div class="terrace-copy reveal">
+      <p class="kicker dark">Tagterrassen</p>
+      <h2>Et ekstra sted med udsigt og ro.</h2>
+      <p>Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.</p>
+      <p>Tagterrassen bruges forskelligt gennem året. Om sommeren ofte tidligt og sent på dagen. Om vinteren kan dagtimerne være behagelige, mens aftenerne bliver køligere og mere fugtige.</p>
+    </div>
+    <div class="roof-slider" data-slider data-interval="7000">
+      <article class="roof-slide active"><img src="images/casa-amar-v2-tagterrasse.webp" alt="Tagterrassens sofaområde"></article>
+      <article class="roof-slide"><img src="images/casa-amar-v2-udsigt.webp" alt="Udsigten fra tagterrassen"></article>
+      <article class="roof-slide"><img src="images/casa-amar-v2-projektor.webp" alt="Projektoraften på tagterrassen"></article>
+      <article class="roof-slide"><img src="images/casa-amar-v2-solnedgang.webp" alt="Solnedgang set fra Casa Amar"></article>
+      <div class="slider-dots dark-dots" data-dots></div>
+    </div>
+  </section>
 
-    <section id="sovevaerelser" class="section bedrooms">
-      <div class="section-heading reveal">
-        <p class="kicker dark">Første sal</p>
-        <h2>Tre soveværelser med plads til seks.</h2>
-        <p>Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.</p>
-      </div>
-      <div class="bedroom-grid">
-        <article class="bedroom-card reveal">
-          <img src="images/casa-amar-v2-master-bedroom.webp" alt="Master bedroom med dobbeltseng">
-          <div><h3>Master bedroom</h3><p>Stor dobbeltseng, skabsvæg, TV og udgang til en lille altan.</p></div>
-        </article>
-        <article class="bedroom-card reveal">
-          <img src="images/casa-amar-v2-sovevaerelse-2.webp" alt="Soveværelse med to enkeltsenge">
-          <div><h3>Soveværelse 2</h3><p>To enkeltsenge, nyere topmadrasser og klædeskab.</p></div>
-        </article>
-        <article class="bedroom-card reveal">
-          <img src="images/casa-amar-v2-sovevaerelse-3.webp" alt="Soveværelse med to enkeltsenge og skab">
-          <div><h3>Soveværelse 3</h3><p>To enkeltsenge, nyere topmadrasser og en mindre skabsvæg.</p></div>
-        </article>
-      </div>
-      <p class="small-note">På første sal ligger også husets oprindelige badeværelse med badekar. Det er enkelt, rent og funktionelt.</p>
-    </section>
+  <section id="sovevaerelser" class="section bedrooms">
+    <div class="section-heading reveal">
+      <p class="kicker dark">Første sal</p>
+      <h2>Tre soveværelser med plads til seks.</h2>
+      <p>Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.</p>
+    </div>
+    <div class="bedroom-grid">
+      <article class="bedroom-card reveal"><img src="images/casa-amar-v2-master-bedroom.webp" alt="Master bedroom"><div><h3>Master bedroom</h3><p>Stor dobbeltseng, skabsvæg, TV og udgang til en lille altan.</p></div></article>
+      <article class="bedroom-card reveal"><img src="images/casa-amar-v2-sovevaerelse-2.webp" alt="Soveværelse 2"><div><h3>Soveværelse 2</h3><p>To enkeltsenge, nyere topmadrasser og klædeskab.</p></div></article>
+      <article class="bedroom-card reveal"><img src="images/casa-amar-v2-sovevaerelse-3.webp" alt="Soveværelse 3"><div><h3>Soveværelse 3</h3><p>To enkeltsenge, nyere topmadrasser og en mindre skabsvæg.</p></div></article>
+    </div>
+    <p class="small-note reveal">På første sal ligger også husets oprindelige badeværelse med badekar. Det er enkelt, rent og funktionelt.</p>
+  </section>
 
-    <section id="praktisk" class="practical-section">
-      <div class="section-heading reveal">
-        <p class="kicker">Praktisk komfort</p>
-        <h2>Det, man først lægger mærke til, når man har brug for det.</h2>
+  <section id="beliggenhed" class="location-section">
+    <div class="location-image"><img src="images/casa-amar-v2-pool.webp" alt="Poolområdet i Cerros del Águila"></div>
+    <div class="location-copy reveal">
+      <p class="kicker dark">Beliggenheden</p>
+      <h2>I bakkerne – med meget inden for rækkevidde.</h2>
+      <p>Casa Amar ligger i Cerros del Águila. De færreste kender området på forhånd, men mange sætter pris på roen i bakkerne og den korte afstand til kysten.</p>
+      <div class="distance-list">
+        <div><strong>25 min.</strong><span>til Málaga Lufthavn</span></div>
+        <div><strong>5–10 min.</strong><span>til strand og Fuengirola</span></div>
+        <div><strong>5–7 min.</strong><span>til Miramar og Carrefour</span></div>
+        <div><strong>Få min.</strong><span>til restaurant og pool til fods</span></div>
       </div>
-      <div class="practical-grid">
-        <article><h3>WiFi i hele huset</h3><p>Mesh-netværk giver forbindelse i stueetagen, på første sal og på tagterrassen.</p></article>
-        <article><h3>Aircondition og varme</h3><p>Anlæg i stuen og alle soveværelser gør huset anvendeligt hele året.</p></article>
-        <article><h3>Babyudstyr</h3><p>Babyseng, højstol, trappegitter, UV-telt og Thule Urban-vogn med barnevognsindsats.</p></article>
-        <article><h3>Aktiv ferie</h3><p>Golfsæt, tennisketchere og strandudstyr. Cykler og løbehjul kan aftales på forhånd.</p></article>
-        <article><h3>Film og musik</h3><p>Projektor til tagterrassen og en transportabel Bluetooth-højttaler.</p></article>
-        <article><h3>Vask og parkering</h3><p>Vaskemaskine i forhaven og mulighed for parkering tæt ved huset.</p></article>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="belliggenhed" class="location-section">
-      <div class="location-image">
-        <img src="images/casa-amar-v2-pool.webp" alt="Den store fælles pool i Cerros del Águila">
-      </div>
-      <div class="location-copy reveal">
-        <p class="kicker dark">Beliggenheden</p>
-        <h2>I bakkerne – med meget inden for rækkevidde.</h2>
-        <p>Casa Amar ligger i Cerros del Águila. De færreste kender området på forhånd, men mange sætter pris på roen i bakkerne og den korte afstand til kysten.</p>
-        <div class="distance-list">
-          <div><strong>25 min.</strong><span>til Málaga Lufthavn</span></div>
-          <div><strong>5–10 min.</strong><span>til strand og Fuengirola</span></div>
-          <div><strong>5–7 min.</strong><span>til Miramar og Carrefour</span></div>
-          <div><strong>Få min.</strong><span>til restaurant og pool til fods</span></div>
-        </div>
-        <p class="small-note">Golf, udflugter, Málaga, Mijas Pueblo og resten af Costa del Sol er en del af mulighederne – ikke en fast ferieplan.</p>
-      </div>
-    </section>
+  <section id="galleri" class="section gallery-section">
+    <div class="section-heading reveal">
+      <p class="kicker dark">Billeder</p>
+      <h2>Flere sider af Casa Amar.</h2>
+      <p>Et udvalg af billeder fra huset, patioen og tagterrassen. Klik på et billede for at se det større.</p>
+    </div>
+    <div class="gallery-grid" data-gallery>
+      <button><img src="images/casa-amar-v2-entre.webp" alt="Entréen"></button>
+      <button><img src="images/casa-amar-v2-koekken.webp" alt="Køkkenet"></button>
+      <button class="wide"><img src="images/casa-amar-v2-patio-detalje.webp" alt="Patioens planter og blomster"></button>
+      <button class="tall"><img src="images/casa-amar-v2-solnedgang.webp" alt="Solnedgang"></button>
+      <button><img src="images/casa-amar-v2-kaffe.webp" alt="Kaffehjørnet"></button>
+      <button><img src="images/casa-amar-v2-master-bedroom.webp" alt="Master bedroom"></button>
+      <button class="wide"><img src="images/casa-amar-v2-pool.webp" alt="Den fælles pool"></button>
+    </div>
+  </section>
 
-    <section class="section seasons">
-      <div class="section-heading reveal">
-        <p class="kicker dark">Hele året</p>
-        <h2>Huset kan noget forskelligt gennem sæsonerne.</h2>
-      </div>
-      <div class="season-grid">
-        <article><span>Forår</span><p>Golf, udflugter og udeliv i behagelige temperaturer.</p></article>
-        <article><span>Sommer</span><p>Patio, pool, strand og et køligt hus i de varmeste timer.</p></article>
-        <article><span>Efterår</span><p>Fortsat udeliv kombineret med golf, ture og måltider inde.</p></article>
-        <article><span>Vinter</span><p>Milde dage, mere brug af stuen og køligere aftener.</p></article>
-      </div>
-    </section>
+  <section class="practical-section">
+    <div class="section-heading reveal"><p class="kicker">Praktisk komfort</p><h2>Det, man først lægger mærke til, når man har brug for det.</h2></div>
+    <div class="practical-grid">
+      <article><h3>WiFi i hele huset</h3><p>Mesh-netværk giver forbindelse i stueetagen, på første sal og på tagterrassen.</p></article>
+      <article><h3>Aircondition og varme</h3><p>Anlæg i stuen og alle soveværelser gør huset anvendeligt hele året.</p></article>
+      <article><h3>Babyudstyr</h3><p>Babyseng, højstol, trappegitter, UV-telt og Thule Urban-vogn.</p></article>
+      <article><h3>Aktiv ferie</h3><p>Golfsæt, tennisketchere og strandudstyr. Cykler og løbehjul kan aftales.</p></article>
+      <article><h3>Film og musik</h3><p>Projektor til tagterrassen og transportabel Bluetooth-højttaler.</p></article>
+      <article><h3>Vask og parkering</h3><p>Vaskemaskine i forhaven og parkering tæt ved huset.</p></article>
+    </div>
+  </section>
 
-    <section class="quote-section">
-      <img src="images/casa-amar-v2-solnedgang.webp" alt="Solnedgang set fra Casa Amar">
-      <div class="quote-shade"></div>
-      <blockquote class="reveal">“Det var rart, praktisk og nemt at være i. Der manglede ikke noget.”</blockquote>
-    </section>
+  <section id="kontakt" class="contact-section">
+    <div class="contact-copy reveal">
+      <p class="kicker dark">Kontakt</p>
+      <h2>Et sted at vende tilbage til.</h2>
+      <p>Casa Amar kan være base for familien, et par, flere generationer eller venner, der vil kombinere aktiviteter med rolige timer hjemme.</p>
+      <a class="button button-primary" href="mailto:kontakt@casaamar.es">Send en forespørgsel</a>
+    </div>
+    <div class="contact-image"><img src="images/casa-amar-v2-patio-detalje.webp" alt="Blomster og patio ved Casa Amar"></div>
+  </section>
+</main>
 
-    <section id="kontakt" class="contact-section">
-      <div class="contact-copy reveal">
-        <p class="kicker dark">Kontakt</p>
-        <h2>Et sted at vende tilbage til.</h2>
-        <p>Casa Amar er ikke lavet til én bestemt type ferie. Det kan være en base for familien, et par, flere generationer eller venner, der vil kombinere aktiviteter med rolige timer hjemme.</p>
-        <a class="button button-primary" href="mailto:kontakt@casaamar.es">Send en forespørgsel</a>
-      </div>
-      <div class="contact-image">
-        <img src="images/casa-amar-v2-patio-detalje.webp" alt="Blomster og patio ved Casa Amar">
-      </div>
-    </section>
-  </main>
+<div class="lightbox" data-lightbox hidden>
+  <button class="lightbox-close" type="button" aria-label="Luk billede">×</button>
+  <img src="" alt="">
+</div>
 
-  <footer>
-    <div class="brand footer-brand"><span>Casa</span><strong>Amar</strong></div>
-    <p>Calle Zopilote 3 · Casa 527 · Cerros del Águila · Mijas Costa</p>
-    <a href="#top">Til toppen ↑</a>
-  </footer>
+<footer>
+  <div class="brand footer-brand"><span>Casa</span><strong>Amar</strong></div>
+  <p>Calle Zopilote 3 · Casa 527 · Cerros del Águila · Mijas Costa</p>
+  <a href="#top">Til toppen ↑</a>
+</footer>
 </body>
 </html>
