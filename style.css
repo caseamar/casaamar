@@ -177,3 +177,54 @@ footer a{text-decoration:none;font-weight:700}
   .gallery-grid{grid-template-columns:1fr;grid-auto-rows:260px}
   .gallery-grid button,.gallery-grid button.wide,.gallery-grid button.tall{grid-column:auto;grid-row:auto}
 }
+
+
+/* Development identification – remove before final launch */
+.dev-badge{
+  position:fixed;
+  z-index:90;
+  right:14px;
+  bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  background:rgba(24,37,32,.92);
+  color:#fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.18);
+  backdrop-filter:blur(10px);
+  font-size:.68rem;
+  line-height:1;
+}
+.dev-badge strong{color:#f3a181;letter-spacing:.12em}
+.dev-badge time{opacity:.72}
+.main-nav a.active{color:var(--clay)}
+.slider-status{
+  position:absolute;
+  z-index:6;
+  right:clamp(24px,5vw,74px);
+  bottom:24px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(10,18,15,.44);
+  color:#fff;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+.slider-status-dark{
+  color:var(--ink);
+  background:rgba(248,245,238,.82);
+}
+@media(max-width:600px){
+  .dev-badge{right:8px;bottom:8px;font-size:.6rem}
+  .dev-badge time{display:none}
+  .slider-status{right:18px;bottom:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-slide,.story-slide,.patio-slide,.roof-slide,.reveal{transition:none!important}
+}

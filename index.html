@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Casa Amar – feriehus i bakkerne ved Fuengirola</title>
   <meta name="description" content="Casa Amar er et feriehus med tre soveværelser, patio, tagterrasse og fælles pool i bakkerne ved Fuengirola.">
+  <meta name="casa-amar-version" content="v2026.07.21.01">
+  <meta name="casa-amar-build" content="2026-07-21 18:30">
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -16,6 +18,7 @@
     <span></span><span></span><span></span><span class="sr-only">Åbn menu</span>
   </button>
   <nav id="main-nav" class="main-nav" data-menu>
+    <a href="#top">Forside</a>
     <a href="#huset">Huset</a>
     <a href="#udeliv">Udeliv</a>
     <a href="#sovevaerelser">Soveværelser</a>
@@ -40,6 +43,7 @@
         <a class="button button-ghost" href="#galleri">Se billeder</a>
       </div>
     </div>
+    <div class="slider-status" data-slider-status aria-live="polite"></div>
     <div class="slider-dots" data-dots></div>
   </section>
 
@@ -68,6 +72,8 @@
       <article class="story-slide active"><img src="images/casa-amar-v2-stue.webp" alt="Stuen i Casa Amar"></article>
       <article class="story-slide"><img src="images/casa-amar-v2-koekken.webp" alt="Køkkenet i Casa Amar"></article>
       <article class="story-slide"><img src="images/casa-amar-v2-entre.webp" alt="Entréen i Casa Amar"></article>
+      <div class="slider-status slider-status-dark" data-slider-status aria-live="polite"></div>
+      <div class="slider-status slider-status-dark" data-slider-status aria-live="polite"></div>
       <div class="slider-dots dark-dots" data-dots></div>
     </div>
     <div class="story-copy reveal">
@@ -106,6 +112,7 @@
         <h2>Om sommeren foregår meget af livet herude.</h2>
         <p>Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.</p>
       </div>
+      <div class="slider-status" data-slider-status aria-live="polite"></div>
       <div class="slider-dots" data-dots></div>
     </div>
   </section>
@@ -194,6 +201,12 @@
     <div class="contact-image"><img src="images/casa-amar-v2-patio-detalje.webp" alt="Blomster og patio ved Casa Amar"></div>
   </section>
 </main>
+
+<div class="dev-badge" aria-label="Udviklingsversion">
+  <strong>DEV</strong>
+  <span>v2026.07.21.01</span>
+  <time datetime="2026-07-21T18:30:00+02:00">2026-07-21 18:30</time>
+</div>
 
 <div class="lightbox" data-lightbox hidden>
   <button class="lightbox-close" type="button" aria-label="Luk billede">×</button>
