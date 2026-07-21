@@ -9,8 +9,8 @@
 - GitHub, Cloudflare, versionering og dokumentation
 
 ## Næste prioritet
-- Praktisk information før ankomst
 - Kontakt og bookingflow
+- Praktisk gæsteguide og videovejledninger
 - Uddybede oplevelser, konkrete anbefalinger og eventuelle links
 
 ## Senere

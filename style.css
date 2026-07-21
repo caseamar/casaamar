@@ -756,3 +756,115 @@ footer a{text-decoration:none;font-weight:700}
     min-height:auto;
   }
 }
+
+
+/* v2026.07.21.10 – fuld Praktisk-sektion */
+.practical-full{
+  background:var(--ink);
+  color:#fff;
+  padding-top:120px;
+  padding-bottom:120px;
+}
+.practical-full .section-heading{
+  max-width:900px;
+}
+.practical-full .section-heading p:last-child{
+  color:#cdd7d2;
+}
+.practical-overview{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.practical-lead{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:24px;
+  min-height:350px;
+  padding:34px;
+  border-radius:24px;
+  background:#2a4038;
+  border:1px solid rgba(255,255,255,.08);
+}
+.practical-lead:nth-child(2){
+  background:#344b42;
+}
+.practical-number{
+  font-family:var(--serif);
+  font-size:3.2rem;
+  line-height:1;
+  color:var(--clay);
+}
+.practical-lead h3{
+  font-size:clamp(2rem,3.2vw,3.1rem);
+  margin-bottom:18px;
+}
+.practical-lead p:last-child{
+  color:#d5ded9;
+}
+.practical-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+.practical-detail{
+  min-height:270px;
+  padding:30px;
+  border-radius:20px;
+  background:#f7f3ea;
+  color:var(--ink);
+}
+.practical-detail:nth-child(2),
+.practical-detail:nth-child(5){
+  background:#e9eee9;
+}
+.practical-detail:nth-child(3),
+.practical-detail:nth-child(6){
+  background:#efe7e1;
+}
+.practical-detail h3{
+  font-size:1.7rem;
+  margin-bottom:14px;
+}
+.practical-detail p:last-child{
+  color:var(--ink-soft);
+}
+.practical-concierge{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:7vw;
+  margin-top:18px;
+  padding:38px;
+  border-radius:22px;
+  background:var(--clay);
+  color:#fff;
+}
+.practical-concierge h3{
+  font-size:clamp(2rem,3.6vw,3.4rem);
+}
+.practical-concierge>p{
+  margin:0;
+  align-self:center;
+  font-size:1.04rem;
+  color:#fff5ef;
+}
+@media(max-width:900px){
+  .practical-overview,
+  .practical-detail-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .practical-concierge{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:650px){
+  .practical-overview,
+  .practical-detail-grid{
+    grid-template-columns:1fr;
+  }
+  .practical-lead{
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
+}

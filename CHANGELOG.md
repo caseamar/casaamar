@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v2026.07.21.10 — 2026-07-21 22:10
+
+### Nyt indhold: Praktisk
+- Tilføjet `Praktisk` i hovednavigationen.
+- Den tidligere korte komfortoversigt er erstattet af en fuld offentlig sektion.
+- Sektionen beskriver ankomst, parkering, bil, aircondition, varme, WiFi, pool, børn, udstyr, indkøb, køkken, vask og længere ophold.
+- Tilføjet ramme for en kommende digital concierge med korte videovejledninger.
+
+### Afgrænsning
+- Ingen adgangskoder, nøgleoplysninger eller andre gæstespecifikke oplysninger vises offentligt.
+- Detaljerede instruktioner gemmes til den senere gæsteadgang.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.09 — 2026-07-21 21:50
 
 ### Området – visuel oprydning
