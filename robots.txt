@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.casaamar.es/sitemap.xml
