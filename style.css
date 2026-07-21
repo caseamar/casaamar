@@ -373,3 +373,11 @@ footer a{text-decoration:none;font-weight:700}
     min-height:420px;
   }
 }
+
+
+/* v2026.07.21.04 */
+.kitchen-slide:first-of-type{background:#ece7de}
+.kitchen-slide:first-of-type img{
+  object-fit:contain!important;
+  object-position:center!important;
+}

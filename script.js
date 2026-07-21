@@ -1,5 +1,5 @@
-const SITE_VERSION = 'v2026.07.21.03';
-const SITE_BUILD = '2026-07-21 19:35';
+const SITE_VERSION = 'v2026.07.21.04';
+const SITE_BUILD = '2026-07-21 20:05';
 
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-button]');
@@ -105,9 +105,7 @@ document.querySelectorAll('[data-slider]').forEach((slider, sliderIndex) => {
     restart();
   });
 
-  slider.addEventListener('mouseenter', stop);
-  slider.addEventListener('mouseleave', start);
-  slider.addEventListener('touchstart', stop, { passive: true });
+    slider.addEventListener('touchstart', stop, { passive: true });
   slider.addEventListener('touchend', start, { passive: true });
 
   render();

@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## v2026.07.21.04 — 2026-07-21 20:05
+
+### Rettelse
+- Versionsmærket `style.css` og `script.js` i `index.html`, så browseren altid henter den nyeste kode.
+- Billedskift stopper ikke længere, når musen ligger over billedet.
+- Alle slidersektioner er renset for dobbelte betjeningsknapper og har nu præcis ét sæt pile, én tæller og én indikator.
+
+### Køkken
+- Tilføjet et eksisterende Casa Amar-billede, hvor ovnen tydeligt kan ses.
+- Ovn-billedet vises uden beskæring.
+
+### Kvalitetssikring
+- JavaScript syntakskontrolleret.
+- Alle slidersektioner kontrolleret for mindst to billeder og korrekt betjening.
+- Ny WebP-billedfil kontrolleret.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ny: `images/casa-amar-koekken-ovn.webp`
+
+
 ## v2026.07.21.03 — 2026-07-21 19:35
 
 ### Billedsektioner
