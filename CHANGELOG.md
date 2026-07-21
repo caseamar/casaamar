@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## v2026.07.21.07 — 2026-07-21 21:30
+
+### Området
+- Tilføjet en femte kategori: `Flere dage`.
+- Flyttet Sevilla ud af dagsture og placeret sammen med Sierra Nevada, Marokko og længere rundture.
+- Dagsture omfatter nu Ronda/Setenil, Caminito del Rey, Granada, Gibraltar og Córdoba.
+- Den afsluttende tekst er omskrevet til en positiv beskrivelse af valgfriheden i området.
+
+### Design
+- Dæmpet kontrasten i kortene for familier, golf samt mad og byliv.
+- De mørke grønne flader er erstattet af rolige nuancer i sand, salvie og varm ler.
+- Afstandskortene har fået diskret variation uden at miste sammenhængen.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.06 — 2026-07-21 21:05
 
 ### Nyt indhold: Området

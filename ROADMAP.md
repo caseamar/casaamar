@@ -11,7 +11,7 @@
 ## Næste prioritet
 - Praktisk information før ankomst
 - Kontakt og bookingflow
-- Uddybede oplevelser og konkrete anbefalinger
+- Uddybede oplevelser, konkrete anbefalinger og eventuelle links
 
 ## Senere
 - Digital concierge
