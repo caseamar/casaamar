@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v2026.07.21.06 — 2026-07-21 21:05
+
+### Nyt indhold: Området
+- Tilføjet `Området` i navigationen.
+- Tilføjet en overskuelig afstandsbaseret sektion:
+  - til fods
+  - 5–15 minutter
+  - 20–40 minutter
+  - dagsture
+- Tilføjet særlige indgange for familier, golf samt mad og byliv.
+- Tydeliggjort at Cerros del Águila er den rolige base og ikke nødvendigvis selve destinationen.
+
+### Indholdsprincip
+- Fokus på anvendelig planlægning frem for en lang seværdighedsliste.
+- Ingen overdrevne løfter om afstande eller oplevelser.
+- Indholdet kan senere udbygges med billeder og konkrete anbefalinger.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.05 — 2026-07-21 20:40
 
 ### Nyt indhold: Din ferie

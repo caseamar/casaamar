@@ -9,9 +9,9 @@
 - GitHub, Cloudflare, versionering og dokumentation
 
 ## Næste prioritet
-- Området og oplevelser
 - Praktisk information før ankomst
 - Kontakt og bookingflow
+- Uddybede oplevelser og konkrete anbefalinger
 
 ## Senere
 - Digital concierge

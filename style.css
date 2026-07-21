@@ -453,3 +453,95 @@ footer a{text-decoration:none;font-weight:700}
     min-height:260px;
   }
 }
+
+
+/* v2026.07.21.06 – Området */
+.area-section{
+  padding-top:120px;
+  padding-bottom:120px;
+  background:#f6f2e9;
+}
+.area-distance-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.area-block{
+  padding:28px;
+  border-radius:20px;
+  background:#fff;
+  min-height:320px;
+}
+.area-time{
+  display:inline-block;
+  margin-bottom:36px;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--clay);
+}
+.area-block h3{
+  font-size:1.8rem;
+  margin-bottom:18px;
+}
+.area-block ul{
+  margin:0;
+  padding-left:18px;
+  color:var(--ink-soft);
+}
+.area-block li+li{
+  margin-top:9px;
+}
+.area-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:22px;
+}
+.area-feature{
+  padding:32px;
+  border-radius:20px;
+  background:var(--ink);
+  color:#fff;
+}
+.area-feature:nth-child(2){
+  background:#fff;
+  color:var(--ink);
+}
+.area-feature:nth-child(2) p:last-child{
+  color:var(--ink-soft);
+}
+.area-feature p:last-child{
+  color:#d7dfdc;
+}
+.area-note{
+  display:grid;
+  grid-template-columns:.7fr 1.3fr;
+  gap:7vw;
+  margin-top:22px;
+  padding:32px 36px;
+  border-top:1px solid rgba(32,51,45,.16);
+}
+.area-note strong{
+  font-size:1.25rem;
+}
+.area-note p{
+  margin:0;
+  color:var(--ink-soft);
+}
+@media(max-width:1000px){
+  .area-distance-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  .area-distance-grid,
+  .area-feature-grid,
+  .area-note{
+    grid-template-columns:1fr;
+  }
+  .area-block{
+    min-height:auto;
+  }
+}
