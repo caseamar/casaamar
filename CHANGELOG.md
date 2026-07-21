@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## v2026.07.21.15 — 2026-07-22 00:10
+
+### Kritisk layoutrettelse
+- De to store kort i Praktisk-sektionen er bygget om, så overskrifterne ikke længere presses ud af kortene.
+- Fjernet den smalle interne kolonneopdeling mellem nummer og tekst.
+- Nummer, label, overskrift og brødtekst står nu i en stabil lodret struktur.
+- Begrænset overskriftens linjelængde og tilføjet sikre responsive brudpunkter.
+- Kortene står ved siden af hinanden på brede skærme og under hinanden på mindre skærme.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.14 — 2026-07-21 23:55
 
 ### Final design polish

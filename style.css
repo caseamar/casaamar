@@ -1312,3 +1312,75 @@ footer a{text-decoration:none;font-weight:700}
     border-radius:20px;
   }
 }
+
+
+/* v2026.07.21.15 – definitive fix for Practical lead cards */
+.practical-full .practical-overview{
+  width:min(1400px,calc(100% - 48px));
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+.practical-full .practical-lead{
+  display:block!important;
+  position:relative;
+  min-width:0;
+  min-height:430px;
+  padding:42px 44px 40px!important;
+  overflow:hidden;
+}
+.practical-full .practical-number{
+  display:block;
+  margin:0 0 28px;
+  font-size:3.8rem;
+  line-height:.9;
+}
+.practical-full .practical-lead>div{
+  min-width:0;
+}
+.practical-full .practical-lead .kicker{
+  margin-bottom:18px;
+}
+.practical-full .practical-lead h3{
+  width:100%;
+  max-width:10.5ch!important;
+  margin:0 0 24px;
+  font-size:clamp(2.7rem,4.1vw,4.6rem)!important;
+  line-height:.96!important;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
+}
+.practical-full .practical-lead p:last-child{
+  width:100%;
+  max-width:48ch!important;
+  margin:0;
+  font-size:1rem;
+  line-height:1.65;
+}
+@media(max-width:1100px){
+  .practical-full .practical-overview{
+    grid-template-columns:1fr;
+  }
+  .practical-full .practical-lead{
+    min-height:0;
+  }
+  .practical-full .practical-lead h3{
+    max-width:15ch!important;
+  }
+}
+@media(max-width:650px){
+  .practical-full .practical-overview{
+    width:calc(100% - 28px);
+  }
+  .practical-full .practical-lead{
+    padding:28px 24px 30px!important;
+  }
+  .practical-full .practical-number{
+    margin-bottom:20px;
+    font-size:2.8rem;
+  }
+  .practical-full .practical-lead h3{
+    max-width:none!important;
+    font-size:clamp(2.35rem,11vw,3.7rem)!important;
+  }
+}
