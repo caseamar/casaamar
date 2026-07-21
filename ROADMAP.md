@@ -1,17 +1,22 @@
 # ROADMAP
 
-## Prioritet 1
+## Færdigt eller tæt på færdigt
 - Forside
 - Huset
+- Beliggenhed – grundsektion
+- Din ferie
+- Grundlæggende praktisk komfort
+- GitHub, Cloudflare, versionering og dokumentation
 
-## Prioritet 2
-- Beliggenhed
-- Oplevelser
-- Området
+## Næste prioritet
+- Området og oplevelser
+- Praktisk information før ankomst
+- Kontakt og bookingflow
 
-## Prioritet 3
-- Concierge
-- Booking
+## Senere
+- Digital concierge
+- Video-vejledninger
 - FAQ
 - NFC
 - Flersproget hjemmeside
+- Endelig billedopdatering efter næste Spanien-tur

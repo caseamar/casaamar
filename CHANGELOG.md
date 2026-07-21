@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v2026.07.21.05 — 2026-07-21 20:40
+
+### Nyt indhold: Din ferie
+- Tilføjet en ny offentlig sektion med fire realistiske måder at bruge Casa Amar på:
+  - sommerferie med familien
+  - golf og udflugter i forår/efterår
+  - vinterophold med sol, arbejde og weekendture
+  - jul, nytår eller længere ophold
+- Tilføjet en ærlig forklaring af forskellen mellem sommer- og vinteraftener.
+- Tilføjet `Din ferie` i navigationen.
+- Kontaktsektionen er ændret fra loyalitetsfokus til førstegangsvalg og booking.
+
+### Indholdsprincip
+- Ingen løfter om klassisk vinterstrandferie.
+- Fokus på sol i dagtimerne, oplevelser, gode råvarer og huset som base.
+- Sommerlivet beskrives som levende; vinteraftener som stille og køligere.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.04 — 2026-07-21 20:05
 
 ### Rettelse

@@ -381,3 +381,75 @@ footer a{text-decoration:none;font-weight:700}
   object-fit:contain!important;
   object-position:center!important;
 }
+
+
+/* v2026.07.21.05 – Din ferie */
+.holiday-section{
+  padding-top:120px;
+  padding-bottom:120px;
+}
+.holiday-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.holiday-card{
+  min-height:310px;
+  padding:34px;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 14px 40px rgba(28,43,37,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.holiday-card:nth-child(3){
+  background:var(--ink);
+  color:#fff;
+}
+.holiday-card:nth-child(3) p{
+  color:#d6dfdb;
+}
+.holiday-label{
+  margin-bottom:auto;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--clay);
+}
+.holiday-card h3{
+  margin-bottom:12px;
+  font-size:clamp(1.8rem,3vw,2.7rem);
+}
+.holiday-card p{
+  margin:0;
+  color:var(--ink-soft);
+}
+.season-note{
+  margin-top:22px;
+  padding:38px;
+  border-radius:22px;
+  background:var(--sand);
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:7vw;
+  align-items:start;
+}
+.season-note h3{
+  font-size:clamp(1.9rem,3.5vw,3.2rem);
+}
+.season-note>p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:1.04rem;
+}
+@media(max-width:800px){
+  .holiday-grid,
+  .season-note{
+    grid-template-columns:1fr;
+  }
+  .holiday-card{
+    min-height:260px;
+  }
+}
