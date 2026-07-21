@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v2026.07.21.09 — 2026-07-21 21:50
+
+### Området – visuel oprydning
+- Samlet overgangen og kortene for familier, golf samt mad og byliv i én rolig, sammenhængende flade.
+- Centreret introen og gjort hierarkiet tydeligere.
+- Fjernet oplevelsen af to konkurrerende sektioner med forskellige farver.
+- Givet alle tre kort samme lyse baggrund og diskrete farveaccenter i venstre side.
+- Bevaret variation og liv uden de tidligere hårde kontraster.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+
+
 ## v2026.07.21.08 — 2026-07-21 21:50
 
 ### Området – layout og overgang
