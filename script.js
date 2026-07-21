@@ -1,5 +1,5 @@
-const SITE_VERSION = 'v2026.07.21.07';
-const SITE_BUILD = '2026-07-21 21:30';
+const SITE_VERSION = 'v2026.07.21.08';
+const SITE_BUILD = '2026-07-21 21:50';
 
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-button]');

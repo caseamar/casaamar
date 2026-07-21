@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v2026.07.21.08 — 2026-07-21 21:50
+
+### Området – layout og overgang
+- De fire korte afstandsniveauer står nu samlet i én tydelig række på store skærme.
+- `Flere dage` er gjort til et bredt, selvstændigt kort med mere plads til Sevilla, Sierra Nevada, Marokko og rundture.
+- Tilføjet en tydelig overgang før kortene om familier, golf samt mad og byliv.
+- Overgangen forklarer skiftet fra afstand til måden, området kan bruges på.
+- Layoutet er fortsat responsivt på laptop, tablet og mobil.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+
+
 ## v2026.07.21.07 — 2026-07-21 21:30
 
 ### Området

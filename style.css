@@ -597,3 +597,80 @@ footer a{text-decoration:none;font-weight:700}
     grid-template-columns:1fr;
   }
 }
+
+
+/* v2026.07.21.08 – tydeligere rytme og hierarki i Området */
+.area-travel-layout{
+  display:grid;
+  gap:18px;
+}
+.area-distance-grid-main{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.area-block-wide{
+  min-height:0;
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  column-gap:7vw;
+  align-items:start;
+  padding:34px 38px;
+  background:linear-gradient(135deg,#e8efea 0%,#f4efe7 100%);
+}
+.area-block-wide .area-time{
+  grid-column:1;
+  margin-bottom:18px;
+}
+.area-block-wide h3{
+  grid-column:1;
+  margin-bottom:0;
+  font-size:clamp(2rem,3vw,3rem);
+}
+.area-block-wide ul{
+  grid-column:2;
+  grid-row:1 / span 2;
+  columns:2;
+  column-gap:36px;
+  align-self:center;
+}
+.area-block-wide li{
+  break-inside:avoid;
+}
+.area-feature-intro{
+  margin-top:70px;
+  margin-bottom:22px;
+  padding-top:42px;
+  border-top:1px solid rgba(32,51,45,.16);
+  display:grid;
+  grid-template-columns:.55fr 1.45fr;
+  gap:7vw;
+  align-items:start;
+}
+.area-feature-intro h3{
+  margin:0 0 12px;
+  font-size:clamp(2.1rem,4vw,3.8rem);
+}
+.area-feature-intro p:last-child{
+  margin:0;
+  max-width:720px;
+  color:var(--ink-soft);
+  font-size:1.05rem;
+}
+.area-feature-grid{
+  margin-top:0;
+}
+@media(max-width:1180px){
+  .area-distance-grid-main{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .area-block-wide{grid-template-columns:1fr 1.2fr}
+}
+@media(max-width:760px){
+  .area-distance-grid-main,
+  .area-block-wide,
+  .area-feature-intro{grid-template-columns:1fr}
+  .area-block-wide ul{
+    grid-column:1;
+    grid-row:auto;
+    columns:1;
+    margin-top:22px;
+  }
+  .area-feature-intro{margin-top:48px;gap:14px}
+}
