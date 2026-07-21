@@ -868,3 +868,52 @@ footer a{text-decoration:none;font-weight:700}
     min-height:auto;
   }
 }
+
+
+/* v2026.07.21.11 – afslutning af offentlig praktisk information */
+.included-panel{
+  margin-top:18px;
+  padding:38px;
+  border-radius:22px;
+  background:#f7f3ea;
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:6vw;
+  align-items:start;
+}
+.included-heading h3{
+  margin:0;
+  font-size:clamp(2rem,3.4vw,3.3rem);
+}
+.included-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px 22px;
+}
+.included-list li{
+  position:relative;
+  padding:13px 14px 13px 38px;
+  border-bottom:1px solid rgba(32,51,45,.1);
+  color:var(--ink-soft);
+}
+.included-list li::before{
+  content:"✓";
+  position:absolute;
+  left:12px;
+  color:var(--clay);
+  font-weight:800;
+}
+@media(max-width:800px){
+  .included-panel{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:520px){
+  .included-list{
+    grid-template-columns:1fr;
+  }
+}

@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v2026.07.21.11 — 2026-07-21 22:40
+
+### Praktisk – færdiggjort offentlig information
+- Transportteksten er gjort mere retvisende: bil giver frihed, men huset kan også bruges uden bil.
+- Tilføjet vejledende taxapriser:
+  - cirka 50 € fra Málaga Lufthavn
+  - cirka 12 € fra Fuengirola station
+- Tilføjet tydelig information om, at sengelinned og håndklæder er klar ved ankomst.
+- Tilføjet en overskuelig sektion med det vigtigste udstyr og de faciliteter, der følger med.
+- Kontaktteksten er gjort kortere og mere handlingsorienteret.
+
+### Kvalitet
+- Ingen nye billeder.
+- Ingen følsomme gæsteoplysninger.
+- JavaScript syntakskontrolleret.
+- Navigation, sektions-id'er og cache-versionering kontrolleret.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
 ## v2026.07.21.10 — 2026-07-21 22:10
 
 ### Nyt indhold: Praktisk

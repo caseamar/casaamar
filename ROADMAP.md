@@ -1,22 +1,26 @@
 # ROADMAP
 
-## Færdigt eller tæt på færdigt
+## Offentlig hjemmeside – tæt på færdig
 - Forside
 - Huset
-- Beliggenhed – grundsektion
+- Beliggenhed
 - Din ferie
-- Grundlæggende praktisk komfort
+- Området og rejsehorisonter
+- Praktisk information
+- Galleri
+- Kontaktflow
 - GitHub, Cloudflare, versionering og dokumentation
 
-## Næste prioritet
-- Kontakt og bookingflow
-- Praktisk gæsteguide og videovejledninger
-- Uddybede oplevelser, konkrete anbefalinger og eventuelle links
-
-## Senere
-- Digital concierge
-- Video-vejledninger
-- FAQ
-- NFC
-- Flersproget hjemmeside
+## Mangler før offentlig lancering
 - Endelig billedopdatering efter næste Spanien-tur
+- Gennemgang af priser, kontaktoplysninger og bookingproces
+- Mobil- og browserkontrol på den publicerede side
+- SEO-titler, delingsbillede og favicon
+- Fjernelse af DEV-mærke ved lancering
+
+## Næste milepæl
+- Digital gæsteguide
+- Korte videovejledninger
+- FAQ
+- QR/NFC-adgang
+- Flersproget hjemmeside
