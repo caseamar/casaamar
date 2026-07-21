@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## v2026.07.21.14 — 2026-07-21 23:55
+
+### Final design polish
+- Redesignet gæsteguide-teaseren i Praktisk-sektionen.
+- Fjernet det smalle tekstfelt og den tunge overskrift.
+- Tilføjet en roligere to-kolonne-opbygning med tre korte fordele.
+- Rettet logo-kontrasten i footeren, så `Casa` står tydeligt på den mørke baggrund.
+- Finjusteret footerens undertitel og hover-adfærd.
+
+### Kvalitet
+- JavaScript syntakskontrolleret.
+- Navigation, kontaktlinks, galleri, lightbox og versionscache bevaret.
+- Ingen nye billeder eller øvrige indholdsændringer.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ændret: `documentation/ROADMAP.md`
+
+
+## v2026.07.21.13 — 2026-07-21 23:35
+
+### Rettelser
+- Fjernet `Soveværelser` fra hovednavigationen.
+- Fjernet galleri/billeder fra topmenuen for at holde navigationen rolig.
+- Rettet Praktisk-sektionens to store kort, som blev presset for smalle.
+- Kortene bruger nu hele indholdsbredden og har bedre tekstbredde, typografi og responsiv opførsel.
+- På tablet og mobil ligger kortene under hinanden.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+
+
 ## v2026.07.21.12 — 2026-07-21 23:10
 
 ### Galleri

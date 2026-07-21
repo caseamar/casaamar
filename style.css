@@ -1157,3 +1157,158 @@ footer a{text-decoration:none;font-weight:700}
   .footer-bottom{grid-template-columns:1fr;gap:12px}
 }
 @media(prefers-reduced-motion:reduce){.gallery-item img{transition:none}}
+
+
+/* v2026.07.21.13 – praktisk layout og navigation */
+.practical-full{
+  overflow:hidden;
+}
+.practical-full .section-heading,
+.practical-full .practical-overview,
+.practical-full .practical-detail-grid,
+.practical-full .included-panel,
+.practical-full .practical-concierge{
+  width:min(1400px,calc(100% - 48px));
+  margin-left:auto;
+  margin-right:auto;
+}
+.practical-overview{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+.practical-lead{
+  grid-template-columns:84px minmax(0,1fr);
+  min-height:0;
+  padding:42px;
+  align-items:start;
+}
+.practical-number{
+  font-size:4rem;
+}
+.practical-lead h3{
+  max-width:12ch;
+  font-size:clamp(2.4rem,4vw,4.5rem);
+  line-height:.98;
+}
+.practical-lead p:last-child{
+  max-width:44ch;
+  font-size:1.02rem;
+  line-height:1.65;
+}
+@media(max-width:980px){
+  .practical-overview{
+    grid-template-columns:1fr;
+  }
+  .practical-lead h3{
+    max-width:16ch;
+  }
+}
+@media(max-width:650px){
+  .practical-full .section-heading,
+  .practical-full .practical-overview,
+  .practical-full .practical-detail-grid,
+  .practical-full .included-panel,
+  .practical-full .practical-concierge{
+    width:min(100% - 28px,1400px);
+  }
+  .practical-lead{
+    grid-template-columns:1fr;
+    padding:28px 24px;
+  }
+  .practical-number{
+    font-size:2.8rem;
+  }
+  .practical-lead h3{
+    max-width:none;
+    font-size:clamp(2.2rem,11vw,3.7rem);
+  }
+}
+
+
+/* v2026.07.21.14 – final design polish */
+.practical-concierge-final{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+  gap:48px;
+  align-items:center;
+  margin-top:18px;
+  padding:46px 48px;
+  border-radius:24px;
+  background:#bc6245;
+  color:#fff;
+}
+.practical-concierge-final .concierge-copy{
+  max-width:680px;
+}
+.practical-concierge-final .concierge-copy h3{
+  margin:0 0 16px;
+  max-width:15ch;
+  font-size:clamp(2.4rem,4.2vw,4.4rem);
+  line-height:.98;
+}
+.practical-concierge-final .concierge-copy p:last-child{
+  margin:0;
+  max-width:58ch;
+  color:#fff4ef;
+  font-size:1.03rem;
+  line-height:1.65;
+}
+.concierge-features{
+  display:grid;
+  gap:12px;
+}
+.concierge-features span{
+  position:relative;
+  display:block;
+  padding:16px 18px 16px 46px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:16px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  line-height:1.4;
+}
+.concierge-features span::before{
+  content:"✓";
+  position:absolute;
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  font-weight:800;
+}
+.footer-brand-contrast span{
+  color:#fff!important;
+}
+.footer-brand-contrast strong{
+  color:var(--clay)!important;
+}
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.site-footer .footer-top{
+  align-items:start;
+}
+.site-footer .footer-nav a,
+.site-footer .footer-contact a{
+  transition:opacity .2s ease,color .2s ease;
+}
+.site-footer .footer-nav a:hover,
+.site-footer .footer-contact a:hover{
+  color:#fff;
+  opacity:1;
+}
+@media(max-width:900px){
+  .practical-concierge-final{
+    grid-template-columns:1fr;
+    gap:28px;
+    padding:38px;
+  }
+  .practical-concierge-final .concierge-copy h3{
+    max-width:none;
+  }
+}
+@media(max-width:600px){
+  .practical-concierge-final{
+    padding:30px 22px;
+    border-radius:20px;
+  }
+}

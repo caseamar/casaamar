@@ -1,6 +1,6 @@
 # ROADMAP
 
-## Offentlig hjemmeside – release candidate
+## Offentlig hjemmeside – færdig for nu
 - Forside og navigation
 - Huset
 - Beliggenhed
@@ -19,7 +19,7 @@
 - Test publiceret side på mobil, tablet, Edge, Chrome og Safari
 - Kontroller delingsbillede på Facebook og Messenger
 - Knyt domænet casaamar.es til den endelige Cloudflare-side
-- Fjern DEV-mærket
+- Fjern DEV-mærket ved endelig lancering
 
 ## Næste milepæl
 - Digital gæsteguide
