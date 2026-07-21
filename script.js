@@ -1,5 +1,5 @@
-const SITE_VERSION = 'v2026.07.21.01';
-const SITE_BUILD = '2026-07-21 18:30';
+const SITE_VERSION = 'v2026.07.21.02';
+const SITE_BUILD = '2026-07-21 18:45';
 
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-button]');
@@ -33,66 +33,86 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-document.querySelectorAll('[data-slider]').forEach((slider) => {
-  const slides = Array.from(slider.children).filter((child) =>
-    child.matches('.hero-slide, .story-slide, .patio-slide, .roof-slide')
-  );
+document.querySelectorAll('[data-slider]').forEach((slider, sliderIndex) => {
+  const slides = Array.from(slider.querySelectorAll('.hero-slide, .story-slide, .patio-slide, .roof-slide'));
   const dotsHost = slider.querySelector('[data-dots]');
   const status = slider.querySelector('[data-slider-status]');
+  const previousButton = slider.querySelector('[data-prev]');
+  const nextButton = slider.querySelector('[data-next]');
   if (slides.length < 2) return;
 
-  let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('active')));
-  let timer = null;
-  const interval = Number(slider.dataset.interval || 7000);
+  let current = 0;
+  let timerId = null;
+  const interval = Number(slider.dataset.interval || 6500);
 
   const dots = slides.map((_, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.setAttribute('aria-label', `Vis billede ${index + 1} af ${slides.length}`);
-    button.addEventListener('click', () => show(index, true));
+    button.addEventListener('click', () => {
+      show(index);
+      restart();
+    });
     dotsHost?.appendChild(button);
     return button;
   });
 
-  function updateStatus() {
+  function render() {
+    slides.forEach((slide, index) => {
+      const active = index === current;
+      slide.classList.toggle('active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.style.opacity = active ? '1' : '0';
+      slide.style.visibility = active ? 'visible' : 'hidden';
+    });
+    dots.forEach((dot, index) => dot.classList.toggle('active', index === current));
     if (status) status.textContent = `Billede ${current + 1} / ${slides.length}`;
   }
 
-  function show(index, manual = false) {
-    slides[current].classList.remove('active');
-    dots[current]?.classList.remove('active');
+  function show(index) {
     current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current]?.classList.add('active');
-    updateStatus();
-    if (manual) restart();
+    render();
+  }
+
+  function next() {
+    show(current + 1);
+  }
+
+  function previous() {
+    show(current - 1);
+  }
+
+  function stop() {
+    if (timerId) window.clearInterval(timerId);
+    timerId = null;
   }
 
   function start() {
-    if (reducedMotion) return;
-    clearInterval(timer);
-    timer = setInterval(() => show(current + 1), interval);
+    stop();
+    timerId = window.setInterval(next, interval);
   }
 
   function restart() {
     start();
   }
 
-  slides.forEach((slide, index) => slide.classList.toggle('active', index === current));
-  dots[current]?.classList.add('active');
-  updateStatus();
-  start();
-
-  slider.addEventListener('mouseenter', () => clearInterval(timer));
-  slider.addEventListener('mouseleave', start);
-  slider.addEventListener('focusin', () => clearInterval(timer));
-  slider.addEventListener('focusout', start);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) clearInterval(timer);
-    else start();
+  previousButton?.addEventListener('click', () => {
+    previous();
+    restart();
   });
+  nextButton?.addEventListener('click', () => {
+    next();
+    restart();
+  });
+
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+  slider.addEventListener('touchstart', stop, { passive: true });
+  slider.addEventListener('touchend', start, { passive: true });
+
+  render();
+  start();
+  console.info(`Slider ${sliderIndex + 1} started with ${slides.length} images`);
 });
 
 const sections = Array.from(document.querySelectorAll('main section[id], main[id]'));

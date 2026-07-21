@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v2026.07.21.02 — 2026-07-21 18:45
+
+### Rettelse af dynamiske billeder
+- Omskrevet slider-funktionen til en enklere og mere robust løsning.
+- Automatisk billedskift kører nu uafhængigt af browserens indstilling for reduceret bevægelse.
+- Tilføjet synlige pile til forrige og næste billede.
+- Hvert billede får nu eksplicit `opacity` og `visibility`, så skiftet ikke kan skjules af gamle CSS-regler.
+- Billedtælleren opdateres ved både automatisk og manuelt skift.
+
+### Versionskontrol
+- Udviklingsmærket er opdateret til `v2026.07.21.02`.
+
+### Filer
+- Ændret: `index.html`
+- Ændret: `style.css`
+- Ændret: `script.js`
+- Ændret: `documentation/CHANGELOG.md`
+- Ingen nye billeder.
+
+
 ## v2026.07.21.01 — 2026-07-21 18:30
 
 ### Navigation

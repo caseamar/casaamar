@@ -228,3 +228,45 @@ footer a{text-decoration:none;font-weight:700}
   html{scroll-behavior:auto}
   .hero-slide,.story-slide,.patio-slide,.roof-slide,.reveal{transition:none!important}
 }
+
+
+/* Slider controls and forced visible transitions */
+.slider-controls{
+  position:absolute;
+  z-index:8;
+  right:clamp(24px,5vw,74px);
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  gap:8px;
+}
+.slider-controls button{
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:50%;
+  background:rgba(10,18,15,.38);
+  color:#fff;
+  font-size:1.8rem;
+  line-height:1;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+}
+.story-slider .slider-controls button,
+.roof-slider .slider-controls button{
+  border-color:rgba(32,51,45,.22);
+  background:rgba(248,245,238,.85);
+  color:var(--ink);
+}
+.hero-slide,.story-slide,.patio-slide,.roof-slide{
+  visibility:hidden;
+  pointer-events:none;
+}
+.hero-slide.active,.story-slide.active,.patio-slide.active,.roof-slide.active{
+  visibility:visible;
+  pointer-events:auto;
+}
+@media(max-width:600px){
+  .slider-controls{right:14px}
+  .slider-controls button{width:38px;height:38px;font-size:1.5rem}
+}
