@@ -1,5 +1,5 @@
 {
-  "version": "1.5",
+  "version": "2.0",
   "updated": "2026-07-22",
   "platform": "Casa Amar Knowledge Platform",
   "principles": [
@@ -132,6 +132,30 @@
       "format": "change_log",
       "visibility": "internal",
       "trust": 0,
+      "owner": "Michael",
+      "status": "active",
+      "used_by_ai": false
+    },
+    {
+      "id": "knowledge-gaps",
+      "label": "Knowledge gaps",
+      "path": "/knowledge-gaps.json",
+      "role": "knowledge_gaps",
+      "format": "gap_collection",
+      "visibility": "internal",
+      "trust": 0,
+      "owner": "Michael",
+      "status": "active",
+      "used_by_ai": false
+    },
+    {
+      "id": "publisher-queue",
+      "label": "Publisher queue",
+      "path": "/publisher-queue.json",
+      "role": "publisher_queue",
+      "format": "publication_tasks",
+      "visibility": "internal",
+      "trust": 100,
       "owner": "Michael",
       "status": "active",
       "used_by_ai": false

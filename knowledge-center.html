@@ -3,82 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Knowledge Center</title>
+<title>Casa Amar Platform</title>
 <style>
-:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#69756f;--ok:#2b7450;--line:#e7e1d7}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
-main{max-width:1240px;margin:auto;padding:28px}h1,h2{font-family:Georgia,serif}h1{margin:0 0 6px}.lead{color:var(--muted);max-width:780px;line-height:1.5}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{padding:11px 12px;border:1px solid #d8d2c7;border-radius:12px;background:#fff}
-.toolbar input{flex:1;min-width:240px}button,a.button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;text-decoration:none;cursor:pointer}
-.primary{background:var(--clay);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid #d8d2c7}
-.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.metric,.panel{background:#fff;border-radius:16px;padding:16px}
-.metric strong{display:block;font-size:1.7rem}.grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:16px}.panel h2{margin-top:0}
-.category{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
-.cards{display:grid;gap:10px}.card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
-.card-head{display:flex;justify-content:space-between;gap:12px}.card h3{margin:0;font-size:1rem}.summary{margin:8px 0;color:#44534d;font-size:.86rem;line-height:1.45}
-.meta,.tags{font-size:.72rem;color:var(--muted)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.tag{background:#f3eee6;border-radius:999px;padding:4px 7px}.badge{padding:5px 8px;border-radius:999px;font-size:.68rem;font-weight:800;background:#e3f1e9;color:var(--ok);white-space:nowrap}
-.empty{color:var(--muted);padding:20px;text-align:center}
-@media(max-width:850px){main{padding:16px}.metrics{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+:root{
+  --ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;
+  --muted:#69756f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1240px;margin:auto;padding:28px}
+h1,h2,h3{font-family:Georgia,serif}
+h1{margin:0 0 5px;font-size:2.1rem}
+.lead{max-width:780px;color:var(--muted);line-height:1.5;margin:0}
+nav{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+a.button,button{display:inline-flex;align-items:center;justify-content:center;border-radius:11px;padding:10px 14px;font-weight:750;text-decoration:none;border:1px solid #d6cec3;background:#fff;color:var(--ink);cursor:pointer;font:inherit}
+a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
+.metric,.panel{background:var(--card);border-radius:16px;padding:16px}
+.metric span{display:block;color:var(--muted);font-size:.75rem}
+.metric strong{display:block;font-size:1.75rem;margin-top:5px}
+.metric.attention strong{color:var(--warn)}
+.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
+.panel h2{margin-top:0}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:11px;padding:13px 0;border-bottom:1px solid var(--line);align-items:start}
+.task:last-child{border-bottom:0}
+.icon{width:34px;height:34px;border-radius:10px;background:#f2ede5;display:flex;align-items:center;justify-content:center;font-weight:850}
+.task strong{display:block}
+.meta{font-size:.75rem;color:var(--muted);margin-top:4px;line-height:1.4}
+.pill{padding:5px 8px;border-radius:999px;background:#fff0ca;color:#745200;font-size:.68rem;font-weight:800;white-space:nowrap}
+.good{background:#e1f1e7;color:var(--ok)}
+.system{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.system:last-child{border-bottom:0}
+.recent{padding:10px 0;border-bottom:1px solid var(--line)}
+.recent:last-child{border-bottom:0}
+.empty{color:var(--muted);padding:16px 0}
+.section-link{font-size:.8rem;color:var(--clay);font-weight:750;text-decoration:none}
+@media(max-width:950px){.metrics{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}}
+@media(max-width:560px){main{padding:16px}.metrics{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body><main>
-<h1>Casa Amar Knowledge Center</h1>
-<p class="lead">Masteroverblik over Knowledge Cards, kategorier, synlighed og kanalbrug. Hver vidensenhed kan senere bruges af AI, hjemmeside og guider uden at blive skrevet flere gange.</p>
-<div class="toolbar">
-<input id="search" placeholder="Søg i titel, indhold eller nøgleord">
-<select id="category"><option value="">Alle kategorier</option></select>
-<select id="channel"><option value="">Alle kanaler</option><option value="ai">AI</option><option value="website">Hjemmeside</option><option value="guest_guide">Gæsteguide</option><option value="owner_guide">Ejerguide</option></select>
-<button class="primary" id="refresh">Opdater</button>
-<a class="button secondary" href="/ai-test-runner.html">AI-test</a>
-<a class="button secondary" href="/">Hjemmeside</a>
-</div>
-<div class="metrics">
-<div class="metric"><span>Status</span><strong id="status">…</strong></div>
-<div class="metric"><span>Knowledge Cards</span><strong id="count">…</strong></div>
-<div class="metric"><span>Kategorier</span><strong id="categoryCount">…</strong></div>
-<div class="metric"><span>Dynamiske</span><strong id="dynamicCount">…</strong></div>
-<div class="metric"><span>Website-kandidater</span><strong id="websiteCount">…</strong></div>
-</div>
-<div class="grid">
-<section class="panel"><h2>Kategorier</h2><div id="categories"></div></section>
-<section class="panel"><h2>Knowledge Cards</h2><div id="cards" class="cards"></div></section>
+<body>
+<main>
+<h1>Casa Amar Platform</h1>
+<p class="lead">Ét kontrolcenter for viden, AI-redigering, test og publicering. Arkitekturen er nu fast: Dashboard, AI Editor, Knowledge Objects, Test Center, Publisher og Concierge.</p>
+
+<nav>
+<a class="button primary" href="/knowledge-studio.html">Åbn AI Editor</a>
+<a class="button" href="/ai-test-runner.html">Åbn Test Center</a>
+<a class="button" href="/">Se hjemmesiden</a>
+<button id="refresh">Opdatér overblik</button>
+</nav>
+
+<section class="metrics">
+<div class="metric"><span>Knowledge Objects</span><strong id="objects">…</strong></div>
+<div class="metric attention"><span>Ikke testet</span><strong id="needsTest">…</strong></div>
+<div class="metric attention"><span>Afventer review</span><strong id="review">…</strong></div>
+<div class="metric"><span>Website-klare</span><strong id="website">…</strong></div>
+<div class="metric attention"><span>Knowledge Gaps</span><strong id="gaps">…</strong></div>
+<div class="metric"><span>Lokale ændringer</span><strong id="changes">…</strong></div>
+</section>
+
+<div class="layout">
+<section class="panel">
+<h2>Næste handlinger</h2>
+<div id="tasks"></div>
+</section>
+
+<aside>
+<section class="panel">
+<h2>Systemstatus</h2>
+<div id="system"></div>
+</section>
+
+<section class="panel" style="margin-top:15px">
+<h2>Seneste lokale ændringer</h2>
+<div id="recent"></div>
+</section>
+</aside>
 </div>
 </main>
+
 <script>
-let allCards=[];
 const q=s=>document.querySelector(s);
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function render(){
- const term=q('#search').value.toLowerCase().trim(),cat=q('#category').value,channel=q('#channel').value;
- const cards=allCards.filter(c=>{
-   const hay=[c.title,c.summary,c.body,...(c.keywords||[])].join(' ').toLowerCase();
-   return (!term||hay.includes(term))&&(!cat||c.category===cat)&&(!channel||c.channels?.[channel]);
- });
- q('#cards').innerHTML=cards.map(c=>`<article class="card">
-   <div class="card-head"><div><h3>${esc(c.title)}</h3><div class="meta">${esc(c.id)} · ${esc(c.content_type)} · trust ${c.trust}</div></div><span class="badge">${esc(c.editorial?.review_state||c.status)}</span></div>
-   <p class="summary">${esc(c.summary||c.answer)}</p>
-   <div class="tags">${Object.entries(c.channels||{}).filter(([,v])=>v).map(([k])=>`<span class="tag">${esc(k)}</span>`).join('')}${c.dynamic?'<span class="tag">dynamisk</span>':''}</div>
- </article>`).join('')||'<div class="empty">Ingen kort matcher filtrene.</div>';
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function localChanges(){try{return JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]')}catch{return []}}
+function task(icon,title,text,count,href,label){
+ return `<div class="task"><div class="icon">${icon}</div><div><strong>${esc(title)}</strong><div class="meta">${esc(text)}</div></div><a class="section-link" href="${href}">${count?esc(count)+' · ':''}${esc(label)}</a></div>`;
 }
 async function load(){
  q('#refresh').disabled=true;
  try{
-  const [statusRes,cardsRes]=await Promise.all([fetch('/api/status',{cache:'no-store'}),fetch('/knowledge-cards.json',{cache:'no-store'})]);
-  const status=await statusRes.json(),data=await cardsRes.json();
-  allCards=data.cards||data.entries||[];
-  const counts={};allCards.forEach(c=>counts[c.category]=(counts[c.category]||0)+1);
-  q('#status').textContent=status.ok?'OK':'Fejl';
-  q('#count').textContent=allCards.length;
-  q('#categoryCount').textContent=Object.keys(counts).length;
-  q('#dynamicCount').textContent=allCards.filter(c=>c.dynamic).length;
-  q('#websiteCount').textContent=allCards.filter(c=>c.editorial?.website_candidate||c.channels?.website).length;
-  q('#categories').innerHTML=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="category"><span>${esc(k)}</span><strong>${v}</strong></div>`).join('');
-  q('#category').innerHTML='<option value="">Alle kategorier</option>'+Object.keys(counts).sort().map(c=>`<option>${esc(c)}</option>`).join('');
-  render();
- }catch(e){q('#status').textContent='Fejl';q('#cards').innerHTML=`<div class="empty">${esc(e.message)}</div>`}
- finally{q('#refresh').disabled=false}
+  const [cardsRes,statusRes,gapsRes,pubRes]=await Promise.all([
+   fetch('/knowledge-cards.json',{cache:'no-store'}),
+   fetch('/api/status',{cache:'no-store'}),
+   fetch('/knowledge-gaps.json',{cache:'no-store'}),
+   fetch('/publisher-queue.json',{cache:'no-store'})
+  ]);
+  const cardsData=await cardsRes.json(),status=await statusRes.json();
+  const gapsData=await gapsRes.json(),pubData=await pubRes.json();
+  const cards=cardsData.cards||cardsData.entries||[];
+  const changes=localChanges();
+  const needsTest=cards.filter(c=>c.test_state?.status==='needs_test').length;
+  const review=cards.filter(c=>['imported','needs_review','draft'].includes(c.maturity)||c.editorial?.review_state==='needs_review').length;
+  const website=cards.filter(c=>c.channels?.website||c.editorial?.website_candidate).length;
+  const gaps=(gapsData.gaps||[]).filter(g=>g.status!=='closed').length;
+  const publisher=(pubData.items||[]).filter(i=>i.status!=='published').length;
+
+  q('#objects').textContent=cards.length;
+  q('#needsTest').textContent=needsTest;
+  q('#review').textContent=review;
+  q('#website').textContent=website;
+  q('#gaps').textContent=gaps;
+  q('#changes').textContent=changes.length;
+
+  const tasks=[];
+  if(needsTest)tasks.push(task('T','Test ændrede objekter','Kør kun de tests, der er knyttet til objekter ændret siden sidste test.',needsTest,'/knowledge-studio.html','Vælg og test'));
+  if(review)tasks.push(task('R','Gennemgå importeret viden','Forbedr de importerede kort løbende. Du behøver ikke gøre dem alle færdige nu.',review,'/knowledge-studio.html','Åbn editor'));
+  if(changes.length)tasks.push(task('↥','Eksportér godkendte ændringer','Lokale browserændringer er endnu ikke lagt i GitHub.',changes.length,'/knowledge-studio.html','Eksportér'));
+  if(gaps)tasks.push(task('?','Luk Knowledge Gaps','Tilføj eller undersøg viden, som assistenten mangler.',gaps,'/knowledge-studio.html','Behandl'));
+  if(publisher)tasks.push(task('P','Publicér godkendt indhold','Godkendte opgaver venter på fremtidige kanaler.',publisher,'/knowledge-studio.html','Gennemgå'));
+  if(!tasks.length)tasks.push(task('✓','Platformen er ajour','Der er ingen registrerede hasteopgaver. Fortsæt med indhold, når det giver mening.','','/knowledge-studio.html','Tilføj viden'));
+  q('#tasks').innerHTML=tasks.join('');
+
+  q('#system').innerHTML=`
+   <div class="system"><span>Knowledge Platform</span><span class="pill ${status.ok?'good':''}">${status.ok?'OK':'Fejl'}</span></div>
+   <div class="system"><span>Indlæste datasæt</span><strong>${(status.datasets||[]).filter(d=>d.loaded).length}/${(status.datasets||[]).length}</strong></div>
+   <div class="system"><span>AI Editor</span><span class="pill good">Aktiv</span></div>
+   <div class="system"><span>Concierge</span><span class="pill good">Aktiv</span></div>
+   <div class="system"><span>Register</span><strong>${esc(status.registryVersion||'–')}</strong></div>`;
+
+  const latest=[...changes].reverse().slice(0,6);
+  q('#recent').innerHTML=latest.length?latest.map(c=>`
+   <div class="recent"><strong>${esc(c.after?.title||c.card_id)}</strong>
+   <div class="meta">${new Date(c.changed_at).toLocaleString('da-DK')} · ikke testet</div></div>`).join(''):
+   '<div class="empty">Ingen lokale ændringer i denne browser.</div>';
+ }catch(error){
+  q('#tasks').innerHTML=`<div class="empty">Overblikket kunne ikke indlæses: ${esc(error.message)}</div>`;
+  q('#system').innerHTML='<div class="system"><span>Status</span><span class="pill">Fejl</span></div>';
+ }finally{q('#refresh').disabled=false}
 }
-['#search','#category','#channel'].forEach(s=>q(s).addEventListener('input',render));
-q('#refresh').addEventListener('click',load);load();
-</script></body></html>
+q('#refresh').addEventListener('click',load);
+load();
+</script>
+</body>
+</html>

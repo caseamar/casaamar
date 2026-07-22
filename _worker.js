@@ -539,6 +539,10 @@ async function handleStatus(request, env) {
         sources: bundle.sources.length,
         tests: bundle.regressionTests?.tests?.length || 0,
         inbox: bundle.knowledgeInbox?.items?.length || 0,
+        knowledgeGaps:
+          bundle.registry?.datasets?.find((item) => item.id === "knowledge-gaps") ? 0 : 0,
+        publisherQueue:
+          bundle.registry?.datasets?.find((item) => item.id === "publisher-queue") ? 0 : 0,
         roles: roleCounts
       },
       errors: bundle.loadErrors
@@ -866,7 +870,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "7.2-ai-editor-polish",
+      version: "8.0-platform-dashboard",
       method: "POST"
     });
   }
