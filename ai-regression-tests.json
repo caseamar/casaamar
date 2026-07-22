@@ -26,19 +26,19 @@
       "category": "Transport",
       "question": "Hvordan kommer jeg til huset?",
       "expected_intent": "arrival_transport",
-      "expected_needs_human": false,
+      "expected_needs_human": true,
       "must_include_any": [
-        "lejebil",
-        "taxa",
-        "Fuengirola"
+        "digitale assistent",
+        "Michael",
+        "kontakt"
       ],
       "must_not_include_any": [
+        "Rincón Rent",
         "Hvem vil du",
-        "Vil du have",
-        "Rincón Rent"
+        "Vil du have"
       ],
-      "max_sentences": 5,
-      "notes": "Skal give et samlet overblik uden interview."
+      "max_sentences": 3,
+      "notes": "Præcis rute/adresse kræver hurtigt handoff."
     },
     {
       "id": "T03",
@@ -240,14 +240,14 @@
       "must_include_any": [
         "maj",
         "oktober",
-        "normalt"
+        "præcise tider"
       ],
       "must_not_include_any": [
         "garanteret",
         "altid"
       ],
       "max_sentences": 4,
-      "notes": "Skal markere usikkerhed naturligt."
+      "notes": "Normal sæson oplyses; præcise tider bekræftes før booking."
     },
     {
       "id": "T15",
@@ -258,7 +258,6 @@
       "must_include_any": [
         "Fuengirola",
         "Mijas",
-        "strand",
         "golf"
       ],
       "must_not_include_any": [
@@ -310,14 +309,15 @@
       "expected_needs_human": true,
       "must_include_any": [
         "hund",
-        "godkendelse",
-        "Michael"
+        "7 kg",
+        "godkend"
       ],
       "must_not_include_any": [
-        "altid tilladt"
+        "altid tilladt",
+        "bookingsiden"
       ],
       "max_sentences": 3,
-      "notes": "Skal ikke gætte."
+      "notes": "Bureauets fakta bruges, men Michael godkender."
     },
     {
       "id": "T19",

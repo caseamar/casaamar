@@ -1,0 +1,283 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "description": "High-confidence deterministic rules evaluated before intent routing and OpenAI.",
+  "matching": {
+    "normalise": true,
+    "first_match_wins": true,
+    "default_language": "da"
+  },
+  "rules": [
+    {
+      "id": "contact-human",
+      "priority": 1000,
+      "intent": "contact_human",
+      "match": {
+        "any": [
+          "kontakt michael",
+          "kontakte michael",
+          "skrive til michael",
+          "skriv til michael",
+          "tale med michael",
+          "snakke med michael",
+          "kontakt en person",
+          "kontakte en person",
+          "skrive til en person",
+          "skrive til nogen",
+          "tale med nogen",
+          "kontakte nogen",
+          "et menneske",
+          "en rigtig person",
+          "send en besked",
+          "send besked",
+          "messenger",
+          "hvem kan jeg skrive til",
+          "hvem kan jeg kontakte",
+          "have fat i michael",
+          "få fat i michael"
+        ]
+      },
+      "response": "Selvfølgelig. Du kan kontakte Michael direkte herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "dissatisfaction",
+      "priority": 950,
+      "intent": "dissatisfaction_handoff",
+      "match": {
+        "any": [
+          "det svar er forkert",
+          "forkert svar",
+          "det er forkert",
+          "det er off",
+          "off svar",
+          "det duer ikke",
+          "det hjælper ikke",
+          "du forstår ikke",
+          "for mange spørgsmål",
+          "for langt",
+          "irriterende",
+          "stop"
+        ]
+      },
+      "response": "Det beklager jeg. Michael hjælper gerne videre herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "restricted-scope",
+      "priority": 900,
+      "intent": "restricted_scope",
+      "match": {
+        "any": [
+          "politik",
+          "politisk",
+          "trump",
+          "biden",
+          "valg",
+          "parti",
+          "race",
+          "racisme",
+          "etnicitet",
+          "religion",
+          "etisk debat",
+          "konspiration",
+          "medicinsk rådgivning",
+          "juridisk rådgivning",
+          "finansiel rådgivning"
+        ]
+      },
+      "response": "Det ligger uden for det, jeg hjælper med her. Michael kan hjælpe videre, hvis det er relevant for jeres ophold i Casa Amar.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "exact-arrival-route",
+      "priority": 850,
+      "intent": "arrival_transport",
+      "match": {
+        "any": [
+          "hvordan kommer jeg til huset",
+          "hvordan finder jeg huset",
+          "vej til huset",
+          "kørselsvejledning",
+          "kørevejledning",
+          "præcis adresse",
+          "adresse til huset",
+          "rute til huset"
+        ],
+        "none": [
+          "uden bil"
+        ]
+      },
+      "response": "Det kan jeg desværre ikke hjælpe præcist med endnu. Jeg er Casa Amars digitale assistent og har ikke adgang til den endelige adresse eller kørselsvejledning; Michael hjælper gerne via kontaktknapperne herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "stay-without-car",
+      "priority": 840,
+      "intent": "arrival_transport",
+      "match": {
+        "any": [
+          "uden bil",
+          "behøver vi bil",
+          "behøver man bil",
+          "offentlig transport"
+        ]
+      },
+      "response": "Ja, Casa Amar kan godt bruges uden bil. Mange tager toget til Fuengirola og en taxa det sidste stykke; en bil giver dog mere frihed til strand, golf, indkøb og udflugter.",
+      "needsHuman": false,
+      "confidence": "high",
+      "showLinks": true
+    },
+    {
+      "id": "booking-availability",
+      "priority": 820,
+      "intent": "booking_availability",
+      "match": {
+        "any": [
+          "ledig",
+          "ledighed",
+          "pris",
+          "booke",
+          "booking",
+          "reservere",
+          "tilbud"
+        ]
+      },
+      "response": "Ledighed og pris skal bekræftes for de konkrete datoer. Michael hjælper gerne videre herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "pet-approval",
+      "priority": 810,
+      "intent": "pet_approval",
+      "match": {
+        "any": [
+          "hund",
+          "kæledyr",
+          "dyr med",
+          "pet"
+        ]
+      },
+      "response": "En mindre hund på op til cirka 7 kg kan normalt accepteres mod et gebyr, men det skal aftales og godkendes inden booking. Michael hjælper gerne videre herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false,
+      "sourceNote": "Rincón Rent controlled snapshot"
+    },
+    {
+      "id": "live-current-information",
+      "priority": 800,
+      "intent": "current_information",
+      "match": {
+        "any": [
+          "i dag",
+          "i morgen",
+          "denne weekend",
+          "åbent nu",
+          "arrangement",
+          "hvad sker der"
+        ]
+      },
+      "response": "Jeg har endnu ikke adgang til aktuelle arrangementer og åbningstider. Michael kan hjælpe videre herunder.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "pool-season",
+      "priority": 790,
+      "intent": "house_facilities",
+      "match": {
+        "all": [
+          "pool"
+        ],
+        "any": [
+          "åben",
+          "åbningstid",
+          "hvornår"
+        ]
+      },
+      "response": "Urbanisationens fælles pool er normalt åben fra maj til oktober i dagtimerne og er bemandet med livreddere. De præcise tider kan bekræftes inden booking.",
+      "needsHuman": false,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "broad-area-activities",
+      "priority": 760,
+      "intent": "activities_recommendations",
+      "match": {
+        "any": [
+          "hvad kan vi lave i området",
+          "hvad kan man lave i området",
+          "oplevelser i området",
+          "aktiviteter i området"
+        ]
+      },
+      "response": "I kan nemt kombinere strand og byliv i Fuengirola, Mijas Pueblo, golfbaner langs kysten og kortere ture til Málaga eller La Cala. Casa Amar fungerer godt som en rolig base mellem oplevelserne.",
+      "needsHuman": false,
+      "confidence": "high",
+      "showLinks": true
+    },
+    {
+      "id": "smalltalk-thanks",
+      "priority": 300,
+      "intent": "smalltalk",
+      "match": {
+        "any": [
+          "tak",
+          "mange tak",
+          "selv tak"
+        ]
+      },
+      "response": "Velbekomme.",
+      "needsHuman": false,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "smalltalk-greeting",
+      "priority": 290,
+      "intent": "smalltalk",
+      "match": {
+        "exact": [
+          "hej",
+          "hejsa",
+          "godmorgen",
+          "godaften"
+        ]
+      },
+      "response": "Hej og velkommen. Jeg hjælper gerne med Casa Amar, området og jeres ophold.",
+      "needsHuman": false,
+      "confidence": "high",
+      "showLinks": false
+    },
+    {
+      "id": "general-fallback",
+      "priority": 100,
+      "intent": "general_question",
+      "match": {
+        "any": [
+          "noget helt andet",
+          "hjælpe med noget andet",
+          "andet end casa amar",
+          "et andet emne"
+        ]
+      },
+      "response": "Jeg hjælper primært med Casa Amar, området og jeres ophold. Michael kan hjælpe videre med andre spørgsmål.",
+      "needsHuman": true,
+      "confidence": "high",
+      "showLinks": false
+    }
+  ]
+}

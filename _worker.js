@@ -56,11 +56,12 @@ async function assetJson(env, request, pathname) {
 async function loadBundle(env, request) {
   if (cachedBundle && Date.now() - cachedAt < CACHE_TTL_MS) return cachedBundle;
 
-  const [core, rincon, conciergePolicy, conciergeIntents] = await Promise.all([
+  const [core, rincon, conciergePolicy, conciergeIntents, decisionPolicies] = await Promise.all([
     assetJson(env, request, "/casa-amar-knowledge.json"),
     assetJson(env, request, "/rincon-rent-booking.json"),
     assetJson(env, request, "/concierge-policy.json"),
-    assetJson(env, request, "/concierge-intents.json")
+    assetJson(env, request, "/concierge-intents.json"),
+    assetJson(env, request, "/decision-policies.json")
   ]);
 
   const ownerEntries = (core.entries || []).map((entry) => ({
@@ -91,7 +92,8 @@ async function loadBundle(env, request) {
       rincon.source
     ].filter(Boolean),
     conciergePolicy,
-    conciergeIntents
+    conciergeIntents,
+    decisionPolicies
   };
   cachedAt = Date.now();
   return cachedBundle;
@@ -293,13 +295,49 @@ function smalltalkResponse(question, intent) {
 }
 
 
+
+function policyRuleMatches(question, rule) {
+  const value = normaliseText(question);
+  const match = rule?.match || {};
+  const normalised = (items = []) => items.map((item) => normaliseText(item));
+
+  const exact = normalised(match.exact);
+  if (exact.length && !exact.includes(value)) return false;
+
+  const all = normalised(match.all);
+  if (all.length && !all.every((item) => value.includes(item))) return false;
+
+  const any = normalised(match.any);
+  if (any.length && !any.some((item) => value.includes(item))) return false;
+
+  const none = normalised(match.none);
+  if (none.length && none.some((item) => value.includes(item))) return false;
+
+  return Boolean(exact.length || all.length || any.length);
+}
+
+function evaluateDecisionPolicies(question, policyConfig) {
+  const rules = [...(policyConfig?.rules || [])].sort(
+    (a, b) => Number(b.priority || 0) - Number(a.priority || 0)
+  );
+
+  const rule = rules.find((item) => policyRuleMatches(question, item));
+  if (!rule) return null;
+
+  return {
+    intent: rule.intent || "general_question",
+    answer: rule.response,
+    followUp: null,
+    needsHuman: Boolean(rule.needsHuman),
+    confidence: rule.confidence || "high",
+    sources: [],
+    matchedPolicy: rule.id,
+    showLinks: rule.showLinks !== false
+  };
+}
+
 function forceHandoffByIntent(intentId) {
-  return [
-    "booking_availability",
-    "pet_approval",
-    "current_information",
-    "general_question"
-  ].includes(intentId);
+  return false;
 }
 
 function deterministicRoute(question, bundle) {
@@ -424,7 +462,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "3.0.4-policy",
+      version: "4.0-policy-engine",
       method: "POST"
     });
   }
@@ -464,7 +502,8 @@ async function handleChat(request, env) {
 
   try {
     const bundle = await loadBundle(env, request);
-    const deterministic = deterministicRoute(question, bundle);
+    const policyDecision = evaluateDecisionPolicies(question, bundle.decisionPolicies);
+    const deterministic = policyDecision || deterministicRoute(question, bundle);
 
     if (deterministic) {
       return json({
@@ -472,7 +511,8 @@ async function handleChat(request, env) {
         knowledgeVersion: bundle.version,
         sourcesLoaded: bundle.sources.map((source) => source.id),
         webSearchUsed: false,
-        model: "deterministic-policy",
+        model: policyDecision ? "decision-policy-engine" : "deterministic-policy",
+        matchedPolicy: deterministic.matchedPolicy || null,
         responseId: null
       });
     }
