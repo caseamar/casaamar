@@ -1,22 +1,25 @@
-fix(ai): stop unnecessary follow-ups and align tests with intended handoff behaviour
+feat(knowledge): introduce canonical Knowledge Cards and Knowledge Center 2.0
 
 Summary
-- Strengthened the system prompt to resolve guest needs in the fewest possible interactions.
-- Prevented follow-up questions about information the concierge cannot provide after the guest answers.
-- Added a runtime safeguard that removes follow-up questions when confirmation, dynamic data or Michael is required.
-- Removes trailing questions from uncertain or handoff answers.
-- Updated T02 to validate the intended fast handoff for exact address and driving directions.
-- Updated T18 to validate the correct pet_approval intent and small-dog guidance.
-- Added a pool test ensuring the concierge does not ask for dates unnecessarily.
-- Improved the browser test runner with slower pacing and automatic retry for temporary rate limits.
+- Added knowledge-cards.json as the canonical editorial dataset for reusable Casa Amar knowledge.
+- Migrated the existing parking and pool knowledge into 14 richer Knowledge Cards.
+- Added channels for AI, website, guest guide and owner guide.
+- Added relations, editorial review state, quality metadata, translation status and website candidacy.
+- Added knowledge-card.schema.json to define and validate future cards.
+- Updated knowledge-registry.json to use Knowledge Cards as the active internal owner knowledge source.
+- Rebuilt knowledge-center.html with search, category filters, channel filters and card-level visibility.
+- Preserved worker compatibility through an entries alias, so the concierge continues using the same knowledge immediately.
+
+Files added
+- knowledge-cards.json
+- knowledge-card.schema.json
+- KNOWLEDGE-CARD-WORKFLOW.md
 
 Files changed
 - index.html
 - _worker.js
-- ai-regression-tests.json
-- ai-test-runner.html
 - knowledge-registry.json
-- owner-internal-guides.json
+- knowledge-center.html
 
 Why
-A digital concierge should answer quickly and decisively. It must not ask questions when the answer is unavailable, and the regression suite should validate the intended behaviour rather than outdated routing assumptions.
+Knowledge Cards become the single reusable unit behind the AI, future website pages and internal guides. This enables Casa Amar to grow to hundreds of articles without duplicating content or losing editorial control.

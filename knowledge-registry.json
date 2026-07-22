@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated": "2026-07-22",
   "platform": "Casa Amar Knowledge Platform",
   "principles": [
@@ -28,12 +28,12 @@
       }
     },
     {
-      "id": "owner-internal-guides",
-      "label": "Casa Amar internal owner guides",
-      "path": "/owner-internal-guides.json",
+      "id": "knowledge-cards",
+      "label": "Casa Amar Knowledge Cards",
+      "path": "/knowledge-cards.json",
       "role": "knowledge",
       "format": "entry_collection",
-      "visibility": "internal",
+      "visibility": "mixed",
       "trust": 100,
       "owner": "Michael",
       "status": "active",
@@ -42,7 +42,8 @@
         "label": "Michael / Casa Amar",
         "type": "owner_core",
         "priority": 100
-      }
+      },
+      "schema": "/knowledge-card.schema.json"
     },
     {
       "id": "rincon-rent-booking",

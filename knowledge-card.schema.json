@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casaamar.es/schemas/knowledge-card.schema.json",
+  "title": "Casa Amar Knowledge Card",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "content_type",
+    "summary",
+    "body",
+    "visibility",
+    "trust",
+    "status",
+    "source",
+    "channels",
+    "relations",
+    "editorial",
+    "quality",
+    "updated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "fact",
+        "guide",
+        "note",
+        "recommendation",
+        "procedure",
+        "faq"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "internal",
+        "guest_only"
+      ]
+    },
+    "trust": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "active",
+        "deprecated",
+        "archived"
+      ]
+    },
+    "dynamic": {
+      "type": "boolean"
+    },
+    "valid_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "channels": {
+      "type": "object",
+      "required": [
+        "ai",
+        "website",
+        "guest_guide",
+        "owner_guide"
+      ],
+      "properties": {
+        "ai": {
+          "type": "boolean"
+        },
+        "website": {
+          "type": "boolean"
+        },
+        "guest_guide": {
+          "type": "boolean"
+        },
+        "owner_guide": {
+          "type": "boolean"
+        }
+      }
+    },
+    "relations": {
+      "type": "object",
+      "properties": {
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "superseded_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "required": [
+        "review_state",
+        "website_candidate"
+      ],
+      "properties": {
+        "review_state": {
+          "enum": [
+            "draft",
+            "needs_review",
+            "approved",
+            "rejected"
+          ]
+        },
+        "reviewed_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "website_candidate": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "completeness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "test_coverage": {
+          "type": "boolean"
+        },
+        "requires_refresh": {
+          "type": "boolean"
+        },
+        "conflict_status": {
+          "enum": [
+            "none",
+            "review",
+            "conflict"
+          ]
+        }
+      }
+    },
+    "translations": {
+      "type": "object"
+    },
+    "source": {
+      "type": "object"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "additionalProperties": true
+}

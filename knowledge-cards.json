@@ -1,0 +1,1824 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "label": "Casa Amar Knowledge Cards",
+  "description": "Canonical editorial objects used by AI, future website generation, guest guides and owner documentation.",
+  "cards": [
+    {
+      "id": "parking-pueblo-aguila",
+      "category": "Transport",
+      "title": "Parkering ved Casa Amar i Pueblo Águila",
+      "content_type": "guide",
+      "answer": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
+      "content": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "keywords": [
+        "parkering",
+        "Pueblo Águila",
+        "Pueblo Aguila",
+        "beboerparkering",
+        "gadeparkering",
+        "ved huset",
+        "urbanisationen"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-pueblo-aguila",
+      "summary": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
+      "body": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "parking-restrictions-enforced",
+          "parking-fuengirola-telpark"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-restrictions-enforced",
+      "category": "Transport",
+      "title": "Respektér parkeringsforbud",
+      "content_type": "procedure",
+      "answer": "Respektér altid skilte og afmærkning med parkeringsforbud. Ved ulovlig parkering kan bilen få en bøde eller blive fjernet.",
+      "content": "Der er enkelte steder omkring urbanisationen, hvor parkering er forbudt. Forbuddene håndhæves, og forkert parkerede biler risikerer bøde eller bortslæbning.",
+      "keywords": [
+        "parkering forbudt",
+        "bøde",
+        "bortslæbning",
+        "fjernet bil",
+        "skilte"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-restrictions-enforced",
+      "summary": "Respektér altid skilte og afmærkning med parkeringsforbud. Ved ulovlig parkering kan bilen få en bøde eller blive fjernet.",
+      "body": "Der er enkelte steder omkring urbanisationen, hvor parkering er forbudt. Forbuddene håndhæves, og forkert parkerede biler risikerer bøde eller bortslæbning.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-fuengirola-telpark",
+      "category": "Transport",
+      "title": "Offentlig gadeparkering i Fuengirola",
+      "content_type": "recommendation",
+      "answer": "Michael bruger og anbefaler Telpark-appen til betaling af offentlig gadeparkering i Fuengirola. Regler, priser og muligheder for at annullere en mindre parkeringsafgift bør altid kontrolleres i appen.",
+      "content": "Telpark bruges af Michael til offentlig gadeparkering. Hvis man får en mindre parkeringsafgift, kan der i nogle tilfælde være mulighed for hurtig betaling eller annullering i appen. Beløb og frister kan ændre sig.",
+      "keywords": [
+        "Telpark",
+        "parkering Fuengirola",
+        "gadeparkering",
+        "parkeringsapp",
+        "bøde"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": "2027-01-31",
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-fuengirola-telpark",
+      "summary": "Michael bruger og anbefaler Telpark-appen til betaling af offentlig gadeparkering i Fuengirola. Regler, priser og muligheder for at annullere en mindre parkeringsafgift bør altid kontrolleres i appen.",
+      "body": "Telpark bruges af Michael til offentlig gadeparkering. Hvis man får en mindre parkeringsafgift, kan der i nogle tilfælde være mulighed for hurtig betaling eller annullering i appen. Beløb og frister kan ændre sig.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "parking-fuengirola-harbour",
+          "parking-los-boliches-primavera"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-fuengirola-harbour",
+      "category": "Transport",
+      "title": "Sikker parkering i Fuengirola centrum",
+      "content_type": "recommendation",
+      "answer": "Der er normalt god mulighed for betalingsparkering ved Fuengirola havn, og parkeringshusene i byen har som regel ledige pladser.",
+      "content": "Betalingsanlægget ved havnen og byens parkeringshuse er de mest forudsigelige valg.",
+      "keywords": [
+        "Fuengirola havn",
+        "parkeringshus",
+        "betalingsparkering",
+        "centrum"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-fuengirola-harbour",
+      "summary": "Der er normalt god mulighed for betalingsparkering ved Fuengirola havn, og parkeringshusene i byen har som regel ledige pladser.",
+      "body": "Betalingsanlægget ved havnen og byens parkeringshuse er de mest forudsigelige valg.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-los-boliches-primavera",
+      "category": "Transport",
+      "title": "Parkering ved stranden i Los Boliches",
+      "content_type": "recommendation",
+      "answer": "Når Michael tager til stranden i Los Boliches, parkerer han ofte i området ved pizzeriaet Primavera. Det er et praktisk pejlemærke, men ledighed kan variere.",
+      "content": "Personlig anbefaling til et praktisk parkeringsområde ved stranden i Los Boliches.",
+      "keywords": [
+        "Los Boliches",
+        "Primavera",
+        "strandparkering",
+        "pizzeria",
+        "parkering ved stranden"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-los-boliches-primavera",
+      "summary": "Når Michael tager til stranden i Los Boliches, parkerer han ofte i området ved pizzeriaet Primavera. Det er et praktisk pejlemærke, men ledighed kan variere.",
+      "body": "Personlig anbefaling til et praktisk parkeringsområde ved stranden i Los Boliches.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-access-card",
+      "category": "Pool",
+      "title": "Adgangskort til poolområdet",
+      "content_type": "procedure",
+      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "content": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
+      "keywords": [
+        "adgangskort",
+        "poolkort",
+        "nøglebræt",
+        "entré",
+        "tennisbane",
+        "legeplads",
+        "græsareal"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-access-card",
+      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "body": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-residents-guests-only",
+          "pool-opening-safety-rule",
+          "pool-family-facilities"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-opening-safety-rule",
+      "category": "Pool",
+      "title": "Poolen må kun bruges, når den er åben",
+      "content_type": "procedure",
+      "answer": "Poolen må kun benyttes, når området er åbent og der er livredder til stede. Er porten låst, må poolen ikke bruges, selv om den ser tilgængelig ud.",
+      "content": "Åbningstiderne varierer gennem sæsonen. Der er typisk længere åbent i højsæsonen og kortere i begyndelsen og slutningen af sæsonen.",
+      "keywords": [
+        "pool åben",
+        "livredder",
+        "låst port",
+        "åbningstid",
+        "bade udenfor åbningstid"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-opening-safety-rule",
+      "summary": "Poolen må kun benyttes, når området er åbent og der er livredder til stede. Er porten låst, må poolen ikke bruges, selv om den ser tilgængelig ud.",
+      "body": "Åbningstiderne varierer gennem sæsonen. Der er typisk længere åbent i højsæsonen og kortere i begyndelsen og slutningen af sæsonen.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-opening-governance",
+          "alternative-swimming-and-training"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-opening-governance",
+      "category": "Pool",
+      "title": "Hvordan poolens åbningstider fastlægges",
+      "content_type": "guide",
+      "answer": "Poolens åbningstider fastlægges lokalt og afspejler den historiske brug. Der er mest åbent i højsæsonen og færre timer ved sæsonens start og slutning. De præcise tider kan oplyses inden booking.",
+      "content": "Åbningstider besluttes lokalt i urbanisationen og kan ændres fra år til år.",
+      "keywords": [
+        "pool åbningstider",
+        "højsæson",
+        "generalforsamling",
+        "sæson"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": "2027-01-31",
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-opening-governance",
+      "summary": "Poolens åbningstider fastlægges lokalt og afspejler den historiske brug. Der er mest åbent i højsæsonen og færre timer ved sæsonens start og slutning. De præcise tider kan oplyses inden booking.",
+      "body": "Åbningstider besluttes lokalt i urbanisationen og kan ændres fra år til år.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-family-facilities",
+      "category": "Pool",
+      "title": "Børnevenlig pool og faciliteter",
+      "content_type": "guide",
+      "answer": "Den store pool har et lavt område og bliver dybere fra midten. Der er også et separat babybassin, liggestole, parasoller, omklædning, brusere og pusleplads. Poolområdet er stort, rent og velegnet til familier.",
+      "content": "Poolen er meget børnevenlig med separat babybassin og praktiske faciliteter for familier med små børn.",
+      "keywords": [
+        "børnevenlig pool",
+        "babybassin",
+        "lavt område",
+        "liggestole",
+        "parasoller",
+        "pusleplads",
+        "omklædning"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-family-facilities",
+      "summary": "Den store pool har et lavt område og bliver dybere fra midten. Der er også et separat babybassin, liggestole, parasoller, omklædning, brusere og pusleplads. Poolområdet er stort, rent og velegnet til familier.",
+      "body": "Poolen er meget børnevenlig med separat babybassin og praktiske faciliteter for familier med små børn.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "outdoor-training-near-pool"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-toys-and-consideration",
+      "category": "Pool",
+      "title": "Bold og vandlegetøj i poolområdet",
+      "content_type": "guide",
+      "answer": "Man kan normalt tage en bold eller almindeligt vandlegetøj med, så længe man viser hensyn til de andre gæster og følger eventuelle anvisninger fra livredderen.",
+      "content": "Ordensreglerne håndhæves pragmatisk, men hensyn til andre kommer først.",
+      "keywords": [
+        "bold",
+        "vandlegetøj",
+        "poolregler",
+        "hensyn",
+        "livredder"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-toys-and-consideration",
+      "summary": "Man kan normalt tage en bold eller almindeligt vandlegetøj med, så længe man viser hensyn til de andre gæster og følger eventuelle anvisninger fra livredderen.",
+      "body": "Ordensreglerne håndhæves pragmatisk, men hensyn til andre kommer først.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-residents-guests-only",
+      "category": "Pool",
+      "title": "Poolområdet er for beboere og gæster",
+      "content_type": "fact",
+      "answer": "Poolområdet er kun for beboere i urbanisationen og deres gæster.",
+      "content": "Adgangskortet dokumenterer adgangen til det private fællesområde.",
+      "keywords": [
+        "adgang pool",
+        "beboere",
+        "gæster",
+        "privat poolområde"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-residents-guests-only",
+      "summary": "Poolområdet er kun for beboere i urbanisationen og deres gæster.",
+      "body": "Adgangskortet dokumenterer adgangen til det private fællesområde.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-restaurant-takeaway",
+      "category": "Pool",
+      "title": "Restaurant og takeaway ved poolen",
+      "content_type": "recommendation",
+      "answer": "Restaurante Cerros del Águila ligger med udsigt over poolområdet. Man kan købe mad og drikke som takeaway eller gå op og spise og derefter vende tilbage til poolen.",
+      "content": "Restauranten og poolområdet ligger tæt sammen og kan nemt kombineres på samme dag.",
+      "keywords": [
+        "restaurant",
+        "Cerros del Águila",
+        "takeaway",
+        "mad",
+        "drikke",
+        "pooludsigt"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-restaurant-takeaway",
+      "summary": "Restaurante Cerros del Águila ligger med udsigt over poolområdet. Man kan købe mad og drikke som takeaway eller gå op og spise og derefter vende tilbage til poolen.",
+      "body": "Restauranten og poolområdet ligger tæt sammen og kan nemt kombineres på samme dag.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "outdoor-training-near-pool"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "outdoor-training-near-pool",
+      "category": "Aktiviteter",
+      "title": "Udendørs træning ved pool og restaurant",
+      "content_type": "fact",
+      "answer": "Ved restauranten, lige før indgangen til poolområdet, står der udendørs træningsredskaber, som frit kan benyttes.",
+      "content": "Gratis udendørs træningsfaciliteter tæt på poolen.",
+      "keywords": [
+        "udendørs træning",
+        "fitness",
+        "træningsredskaber",
+        "pool",
+        "restaurant"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "outdoor-training-near-pool",
+      "summary": "Ved restauranten, lige før indgangen til poolområdet, står der udendørs træningsredskaber, som frit kan benyttes.",
+      "body": "Gratis udendørs træningsfaciliteter tæt på poolen.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "alternative-swimming-and-training",
+      "category": "Aktiviteter",
+      "title": "Alternativer når poolen er lukket",
+      "content_type": "recommendation",
+      "answer": "Når poolen er lukket, findes der offentlige svømmehaller blandt andet i La Cala-området, og havet kan naturligvis bruges året rundt efter forholdene. Der er flere udendørs træningsfaciliteter i Gran Parque de Mijas og langs stranden.",
+      "content": "Alternative muligheder for svømning og træning uden for poolens åbningstid.",
+      "keywords": [
+        "svømmehal",
+        "La Cala",
+        "havet",
+        "Gran Parque de Mijas",
+        "træning",
+        "pool lukket"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "alternative-swimming-and-training",
+      "summary": "Når poolen er lukket, findes der offentlige svømmehaller blandt andet i La Cala-området, og havet kan naturligvis bruges året rundt efter forholdene. Der er flere udendørs træningsfaciliteter i Gran Parque de Mijas og langs stranden.",
+      "body": "Alternative muligheder for svømning og træning uden for poolens åbningstid.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "parking-pueblo-aguila",
+      "category": "Transport",
+      "title": "Parkering ved Casa Amar i Pueblo Águila",
+      "content_type": "guide",
+      "answer": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
+      "content": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "keywords": [
+        "parkering",
+        "Pueblo Águila",
+        "Pueblo Aguila",
+        "beboerparkering",
+        "gadeparkering",
+        "ved huset",
+        "urbanisationen"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-pueblo-aguila",
+      "summary": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
+      "body": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "parking-restrictions-enforced",
+          "parking-fuengirola-telpark"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-restrictions-enforced",
+      "category": "Transport",
+      "title": "Respektér parkeringsforbud",
+      "content_type": "procedure",
+      "answer": "Respektér altid skilte og afmærkning med parkeringsforbud. Ved ulovlig parkering kan bilen få en bøde eller blive fjernet.",
+      "content": "Der er enkelte steder omkring urbanisationen, hvor parkering er forbudt. Forbuddene håndhæves, og forkert parkerede biler risikerer bøde eller bortslæbning.",
+      "keywords": [
+        "parkering forbudt",
+        "bøde",
+        "bortslæbning",
+        "fjernet bil",
+        "skilte"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-restrictions-enforced",
+      "summary": "Respektér altid skilte og afmærkning med parkeringsforbud. Ved ulovlig parkering kan bilen få en bøde eller blive fjernet.",
+      "body": "Der er enkelte steder omkring urbanisationen, hvor parkering er forbudt. Forbuddene håndhæves, og forkert parkerede biler risikerer bøde eller bortslæbning.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-fuengirola-telpark",
+      "category": "Transport",
+      "title": "Offentlig gadeparkering i Fuengirola",
+      "content_type": "recommendation",
+      "answer": "Michael bruger og anbefaler Telpark-appen til betaling af offentlig gadeparkering i Fuengirola. Regler, priser og muligheder for at annullere en mindre parkeringsafgift bør altid kontrolleres i appen.",
+      "content": "Telpark bruges af Michael til offentlig gadeparkering. Hvis man får en mindre parkeringsafgift, kan der i nogle tilfælde være mulighed for hurtig betaling eller annullering i appen. Beløb og frister kan ændre sig.",
+      "keywords": [
+        "Telpark",
+        "parkering Fuengirola",
+        "gadeparkering",
+        "parkeringsapp",
+        "bøde"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": "2027-01-31",
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-fuengirola-telpark",
+      "summary": "Michael bruger og anbefaler Telpark-appen til betaling af offentlig gadeparkering i Fuengirola. Regler, priser og muligheder for at annullere en mindre parkeringsafgift bør altid kontrolleres i appen.",
+      "body": "Telpark bruges af Michael til offentlig gadeparkering. Hvis man får en mindre parkeringsafgift, kan der i nogle tilfælde være mulighed for hurtig betaling eller annullering i appen. Beløb og frister kan ændre sig.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "parking-fuengirola-harbour",
+          "parking-los-boliches-primavera"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-fuengirola-harbour",
+      "category": "Transport",
+      "title": "Sikker parkering i Fuengirola centrum",
+      "content_type": "recommendation",
+      "answer": "Der er normalt god mulighed for betalingsparkering ved Fuengirola havn, og parkeringshusene i byen har som regel ledige pladser.",
+      "content": "Betalingsanlægget ved havnen og byens parkeringshuse er de mest forudsigelige valg.",
+      "keywords": [
+        "Fuengirola havn",
+        "parkeringshus",
+        "betalingsparkering",
+        "centrum"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-fuengirola-harbour",
+      "summary": "Der er normalt god mulighed for betalingsparkering ved Fuengirola havn, og parkeringshusene i byen har som regel ledige pladser.",
+      "body": "Betalingsanlægget ved havnen og byens parkeringshuse er de mest forudsigelige valg.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "parking-los-boliches-primavera",
+      "category": "Transport",
+      "title": "Parkering ved stranden i Los Boliches",
+      "content_type": "recommendation",
+      "answer": "Når Michael tager til stranden i Los Boliches, parkerer han ofte i området ved pizzeriaet Primavera. Det er et praktisk pejlemærke, men ledighed kan variere.",
+      "content": "Personlig anbefaling til et praktisk parkeringsområde ved stranden i Los Boliches.",
+      "keywords": [
+        "Los Boliches",
+        "Primavera",
+        "strandparkering",
+        "pizzeria",
+        "parkering ved stranden"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "parking-los-boliches-primavera",
+      "summary": "Når Michael tager til stranden i Los Boliches, parkerer han ofte i området ved pizzeriaet Primavera. Det er et praktisk pejlemærke, men ledighed kan variere.",
+      "body": "Personlig anbefaling til et praktisk parkeringsområde ved stranden i Los Boliches.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-access-card",
+      "category": "Pool",
+      "title": "Adgangskort til poolområdet",
+      "content_type": "procedure",
+      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "content": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
+      "keywords": [
+        "adgangskort",
+        "poolkort",
+        "nøglebræt",
+        "entré",
+        "tennisbane",
+        "legeplads",
+        "græsareal"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-access-card",
+      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "body": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-residents-guests-only",
+          "pool-opening-safety-rule",
+          "pool-family-facilities"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-opening-safety-rule",
+      "category": "Pool",
+      "title": "Poolen må kun bruges, når den er åben",
+      "content_type": "procedure",
+      "answer": "Poolen må kun benyttes, når området er åbent og der er livredder til stede. Er porten låst, må poolen ikke bruges, selv om den ser tilgængelig ud.",
+      "content": "Åbningstiderne varierer gennem sæsonen. Der er typisk længere åbent i højsæsonen og kortere i begyndelsen og slutningen af sæsonen.",
+      "keywords": [
+        "pool åben",
+        "livredder",
+        "låst port",
+        "åbningstid",
+        "bade udenfor åbningstid"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-opening-safety-rule",
+      "summary": "Poolen må kun benyttes, når området er åbent og der er livredder til stede. Er porten låst, må poolen ikke bruges, selv om den ser tilgængelig ud.",
+      "body": "Åbningstiderne varierer gennem sæsonen. Der er typisk længere åbent i højsæsonen og kortere i begyndelsen og slutningen af sæsonen.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-opening-governance",
+          "alternative-swimming-and-training"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-opening-governance",
+      "category": "Pool",
+      "title": "Hvordan poolens åbningstider fastlægges",
+      "content_type": "guide",
+      "answer": "Poolens åbningstider fastlægges lokalt og afspejler den historiske brug. Der er mest åbent i højsæsonen og færre timer ved sæsonens start og slutning. De præcise tider kan oplyses inden booking.",
+      "content": "Åbningstider besluttes lokalt i urbanisationen og kan ændres fra år til år.",
+      "keywords": [
+        "pool åbningstider",
+        "højsæson",
+        "generalforsamling",
+        "sæson"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": "2027-01-31",
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-opening-governance",
+      "summary": "Poolens åbningstider fastlægges lokalt og afspejler den historiske brug. Der er mest åbent i højsæsonen og færre timer ved sæsonens start og slutning. De præcise tider kan oplyses inden booking.",
+      "body": "Åbningstider besluttes lokalt i urbanisationen og kan ændres fra år til år.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-family-facilities",
+      "category": "Pool",
+      "title": "Børnevenlig pool og faciliteter",
+      "content_type": "guide",
+      "answer": "Den store pool har et lavt område og bliver dybere fra midten. Der er også et separat babybassin, liggestole, parasoller, omklædning, brusere og pusleplads. Poolområdet er stort, rent og velegnet til familier.",
+      "content": "Poolen er meget børnevenlig med separat babybassin og praktiske faciliteter for familier med små børn.",
+      "keywords": [
+        "børnevenlig pool",
+        "babybassin",
+        "lavt område",
+        "liggestole",
+        "parasoller",
+        "pusleplads",
+        "omklædning"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-family-facilities",
+      "summary": "Den store pool har et lavt område og bliver dybere fra midten. Der er også et separat babybassin, liggestole, parasoller, omklædning, brusere og pusleplads. Poolområdet er stort, rent og velegnet til familier.",
+      "body": "Poolen er meget børnevenlig med separat babybassin og praktiske faciliteter for familier med små børn.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "outdoor-training-near-pool"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-toys-and-consideration",
+      "category": "Pool",
+      "title": "Bold og vandlegetøj i poolområdet",
+      "content_type": "guide",
+      "answer": "Man kan normalt tage en bold eller almindeligt vandlegetøj med, så længe man viser hensyn til de andre gæster og følger eventuelle anvisninger fra livredderen.",
+      "content": "Ordensreglerne håndhæves pragmatisk, men hensyn til andre kommer først.",
+      "keywords": [
+        "bold",
+        "vandlegetøj",
+        "poolregler",
+        "hensyn",
+        "livredder"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-toys-and-consideration",
+      "summary": "Man kan normalt tage en bold eller almindeligt vandlegetøj med, så længe man viser hensyn til de andre gæster og følger eventuelle anvisninger fra livredderen.",
+      "body": "Ordensreglerne håndhæves pragmatisk, men hensyn til andre kommer først.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-residents-guests-only",
+      "category": "Pool",
+      "title": "Poolområdet er for beboere og gæster",
+      "content_type": "fact",
+      "answer": "Poolområdet er kun for beboere i urbanisationen og deres gæster.",
+      "content": "Adgangskortet dokumenterer adgangen til det private fællesområde.",
+      "keywords": [
+        "adgang pool",
+        "beboere",
+        "gæster",
+        "privat poolområde"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-residents-guests-only",
+      "summary": "Poolområdet er kun for beboere i urbanisationen og deres gæster.",
+      "body": "Adgangskortet dokumenterer adgangen til det private fællesområde.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "pool-restaurant-takeaway",
+      "category": "Pool",
+      "title": "Restaurant og takeaway ved poolen",
+      "content_type": "recommendation",
+      "answer": "Restaurante Cerros del Águila ligger med udsigt over poolområdet. Man kan købe mad og drikke som takeaway eller gå op og spise og derefter vende tilbage til poolen.",
+      "content": "Restauranten og poolområdet ligger tæt sammen og kan nemt kombineres på samme dag.",
+      "keywords": [
+        "restaurant",
+        "Cerros del Águila",
+        "takeaway",
+        "mad",
+        "drikke",
+        "pooludsigt"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "pool-restaurant-takeaway",
+      "summary": "Restaurante Cerros del Águila ligger med udsigt over poolområdet. Man kan købe mad og drikke som takeaway eller gå op og spise og derefter vende tilbage til poolen.",
+      "body": "Restauranten og poolområdet ligger tæt sammen og kan nemt kombineres på samme dag.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [
+          "outdoor-training-near-pool"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": true,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "outdoor-training-near-pool",
+      "category": "Aktiviteter",
+      "title": "Udendørs træning ved pool og restaurant",
+      "content_type": "fact",
+      "answer": "Ved restauranten, lige før indgangen til poolområdet, står der udendørs træningsredskaber, som frit kan benyttes.",
+      "content": "Gratis udendørs træningsfaciliteter tæt på poolen.",
+      "keywords": [
+        "udendørs træning",
+        "fitness",
+        "træningsredskaber",
+        "pool",
+        "restaurant"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "outdoor-training-near-pool",
+      "summary": "Ved restauranten, lige før indgangen til poolområdet, står der udendørs træningsredskaber, som frit kan benyttes.",
+      "body": "Gratis udendørs træningsfaciliteter tæt på poolen.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    },
+    {
+      "id": "alternative-swimming-and-training",
+      "category": "Aktiviteter",
+      "title": "Alternativer når poolen er lukket",
+      "content_type": "recommendation",
+      "answer": "Når poolen er lukket, findes der offentlige svømmehaller blandt andet i La Cala-området, og havet kan naturligvis bruges året rundt efter forholdene. Der er flere udendørs træningsfaciliteter i Gran Parque de Mijas og langs stranden.",
+      "content": "Alternative muligheder for svømning og træning uden for poolens åbningstid.",
+      "keywords": [
+        "svømmehal",
+        "La Cala",
+        "havet",
+        "Gran Parque de Mijas",
+        "træning",
+        "pool lukket"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_note",
+        "label": "Michaels erfaring",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "slug": "alternative-swimming-and-training",
+      "summary": "Når poolen er lukket, findes der offentlige svømmehaller blandt andet i La Cala-området, og havet kan naturligvis bruges året rundt efter forholdene. Der er flere udendørs træningsfaciliteter i Gran Parque de Mijas og langs stranden.",
+      "body": "Alternative muligheder for svømning og træning uden for poolens åbningstid.",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-22",
+        "website_candidate": false,
+        "notes": ""
+      },
+      "quality": {
+        "completeness": 90,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      }
+    }
+  ]
+}

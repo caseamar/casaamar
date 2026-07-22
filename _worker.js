@@ -557,7 +557,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "5.1-concierge-refinement",
+      version: "6.0-knowledge-cards",
       method: "POST"
     });
   }

@@ -5,79 +5,80 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Casa Amar Knowledge Center</title>
 <style>
-:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#68746f;--ok:#2b7450;--bad:#a83b31}
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#69756f;--ok:#2b7450;--line:#e7e1d7}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
-main{max-width:1180px;margin:auto;padding:28px}h1,h2{font-family:Georgia,serif}h1{margin-bottom:6px}
-.lead{color:var(--muted);max-width:760px;line-height:1.5}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
-button,a.button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;text-decoration:none;cursor:pointer}
-.primary{background:var(--clay);color:white}.secondary{background:white;color:var(--ink);border:1px solid #d8d2c7}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
-.metric,.panel{background:var(--card);border-radius:16px;padding:16px}.metric strong{display:block;font-size:1.8rem}
-.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}.panel h2{margin-top:0}
-.dataset{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px 0;border-bottom:1px solid #ece7dd}
-.dataset:last-child{border-bottom:0}.meta{font-size:.78rem;color:var(--muted);margin-top:4px}
-.badge{align-self:start;padding:5px 8px;border-radius:999px;font-size:.72rem;font-weight:800}
-.good{background:#dff1e7;color:var(--ok)}.error{background:#f9e1dd;color:var(--bad)}
-.workflow{display:grid;gap:9px}.step{padding:11px;border-radius:12px;background:#f8f5ef}
-code{font-size:.9em}
-@media(max-width:800px){main{padding:16px}.metrics{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+main{max-width:1240px;margin:auto;padding:28px}h1,h2{font-family:Georgia,serif}h1{margin:0 0 6px}.lead{color:var(--muted);max-width:780px;line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{padding:11px 12px;border:1px solid #d8d2c7;border-radius:12px;background:#fff}
+.toolbar input{flex:1;min-width:240px}button,a.button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;text-decoration:none;cursor:pointer}
+.primary{background:var(--clay);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid #d8d2c7}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.metric,.panel{background:#fff;border-radius:16px;padding:16px}
+.metric strong{display:block;font-size:1.7rem}.grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:16px}.panel h2{margin-top:0}
+.category{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.cards{display:grid;gap:10px}.card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.card-head{display:flex;justify-content:space-between;gap:12px}.card h3{margin:0;font-size:1rem}.summary{margin:8px 0;color:#44534d;font-size:.86rem;line-height:1.45}
+.meta,.tags{font-size:.72rem;color:var(--muted)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{background:#f3eee6;border-radius:999px;padding:4px 7px}.badge{padding:5px 8px;border-radius:999px;font-size:.68rem;font-weight:800;background:#e3f1e9;color:var(--ok);white-space:nowrap}
+.empty{color:var(--muted);padding:20px;text-align:center}
+@media(max-width:850px){main{padding:16px}.metrics{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-<main>
+<body><main>
 <h1>Casa Amar Knowledge Center</h1>
-<p class="lead">Overblik over vidensbase, datakilder, tests og indbakke. Denne side ændrer ikke indholdet; den viser, om platformen er sund og klar til at svare.</p>
+<p class="lead">Masteroverblik over Knowledge Cards, kategorier, synlighed og kanalbrug. Hver vidensenhed kan senere bruges af AI, hjemmeside og guider uden at blive skrevet flere gange.</p>
 <div class="toolbar">
-<button class="primary" id="refresh">Opdater status</button>
-<a class="button secondary" href="/ai-test-runner.html">Åbn AI-test</a>
-<a class="button secondary" href="/">Til hjemmesiden</a>
+<input id="search" placeholder="Søg i titel, indhold eller nøgleord">
+<select id="category"><option value="">Alle kategorier</option></select>
+<select id="channel"><option value="">Alle kanaler</option><option value="ai">AI</option><option value="website">Hjemmeside</option><option value="guest_guide">Gæsteguide</option><option value="owner_guide">Ejerguide</option></select>
+<button class="primary" id="refresh">Opdater</button>
+<a class="button secondary" href="/ai-test-runner.html">AI-test</a>
+<a class="button secondary" href="/">Hjemmeside</a>
 </div>
 <div class="metrics">
 <div class="metric"><span>Status</span><strong id="status">…</strong></div>
-<div class="metric"><span>Vidensenheder</span><strong id="entries">…</strong></div>
-<div class="metric"><span>Tests</span><strong id="tests">…</strong></div>
-<div class="metric"><span>Indbakke</span><strong id="inbox">…</strong></div>
+<div class="metric"><span>Knowledge Cards</span><strong id="count">…</strong></div>
+<div class="metric"><span>Kategorier</span><strong id="categoryCount">…</strong></div>
+<div class="metric"><span>Dynamiske</span><strong id="dynamicCount">…</strong></div>
+<div class="metric"><span>Website-kandidater</span><strong id="websiteCount">…</strong></div>
 </div>
 <div class="grid">
-<section class="panel"><h2>Datasæt</h2><div id="datasets">Indlæser…</div></section>
-<aside class="panel">
-<h2>Arbejdsgang</h2>
-<div class="workflow">
-<div class="step"><strong>1. Fortæl ChatGPT noget nyt</strong><br><span class="meta">Fx: “Der er kommet en airfryer.”</span></div>
-<div class="step"><strong>2. Placér det korrekt</strong><br><span class="meta">Fakta, intern note, offentlig tekst eller ekstern kilde.</span></div>
-<div class="step"><strong>3. Gennemgå og godkend</strong><br><span class="meta">Stikord kan ligge i indbakken, indtil de er verificeret.</span></div>
-<div class="step"><strong>4. Opdatér tests</strong><br><span class="meta">Når en vigtig regel eller et svar ændres.</span></div>
-</div>
-<h2>Platformversion</h2>
-<p id="version" class="meta">…</p>
-</aside>
+<section class="panel"><h2>Kategorier</h2><div id="categories"></div></section>
+<section class="panel"><h2>Knowledge Cards</h2><div id="cards" class="cards"></div></section>
 </div>
 </main>
 <script>
-async function load(){
-  const button=document.querySelector('#refresh');
-  button.disabled=true;
-  try{
-    const response=await fetch('/api/status',{cache:'no-store'});
-    const data=await response.json();
-    document.querySelector('#status').textContent=data.ok?'OK':'Fejl';
-    document.querySelector('#entries').textContent=data.counts?.knowledgeEntries??'–';
-    document.querySelector('#tests').textContent=data.counts?.tests??'–';
-    document.querySelector('#inbox').textContent=data.counts?.inbox??'–';
-    document.querySelector('#version').textContent=`Platform ${data.version} · Register ${data.registryVersion} · ${data.loadedAt||''}`;
-    document.querySelector('#datasets').innerHTML=(data.datasets||[]).map(item=>`
-      <div class="dataset">
-        <div><strong>${item.label}</strong><div class="meta">${item.id} · ${item.role} · trust ${item.trust} · ${item.visibility}</div></div>
-        <span class="badge ${item.loaded?'good':'error'}">${item.loaded?'Indlæst':'Fejl'}</span>
-      </div>`).join('') || 'Ingen datasæt';
-  }catch(error){
-    document.querySelector('#status').textContent='Fejl';
-    document.querySelector('#datasets').textContent=error.message;
-  }finally{button.disabled=false}
+let allCards=[];
+const q=s=>document.querySelector(s);
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function render(){
+ const term=q('#search').value.toLowerCase().trim(),cat=q('#category').value,channel=q('#channel').value;
+ const cards=allCards.filter(c=>{
+   const hay=[c.title,c.summary,c.body,...(c.keywords||[])].join(' ').toLowerCase();
+   return (!term||hay.includes(term))&&(!cat||c.category===cat)&&(!channel||c.channels?.[channel]);
+ });
+ q('#cards').innerHTML=cards.map(c=>`<article class="card">
+   <div class="card-head"><div><h3>${esc(c.title)}</h3><div class="meta">${esc(c.id)} · ${esc(c.content_type)} · trust ${c.trust}</div></div><span class="badge">${esc(c.editorial?.review_state||c.status)}</span></div>
+   <p class="summary">${esc(c.summary||c.answer)}</p>
+   <div class="tags">${Object.entries(c.channels||{}).filter(([,v])=>v).map(([k])=>`<span class="tag">${esc(k)}</span>`).join('')}${c.dynamic?'<span class="tag">dynamisk</span>':''}</div>
+ </article>`).join('')||'<div class="empty">Ingen kort matcher filtrene.</div>';
 }
-document.querySelector('#refresh').addEventListener('click',load);
-load();
-</script>
-</body>
-</html>
+async function load(){
+ q('#refresh').disabled=true;
+ try{
+  const [statusRes,cardsRes]=await Promise.all([fetch('/api/status',{cache:'no-store'}),fetch('/knowledge-cards.json',{cache:'no-store'})]);
+  const status=await statusRes.json(),data=await cardsRes.json();
+  allCards=data.cards||data.entries||[];
+  const counts={};allCards.forEach(c=>counts[c.category]=(counts[c.category]||0)+1);
+  q('#status').textContent=status.ok?'OK':'Fejl';
+  q('#count').textContent=allCards.length;
+  q('#categoryCount').textContent=Object.keys(counts).length;
+  q('#dynamicCount').textContent=allCards.filter(c=>c.dynamic).length;
+  q('#websiteCount').textContent=allCards.filter(c=>c.editorial?.website_candidate||c.channels?.website).length;
+  q('#categories').innerHTML=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="category"><span>${esc(k)}</span><strong>${v}</strong></div>`).join('');
+  q('#category').innerHTML='<option value="">Alle kategorier</option>'+Object.keys(counts).sort().map(c=>`<option>${esc(c)}</option>`).join('');
+  render();
+ }catch(e){q('#status').textContent='Fejl';q('#cards').innerHTML=`<div class="empty">${esc(e.message)}</div>`}
+ finally{q('#refresh').disabled=false}
+}
+['#search','#category','#channel'].forEach(s=>q(s).addEventListener('input',render));
+q('#refresh').addEventListener('click',load);load();
+</script></body></html>
