@@ -1,0 +1,202 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "routing_order": [
+    "contact_human",
+    "restricted_scope",
+    "smalltalk",
+    "arrival_transport",
+    "booking_availability",
+    "house_facilities",
+    "family_needs",
+    "activities_recommendations",
+    "location_distance",
+    "rules_conditions",
+    "current_information",
+    "general_question"
+  ],
+  "intents": [
+    {
+      "id": "contact_human",
+      "description": "Brugeren ønsker direkte kontakt eller vil skrive/ringe til Michael.",
+      "patterns": [
+        "kontakt michael",
+        "skriv til michael",
+        "skrive til dem",
+        "skrive til ham",
+        "send besked",
+        "messenger",
+        "mail til michael",
+        "henvend mig",
+        "tale med michael"
+      ],
+      "deterministic": true,
+      "response": "Selvfølgelig. Du kan kontakte Michael direkte herunder.",
+      "needs_human": true
+    },
+    {
+      "id": "restricted_scope",
+      "description": "Politik, etik, race, religion eller andre emner uden for Casa Amar.",
+      "patterns": [
+        "politik",
+        "politisk",
+        "trump",
+        "biden",
+        "valg",
+        "parti",
+        "etisk debat",
+        "moral",
+        "race",
+        "racisme",
+        "etnicitet",
+        "religion",
+        "islam",
+        "kristendom",
+        "jøder",
+        "konspiration",
+        "aktier",
+        "investering",
+        "juridisk rådgivning",
+        "medicinsk rådgivning"
+      ],
+      "deterministic": true,
+      "response_from_policy": "scope.restricted_response",
+      "needs_human": true
+    },
+    {
+      "id": "smalltalk",
+      "description": "Kort social dialog, tak eller hilsen.",
+      "patterns": [
+        "hej",
+        "hejsa",
+        "godmorgen",
+        "godaften",
+        "tak",
+        "mange tak",
+        "det lyder godt",
+        "vi glæder os",
+        "fedt",
+        "perfekt",
+        "super"
+      ],
+      "deterministic": true,
+      "responses": {
+        "greeting": "Hej og velkommen. Jeg hjælper gerne med Casa Amar, området og jeres ophold.",
+        "thanks": "Velbekomme.",
+        "positive": "Det lyder dejligt."
+      },
+      "needs_human": false
+    },
+    {
+      "id": "arrival_transport",
+      "description": "Ankomst, lufthavn, tog, taxa, lejebil, parkering og vej til huset.",
+      "patterns": [
+        "komme til huset",
+        "ankomst",
+        "lufthavn",
+        "tog",
+        "taxa",
+        "lejebil",
+        "parkering",
+        "kørselsvejledning"
+      ]
+    },
+    {
+      "id": "booking_availability",
+      "description": "Pris, ledighed, datoer og booking.",
+      "patterns": [
+        "ledig",
+        "ledighed",
+        "pris",
+        "booke",
+        "booking",
+        "reservere",
+        "datoer",
+        "tilbud"
+      ]
+    },
+    {
+      "id": "house_facilities",
+      "description": "Huset, værelser, køkken, WiFi, pool, håndklæder og udstyr.",
+      "patterns": [
+        "håndklæder",
+        "sengelinned",
+        "wifi",
+        "køkken",
+        "aircondition",
+        "pool",
+        "projektor",
+        "soveværelse"
+      ]
+    },
+    {
+      "id": "family_needs",
+      "description": "Børn, baby og familieudstyr.",
+      "patterns": [
+        "børn",
+        "baby",
+        "familie",
+        "babyseng",
+        "højstol",
+        "trappegitter",
+        "barnevogn"
+      ]
+    },
+    {
+      "id": "activities_recommendations",
+      "description": "Oplevelser, dagsture, golf, strand og restauranter.",
+      "patterns": [
+        "oplevelser",
+        "aktivitet",
+        "dagstur",
+        "golf",
+        "strand",
+        "restaurant",
+        "vandring",
+        "udflugt"
+      ]
+    },
+    {
+      "id": "location_distance",
+      "description": "Afstande og placering.",
+      "patterns": [
+        "hvor langt",
+        "afstand",
+        "tæt på",
+        "gåafstand",
+        "fuengirola",
+        "mijas",
+        "cerros"
+      ]
+    },
+    {
+      "id": "rules_conditions",
+      "description": "Husregler, kæledyr, rygning og check-in/out.",
+      "patterns": [
+        "regler",
+        "hund",
+        "kæledyr",
+        "rygning",
+        "fest",
+        "check-in",
+        "check-out"
+      ]
+    },
+    {
+      "id": "current_information",
+      "description": "Aktuelle arrangementer, vejr og åbningstider.",
+      "patterns": [
+        "i dag",
+        "i morgen",
+        "denne uge",
+        "vejr",
+        "åbent nu",
+        "arrangement"
+      ]
+    },
+    {
+      "id": "general_question",
+      "description": "Generelle relevante spørgsmål, der ikke matcher tydeligt."
+    }
+  ]
+}

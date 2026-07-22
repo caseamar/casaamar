@@ -56,10 +56,11 @@ async function assetJson(env, request, pathname) {
 async function loadBundle(env, request) {
   if (cachedBundle && Date.now() - cachedAt < CACHE_TTL_MS) return cachedBundle;
 
-  const [core, rincon, conciergeConfig] = await Promise.all([
+  const [core, rincon, conciergePolicy, conciergeIntents] = await Promise.all([
     assetJson(env, request, "/casa-amar-knowledge.json"),
     assetJson(env, request, "/rincon-rent-booking.json"),
-    assetJson(env, request, "/concierge-config.json")
+    assetJson(env, request, "/concierge-policy.json"),
+    assetJson(env, request, "/concierge-intents.json")
   ]);
 
   const ownerEntries = (core.entries || []).map((entry) => ({
@@ -89,7 +90,8 @@ async function loadBundle(env, request) {
       { id: "owner-core", label: "Casa Amar", priority: 100 },
       rincon.source
     ].filter(Boolean),
-    conciergeConfig
+    conciergePolicy,
+    conciergeIntents
   };
   cachedAt = Date.now();
   return cachedBundle;
@@ -211,6 +213,132 @@ function extractOutputText(result) {
 
 
 
+
+function normaliseText(value) {
+  return String(value || "")
+    .toLocaleLowerCase("da")
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .trim();
+}
+
+function matchesPattern(text, patterns = []) {
+  const normalised = normaliseText(text);
+  return patterns.some((pattern) =>
+    normalised.includes(normaliseText(pattern))
+  );
+}
+
+function findIntent(question, intentConfig) {
+  const intents = intentConfig?.intents || [];
+  for (const intentId of intentConfig?.routing_order || []) {
+    const intent = intents.find((item) => item.id === intentId);
+    if (!intent || !intent.patterns?.length) continue;
+    if (matchesPattern(question, intent.patterns)) return intent;
+  }
+  return intents.find((item) => item.id === "general_question") || {
+    id: "general_question",
+    deterministic: false
+  };
+}
+
+function smalltalkResponse(question, intent) {
+  const text = normaliseText(question);
+  if (text.includes("tak")) return intent.responses?.thanks || "Velbekomme.";
+  if (
+    text.includes("glæder") ||
+    text.includes("lyder godt") ||
+    text.includes("perfekt") ||
+    text.includes("super") ||
+    text.includes("fedt")
+  ) {
+    return intent.responses?.positive || "Det lyder dejligt.";
+  }
+  return intent.responses?.greeting ||
+    "Hej og velkommen. Jeg hjælper gerne med Casa Amar og jeres ophold.";
+}
+
+function deterministicRoute(question, bundle) {
+  const intent = findIntent(question, bundle.conciergeIntents);
+  if (!intent?.deterministic) return null;
+
+  if (intent.id === "smalltalk") {
+    return {
+      intent: intent.id,
+      answer: smalltalkResponse(question, intent),
+      followUp: null,
+      needsHuman: false,
+      confidence: "high",
+      sources: []
+    };
+  }
+
+  let answer = intent.response || "";
+  if (intent.response_from_policy === "scope.restricted_response") {
+    answer = bundle.conciergePolicy?.scope?.restricted_response || answer;
+  }
+
+  return {
+    intent: intent.id,
+    answer,
+    followUp: null,
+    needsHuman: Boolean(intent.needs_human),
+    confidence: "high",
+    sources: []
+  };
+}
+
+function buildSystemInstructions(policy) {
+  const allowed = (policy?.scope?.allowed || []).map((item) => `- ${item}`).join("\n");
+  const restricted = (policy?.scope?.restricted || []).map((item) => `- ${item}`).join("\n");
+  const followUpRules = (
+    policy?.dialog_policy?.follow_up_allowed_only_if || []
+  ).map((item) => `- ${item}`).join("\n");
+  const neverRules = (policy?.dialog_policy?.never || []).map(
+    (item) => `- ${item}`
+  ).join("\n");
+  const knowledgeRules = (policy?.knowledge_policy?.rules || []).map(
+    (item) => `- ${item}`
+  ).join("\n");
+
+  return `Du er ${policy?.role?.name || "Casa Amar Concierge"}.
+${policy?.role?.description || ""}
+
+MISSION:
+${policy?.role?.mission || ""}
+
+TONE:
+${(policy?.tone?.qualities || []).join(", ")}.
+Undgå: ${(policy?.tone?.avoid || []).join(", ")}.
+
+DU HJÆLPER MED:
+${allowed}
+
+UDEN FOR SCOPE:
+${restricted}
+
+DIALOGPOLITIK:
+${policy?.dialog_policy?.primary_rule || "Svar først. Spørg sjældent."}
+Stil højst ${policy?.dialog_policy?.max_follow_up_questions_per_topic || 1} opfølgende spørgsmål pr. emne.
+Et opfølgende spørgsmål er kun tilladt, hvis alle disse forhold er opfyldt:
+${followUpRules}
+
+DU MÅ ALDRIG:
+${neverRules}
+
+KILDER:
+${knowledgeRules}
+
+SVAR:
+- ${policy?.response_policy?.language || "Svar på samme sprog som brugeren."}
+- ${policy?.response_policy?.length || "Svar kort."}
+- ${policy?.response_policy?.links || "Undgå rå URL-adresser."}
+- Smalltalk: ${policy?.response_policy?.smalltalk || "Svar kort og varmt."}
+- Fallback: ${policy?.response_policy?.fallback || "Send videre til Michael."}
+
+Returnér altid struktureret JSON efter det krævede schema.`;
+}
+
 function recentAssistantQuestion(messages) {
   return (messages || []).slice(-4).some(
     (item) =>
@@ -223,7 +351,7 @@ function recentAssistantQuestion(messages) {
 function sourceLinks(entries, config) {
   const seen = new Set();
   const links = [];
-  const hidden = new Set(config?.source_policy?.hidden_source_ids || []);
+  const hidden = new Set(["rincon-rent-booking"]);
 
   for (const entry of entries || []) {
     const sourceId = entry.source?.id || "";
@@ -249,7 +377,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "2.1-concierge",
+      version: "3.0-policy",
       method: "POST"
     });
   }
@@ -289,34 +417,23 @@ async function handleChat(request, env) {
 
   try {
     const bundle = await loadBundle(env, request);
+    const deterministic = deterministicRoute(question, bundle);
+
+    if (deterministic) {
+      return json({
+        ...deterministic,
+        knowledgeVersion: bundle.version,
+        sourcesLoaded: bundle.sources.map((source) => source.id),
+        webSearchUsed: false,
+        model: "deterministic-policy",
+        responseId: null
+      });
+    }
+
     const relevant = selectKnowledge(question, bundle.entries);
     const conversation = normaliseMessages(payload.messages);
 
-    const instructions = `Du er Casa Amar Concierge, en varm og hjælpsom digital vært for ferieboligen Casa Amar i Cerros del Águila ved Fuengirola.
-
-ARBEJDSMETODE:
-1. Forstå gæstens hensigt og svar først med den viden, der allerede findes.
-2. Saml relevante fakta fra flere kilder til ét naturligt og sammenhængende svar.
-3. Ejerredigeret Casa Amar-viden med prioritet 100 vinder altid ved konflikt.
-4. Sekundære kilder må bruges internt, men nævn eller link normalt ikke til dem.
-5. Stil højst ét opfølgende spørgsmål pr. emne.
-6. Stil kun et opfølgende spørgsmål, hvis svaret bliver væsentligt bedre, og Casa Amar faktisk kan besvare det bagefter.
-7. Stil aldrig spørgsmål om valg eller detaljer, som du ikke selv kan følge op med et konkret svar på.
-8. Gentag eller omformulér aldrig et spørgsmål, du allerede har stillet.
-9. Hvis gæsten svarer kort som "ja gerne", "okay" eller lignende, skal du forstå det ud fra den foregående samtale og give det bedste mulige svar.
-10. Hvis præcis adresse, detaljeret kørselsvejledning, adgangsinstruktioner eller andre manglende oplysninger kræves, skal du ikke interviewe videre. Svar med det, du ved, og foreslå derefter at skrive til Michael.
-11. Gæt aldrig konkrete faciliteter, priser, tider, afstande eller regler.
-
-SVARSTIL:
-- Svar på samme sprog som gæsten.
-- Skriv som en god vært, ikke som en FAQ eller søgemaskine.
-- Brug 1-4 korte, sammenhængende sætninger.
-- Undgå tekniske formuleringer som "ud fra vidensbasen".
-- Undgå rå URL-adresser.
-- Et opfølgende spørgsmål skal være kort, nødvendigt og handle om noget, du efterfølgende kan hjælpe med.
-- Hvis du ikke kan hjælpe sikkert, foreslå kontakt til Michael hurtigt og naturligt.
-
-Du skal returnere struktureret JSON efter det krævede schema.`;
+    const instructions = buildSystemInstructions(bundle.conciergePolicy);
 
     const input = [
       ...conversation,
@@ -342,7 +459,8 @@ Du skal returnere struktureret JSON efter det krævede schema.`;
           {
             role: "developer",
             content: `CONCIERGE-KONFIGURATION:
-${JSON.stringify(bundle.conciergeConfig)}`
+${JSON.stringify(bundle.conciergePolicy,
+    conciergeIntents)}`
           }
         ],
         reasoning: {
@@ -417,7 +535,12 @@ ${JSON.stringify(bundle.conciergeConfig)}`
     const alreadyAsked = recentAssistantQuestion(conversation);
     let followUp = structured.follow_up;
 
-    if (alreadyAsked) {
+    if (
+      alreadyAsked ||
+      structured.confidence !== "high" ||
+      !followUp ||
+      followUp.length > 140
+    ) {
       followUp = null;
     }
 
@@ -431,7 +554,8 @@ ${JSON.stringify(bundle.conciergeConfig)}`
       answerSignalsMissingInfo ||
       (alreadyAsked && Boolean(structured.follow_up));
 
-    const sources = sourceLinks(relevant, bundle.conciergeConfig);
+    const sources = sourceLinks(relevant, bundle.conciergePolicy,
+    conciergeIntents);
 
     return json({
       answer: structured.answer,
