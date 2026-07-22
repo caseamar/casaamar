@@ -1,26 +1,22 @@
-fix(ai): reduce unnecessary follow-up questions and hand off earlier
+fix(ai): move human handoff actions into the conversation
 
 Summary
-- Limited Casa Amar Concierge to one follow-up question per topic.
-- Added a hard rule that follow-up questions are only allowed when the knowledge base can answer the next step.
-- Prevented the concierge from repeating or rephrasing questions already asked.
-- Added context handling for short replies such as "ja gerne".
-- Removed unnecessary follow-up requirements from arrival, activities and family intents.
-- Added earlier handoff to Michael when exact directions, address, access details or other unavailable information are required.
-- Added a programmatic safeguard that suppresses a second follow-up question in the same topic.
-- Preserved natural answers and internal use of secondary sources without exposing Rincón Rent.
+- Added an inline contact card directly below an AI answer when human help is needed.
+- Added two contextual actions: "Skriv til Michael" and "Send besked til Michael".
+- Prefilled the email with the guest's current question.
+- Copies the current question before opening Messenger when clipboard access is available.
+- Removed the permanent contact section from the bottom of the chat.
+- Kept the handoff compact and responsive to reduce scrolling.
+- Reused the existing needsHuman flag, avoiding additional API calls or complex action logic.
 
 Files changed
 - index.html
-- _worker.js
-- concierge-config.json
 
 Why
-The concierge should feel helpful and decisive. It must answer with available information, avoid interviewing the guest unnecessarily, and move quickly to mail or Messenger when a human answer is more appropriate.
+When the concierge recommends contacting Michael, the relevant actions should appear immediately beside that recommendation. This reduces scrolling and makes the next step obvious without adding unnecessary complexity.
 
 Test cases
-- Hvordan kommer jeg til huset?
-- Ja gerne.
-- Kan du give præcis kørselsvejledning?
-- Hvad kan vi lave i området?
-- Vi kommer med børn.
+- Ask for exact driving directions and confirm the two contact buttons appear under the response.
+- Click "Skriv til Michael" and confirm the email contains the original question.
+- Click "Send besked til Michael" and confirm Messenger opens.
+- Ask a simple question such as "Er håndklæder inkluderet?" and confirm no contact card appears unless human help is actually needed.
