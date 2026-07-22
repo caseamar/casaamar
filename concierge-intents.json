@@ -99,7 +99,10 @@
         "lejebil",
         "parkering",
         "kørselsvejledning"
-      ]
+      ],
+      "deterministic": true,
+      "response": "Det afhænger af, hvordan I rejser. Med lejebil kan I køre direkte til urbanisationen, hvor der er parkering tæt ved huset. Uden bil kan I tage taxa direkte fra Málaga Lufthavn (vejledende omkring 50 €) eller toget til Fuengirola og derfra en taxa det sidste stykke (vejledende omkring 12 €). Den præcise adresse og ankomstvejledning får I fra Michael før opholdet.",
+      "needs_human": false
     },
     {
       "id": "booking_availability",

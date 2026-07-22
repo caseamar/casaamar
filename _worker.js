@@ -377,7 +377,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "3.0-policy",
+      version: "3.0.1-policy",
       method: "POST"
     });
   }
@@ -459,8 +459,10 @@ async function handleChat(request, env) {
           {
             role: "developer",
             content: `CONCIERGE-KONFIGURATION:
-${JSON.stringify(bundle.conciergePolicy,
-    conciergeIntents)}`
+${JSON.stringify({
+  policy: bundle.conciergePolicy,
+  intents: bundle.conciergeIntents
+})}`
           }
         ],
         reasoning: {
@@ -554,8 +556,7 @@ ${JSON.stringify(bundle.conciergePolicy,
       answerSignalsMissingInfo ||
       (alreadyAsked && Boolean(structured.follow_up));
 
-    const sources = sourceLinks(relevant, bundle.conciergePolicy,
-    conciergeIntents);
+    const sources = sourceLinks(relevant, bundle.conciergePolicy);
 
     return json({
       answer: structured.answer,

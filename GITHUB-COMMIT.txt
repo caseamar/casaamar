@@ -1,22 +1,23 @@
-fix(ai): move human handoff actions into the conversation
+fix(ai): restore concierge responses and handoff button styling
 
 Summary
-- Added an inline contact card directly below an AI answer when human help is needed.
-- Added two contextual actions: "Skriv til Michael" and "Send besked til Michael".
-- Prefilled the email with the guest's current question.
-- Copies the current question before opening Messenger when clipboard access is available.
-- Removed the permanent contact section from the bottom of the chat.
-- Kept the handoff compact and responsive to reduce scrolling.
-- Reused the existing needsHuman flag, avoiding additional API calls or complex action logic.
+- Fixed two runtime reference errors in _worker.js that caused normal questions to fail.
+- Corrected the policy/intents object sent to OpenAI.
+- Corrected the source-link renderer call.
+- Added a reliable deterministic response for the common question "Hvordan kommer jeg til huset?".
+- Restored the intended Casa Amar styling for the inline email and Messenger buttons.
+- Kept the contact card compact and responsive.
 
 Files changed
 - index.html
+- _worker.js
+- concierge-intents.json
 
 Why
-When the concierge recommends contacting Michael, the relevant actions should appear immediately beside that recommendation. This reduces scrolling and makes the next step obvious without adding unnecessary complexity.
+The policy architecture release contained two variable-reference errors, which prevented OpenAI-backed answers from being returned. The inline contact card also lost its CSS styling. This hotfix restores stable answers and the intended visual design without changing the overall architecture.
 
 Test cases
-- Ask for exact driving directions and confirm the two contact buttons appear under the response.
-- Click "Skriv til Michael" and confirm the email contains the original question.
-- Click "Send besked til Michael" and confirm Messenger opens.
-- Ask a simple question such as "Er håndklæder inkluderet?" and confirm no contact card appears unless human help is actually needed.
+- Hvordan kommer jeg til huset?
+- Er håndklæder inkluderet?
+- Jeg vil gerne skrive til Michael
+- Hvad synes du om politik?
