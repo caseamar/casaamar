@@ -173,7 +173,7 @@ async function suggest(){
    const result=await r.json();if(!r.ok)throw new Error(result.detail||result.error);renderAnalysis(result);
  }catch(e){q('#analysis').innerHTML=`<p class="notice">${esc(e.message)}</p>`}finally{q('#suggest').disabled=false}
 }
-function testsFor(ids){return [...new Set(ids.flatMap(id=>getCard(id)?.tests||[]))}
+function testsFor(ids){return [...new Set(ids.flatMap(id=>getCard(id)?.tests||[]))]}
 function runTests(ids){
  const testIds=testsFor(ids);if(!testIds.length)return alert('Der er endnu ingen tilknyttede tests.');
  localStorage.setItem('casaSelectedTests',JSON.stringify(testIds));location.href='/ai-test-runner.html?selected='+encodeURIComponent(testIds.join(','));
