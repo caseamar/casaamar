@@ -90,12 +90,19 @@ function render(){
 async function runTest(test){
   test.result={running:true};render();
   try{
-    const response=await fetch(document.querySelector('#endpoint').value,{
-      method:'POST',headers:{'content-type':'application/json'},
-      body:JSON.stringify({question:test.question,messages:[]})
-    });
-    const data=await response.json();
-    if(!response.ok) throw new Error(data.detail||data.error||`HTTP ${response.status}`);
+    let response;
+    let data;
+    for(let attempt=1;attempt<=3;attempt++){
+      response=await fetch(document.querySelector('#endpoint').value,{
+        method:'POST',headers:{'content-type':'application/json'},
+        body:JSON.stringify({question:test.question,messages:[]})
+      });
+      data=await response.json();
+      if(response.ok) break;
+      const rateLimited=response.status===429 || /for mange spørgsmål|rate limit/i.test(data.detail||data.error||'');
+      if(!rateLimited || attempt===3) throw new Error(data.detail||data.error||`HTTP ${response.status}`);
+      await new Promise(r=>setTimeout(r,attempt*1800));
+    }
     const evaluation=evaluate(test,data);
     test.result={...evaluation,answer:data.answer};
   }catch(error){
@@ -105,7 +112,7 @@ async function runTest(test){
 }
 document.querySelector('#runAll').addEventListener('click',async()=>{
   document.querySelector('#runAll').disabled=true;
-  for(const test of suite.tests){await runTest(test);await new Promise(r=>setTimeout(r,350))}
+  for(const test of suite.tests){await runTest(test);await new Promise(r=>setTimeout(r,900))}
   document.querySelector('#runAll').disabled=false;
 });
 document.querySelector('#reset').addEventListener('click',()=>{suite.tests.forEach(t=>delete t.result);render()});

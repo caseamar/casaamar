@@ -1,27 +1,22 @@
-feat(knowledge): add internal parking and pool guides
+fix(ai): stop unnecessary follow-ups and align tests with intended handoff behaviour
 
 Summary
-- Added owner-internal-guides.json with structured, internal-only knowledge from Michael.
-- Added detailed guidance for parking in Pueblo Águila, Fuengirola, Los Boliches and parking restrictions.
-- Added pool access, safety, seasonal opening, family facilities, restaurant, takeaway, training and alternative swimming information.
-- Marked changing information such as Telpark rules, pool hours and local availability as dynamic.
-- Kept all new content available to Casa Amar Concierge but unpublished on the website.
-- Added the internal owner guide dataset to knowledge-registry.json.
-- Added five regression tests covering parking and pool questions.
-
-Files added
-- owner-internal-guides.json
+- Strengthened the system prompt to resolve guest needs in the fewest possible interactions.
+- Prevented follow-up questions about information the concierge cannot provide after the guest answers.
+- Added a runtime safeguard that removes follow-up questions when confirmation, dynamic data or Michael is required.
+- Removes trailing questions from uncertain or handoff answers.
+- Updated T02 to validate the intended fast handoff for exact address and driving directions.
+- Updated T18 to validate the correct pet_approval intent and small-dog guidance.
+- Added a pool test ensuring the concierge does not ask for dates unnecessarily.
+- Improved the browser test runner with slower pacing and automatic retry for temporary rate limits.
 
 Files changed
-- knowledge-registry.json
+- index.html
+- _worker.js
 - ai-regression-tests.json
+- ai-test-runner.html
+- knowledge-registry.json
+- owner-internal-guides.json
 
 Why
-Owner knowledge should be captured in natural language and converted into small, trusted knowledge units. This update demonstrates the intended ingestion workflow while keeping unpublished operational guidance separate from website content.
-
-Test cases
-- Må vi parkere ved skiltene omkring Pueblo Águila?
-- Hvor parkerer vi i Fuengirola?
-- Hvor er adgangskortet til poolen?
-- Er poolen god til små børn?
-- Må vi bade, når poolområdet er låst?
+A digital concierge should answer quickly and decisively. It must not ask questions when the answer is unavailable, and the regression suite should validate the intended behaviour rather than outdated routing assumptions.

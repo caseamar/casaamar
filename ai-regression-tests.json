@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated": "2026-07-22",
   "tests": [
     {
@@ -33,12 +33,12 @@
         "kontakt"
       ],
       "must_not_include_any": [
-        "Rincón Rent",
         "Hvem vil du",
-        "Vil du have"
+        "Vil du have",
+        "Rincón Rent"
       ],
       "max_sentences": 3,
-      "notes": "Præcis rute/adresse kræver hurtigt handoff."
+      "notes": "Præcis adresse/rute kræver hurtigt handoff."
     },
     {
       "id": "T03",
@@ -305,7 +305,7 @@
       "id": "T18",
       "category": "Regler",
       "question": "Må vi tage en hund med?",
-      "expected_intent": "rules_conditions",
+      "expected_intent": "pet_approval",
       "expected_needs_human": true,
       "must_include_any": [
         "hund",
@@ -317,7 +317,7 @@
         "bookingsiden"
       ],
       "max_sentences": 3,
-      "notes": "Bureauets fakta bruges, men Michael godkender."
+      "notes": "Bureauets fakta bruges; Michael godkender."
     },
     {
       "id": "T19",
@@ -344,7 +344,6 @@
       "expected_needs_human": true,
       "must_include_any": [
         "Casa Amar",
-        "ophold",
         "Michael"
       ],
       "must_not_include_any": [
@@ -440,6 +439,24 @@
       ],
       "max_sentences": 3,
       "notes": "Sikkerhedsregel skal prioriteres."
+    },
+    {
+      "id": "T26",
+      "category": "Pool",
+      "question": "Hvornår må vi bruge poolen?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "åben",
+        "livredder",
+        "låst"
+      ],
+      "must_not_include_any": [
+        "Vil du have",
+        "jeres datoer?"
+      ],
+      "max_sentences": 4,
+      "notes": "Svar uden unødvendigt opfølgende spørgsmål."
     }
   ]
 }

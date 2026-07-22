@@ -464,6 +464,11 @@ SVAR:
 - ${policy?.response_policy?.links || "Undgå rå URL-adresser."}
 - Smalltalk: ${policy?.response_policy?.smalltalk || "Svar kort og varmt."}
 - Fallback: ${policy?.response_policy?.fallback || "Send videre til Michael."}
+- Dit mål er at løse gæstens behov med færrest mulige interaktioner.
+- Stil aldrig et opfølgende spørgsmål om noget, du ikke selv kan besvare bagefter.
+- Hvis præcise tider, adresse, kørselsvejledning, godkendelse, pris, ledighed eller live-oplysninger mangler, så giv et kort svar og send videre til Michael.
+- Hvis svaret allerede er tilstrækkeligt, må du ikke afslutte med et spørgsmål.
+- Når needs_human er sand, skal follow_up være null.
 - Hvis brugeren signalerer utilfredshed, siger at svaret er forkert/off, eller beder dig stoppe, skal du svare med én kort undskyldning og straks sende videre til Michael.
 - Når needs_human er sand, må svaret højst være 2 korte sætninger og må ikke indeholde et opfølgende spørgsmål.
 - Når du er usikker, vælg et kort svar og handoff frem for at forklare bredt.
@@ -552,7 +557,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "5.0-knowledge-platform",
+      version: "5.1-concierge-refinement",
       method: "POST"
     });
   }
@@ -733,7 +738,7 @@ ${JSON.stringify({
     }
 
     const answerSignalsMissingInfo =
-      /kan ikke bekræfte|har ikke præcise oplysninger|kontakt michael|skriv til michael/i.test(
+      /kan ikke bekræfte|har ikke præcise oplysninger|kontakt michael|skriv til michael|michael hjælper|har ikke adgang/i.test(
         structured.answer || ""
       );
 
@@ -742,6 +747,22 @@ ${JSON.stringify({
       structured.confidence === "low" ||
       answerSignalsMissingInfo ||
       (alreadyAsked && Boolean(structured.follow_up));
+
+    const answerNeedsConfirmation =
+      /kan bekræftes|præcise tider|præcis adresse|kørselsvejledning|godkendelse|ledighed|pris/i.test(
+        structured.answer || ""
+      );
+
+    if (needsHuman || answerNeedsConfirmation) {
+      followUp = null;
+    }
+
+    if (
+      structured.answer.endsWith("?") &&
+      (needsHuman || answerNeedsConfirmation || structured.confidence !== "high")
+    ) {
+      structured.answer = structured.answer.replace(/[?]+$/, ".");
+    }
 
     const sources = sourceLinks(relevant, bundle.conciergePolicy);
 
