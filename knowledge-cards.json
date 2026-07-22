@@ -1,8 +1,4 @@
 {
-  "version": "1.2",
-  "updated": "2026-07-22",
-  "label": "Casa Amar Knowledge Cards",
-  "description": "Canonical editorial objects used by AI, future website generation, guest guides and owner documentation.",
   "cards": [
     {
       "id": "parking-pueblo-aguila",
@@ -403,7 +399,7 @@
       "category": "Pool",
       "title": "Adgangskort til poolområdet",
       "content_type": "procedure",
-      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal. Det er kun poolen, der har begrænset åbningtid. Tennisbane, legeplas og adgang til grænsarealet er der fuld adgang til.",
       "content": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
       "keywords": [
         "adgangskort",
@@ -431,7 +427,7 @@
       "links": [],
       "card_version": 1,
       "slug": "pool-access-card",
-      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal. Det er kun poolen, der har begrænset åbningtid. Tennisbane, legeplas og adgang til grænsarealet er der fuld adgang til.",
       "body": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
       "channels": {
         "ai": true,
@@ -443,7 +439,9 @@
         "related": [
           "pool-residents-guests-only",
           "pool-opening-safety-rule",
-          "pool-family-facilities"
+          "pool-family-facilities",
+          "pool",
+          "pool-opening-governance"
         ],
         "supersedes": [],
         "superseded_by": []
@@ -474,11 +472,13 @@
         "T26"
       ],
       "test_state": {
-        "status": "unknown",
+        "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T12:05:10.573Z",
         "last_result": null
-      }
+      },
+      "_pending_tests": [],
+      "maturity": "imported"
     },
     {
       "id": "pool-opening-safety-rule",
@@ -5534,6 +5534,8 @@
       }
     }
   ],
+  "version": "1.4",
+  "updated": "2026-07-22",
   "entries": [
     {
       "id": "parking-pueblo-aguila",
@@ -5934,7 +5936,7 @@
       "category": "Pool",
       "title": "Adgangskort til poolområdet",
       "content_type": "procedure",
-      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "answer": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal. Det er kun poolen, der har begrænset åbningtid. Tennisbane, legeplas og adgang til grænsarealet er der fuld adgang til.",
       "content": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
       "keywords": [
         "adgangskort",
@@ -5962,7 +5964,7 @@
       "links": [],
       "card_version": 1,
       "slug": "pool-access-card",
-      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal.",
+      "summary": "Adgangskortet til poolområdet hænger på nøglebrættet i entréen. Det giver adgang til pool, tennisbane, legeplads og det store græsareal. Det er kun poolen, der har begrænset åbningtid. Tennisbane, legeplas og adgang til grænsarealet er der fuld adgang til.",
       "body": "Kortet skal bruges for at komme ind i det fælles pool- og aktivitetsområde.",
       "channels": {
         "ai": true,
@@ -5974,7 +5976,9 @@
         "related": [
           "pool-residents-guests-only",
           "pool-opening-safety-rule",
-          "pool-family-facilities"
+          "pool-family-facilities",
+          "pool",
+          "pool-opening-governance"
         ],
         "supersedes": [],
         "superseded_by": []
@@ -6005,11 +6009,13 @@
         "T26"
       ],
       "test_state": {
-        "status": "unknown",
+        "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T12:05:10.573Z",
         "last_result": null
-      }
+      },
+      "_pending_tests": [],
+      "maturity": "imported"
     },
     {
       "id": "pool-opening-safety-rule",
