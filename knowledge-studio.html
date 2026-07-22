@@ -23,7 +23,15 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .match-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.score{min-width:55px;text-align:center;border-radius:999px;padding:7px 9px;background:#e8f3ed;color:var(--ok);font-weight:850}
 .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.diff-box{background:var(--soft);border-radius:11px;padding:11px;min-height:92px;font-size:.84rem;line-height:1.45}
 .diff-box.before{border-left:4px solid #c9b6ae}.diff-box.after{border-left:4px solid var(--ok)}.label{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:.66rem;color:var(--muted);font-weight:800;margin-bottom:6px}
-.facts{margin:9px 0;padding-left:18px;font-size:.82rem}.candidate-line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.facts{margin:9px 0;padding-left:18px;font-size:.82rem}
+.match-reasons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.reason-chip{background:#edf4f0;color:#275a43;border-radius:999px;padding:5px 8px;font-size:.72rem;font-weight:700}
+.change-line{padding:5px 8px;border-radius:7px;margin:4px 0;font-size:.82rem}
+.change-add{background:#e8f4ec;color:#235d3e}
+.change-old{background:#f4ece9;color:#70483d;text-decoration:line-through}
+.relation-list{display:grid;gap:6px;margin-top:8px}
+.relation{padding:8px 10px;border-radius:9px;background:var(--soft);font-size:.79rem}
+.test-summary{padding:10px;border-radius:10px;background:#eef4f1;margin-top:10px;font-size:.82rem}.candidate-line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
 .editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}.test-list{display:flex;flex-wrap:wrap;gap:7px}.test-chip{border:1px solid var(--line);border-radius:999px;padding:6px 9px;font-size:.75rem}
 .statusline{font-size:.8rem;color:var(--muted);margin:8px 0}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.hidden{display:none}
 @media(max-width:900px){main{padding:14px}.layout{grid-template-columns:1fr}.editor-grid,.filters,.diff-grid{grid-template-columns:1fr}}
@@ -127,23 +135,89 @@ function createDraft(s){
  };
  fillEditor(pendingNew);
 }
+
+function words(value){
+ return String(value||'').toLowerCase().replace(/[.,;:!?()[\]"]/g,' ').split(/\s+/).filter(w=>w.length>2);
+}
+function compactDiff(before,after){
+ const beforeSent=String(before||'').split(/(?<=[.!?])\s+/).filter(Boolean);
+ const afterSent=String(after||'').split(/(?<=[.!?])\s+/).filter(Boolean);
+ const beforeSet=new Set(beforeSent.map(s=>s.trim().toLowerCase()));
+ const afterSet=new Set(afterSent.map(s=>s.trim().toLowerCase()));
+ const removed=beforeSent.filter(s=>!afterSet.has(s.trim().toLowerCase()));
+ const added=afterSent.filter(s=>!beforeSet.has(s.trim().toLowerCase()));
+ if(!removed.length&&!added.length){
+   const oldWords=new Set(words(before)),newWords=words(after);
+   const addedWords=[...new Set(newWords.filter(w=>!oldWords.has(w)))];
+   return {removed:[],added:addedWords.length?[`Tilføjet: ${addedWords.join(', ')}`]:[after]};
+ }
+ return {removed,added};
+}
+function reasonChips(reason){
+ return String(reason||'').split('·').map(x=>x.trim()).filter(Boolean).map(x=>`<span class="reason-chip">✓ ${esc(x)}</span>`).join('');
+}
 function renderAnalysis(result){
  lastResult=result;
- const candidates=(result.candidates||[]).map(c=>`<div class="candidate-line"><div><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.reason||'')}</div></div><span class="score">${c.match_score}%</span></div>`).join('');
- const matches=(result.matches||[]).map((m,i)=>`<article class="match ${i===0?'recommended':''}">
- <div class="match-head"><div><h3>${esc(m.title)}</h3><div class="meta">${esc(m.action)} · ${esc(m.category)} · ${esc(m.reason)}</div></div><span class="score">${m.match_score}%</span></div>
- <div class="diff-grid"><div class="diff-box before"><span class="label">Før</span>${esc(m.before_summary||'Nyt objekt')}</div><div class="diff-box after"><span class="label">Efter</span>${esc(m.after_summary)}</div></div>
- ${(m.changed_facts||[]).length?`<ul class="facts">${m.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`:''}
- <div class="actions"><button class="primary" data-use="${i}">${m.action==='create'?'Opret som kladde':'Brug dette forslag'}</button><button class="secondary" data-select="${esc(m.card_id||'')}">Åbn objekt</button></div>
- </article>`).join('');
+ const candidates=(result.candidates||[]).map(c=>`<div class="candidate-line">
+   <div><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)}</div><div class="match-reasons">${reasonChips(c.reason)}</div></div>
+   <span class="score">${c.match_score}%</span>
+ </div>`).join('');
+
+ const matches=(result.matches||[]).map((m,i)=>{
+   const diff=compactDiff(m.before_summary,m.after_summary);
+   const removed=diff.removed.map(x=>`<div class="change-line change-old">− ${esc(x)}</div>`).join('');
+   const added=diff.added.map(x=>`<div class="change-line change-add">+ ${esc(x)}</div>`).join('');
+   const relations=(m.suggested_relations||[]).map(r=>`<div class="relation"><strong>${esc(r.title)}</strong><br><span class="meta">${esc(r.reason)}</span></div>`).join('');
+   const suggestedTests=(m.suggested_tests||[]);
+   return `<article class="match ${i===0?'recommended':''}">
+     <div class="match-head">
+       <div>
+         <h3>${esc(m.title)}</h3>
+         <div class="meta">${esc(m.action)} · ${esc(m.category)}</div>
+         <div class="match-reasons">${reasonChips(m.reason)}</div>
+       </div>
+       <span class="score">${m.match_score}%</span>
+     </div>
+
+     <div class="diff-grid">
+       <div class="diff-box before"><span class="label">Fjernes eller erstattes</span>${removed||'<span class="meta">Intet eksisterende indhold fjernes.</span>'}</div>
+       <div class="diff-box after"><span class="label">Tilføjes</span>${added||'<span class="meta">Ingen tydelig tekstændring fundet.</span>'}</div>
+     </div>
+
+     ${(m.changed_facts||[]).length?`<ul class="facts">${m.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`:''}
+
+     ${relations?`<div class="section"><h3>Foreslåede relationer</h3><div class="relation-list">${relations}</div></div>`:''}
+
+     <div class="test-summary">
+       <strong>Test efter godkendelse:</strong>
+       ${suggestedTests.length?suggestedTests.map(t=>`<span class="test-chip">${esc(t)}</span>`).join(' '):' Objektets eksisterende relevante tests vælges automatisk.'}
+     </div>
+
+     <div class="actions" style="margin-top:10px">
+       <button class="primary" data-use="${i}">${m.action==='create'?'Opret som kladde':'Brug dette forslag'}</button>
+       <button class="secondary" data-select="${esc(m.card_id||'')}">Åbn objekt</button>
+     </div>
+   </article>`;
+ }).join('');
+
  q('#analysis').innerHTML=`<h2>AI-analyse</h2><p>${esc(result.summary)}</p>
  <p class="meta">Anbefalet handling: <strong>${esc(result.recommended_action)}</strong></p>
  ${matches||'<p class="notice">AI fandt ikke et sikkert forslag. Gennemgå kandidaterne.</p>'}
- <div class="section"><h3>Automatisk fundne kandidater</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
+ <div class="section"><h3>Hvorfor disse objekter?</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
+
  q('#analysis').querySelectorAll('[data-use]').forEach(btn=>btn.addEventListener('click',()=>{
    const m=result.matches[Number(btn.dataset.use)];
-   if(m.action==='create'||!m.card_id){createDraft(m)}
-   else{const target=getCard(m.card_id);if(target){openCard(target.id);q('#editSummary').value=m.after_summary}}
+   if(m.action==='create'||!m.card_id){
+     createDraft(m);
+   }else{
+     const target=getCard(m.card_id);
+     if(target){
+       openCard(target.id);
+       q('#editSummary').value=m.after_summary;
+       target._pending_relations=m.suggested_relations||[];
+       target._pending_tests=m.suggested_tests||[];
+     }
+   }
    q('#editor').scrollIntoView({behavior:'smooth',block:'start'});
  }));
  q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.select)openCard(btn.dataset.select)}));
@@ -159,6 +233,15 @@ function saveEdit(){
  card.visibility=q('#editVisibility').value;card.maturity=q('#editMaturity').value;card.updated=new Date().toISOString().slice(0,10);
  card.channels={ai:q('#chAi').checked,website:q('#chWeb').checked,guest_guide:q('#chGuest').checked,owner_guide:q('#chOwner').checked};
  card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
+ if(card._pending_relations?.length){
+   card.relations=card.relations||{related:[],supersedes:[],superseded_by:[]};
+   card.relations.related=[...new Set([...(card.relations.related||[]),...card._pending_relations.map(r=>r.card_id).filter(Boolean)])];
+   delete card._pending_relations;
+ }
+ if(card._pending_tests?.length){
+   card.tests=[...new Set([...(card.tests||[]),...card._pending_tests])];
+   delete card._pending_tests;
+ }
  if(!activeId){data.cards.push(card);activeId=card.id;pendingNew=null}
  changes.push({id:`change-${Date.now()}`,card_id:card.id,changed_at:new Date().toISOString(),before,after:JSON.parse(JSON.stringify(card)),status:'approved_local',source_input:q('#inputText').value.trim()});
  localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));

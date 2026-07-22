@@ -1,16 +1,12 @@
-feat(editor): add automatic object matching and before/after AI editing
+feat(editor): improve explainability, compact diffs, relations and tests
 
 Summary
-- Upgraded Knowledge Studio to AI Editor 2.0.
-- Added server-side ranking across the full active Knowledge Base.
-- Combines deterministic keyword/concept ranking with OpenAI editorial judgement.
-- Existing Knowledge Objects are preferred over creating duplicates.
-- Shows ranked candidate objects with match scores and reasons.
-- Shows a clear before/after comparison and changed facts.
-- Allows Michael to apply a suggestion, edit it, approve it and mark it needs_test.
-- Supports new-object drafts only when no good existing match is found.
-- Keeps targeted regression testing for the changed object.
-- Retains safe local storage and GitHub export workflow.
+- Added clear explanations for why AI selected each Knowledge Object.
+- Replaced full-text before/after repetition with compact changed-content blocks.
+- Added AI-proposed relationships to related Knowledge Objects.
+- Added explicit proposed regression tests to the review screen.
+- Approved relation and test suggestions are merged into the Knowledge Object.
+- Preserves the needs_test status until targeted tests are run.
 
 Files changed
 - index.html
@@ -19,4 +15,4 @@ Files changed
 - knowledge-registry.json
 
 Why
-Michael should only describe new knowledge. The platform must find the correct editorial home, prevent duplicate objects and make every proposed change transparent before approval.
+The AI Editor must be fast to review and easy to trust. Michael should immediately understand why an object was selected, exactly what changes, what else is affected and which tests should run.

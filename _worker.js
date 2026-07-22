@@ -729,6 +729,9 @@ Din opgave:
 7. Gæt aldrig indholdet bag et link. Linkbaserede oplysninger kræver verifikation.
 8. AI foreslår; Michael godkender.
 9. Svar kort og praktisk på dansk.
+10. Begræns før/efter til den relevante del af objektet.
+11. Foreslå relationer til højst 5 eksisterende objekter.
+12. Returnér de tests, som bør køres efter ændringen.
 
 Score:
 - 90-99: meget sikkert match
@@ -785,12 +788,30 @@ ${JSON.stringify(candidateContext)}`
                     },
                     requires_verification: { type: "boolean" },
                     website_candidate: { type: "boolean" },
-                    tests_needed: { type: "boolean" }
+                    tests_needed: { type: "boolean" },
+                    suggested_relations: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          card_id: { type: "string" },
+                          title: { type: "string" },
+                          reason: { type: "string" }
+                        },
+                        required: ["card_id", "title", "reason"]
+                      }
+                    },
+                    suggested_tests: {
+                      type: "array",
+                      items: { type: "string" }
+                    }
                   },
                   required: [
                     "card_id", "title", "category", "match_score", "reason",
                     "action", "before_summary", "after_summary", "changed_facts",
-                    "requires_verification", "website_candidate", "tests_needed"
+                    "requires_verification", "website_candidate", "tests_needed",
+                    "suggested_relations", "suggested_tests"
                   ]
                 }
               }
@@ -845,7 +866,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "7.1-ai-editor",
+      version: "7.2-ai-editor-polish",
       method: "POST"
     });
   }
