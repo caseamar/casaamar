@@ -9,13 +9,24 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
 main{max-width:1320px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}h1{margin:0 0 5px}.lead{color:var(--muted);max-width:900px;line-height:1.5}
 .topbar,.actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.topbar{margin:18px 0}
-button,a.button{border:0;border-radius:11px;padding:10px 14px;font-weight:750;text-decoration:none;cursor:pointer;font:inherit}
+button,a.button{border:0;border-radius:11px;padding:10px 14px;font-weight:750;text-decoration:none;cursor:pointer;font:inherit;transition:transform .12s ease,background .18s ease,color .18s ease,opacity .18s ease,box-shadow .18s ease}
+button:hover,a.button:hover{transform:translateY(-1px)}
+button:active,a.button:active{transform:translateY(0) scale(.98)}
+button:disabled{cursor:wait;opacity:.72;transform:none}
+button.is-loading{position:relative;padding-left:36px}
+button.is-loading::before{content:'';position:absolute;left:13px;top:50%;width:14px;height:14px;margin-top:-7px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+button.is-success{background:#2b7450!important;color:#fff!important;border-color:#2b7450!important}
+button.is-error{background:#a83b31!important;color:#fff!important;border-color:#a83b31!important}
+@keyframes spin{to{transform:rotate(360deg)}}
 .primary{background:var(--clay);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid #d6cec3}
 .layout{display:grid;grid-template-columns:.76fr 1.24fr;gap:15px}.panel{background:#fff;border-radius:17px;padding:16px;min-width:0}
 input,textarea,select{width:100%;font:inherit;padding:10px 11px;border:1px solid #d6cec3;border-radius:10px;background:#fff;color:var(--ink)}
 textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-columns:1fr 180px;gap:8px;margin-bottom:10px}
 .list{max-height:760px;overflow:auto;border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:auto 1fr auto;gap:9px;padding:11px 2px;border-bottom:1px solid var(--line);align-items:start}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:9px;padding:11px 6px;border-bottom:1px solid var(--line);align-items:start;border-radius:9px}
+.row.active{background:#edf4f0;box-shadow:inset 3px 0 0 var(--ok)}
+#editor.flash{animation:editorFlash 1.2s ease}
+@keyframes editorFlash{0%{box-shadow:0 0 0 4px rgba(43,116,80,.25)}100%{box-shadow:none}}
 .row input{width:auto;margin-top:3px}.row strong{display:block;font-size:.9rem}.meta{color:var(--muted);font-size:.73rem;margin-top:3px}
 .badge{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:.67rem;font-weight:800;background:#eee9e1}.needs{background:#fff0ca;color:#795400}.tested{background:#dff2e7;color:var(--ok)}
 .section{border-top:1px solid var(--line);margin-top:16px;padding-top:16px}.notice{padding:10px;border-radius:10px;background:#fff7e1;color:#725400;font-size:.8rem}
@@ -33,7 +44,21 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .relation{padding:8px 10px;border-radius:9px;background:var(--soft);font-size:.79rem}
 .test-summary{padding:10px;border-radius:10px;background:#eef4f1;margin-top:10px;font-size:.82rem}.candidate-line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
 .editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}.test-list{display:flex;flex-wrap:wrap;gap:7px}.test-chip{border:1px solid var(--line);border-radius:999px;padding:6px 9px;font-size:.75rem}
-.statusline{font-size:.8rem;color:var(--muted);margin:8px 0}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.hidden{display:none}
+.statusline{font-size:.8rem;color:var(--muted);margin:8px 0}
+.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}
+.hidden{display:none}
+.field-help{margin:5px 0 8px;color:var(--muted);font-size:.78rem;line-height:1.4}
+.final-version{background:#f5f8f6;border:1px solid #d9e7df;border-left:5px solid var(--ok);border-radius:12px;padding:13px;margin-top:10px;line-height:1.5;font-size:.88rem;white-space:pre-wrap}
+.applied-banner{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e7f4ec;color:#205c3d;padding:10px 12px;border-radius:10px;margin-top:10px;font-weight:750}
+.match.applied{opacity:.72;background:#f7f7f5}
+.match.applied .match-body{display:none}
+.match.applied .applied-banner{display:flex}
+.match:not(.applied) .applied-banner{display:none}
+details.change-details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted);font-size:.8rem}
+.session-status{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.session-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.75rem}
+.session-pill strong{color:var(--ink)}
 .workflow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
 .workflow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.76rem;color:var(--muted)}
 .workflow strong{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:50%;background:var(--ink);color:#fff;margin-right:5px}
@@ -48,15 +73,15 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 <p class="lead">Skriv ny viden naturligt. AI søger automatisk i hele Knowledge Base, foreslår det bedste eksisterende objekt, viser før/efter og opretter kun nyt, når der ikke findes et godt match.</p>
 <div class="workflow">
   <span><strong>1</strong> Beskriv ændringen</span>
-  <span><strong>2</strong> Godkend</span>
-  <span><strong>3</strong> Test</span>
-  <span><strong>4</strong> Gem GitHub-fil</span>
+  <span><strong>2</strong> Brug forslag og gem</span>
+  <span><strong>3</strong> Fortsæt med flere ændringer</span>
+  <span><strong>4</strong> Lav én samlet GitHub-fil</span>
 </div>
 <div class="topbar">
 <button class="primary" id="newInput">Nyt input</button>
 <button class="secondary" id="selectNeedsTest">Vælg ikke testet</button>
 <button class="secondary" id="runSelectedTests">Test valgte objekter</button>
-<button class="secondary" id="saveGithubFile">Gem GitHub-fil</button>
+<button class="secondary" id="saveGithubFile">Lav samlet GitHub-fil <span id="changeCountTop"></span></button>
 <button class="secondary" id="exportChanges">Download ændringslog</button>
 <a class="button secondary" href="/knowledge-center.html">Knowledge Center</a>
 <a class="button secondary" href="/ai-test-runner.html">Fuld test</a>
@@ -77,6 +102,11 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 </div>
 <div class="notice" style="margin-top:10px">Du behøver ikke vælge et objekt først. Manuel markering bruges kun som ekstra signal. Links behandles som referencer og kræver faktatjek.</div>
 
+<div class="session-status">
+<span class="session-pill">Lokale ændringer: <strong id="sessionChanges">0</strong></span>
+<span class="session-pill">Ikke testet: <strong id="sessionUntested">0</strong></span>
+<span class="session-pill">Eksport: <strong id="sessionExport">Ikke klar</strong></span>
+</div>
 <div id="analysis" class="section"><p class="meta">AI-resultatet vises her.</p></div>
 
 <div id="editor" class="section">
@@ -85,7 +115,11 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 <div class="editor-grid">
 <div><label>Titel</label><input id="editTitle"></div>
 <div><label>Kategori</label><input id="editCategory"></div>
-<div class="full"><label>Kort svar</label><textarea id="editSummary"></textarea></div>
+<div class="full">
+<label>Viden om emnet</label>
+<p class="field-help">Skriv gerne detaljeret. Dette er kontekst til AI’en – ikke et færdigt svar. AI’en udvælger selv de relevante oplysninger, når en gæst spørger.</p>
+<textarea id="editSummary"></textarea>
+</div>
 <div><label>Synlighed</label><select id="editVisibility"><option>internal</option><option>public</option><option>guest_only</option></select></div>
 <div><label>Modenhed</label><select id="editMaturity"><option>imported</option><option>verified</option><option>draft</option><option>needs_review</option></select></div>
 <div class="full"><label>Kanaler</label><div class="actions">
@@ -96,8 +130,8 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 </div></div>
 </div>
 <div class="actions" style="margin-top:10px">
-<button class="primary" id="saveEdit">Godkend ændring</button>
-<button class="secondary" id="runActiveTests">Godkend og test</button>
+<button class="primary" id="saveEdit">Gem ændring</button>
+<button class="secondary" id="runActiveTests">Gem og test nu</button>
 </div>
 <div id="relatedTests" class="section"><h3>Relevante tests</h3><div class="test-list"></div></div>
 </div>
@@ -107,6 +141,18 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 <script>
 let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,lastResult=null;
 const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
+function updateChangeCount(){
+ const count=changes.length;
+ const top=document.querySelector('#changeCountTop');
+ if(top)top.textContent=count?`(${count})`:'';
+ const sessionChanges=document.querySelector('#sessionChanges');
+ const sessionUntested=document.querySelector('#sessionUntested');
+ const sessionExport=document.querySelector('#sessionExport');
+ if(sessionChanges)sessionChanges.textContent=count;
+ if(sessionUntested)sessionUntested.textContent=count;
+ if(sessionExport)sessionExport.textContent=count?'Klar senere':'Ikke klar';
+}
+
 const q=s=>document.querySelector(s);
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function download(name,obj){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
@@ -122,21 +168,21 @@ async function saveGithubFile(){
      const writable=await handle.createWritable();
      await writable.write(contents);
      await writable.close();
-     alert('Filen knowledge-cards.json er gemt. Upload den nu til GitHub og overskriv den eksisterende fil.');
+     alert(`Den samlede fil knowledge-cards.json er gemt med ${changes.length} lokale ændringer. Upload den til GitHub og overskriv den eksisterende fil.`);
      return;
    }
  }catch(error){
    if(error?.name==='AbortError')return;
  }
  download('knowledge-cards.json',payload);
- alert('Filen er downloadet. Hvis Windows tilføjer (1) eller (2), skal den omdøbes til knowledge-cards.json før upload til GitHub.');
+ alert(`Den samlede fil er downloadet med ${changes.length} lokale ændringer. Hvis Windows tilføjer (1) eller (2), omdøb den til knowledge-cards.json før upload til GitHub.`);
 }
 function getCard(id){return data.cards.find(c=>c.id===id)}
 function slugify(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
 function renderList(){
  const term=q('#search').value.toLowerCase(),cat=q('#category').value;
  const visible=data.cards.filter(c=>(!cat||c.category===cat)&&(!term||[c.title,c.summary,...(c.keywords||[])].join(' ').toLowerCase().includes(term)));
- q('#objectList').innerHTML=visible.map(c=>`<div class="row">
+ q('#objectList').innerHTML=visible.map(c=>`<div class="row ${activeId===c.id?'active':''}">
  <input type="checkbox" data-id="${esc(c.id)}" ${selected.has(c.id)?'checked':''}>
  <div data-open="${esc(c.id)}" style="cursor:pointer"><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.id)}</div></div>
  <span class="badge ${c.test_state?.status==='needs_test'?'needs':'tested'}">${c.test_state?.status==='needs_test'?'Ikke testet':'OK'}</span>
@@ -151,7 +197,18 @@ function fillEditor(card){
  q('#chAi').checked=card.channels?.ai!==false;q('#chWeb').checked=!!card.channels?.website;q('#chGuest').checked=card.channels?.guest_guide!==false;q('#chOwner').checked=card.channels?.owner_guide!==false;
  const ids=card.tests||[];q('#relatedTests .test-list').innerHTML=ids.map(id=>`<span class="test-chip">${esc(id)}</span>`).join('')||'<span class="meta">Ingen tests knyttet endnu.</span>';
 }
-function openCard(id){activeId=id;pendingNew=null;const c=getCard(id);if(c)fillEditor(c)}
+function openCard(id){
+ activeId=id;pendingNew=null;
+ const c=getCard(id);
+ if(!c)return;
+ fillEditor(c);
+ renderList();
+ const editor=q('#editor');
+ editor.classList.remove('flash');
+ void editor.offsetWidth;
+ editor.classList.add('flash');
+ editor.scrollIntoView({behavior:'smooth',block:'start'});
+}
 function createDraft(s){
  activeId=null;
  pendingNew={
@@ -202,33 +259,46 @@ function renderAnalysis(result){
    const added=diff.added.map(x=>`<div class="change-line change-add">+ ${esc(x)}</div>`).join('');
    const relations=(m.suggested_relations||[]).map(r=>`<div class="relation"><strong>${esc(r.title)}</strong><br><span class="meta">${esc(r.reason)}</span></div>`).join('');
    const suggestedTests=(m.suggested_tests||[]);
-   return `<article class="match ${i===0?'recommended':''}">
-     <div class="match-head">
-       <div>
-         <h3>${esc(m.title)}</h3>
-         <div class="meta">${esc(m.action)} · ${esc(m.category)}</div>
-         <div class="match-reasons">${reasonChips(m.reason)}</div>
+   return `<article class="match ${i===0?'recommended':''}" data-match-card="${i}">
+     <div class="match-body">
+       <div class="match-head">
+         <div>
+           <h3>${esc(m.title)}</h3>
+           <div class="meta">${esc(m.action)} · ${esc(m.category)}</div>
+           <div class="match-reasons">${reasonChips(m.reason)}</div>
+         </div>
+         <span class="score">${m.match_score}%</span>
        </div>
-       <span class="score">${m.match_score}%</span>
+
+       <h3 style="margin-bottom:6px">Sådan kommer objektet til at se ud</h3>
+       <div class="final-version">${esc(m.after_summary)}</div>
+
+       ${(m.changed_facts||[]).length?`<div class="section"><h3>Nye eller ændrede oplysninger</h3><ul class="facts">${m.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`:''}
+
+       ${relations?`<div class="section"><h3>Foreslåede relationer</h3><div class="relation-list">${relations}</div></div>`:''}
+
+       <div class="test-summary">
+         <strong>Test efter gemning:</strong>
+         ${suggestedTests.length?suggestedTests.map(t=>`<span class="test-chip">${esc(t)}</span>`).join(' '):' Objektets relevante tests vælges automatisk.'}
+       </div>
+
+       <details class="change-details">
+         <summary>Se tekniske ændringer</summary>
+         <div class="diff-grid">
+           <div class="diff-box before"><span class="label">Eksisterende formuleringer der omskrives</span>${removed||'<span class="meta">Ingen eksisterende oplysninger fjernes.</span>'}</div>
+           <div class="diff-box after"><span class="label">Nye formuleringer</span>${added||'<span class="meta">Ingen tydelig tekstændring fundet.</span>'}</div>
+         </div>
+       </details>
+
+       <div class="actions" style="margin-top:10px">
+         <button class="primary" data-use="${i}">${m.action==='create'?'Opret som kladde':'Brug dette forslag'}</button>
+         <button class="secondary" data-select="${esc(m.card_id||'')}">Redigér objekt</button>
+       </div>
      </div>
 
-     <div class="diff-grid">
-       <div class="diff-box before"><span class="label">Fjernes eller erstattes</span>${removed||'<span class="meta">Intet eksisterende indhold fjernes.</span>'}</div>
-       <div class="diff-box after"><span class="label">Tilføjes</span>${added||'<span class="meta">Ingen tydelig tekstændring fundet.</span>'}</div>
-     </div>
-
-     ${(m.changed_facts||[]).length?`<ul class="facts">${m.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`:''}
-
-     ${relations?`<div class="section"><h3>Foreslåede relationer</h3><div class="relation-list">${relations}</div></div>`:''}
-
-     <div class="test-summary">
-       <strong>Test efter godkendelse:</strong>
-       ${suggestedTests.length?suggestedTests.map(t=>`<span class="test-chip">${esc(t)}</span>`).join(' '):' Objektets eksisterende relevante tests vælges automatisk.'}
-     </div>
-
-     <div class="actions" style="margin-top:10px">
-       <button class="primary" data-use="${i}">${m.action==='create'?'Opret som kladde':'Brug dette forslag'}</button>
-       <button class="secondary" data-select="${esc(m.card_id||'')}">Åbn objekt</button>
+     <div class="applied-banner">
+       <span>✓ Forslaget er overført til editoren</span>
+       <button class="secondary" data-reopen="${i}">Vis igen</button>
      </div>
    </article>`;
  }).join('');
@@ -239,7 +309,8 @@ function renderAnalysis(result){
  <div class="section"><h3>Hvorfor disse objekter?</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
 
  q('#analysis').querySelectorAll('[data-use]').forEach(btn=>btn.addEventListener('click',()=>{
-   const m=result.matches[Number(btn.dataset.use)];
+   const index=Number(btn.dataset.use);
+   const m=result.matches[index];
    if(m.action==='create'||!m.card_id){
      createDraft(m);
    }else{
@@ -251,9 +322,23 @@ function renderAnalysis(result){
        target._pending_tests=m.suggested_tests||[];
      }
    }
+   const card=q(`[data-match-card="${index}"]`);
+   if(card)card.classList.add('applied');
    q('#editor').scrollIntoView({behavior:'smooth',block:'start'});
+   setTimeout(()=>q('#editSummary').focus(),350);
  }));
- q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.select)openCard(btn.dataset.select)}));
+
+ q('#analysis').querySelectorAll('[data-reopen]').forEach(btn=>btn.addEventListener('click',()=>{
+   const card=q(`[data-match-card="${btn.dataset.reopen}"]`);
+   if(card)card.classList.remove('applied');
+ }));
+
+ q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{
+   if(!btn.dataset.select)return;
+   btn.classList.add('is-success');
+   btn.textContent='Objekt åbnet';
+   openCard(btn.dataset.select);
+ }));
 }
 function saveEdit(){
  let card,before;
@@ -279,14 +364,21 @@ function saveEdit(){
  changes.push({id:`change-${Date.now()}`,card_id:card.id,changed_at:new Date().toISOString(),before,after:JSON.parse(JSON.stringify(card)),status:'approved_local',source_input:q('#inputText').value.trim()});
  localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
  q('#saveMessage').className='success';
- q('#saveMessage').innerHTML=`<strong>Ændringen er godkendt.</strong>
- Den er gemt i denne browser og markeret som ikke testet.
+ const pendingCount=changes.length;
+ q('#saveMessage').innerHTML=`<strong>Ændringen er gemt lokalt.</strong>
+ Du kan fortsætte med næste emne. ${pendingCount} ændring${pendingCount===1?'':'er'} ligger nu lokalt og kommer med i den samlede GitHub-fil senere.
  <div class="next-actions">
+   <button class="secondary" id="nextInput">Fortsæt med nyt input</button>
    <button class="secondary" id="nextTest">Test dette objekt</button>
-   <button class="primary" id="nextGithub">Gem GitHub-fil</button>
  </div>`;
+ q('#nextInput').addEventListener('click',()=>{
+   q('#inputText').value='';
+   q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
+   q('#inputText').focus();
+   window.scrollTo({top:0,behavior:'smooth'});
+ });
  q('#nextTest').addEventListener('click',()=>runTests([card.id]));
- q('#nextGithub').addEventListener('click',saveGithubFile);
+ updateChangeCount();
  selected.add(card.id);renderList();fillEditor(card);
 }
 async function suggest(){
@@ -295,7 +387,16 @@ async function suggest(){
  try{
    const r=await fetch('/api/knowledge-suggest',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({input,selected_ids:[...selected]})});
    const result=await r.json();if(!r.ok)throw new Error(result.detail||result.error);renderAnalysis(result);
- }catch(e){q('#analysis').innerHTML=`<p class="notice">${esc(e.message)}</p>`}finally{q('#suggest').disabled=false}
+ }catch(e){
+   q('#analysis').innerHTML=`<p class="notice">${esc(e.message)}</p>`;
+   q('#suggest').classList.add('is-error');
+   q('#suggest').textContent='Prøv igen';
+   setTimeout(()=>q('#suggest').classList.remove('is-error'),1600);
+ }finally{
+   q('#suggest').disabled=false;
+   q('#suggest').classList.remove('is-loading');
+   if(!q('#suggest').classList.contains('is-error'))q('#suggest').textContent=q('#suggest').dataset.originalText||'Find det rigtige objekt';
+ }
 }
 function testsFor(ids){return [...new Set(ids.flatMap(id=>getCard(id)?.tests||[]))]}
 function runTests(ids){
@@ -305,10 +406,17 @@ function runTests(ids){
 Promise.all([fetch('/knowledge-cards.json').then(r=>r.json()),fetch('/ai-regression-tests.json').then(r=>r.json())]).then(([cardsData,testData])=>{
  data.cards=cardsData.cards||cardsData.entries||[];tests=testData;
  const cats=[...new Set(data.cards.map(c=>c.category))].sort();q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
- renderList();if(data.cards[0])openCard(data.cards[0].id);
+ updateChangeCount();renderList();if(data.cards[0])openCard(data.cards[0].id);
 });
 q('#search').addEventListener('input',renderList);q('#category').addEventListener('change',renderList);
-q('#suggest').addEventListener('click',suggest);q('#saveEdit').addEventListener('click',saveEdit);
+q('#suggest').addEventListener('click',suggest);q('#saveEdit').addEventListener('click',()=>{
+ const btn=q('#saveEdit');
+ btn.disabled=true;
+ saveEdit();
+ btn.classList.add('is-success');
+ btn.textContent='Gemt';
+ setTimeout(()=>{btn.disabled=false;btn.classList.remove('is-success');btn.textContent='Gem ændring'},1200);
+});
 q('#clear').addEventListener('click',()=>{q('#inputText').value='';q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>'});
 q('#newInput').addEventListener('click',()=>{q('#inputText').value='';q('#inputText').focus()});
 q('#selectNeedsTest').addEventListener('click',()=>{data.cards.filter(c=>c.test_state?.status==='needs_test').forEach(c=>selected.add(c.id));renderList()});
