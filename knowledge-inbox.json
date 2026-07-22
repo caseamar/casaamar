@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "description": "Staging area for notes, keywords, links and content that has not yet been reviewed.",
+  "workflow": [
+    "capture",
+    "review",
+    "structure",
+    "approve",
+    "publish"
+  ],
+  "items": []
+}

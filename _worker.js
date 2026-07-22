@@ -56,44 +56,91 @@ async function assetJson(env, request, pathname) {
 async function loadBundle(env, request) {
   if (cachedBundle && Date.now() - cachedAt < CACHE_TTL_MS) return cachedBundle;
 
-  const [core, rincon, conciergePolicy, conciergeIntents, decisionPolicies] = await Promise.all([
-    assetJson(env, request, "/casa-amar-knowledge.json"),
-    assetJson(env, request, "/rincon-rent-booking.json"),
-    assetJson(env, request, "/concierge-policy.json"),
-    assetJson(env, request, "/concierge-intents.json"),
-    assetJson(env, request, "/decision-policies.json")
-  ]);
+  const registry = await assetJson(env, request, "/knowledge-registry.json");
+  const datasets = new Map();
+  const loadErrors = [];
 
-  const ownerEntries = (core.entries || []).map((entry) => ({
-    ...entry,
-    source: entry.source || {
-      id: "owner-core",
-      label: "Casa Amar",
-      type: "owner_core",
-      priority: 100
+  for (const descriptor of registry.datasets || []) {
+    if (descriptor.status !== "active" && descriptor.role !== "inbox") continue;
+    try {
+      const data = await assetJson(env, request, descriptor.path);
+      datasets.set(descriptor.id, { descriptor, data });
+    } catch (error) {
+      loadErrors.push({
+        id: descriptor.id,
+        path: descriptor.path,
+        error: String(error?.message || error)
+      });
     }
-  }));
+  }
 
-  const externalEntries = (rincon.entries || []).map((entry) => ({
-    ...entry,
-    source: rincon.source || {
-      id: "rincon-rent-booking",
-      label: "Rincón Rent",
-      type: "booking_agency",
-      priority: 60
+  const knowledgeEntries = [];
+  const loadedSources = [];
+
+  for (const { descriptor, data } of datasets.values()) {
+    if (descriptor.role !== "knowledge") continue;
+
+    if (descriptor.format === "entry_collection") {
+      for (const entry of data.entries || []) {
+        knowledgeEntries.push({
+          ...entry,
+          visibility: entry.visibility || descriptor.visibility,
+          trust: Number(entry.trust ?? descriptor.trust ?? 50),
+          source: entry.source || descriptor.source_defaults || {
+            id: descriptor.id,
+            label: descriptor.label,
+            type: "owner_core",
+            priority: descriptor.trust || 50
+          }
+        });
+      }
+      loadedSources.push({
+        id: descriptor.id,
+        label: descriptor.label,
+        priority: descriptor.trust
+      });
     }
-  }));
+
+    if (descriptor.format === "source_snapshot") {
+      for (const entry of data.entries || []) {
+        knowledgeEntries.push({
+          ...entry,
+          visibility: entry.visibility || descriptor.visibility,
+          trust: Number(entry.trust ?? descriptor.trust ?? 50),
+          source: data.source || {
+            id: descriptor.id,
+            label: descriptor.label,
+            type: "external_web",
+            priority: descriptor.trust || 50
+          }
+        });
+      }
+      loadedSources.push(data.source || {
+        id: descriptor.id,
+        label: descriptor.label,
+        priority: descriptor.trust
+      });
+    }
+  }
+
+  const policyData = datasets.get("concierge-policy")?.data;
+  const intentData = datasets.get("concierge-intents")?.data;
+  const decisionData = datasets.get("decision-policies")?.data;
+  const testData = datasets.get("regression-tests")?.data;
+  const inboxData = datasets.get("knowledge-inbox")?.data;
 
   cachedBundle = {
-    version: core.version || "unknown",
-    entries: [...ownerEntries, ...externalEntries],
-    sources: [
-      { id: "owner-core", label: "Casa Amar", priority: 100 },
-      rincon.source
-    ].filter(Boolean),
-    conciergePolicy,
-    conciergeIntents,
-    decisionPolicies
+    version: registry.version || "unknown",
+    registry,
+    entries: knowledgeEntries,
+    sources: loadedSources.filter(Boolean),
+    conciergePolicy: policyData,
+    conciergeIntents: intentData,
+    decisionPolicies: decisionData,
+    regressionTests: testData,
+    knowledgeInbox: inboxData,
+    loadErrors,
+    loadedAt: new Date().toISOString()
   };
   cachedAt = Date.now();
   return cachedBundle;
@@ -457,12 +504,55 @@ function sourceLinks(entries, config) {
   return links.slice(0, 2);
 }
 
+
+async function handleStatus(request, env) {
+  try {
+    const bundle = await loadBundle(env, request);
+    const roleCounts = {};
+
+    for (const dataset of bundle.registry?.datasets || []) {
+      roleCounts[dataset.role] = (roleCounts[dataset.role] || 0) + 1;
+    }
+
+    return json({
+      ok: bundle.loadErrors.length === 0,
+      service: "Casa Amar Knowledge Platform",
+      version: "5.0",
+      loadedAt: bundle.loadedAt,
+      registryVersion: bundle.registry?.version || "unknown",
+      datasets: (bundle.registry?.datasets || []).map((item) => ({
+        id: item.id,
+        label: item.label,
+        role: item.role,
+        status: item.status,
+        trust: item.trust,
+        visibility: item.visibility,
+        loaded: !bundle.loadErrors.some((error) => error.id === item.id)
+      })),
+      counts: {
+        knowledgeEntries: bundle.entries.length,
+        sources: bundle.sources.length,
+        tests: bundle.regressionTests?.tests?.length || 0,
+        inbox: bundle.knowledgeInbox?.items?.length || 0,
+        roles: roleCounts
+      },
+      errors: bundle.loadErrors
+    });
+  } catch (error) {
+    return json({
+      ok: false,
+      service: "Casa Amar Knowledge Platform",
+      error: String(error?.message || error)
+    }, 500);
+  }
+}
+
 async function handleChat(request, env) {
   if (request.method === "GET") {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "4.0-policy-engine",
+      version: "5.0-knowledge-platform",
       method: "POST"
     });
   }
@@ -683,6 +773,10 @@ export default {
 
     if (url.pathname === "/api/chat") {
       return handleChat(request, env);
+    }
+
+    if (url.pathname === "/api/status") {
+      return handleStatus(request, env);
     }
 
     return env.ASSETS.fetch(request);

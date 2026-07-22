@@ -1,0 +1,99 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "platform": "Casa Amar Knowledge Platform",
+  "principles": [
+    "One source of truth for every fact.",
+    "Knowledge, policies, sources and presentation are separate.",
+    "Public and internal content may both be used by the concierge.",
+    "Owner-maintained information always wins over secondary sources.",
+    "New knowledge enters through an inbox before becoming trusted."
+  ],
+  "datasets": [
+    {
+      "id": "owner-core",
+      "label": "Casa Amar owner knowledge",
+      "path": "/casa-amar-knowledge.json",
+      "role": "knowledge",
+      "format": "entry_collection",
+      "visibility": "mixed",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active",
+      "source_defaults": {
+        "id": "owner-core",
+        "label": "Casa Amar",
+        "type": "owner_core",
+        "priority": 100
+      }
+    },
+    {
+      "id": "rincon-rent-booking",
+      "label": "Rincón Rent controlled snapshot",
+      "path": "/rincon-rent-booking.json",
+      "role": "knowledge",
+      "format": "source_snapshot",
+      "visibility": "internal",
+      "trust": 60,
+      "owner": "External",
+      "status": "active",
+      "guest_attribution": "hidden"
+    },
+    {
+      "id": "concierge-policy",
+      "label": "Concierge system policy",
+      "path": "/concierge-policy.json",
+      "role": "policy",
+      "format": "policy",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active"
+    },
+    {
+      "id": "concierge-intents",
+      "label": "Concierge intent catalogue",
+      "path": "/concierge-intents.json",
+      "role": "intent",
+      "format": "intent_catalogue",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active"
+    },
+    {
+      "id": "decision-policies",
+      "label": "Deterministic decision policies",
+      "path": "/decision-policies.json",
+      "role": "decision_policy",
+      "format": "rule_collection",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active"
+    },
+    {
+      "id": "knowledge-inbox",
+      "label": "Unreviewed knowledge inbox",
+      "path": "/knowledge-inbox.json",
+      "role": "inbox",
+      "format": "inbox",
+      "visibility": "internal",
+      "trust": 0,
+      "owner": "Michael",
+      "status": "staging",
+      "used_by_ai": false
+    },
+    {
+      "id": "regression-tests",
+      "label": "AI regression tests",
+      "path": "/ai-regression-tests.json",
+      "role": "test",
+      "format": "test_suite",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active"
+    }
+  ]
+}
