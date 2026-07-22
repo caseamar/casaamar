@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Knowledge Debug Center</title>
+<style>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#946b12;--bad:#a83b31}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1180px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}h1{margin:0 0 6px}
+.lead{color:var(--muted);line-height:1.5;max-width:850px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+button,a{border:1px solid #d6cec3;border-radius:11px;padding:10px 14px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}
+.primary{background:var(--clay);border-color:var(--clay);color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:#fff;border-radius:16px;padding:16px;min-width:0}
+.full{grid-column:1/-1}textarea{width:100%;min-height:100px;border:1px solid #d6cec3;border-radius:10px;padding:11px;font:inherit}
+.status{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.pill{padding:5px 8px;border-radius:999px;font-size:.7rem;font-weight:850;background:#eee}.ok{background:#e1f1e7;color:var(--ok)}.bad{background:#f7ded9;color:var(--bad)}.warn{background:#fff0ca;color:var(--warn)}
+.step{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px}
+.step h3{margin:0 0 8px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{border-radius:999px;background:#edf4f0;padding:6px 9px;font-size:.76rem}
+.match{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.answer{white-space:pre-wrap;line-height:1.55;background:#f7f5f0;border-radius:11px;padding:12px}
+pre{white-space:pre-wrap;word-break:break-word;background:#f5f2ec;border-radius:10px;padding:11px;font-size:.75rem;max-height:320px;overflow:auto}
+.hidden{display:none}@media(max-width:780px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style>
+</head>
+<body><main>
+<h1>Casa Amar Knowledge Debug Center</h1>
+<p class="lead">Se hele kæden fra deployment og indlæst Knowledge Base til AI-søgeplan, valgte objekter og gæstens endelige svar.</p>
+<div class="actions">
+<a href="/knowledge-center.html">Til Dashboard</a>
+<button id="health">Kør systemtest</button>
+</div>
+
+<div class="grid">
+<section class="panel">
+<h2>Systemstatus</h2>
+<div id="system"><p>Ikke kontrolleret endnu.</p></div>
+</section>
+
+<section class="panel">
+<h2>Test et spørgsmål</h2>
+<textarea id="question">kan man ligesom vinsmagning smage olivenolie</textarea>
+<div class="actions"><button class="primary" id="run">Kør gennem kæden</button></div>
+</section>
+
+<section class="panel full">
+<h2>Resultat</h2>
+<div id="result"><p>Indtast et spørgsmål og kør testen.</p></div>
+</section>
+
+<section class="panel full">
+<details>
+<summary><strong>Rå API-data</strong></summary>
+<pre id="raw">Ingen data endnu.</pre>
+</details>
+</section>
+</div>
+
+<script>
+const q=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+async function health(){
+ q('#health').disabled=true;
+ q('#system').innerHTML='<p>Kontrollerer deployment og data…</p>';
+ try{
+   const [chat,status,cards]=await Promise.all([
+     fetch('/api/chat',{cache:'no-store'}).then(r=>r.json()),
+     fetch('/api/status',{cache:'no-store'}).then(r=>r.json()),
+     fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json())
+   ]);
+   const objects=(cards.cards||cards.entries||[]).length;
+   const aiObjects=(cards.cards||cards.entries||[]).filter(c=>c.status!=='archived'&&c.channels?.ai!==false).length;
+   const loaded=(status.datasets||[]).filter(d=>d.loaded).length;
+   q('#system').innerHTML=`
+     <div class="status"><span>Aktiv Worker</span><span class="pill ${chat.version==='8.3-ai-search-planner'?'ok':'bad'}">${esc(chat.version||'ukendt')}</span></div>
+     <div class="status"><span>Knowledge Platform</span><span class="pill ${status.ok?'ok':'bad'}">${status.ok?'OK':'Fejl'}</span></div>
+     <div class="status"><span>Indlæste datasæt</span><strong>${loaded}/${(status.datasets||[]).length}</strong></div>
+     <div class="status"><span>Knowledge Objects i filen</span><strong>${objects}</strong></div>
+     <div class="status"><span>AI-tilgængelige objekter</span><strong>${aiObjects}</strong></div>
+     <div class="status"><span>Registerversion</span><strong>${esc(status.registryVersion||'ukendt')}</strong></div>`;
+ }catch(error){
+   q('#system').innerHTML=`<div class="status"><span>Systemtest</span><span class="pill bad">Fejl</span></div><p>${esc(error.message)}</p>`;
+ }finally{q('#health').disabled=false}
+}
+
+async function run(){
+ const question=q('#question').value.trim();
+ if(!question)return;
+ q('#run').disabled=true;
+ q('#result').innerHTML='<p>Tester Search Planner, retrieval og svar…</p>';
+ try{
+   const response=await fetch('/api/chat',{
+     method:'POST',
+     headers:{'content-type':'application/json'},
+     body:JSON.stringify({question,messages:[]})
+   });
+   const data=await response.json();
+   q('#raw').textContent=JSON.stringify(data,null,2);
+   if(!response.ok)throw new Error(data.detail||data.error||'API-fejl');
+
+   const plan=data.searchPlan||{};
+   const terms=[...(plan.terms||[]),...(plan.concepts||[])];
+   const matches=data.knowledgeMatches||[];
+
+   q('#result').innerHTML=`
+     <div class="step"><h3>1. Spørgsmål</h3><div>${esc(question)}</div></div>
+     <div class="step"><h3>2. AI Search Planner</h3>
+       <div class="chips">${terms.length?terms.map(t=>`<span class="chip">${esc(t)}</span>`).join(''):'<span class="pill warn">Ingen diagnostik returneret</span>'}</div>
+       <p class="meta">Intent: ${esc(plan.intent||'ukendt')} · confidence: ${esc(plan.confidence??'ukendt')}%</p>
+     </div>
+     <div class="step"><h3>3. Valgte Knowledge Objects</h3>
+       ${matches.length?matches.map(m=>`<div class="match"><span><strong>${esc(m.title)}</strong><br><small>${esc(m.id)}</small></span><strong>${esc(m.score??'–')}</strong></div>`).join(''):'<span class="pill bad">Ingen objekter fundet</span>'}
+     </div>
+     <div class="step"><h3>4. Endeligt svar</h3><div class="answer">${esc(data.answer||'Intet svar')}</div>
+       <p><span class="pill ${data.needsHuman?'warn':'ok'}">${data.needsHuman?'Handoff':'Besvaret af KB'}</span>
+       <span class="pill">Confidence ${esc(data.confidence??'–')}</span></p>
+     </div>`;
+ }catch(error){
+   q('#result').innerHTML=`<div class="step"><span class="pill bad">Fejl</span><p>${esc(error.message)}</p></div>`;
+ }finally{q('#run').disabled=false}
+}
+
+q('#health').addEventListener('click',health);
+q('#run').addEventListener('click',run);
+health();
+</script>
+</main></body></html>
