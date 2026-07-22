@@ -905,12 +905,118 @@ ${JSON.stringify(candidateContext)}`
   }
 }
 
+
+async function planKnowledgeSearch(question, env) {
+  const fallback = {
+    intent: "general",
+    search_terms: retrievalTokens(question),
+    related_concepts: expandRetrievalConcepts(question),
+    rewritten_query: question,
+    confidence: 0
+  };
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.OPENAI_API_KEY}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        model: env.OPENAI_SEARCH_MODEL || env.OPENAI_MODEL || DEFAULT_MODEL,
+        instructions: `Du er søgeplanlægger for Casa Amar Knowledge Base.
+
+Omskriv gæstens spørgsmål til de bedste søgebegreber for en dansk feriebolig-concierge.
+
+Regler:
+- Bevar betydningen.
+- Udvid med naturlige synonymer og beslægtede begreber.
+- Tilføj lokale eller faglige termer, når de er oplagte.
+- Brug ikke fakta, som ikke allerede ligger i spørgsmålet.
+- Returnér højst 10 søgetermer og højst 6 relaterede begreber.
+- Eksempel: "kan man ligesom vinsmagning smage olivenolie" bør give begreber som olivenoliesmagning, olivenolie, oleoturisme, olivenmølle og tasting.
+- Svar kun i det krævede JSON-format.`,
+        input: [{ role: "user", content: question }],
+        reasoning: { effort: "low" },
+        text: {
+          verbosity: "low",
+          format: {
+            type: "json_schema",
+            name: "knowledge_search_plan",
+            strict: true,
+            schema: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                intent: { type: "string" },
+                rewritten_query: { type: "string" },
+                search_terms: {
+                  type: "array",
+                  maxItems: 10,
+                  items: { type: "string" }
+                },
+                related_concepts: {
+                  type: "array",
+                  maxItems: 6,
+                  items: { type: "string" }
+                },
+                confidence: {
+                  type: "integer",
+                  minimum: 0,
+                  maximum: 100
+                }
+              },
+              required: [
+                "intent", "rewritten_query", "search_terms",
+                "related_concepts", "confidence"
+              ]
+            }
+          }
+        },
+        max_output_tokens: 500,
+        store: false
+      })
+    });
+
+    const result = await response.json();
+    if (!response.ok) return fallback;
+
+    const raw = extractOutputText(result);
+    if (!raw) return fallback;
+
+    const parsed = JSON.parse(raw);
+    return {
+      intent: String(parsed.intent || "general"),
+      rewritten_query: String(parsed.rewritten_query || question),
+      search_terms: Array.isArray(parsed.search_terms)
+        ? parsed.search_terms.map(String).slice(0, 10)
+        : fallback.search_terms,
+      related_concepts: Array.isArray(parsed.related_concepts)
+        ? parsed.related_concepts.map(String).slice(0, 6)
+        : fallback.related_concepts,
+      confidence: Number(parsed.confidence || 0)
+    };
+  } catch (error) {
+    console.warn("Knowledge search planner fallback", error);
+    return fallback;
+  }
+}
+
+function searchPlanText(question, plan) {
+  return [
+    question,
+    plan?.rewritten_query || "",
+    ...(plan?.search_terms || []),
+    ...(plan?.related_concepts || [])
+  ].filter(Boolean).join(" ");
+}
+
 async function handleChat(request, env) {
   if (request.method === "GET") {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "8.2-retrieval-optimised",
+      version: "8.3-ai-search-planner",
       method: "POST"
     });
   }
@@ -965,7 +1071,9 @@ async function handleChat(request, env) {
       });
     }
 
-    const relevant = selectKnowledge(question, bundle.entries);
+    const searchPlan = await planKnowledgeSearch(question, env);
+    const retrievalQuery = searchPlanText(question, searchPlan);
+    const relevant = selectKnowledge(retrievalQuery, bundle.entries);
     const conversation = normaliseMessages(payload.messages);
 
     const instructions = buildSystemInstructions(bundle.conciergePolicy);
@@ -976,6 +1084,7 @@ async function handleChat(request, env) {
         role: "user",
         content:
           `GÆSTENS SPØRGSMÅL:\n${question}\n\n` +
+          `AI-SØGEPLAN:\n${JSON.stringify(searchPlan)}\n\n` +
           `RELEVANTE CASA AMAR-FAKTA:\n${knowledgeText(relevant)}`
       }
     ];
@@ -1130,7 +1239,18 @@ ${JSON.stringify({
       sourcesLoaded: bundle.sources.map((source) => source.id),
       webSearchUsed: false,
       model: result?.model || env.OPENAI_MODEL || DEFAULT_MODEL,
-      responseId: result?.id || null
+      responseId: result?.id || null,
+      searchPlan: {
+        intent: searchPlan.intent,
+        terms: searchPlan.search_terms,
+        concepts: searchPlan.related_concepts,
+        confidence: searchPlan.confidence
+      },
+      knowledgeMatches: relevant.map((entry) => ({
+        id: entry.id,
+        title: entry.title,
+        score: entry._retrieval_score || null
+      }))
     });
   } catch (error) {
     console.error("Casa Amar AI exception", error);
