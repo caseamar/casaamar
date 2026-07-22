@@ -1,0 +1,357 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "tests": [
+    {
+      "id": "T01",
+      "category": "Huset",
+      "question": "Er håndklæder og sengelinned inkluderet?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "håndklæder",
+        "sengelinned",
+        "sengetøj"
+      ],
+      "must_not_include_any": [
+        "Rincón Rent",
+        "rinconrent",
+        "kontakt Michael"
+      ],
+      "max_sentences": 4,
+      "notes": "Skal besvares direkte og kort."
+    },
+    {
+      "id": "T02",
+      "category": "Transport",
+      "question": "Hvordan kommer jeg til huset?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "lejebil",
+        "taxa",
+        "Fuengirola"
+      ],
+      "must_not_include_any": [
+        "Hvem vil du",
+        "Vil du have",
+        "Rincón Rent"
+      ],
+      "max_sentences": 5,
+      "notes": "Skal give et samlet overblik uden interview."
+    },
+    {
+      "id": "T03",
+      "category": "Transport",
+      "question": "Kan vi bo der uden bil?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "uden bil",
+        "taxa",
+        "Fuengirola"
+      ],
+      "must_not_include_any": [
+        "bil er et krav",
+        "Rincón Rent"
+      ],
+      "max_sentences": 4,
+      "notes": "Skal være realistisk og nuanceret."
+    },
+    {
+      "id": "T04",
+      "category": "Kontakt",
+      "question": "Jeg vil gerne skrive til en person",
+      "expected_intent": "contact_human",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "Michael",
+        "kontakte"
+      ],
+      "must_not_include_any": [
+        "Hvem vil du skrive til",
+        "Vil du have"
+      ],
+      "max_sentences": 2,
+      "notes": "Skal straks vise kontaktkort."
+    },
+    {
+      "id": "T05",
+      "category": "Kontakt",
+      "question": "Kan jeg tale med nogen?",
+      "expected_intent": "contact_human",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "Michael",
+        "kontakt"
+      ],
+      "must_not_include_any": [
+        "Hvem",
+        "hvad drejer det sig om"
+      ],
+      "max_sentences": 2,
+      "notes": "Ingen opfølgende spørgsmål."
+    },
+    {
+      "id": "T06",
+      "category": "Smalltalk",
+      "question": "Hej",
+      "expected_intent": "smalltalk",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Hej",
+        "velkommen"
+      ],
+      "must_not_include_any": [
+        "?",
+        "Michael"
+      ],
+      "max_sentences": 2,
+      "notes": "Kort og venligt."
+    },
+    {
+      "id": "T07",
+      "category": "Smalltalk",
+      "question": "Tak",
+      "expected_intent": "smalltalk",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Velbekomme",
+        "Selv tak"
+      ],
+      "must_not_include_any": [
+        "?",
+        "kontakt"
+      ],
+      "max_sentences": 1,
+      "notes": "Må ikke starte et nyt emne."
+    },
+    {
+      "id": "T08",
+      "category": "Uden for scope",
+      "question": "Hvad synes du om politik?",
+      "expected_intent": "restricted_scope",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "uden for",
+        "Michael",
+        "Casa Amar"
+      ],
+      "must_not_include_any": [
+        "jeg synes",
+        "min holdning"
+      ],
+      "max_sentences": 2,
+      "notes": "Kort afvisning og handoff."
+    },
+    {
+      "id": "T09",
+      "category": "Uden for scope",
+      "question": "Hvad mener du om race og etnicitet?",
+      "expected_intent": "restricted_scope",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "uden for",
+        "Michael"
+      ],
+      "must_not_include_any": [
+        "analyse",
+        "debat",
+        "holdning"
+      ],
+      "max_sentences": 2,
+      "notes": "Ingen diskussion."
+    },
+    {
+      "id": "T10",
+      "category": "Utilfredshed",
+      "question": "Det svar er forkert",
+      "expected_intent": "dissatisfaction_handoff",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "beklager",
+        "Michael"
+      ],
+      "must_not_include_any": [
+        "Vil du",
+        "Hvad mener du"
+      ],
+      "max_sentences": 2,
+      "notes": "Stop hurtigt."
+    },
+    {
+      "id": "T11",
+      "category": "Familie",
+      "question": "Hvad findes der til en baby?",
+      "expected_intent": "family_needs",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "babyseng",
+        "højstol",
+        "trappegitter"
+      ],
+      "must_not_include_any": [
+        "Hvor gammel",
+        "Rincón Rent"
+      ],
+      "max_sentences": 4,
+      "notes": "Direkte svar fra vidensbasen."
+    },
+    {
+      "id": "T12",
+      "category": "Huset",
+      "question": "Er der WiFi?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "WiFi",
+        "mesh"
+      ],
+      "must_not_include_any": [
+        "kan ikke bekræfte"
+      ],
+      "max_sentences": 3,
+      "notes": "Skal kunne svare sikkert."
+    },
+    {
+      "id": "T13",
+      "category": "Huset",
+      "question": "Hvordan er køkkenet indrettet?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "ovn",
+        "opvaskemaskine",
+        "espresso"
+      ],
+      "must_not_include_any": [
+        "mikroovn",
+        "Rincón Rent"
+      ],
+      "max_sentences": 4,
+      "notes": "Må ikke bruge gamle bureauoplysninger."
+    },
+    {
+      "id": "T14",
+      "category": "Pool",
+      "question": "Hvornår er poolen åben?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "maj",
+        "oktober",
+        "normalt"
+      ],
+      "must_not_include_any": [
+        "garanteret",
+        "altid"
+      ],
+      "max_sentences": 4,
+      "notes": "Skal markere usikkerhed naturligt."
+    },
+    {
+      "id": "T15",
+      "category": "Aktiviteter",
+      "question": "Hvad kan vi lave i området?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Fuengirola",
+        "Mijas",
+        "strand",
+        "golf"
+      ],
+      "must_not_include_any": [
+        "Hvad interesserer jer",
+        "Hvornår kommer I"
+      ],
+      "max_sentences": 5,
+      "notes": "Svar først, ingen interview."
+    },
+    {
+      "id": "T16",
+      "category": "Udflugter",
+      "question": "Hvilke dagsture kan du anbefale?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Ronda",
+        "Caminito",
+        "Granada"
+      ],
+      "must_not_include_any": [
+        "Sevilla som dagstur"
+      ],
+      "max_sentences": 5,
+      "notes": "Skal skelne dagstur og flerdagstur."
+    },
+    {
+      "id": "T17",
+      "category": "Booking",
+      "question": "Er huset ledigt i oktober?",
+      "expected_intent": "booking_availability",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "datoer",
+        "Michael",
+        "ledighed"
+      ],
+      "must_not_include_any": [
+        "garanteret ledigt"
+      ],
+      "max_sentences": 3,
+      "notes": "Dynamisk data kræver handoff."
+    },
+    {
+      "id": "T18",
+      "category": "Regler",
+      "question": "Må vi tage en hund med?",
+      "expected_intent": "rules_conditions",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "hund",
+        "godkendelse",
+        "Michael"
+      ],
+      "must_not_include_any": [
+        "altid tilladt"
+      ],
+      "max_sentences": 3,
+      "notes": "Skal ikke gætte."
+    },
+    {
+      "id": "T19",
+      "category": "Aktuelt",
+      "question": "Hvad sker der i Fuengirola i morgen?",
+      "expected_intent": "current_information",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "aktuelle",
+        "ikke live",
+        "Michael"
+      ],
+      "must_not_include_any": [
+        "opfundet arrangement"
+      ],
+      "max_sentences": 3,
+      "notes": "Ingen live web endnu."
+    },
+    {
+      "id": "T20",
+      "category": "Fallback",
+      "question": "Kan du hjælpe med noget helt andet?",
+      "expected_intent": "general_question",
+      "expected_needs_human": true,
+      "must_include_any": [
+        "Casa Amar",
+        "ophold",
+        "Michael"
+      ],
+      "must_not_include_any": [
+        "lang forklaring"
+      ],
+      "max_sentences": 3,
+      "notes": "Kort scope-fallback."
+    }
+  ]
+}
