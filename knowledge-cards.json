@@ -5,8 +5,8 @@
       "category": "Transport",
       "title": "Parkering ved Casa Amar i Pueblo Águila",
       "content_type": "guide",
-      "answer": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
-      "content": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "answer": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
+      "content": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
       "keywords": [
         "parkering",
         "Pueblo Águila",
@@ -33,8 +33,8 @@
       "links": [],
       "card_version": 1,
       "slug": "parking-pueblo-aguila",
-      "summary": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
-      "body": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "summary": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
+      "body": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
       "channels": {
         "ai": true,
         "website": false,
@@ -76,12 +76,15 @@
         "T22",
         "T28",
         "T29",
-        "T31"
+        "T31",
+        "Bekræft at gadeparkering i Cerros del Águila normalt er uden betaling (lokal kommunal information eller observation).",
+        "Verificer at beboerpladser i Pueblo Águila kan være afspærret med kæde og at en fælles nøgle eksisterer (beboer/forvalter-udtalelse).",
+        "Bekræft lokale regler om parkering ved indkørsler/carporte."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22T13:34:30.523Z",
+        "last_changed_at": "2026-07-22T15:04:14.430Z",
         "last_result": null
       },
       "maturity": "imported"
@@ -2245,10 +2248,10 @@
       "title": "Aceites Molisur",
       "category": "Shopping",
       "content_type": "recommendation",
-      "summary": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "answer": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "body": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "content": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
+      "summary": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "answer": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "body": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "content": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
       "keywords": [
         "Aceites Molisur",
         "olivenolie",
@@ -2280,7 +2283,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "mijas-pueblo",
+          "restaurant-cerros-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -2303,11 +2309,14 @@
         "es": "pending"
       },
       "maturity": "imported",
-      "tests": [],
+      "tests": [
+        "Bekræft åbningstider og mulighed for guidede rundvisninger / smagninger direkte med Aceites Molisur",
+        "Bekræft præcis køretid fra Cerros del Águila under normale trafikforhold"
+      ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T14:56:52.644Z",
         "last_result": null
       }
     },
@@ -2709,10 +2718,10 @@
       "title": "Billeje hos Helle Hollis",
       "category": "Transport",
       "content_type": "recommendation",
-      "summary": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "answer": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "body": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "content": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
+      "summary": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "answer": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "body": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "content": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
       "keywords": [
         "Helle Hollis",
         "billeje",
@@ -2744,7 +2753,9 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "train-fuengirola-malaga-airport"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -2771,12 +2782,16 @@
         "T02",
         "T03",
         "T28",
-        "T29"
+        "T29",
+        "T02 - Bekræft rabatkode H9064 og at den giver 15% (udbyderen)",
+        "T03 - Bekræft at Helle Hollis tilbyder shuttle fra Málaga Lufthavn og hyppighed",
+        "T28 - Bekræft at 'fast track' findes og kræver forudbetaling",
+        "T29 - Bekræft anbefaling om ekstra rabat ved booking ~30 dage før"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T15:27:12.841Z",
         "last_result": null
       }
     },
@@ -3165,10 +3180,10 @@
       "title": "Mijas Pueblo",
       "category": "Oplevelser",
       "content_type": "place",
-      "summary": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "answer": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "body": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "content": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
+      "summary": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "answer": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "body": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "content": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
       "keywords": [
         "Mijas Pueblo",
         "hvide by",
@@ -3199,7 +3214,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "taxi-mijas",
+          "parking-pueblo-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -3224,12 +3242,14 @@
       "maturity": "imported",
       "tests": [
         "T32",
-        "T36"
+        "T36",
+        "T02",
+        "T29"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T14:50:29.663Z",
         "last_result": null
       }
     },
@@ -4356,10 +4376,10 @@
       "title": "Golf på Costa del Sol",
       "category": "Sport",
       "content_type": "recommendation",
-      "summary": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "answer": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "body": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "content": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
+      "summary": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "answer": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "body": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "content": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
       "keywords": [
         "golf",
         "golfbaner",
@@ -4390,7 +4410,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -4421,12 +4444,16 @@
         "T20",
         "T28",
         "T29",
-        "T35"
+        "T35",
+        "T02 - Bekræft navn og faciliteter for Cerrado del Águila Golf & Resort",
+        "T03 - Verificer at bolde og greenfee købes i golfbutikken",
+        "T08 - Bekræft at huset indeholder et golfsæt til gæstebrug",
+        "T15 - Bekræft udsagn om >10 golfbaner inden for 20 minutters kørsel"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T15:19:13.821Z",
         "last_result": null
       }
     },
@@ -5711,6 +5738,336 @@
       },
       "relations": {
         "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+        "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+        "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:38:54.892Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "vej-overgang-over-floden-ved-grand-parc-de-mijas-adgang-sikkerhed",
+      "title": "Vej/overgang over floden ved Grand Parc de Mijas (adgang & sikkerhed)",
+      "category": "Transport",
+      "summary": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "answer": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "body": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "content": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at vejen officielt er åben/lukket ved høj vandstand (kommunal vejmyndighed eller lokal administration).",
+        "Verificer præcis placering og forbindelse til Grand Parc de Mijas, Hoyo 19 og planteskolen (kort/field check).",
+        "Kontrollér sikkerhedsadvarsler for fodgængerovergang (glatte sten) fra lokale kilder eller tidligere rapporter."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:47:46.743Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "mijas-pueblo",
+          "parking-los-boliches-primavera",
+          "alternative-swimming-and-training"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "tennisbane-ved-casa-amar",
+      "title": "Tennisbane ved Casa Amar",
+      "category": "Aktiviteter / Sport",
+      "summary": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "answer": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "body": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "content": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft præcis placering af reservationsbræt ved Restaurant Cerros del Águila",
+        "Verificer tilgængeligheden af ketchere og antal bolde i huset",
+        "Bekræft at Decathlon/sportsbutikker i Miramar sælger tennisbolde"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T15:11:23.579Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "miramar-shopping-centre"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt",
+      "title": "Taxi, Uber og Bolt ved Casa Amar (Taxi Mijas kontakt)",
+      "category": "Transport",
+      "summary": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "answer": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "body": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "content": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T11 - Bekræft Taxi Mijas telefonnummer og tiltidsrespons (ring/testbestilling).",
+        "T12 - Bekræft typisk ankomsttid til Cerros del Águila (10–15 min) under forskellige tidspunkter.",
+        "T13 - Bekræft udbredelse/tilgængelighed af Uber og Bolt i området."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T15:34:13.835Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "train-fuengirola-malaga-airport"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -5736,8 +6093,8 @@
       "category": "Transport",
       "title": "Parkering ved Casa Amar i Pueblo Águila",
       "content_type": "guide",
-      "answer": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
-      "content": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "answer": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
+      "content": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
       "keywords": [
         "parkering",
         "Pueblo Águila",
@@ -5764,8 +6121,8 @@
       "links": [],
       "card_version": 1,
       "slug": "parking-pueblo-aguila",
-      "summary": "Casa Amar hører til området Pueblo Águila. Gæster i huset må parkere på pladserne omkring puebloen, også hvor skilte angiver parkering for beboere i Pueblo Águila. Er pladserne optaget, findes der normalt ledig parkering på de omkringliggende gader.",
-      "body": "Cerros del Águila består af flere mindre områder, og Casa Amar er knyttet til Pueblo Águila. Gæster må bruge beboerparkeringen omkring puebloen. Hvis de nærmeste pladser er optaget, findes der normalt en plads på gaden.",
+      "summary": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
+      "body": "Casa Amar hører til området Pueblo Águila. Der er normal gadeparkering i Cerros del Águila uden betaling. Der findes også nogle parkeringspladser reserveret til beboere i området af Cerros del Águila, der hedder Pueblo Águila (det sted hvor Casa Amar ligger). Disse beboerpladser kan være afspærret med en kæde; alle beboere i Pueblo Águila har samme nøgle og kan frit bruge disse pladser. Respekter, at der enkelte steder er parkeringsforbud og undgå at parkere foran folks indkørsler eller carporte. Der er som regel altid parkeringsmuligheder i området.",
       "channels": {
         "ai": true,
         "website": false,
@@ -5807,12 +6164,15 @@
         "T22",
         "T28",
         "T29",
-        "T31"
+        "T31",
+        "Bekræft at gadeparkering i Cerros del Águila normalt er uden betaling (lokal kommunal information eller observation).",
+        "Verificer at beboerpladser i Pueblo Águila kan være afspærret med kæde og at en fælles nøgle eksisterer (beboer/forvalter-udtalelse).",
+        "Bekræft lokale regler om parkering ved indkørsler/carporte."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22T13:34:30.523Z",
+        "last_changed_at": "2026-07-22T15:04:14.430Z",
         "last_result": null
       },
       "maturity": "imported"
@@ -7976,10 +8336,10 @@
       "title": "Aceites Molisur",
       "category": "Shopping",
       "content_type": "recommendation",
-      "summary": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "answer": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "body": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
-      "content": "Aceites Molisur ved Alhaurín el Grande er en olivenoliefabrik med butik og mulighed for guidede besøg, især relevant i produktionssæsonen.",
+      "summary": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "answer": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "body": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
+      "content": "Aceites Molisur ved Alhaurín el Grande (ca. 20–25 minutters kørsel fra Cerros del Águila) er en kendt olivenmølle med butik og guidede besøg. Besøget omfatter: guidet rundvisning på en traditionel almazara, et olivenoliemuseum med over 100 år gammelt udstyr, gennemgang af moderne produktion af ekstra jomfruolivenolie og en professionel smagning af flere forskellige olivenolier. Mulighed for køb direkte fra producenten. Varighed: cirka 1½ time. Anbefales som en autentisk lokal oplevelse inden for 'oleoturisme'. Forslag til FAQ-tekst: \"Andalusien er verdens største producent af olivenolie, og kun ca. 20 minutter fra huset ligger Aceites Molisur i Alhaurín el Grande. Her kan man besøge en traditionel olivenmølle, se både historisk og moderne produktion af olivenolie og deltage i en guidet smagning af flere ekstra jomfruolivenolier. Besøget varer cirka 1½ time og giver en spændende introduktion til en af områdets vigtigste traditioner.\"",
       "keywords": [
         "Aceites Molisur",
         "olivenolie",
@@ -8011,7 +8371,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "mijas-pueblo",
+          "restaurant-cerros-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -8034,11 +8397,14 @@
         "es": "pending"
       },
       "maturity": "imported",
-      "tests": [],
+      "tests": [
+        "Bekræft åbningstider og mulighed for guidede rundvisninger / smagninger direkte med Aceites Molisur",
+        "Bekræft præcis køretid fra Cerros del Águila under normale trafikforhold"
+      ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T14:56:52.644Z",
         "last_result": null
       }
     },
@@ -8440,10 +8806,10 @@
       "title": "Billeje hos Helle Hollis",
       "category": "Transport",
       "content_type": "recommendation",
-      "summary": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "answer": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "body": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
-      "content": "Helle Hollis har kontor både i Málaga Lufthavn og Fuengirola. Den angivne rabatkode er H9064, men bør kontrolleres før brug.",
+      "summary": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "answer": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "body": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
+      "content": "Vi bruger typisk Helle Hollis i Málaga ved leje af bil og har ikke oplevet problemer med dem. Rabatkode: H9064 (giver ca. 15% rabat). Booking omkring 30 dage før ankomst kan ofte give en yderligere rabat. Helle Hollis tilbyder shuttlebus mellem Málaga Lufthavn og deres kontor; shuttlen kører ofte og gør transfer nem og effektiv. Overvej at tilkøbe 'fast track' ved ankomst (forudbetaling kræves) så papirarbejde er klaret ved ankomst. Mange gæster vælger ikke at tilkøbe ekstra selvrisikoforsikring, hvis de allerede har dækning via egen rejseforsikring — det er dog individuelt. Husk gyldigt kørekort for alle, der registreres som førere. Aflevering af bilen er normalt effektiv; man kan typisk stå i afgangshallen ca. 15–30 minutter efter indkørsel til Helle Hollis.",
       "keywords": [
         "Helle Hollis",
         "billeje",
@@ -8475,7 +8841,9 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "train-fuengirola-malaga-airport"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -8502,12 +8870,16 @@
         "T02",
         "T03",
         "T28",
-        "T29"
+        "T29",
+        "T02 - Bekræft rabatkode H9064 og at den giver 15% (udbyderen)",
+        "T03 - Bekræft at Helle Hollis tilbyder shuttle fra Málaga Lufthavn og hyppighed",
+        "T28 - Bekræft at 'fast track' findes og kræver forudbetaling",
+        "T29 - Bekræft anbefaling om ekstra rabat ved booking ~30 dage før"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T15:27:12.841Z",
         "last_result": null
       }
     },
@@ -8896,10 +9268,10 @@
       "title": "Mijas Pueblo",
       "category": "Oplevelser",
       "content_type": "place",
-      "summary": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "answer": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "body": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
-      "content": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset.",
+      "summary": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "answer": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "body": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
+      "content": "Mijas Pueblo er den klassiske hvide bjergby med gamle gader og flotte udsigtspunkter, cirka 20 minutters kørsel fra huset. Når man kører til Pueblo Mijas kan man tage den normale rute på de store veje, men det anbefales stærkt at tage 'bagvejen' ved solnedgang. Den giver et flot view over bakkerne og terrænet — i foråret kan landskabet minde om Toscana trods, at vi er i Sydspanien, da det er bakket og grønt.",
       "keywords": [
         "Mijas Pueblo",
         "hvide by",
@@ -8930,7 +9302,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "taxi-mijas",
+          "parking-pueblo-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -8955,12 +9330,14 @@
       "maturity": "imported",
       "tests": [
         "T32",
-        "T36"
+        "T36",
+        "T02",
+        "T29"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T14:50:29.663Z",
         "last_result": null
       }
     },
@@ -10087,10 +10464,10 @@
       "title": "Golf på Costa del Sol",
       "category": "Sport",
       "content_type": "recommendation",
-      "summary": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "answer": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "body": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
-      "content": "Der er mange golfbaner i området, og Casa Amar har golfsæt, som gæster kan bruge efter aftale.",
+      "summary": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "answer": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "body": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
+      "content": "Cerros del Águila ligger midt i et af Europas største golfområder med mange baner inden for kort køreafstand. Den nærmeste bane er Cerrado del Águila Golf & Resort (Ca. 2–5 min i bil fra Pueblo Águila): 9-hullers bane med driving range, indspils- og puttingområder og restaurant/terrasse med udsigt over Costa del Sol. Banen regnes som en af de bedste 9-hullers på kysten, og flere huller har udsigt mod havet.\n\nI huset står et golfsæt, som gæster kan bruge til at slå nogle bolde for sjov; mange spillere medbringer dog eget sæt, så betragt huset-sættet som reserve. Bolde til driving range og greenfee købes i golfbutikken. Handicap-registrering er ikke påkrævet for at spille. Om sommeren tilbydes ofte meget billige greenfees, ofte inkl. golfvogn.\n\nNærliggende golfbaner (køretid cirka):\n- Cerrado del Águila Golf & Resort — 9 huller, driving range (2–5 min)\n- Mijas Golf Club — to 18-hullers baner (ca. 5 min)\n- El Chaparral Golf Club — 18 huller (ca. 5–10 min)\n- Santana Golf — 18 huller (ca. 10 min)\n- La Cala Golf Resort — tre 18-hullers baner, resortfaciliteter (ca. 15 min)\n\nFra huset kan man nå mere end 10 golfbaner inden for ca. 20 minutters kørsel, hvilket gør området populært blandt golfspillere året rundt.",
       "keywords": [
         "golf",
         "golfbaner",
@@ -10121,7 +10498,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -10152,12 +10532,16 @@
         "T20",
         "T28",
         "T29",
-        "T35"
+        "T35",
+        "T02 - Bekræft navn og faciliteter for Cerrado del Águila Golf & Resort",
+        "T03 - Verificer at bolde og greenfee købes i golfbutikken",
+        "T08 - Bekræft at huset indeholder et golfsæt til gæstebrug",
+        "T15 - Bekræft udsagn om >10 golfbaner inden for 20 minutters kørsel"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T15:19:13.821Z",
         "last_result": null
       }
     },
@@ -11442,6 +11826,336 @@
       },
       "relations": {
         "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+        "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+        "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:38:54.892Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "vej-overgang-over-floden-ved-grand-parc-de-mijas-adgang-sikkerhed",
+      "title": "Vej/overgang over floden ved Grand Parc de Mijas (adgang & sikkerhed)",
+      "category": "Transport",
+      "summary": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "answer": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "body": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "content": "Der findes en lokal køre- og gangvej over floden ved indgangen til Grand Parc de Mijas, som ofte bruges til at komme til Hoyo 19, planteskolen, Mijas Pueblo og stranden. Vejstrækningen er legitim, men lukkes ved højt vand. Ved lavt vand kan man køre over; til fods kan man også passere via nogle forhøjede sten, men disse kan være meget glatte — vær forsigtig.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at vejen officielt er åben/lukket ved høj vandstand (kommunal vejmyndighed eller lokal administration).",
+        "Verificer præcis placering og forbindelse til Grand Parc de Mijas, Hoyo 19 og planteskolen (kort/field check).",
+        "Kontrollér sikkerhedsadvarsler for fodgængerovergang (glatte sten) fra lokale kilder eller tidligere rapporter."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:47:46.743Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "mijas-pueblo",
+          "parking-los-boliches-primavera",
+          "alternative-swimming-and-training"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "tennisbane-ved-casa-amar",
+      "title": "Tennisbane ved Casa Amar",
+      "category": "Aktiviteter / Sport",
+      "summary": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "answer": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "body": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "content": "Der er en tennisbane ved Casa Amar. Reservation foregår ved at sætte en lille hængelås op på et reservationsbrædt ved Restaurant Cerros del Águila (lige før indgangen til restauranten). Ofte står banen ledig, så man kan spille uden reservation, men sæt lås for at være sikker. Banen bruges mest om formiddagen og tidlig aften på grund af varmen. Der findes ketchere i huset og nogle bolde til fri afbenyttelse; hvis gæster skal købe flere bolde, kan de handle i Decathlon eller sportsbutikker i Miramar Shopping Center.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft præcis placering af reservationsbræt ved Restaurant Cerros del Águila",
+        "Verificer tilgængeligheden af ketchere og antal bolde i huset",
+        "Bekræft at Decathlon/sportsbutikker i Miramar sælger tennisbolde"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T15:11:23.579Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "miramar-shopping-centre"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt",
+      "title": "Taxi, Uber og Bolt ved Casa Amar (Taxi Mijas kontakt)",
+      "category": "Transport",
+      "summary": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "answer": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "body": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "content": "Der findes flere gode transportmuligheder i området, herunder taxa, Uber og Bolt. Personligt anbefales ofte Taxi Mijas:\n\n- Taxi Mijas: +34 952 47 65 93. Erfaring: ofte i Cerros del Águila inden for 10–15 minutter; forudbestillinger fungerer godt (også til tidlige lufthavnsafgange).\n\nUber og Bolt fungerer også fint i området og er et spørgsmål om personlig præference. Priser og ventetid kan variere efter tidspunkt, trafik og efterspørgsel.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T11 - Bekræft Taxi Mijas telefonnummer og tiltidsrespons (ring/testbestilling).",
+        "T12 - Bekræft typisk ankomsttid til Cerros del Águila (10–15 min) under forskellige tidspunkter.",
+        "T13 - Bekræft udbredelse/tilgængelighed af Uber og Bolt i området."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T15:34:13.835Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "train-fuengirola-malaga-airport"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
