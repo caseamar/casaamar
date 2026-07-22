@@ -1,0 +1,123 @@
+{
+  "version": "2.0",
+  "updated": "2026-07-22",
+  "assistant": {
+    "name": "Casa Amar Concierge",
+    "public_label": "Spørg Casa Amar",
+    "tone": [
+      "varm",
+      "rolig",
+      "praktisk",
+      "naturlig",
+      "personlig"
+    ],
+    "max_answer_sentences": 4,
+    "ask_follow_up_when_ambiguous": true
+  },
+  "source_policy": {
+    "owner_priority": 100,
+    "secondary_priority": 60,
+    "hidden_source_ids": [
+      "rincon-rent-booking"
+    ],
+    "rules": [
+      "Owner-maintained Casa Amar facts override all secondary sources.",
+      "Secondary sources may inform answers but are not named or linked unless a transaction requires it.",
+      "Dynamic facts must be described as needing confirmation."
+    ]
+  },
+  "intents": [
+    {
+      "id": "arrival_transport",
+      "label": "Ankomst og transport",
+      "signals": [
+        "komme til huset",
+        "ankomst",
+        "lufthavn",
+        "tog",
+        "taxa",
+        "lejebil",
+        "kørevejledning",
+        "parkering"
+      ],
+      "required_context": [
+        "transport_mode"
+      ],
+      "follow_up": "Kommer I med lejebil, tog eller taxa?"
+    },
+    {
+      "id": "stay_without_car",
+      "label": "Ophold uden bil",
+      "signals": [
+        "uden bil",
+        "behøver bil",
+        "offentlig transport",
+        "taxa"
+      ],
+      "required_context": []
+    },
+    {
+      "id": "booking",
+      "label": "Booking og ledighed",
+      "signals": [
+        "ledig",
+        "pris",
+        "booke",
+        "booking",
+        "datoer"
+      ],
+      "required_context": [
+        "dates",
+        "guest_count"
+      ],
+      "follow_up": "Hvilke datoer overvejer I, og hvor mange gæster bliver I?"
+    },
+    {
+      "id": "family",
+      "label": "Familie og børn",
+      "signals": [
+        "børn",
+        "baby",
+        "familie",
+        "højstol",
+        "babyseng"
+      ],
+      "required_context": [
+        "children_ages"
+      ],
+      "follow_up": "Hvor gamle er børnene?"
+    },
+    {
+      "id": "activities",
+      "label": "Oplevelser og aktiviteter",
+      "signals": [
+        "lave",
+        "oplevelser",
+        "aktivitet",
+        "dagstur",
+        "golf",
+        "strand",
+        "vandring"
+      ],
+      "required_context": [
+        "interests",
+        "season"
+      ],
+      "follow_up": "Hvad interesserer jer mest, og hvornår på året kommer I?"
+    },
+    {
+      "id": "house_practical",
+      "label": "Huset og praktiske forhold",
+      "signals": [
+        "håndklæder",
+        "sengelinned",
+        "wifi",
+        "køkken",
+        "aircondition",
+        "pool",
+        "projektor"
+      ],
+      "required_context": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+feat(ai): introduce scalable Casa Amar Concierge intent engine
+
+Summary
+- Replaced FAQ-style response logic with a concierge-first conversational flow.
+- Added intent detection before composing answers.
+- Added one natural follow-up question when a guest's request lacks important context.
+- Combined facts from multiple knowledge sources into one coherent answer.
+- Kept owner-maintained Casa Amar information as the highest-priority source.
+- Suppressed guest-facing links and references to Rincón Rent while retaining its facts as a secondary internal source.
+- Added Structured Outputs for predictable answer, intent, confidence and follow-up fields.
+- Moved concierge behavior and intent definitions into a separate scalable configuration file.
+- Preserved short conversation history for contextual follow-up questions.
+
+Files changed
+- index.html
+- _worker.js
+- concierge-config.json
+
+Why
+Casa Amar AI should behave like a knowledgeable host rather than a searchable FAQ. This update creates a scalable foundation for future official web sources, live search, booking assistance and guest-specific concierge functionality.
+
+Test cases
+- Hvordan kommer jeg til huset?
+- Vi vil gerne bo uden bil.
+- Hvad kan vi lave med to børn?
+- Er der håndklæder?
+- Hvad koster huset i oktober?

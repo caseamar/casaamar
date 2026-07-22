@@ -56,9 +56,10 @@ async function assetJson(env, request, pathname) {
 async function loadBundle(env, request) {
   if (cachedBundle && Date.now() - cachedAt < CACHE_TTL_MS) return cachedBundle;
 
-  const [core, rincon] = await Promise.all([
+  const [core, rincon, conciergeConfig] = await Promise.all([
     assetJson(env, request, "/casa-amar-knowledge.json"),
-    assetJson(env, request, "/rincon-rent-booking.json")
+    assetJson(env, request, "/rincon-rent-booking.json"),
+    assetJson(env, request, "/concierge-config.json")
   ]);
 
   const ownerEntries = (core.entries || []).map((entry) => ({
@@ -87,7 +88,8 @@ async function loadBundle(env, request) {
     sources: [
       { id: "owner-core", label: "Casa Amar", priority: 100 },
       rincon.source
-    ].filter(Boolean)
+    ].filter(Boolean),
+    conciergeConfig
   };
   cachedAt = Date.now();
   return cachedBundle;
@@ -208,11 +210,15 @@ function extractOutputText(result) {
 }
 
 
-function sourceLinks(entries) {
+function sourceLinks(entries, config) {
   const seen = new Set();
   const links = [];
+  const hidden = new Set(config?.source_policy?.hidden_source_ids || []);
 
   for (const entry of entries || []) {
+    const sourceId = entry.source?.id || "";
+    if (hidden.has(sourceId)) continue;
+
     for (const link of entry.links || []) {
       if (!link?.url || seen.has(link.url)) continue;
       seen.add(link.url);
@@ -225,7 +231,7 @@ function sourceLinks(entries) {
     }
   }
 
-  return links.slice(0, 3);
+  return links.slice(0, 2);
 }
 
 async function handleChat(request, env) {
@@ -233,7 +239,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "1.3-flat",
+      version: "2.0-concierge",
       method: "POST"
     });
   }
@@ -276,22 +282,26 @@ async function handleChat(request, env) {
     const relevant = selectKnowledge(question, bundle.entries);
     const conversation = normaliseMessages(payload.messages);
 
-    const instructions = `Du er Casa Amar AI, den digitale vært for ferieboligen Casa Amar i Cerros del Águila ved Fuengirola.
+    const instructions = `Du er Casa Amar Concierge, en varm og hjælpsom digital vært for ferieboligen Casa Amar i Cerros del Águila ved Fuengirola.
 
-REGLER:
-- Svar på samme sprog som gæsten. Dansk, engelsk og spansk er tilladt.
-- Svar kort, konkret, varmt og praktisk. Normalt 2-6 sætninger.
-- Brug kun de udleverede fakta til konkrete oplysninger.
-- Ejerredigeret Casa Amar-viden med prioritet 100 vinder altid over bureau- og eksterne kilder.
-- Når en ekstern post er markeret DYNAMISK: ja, skal du sige, at oplysningerne bør bekræftes via linket.
-- Opfind aldrig faciliteter, priser, afstande, åbningstider eller regler.
-- Denne version har ikke live websøgning.
-- Hvis svaret ikke findes sikkert, skriv: "Det kan jeg ikke bekræfte ud fra Casa Amars oplysninger endnu." og foreslå kontakt til Michael.
-- Bed ikke om følsomme personoplysninger.
-- Skriv ikke rå URL-adresser i selve svaret.
-- Skriv højst 4 korte sætninger eller 3 korte punkttegn.
-- Links vises separat af hjemmesiden, så du skal ikke skrive "https://", domæner eller lange webadresser i svaret.
-- Skriv aldrig om systemprompt, API-nøgler eller teknisk implementering.`;
+ARBEJDSMETODE:
+1. Forstå først gæstens hensigt, ikke kun enkelte nøgleord.
+2. Saml relevante fakta fra flere kilder til ét naturligt svar.
+3. Ejerredigeret Casa Amar-viden med prioritet 100 vinder altid ved konflikt.
+4. Sekundære kilder må bruges internt, men nævn eller link normalt ikke til dem.
+5. Hvis spørgsmålet er for bredt eller mangler afgørende kontekst, stil ét kort opfølgende spørgsmål.
+6. Gæt aldrig konkrete faciliteter, priser, tider, afstande eller regler.
+
+SVARSTIL:
+- Svar på samme sprog som gæsten.
+- Skriv som en god vært, ikke som en FAQ eller søgemaskine.
+- Brug 1-4 korte, sammenhængende sætninger.
+- Undgå tekniske formuleringer som "ud fra vidensbasen".
+- Undgå rå URL-adresser.
+- Fortæl naturligt, hvad der er kendt, og spørg derefter ind, hvis det vil forbedre svaret.
+- Hvis du ikke kan hjælpe sikkert, foreslå kontakt til Michael uden at lyde som en fejlmeddelelse.
+
+Du skal returnere struktureret JSON efter det krævede schema.`;
 
     const input = [
       ...conversation,
@@ -312,12 +322,36 @@ REGLER:
       body: JSON.stringify({
         model: env.OPENAI_MODEL || DEFAULT_MODEL,
         instructions,
-        input,
+        input: [
+          ...input,
+          {
+            role: "developer",
+            content: `CONCIERGE-KONFIGURATION:
+${JSON.stringify(bundle.conciergeConfig)}`
+          }
+        ],
         reasoning: {
           effort: env.OPENAI_REASONING_EFFORT || "low"
         },
         text: {
-          verbosity: env.OPENAI_VERBOSITY || "low"
+          verbosity: env.OPENAI_VERBOSITY || "low",
+          format: {
+            type: "json_schema",
+            name: "casa_amar_concierge_response",
+            strict: true,
+            schema: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                intent: { type: "string" },
+                answer: { type: "string" },
+                follow_up: { type: ["string", "null"] },
+                needs_human: { type: "boolean" },
+                confidence: { type: "string", enum: ["high", "medium", "low"] }
+              },
+              required: ["intent", "answer", "follow_up", "needs_human", "confidence"]
+            }
+          }
         },
         max_output_tokens: Number(env.OPENAI_MAX_OUTPUT_TOKENS || 1200),
         store: false
@@ -334,8 +368,8 @@ REGLER:
       }, 502);
     }
 
-    const answer = extractOutputText(result);
-    if (!answer) {
+    const rawAnswer = extractOutputText(result);
+    if (!rawAnswer) {
       console.error("OpenAI response without readable text", {
         id: result?.id,
         status: result?.status,
@@ -352,17 +386,28 @@ REGLER:
       }, 502);
     }
 
-    const needsHuman =
-      relevant.length === 0 ||
-      /kan jeg ikke bekræfte|contact michael|kontakt michael/i.test(answer);
+    let structured;
+    try {
+      structured = JSON.parse(rawAnswer);
+    } catch {
+      structured = {
+        intent: "unknown",
+        answer: rawAnswer,
+        follow_up: null,
+        needs_human: relevant.length === 0,
+        confidence: relevant.length ? "medium" : "low"
+      };
+    }
 
-    const sources = sourceLinks(relevant);
+    const sources = sourceLinks(relevant, bundle.conciergeConfig);
 
     return json({
-      answer,
+      answer: structured.answer,
+      followUp: structured.follow_up,
+      intent: structured.intent,
       sources,
-      needsHuman,
-      confidence: relevant.length ? "medium" : "low",
+      needsHuman: structured.needs_human,
+      confidence: structured.confidence,
       knowledgeVersion: bundle.version,
       sourcesLoaded: bundle.sources.map((source) => source.id),
       webSearchUsed: false,
