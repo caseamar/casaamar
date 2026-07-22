@@ -79,11 +79,12 @@
         "T31"
       ],
       "test_state": {
-        "status": "unknown",
+        "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:34:30.523Z",
         "last_result": null
-      }
+      },
+      "maturity": "imported"
     },
     {
       "id": "parking-restrictions-enforced",
@@ -1171,7 +1172,29 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "parking-pueblo-aguila",
+          "title": "Parkering ved Casa Amar i Pueblo Águila",
+          "reason": "Adgangsbeskrivelse påvirker hvor gæster parkerer og hvor taxaer stopper."
+        },
+        {
+          "card_id": "restaurant-cerros-aguila",
+          "title": "Restaurant Cerros del Águila",
+          "reason": "Stien fører til restauranten; nyttigt at relatere vejledning for gæster."
+        },
+        {
+          "card_id": "pool-restaurant-takeaway",
+          "title": "Restaurant og takeaway ved poolen",
+          "reason": "Adgangsvejens forbindelse til poolområdet bør fremgå."
+        }
+      ],
+      "_pending_tests": [
+        "T08 (adresse og adgangsvej verifikation på stedet)",
+        "T20 (bekræftelse af Casa-nummer og postadresse)",
+        "T31 (foto eller video af gangstien fra Calle Buitre til huset)"
+      ]
     },
     {
       "id": "emergency-number-112",
@@ -2364,7 +2387,30 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "bus-fuengirola-region",
+          "title": "Bus videre fra Fuengirola",
+          "reason": "Relevante forbindelse fra Fuengirola station til andre destinationer."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Samlet transportguide for gæster uden bil, inkluderer tog som billig løsning."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Sidste led fra Fuengirola station til lokale holdepladser som Miramar/Cerros del Águila."
+        }
+      ],
+      "_pending_tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ]
     },
     {
       "id": "bus-cerros-fuengirola",
@@ -2372,8 +2418,8 @@
       "title": "Bus mellem Cerros del Águila og Fuengirola",
       "category": "Transport",
       "content_type": "guide",
-      "summary": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
-      "answer": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
+      "summary": "Der er daglig busforbindelse (M-156) mellem Miramar-området i Fuengirola (stoppested Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar) og Cerros del Águila med ca. 15 minutters rejsetid. Afgange mandag-fredag kl. 08:00, 11:00, 14:30 og 19:00 (retur 08:15, 11:15, 14:45, 19:15). M-156 oplyses som helårsservice mindst frem til udgangen af 2030, men kan ændres midlertidigt ved helligdage/vejarbejde. Billetter købes normalt hos chaufføren (kontanter anbefales); kortbetaling er ikke garanteret. Apps som Google Maps og Moovit viser normalt linjen og stoppestederne.",
+      "answer": "Der er daglig busforbindelse (M-156) mellem Miramar-området i Fuengirola (stoppested Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar) og Cerros del Águila med ca. 15 minutters rejsetid. Afgange mandag-fredag kl. 08:00, 11:00, 14:30 og 19:00 (retur 08:15, 11:15, 14:45, 19:15). M-156 oplyses som helårsservice mindst frem til udgangen af 2030, men kan ændres midlertidigt ved helligdage/vejarbejde. Billetter købes normalt hos chaufføren (kontanter anbefales); kortbetaling er ikke garanteret. Apps som Google Maps og Moovit viser normalt linjen og stoppestederne.",
       "body": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
       "content": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
       "keywords": [
@@ -2407,7 +2453,11 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "miramar-shopping-centre",
+          "transport-no-car",
+          "parking-pueblo-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -2436,14 +2486,41 @@
         "T19",
         "T22",
         "T28",
-        "T29"
+        "T29",
+        "T02 - Bekræft M-156 linjenummer og officielle køreplan (officiel transportmyndighed eller busselskab)",
+        "T03 - Verificer stoppestedets navn og placering: Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar",
+        "T19 - Bekræft de angivne afgangstidspunkter (08:00, 11:00, 14:30, 19:00) og returafgange",
+        "T22 - Bekræft ugedagsdrift (mandag-fredag vs. weekend)",
+        "T28 - Bekræft oplysning om helårskøreplan og at den gælder mindst til udgangen af 2030"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:37:48.247Z",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "miramar-shopping-centre",
+          "title": "Centro Comercial Miramar",
+          "reason": "Stoppestedet Rotonda Ford 2 ligger ved Miramar; relevant for vejledning til gæster."
+        },
+        {
+          "card_id": "bus-fuengirola-region",
+          "title": "Bus videre fra Fuengirola",
+          "reason": "Generel info om Fuengirola busforbindelser supplerer M-156-oplysningen."
+        },
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Rejsevej fra togstationen til Miramar er beskrevet; nyttigt at relatere til togoplysninger."
+        }
+      ],
+      "_pending_tests": [
+        "T02 (kontrollér rute- og stoppestednavn med lokal kildeliste)",
+        "T03 (bekræft busnummer M-156 og driftsselskab)",
+        "T31 (verificér afstand/tid fra Fuengirola station til Miramar)"
+      ]
     },
     {
       "id": "bus-fuengirola-region",
@@ -2519,7 +2596,36 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Knyt togforbindelsen C1 som alternativ/komplement til kystbusserne."
+        },
+        {
+          "card_id": "fuengirola-old-town",
+          "title": "Den gamle bydel i Fuengirola",
+          "reason": "Anbefalet besøgssted i listen over dagsture fra Fuengirola."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Inputet handler om at klare sig uden bil; relevant for praktiske råd og priseksempler."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Specifik lokal rute (M-156) nævnt i inputet; naturlig detaljeringsrelation."
+        }
+      ],
+      "_pending_tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T32"
+      ]
     },
     {
       "id": "taxi-mijas",
@@ -4399,7 +4505,36 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Detaljer om C1-toget fra Fuengirola til Málaga kan kobles til transportbeskrivelsen."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Lokale busforbindelser ved Fuengirola/Cerros del Águila er relevante for gæsters afgang til togstation."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Overlap i råd og priser for gæster uden bil; nyttig relation for alternativer og taxi-priser."
+        },
+        {
+          "card_id": "parking-pueblo-aguila",
+          "title": "Parkering ved Casa Amar i Pueblo Águila",
+          "reason": "Relevans for gæster, der overvejer at tage egen bil til Sierra Nevada."
+        }
+      ],
+      "_pending_tests": [
+        "Verificer C1 togfrekvens og rejsetid Fuengirola → Málaga María Zambrano (aktuel køreplan).",
+        "Verificer højhastighedstog (AVE/Avant) Málaga → Granada rejsetider og daglige afgange.",
+        "Verificer busforbindelser Granada → Pradollano (ruter, rejsetid, frekvens) og ALSA Málaga → Granada priser/afgange.",
+        "Tjek køreafstand og realistisk bilrejsetid Fuengirola/Málaga → Pradollano under vinterforhold (~200 km).",
+        "Bekræft skisæsonens normale start- og slutdatoer for Sierra Nevada (aktuelle sæsondata)."
+      ]
     },
     {
       "id": "restaurant-cerros-aguila",
@@ -5532,9 +5667,68 @@
         "last_changed_at": "2026-07-22",
         "last_result": null
       }
+    },
+    {
+      "id": "togforbindelser-fra-malaga-regionalt-h-jhastighed",
+      "title": "Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T13:49:57.473Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created in AI Editor"
+      },
+      "quality": {
+        "completeness": 60,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
     }
   ],
-  "version": "1.4",
+  "version": "1.5",
   "updated": "2026-07-22",
   "entries": [
     {
@@ -5616,11 +5810,12 @@
         "T31"
       ],
       "test_state": {
-        "status": "unknown",
+        "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:34:30.523Z",
         "last_result": null
-      }
+      },
+      "maturity": "imported"
     },
     {
       "id": "parking-restrictions-enforced",
@@ -6708,7 +6903,29 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "parking-pueblo-aguila",
+          "title": "Parkering ved Casa Amar i Pueblo Águila",
+          "reason": "Adgangsbeskrivelse påvirker hvor gæster parkerer og hvor taxaer stopper."
+        },
+        {
+          "card_id": "restaurant-cerros-aguila",
+          "title": "Restaurant Cerros del Águila",
+          "reason": "Stien fører til restauranten; nyttigt at relatere vejledning for gæster."
+        },
+        {
+          "card_id": "pool-restaurant-takeaway",
+          "title": "Restaurant og takeaway ved poolen",
+          "reason": "Adgangsvejens forbindelse til poolområdet bør fremgå."
+        }
+      ],
+      "_pending_tests": [
+        "T08 (adresse og adgangsvej verifikation på stedet)",
+        "T20 (bekræftelse af Casa-nummer og postadresse)",
+        "T31 (foto eller video af gangstien fra Calle Buitre til huset)"
+      ]
     },
     {
       "id": "emergency-number-112",
@@ -7901,7 +8118,30 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "bus-fuengirola-region",
+          "title": "Bus videre fra Fuengirola",
+          "reason": "Relevante forbindelse fra Fuengirola station til andre destinationer."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Samlet transportguide for gæster uden bil, inkluderer tog som billig løsning."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Sidste led fra Fuengirola station til lokale holdepladser som Miramar/Cerros del Águila."
+        }
+      ],
+      "_pending_tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ]
     },
     {
       "id": "bus-cerros-fuengirola",
@@ -7909,8 +8149,8 @@
       "title": "Bus mellem Cerros del Águila og Fuengirola",
       "category": "Transport",
       "content_type": "guide",
-      "summary": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
-      "answer": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
+      "summary": "Der er daglig busforbindelse (M-156) mellem Miramar-området i Fuengirola (stoppested Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar) og Cerros del Águila med ca. 15 minutters rejsetid. Afgange mandag-fredag kl. 08:00, 11:00, 14:30 og 19:00 (retur 08:15, 11:15, 14:45, 19:15). M-156 oplyses som helårsservice mindst frem til udgangen af 2030, men kan ændres midlertidigt ved helligdage/vejarbejde. Billetter købes normalt hos chaufføren (kontanter anbefales); kortbetaling er ikke garanteret. Apps som Google Maps og Moovit viser normalt linjen og stoppestederne.",
+      "answer": "Der er daglig busforbindelse (M-156) mellem Miramar-området i Fuengirola (stoppested Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar) og Cerros del Águila med ca. 15 minutters rejsetid. Afgange mandag-fredag kl. 08:00, 11:00, 14:30 og 19:00 (retur 08:15, 11:15, 14:45, 19:15). M-156 oplyses som helårsservice mindst frem til udgangen af 2030, men kan ændres midlertidigt ved helligdage/vejarbejde. Billetter købes normalt hos chaufføren (kontanter anbefales); kortbetaling er ikke garanteret. Apps som Google Maps og Moovit viser normalt linjen og stoppestederne.",
       "body": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
       "content": "Der er busforbindelse fra Cerros del Águila til Fuengirola. Stoppestedet ligger ved rundkørslen, hvor aktuelle afgangstider kan ses.",
       "keywords": [
@@ -7944,7 +8184,11 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "miramar-shopping-centre",
+          "transport-no-car",
+          "parking-pueblo-aguila"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -7973,14 +8217,41 @@
         "T19",
         "T22",
         "T28",
-        "T29"
+        "T29",
+        "T02 - Bekræft M-156 linjenummer og officielle køreplan (officiel transportmyndighed eller busselskab)",
+        "T03 - Verificer stoppestedets navn og placering: Rotonda Ford 2 ved Miramar Shopping Center/Hotel Myramar",
+        "T19 - Bekræft de angivne afgangstidspunkter (08:00, 11:00, 14:30, 19:00) og returafgange",
+        "T22 - Bekræft ugedagsdrift (mandag-fredag vs. weekend)",
+        "T28 - Bekræft oplysning om helårskøreplan og at den gælder mindst til udgangen af 2030"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:37:48.247Z",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "miramar-shopping-centre",
+          "title": "Centro Comercial Miramar",
+          "reason": "Stoppestedet Rotonda Ford 2 ligger ved Miramar; relevant for vejledning til gæster."
+        },
+        {
+          "card_id": "bus-fuengirola-region",
+          "title": "Bus videre fra Fuengirola",
+          "reason": "Generel info om Fuengirola busforbindelser supplerer M-156-oplysningen."
+        },
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Rejsevej fra togstationen til Miramar er beskrevet; nyttigt at relatere til togoplysninger."
+        }
+      ],
+      "_pending_tests": [
+        "T02 (kontrollér rute- og stoppestednavn med lokal kildeliste)",
+        "T03 (bekræft busnummer M-156 og driftsselskab)",
+        "T31 (verificér afstand/tid fra Fuengirola station til Miramar)"
+      ]
     },
     {
       "id": "bus-fuengirola-region",
@@ -8056,7 +8327,36 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Knyt togforbindelsen C1 som alternativ/komplement til kystbusserne."
+        },
+        {
+          "card_id": "fuengirola-old-town",
+          "title": "Den gamle bydel i Fuengirola",
+          "reason": "Anbefalet besøgssted i listen over dagsture fra Fuengirola."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Inputet handler om at klare sig uden bil; relevant for praktiske råd og priseksempler."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Specifik lokal rute (M-156) nævnt i inputet; naturlig detaljeringsrelation."
+        }
+      ],
+      "_pending_tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T32"
+      ]
     },
     {
       "id": "taxi-mijas",
@@ -9936,7 +10236,36 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "_pending_relations": [
+        {
+          "card_id": "train-fuengirola-malaga-airport",
+          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
+          "reason": "Detaljer om C1-toget fra Fuengirola til Málaga kan kobles til transportbeskrivelsen."
+        },
+        {
+          "card_id": "bus-cerros-fuengirola",
+          "title": "Bus mellem Cerros del Águila og Fuengirola",
+          "reason": "Lokale busforbindelser ved Fuengirola/Cerros del Águila er relevante for gæsters afgang til togstation."
+        },
+        {
+          "card_id": "transport-no-car",
+          "title": "Ophold uden bil",
+          "reason": "Overlap i råd og priser for gæster uden bil; nyttig relation for alternativer og taxi-priser."
+        },
+        {
+          "card_id": "parking-pueblo-aguila",
+          "title": "Parkering ved Casa Amar i Pueblo Águila",
+          "reason": "Relevans for gæster, der overvejer at tage egen bil til Sierra Nevada."
+        }
+      ],
+      "_pending_tests": [
+        "Verificer C1 togfrekvens og rejsetid Fuengirola → Málaga María Zambrano (aktuel køreplan).",
+        "Verificer højhastighedstog (AVE/Avant) Málaga → Granada rejsetider og daglige afgange.",
+        "Verificer busforbindelser Granada → Pradollano (ruter, rejsetid, frekvens) og ALSA Málaga → Granada priser/afgange.",
+        "Tjek køreafstand og realistisk bilrejsetid Fuengirola/Málaga → Pradollano under vinterforhold (~200 km).",
+        "Bekræft skisæsonens normale start- og slutdatoer for Sierra Nevada (aktuelle sæsondata)."
+      ]
     },
     {
       "id": "restaurant-cerros-aguila",
@@ -11068,6 +11397,65 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
+      }
+    },
+    {
+      "id": "togforbindelser-fra-malaga-regionalt-h-jhastighed",
+      "title": "Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T13:49:57.473Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created in AI Editor"
+      },
+      "quality": {
+        "completeness": 60,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
       }
     }
   ]
