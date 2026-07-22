@@ -32,7 +32,7 @@ td:first-child{border-radius:12px 0 0 12px}td:last-child{border-radius:0 12px 12
 <p>Kør testene efter ændringer i AI, policy, intents eller vidensbase. Testværktøjet bruger den valgte <code>/api/chat</code>-adresse.</p>
 <div class="toolbar">
   <div class="endpoint"><input id="endpoint" value="https://casaamarv2.pages.dev/api/chat" aria-label="API endpoint"></div>
-  <button class="primary" id="runAll">Kør alle tests</button>
+  <button class="primary" id="runAll">Kør viste tests én ad gangen</button>
   <button class="secondary" id="reset">Nulstil</button>
 </div>
 <div class="summary">
@@ -116,7 +116,15 @@ document.querySelector('#runAll').addEventListener('click',async()=>{
   document.querySelector('#runAll').disabled=false;
 });
 document.querySelector('#reset').addEventListener('click',()=>{suite.tests.forEach(t=>delete t.result);render()});
-fetch('ai-regression-tests.json').then(r=>r.json()).then(data=>{suite=data;render()}).catch(e=>{tbody.innerHTML=`<tr><td colspan="4">Kunne ikke indlæse testfilen: ${e.message}</td></tr>`});
+fetch('ai-regression-tests.json').then(r=>r.json()).then(data=>{
+  const params=new URLSearchParams(location.search);
+  const selectedParam=params.get('selected');
+  const saved=JSON.parse(localStorage.getItem('casaSelectedTests')||'[]');
+  const selectedIds=(selectedParam?selectedParam.split(','):saved).filter(Boolean);
+  suite=data;
+  if(selectedIds.length)suite.tests=suite.tests.filter(t=>selectedIds.includes(t.id));
+  render();
+}).catch(e=>{tbody.innerHTML=`<tr><td colspan="4">Kunne ikke indlæse testfilen: ${e.message}</td></tr>`});
 </script>
 </body>
 </html>

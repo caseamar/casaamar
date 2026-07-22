@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated": "2026-07-22",
   "label": "Casa Amar Knowledge Cards",
   "description": "Canonical editorial objects used by AI, future website generation, guest guides and owner documentation.",
@@ -70,6 +70,23 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T08",
+        "T20",
+        "T21",
+        "T22",
+        "T28",
+        "T29",
+        "T31"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -133,6 +150,18 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -200,6 +229,20 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T19",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -262,6 +305,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -325,6 +381,21 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T17",
+        "T22",
+        "T28",
+        "T29",
+        "T33"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -394,6 +465,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -460,6 +544,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -523,6 +620,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -591,6 +701,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -654,6 +777,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -716,6 +852,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -782,6 +931,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -845,6 +1007,16 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T15",
+        "T25"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -909,6 +1081,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T15",
+        "T23",
+        "T24",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -974,7 +1159,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T08",
+        "T20",
+        "T21",
+        "T32"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "emergency-number-112",
@@ -1038,7 +1235,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "verified"
+      "maturity": "verified",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "waste-disposal",
@@ -1102,7 +1309,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "airconditioning-use",
@@ -1167,7 +1384,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T01",
+        "T02",
+        "T12",
+        "T13",
+        "T17",
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "washing-machine-location",
@@ -1231,7 +1462,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T01",
+        "T02",
+        "T12",
+        "T13",
+        "T17",
+        "T27",
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "payment-cards-tipping",
@@ -1295,7 +1541,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "baby-equipment-house",
@@ -1360,7 +1616,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T11",
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "golf-clubs-house",
@@ -1423,7 +1690,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "super-sures",
@@ -1488,7 +1768,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "carrefour-miramar",
@@ -1553,7 +1842,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "food-delivery-apps",
@@ -1618,7 +1916,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "onlinebutikken-fuengirola",
@@ -1682,7 +1989,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "miramar-shopping-centre",
@@ -1746,7 +2062,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-market",
@@ -1811,7 +2136,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "decathlon-mijas",
@@ -1875,7 +2207,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "aceites-molisur",
@@ -1940,7 +2279,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "train-fuengirola-malaga-airport",
@@ -2006,7 +2352,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "bus-cerros-fuengirola",
@@ -2071,7 +2429,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T19",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "bus-fuengirola-region",
@@ -2135,7 +2507,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "taxi-mijas",
@@ -2199,7 +2583,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "car-rental-helle-hollis",
@@ -2264,7 +2660,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "spanish-driving-priority",
@@ -2328,7 +2736,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "parking-road-markings",
@@ -2392,7 +2812,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "parking-price-guidance",
@@ -2455,7 +2888,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "los-boliches-beach",
@@ -2519,7 +2964,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T32",
+        "T33",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-old-town",
@@ -2583,7 +3040,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "mijas-pueblo",
@@ -2647,7 +3115,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "la-cala",
@@ -2710,7 +3188,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "malaga-city",
@@ -2774,7 +3262,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "caminito-del-rey",
@@ -2838,7 +3336,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "ronda",
@@ -2902,7 +3410,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "setenil",
@@ -2965,7 +3483,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "gibraltar",
@@ -3029,7 +3557,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "cordoba",
@@ -3093,7 +3631,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "alhambra",
@@ -3157,7 +3706,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "sevilla",
@@ -3219,7 +3778,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "morocco-flight",
@@ -3282,7 +3851,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "easter-processions",
@@ -3345,7 +3925,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "gran-parque-mijas",
@@ -3410,7 +4000,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-library-park",
@@ -3475,7 +4075,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "cycling-running-area",
@@ -3539,7 +4149,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T15",
+        "T21",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "snorkelling-diving-fuengirola",
@@ -3603,7 +4228,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "golf-costa-del-sol",
@@ -3667,7 +4306,23 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T08",
+        "T15",
+        "T20",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "sierra-nevada-hiking-ski",
@@ -3731,7 +4386,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "restaurant-cerros-aguila",
@@ -3795,7 +4463,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T17",
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "pizzeria-primavera",
@@ -3860,7 +4539,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "asador-otola",
@@ -3923,7 +4611,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "casa-roberto",
@@ -3987,7 +4684,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "lizarran-fuengirola",
@@ -4051,7 +4757,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "heladeria-moranga",
@@ -4115,7 +4831,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "arrabal-ronda",
@@ -4178,7 +4903,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "el-morabito-ronda",
@@ -4240,7 +4974,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "casa-pepe-cordoba",
@@ -4303,7 +5046,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "seasonal-fruit-vegetables",
@@ -4364,7 +5116,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "jamon-chorizo",
@@ -4425,7 +5184,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "manchego-membrillo",
@@ -4486,7 +5252,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "salmorejo",
@@ -4547,7 +5320,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "patatas-bravas",
@@ -4608,7 +5388,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "croquetas",
@@ -4669,7 +5456,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "berenjenas-con-miel",
@@ -4730,7 +5524,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     }
   ],
   "entries": [
@@ -4800,6 +5601,23 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T08",
+        "T20",
+        "T21",
+        "T22",
+        "T28",
+        "T29",
+        "T31"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -4863,6 +5681,18 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -4930,6 +5760,20 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T19",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -4992,6 +5836,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5055,6 +5912,21 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T02",
+        "T03",
+        "T17",
+        "T22",
+        "T28",
+        "T29",
+        "T33"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5124,6 +5996,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5190,6 +6075,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5253,6 +6151,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5321,6 +6232,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5384,6 +6308,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5446,6 +6383,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5512,6 +6462,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T23",
+        "T24",
+        "T25",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5575,6 +6538,16 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T15",
+        "T25"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5639,6 +6612,19 @@
         "da": "source",
         "en": "pending",
         "es": "pending"
+      },
+      "tests": [
+        "T14",
+        "T15",
+        "T23",
+        "T24",
+        "T26"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
       }
     },
     {
@@ -5704,7 +6690,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T08",
+        "T20",
+        "T21",
+        "T32"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "emergency-number-112",
@@ -5768,7 +6766,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "verified"
+      "maturity": "verified",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "unknown",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "waste-disposal",
@@ -5832,7 +6840,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "airconditioning-use",
@@ -5897,7 +6915,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T01",
+        "T02",
+        "T12",
+        "T13",
+        "T17",
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "washing-machine-location",
@@ -5961,7 +6993,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T01",
+        "T02",
+        "T12",
+        "T13",
+        "T17",
+        "T27",
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "payment-cards-tipping",
@@ -6025,7 +7072,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T27",
+        "T34"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "baby-equipment-house",
@@ -6090,7 +7147,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T11",
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "golf-clubs-house",
@@ -6153,7 +7221,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "super-sures",
@@ -6218,7 +7299,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "carrefour-miramar",
@@ -6283,7 +7373,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "food-delivery-apps",
@@ -6348,7 +7447,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "onlinebutikken-fuengirola",
@@ -6412,7 +7520,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "miramar-shopping-centre",
@@ -6476,7 +7593,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T31"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-market",
@@ -6541,7 +7667,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "decathlon-mijas",
@@ -6605,7 +7738,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "aceites-molisur",
@@ -6670,7 +7810,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "train-fuengirola-malaga-airport",
@@ -6736,7 +7883,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "bus-cerros-fuengirola",
@@ -6801,7 +7960,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T19",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "bus-fuengirola-region",
@@ -6865,7 +8038,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "taxi-mijas",
@@ -6929,7 +8114,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "car-rental-helle-hollis",
@@ -6994,7 +8191,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "spanish-driving-priority",
@@ -7058,7 +8267,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "parking-road-markings",
@@ -7122,7 +8343,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "parking-price-guidance",
@@ -7185,7 +8419,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "los-boliches-beach",
@@ -7249,7 +8495,19 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T32",
+        "T33",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-old-town",
@@ -7313,7 +8571,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "mijas-pueblo",
@@ -7377,7 +8646,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "la-cala",
@@ -7440,7 +8719,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "malaga-city",
@@ -7504,7 +8793,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "caminito-del-rey",
@@ -7568,7 +8867,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "ronda",
@@ -7632,7 +8941,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "setenil",
@@ -7695,7 +9014,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "gibraltar",
@@ -7759,7 +9088,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "cordoba",
@@ -7823,7 +9162,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "alhambra",
@@ -7887,7 +9237,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "sevilla",
@@ -7949,7 +9309,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "morocco-flight",
@@ -8012,7 +9382,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "easter-processions",
@@ -8075,7 +9456,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "gran-parque-mijas",
@@ -8140,7 +9531,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "fuengirola-library-park",
@@ -8205,7 +9606,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T24",
+        "T30"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "cycling-running-area",
@@ -8269,7 +9680,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T15",
+        "T21",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "snorkelling-diving-fuengirola",
@@ -8333,7 +9759,21 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T22",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "golf-costa-del-sol",
@@ -8397,7 +9837,23 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T08",
+        "T15",
+        "T20",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "sierra-nevada-hiking-ski",
@@ -8461,7 +9917,20 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T03",
+        "T28",
+        "T29",
+        "T35"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "restaurant-cerros-aguila",
@@ -8525,7 +9994,18 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T02",
+        "T17",
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "pizzeria-primavera",
@@ -8590,7 +10070,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "asador-otola",
@@ -8653,7 +10142,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "casa-roberto",
@@ -8717,7 +10215,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "lizarran-fuengirola",
@@ -8781,7 +10288,17 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T22",
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "heladeria-moranga",
@@ -8845,7 +10362,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "arrabal-ronda",
@@ -8908,7 +10434,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "el-morabito-ronda",
@@ -8970,7 +10505,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "casa-pepe-cordoba",
@@ -9033,7 +10577,16 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "seasonal-fruit-vegetables",
@@ -9094,7 +10647,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "jamon-chorizo",
@@ -9155,7 +10715,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "manchego-membrillo",
@@ -9216,7 +10783,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "salmorejo",
@@ -9277,7 +10851,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "patatas-bravas",
@@ -9338,7 +10919,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "croquetas",
@@ -9399,7 +10987,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     },
     {
       "id": "berenjenas-con-miel",
@@ -9460,7 +11055,14 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported"
+      "maturity": "imported",
+      "tests": [],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      }
     }
   ]
 }

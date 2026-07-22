@@ -552,12 +552,147 @@ async function handleStatus(request, env) {
   }
 }
 
+
+async function handleKnowledgeSuggest(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Metoden understøttes ikke." }, 405);
+  }
+
+  if (!sameOrigin(request)) {
+    return json({ error: "Ugyldig oprindelse." }, 403);
+  }
+
+  if (rateLimited(request)) {
+    return json({ error: "Der er sendt for mange forespørgsler. Prøv igen om lidt." }, 429);
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
+  }
+
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    return json({ error: "Ugyldig forespørgsel." }, 400);
+  }
+
+  const inputText = String(payload.input || "").trim();
+  const selectedCards = Array.isArray(payload.cards) ? payload.cards.slice(0, 12) : [];
+
+  if (!inputText || inputText.length > 12000) {
+    return json({ error: "Indholdet skal være mellem 1 og 12.000 tegn." }, 400);
+  }
+
+  const cardContext = selectedCards.map((card) => ({
+    id: card.id,
+    title: card.title,
+    category: card.category,
+    summary: card.summary,
+    visibility: card.visibility,
+    channels: card.channels,
+    dynamic: card.dynamic,
+    trust: card.trust
+  }));
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions: `Du er redaktør for Casa Amar Knowledge Studio.
+Analyser ny tekst eller et link, men hent ikke selv linkets indhold.
+Foreslå praktiske ændringer til eksisterende Knowledge Cards eller nye kort.
+AI foreslår; Michael godkender.
+Gæt aldrig fakta fra et link alene. Markér linkbaserede fakta som needs_review.
+Returnér korte, konkrete forslag på dansk.`,
+      input: [{
+        role: "user",
+        content: `NYT INPUT:
+${inputText}
+
+VALGTE KNOWLEDGE CARDS:
+${JSON.stringify(cardContext)}`
+      }],
+      reasoning: { effort: "low" },
+      text: {
+        verbosity: "low",
+        format: {
+          type: "json_schema",
+          name: "knowledge_studio_suggestion",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              input_type: {
+                type: "string",
+                enum: ["text", "url", "google_maps", "document_reference", "unknown"]
+              },
+              summary: { type: "string" },
+              suggestions: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    action: { type: "string", enum: ["update", "create", "review"] },
+                    card_id: { type: ["string", "null"] },
+                    title: { type: "string" },
+                    category: { type: "string" },
+                    proposed_summary: { type: "string" },
+                    reason: { type: "string" },
+                    confidence: { type: "string", enum: ["high", "medium", "low"] },
+                    requires_verification: { type: "boolean" },
+                    website_candidate: { type: "boolean" },
+                    tests_needed: { type: "boolean" }
+                  },
+                  required: [
+                    "action", "card_id", "title", "category", "proposed_summary",
+                    "reason", "confidence", "requires_verification",
+                    "website_candidate", "tests_needed"
+                  ]
+                }
+              }
+            },
+            required: ["input_type", "summary", "suggestions"]
+          }
+        }
+      },
+      max_output_tokens: 1800,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) {
+    return json({
+      error: "Knowledge Studio kunne ikke generere forslag.",
+      detail: result?.error?.message || "OpenAI request failed"
+    }, 502);
+  }
+
+  const raw = extractOutputText(result);
+  if (!raw) {
+    return json({ error: "Knowledge Studio returnerede ikke et læsbart forslag." }, 502);
+  }
+
+  try {
+    return json(JSON.parse(raw));
+  } catch {
+    return json({ input_type: "unknown", summary: raw, suggestions: [] });
+  }
+}
+
 async function handleChat(request, env) {
   if (request.method === "GET") {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "6.0-knowledge-cards",
+      version: "7.0-knowledge-studio",
       method: "POST"
     });
   }
@@ -798,6 +933,10 @@ export default {
 
     if (url.pathname === "/api/status") {
       return handleStatus(request, env);
+    }
+
+    if (url.pathname === "/api/knowledge-suggest") {
+      return handleKnowledgeSuggest(request, env);
     }
 
     return env.ASSETS.fetch(request);

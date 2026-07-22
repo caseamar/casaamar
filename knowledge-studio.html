@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Knowledge Studio</title>
+<style>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#69756f;--line:#e6dfd5;--ok:#2b7450;--warn:#9a6a16;--bad:#a83b31}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1320px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}h1{margin:0 0 4px}.lead{color:var(--muted);max-width:850px;line-height:1.45}
+.topbar,.actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.topbar{margin:18px 0}
+button,a.button{border:0;border-radius:11px;padding:10px 14px;font-weight:750;text-decoration:none;cursor:pointer;font:inherit}
+.primary{background:var(--clay);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid #d7d0c6}.danger{background:#fff;color:var(--bad);border:1px solid #e7bdb7}
+.layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:15px}.panel{background:#fff;border-radius:16px;padding:15px;min-width:0}
+input,textarea,select{width:100%;font:inherit;padding:10px 11px;border:1px solid #d7d0c6;border-radius:10px;background:#fff;color:var(--ink)}
+textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-columns:1fr 180px;gap:8px;margin-bottom:10px}
+.list{max-height:690px;overflow:auto;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:9px;padding:11px 2px;border-bottom:1px solid var(--line);align-items:start}
+.row input{width:auto;margin-top:3px}.row strong{display:block;font-size:.9rem}.meta{color:var(--muted);font-size:.72rem;margin-top:3px}
+.badge{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:.67rem;font-weight:800;background:#eee9e1}.needs{background:#fff0ca;color:#795400}.tested{background:#dff2e7;color:var(--ok)}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}.section{border-top:1px solid var(--line);margin-top:15px;padding-top:15px}
+.suggestion{border:1px solid var(--line);border-radius:13px;padding:12px;margin-top:9px}.suggestion h3{margin:0 0 5px;font-size:1rem}
+.diff{background:#f8f5ef;border-radius:10px;padding:10px;line-height:1.45;font-size:.85rem}
+.notice{padding:10px;border-radius:10px;background:#fff7e1;color:#725400;font-size:.8rem}
+.test-list{display:flex;flex-wrap:wrap;gap:7px}.test-chip{border:1px solid var(--line);border-radius:999px;padding:6px 9px;font-size:.75rem}
+.statusline{font-size:.8rem;color:var(--muted);margin:8px 0}
+@media(max-width:900px){main{padding:14px}.layout{grid-template-columns:1fr}.editor-grid,.filters{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<h1>Casa Amar Knowledge Studio</h1>
+<p class="lead">Skriv en note, indsæt et link eller vælg eksisterende Knowledge Objects. AI foreslår ændringer; du redigerer og godkender. Ændringer gemmes lokalt, markeres som ikke testet og eksporteres til GitHub.</p>
+<div class="topbar">
+<button class="primary" id="newInput">Nyt input</button>
+<button class="secondary" id="selectNeedsTest">Vælg ikke testet</button>
+<button class="secondary" id="runSelectedTests">Kør valgte tests</button>
+<button class="secondary" id="exportCards">Eksportér Knowledge Cards</button>
+<button class="secondary" id="exportChanges">Eksportér ændringslog</button>
+<a class="button secondary" href="/knowledge-center.html">Knowledge Center</a>
+<a class="button secondary" href="/ai-test-runner.html">Fuld test</a>
+</div>
+<div class="layout">
+<section class="panel">
+<h2>Knowledge Objects</h2>
+<div class="filters"><input id="search" placeholder="Søg"><select id="category"><option value="">Alle kategorier</option></select></div>
+<div id="selectedInfo" class="statusline">0 valgt</div>
+<div class="list" id="objectList"></div>
+</section>
+<section class="panel">
+<h2>Tilføj eller opdatér viden</h2>
+<label>Tekst eller link</label>
+<textarea id="inputText" placeholder="Skriv frit, indsæt et link eller beskriv en ændring..."></textarea>
+<div class="actions" style="margin-top:9px">
+<button class="primary" id="suggest">Få AI-forslag</button>
+<button class="secondary" id="clear">Ryd</button>
+</div>
+<div class="notice" style="margin-top:10px">Et link analyseres som reference. Studio henter ikke automatisk indhold fra vilkårlige websider i denne version, så faktuelle linkoplysninger markeres til kontrol.</div>
+<div id="suggestions" class="section"><p class="meta">AI-forslag vises her.</p></div>
+<div id="editor" class="section">
+<h2>Redigér valgt objekt</h2>
+<div class="editor-grid">
+<div><label>Titel</label><input id="editTitle"></div>
+<div><label>Kategori</label><input id="editCategory"></div>
+<div class="full"><label>Kort svar</label><textarea id="editSummary"></textarea></div>
+<div><label>Synlighed</label><select id="editVisibility"><option>internal</option><option>public</option><option>guest_only</option></select></div>
+<div><label>Modenhed</label><select id="editMaturity"><option>imported</option><option>verified</option><option>draft</option><option>needs_review</option></select></div>
+<div class="full"><label>Kanaler</label><div class="actions">
+<label><input type="checkbox" id="chAi"> AI</label>
+<label><input type="checkbox" id="chWeb"> Hjemmeside</label>
+<label><input type="checkbox" id="chGuest"> Gæsteguide</label>
+<label><input type="checkbox" id="chOwner"> Ejerguide</label>
+</div></div>
+</div>
+<div class="actions" style="margin-top:10px"><button class="primary" id="saveEdit">Gem lokal ændring</button></div>
+<div id="relatedTests" class="section"><h3>Relevante tests</h3><div class="test-list"></div></div>
+</div>
+</section>
+</div>
+</main>
+<script>
+let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null;
+const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
+const q=s=>document.querySelector(s);
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function download(name,obj){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function getCard(id){return data.cards.find(c=>c.id===id)}
+function renderList(){
+ const term=q('#search').value.toLowerCase(),cat=q('#category').value;
+ const cards=data.cards.filter(c=>(!cat||c.category===cat)&&(!term||[c.title,c.summary,...(c.keywords||[])].join(' ').toLowerCase().includes(term)));
+ q('#objectList').innerHTML=cards.map(c=>`<div class="row">
+ <input type="checkbox" data-id="${esc(c.id)}" ${selected.has(c.id)?'checked':''}>
+ <div data-open="${esc(c.id)}" style="cursor:pointer"><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.id)}</div></div>
+ <span class="badge ${c.test_state?.status==='needs_test'?'needs':'tested'}">${c.test_state?.status==='needs_test'?'Ikke testet':'OK'}</span>
+ </div>`).join('');
+ q('#selectedInfo').textContent=`${selected.size} valgt`;
+ q('#objectList').querySelectorAll('input[data-id]').forEach(el=>el.addEventListener('change',()=>{el.checked?selected.add(el.dataset.id):selected.delete(el.dataset.id);renderList()}));
+ q('#objectList').querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',()=>openCard(el.dataset.open)));
+}
+function openCard(id){
+ activeId=id;const c=getCard(id);if(!c)return;
+ q('#editTitle').value=c.title||'';q('#editCategory').value=c.category||'';q('#editSummary').value=c.summary||c.answer||'';
+ q('#editVisibility').value=c.visibility||'internal';q('#editMaturity').value=c.maturity||'imported';
+ q('#chAi').checked=!!c.channels?.ai;q('#chWeb').checked=!!c.channels?.website;q('#chGuest').checked=!!c.channels?.guest_guide;q('#chOwner').checked=!!c.channels?.owner_guide;
+ const ids=c.tests||[];q('#relatedTests .test-list').innerHTML=ids.map(id=>`<span class="test-chip">${esc(id)}</span>`).join('')||'<span class="meta">Ingen tests knyttet endnu.</span>';
+}
+function save(){
+ if(!activeId)return alert('Vælg et objekt først.');
+ const c=getCard(activeId),before=JSON.parse(JSON.stringify(c));
+ c.title=q('#editTitle').value.trim();c.category=q('#editCategory').value.trim();c.summary=q('#editSummary').value.trim();c.answer=c.summary;
+ c.visibility=q('#editVisibility').value;c.maturity=q('#editMaturity').value;c.updated=new Date().toISOString().slice(0,10);
+ c.channels={ai:q('#chAi').checked,website:q('#chWeb').checked,guest_guide:q('#chGuest').checked,owner_guide:q('#chOwner').checked};
+ c.test_state={...(c.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
+ changes.push({id:`change-${Date.now()}`,card_id:c.id,changed_at:new Date().toISOString(),before,after:JSON.parse(JSON.stringify(c)),status:'approved_local'});
+ localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));renderList();alert('Ændringen er gemt lokalt og markeret som ikke testet.');
+}
+async function suggest(){
+ const input=q('#inputText').value.trim();if(!input)return alert('Skriv tekst eller indsæt et link.');
+ q('#suggest').disabled=true;q('#suggestions').innerHTML='<p>Analyserer…</p>';
+ try{
+  const chosen=[...selected].map(getCard).filter(Boolean);
+  const r=await fetch('/api/knowledge-suggest',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({input,cards:chosen})});
+  const result=await r.json();if(!r.ok)throw new Error(result.detail||result.error);
+  q('#suggestions').innerHTML=`<h2>AI-forslag</h2><p>${esc(result.summary)}</p>`+(result.suggestions||[]).map((s,i)=>`<article class="suggestion">
+   <h3>${esc(s.title)}</h3><div class="meta">${esc(s.action)} · ${esc(s.category)} · confidence ${esc(s.confidence)}</div>
+   <div class="diff">${esc(s.proposed_summary)}</div><p class="meta">${esc(s.reason)}</p>
+   <div class="actions"><button class="primary" data-apply="${i}">Brug forslag</button><button class="secondary" data-copy="${i}">Kopiér tekst</button></div>
+  </article>`).join('');
+  q('#suggestions').querySelectorAll('[data-apply]').forEach(btn=>btn.addEventListener('click',()=>{
+    const s=result.suggestions[Number(btn.dataset.apply)];
+    const target=s.card_id&&getCard(s.card_id);if(target){openCard(target.id);q('#editSummary').value=s.proposed_summary}
+    else{q('#editTitle').value=s.title;q('#editCategory').value=s.category;q('#editSummary').value=s.proposed_summary;activeId=null;alert('Forslaget er til et nyt objekt. I denne fase eksporteres nye objekter via ændringsloggen.')}
+  }));
+  q('#suggestions').querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',()=>navigator.clipboard.writeText(result.suggestions[Number(btn.dataset.copy)].proposed_summary)));
+ }catch(e){q('#suggestions').innerHTML=`<p class="notice">${esc(e.message)}</p>`}finally{q('#suggest').disabled=false}
+}
+async function runSelected(){
+ const ids=[...selected],testIds=[...new Set(ids.flatMap(id=>getCard(id)?.tests||[]))];
+ if(!testIds.length)return alert('De valgte objekter har ingen tilknyttede tests endnu.');
+ localStorage.setItem('casaSelectedTests',JSON.stringify(testIds));
+ window.location.href='/ai-test-runner.html?selected='+encodeURIComponent(testIds.join(','));
+}
+Promise.all([fetch('/knowledge-cards.json').then(r=>r.json()),fetch('/ai-regression-tests.json').then(r=>r.json())]).then(([cardsData,testData])=>{
+ data.cards=cardsData.cards||cardsData.entries||[];tests=testData;
+ const cats=[...new Set(data.cards.map(c=>c.category))].sort();q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
+ renderList();if(data.cards[0])openCard(data.cards[0].id);
+});
+q('#search').addEventListener('input',renderList);q('#category').addEventListener('change',renderList);
+q('#saveEdit').addEventListener('click',save);q('#suggest').addEventListener('click',suggest);q('#clear').addEventListener('click',()=>{q('#inputText').value='';q('#suggestions').innerHTML='<p class="meta">AI-forslag vises her.</p>'});
+q('#selectNeedsTest').addEventListener('click',()=>{data.cards.filter(c=>c.test_state?.status==='needs_test').forEach(c=>selected.add(c.id));renderList()});
+q('#runSelectedTests').addEventListener('click',runSelected);
+q('#exportCards').addEventListener('click',()=>download('knowledge-cards.json',{...data,version:'1.3',updated:new Date().toISOString().slice(0,10),entries:data.cards}));
+q('#exportChanges').addEventListener('click',()=>download('knowledge-changes.json',{version:'1.0',updated:new Date().toISOString(),changes}));
+q('#newInput').addEventListener('click',()=>q('#inputText').focus());
+</script></body></html>

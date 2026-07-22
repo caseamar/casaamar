@@ -1,28 +1,27 @@
-feat(knowledge): bulk import April 2026 Casa Amar welcome guide
+feat(studio): add practical Knowledge Studio editor and targeted testing
 
 Summary
-- Imported the full owner welcome guide into reusable Knowledge Cards.
-- Added practical house information, transport, shopping, destinations, restaurants, sport, children and local food knowledge.
-- Preserved existing parking and pool cards and enriched the common knowledge graph without duplicate IDs.
-- Added source-documents.json for traceability back to the original owner document.
-- Marked imported cards as internal, AI-enabled and available for future guest/owner guides, but not published on the website.
-- Marked phone numbers, prices, schedules, discount codes and service availability as dynamic where appropriate.
-- Added representative regression tests for the new knowledge.
+- Added knowledge-studio.html as a practical editorial workspace for Casa Amar.
+- Added AI suggestions for free text and link references through /api/knowledge-suggest.
+- Added local editing of existing Knowledge Objects with visibility, maturity and channel controls.
+- Automatically marks edited objects as needs_test.
+- Added explicit Knowledge Object to regression-test relationships.
+- Added targeted test selection so Michael can test only selected objects.
+- Added exports for updated knowledge-cards.json and knowledge-changes.json.
+- Added local change history in the browser.
+- Updated the test runner to accept selected test IDs and run only the relevant subset.
 
 Files changed
 - index.html
 - _worker.js
 - knowledge-cards.json
 - knowledge-registry.json
-- ai-regression-tests.json
+- ai-test-runner.html
 
 Files added
-- source-documents.json
-- BULK-IMPORT-REPORT.md
+- knowledge-studio.html
+- knowledge-changes.json
+- KNOWLEDGE-STUDIO.md
 
 Why
-The platform now needs breadth before detailed editorial refinement. This import converts the existing owner guide into structured, reusable knowledge that can later power AI, website pages and guest guides from one source of truth.
-
-Imported cards
-- New or enriched cards: 60
-- Total cards after merge: 74
+Michael should work with content, not JSON. Knowledge Studio creates a simple approval workflow where AI proposes improvements, Michael edits or approves them, and changed objects are automatically queued for targeted testing.

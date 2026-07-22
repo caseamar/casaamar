@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "updated": "2026-07-22",
   "platform": "Casa Amar Knowledge Platform",
   "principles": [
@@ -123,6 +123,18 @@
       "trust": 100,
       "owner": "Michael",
       "status": "active"
+    },
+    {
+      "id": "knowledge-changes",
+      "label": "Knowledge Studio draft changes",
+      "path": "/knowledge-changes.json",
+      "role": "editorial_changes",
+      "format": "change_log",
+      "visibility": "internal",
+      "trust": 0,
+      "owner": "Michael",
+      "status": "active",
+      "used_by_ai": false
     }
   ]
 }
