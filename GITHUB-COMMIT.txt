@@ -1,12 +1,13 @@
-fix(ai): restore concierge responses and handoff button styling
+fix(ai): stop earlier and hand off quickly after poor or uncertain answers
 
 Summary
-- Fixed two runtime reference errors in _worker.js that caused normal questions to fail.
-- Corrected the policy/intents object sent to OpenAI.
-- Corrected the source-link renderer call.
-- Added a reliable deterministic response for the common question "Hvordan kommer jeg til huset?".
-- Restored the intended Casa Amar styling for the inline email and Messenger buttons.
-- Kept the contact card compact and responsive.
+- Added a deterministic dissatisfaction intent for messages such as "det er off", "forkert svar", "det duer ikke" and "for mange spørgsmål".
+- When the guest is dissatisfied, the concierge now gives one short apology and immediately shows contact actions for Michael.
+- Limited human-handoff answers to a maximum of two short sentences.
+- Treats low-confidence answers as a handoff instead of continuing with broad explanations.
+- Removes follow-up questions whenever a human handoff is needed.
+- Hides irrelevant recommended links when the response is being handed over to Michael.
+- Keeps normal high-confidence answers concise, with a maximum of four short sentences.
 
 Files changed
 - index.html
@@ -14,10 +15,11 @@ Files changed
 - concierge-intents.json
 
 Why
-The policy architecture release contained two variable-reference errors, which prevented OpenAI-backed answers from being returned. The inline contact card also lost its CSS styling. This hotfix restores stable answers and the intended visual design without changing the overall architecture.
+The concierge should stop before it becomes irritating. When the answer is uncertain, irrelevant or rejected by the guest, the simplest and most useful next step is immediate contact with Michael rather than more explanation or more questions.
 
 Test cases
+- Det er altså lidt off svar
+- Det duer ikke
+- Jeg vil hellere skrive til Michael
 - Hvordan kommer jeg til huset?
 - Er håndklæder inkluderet?
-- Jeg vil gerne skrive til Michael
-- Hvad synes du om politik?

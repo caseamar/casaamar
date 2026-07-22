@@ -335,6 +335,9 @@ SVAR:
 - ${policy?.response_policy?.links || "Undgå rå URL-adresser."}
 - Smalltalk: ${policy?.response_policy?.smalltalk || "Svar kort og varmt."}
 - Fallback: ${policy?.response_policy?.fallback || "Send videre til Michael."}
+- Hvis brugeren signalerer utilfredshed, siger at svaret er forkert/off, eller beder dig stoppe, skal du svare med én kort undskyldning og straks sende videre til Michael.
+- Når needs_human er sand, må svaret højst være 2 korte sætninger og må ikke indeholde et opfølgende spørgsmål.
+- Når du er usikker, vælg et kort svar og handoff frem for at forklare bredt.
 
 Returnér altid struktureret JSON efter det krævede schema.`;
 }
@@ -377,7 +380,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "3.0.1-policy",
+      version: "3.0.2-policy",
       method: "POST"
     });
   }
@@ -537,6 +540,15 @@ ${JSON.stringify({
     const alreadyAsked = recentAssistantQuestion(conversation);
     let followUp = structured.follow_up;
 
+    const compactAnswer = String(structured.answer || "")
+      .split(/(?<=[.!?])\s+/)
+      .filter(Boolean)
+      .slice(0, structured.needs_human ? 2 : 4)
+      .join(" ")
+      .trim();
+
+    structured.answer = compactAnswer || "Michael hjælper gerne videre.";
+
     if (
       alreadyAsked ||
       structured.confidence !== "high" ||
@@ -553,6 +565,7 @@ ${JSON.stringify({
 
     const needsHuman =
       Boolean(structured.needs_human) ||
+      structured.confidence === "low" ||
       answerSignalsMissingInfo ||
       (alreadyAsked && Boolean(structured.follow_up));
 
