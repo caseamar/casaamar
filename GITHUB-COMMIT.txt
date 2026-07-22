@@ -1,25 +1,28 @@
-feat(knowledge): introduce canonical Knowledge Cards and Knowledge Center 2.0
+feat(knowledge): bulk import April 2026 Casa Amar welcome guide
 
 Summary
-- Added knowledge-cards.json as the canonical editorial dataset for reusable Casa Amar knowledge.
-- Migrated the existing parking and pool knowledge into 14 richer Knowledge Cards.
-- Added channels for AI, website, guest guide and owner guide.
-- Added relations, editorial review state, quality metadata, translation status and website candidacy.
-- Added knowledge-card.schema.json to define and validate future cards.
-- Updated knowledge-registry.json to use Knowledge Cards as the active internal owner knowledge source.
-- Rebuilt knowledge-center.html with search, category filters, channel filters and card-level visibility.
-- Preserved worker compatibility through an entries alias, so the concierge continues using the same knowledge immediately.
-
-Files added
-- knowledge-cards.json
-- knowledge-card.schema.json
-- KNOWLEDGE-CARD-WORKFLOW.md
+- Imported the full owner welcome guide into reusable Knowledge Cards.
+- Added practical house information, transport, shopping, destinations, restaurants, sport, children and local food knowledge.
+- Preserved existing parking and pool cards and enriched the common knowledge graph without duplicate IDs.
+- Added source-documents.json for traceability back to the original owner document.
+- Marked imported cards as internal, AI-enabled and available for future guest/owner guides, but not published on the website.
+- Marked phone numbers, prices, schedules, discount codes and service availability as dynamic where appropriate.
+- Added representative regression tests for the new knowledge.
 
 Files changed
 - index.html
 - _worker.js
+- knowledge-cards.json
 - knowledge-registry.json
-- knowledge-center.html
+- ai-regression-tests.json
+
+Files added
+- source-documents.json
+- BULK-IMPORT-REPORT.md
 
 Why
-Knowledge Cards become the single reusable unit behind the AI, future website pages and internal guides. This enables Casa Amar to grow to hundreds of articles without duplicating content or losing editorial control.
+The platform now needs breadth before detailed editorial refinement. This import converts the existing owner guide into structured, reusable knowledge that can later power AI, website pages and guest guides from one source of truth.
+
+Imported cards
+- New or enriched cards: 60
+- Total cards after merge: 74

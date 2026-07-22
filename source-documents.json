@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-22",
+  "documents": [
+    {
+      "id": "welcome-guide-april-2026",
+      "title": "Turen går til Cerros del Águila",
+      "source_type": "owner_document",
+      "owner": "Michael",
+      "document_date": "2026-04",
+      "imported_at": "2026-07-22",
+      "status": "imported",
+      "trust": 100,
+      "visibility": "internal",
+      "derived_card_count": 60,
+      "notes": "Original owner guide used as source for bulk Knowledge Card import."
+    }
+  ]
+}

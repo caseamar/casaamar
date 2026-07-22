@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "updated": "2026-07-22",
   "platform": "Casa Amar Knowledge Platform",
   "principles": [
@@ -108,6 +108,17 @@
       "path": "/ai-regression-tests.json",
       "role": "test",
       "format": "test_suite",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active"
+    },
+    {
+      "id": "source-documents",
+      "label": "Source documents",
+      "path": "/source-documents.json",
+      "role": "source_registry",
+      "format": "document_registry",
       "visibility": "internal",
       "trust": 100,
       "owner": "Michael",

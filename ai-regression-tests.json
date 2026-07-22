@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "updated": "2026-07-22",
   "tests": [
     {
@@ -457,6 +457,168 @@
       ],
       "max_sentences": 4,
       "notes": "Svar uden unødvendigt opfølgende spørgsmål."
+    },
+    {
+      "id": "T27",
+      "category": "Praktisk",
+      "question": "Hvor er vaskemaskinen?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "forhaven",
+        "nøglebrættet"
+      ],
+      "must_not_include_any": [
+        "kan ikke bekræfte"
+      ],
+      "max_sentences": 3,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T28",
+      "category": "Transport",
+      "question": "Hvordan tager vi toget til Málaga?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Fuengirola",
+        "Málaga",
+        "lufthavn"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T29",
+      "category": "Transport",
+      "question": "Hvordan bestiller vi en taxa?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Taxa Mijas",
+        "952"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T30",
+      "category": "Børn",
+      "question": "Hvilket babyudstyr er der?",
+      "expected_intent": "family_needs",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "babystol",
+        "babyseng",
+        "juniorstol"
+      ],
+      "must_not_include_any": [
+        "kan ikke bekræfte"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T31",
+      "category": "Indkøb",
+      "question": "Hvor kan vi købe dagligvarer tæt på huset?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Super Sures",
+        "Carrefour"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T32",
+      "category": "Oplevelser",
+      "question": "Hvad er Mijas Pueblo?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "hvide",
+        "udsigt"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T33",
+      "category": "Restauranter",
+      "question": "Hvor kan vi spise pizza ved stranden?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Primavera",
+        "Los Boliches"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T34",
+      "category": "Praktisk",
+      "question": "Hvad gør vi med affald?",
+      "expected_intent": "house_practical",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "sorteres",
+        "container"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 3,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T35",
+      "category": "Sport",
+      "question": "Kan vi spille golf?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "golfbaner",
+        "golfsæt"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
+    },
+    {
+      "id": "T36",
+      "category": "Oplevelser",
+      "question": "Hvad skal vi vide om Gibraltar?",
+      "expected_intent": "activities_recommendations",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "pas",
+        "aber"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe"
+      ],
+      "max_sentences": 4,
+      "notes": "Bulk import coverage."
     }
   ]
 }
