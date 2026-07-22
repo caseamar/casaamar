@@ -1,15 +1,14 @@
-feat(ai): introduce scalable Casa Amar Concierge intent engine
+fix(ai): reduce unnecessary follow-up questions and hand off earlier
 
 Summary
-- Replaced FAQ-style response logic with a concierge-first conversational flow.
-- Added intent detection before composing answers.
-- Added one natural follow-up question when a guest's request lacks important context.
-- Combined facts from multiple knowledge sources into one coherent answer.
-- Kept owner-maintained Casa Amar information as the highest-priority source.
-- Suppressed guest-facing links and references to Rincón Rent while retaining its facts as a secondary internal source.
-- Added Structured Outputs for predictable answer, intent, confidence and follow-up fields.
-- Moved concierge behavior and intent definitions into a separate scalable configuration file.
-- Preserved short conversation history for contextual follow-up questions.
+- Limited Casa Amar Concierge to one follow-up question per topic.
+- Added a hard rule that follow-up questions are only allowed when the knowledge base can answer the next step.
+- Prevented the concierge from repeating or rephrasing questions already asked.
+- Added context handling for short replies such as "ja gerne".
+- Removed unnecessary follow-up requirements from arrival, activities and family intents.
+- Added earlier handoff to Michael when exact directions, address, access details or other unavailable information are required.
+- Added a programmatic safeguard that suppresses a second follow-up question in the same topic.
+- Preserved natural answers and internal use of secondary sources without exposing Rincón Rent.
 
 Files changed
 - index.html
@@ -17,11 +16,11 @@ Files changed
 - concierge-config.json
 
 Why
-Casa Amar AI should behave like a knowledgeable host rather than a searchable FAQ. This update creates a scalable foundation for future official web sources, live search, booking assistance and guest-specific concierge functionality.
+The concierge should feel helpful and decisive. It must answer with available information, avoid interviewing the guest unnecessarily, and move quickly to mail or Messenger when a human answer is more appropriate.
 
 Test cases
 - Hvordan kommer jeg til huset?
-- Vi vil gerne bo uden bil.
-- Hvad kan vi lave med to børn?
-- Er der håndklæder?
-- Hvad koster huset i oktober?
+- Ja gerne.
+- Kan du give præcis kørselsvejledning?
+- Hvad kan vi lave i området?
+- Vi kommer med børn.

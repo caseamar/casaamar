@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "updated": "2026-07-22",
   "assistant": {
     "name": "Casa Amar Concierge",
@@ -12,7 +12,17 @@
       "personlig"
     ],
     "max_answer_sentences": 4,
-    "ask_follow_up_when_ambiguous": true
+    "ask_follow_up_when_ambiguous": true,
+    "max_follow_up_questions_per_topic": 1,
+    "handoff_preference": "If the missing detail cannot be answered from current Casa Amar knowledge, do not ask more questions; offer contact with Michael.",
+    "follow_up_rules": [
+      "Ask at most one follow-up question per topic.",
+      "Only ask if the answer will materially improve and the knowledge base can answer afterwards.",
+      "Never ask for a choice between options that Casa Amar cannot subsequently explain.",
+      "Do not repeat or rephrase a question already asked.",
+      "When the guest replies vaguely such as 'yes please', infer the previous context and give the best available answer.",
+      "If exact directions, address, access instructions or dynamic booking details are missing, hand off to Michael."
+    ]
   },
   "source_policy": {
     "owner_priority": 100,
@@ -40,10 +50,13 @@
         "kørevejledning",
         "parkering"
       ],
-      "required_context": [
-        "transport_mode"
-      ],
-      "follow_up": "Kommer I med lejebil, tog eller taxa?"
+      "required_context": [],
+      "follow_up": null,
+      "handoff_when_missing": [
+        "exact address",
+        "turn-by-turn directions",
+        "arrival access instructions"
+      ]
     },
     {
       "id": "stay_without_car",
@@ -82,10 +95,8 @@
         "højstol",
         "babyseng"
       ],
-      "required_context": [
-        "children_ages"
-      ],
-      "follow_up": "Hvor gamle er børnene?"
+      "required_context": [],
+      "follow_up": null
     },
     {
       "id": "activities",
@@ -99,11 +110,8 @@
         "strand",
         "vandring"
       ],
-      "required_context": [
-        "interests",
-        "season"
-      ],
-      "follow_up": "Hvad interesserer jer mest, og hvornår på året kommer I?"
+      "required_context": [],
+      "follow_up": null
     },
     {
       "id": "house_practical",

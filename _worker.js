@@ -210,6 +210,16 @@ function extractOutputText(result) {
 }
 
 
+
+function recentAssistantQuestion(messages) {
+  return (messages || []).slice(-4).some(
+    (item) =>
+      item?.role === "assistant" &&
+      typeof item.content === "string" &&
+      item.content.trim().endsWith("?")
+  );
+}
+
 function sourceLinks(entries, config) {
   const seen = new Set();
   const links = [];
@@ -239,7 +249,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "2.0-concierge",
+      version: "2.1-concierge",
       method: "POST"
     });
   }
@@ -285,12 +295,17 @@ async function handleChat(request, env) {
     const instructions = `Du er Casa Amar Concierge, en varm og hjælpsom digital vært for ferieboligen Casa Amar i Cerros del Águila ved Fuengirola.
 
 ARBEJDSMETODE:
-1. Forstå først gæstens hensigt, ikke kun enkelte nøgleord.
-2. Saml relevante fakta fra flere kilder til ét naturligt svar.
+1. Forstå gæstens hensigt og svar først med den viden, der allerede findes.
+2. Saml relevante fakta fra flere kilder til ét naturligt og sammenhængende svar.
 3. Ejerredigeret Casa Amar-viden med prioritet 100 vinder altid ved konflikt.
 4. Sekundære kilder må bruges internt, men nævn eller link normalt ikke til dem.
-5. Hvis spørgsmålet er for bredt eller mangler afgørende kontekst, stil ét kort opfølgende spørgsmål.
-6. Gæt aldrig konkrete faciliteter, priser, tider, afstande eller regler.
+5. Stil højst ét opfølgende spørgsmål pr. emne.
+6. Stil kun et opfølgende spørgsmål, hvis svaret bliver væsentligt bedre, og Casa Amar faktisk kan besvare det bagefter.
+7. Stil aldrig spørgsmål om valg eller detaljer, som du ikke selv kan følge op med et konkret svar på.
+8. Gentag eller omformulér aldrig et spørgsmål, du allerede har stillet.
+9. Hvis gæsten svarer kort som "ja gerne", "okay" eller lignende, skal du forstå det ud fra den foregående samtale og give det bedste mulige svar.
+10. Hvis præcis adresse, detaljeret kørselsvejledning, adgangsinstruktioner eller andre manglende oplysninger kræves, skal du ikke interviewe videre. Svar med det, du ved, og foreslå derefter at skrive til Michael.
+11. Gæt aldrig konkrete faciliteter, priser, tider, afstande eller regler.
 
 SVARSTIL:
 - Svar på samme sprog som gæsten.
@@ -298,8 +313,8 @@ SVARSTIL:
 - Brug 1-4 korte, sammenhængende sætninger.
 - Undgå tekniske formuleringer som "ud fra vidensbasen".
 - Undgå rå URL-adresser.
-- Fortæl naturligt, hvad der er kendt, og spørg derefter ind, hvis det vil forbedre svaret.
-- Hvis du ikke kan hjælpe sikkert, foreslå kontakt til Michael uden at lyde som en fejlmeddelelse.
+- Et opfølgende spørgsmål skal være kort, nødvendigt og handle om noget, du efterfølgende kan hjælpe med.
+- Hvis du ikke kan hjælpe sikkert, foreslå kontakt til Michael hurtigt og naturligt.
 
 Du skal returnere struktureret JSON efter det krævede schema.`;
 
@@ -399,14 +414,31 @@ ${JSON.stringify(bundle.conciergeConfig)}`
       };
     }
 
+    const alreadyAsked = recentAssistantQuestion(conversation);
+    let followUp = structured.follow_up;
+
+    if (alreadyAsked) {
+      followUp = null;
+    }
+
+    const answerSignalsMissingInfo =
+      /kan ikke bekræfte|har ikke præcise oplysninger|kontakt michael|skriv til michael/i.test(
+        structured.answer || ""
+      );
+
+    const needsHuman =
+      Boolean(structured.needs_human) ||
+      answerSignalsMissingInfo ||
+      (alreadyAsked && Boolean(structured.follow_up));
+
     const sources = sourceLinks(relevant, bundle.conciergeConfig);
 
     return json({
       answer: structured.answer,
-      followUp: structured.follow_up,
+      followUp,
       intent: structured.intent,
       sources,
-      needsHuman: structured.needs_human,
+      needsHuman,
       confidence: structured.confidence,
       knowledgeVersion: bundle.version,
       sourcesLoaded: bundle.sources.map((source) => source.id),
