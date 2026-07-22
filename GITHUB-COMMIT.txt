@@ -1,13 +1,12 @@
-fix(ai): stop earlier and hand off quickly after poor or uncertain answers
+fix(ai): route dynamic and approval-based questions directly to Michael
 
 Summary
-- Added a deterministic dissatisfaction intent for messages such as "det er off", "forkert svar", "det duer ikke" and "for mange spørgsmål".
-- When the guest is dissatisfied, the concierge now gives one short apology and immediately shows contact actions for Michael.
-- Limited human-handoff answers to a maximum of two short sentences.
-- Treats low-confidence answers as a handoff instead of continuing with broad explanations.
-- Removes follow-up questions whenever a human handoff is needed.
-- Hides irrelevant recommended links when the response is being handed over to Michael.
-- Keeps normal high-confidence answers concise, with a maximum of four short sentences.
+- Made booking availability and price questions deterministic human handoffs.
+- Added a separate pet_approval intent so dog and pet requests always require Michael's approval.
+- Made current-information questions such as tomorrow's events and live opening hours immediate handoffs.
+- Added a clear general fallback for requests outside Casa Amar's supported scope.
+- Prevented these handoff responses from asking follow-up questions or showing irrelevant links.
+- Kept ordinary house-rule questions available to the AI while isolating pet approval as a human decision.
 
 Files changed
 - index.html
@@ -15,11 +14,10 @@ Files changed
 - concierge-intents.json
 
 Why
-The concierge should stop before it becomes irritating. When the answer is uncertain, irrelevant or rejected by the guest, the simplest and most useful next step is immediate contact with Michael rather than more explanation or more questions.
+The concierge should be excellent at what it knows and move quickly to Michael when information is dynamic, requires approval, or falls outside its scope. This update reduces friction and prevents the AI from pretending it can check live availability, approve pets, or provide real-time local information.
 
 Test cases
-- Det er altså lidt off svar
-- Det duer ikke
-- Jeg vil hellere skrive til Michael
-- Hvordan kommer jeg til huset?
-- Er håndklæder inkluderet?
+- Er huset ledigt i oktober?
+- Må vi tage en hund med?
+- Hvad sker der i Fuengirola i morgen?
+- Kan du hjælpe med noget helt andet?

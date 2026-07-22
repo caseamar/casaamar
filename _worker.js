@@ -292,6 +292,16 @@ function smalltalkResponse(question, intent) {
     "Hej og velkommen. Jeg hjælper gerne med Casa Amar og jeres ophold.";
 }
 
+
+function forceHandoffByIntent(intentId) {
+  return [
+    "booking_availability",
+    "pet_approval",
+    "current_information",
+    "general_question"
+  ].includes(intentId);
+}
+
 function deterministicRoute(question, bundle) {
   const intent = findIntent(question, bundle.conciergeIntents);
   if (!intent?.deterministic) return null;
@@ -316,7 +326,7 @@ function deterministicRoute(question, bundle) {
     intent: intent.id,
     answer,
     followUp: null,
-    needsHuman: Boolean(intent.needs_human),
+    needsHuman: Boolean(intent.needs_human) || forceHandoffByIntent(intent.id),
     confidence: "high",
     sources: []
   };
@@ -414,7 +424,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "3.0.3-policy",
+      version: "3.0.4-policy",
       method: "POST"
     });
   }

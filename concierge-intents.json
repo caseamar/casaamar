@@ -12,6 +12,7 @@
     "family_needs",
     "activities_recommendations",
     "location_distance",
+    "pet_approval",
     "rules_conditions",
     "current_information",
     "general_question"
@@ -181,7 +182,10 @@
         "reservere",
         "datoer",
         "tilbud"
-      ]
+      ],
+      "deterministic": true,
+      "response": "Ledighed og pris skal bekræftes for de konkrete datoer. Michael hjælper gerne videre herunder.",
+      "needs_human": true
     },
     {
       "id": "house_facilities",
@@ -238,17 +242,30 @@
       ]
     },
     {
+      "id": "pet_approval",
+      "description": "Kæledyr og hund kræver altid menneskelig godkendelse.",
+      "patterns": [
+        "hund",
+        "kæledyr",
+        "tage hund med",
+        "dyr med",
+        "pet"
+      ],
+      "deterministic": true,
+      "response": "En mindre hund kan muligvis godkendes, men det skal altid aftales på forhånd med Michael.",
+      "needs_human": true
+    },
+    {
       "id": "rules_conditions",
       "description": "Husregler, kæledyr, rygning og check-in/out.",
       "patterns": [
         "regler",
-        "hund",
-        "kæledyr",
         "rygning",
         "fest",
         "check-in",
         "check-out"
-      ]
+      ],
+      "deterministic": false
     },
     {
       "id": "current_information",
@@ -260,11 +277,25 @@
         "vejr",
         "åbent nu",
         "arrangement"
-      ]
+      ],
+      "deterministic": true,
+      "response": "Jeg har endnu ikke adgang til aktuelle arrangementer og åbningstider. Michael kan hjælpe videre herunder.",
+      "needs_human": true
     },
     {
       "id": "general_question",
-      "description": "Generelle relevante spørgsmål, der ikke matcher tydeligt."
+      "description": "Generelle relevante spørgsmål, der ikke matcher tydeligt.",
+      "deterministic": true,
+      "patterns": [
+        "noget helt andet",
+        "hjælpe med noget andet",
+        "andet end casa amar",
+        "uden for casa amar",
+        "et andet emne",
+        "noget andet"
+      ],
+      "response": "Jeg hjælper primært med Casa Amar, området og jeres ophold. Michael kan hjælpe videre med andre spørgsmål.",
+      "needs_human": true
     }
   ]
 }
