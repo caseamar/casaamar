@@ -1,27 +1,22 @@
-feat(studio): add practical Knowledge Studio editor and targeted testing
+feat(editor): add automatic object matching and before/after AI editing
 
 Summary
-- Added knowledge-studio.html as a practical editorial workspace for Casa Amar.
-- Added AI suggestions for free text and link references through /api/knowledge-suggest.
-- Added local editing of existing Knowledge Objects with visibility, maturity and channel controls.
-- Automatically marks edited objects as needs_test.
-- Added explicit Knowledge Object to regression-test relationships.
-- Added targeted test selection so Michael can test only selected objects.
-- Added exports for updated knowledge-cards.json and knowledge-changes.json.
-- Added local change history in the browser.
-- Updated the test runner to accept selected test IDs and run only the relevant subset.
+- Upgraded Knowledge Studio to AI Editor 2.0.
+- Added server-side ranking across the full active Knowledge Base.
+- Combines deterministic keyword/concept ranking with OpenAI editorial judgement.
+- Existing Knowledge Objects are preferred over creating duplicates.
+- Shows ranked candidate objects with match scores and reasons.
+- Shows a clear before/after comparison and changed facts.
+- Allows Michael to apply a suggestion, edit it, approve it and mark it needs_test.
+- Supports new-object drafts only when no good existing match is found.
+- Keeps targeted regression testing for the changed object.
+- Retains safe local storage and GitHub export workflow.
 
 Files changed
 - index.html
 - _worker.js
-- knowledge-cards.json
-- knowledge-registry.json
-- ai-test-runner.html
-
-Files added
 - knowledge-studio.html
-- knowledge-changes.json
-- KNOWLEDGE-STUDIO.md
+- knowledge-registry.json
 
 Why
-Michael should work with content, not JSON. Knowledge Studio creates a simple approval workflow where AI proposes improvements, Michael edits or approves them, and changed objects are automatically queued for targeted testing.
+Michael should only describe new knowledge. The platform must find the correct editorial home, prevent duplicate objects and make every proposed change transparent before approval.

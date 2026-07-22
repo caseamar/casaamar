@@ -553,6 +553,112 @@ async function handleStatus(request, env) {
 }
 
 
+
+function editorTokens(value) {
+  return [...new Set(
+    normaliseText(value)
+      .split(/[^a-z0-9æøå]+/)
+      .filter((token) => token.length >= 3)
+  )];
+}
+
+function editorCardScore(inputText, card) {
+  const input = normaliseText(inputText);
+  const inputTokens = editorTokens(inputText);
+  const title = normaliseText(card.title || "");
+  const category = normaliseText(card.category || "");
+  const keywords = (card.keywords || []).map(normaliseText);
+  const summary = normaliseText(card.summary || card.answer || "");
+  const body = normaliseText(card.body || card.content || "");
+
+  let score = 0;
+  const reasons = [];
+
+  for (const token of inputTokens) {
+    if (title.includes(token)) {
+      score += 14;
+      reasons.push(`titel matcher "${token}"`);
+    }
+    if (category.includes(token)) {
+      score += 8;
+      reasons.push(`kategori matcher "${token}"`);
+    }
+    if (keywords.some((keyword) => keyword.includes(token) || token.includes(keyword))) {
+      score += 10;
+      reasons.push(`nøgleord matcher "${token}"`);
+    }
+    if (summary.includes(token)) score += 4;
+    if (body.includes(token)) score += 2;
+  }
+
+  const concepts = [
+    ["kaffe", ["kaffe", "espresso", "nespresso", "kaffemaskine", "sage", "lelit"]],
+    ["køkken", ["køkken", "ovn", "opvaskemaskine", "madlavning", "køkkenudstyr"]],
+    ["pool", ["pool", "bassin", "livredder", "svømning"]],
+    ["parkering", ["parkering", "bil", "telpark", "parkeringshus"]],
+    ["baby", ["baby", "babyseng", "babystol", "pusleplads", "børn"]],
+    ["transport", ["tog", "bus", "taxa", "billeje", "transport"]],
+    ["restaurant", ["restaurant", "pizza", "tapas", "spise", "mad"]],
+    ["strand", ["strand", "los boliches", "hav", "solstol"]]
+  ];
+
+  for (const [concept, words] of concepts) {
+    const inputHas = words.some((word) => input.includes(word));
+    const cardText = `${title} ${category} ${keywords.join(" ")} ${summary}`;
+    const cardHas = words.some((word) => cardText.includes(word));
+    if (inputHas && cardHas) {
+      score += 18;
+      reasons.push(`samme emne: ${concept}`);
+    }
+  }
+
+  if (card.status === "active") score += 2;
+  if (card.trust >= 90) score += 2;
+
+  return {
+    score,
+    reasons: [...new Set(reasons)].slice(0, 4)
+  };
+}
+
+function editorCandidates(inputText, entries, selectedIds = []) {
+  const selected = new Set(selectedIds);
+  return (entries || [])
+    .filter((card) => card?.status !== "archived")
+    .map((card) => {
+      const ranked = editorCardScore(inputText, card);
+      if (selected.has(card.id)) {
+        ranked.score += 35;
+        ranked.reasons.unshift("valgt manuelt");
+      }
+      return {
+        id: card.id,
+        title: card.title,
+        category: card.category,
+        summary: card.summary || card.answer || "",
+        body: card.body || card.content || "",
+        keywords: card.keywords || [],
+        visibility: card.visibility,
+        channels: card.channels,
+        dynamic: Boolean(card.dynamic),
+        trust: Number(card.trust || 0),
+        tests: card.tests || [],
+        score: ranked.score,
+        match_reasons: ranked.reasons
+      };
+    })
+    .filter((candidate) => candidate.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8)
+    .map((candidate, index, list) => {
+      const max = Math.max(list[0]?.score || 1, 1);
+      return {
+        ...candidate,
+        match_percent: Math.max(1, Math.min(99, Math.round((candidate.score / max) * 96)))
+      };
+    });
+}
+
 async function handleKnowledgeSuggest(request, env) {
   if (request.method !== "POST") {
     return json({ error: "Metoden understøttes ikke." }, 405);
@@ -578,21 +684,29 @@ async function handleKnowledgeSuggest(request, env) {
   }
 
   const inputText = String(payload.input || "").trim();
-  const selectedCards = Array.isArray(payload.cards) ? payload.cards.slice(0, 12) : [];
+  const selectedIds = Array.isArray(payload.selected_ids)
+    ? payload.selected_ids.map(String).slice(0, 20)
+    : [];
 
   if (!inputText || inputText.length > 12000) {
     return json({ error: "Indholdet skal være mellem 1 og 12.000 tegn." }, 400);
   }
 
-  const cardContext = selectedCards.map((card) => ({
-    id: card.id,
-    title: card.title,
-    category: card.category,
-    summary: card.summary,
-    visibility: card.visibility,
-    channels: card.channels,
-    dynamic: card.dynamic,
-    trust: card.trust
+  const bundle = await loadBundle(env, request);
+  const candidates = editorCandidates(inputText, bundle.entries, selectedIds);
+  const candidateContext = candidates.slice(0, 6).map((candidate) => ({
+    id: candidate.id,
+    title: candidate.title,
+    category: candidate.category,
+    current_summary: candidate.summary,
+    keywords: candidate.keywords,
+    visibility: candidate.visibility,
+    channels: candidate.channels,
+    dynamic: candidate.dynamic,
+    trust: candidate.trust,
+    tests: candidate.tests,
+    lexical_match_percent: candidate.match_percent,
+    lexical_reasons: candidate.match_reasons
   }));
 
   const response = await fetch("https://api.openai.com/v1/responses", {
@@ -603,26 +717,40 @@ async function handleKnowledgeSuggest(request, env) {
     },
     body: JSON.stringify({
       model: env.OPENAI_MODEL || DEFAULT_MODEL,
-      instructions: `Du er redaktør for Casa Amar Knowledge Studio.
-Analyser ny tekst eller et link, men hent ikke selv linkets indhold.
-Foreslå praktiske ændringer til eksisterende Knowledge Cards eller nye kort.
-AI foreslår; Michael godkender.
-Gæt aldrig fakta fra et link alene. Markér linkbaserede fakta som needs_review.
-Returnér korte, konkrete forslag på dansk.`,
+      instructions: `Du er AI-redaktør for Casa Amar Knowledge Studio.
+
+Din opgave:
+1. Forstå det nye input.
+2. Vurder de eksisterende kandidater.
+3. Foretræk at opdatere et eksisterende Knowledge Object, når det semantisk dækker samme emne.
+4. Opret kun et nyt objekt, hvis ingen eksisterende kandidat er et rimeligt hjem for oplysningerne.
+5. Vis en præcis før/efter-ændring.
+6. Bevar eksisterende korrekte fakta og tilføj kun det nye.
+7. Gæt aldrig indholdet bag et link. Linkbaserede oplysninger kræver verifikation.
+8. AI foreslår; Michael godkender.
+9. Svar kort og praktisk på dansk.
+
+Score:
+- 90-99: meget sikkert match
+- 70-89: godt match
+- 50-69: muligt match
+- under 50: opret nyt eller kræv review
+
+Returnér højst 3 forslag, bedst først.`,
       input: [{
         role: "user",
         content: `NYT INPUT:
 ${inputText}
 
-VALGTE KNOWLEDGE CARDS:
-${JSON.stringify(cardContext)}`
+AUTOMATISK FUNDE KANDIDATER:
+${JSON.stringify(candidateContext)}`
       }],
       reasoning: { effort: "low" },
       text: {
         verbosity: "low",
         format: {
           type: "json_schema",
-          name: "knowledge_studio_suggestion",
+          name: "knowledge_editor_suggestion",
           strict: true,
           schema: {
             type: "object",
@@ -633,36 +761,45 @@ ${JSON.stringify(cardContext)}`
                 enum: ["text", "url", "google_maps", "document_reference", "unknown"]
               },
               summary: { type: "string" },
-              suggestions: {
+              recommended_action: {
+                type: "string",
+                enum: ["update_existing", "create_new", "review_required"]
+              },
+              matches: {
                 type: "array",
                 items: {
                   type: "object",
                   additionalProperties: false,
                   properties: {
-                    action: { type: "string", enum: ["update", "create", "review"] },
                     card_id: { type: ["string", "null"] },
                     title: { type: "string" },
                     category: { type: "string" },
-                    proposed_summary: { type: "string" },
+                    match_score: { type: "integer", minimum: 0, maximum: 100 },
                     reason: { type: "string" },
-                    confidence: { type: "string", enum: ["high", "medium", "low"] },
+                    action: { type: "string", enum: ["update", "create", "review"] },
+                    before_summary: { type: "string" },
+                    after_summary: { type: "string" },
+                    changed_facts: {
+                      type: "array",
+                      items: { type: "string" }
+                    },
                     requires_verification: { type: "boolean" },
                     website_candidate: { type: "boolean" },
                     tests_needed: { type: "boolean" }
                   },
                   required: [
-                    "action", "card_id", "title", "category", "proposed_summary",
-                    "reason", "confidence", "requires_verification",
-                    "website_candidate", "tests_needed"
+                    "card_id", "title", "category", "match_score", "reason",
+                    "action", "before_summary", "after_summary", "changed_facts",
+                    "requires_verification", "website_candidate", "tests_needed"
                   ]
                 }
               }
             },
-            required: ["input_type", "summary", "suggestions"]
+            required: ["input_type", "summary", "recommended_action", "matches"]
           }
         }
       },
-      max_output_tokens: 1800,
+      max_output_tokens: 2200,
       store: false
     })
   });
@@ -681,9 +818,25 @@ ${JSON.stringify(cardContext)}`
   }
 
   try {
-    return json(JSON.parse(raw));
+    const parsed = JSON.parse(raw);
+    return json({
+      ...parsed,
+      candidates: candidates.slice(0, 5).map((candidate) => ({
+        card_id: candidate.id,
+        title: candidate.title,
+        category: candidate.category,
+        match_score: candidate.match_percent,
+        reason: candidate.match_reasons.join(" · ")
+      }))
+    });
   } catch {
-    return json({ input_type: "unknown", summary: raw, suggestions: [] });
+    return json({
+      input_type: "unknown",
+      summary: raw,
+      recommended_action: "review_required",
+      matches: [],
+      candidates: candidates.slice(0, 5)
+    });
   }
 }
 
@@ -692,7 +845,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "7.0-knowledge-studio",
+      version: "7.1-ai-editor",
       method: "POST"
     });
   }
