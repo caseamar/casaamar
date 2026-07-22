@@ -229,8 +229,42 @@ function matchesPattern(text, patterns = []) {
   );
 }
 
+
+function isContactRequest(text) {
+  const value = normaliseText(text);
+
+  const contactWords = [
+    "kontakt", "kontakte", "skrive", "skriv", "mail", "email", "e-mail",
+    "messenger", "besked", "tale", "snakke", "person", "nogen",
+    "menneske", "henvende", "henvend", "fat i"
+  ];
+
+  const desireWords = [
+    "jeg vil", "jeg vil gerne", "kan jeg", "hvordan kan jeg",
+    "hvem kan jeg", "jeg ønsker", "gerne"
+  ];
+
+  const mentionsContact = contactWords.some((word) => value.includes(word));
+  const expressesIntent = desireWords.some((word) => value.includes(word));
+
+  return (
+    mentionsContact &&
+    (
+      expressesIntent ||
+      value.includes("michael") ||
+      value.includes("en person") ||
+      value.includes("nogen") ||
+      value.includes("et menneske")
+    )
+  );
+}
+
 function findIntent(question, intentConfig) {
   const intents = intentConfig?.intents || [];
+
+  if (isContactRequest(question)) {
+    return intents.find((item) => item.id === "contact_human") || null;
+  }
   for (const intentId of intentConfig?.routing_order || []) {
     const intent = intents.find((item) => item.id === intentId);
     if (!intent || !intent.patterns?.length) continue;
@@ -380,7 +414,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "3.0.2-policy",
+      version: "3.0.3-policy",
       method: "POST"
     });
   }
