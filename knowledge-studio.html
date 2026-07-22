@@ -48,6 +48,9 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}
 .hidden{display:none}
 .field-help{margin:5px 0 8px;color:var(--muted);font-size:.78rem;line-height:1.4}
+.plan-summary{background:#f3eee6;border-radius:12px;padding:12px;margin:10px 0;line-height:1.45}
+.operation-number{display:inline-flex;width:25px;height:25px;border-radius:50%;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-weight:850;margin-right:7px}
+.override-box{background:#fff7e1;border:1px solid #ead7a7;border-radius:11px;padding:10px;margin-top:10px}
 .final-version{background:#f5f8f6;border:1px solid #d9e7df;border-left:5px solid var(--ok);border-radius:12px;padding:13px;margin-top:10px;line-height:1.5;font-size:.88rem;white-space:pre-wrap}
 .applied-banner{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e7f4ec;color:#205c3d;padding:10px 12px;border-radius:10px;margin-top:10px;font-weight:750}
 .match.applied{opacity:.72;background:#f7f7f5}
@@ -70,7 +73,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </head>
 <body><main>
 <h1>Casa Amar AI Editor</h1>
-<p class="lead">Skriv ny viden naturligt. AI søger automatisk i hele Knowledge Base, foreslår det bedste eksisterende objekt, viser før/efter og opretter kun nyt, når der ikke findes et godt match.</p>
+<p class="lead">Skriv ny viden naturligt. AI organiserer automatisk dit indhold i op til tre fokuserede Knowledge Objects. Du kontrollerer primært, at indholdet ikke er åbenlyst forkert.</p>
 <div class="workflow">
   <span><strong>1</strong> Beskriv ændringen</span>
   <span><strong>2</strong> Brug forslag og gem</span>
@@ -97,7 +100,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <h2>Beskriv ændringen</h2>
 <textarea id="inputText" placeholder="Fx: Der er kommet en Sage Barista Touch i køkkenet. Gæster må bruge den, og vejledningen ligger ved siden af."></textarea>
 <div class="actions" style="margin-top:9px">
-<button class="primary" id="suggest">Find det rigtige objekt</button>
+<button class="primary" id="suggest">Organisér indholdet</button>
 <button class="secondary" id="clear">Ryd</button>
 </div>
 <div class="notice" style="margin-top:10px">Du behøver ikke vælge et objekt først. Manuel markering bruges kun som ekstra signal. Links behandles som referencer og kræver faktatjek.</div>
@@ -117,7 +120,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <div><label>Kategori</label><input id="editCategory"></div>
 <div class="full">
 <label>Viden om emnet</label>
-<p class="field-help">Skriv gerne detaljeret. Dette er kontekst til AI’en – ikke et færdigt svar. AI’en udvælger selv de relevante oplysninger, når en gæst spørger.</p>
+<p class="field-help">Skriv gerne detaljeret. AI organiserer automatisk indholdet i fokuserede objekter, og concierge kan kombinere op til tre relevante objekter i ét svar.</p>
 <textarea id="editSummary"></textarea>
 </div>
 <div><label>Synlighed</label><select id="editVisibility"><option>internal</option><option>public</option><option>guest_only</option></select></div>
@@ -246,99 +249,121 @@ function compactDiff(before,after){
 function reasonChips(reason){
  return String(reason||'').split('·').map(x=>x.trim()).filter(Boolean).map(x=>`<span class="reason-chip">✓ ${esc(x)}</span>`).join('');
 }
+function relationIds(values){
+ return (values||[]).map(value=>{
+   const exact=getCard(value);
+   if(exact)return exact.id;
+   const normalized=String(value||'').toLowerCase();
+   const match=data.cards.find(c=>String(c.title||'').toLowerCase()===normalized);
+   return match?.id||null;
+ }).filter(Boolean);
+}
+
+function buildNewCard(op){
+ return {
+  id:slugify(op.title)||`new-object-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+  title:op.title,category:op.category,summary:op.final_content,answer:op.final_content,
+  body:op.final_content,content:op.final_content,keywords:[],visibility:'internal',
+  trust:100,status:'active',dynamic:false,updated:new Date().toISOString().slice(0,10),
+  owner:'Michael',language:'da',
+  channels:{ai:true,website:false,guest_guide:true,owner_guide:true},
+  maturity:'draft',tests:op.suggested_tests||[],
+  test_state:{status:'needs_test',last_tested_at:null,last_changed_at:new Date().toISOString(),last_result:null},
+  editorial:{review_state:'needs_review',website_candidate:false,notes:'Created by Knowledge Manager'},
+  quality:{completeness:70,test_coverage:false,requires_refresh:false,conflict_status:'none'},
+  relations:{related:relationIds(op.suggested_relations),supersedes:[],superseded_by:[]},
+  translations:{da:'source',en:'pending',es:'pending'},
+  source:{id:'michael-owner',type:'owner_core',label:'Michael / Casa Amar',url:null,checked:new Date().toISOString().slice(0,10)}
+ };
+}
+
+function applyManagerOperation(op,forceCreate=false){
+ const sourceInput=q('#inputText').value.trim();
+ if(forceCreate||op.action==='create'||!op.card_id){
+   const card=buildNewCard(op);
+   data.cards.push(card);
+   changes.push({
+     id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+     card_id:card.id,changed_at:new Date().toISOString(),before:null,
+     after:JSON.parse(JSON.stringify(card)),status:'approved_local',
+     source_input:sourceInput,manager_operation:'create'
+   });
+   activeId=card.id;fillEditor(card);selected.add(card.id);
+   return card;
+ }
+ const card=getCard(op.card_id);
+ if(!card)return null;
+ const before=JSON.parse(JSON.stringify(card));
+ card.summary=op.final_content;card.answer=op.final_content;card.body=op.final_content;card.content=op.final_content;
+ card.updated=new Date().toISOString().slice(0,10);
+ card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
+ card.tests=[...new Set([...(card.tests||[]),...(op.suggested_tests||[])])];
+ card.relations=card.relations||{related:[],supersedes:[],superseded_by:[]};
+ card.relations.related=[...new Set([...(card.relations.related||[]),...relationIds(op.suggested_relations)])];
+ changes.push({
+   id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+   card_id:card.id,changed_at:new Date().toISOString(),before,
+   after:JSON.parse(JSON.stringify(card)),status:'approved_local',
+   source_input:sourceInput,manager_operation:'update'
+ });
+ activeId=card.id;fillEditor(card);selected.add(card.id);
+ return card;
+}
+
 function renderAnalysis(result){
  lastResult=result;
  const candidates=(result.candidates||[]).map(c=>`<div class="candidate-line">
-   <div><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)}</div><div class="match-reasons">${reasonChips(c.reason)}</div></div>
+   <div><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.reason||'')}</div></div>
    <span class="score">${c.match_score}%</span>
  </div>`).join('');
 
- const matches=(result.matches||[]).map((m,i)=>{
-   const diff=compactDiff(m.before_summary,m.after_summary);
-   const removed=diff.removed.map(x=>`<div class="change-line change-old">− ${esc(x)}</div>`).join('');
-   const added=diff.added.map(x=>`<div class="change-line change-add">+ ${esc(x)}</div>`).join('');
-   const relations=(m.suggested_relations||[]).map(r=>`<div class="relation"><strong>${esc(r.title)}</strong><br><span class="meta">${esc(r.reason)}</span></div>`).join('');
-   const suggestedTests=(m.suggested_tests||[]);
-   return `<article class="match ${i===0?'recommended':''}" data-match-card="${i}">
-     <div class="match-body">
-       <div class="match-head">
-         <div>
-           <h3>${esc(m.title)}</h3>
-           <div class="meta">${esc(m.action)} · ${esc(m.category)}</div>
-           <div class="match-reasons">${reasonChips(m.reason)}</div>
-         </div>
-         <span class="score">${m.match_score}%</span>
+ const operations=(result.operations||[]).map((op,i)=>`<article class="match ${i===0?'recommended':''}" data-operation="${i}">
+   <div class="match-body">
+     <div class="match-head">
+       <div>
+         <h3><span class="operation-number">${i+1}</span>${esc(op.title)}</h3>
+         <div class="meta">${op.action==='update'?'Opdater eksisterende objekt':op.action==='create'?'Opret nyt objekt':'Kræver review'} · ${esc(op.category)}</div>
        </div>
-
-       <h3 style="margin-bottom:6px">Sådan kommer objektet til at se ud</h3>
-       <div class="final-version">${esc(m.after_summary)}</div>
-
-       ${(m.changed_facts||[]).length?`<div class="section"><h3>Nye eller ændrede oplysninger</h3><ul class="facts">${m.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`:''}
-
-       ${relations?`<div class="section"><h3>Foreslåede relationer</h3><div class="relation-list">${relations}</div></div>`:''}
-
-       <div class="test-summary">
-         <strong>Test efter gemning:</strong>
-         ${suggestedTests.length?suggestedTests.map(t=>`<span class="test-chip">${esc(t)}</span>`).join(' '):' Objektets relevante tests vælges automatisk.'}
-       </div>
-
-       <details class="change-details">
-         <summary>Se tekniske ændringer</summary>
-         <div class="diff-grid">
-           <div class="diff-box before"><span class="label">Eksisterende formuleringer der omskrives</span>${removed||'<span class="meta">Ingen eksisterende oplysninger fjernes.</span>'}</div>
-           <div class="diff-box after"><span class="label">Nye formuleringer</span>${added||'<span class="meta">Ingen tydelig tekstændring fundet.</span>'}</div>
-         </div>
-       </details>
-
-       <div class="actions" style="margin-top:10px">
-         <button class="primary" data-use="${i}">${m.action==='create'?'Opret som kladde':'Brug dette forslag'}</button>
-         <button class="secondary" data-select="${esc(m.card_id||'')}">Redigér objekt</button>
-       </div>
+       <span class="score">${result.confidence}%</span>
      </div>
-
-     <div class="applied-banner">
-       <span>✓ Forslaget er overført til editoren</span>
-       <button class="secondary" data-reopen="${i}">Vis igen</button>
+     <p class="meta">${esc(op.reason)}</p>
+     <h3 style="margin-bottom:6px">Færdigt indhold</h3>
+     <div class="final-version">${esc(op.final_content)}</div>
+     ${(op.changed_facts||[]).length?`<div class="section"><h3>Indhold der behandles</h3><ul class="facts">${op.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`:''}
+     <div class="override-box"><strong>AI's valg:</strong> ${op.action==='update'?'Opdatér eksisterende objekt':'Opret nyt objekt'}.
+       ${op.action==='update'?'<div class="meta">Du kan i stedet oprette indholdet som et nyt objekt.</div>':''}
      </div>
-   </article>`;
- }).join('');
+     <div class="actions" style="margin-top:10px">
+       <button class="primary" data-apply-operation="${i}">Accepter AI's struktur</button>
+       ${op.action==='update'?`<button class="secondary" data-force-new="${i}">Opret som nyt objekt i stedet</button>`:''}
+       ${op.card_id?`<button class="secondary" data-select="${esc(op.card_id)}">Se eksisterende objekt</button>`:''}
+     </div>
+   </div>
+   <div class="applied-banner"><span>✓ Denne del er gemt i workspace</span></div>
+ </article>`).join('');
 
- q('#analysis').innerHTML=`<h2>AI-analyse</h2><p>${esc(result.summary)}</p>
- <p class="meta">Anbefalet handling: <strong>${esc(result.recommended_action)}</strong></p>
- ${matches||'<p class="notice">AI fandt ikke et sikkert forslag. Gennemgå kandidaterne.</p>'}
- <div class="section"><h3>Hvorfor disse objekter?</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
+ q('#analysis').innerHTML=`<h2>Knowledge Manager</h2>
+ <div class="plan-summary"><strong>Plan:</strong> ${esc(result.summary)}<br>
+ <span class="meta">${esc(result.structure_reason)} · Confidence ${result.confidence}%</span></div>
+ ${result.review_required?'<p class="notice">Planen indeholder usikkerhed eller konflikt. Gennemgå indholdet ekstra grundigt.</p>':''}
+ ${operations||'<p class="notice">Der blev ikke genereret en anvendelig plan.</p>'}
+ <div class="section"><h3>Fundne eksisterende objekter</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
 
- q('#analysis').querySelectorAll('[data-use]').forEach(btn=>btn.addEventListener('click',()=>{
-   const index=Number(btn.dataset.use);
-   const m=result.matches[index];
-   if(m.action==='create'||!m.card_id){
-     createDraft(m);
-   }else{
-     const target=getCard(m.card_id);
-     if(target){
-       openCard(target.id);
-       q('#editSummary').value=m.after_summary;
-       target._pending_relations=m.suggested_relations||[];
-       target._pending_tests=m.suggested_tests||[];
-     }
-   }
-   const card=q(`[data-match-card="${index}"]`);
-   if(card)card.classList.add('applied');
-   q('#editor').scrollIntoView({behavior:'smooth',block:'start'});
-   setTimeout(()=>q('#editSummary').focus(),350);
- }));
+ function accept(index,forceCreate){
+   const op=result.operations[index];
+   const card=applyManagerOperation(op,forceCreate);
+   if(!card)return alert('Objektet kunne ikke behandles.');
+   localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
+   updateChangeCount();renderList();
+   const article=q(`[data-operation="${index}"]`);
+   if(article)article.classList.add('applied');
+   q('#saveMessage').className='success';
+   q('#saveMessage').innerHTML=`<strong>${esc(card.title)} er gemt i workspace.</strong> Du kan fortsætte med de øvrige forslag eller skrive nyt indhold.`;
+ }
 
- q('#analysis').querySelectorAll('[data-reopen]').forEach(btn=>btn.addEventListener('click',()=>{
-   const card=q(`[data-match-card="${btn.dataset.reopen}"]`);
-   if(card)card.classList.remove('applied');
- }));
-
- q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{
-   if(!btn.dataset.select)return;
-   btn.classList.add('is-success');
-   btn.textContent='Objekt åbnet';
-   openCard(btn.dataset.select);
- }));
+ q('#analysis').querySelectorAll('[data-apply-operation]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.applyOperation),false)));
+ q('#analysis').querySelectorAll('[data-force-new]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.forceNew),true)));
+ q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>openCard(btn.dataset.select)));
 }
 function saveEdit(){
  let card,before;

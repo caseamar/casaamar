@@ -664,53 +664,35 @@ function editorCandidates(inputText, entries, selectedIds = []) {
 }
 
 async function handleKnowledgeSuggest(request, env) {
-  if (request.method !== "POST") {
-    return json({ error: "Metoden understøttes ikke." }, 405);
-  }
-
-  if (!sameOrigin(request)) {
-    return json({ error: "Ugyldig oprindelse." }, 403);
-  }
-
-  if (rateLimited(request)) {
-    return json({ error: "Der er sendt for mange forespørgsler. Prøv igen om lidt." }, 429);
-  }
-
-  if (!env.OPENAI_API_KEY) {
-    return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
-  }
+  if (request.method !== "POST") return json({ error: "Metoden understøttes ikke." }, 405);
+  if (!sameOrigin(request)) return json({ error: "Ugyldig oprindelse." }, 403);
+  if (rateLimited(request)) return json({ error: "Der er sendt for mange forespørgsler. Prøv igen om lidt." }, 429);
+  if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
 
   let payload;
-  try {
-    payload = await request.json();
-  } catch {
-    return json({ error: "Ugyldig forespørgsel." }, 400);
-  }
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
 
   const inputText = String(payload.input || "").trim();
   const selectedIds = Array.isArray(payload.selected_ids)
     ? payload.selected_ids.map(String).slice(0, 20)
     : [];
 
-  if (!inputText || inputText.length > 12000) {
-    return json({ error: "Indholdet skal være mellem 1 og 12.000 tegn." }, 400);
+  if (!inputText || inputText.length > 16000) {
+    return json({ error: "Indholdet skal være mellem 1 og 16.000 tegn." }, 400);
   }
 
   const bundle = await loadBundle(env, request);
   const candidates = editorCandidates(inputText, bundle.entries, selectedIds);
-  const candidateContext = candidates.slice(0, 6).map((candidate) => ({
+  const candidateContext = candidates.slice(0, 10).map((candidate) => ({
     id: candidate.id,
     title: candidate.title,
     category: candidate.category,
-    current_summary: candidate.summary,
+    current_content: candidate.summary,
     keywords: candidate.keywords,
-    visibility: candidate.visibility,
-    channels: candidate.channels,
-    dynamic: candidate.dynamic,
-    trust: candidate.trust,
     tests: candidate.tests,
-    lexical_match_percent: candidate.match_percent,
-    lexical_reasons: candidate.match_reasons
+    match_percent: candidate.match_percent,
+    match_reasons: candidate.match_reasons
   }));
 
   const response = await fetch("https://api.openai.com/v1/responses", {
@@ -721,35 +703,33 @@ async function handleKnowledgeSuggest(request, env) {
     },
     body: JSON.stringify({
       model: env.OPENAI_MODEL || DEFAULT_MODEL,
-      instructions: `Du er AI-redaktør for Casa Amar Knowledge Studio.
+      instructions: `Du er Knowledge Manager for Casa Amar.
+
+Michael skriver frit og detaljeret. Han skal ikke administrere Knowledge Objects manuelt.
 
 Din opgave:
-1. Forstå det nye input.
-2. Vurder de eksisterende kandidater.
-3. Foretræk at opdatere et eksisterende Knowledge Object, når det semantisk dækker samme emne.
-4. Opret kun et nyt objekt, hvis ingen eksisterende kandidat er et rimeligt hjem for oplysningerne.
-5. Vis en præcis før/efter-ændring.
-6. Bevar eksisterende korrekte fakta og tilføj kun det nye.
-7. Gæt aldrig indholdet bag et link. Linkbaserede oplysninger kræver verifikation.
-8. AI foreslår; Michael godkender.
-9. Svar kort og praktisk på dansk.
-10. Begræns før/efter til den relevante del af objektet.
-11. Foreslå relationer til højst 5 eksisterende objekter.
-12. Returnér de tests, som bør køres efter ændringen.
+1. Forstå alt relevant indhold.
+2. Fordel det bedst muligt på højst 3 fokuserede Knowledge Objects.
+3. Opdater eksisterende objekter, når de naturligt dækker emnet.
+4. Opret nye objekter, når et eksisterende objekt ellers bliver for bredt, eller når emnet ikke findes.
+5. Bevar alle eksisterende korrekte fakta. Slet aldrig viden.
+6. Ved modstridende oplysninger: brug handlingen review.
+7. Undgå brede samleobjekter. Objekter skal være fokuserede og genbrugelige.
+8. Concierge må senere kombinere op til 3 relevante objekter i ét svar.
+9. Returnér en samlet plan med 1-3 operationer.
+10. Links er kun referencer. Gæt aldrig indhold bag et link.
+11. Svar på dansk og hold begrundelser korte.
 
-Score:
-- 90-99: meget sikkert match
-- 70-89: godt match
-- 50-69: muligt match
-- under 50: opret nyt eller kræv review
-
-Returnér højst 3 forslag, bedst først.`,
+Handlinger:
+- update: udvid et eksisterende objekt.
+- create: opret et nyt fokuseret objekt.
+- review: der er konflikt eller væsentlig usikkerhed.`,
       input: [{
         role: "user",
-        content: `NYT INPUT:
+        content: `NYT INDHOLD:
 ${inputText}
 
-AUTOMATISK FUNDE KANDIDATER:
+KANDIDATER:
 ${JSON.stringify(candidateContext)}`
       }],
       reasoning: { effort: "low" },
@@ -757,74 +737,48 @@ ${JSON.stringify(candidateContext)}`
         verbosity: "low",
         format: {
           type: "json_schema",
-          name: "knowledge_editor_suggestion",
+          name: "knowledge_manager_plan",
           strict: true,
           schema: {
             type: "object",
             additionalProperties: false,
             properties: {
-              input_type: {
-                type: "string",
-                enum: ["text", "url", "google_maps", "document_reference", "unknown"]
-              },
               summary: { type: "string" },
-              recommended_action: {
-                type: "string",
-                enum: ["update_existing", "create_new", "review_required"]
-              },
-              matches: {
+              confidence: { type: "integer", minimum: 0, maximum: 100 },
+              review_required: { type: "boolean" },
+              structure_reason: { type: "string" },
+              operations: {
                 type: "array",
+                minItems: 1,
+                maxItems: 3,
                 items: {
                   type: "object",
                   additionalProperties: false,
                   properties: {
+                    action: { type: "string", enum: ["update", "create", "review"] },
                     card_id: { type: ["string", "null"] },
                     title: { type: "string" },
                     category: { type: "string" },
-                    match_score: { type: "integer", minimum: 0, maximum: 100 },
+                    before_content: { type: "string" },
+                    final_content: { type: "string" },
                     reason: { type: "string" },
-                    action: { type: "string", enum: ["update", "create", "review"] },
-                    before_summary: { type: "string" },
-                    after_summary: { type: "string" },
-                    changed_facts: {
-                      type: "array",
-                      items: { type: "string" }
-                    },
-                    requires_verification: { type: "boolean" },
-                    website_candidate: { type: "boolean" },
-                    tests_needed: { type: "boolean" },
-                    suggested_relations: {
-                      type: "array",
-                      items: {
-                        type: "object",
-                        additionalProperties: false,
-                        properties: {
-                          card_id: { type: "string" },
-                          title: { type: "string" },
-                          reason: { type: "string" }
-                        },
-                        required: ["card_id", "title", "reason"]
-                      }
-                    },
-                    suggested_tests: {
-                      type: "array",
-                      items: { type: "string" }
-                    }
+                    changed_facts: { type: "array", items: { type: "string" } },
+                    suggested_relations: { type: "array", items: { type: "string" } },
+                    suggested_tests: { type: "array", items: { type: "string" } }
                   },
                   required: [
-                    "card_id", "title", "category", "match_score", "reason",
-                    "action", "before_summary", "after_summary", "changed_facts",
-                    "requires_verification", "website_candidate", "tests_needed",
-                    "suggested_relations", "suggested_tests"
+                    "action","card_id","title","category","before_content",
+                    "final_content","reason","changed_facts",
+                    "suggested_relations","suggested_tests"
                   ]
                 }
               }
             },
-            required: ["input_type", "summary", "recommended_action", "matches"]
+            required: ["summary","confidence","review_required","structure_reason","operations"]
           }
         }
       },
-      max_output_tokens: 2200,
+      max_output_tokens: 3200,
       store: false
     })
   });
@@ -832,21 +786,19 @@ ${JSON.stringify(candidateContext)}`
   const result = await response.json();
   if (!response.ok) {
     return json({
-      error: "Knowledge Studio kunne ikke generere forslag.",
+      error: "Knowledge Manager kunne ikke generere en plan.",
       detail: result?.error?.message || "OpenAI request failed"
     }, 502);
   }
 
   const raw = extractOutputText(result);
-  if (!raw) {
-    return json({ error: "Knowledge Studio returnerede ikke et læsbart forslag." }, 502);
-  }
+  if (!raw) return json({ error: "Knowledge Manager returnerede ikke en læsbar plan." }, 502);
 
   try {
     const parsed = JSON.parse(raw);
     return json({
       ...parsed,
-      candidates: candidates.slice(0, 5).map((candidate) => ({
+      candidates: candidates.slice(0, 6).map((candidate) => ({
         card_id: candidate.id,
         title: candidate.title,
         category: candidate.category,
@@ -856,11 +808,12 @@ ${JSON.stringify(candidateContext)}`
     });
   } catch {
     return json({
-      input_type: "unknown",
       summary: raw,
-      recommended_action: "review_required",
-      matches: [],
-      candidates: candidates.slice(0, 5)
+      confidence: 0,
+      review_required: true,
+      structure_reason: "Svaret kunne ikke struktureres.",
+      operations: [],
+      candidates: candidates.slice(0, 6)
     });
   }
 }
@@ -870,7 +823,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "8.0-platform-dashboard",
+      version: "8.1-content-first-manager",
       method: "POST"
     });
   }
