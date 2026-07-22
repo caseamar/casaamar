@@ -1,7 +1,7 @@
 const DEFAULT_MODEL = "gpt-5-mini";
 const MAX_QUESTION_LENGTH = 500;
 const MAX_MESSAGES = 8;
-const CACHE_TTL_MS = 5 * 60 * 1000;
+const CACHE_TTL_MS = 30 * 1000;
 
 let cachedBundle = null;
 let cachedAt = 0;
@@ -45,7 +45,10 @@ function rateLimited(request) {
 async function assetJson(env, request, pathname) {
   const url = new URL(pathname, request.url);
   const response = await env.ASSETS.fetch(new Request(url.toString(), {
-    headers: { accept: "application/json" }
+    headers: {
+      accept: "application/json",
+      "cache-control": "no-cache"
+    }
   }));
   if (!response.ok) {
     throw new Error(`Missing content file: ${pathname} (${response.status})`);
@@ -161,56 +164,135 @@ function normaliseMessages(messages) {
     }));
 }
 
-function selectKnowledge(question, entries, limit = 8) {
-  const terms = question
-    .toLocaleLowerCase("da")
-    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
-    .split(/\s+/)
-    .filter((term) => term.length > 2);
+function retrievalTokens(value) {
+  const stopWords = new Set([
+    "hvad", "hvordan", "hvor", "hvilke", "hvilken", "kan", "skal", "må",
+    "jeg", "man", "der", "det", "den", "de", "til", "fra", "med", "for",
+    "har", "findes", "er", "og", "eller", "ved", "om", "på", "en", "et"
+  ]);
 
-  return entries
+  return [...new Set(
+    normaliseText(value)
+      .split(/[^a-z0-9æøå]+/)
+      .filter((token) => token.length >= 3 && !stopWords.has(token))
+  )];
+}
+
+function expandRetrievalConcepts(question) {
+  const text = normaliseText(question);
+  const groups = [
+    ["pool", "svømme", "bassin", "bade", "livredder", "poolkort"],
+    ["parkering", "parkere", "bil", "p-plads", "parkeringsplads", "telpark"],
+    ["ankomst", "komme frem", "finde huset", "adresse", "taxa", "kufferter"],
+    ["barn", "børn", "baby", "babyseng", "babystol", "legeplads", "pusle"],
+    ["mad", "spise", "restaurant", "takeaway", "pizza", "indkøb", "supermarked"],
+    ["transport", "tog", "bus", "taxa", "lufthavn", "billeje"],
+    ["aircondition", "aircon", "køling", "varme", "klimaanlæg"],
+    ["affald", "skrald", "container", "sortering"],
+    ["vaskemaskine", "vaske", "vaskerum", "nøgle"],
+    ["golf", "golfsæt", "golfbane"],
+    ["strand", "hav", "los boliches", "la cala", "solstol"]
+  ];
+
+  const expanded = [];
+  for (const words of groups) {
+    if (words.some((word) => text.includes(normaliseText(word)))) {
+      expanded.push(...words.map(normaliseText));
+    }
+  }
+  return [...new Set(expanded)];
+}
+
+function selectKnowledge(question, entries, limit = 6) {
+  const query = normaliseText(question);
+  const tokens = retrievalTokens(question);
+  const concepts = expandRetrievalConcepts(question);
+
+  return (entries || [])
+    .filter((entry) =>
+      entry?.status !== "archived" &&
+      entry?.channels?.ai !== false
+    )
     .map((entry) => {
-      const haystack = [
-        entry.title,
-        entry.category,
-        entry.answer,
-        ...(entry.keywords || [])
-      ].join(" ").toLocaleLowerCase("da");
+      const title = normaliseText(entry.title);
+      const category = normaliseText(entry.category);
+      const answer = normaliseText(entry.answer || entry.summary);
+      const content = normaliseText(entry.content || entry.body);
+      const keywords = (entry.keywords || []).map(normaliseText);
+      const allText = [title, category, answer, content, ...keywords].join(" ");
 
       let score = 0;
-      for (const term of terms) {
-        if (haystack.includes(term)) score += term.length > 6 ? 3 : 1;
-        if ((entry.keywords || []).some((keyword) =>
-          String(keyword).toLocaleLowerCase("da").includes(term)
-        )) score += 3;
+      const reasons = [];
+
+      if (query.length >= 5 && allText.includes(query)) score += 30;
+
+      for (const token of tokens) {
+        if (title.includes(token)) {
+          score += 12;
+          reasons.push(`titel: ${token}`);
+        }
+        if (category.includes(token)) score += 5;
+        if (keywords.some((keyword) => keyword.includes(token) || token.includes(keyword))) {
+          score += 9;
+          reasons.push(`nøgleord: ${token}`);
+        }
+        if (answer.includes(token)) score += 5;
+        if (content.includes(token)) score += 3;
       }
 
-      const sourcePriority = Number(entry.source?.priority || 50);
-      score += sourcePriority / 100;
-      return { entry, score, sourcePriority };
+      for (const concept of concepts) {
+        if (title.includes(concept)) score += 5;
+        if (keywords.some((keyword) => keyword.includes(concept))) score += 4;
+        if (answer.includes(concept) || content.includes(concept)) score += 2;
+      }
+
+      if (entry.editorial?.review_state === "approved") score += 1.5;
+      if (entry.trust >= 90) score += 1;
+
+      return {
+        entry,
+        score,
+        reasons: [...new Set(reasons)].slice(0, 5)
+      };
     })
-    .filter((item) => item.score > 0.5)
+    .filter((item) => item.score >= 2)
     .sort((a, b) =>
-      (b.score - a.score) || (b.sourcePriority - a.sourcePriority)
+      (b.score - a.score) ||
+      (Number(b.entry.trust || 0) - Number(a.entry.trust || 0))
     )
     .slice(0, limit)
-    .map((item) => item.entry);
+    .map((item) => ({
+      ...item.entry,
+      _retrieval_score: Math.round(item.score * 10) / 10,
+      _retrieval_reasons: item.reasons
+    }));
 }
 
 function knowledgeText(entries) {
   if (!entries.length) return "Ingen relevante poster blev fundet.";
-  return entries.map((entry) => {
+
+  return entries.map((entry, index) => {
     const link = entry.links?.[0]?.url || "";
+    const fullContent =
+      entry.content ||
+      entry.body ||
+      entry.answer ||
+      entry.summary ||
+      "";
+
     return [
-      `EMNE: ${entry.title}`,
+      `OBJEKT ${index + 1}: ${entry.title}`,
+      `ID: ${entry.id}`,
       `KATEGORI: ${entry.category}`,
+      `MATCH-SCORE: ${entry._retrieval_score || "ukendt"}`,
       `KILDE: ${entry.source?.label || "Casa Amar"}`,
-      `PRIORITET: ${entry.source?.priority || 50}`,
+      `TRUST: ${entry.trust || 50}`,
       `DYNAMISK: ${entry.dynamic ? "ja" : "nej"}`,
-      `FAKTA: ${entry.answer}`,
+      `VIDEN:\n${fullContent}`,
+      `KORT OPSUMMERING:\n${entry.answer || entry.summary || ""}`,
       `LINK: ${link}`
     ].join("\n");
-  }).join("\n\n");
+  }).join("\n\n---\n\n");
 }
 
 function extractOutputText(result) {
@@ -472,6 +554,11 @@ SVAR:
 - Hvis brugeren signalerer utilfredshed, siger at svaret er forkert/off, eller beder dig stoppe, skal du svare med én kort undskyldning og straks sende videre til Michael.
 - Når needs_human er sand, må svaret højst være 2 korte sætninger og må ikke indeholde et opfølgende spørgsmål.
 - Når du er usikker, vælg et kort svar og handoff frem for at forklare bredt.
+- Brug gerne viden fra op til 3 relevante Knowledge Objects i samme svar.
+- Kombinér objekterne naturligt og besvar præcis det, gæsten spørger om.
+- Objekter med visibility=internal må bruges som intern AI-kontekst, når channels.ai ikke er false.
+- Visibility styrer publicering af råt indhold, ikke om Concierge må bruge objektet.
+- Hvis de relevante objekter indeholder svaret, må du ikke sende gæsten videre til Michael.
 
 Returnér altid struktureret JSON efter det krævede schema.`;
 }
@@ -823,7 +910,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "8.1-content-first-manager",
+      version: "8.2-retrieval-optimised",
       method: "POST"
     });
   }
