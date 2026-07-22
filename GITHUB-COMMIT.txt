@@ -1,25 +1,27 @@
-feat(knowledge): introduce registry-driven Knowledge Platform and control center
+feat(knowledge): add internal parking and pool guides
 
 Summary
-- Added knowledge-registry.json as the central catalogue for knowledge, policy, intent, source, inbox and test datasets.
-- Changed _worker.js to discover and load knowledge datasets from the registry instead of hardcoded source paths.
-- Added /api/status with dataset health, entry counts, test counts, inbox counts and load errors.
-- Added knowledge-center.html as a simple read-only control center for platform health and maintenance overview.
-- Added knowledge-entry.schema.json as the canonical schema for future facts, notes, guides and recommendations.
-- Added knowledge-inbox.json for unreviewed notes, keywords and links that must not influence AI answers yet.
-- Added KNOWLEDGE-WORKFLOW.md describing public content, internal knowledge, drafts and external sources.
-- Moved the development version badge to the left so it is not hidden by the chat launcher.
-
-Files changed
-- index.html
-- _worker.js
+- Added owner-internal-guides.json with structured, internal-only knowledge from Michael.
+- Added detailed guidance for parking in Pueblo Águila, Fuengirola, Los Boliches and parking restrictions.
+- Added pool access, safety, seasonal opening, family facilities, restaurant, takeaway, training and alternative swimming information.
+- Marked changing information such as Telpark rules, pool hours and local availability as dynamic.
+- Kept all new content available to Casa Amar Concierge but unpublished on the website.
+- Added the internal owner guide dataset to knowledge-registry.json.
+- Added five regression tests covering parking and pool questions.
 
 Files added
+- owner-internal-guides.json
+
+Files changed
 - knowledge-registry.json
-- knowledge-entry.schema.json
-- knowledge-inbox.json
-- knowledge-center.html
-- KNOWLEDGE-WORKFLOW.md
+- ai-regression-tests.json
 
 Why
-Casa Amar needs a knowledge architecture that can grow without turning the worker into a collection of hardcoded integrations. The registry makes datasets discoverable and auditable, while the inbox and schema create a safe workflow for both structured facts and informal owner notes.
+Owner knowledge should be captured in natural language and converted into small, trusted knowledge units. This update demonstrates the intended ingestion workflow while keeping unpublished operational guidance separate from website content.
+
+Test cases
+- Må vi parkere ved skiltene omkring Pueblo Águila?
+- Hvor parkerer vi i Fuengirola?
+- Hvor er adgangskortet til poolen?
+- Er poolen god til små børn?
+- Må vi bade, når poolområdet er låst?

@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-07-22",
   "platform": "Casa Amar Knowledge Platform",
   "principles": [
@@ -23,6 +23,23 @@
       "source_defaults": {
         "id": "owner-core",
         "label": "Casa Amar",
+        "type": "owner_core",
+        "priority": 100
+      }
+    },
+    {
+      "id": "owner-internal-guides",
+      "label": "Casa Amar internal owner guides",
+      "path": "/owner-internal-guides.json",
+      "role": "knowledge",
+      "format": "entry_collection",
+      "visibility": "internal",
+      "trust": 100,
+      "owner": "Michael",
+      "status": "active",
+      "source_defaults": {
+        "id": "michael-owner",
+        "label": "Michael / Casa Amar",
         "type": "owner_core",
         "priority": 100
       }

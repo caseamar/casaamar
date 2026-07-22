@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-07-22",
   "tests": [
     {
@@ -352,6 +352,94 @@
       ],
       "max_sentences": 3,
       "notes": "Kort scope-fallback."
+    },
+    {
+      "id": "T21",
+      "category": "Parkering",
+      "question": "Må vi parkere ved skiltene omkring Pueblo Águila?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Pueblo Águila",
+        "parkere",
+        "beboere"
+      ],
+      "must_not_include_any": [
+        "kan ikke hjælpe",
+        "Rincón Rent"
+      ],
+      "max_sentences": 4,
+      "notes": "Intern ejer-guide skal give et sikkert svar."
+    },
+    {
+      "id": "T22",
+      "category": "Parkering",
+      "question": "Hvor parkerer vi i Fuengirola?",
+      "expected_intent": "arrival_transport",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "Telpark",
+        "havn",
+        "parkeringshus"
+      ],
+      "must_not_include_any": [
+        "garanteret",
+        "altid ledigt"
+      ],
+      "max_sentences": 5,
+      "notes": "Skal kombinere app og sikre alternativer."
+    },
+    {
+      "id": "T23",
+      "category": "Pool",
+      "question": "Hvor er adgangskortet til poolen?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "nøglebrættet",
+        "entré"
+      ],
+      "must_not_include_any": [
+        "Michael",
+        "kan ikke bekræfte"
+      ],
+      "max_sentences": 3,
+      "notes": "Intern praktisk viden."
+    },
+    {
+      "id": "T24",
+      "category": "Pool",
+      "question": "Er poolen god til små børn?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "babybassin",
+        "lavt",
+        "pusleplads"
+      ],
+      "must_not_include_any": [
+        "kan ikke bekræfte"
+      ],
+      "max_sentences": 4,
+      "notes": "Skal samle flere familie-facts."
+    },
+    {
+      "id": "T25",
+      "category": "Pool",
+      "question": "Må vi bade, når poolområdet er låst?",
+      "expected_intent": "house_facilities",
+      "expected_needs_human": false,
+      "must_include_any": [
+        "må ikke",
+        "låst",
+        "livredder"
+      ],
+      "must_not_include_any": [
+        "måske",
+        "Michael"
+      ],
+      "max_sentences": 3,
+      "notes": "Sikkerhedsregel skal prioriteres."
     }
   ]
 }
