@@ -27,7 +27,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -52,7 +52,7 @@
       "editorial": {
         "review_state": "approved",
         "reviewed_by": "Michael",
-        "reviewed_at": "2026-07-22",
+        "reviewed_at": "2026-07-23T09:50:48.505Z",
         "website_candidate": false,
         "notes": ""
       },
@@ -84,10 +84,15 @@
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22T15:04:14.430Z",
+        "last_changed_at": "2026-07-23T09:46:54.612Z",
         "last_result": null
       },
-      "maturity": "imported"
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T09:50:48.505Z"
+      }
     },
     {
       "id": "parking-restrictions-enforced",
@@ -1119,7 +1124,7 @@
       ],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "valid_until": null,
       "source": {
@@ -1197,7 +1202,10 @@
         "T08 (adresse og adgangsvej verifikation på stedet)",
         "T20 (bekræftelse af Casa-nummer og postadresse)",
         "T31 (foto eller video af gangstien fra Calle Buitre til huset)"
-      ]
+      ],
+      "lifecycle": {
+        "live_status": "archived"
+      }
     },
     {
       "id": "emergency-number-112",
@@ -1353,10 +1361,10 @@
       "title": "Brug af aircondition",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
+      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
       "keywords": [
         "aircondition",
         "varme",
@@ -1376,7 +1384,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -1417,12 +1425,15 @@
         "T12",
         "T13",
         "T17",
-        "T31"
+        "T31",
+        "Bekræft at fjernbetjeningerne er monteret på væggen under hver enhed og er funktionsdygtige.",
+        "Verificer antal og placering af de to olieovne i huset.",
+        "Test at enheder kan skiftes mellem køle- og varme-drift og at indstillinger påvirkes via fjernbetjeningen."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:42:33.445Z",
         "last_result": null
       }
     },
@@ -1432,10 +1443,10 @@
       "title": "Vaskemaskine og nøgle",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "answer": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "body": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "content": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
+      "summary": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "answer": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "body": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
+      "content": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
       "keywords": [
         "vaskemaskine",
         "forhave",
@@ -1454,7 +1465,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -1496,12 +1507,15 @@
         "T13",
         "T17",
         "T27",
-        "T31"
+        "T31",
+        "T01 - Bekræft at skabet er aflåst og nøgle findes på nøglebrættet i huset",
+        "T02 - Bekræft at vaskemaskinen har de nævnte programmer",
+        "T03 - Kontroller om der typisk efterlades vaskemiddel i skabet"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:54:43.175Z",
         "last_result": null
       }
     },
@@ -2507,29 +2521,7 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22T13:37:48.247Z",
         "last_result": null
-      },
-      "_pending_relations": [
-        {
-          "card_id": "miramar-shopping-centre",
-          "title": "Centro Comercial Miramar",
-          "reason": "Stoppestedet Rotonda Ford 2 ligger ved Miramar; relevant for vejledning til gæster."
-        },
-        {
-          "card_id": "bus-fuengirola-region",
-          "title": "Bus videre fra Fuengirola",
-          "reason": "Generel info om Fuengirola busforbindelser supplerer M-156-oplysningen."
-        },
-        {
-          "card_id": "train-fuengirola-malaga-airport",
-          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
-          "reason": "Rejsevej fra togstationen til Miramar er beskrevet; nyttigt at relatere til togoplysninger."
-        }
-      ],
-      "_pending_tests": [
-        "T02 (kontrollér rute- og stoppestednavn med lokal kildeliste)",
-        "T03 (bekræft busnummer M-156 og driftsselskab)",
-        "T31 (verificér afstand/tid fra Fuengirola station til Miramar)"
-      ]
+      }
     },
     {
       "id": "bus-fuengirola-region",
@@ -3329,7 +3321,7 @@
     {
       "id": "malaga-city",
       "slug": "malaga-city",
-      "title": "Málaga",
+      "title": "Oplevelser: Málaga",
       "category": "Oplevelser",
       "content_type": "place",
       "summary": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
@@ -3354,7 +3346,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -3371,9 +3363,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T13:09:15.211Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -3388,7 +3380,7 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T32",
         "T36"
@@ -3398,6 +3390,11 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T13:09:15.211Z"
       }
     },
     {
@@ -3477,7 +3474,7 @@
     {
       "id": "ronda",
       "slug": "ronda",
-      "title": "Ronda",
+      "title": "Oplevelser: Ronda",
       "category": "Oplevelser",
       "content_type": "place",
       "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
@@ -3502,7 +3499,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -3519,9 +3516,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:10.429Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -3536,7 +3533,7 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T32",
         "T36"
@@ -3546,7 +3543,13 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:10.429Z"
+      },
+      "assets": []
     },
     {
       "id": "setenil",
@@ -4569,8 +4572,8 @@
       "title": "Restaurant Cerros del Águila",
       "category": "Restauranter",
       "content_type": "place",
-      "summary": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
-      "answer": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
+      "summary": "Tilføj anbefaling: Restaurant Cerros del Águila er åben ved ankomst og er et godt sted at sætte sig for at spise/drikke efter ankomst (ca. 100 m fra huset). Praktisk for børn (fx is).",
+      "answer": "Tilføj anbefaling: Restaurant Cerros del Águila er åben ved ankomst og er et godt sted at sætte sig for at spise/drikke efter ankomst (ca. 100 m fra huset). Praktisk for børn (fx is).",
       "body": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
       "content": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
       "keywords": [
@@ -4603,7 +4606,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "pool-restaurant-takeaway",
+          "property-address"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -4629,12 +4635,14 @@
       "tests": [
         "T02",
         "T17",
-        "T33"
+        "T33",
+        "T14 (bekræft restaurantens åbningstider og tilbud)",
+        "T33 (bekræft familieservice såsom is/børnevenlige muligheder)"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:15:54.191Z",
         "last_result": null
       }
     },
@@ -5021,7 +5029,7 @@
       ],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": true,
       "valid_until": null,
       "source": {
@@ -5074,18 +5082,21 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "archived"
       }
     },
     {
       "id": "el-morabito-ronda",
       "slug": "el-morabito-ronda",
-      "title": "El Morabito i Ronda",
+      "title": "Ronda - restauranter",
       "category": "Restauranter",
       "content_type": "place",
-      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
       "keywords": [
         "El Morabito",
         "Ronda"
@@ -5102,7 +5113,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -5119,9 +5130,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:16.633Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -5136,16 +5147,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T33"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
         "last_result": null
-      }
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:16.633Z"
+      },
+      "assets": []
     },
     {
       "id": "casa-pepe-cordoba",
@@ -5706,7 +5723,7 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "updated": "2026-07-22",
       "owner": "Michael",
@@ -5752,6 +5769,9 @@
         "label": "Michael / Casa Amar",
         "url": null,
         "checked": "2026-07-22"
+      },
+      "lifecycle": {
+        "live_status": "archived"
       }
     },
     {
@@ -6153,10 +6173,10 @@
       "id": "weber-gasgrill-pa-patioen",
       "title": "Weber gasgrill på patioen",
       "category": "Faciliteter / Grill",
-      "summary": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "answer": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "body": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "content": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
+      "summary": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "answer": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "body": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "content": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
@@ -6176,12 +6196,153 @@
         "T-Verify: Bekræft tilstedeværelsen af en Weber gasgrill på patioen (foto eller værtsbekræftelse).",
         "T-Verify: Bekræft instruktion om at åbne/lukke for gas før/efter brug (værtsinstruktion eller mærkning på grill).",
         "T-Verify: Bekræft rengøringsanbefaling (børstning af rist mens varm) og placering af fedtbakke.",
-        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reservede gasflasker og refusionspraksis (kvittering kræves)."
+        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reservede gasflasker og refusionspraksis (kvittering kræves).",
+        "T-Verify: Bekræft rengøringsanbefaling (børstning af rist mens varm) og placering/tilstand af fedtbakke.",
+        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reserve gasflasker og refusionspraksis (kvittering kræves)."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-23T08:30:48.928Z",
+        "last_changed_at": "2026-07-23T09:10:33.859Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T09:50:52.365Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "parking-pueblo-aguila",
+          "pool-restaurant-takeaway"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T09:50:52.365Z"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+        "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+        "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:38:54.892Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
         "last_result": null
       },
       "editorial": {
@@ -6198,7 +6359,139 @@
       "relations": {
         "related": [
           "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
           "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "wifi-og-arbejde",
+      "title": "WiFi og arbejde",
+      "category": "Praktisk",
+      "summary": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "answer": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "body": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "content": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at mesh-enheden på 1. sal og i tagetagens skab er til stede og tilsluttet strøm.",
+        "Bekræft at mesh-enheden er forbundet til routeren i stuen via LAN-kabel (visuel kontrol).",
+        "Bekræft SSID 'Amar' og at adgangskoden matcher husets WiFi; verificer at adgangskoden findes på QR/RFC-tag, i info-materiale og på routeren.",
+        "Bekræft tilgængelighed af LAN-kabel i huset og at LAN-porte på mesh-enheder/router virker."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:11:54.283Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created locally because referenced object \"wifi\" was not available in the editable Knowledge Cards dataset."
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "tv-streaming-og-projektor-i-casa-amar",
+      "title": "TV, streaming og projektor i Casa Amar",
+      "category": "Huset / Faciliteter",
+      "summary": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "answer": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "body": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "content": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft model og funktion af projektoren (BenQ) og at den er klar til brug.",
+        "Txx - Bekræft at Chromecast fungerer og kan streame til stue-tv/projektor.",
+        "Txx - Bekræft tilgængelighed af HDMI- og phono-kabler og at B&O-højttaler kan tilsluttes både via Bluetooth og kabel.",
+        "Txx - Bekræft at internetforbindelsen kan håndtere streaming og online spil under realistisk belastning."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:23:29.055Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "airconditioning-use",
+          "adresse-til-casa-amar"
         ],
         "supersedes": [],
         "superseded_by": []
@@ -6215,10 +6508,385 @@
         "url": null,
         "checked": "2026-07-23"
       }
+    },
+    {
+      "id": "opvaskemaskine-k-kken",
+      "title": "Opvaskemaskine (køkken)",
+      "category": "Huset / Køkken",
+      "summary": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "answer": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "body": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "content": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft placering af opvaskemaskine i køkkenet (foto/inspektion)",
+        "Bekræft mærke/model (Bosch)",
+        "Bekræft placering af salt og afspænding i skabet udenfor ved vaskemaskinen",
+        "Bekræft gæstepolitik omkring opvasketabs (findes i skab eller købes af gæst)"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:04:00.801Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "washing-machine-location"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "k-kken-og-kaffe",
+      "title": "Køkken og kaffe",
+      "category": "Huset",
+      "summary": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "answer": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "body": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "content": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft at kogepladen er induktion og fungerer som beskrevet (hurtig opvarmning, præcis regulering).",
+        "Txx - Bekræft at der er en indbygget emhætte under kogepladen, og at den suger damp/mados nedad.",
+        "Txx - Bekræft at ovnen er brugervenlig og egnet til bagning, stegning og opvarmning.",
+        "Bekræft at Lelit Mara X er til stede og funktionsdygtig",
+        "Bekræft at Mazzer-kværnen er til stede og har justerbar kværneindstilling",
+        "Bekræft at kaffevægt og knock box er til stede",
+        "Verificer at instruktionen om at slukke maskinen og tømme beholdere er praktisk og korrekt"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:19:57.788Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "adresse-til-casa-amar",
+          "pool-opening-safety-rule"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "sen-ankomst-check-in",
+      "title": "Sen ankomst / Check-in",
+      "category": "Praktisk / Check-in",
+      "summary": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "answer": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "body": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "content": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "Bekræft at bookingkommunikationen indeholder instruktion om nøglebokskode eller at nøglen er udleveret før ankomst.",
+        "Verificer at nøgleboks findes og fungerer (foto eller værtsbekræftelse).",
+        "Bekræft procedure for udlevering af nøgle på forhånd (hvem og hvordan)."
+      ],
+      "assets": [],
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:00.654Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T15:18:29.284Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:00.654Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "indk-b-af-dagligvarer-ved-casa-amar",
+      "title": "Indkøb af dagligvarer ved Casa Amar",
+      "category": "Indkøb",
+      "summary": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "answer": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "body": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "content": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "Bekræft placering og åbningstider for nærliggende Lidl og Aldi",
+        "Verificer at lokalt supermarked tilbyder onlinebestilling og levering samt eventuelle begrænsninger",
+        "Bekræft hvilke onlinebutikker der leverer danske varer og deres leveringsområde"
+      ],
+      "assets": [],
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:07.181Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T15:28:21.240Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:07.181Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "carrefour-miramar",
+          "onlinebutikken-fuengirola",
+          "miramar-shopping-centre"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+      "title": "Transport: Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:13.557Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_changed_at": "2026-07-23T16:08:30.811Z"
+      },
+      "editorial": {
+        "review_state": "approved",
+        "notes": "Merge draft created by Knowledge Architect",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:13.557Z"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "assets": [],
+      "tests": []
+    },
+    {
+      "id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+      "title": "Transport: Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:15.404Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_changed_at": "2026-07-23T16:08:36.746Z"
+      },
+      "editorial": {
+        "review_state": "approved",
+        "notes": "Merge draft created by Knowledge Architect",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:15.404Z"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "assets": [],
+      "tests": []
     }
   ],
-  "version": "1.5",
-  "updated": "2026-07-23",
+  "version": "2.1",
+  "updated": "2026-07-23T16:12:34.640Z",
   "entries": [
     {
       "id": "parking-pueblo-aguila",
@@ -6247,7 +6915,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -6272,7 +6940,7 @@
       "editorial": {
         "review_state": "approved",
         "reviewed_by": "Michael",
-        "reviewed_at": "2026-07-22",
+        "reviewed_at": "2026-07-23T09:50:48.505Z",
         "website_candidate": false,
         "notes": ""
       },
@@ -6304,10 +6972,15 @@
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22T15:04:14.430Z",
+        "last_changed_at": "2026-07-23T09:46:54.612Z",
         "last_result": null
       },
-      "maturity": "imported"
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T09:50:48.505Z"
+      }
     },
     {
       "id": "parking-restrictions-enforced",
@@ -7339,7 +8012,7 @@
       ],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "valid_until": null,
       "source": {
@@ -7417,7 +8090,10 @@
         "T08 (adresse og adgangsvej verifikation på stedet)",
         "T20 (bekræftelse af Casa-nummer og postadresse)",
         "T31 (foto eller video af gangstien fra Calle Buitre til huset)"
-      ]
+      ],
+      "lifecycle": {
+        "live_status": "archived"
+      }
     },
     {
       "id": "emergency-number-112",
@@ -7573,10 +8249,10 @@
       "title": "Brug af aircondition",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
+      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
       "keywords": [
         "aircondition",
         "varme",
@@ -7596,7 +8272,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -7637,12 +8313,15 @@
         "T12",
         "T13",
         "T17",
-        "T31"
+        "T31",
+        "Bekræft at fjernbetjeningerne er monteret på væggen under hver enhed og er funktionsdygtige.",
+        "Verificer antal og placering af de to olieovne i huset.",
+        "Test at enheder kan skiftes mellem køle- og varme-drift og at indstillinger påvirkes via fjernbetjeningen."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:42:33.445Z",
         "last_result": null
       }
     },
@@ -7652,10 +8331,10 @@
       "title": "Vaskemaskine og nøgle",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "answer": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "body": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "content": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
+      "summary": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "answer": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "body": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
+      "content": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
       "keywords": [
         "vaskemaskine",
         "forhave",
@@ -7674,7 +8353,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -7716,12 +8395,15 @@
         "T13",
         "T17",
         "T27",
-        "T31"
+        "T31",
+        "T01 - Bekræft at skabet er aflåst og nøgle findes på nøglebrættet i huset",
+        "T02 - Bekræft at vaskemaskinen har de nævnte programmer",
+        "T03 - Kontroller om der typisk efterlades vaskemiddel i skabet"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:54:43.175Z",
         "last_result": null
       }
     },
@@ -8727,29 +9409,7 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22T13:37:48.247Z",
         "last_result": null
-      },
-      "_pending_relations": [
-        {
-          "card_id": "miramar-shopping-centre",
-          "title": "Centro Comercial Miramar",
-          "reason": "Stoppestedet Rotonda Ford 2 ligger ved Miramar; relevant for vejledning til gæster."
-        },
-        {
-          "card_id": "bus-fuengirola-region",
-          "title": "Bus videre fra Fuengirola",
-          "reason": "Generel info om Fuengirola busforbindelser supplerer M-156-oplysningen."
-        },
-        {
-          "card_id": "train-fuengirola-malaga-airport",
-          "title": "Tog mellem Fuengirola, Málaga og lufthavnen",
-          "reason": "Rejsevej fra togstationen til Miramar er beskrevet; nyttigt at relatere til togoplysninger."
-        }
-      ],
-      "_pending_tests": [
-        "T02 (kontrollér rute- og stoppestednavn med lokal kildeliste)",
-        "T03 (bekræft busnummer M-156 og driftsselskab)",
-        "T31 (verificér afstand/tid fra Fuengirola station til Miramar)"
-      ]
+      }
     },
     {
       "id": "bus-fuengirola-region",
@@ -9549,7 +10209,7 @@
     {
       "id": "malaga-city",
       "slug": "malaga-city",
-      "title": "Málaga",
+      "title": "Oplevelser: Málaga",
       "category": "Oplevelser",
       "content_type": "place",
       "summary": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
@@ -9574,7 +10234,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -9591,9 +10251,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T13:09:15.211Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -9608,7 +10268,7 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T32",
         "T36"
@@ -9618,6 +10278,11 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T13:09:15.211Z"
       }
     },
     {
@@ -9697,7 +10362,7 @@
     {
       "id": "ronda",
       "slug": "ronda",
-      "title": "Ronda",
+      "title": "Oplevelser: Ronda",
       "category": "Oplevelser",
       "content_type": "place",
       "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
@@ -9722,7 +10387,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -9739,9 +10404,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:10.429Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -9756,7 +10421,7 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T32",
         "T36"
@@ -9766,7 +10431,13 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
-      }
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:10.429Z"
+      },
+      "assets": []
     },
     {
       "id": "setenil",
@@ -10789,8 +11460,8 @@
       "title": "Restaurant Cerros del Águila",
       "category": "Restauranter",
       "content_type": "place",
-      "summary": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
-      "answer": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
+      "summary": "Tilføj anbefaling: Restaurant Cerros del Águila er åben ved ankomst og er et godt sted at sætte sig for at spise/drikke efter ankomst (ca. 100 m fra huset). Praktisk for børn (fx is).",
+      "answer": "Tilføj anbefaling: Restaurant Cerros del Águila er åben ved ankomst og er et godt sted at sætte sig for at spise/drikke efter ankomst (ca. 100 m fra huset). Praktisk for børn (fx is).",
       "body": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
       "content": "Den nærmeste restaurant ligger cirka 100 meter fra huset og har terrasse med udsigt til poolen. Michael anbefaler jægerschnitzel.",
       "keywords": [
@@ -10823,7 +11494,10 @@
         "owner_guide": true
       },
       "relations": {
-        "related": [],
+        "related": [
+          "pool-restaurant-takeaway",
+          "property-address"
+        ],
         "supersedes": [],
         "superseded_by": []
       },
@@ -10849,12 +11523,14 @@
       "tests": [
         "T02",
         "T17",
-        "T33"
+        "T33",
+        "T14 (bekræft restaurantens åbningstider og tilbud)",
+        "T33 (bekræft familieservice såsom is/børnevenlige muligheder)"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-22T13:15:54.191Z",
         "last_result": null
       }
     },
@@ -11241,7 +11917,7 @@
       ],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": true,
       "valid_until": null,
       "source": {
@@ -11294,18 +11970,21 @@
         "last_tested_at": null,
         "last_changed_at": "2026-07-22",
         "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "archived"
       }
     },
     {
       "id": "el-morabito-ronda",
       "slug": "el-morabito-ronda",
-      "title": "El Morabito i Ronda",
+      "title": "Ronda - restauranter",
       "category": "Restauranter",
       "content_type": "place",
-      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
-      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
       "keywords": [
         "El Morabito",
         "Ronda"
@@ -11322,7 +12001,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -11339,9 +12018,9 @@
         "superseded_by": []
       },
       "editorial": {
-        "review_state": "needs_review",
-        "reviewed_by": null,
-        "reviewed_at": null,
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:16.633Z",
         "website_candidate": false,
         "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
       },
@@ -11356,16 +12035,22 @@
         "en": "pending",
         "es": "pending"
       },
-      "maturity": "imported",
+      "maturity": "verified",
       "tests": [
         "T33"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
         "last_result": null
-      }
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:16.633Z"
+      },
+      "assets": []
     },
     {
       "id": "casa-pepe-cordoba",
@@ -11926,7 +12611,7 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "updated": "2026-07-22",
       "owner": "Michael",
@@ -11972,6 +12657,9 @@
         "label": "Michael / Casa Amar",
         "url": null,
         "checked": "2026-07-22"
+      },
+      "lifecycle": {
+        "live_status": "archived"
       }
     },
     {
@@ -12373,10 +13061,10 @@
       "id": "weber-gasgrill-pa-patioen",
       "title": "Weber gasgrill på patioen",
       "category": "Faciliteter / Grill",
-      "summary": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "answer": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "body": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
-      "content": "På patioen står en Weber gasgrill, som gæster frit kan benytte under opholdet. Grillen er nem at bruge og varmer hurtigt op. Åbn for gassen inden brug og luk for gassen igen, når du er færdig. Efter brug børstes grillristen af, mens grillen stadig er varm, så den er klar til næste gang. Tøm fedtbakken efter behov. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila; gem kvitteringen for efterfølgende refusion. Grillen egner sig til kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, især på varme dage og aftener.",
+      "summary": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "answer": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "body": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
+      "content": "På patioen står der en Weber gasgrill, som frit kan benyttes under opholdet. Gasgrillen er nem at bruge og varmer hurtigt op. Sørg for at åbne for gassen inden brug og lukke den igen, når du er færdig med at grille. Efter brug bedes grillristen børstes af, mens grillen stadig er varm, så den er klar til næste gang. Hvis fedtbakken trænger til tømning, må den også gerne tømmes. Hvis grillen løber tør for gas, kan der købes en ny gasflaske hos købmanden i Cerros del Águila. Gem kvitteringen, så refunderes udgiften efterfølgende. Grillen er velegnet til både kød, fisk og grøntsager og er et godt alternativ til madlavning i køkkenet, særligt på de varme dage og aftener.",
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
@@ -12396,12 +13084,153 @@
         "T-Verify: Bekræft tilstedeværelsen af en Weber gasgrill på patioen (foto eller værtsbekræftelse).",
         "T-Verify: Bekræft instruktion om at åbne/lukke for gas før/efter brug (værtsinstruktion eller mærkning på grill).",
         "T-Verify: Bekræft rengøringsanbefaling (børstning af rist mens varm) og placering af fedtbakke.",
-        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reservede gasflasker og refusionspraksis (kvittering kræves)."
+        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reservede gasflasker og refusionspraksis (kvittering kræves).",
+        "T-Verify: Bekræft rengøringsanbefaling (børstning af rist mens varm) og placering/tilstand af fedtbakke.",
+        "T-Verify: Bekræft at købmanden i Cerros del Águila sælger reserve gasflasker og refusionspraksis (kvittering kræves)."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-23T08:30:48.928Z",
+        "last_changed_at": "2026-07-23T09:10:33.859Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T09:50:52.365Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "parking-pueblo-aguila",
+          "pool-restaurant-takeaway"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T09:50:52.365Z"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+        "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+        "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:38:54.892Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "adresse-til-casa-amar",
+      "title": "Adresse til Casa Amar",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-22",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
         "last_result": null
       },
       "editorial": {
@@ -12418,7 +13247,139 @@
       "relations": {
         "related": [
           "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
           "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "wifi-og-arbejde",
+      "title": "WiFi og arbejde",
+      "category": "Praktisk",
+      "summary": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "answer": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "body": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "content": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at mesh-enheden på 1. sal og i tagetagens skab er til stede og tilsluttet strøm.",
+        "Bekræft at mesh-enheden er forbundet til routeren i stuen via LAN-kabel (visuel kontrol).",
+        "Bekræft SSID 'Amar' og at adgangskoden matcher husets WiFi; verificer at adgangskoden findes på QR/RFC-tag, i info-materiale og på routeren.",
+        "Bekræft tilgængelighed af LAN-kabel i huset og at LAN-porte på mesh-enheder/router virker."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:11:54.283Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created locally because referenced object \"wifi\" was not available in the editable Knowledge Cards dataset."
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "tv-streaming-og-projektor-i-casa-amar",
+      "title": "TV, streaming og projektor i Casa Amar",
+      "category": "Huset / Faciliteter",
+      "summary": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "answer": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "body": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "content": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft model og funktion af projektoren (BenQ) og at den er klar til brug.",
+        "Txx - Bekræft at Chromecast fungerer og kan streame til stue-tv/projektor.",
+        "Txx - Bekræft tilgængelighed af HDMI- og phono-kabler og at B&O-højttaler kan tilsluttes både via Bluetooth og kabel.",
+        "Txx - Bekræft at internetforbindelsen kan håndtere streaming og online spil under realistisk belastning."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:23:29.055Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "airconditioning-use",
+          "adresse-til-casa-amar"
         ],
         "supersedes": [],
         "superseded_by": []
@@ -12435,6 +13396,381 @@
         "url": null,
         "checked": "2026-07-23"
       }
+    },
+    {
+      "id": "opvaskemaskine-k-kken",
+      "title": "Opvaskemaskine (køkken)",
+      "category": "Huset / Køkken",
+      "summary": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "answer": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "body": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "content": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft placering af opvaskemaskine i køkkenet (foto/inspektion)",
+        "Bekræft mærke/model (Bosch)",
+        "Bekræft placering af salt og afspænding i skabet udenfor ved vaskemaskinen",
+        "Bekræft gæstepolitik omkring opvasketabs (findes i skab eller købes af gæst)"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:04:00.801Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "washing-machine-location"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "k-kken-og-kaffe",
+      "title": "Køkken og kaffe",
+      "category": "Huset",
+      "summary": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "answer": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "body": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "content": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft at kogepladen er induktion og fungerer som beskrevet (hurtig opvarmning, præcis regulering).",
+        "Txx - Bekræft at der er en indbygget emhætte under kogepladen, og at den suger damp/mados nedad.",
+        "Txx - Bekræft at ovnen er brugervenlig og egnet til bagning, stegning og opvarmning.",
+        "Bekræft at Lelit Mara X er til stede og funktionsdygtig",
+        "Bekræft at Mazzer-kværnen er til stede og har justerbar kværneindstilling",
+        "Bekræft at kaffevægt og knock box er til stede",
+        "Verificer at instruktionen om at slukke maskinen og tømme beholdere er praktisk og korrekt"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:19:57.788Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "adresse-til-casa-amar",
+          "pool-opening-safety-rule"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "sen-ankomst-check-in",
+      "title": "Sen ankomst / Check-in",
+      "category": "Praktisk / Check-in",
+      "summary": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "answer": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "body": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "content": "Hvis du ankommer sent om aftenen, kan du blot lukke dig ind som aftalt i din booking. Nøglen enten: 1) er udleveret på forhånd, eller 2) ligger i en nøgleboks — koden sendes til dig i forbindelse med din booking. Der er ingen særlige forholdsregler ved sen ankomst; ankom når det passer dig. Vi ønsker dig en god nats søvn, så du er klar til at nyde dagen i morgen.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "Bekræft at bookingkommunikationen indeholder instruktion om nøglebokskode eller at nøglen er udleveret før ankomst.",
+        "Verificer at nøgleboks findes og fungerer (foto eller værtsbekræftelse).",
+        "Bekræft procedure for udlevering af nøgle på forhånd (hvem og hvordan)."
+      ],
+      "assets": [],
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:00.654Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T15:18:29.284Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:00.654Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "indk-b-af-dagligvarer-ved-casa-amar",
+      "title": "Indkøb af dagligvarer ved Casa Amar",
+      "category": "Indkøb",
+      "summary": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "answer": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "body": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "content": "Der er et lokalt supermarked i urbanisationen, hvor du nemt kan købe de mest nødvendige dagligvarer. Hvis du ønsker et større udvalg, ligger både Lidl og Aldi cirka 3 km fra Casa Amar. Vores personlige favorit er Carrefour i Miramar Shopping Center, som har et stort udvalg af både lokale og internationale varer. Der er også mulighed for at købe danske varer via forskellige onlinebutikker. Det lokale supermarked tilbyder levering ved online bestilling. De fleste større supermarkeder har også online bestilling og levering, men vær opmærksom på, at der kan være særlige betingelser, såsom: begrænsede leveringstidspunkter; restriktioner på levering af køle- og frostvarer; krav om, at du er hjemme ved levering. Uanset hvad du foretrækker, er der gode muligheder for indkøb i området.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "Bekræft placering og åbningstider for nærliggende Lidl og Aldi",
+        "Verificer at lokalt supermarked tilbyder onlinebestilling og levering samt eventuelle begrænsninger",
+        "Bekræft hvilke onlinebutikker der leverer danske varer og deres leveringsområde"
+      ],
+      "assets": [],
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:07.181Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T15:28:21.240Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:07.181Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "carrefour-miramar",
+          "onlinebutikken-fuengirola",
+          "miramar-shopping-centre"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+      "title": "Transport: Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:13.557Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_changed_at": "2026-07-23T16:08:30.811Z"
+      },
+      "editorial": {
+        "review_state": "approved",
+        "notes": "Merge draft created by Knowledge Architect",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:13.557Z"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "assets": [],
+      "tests": []
+    },
+    {
+      "id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+      "title": "Transport: Togforbindelser fra Málaga — regionalt & højhastighed",
+      "category": "Transport",
+      "summary": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "answer": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "body": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "content": "Oversigt over togforbindelser fra Málaga María Zambrano og lokale stationer inkl. typiske rejsetider: Córdoba ~50 min, Granada ~1t20, Sevilla ~2t, Madrid ~2t45, Barcelona (direkte AVE/AVE-lignende) ~5½–6t. Lokale forbindelser: Fuengirola→Málaga 40–45 min, Málaga→Lufthavn 8 min, Málaga→Caminito del Rey 55–60 min. Anbefalinger: Barcelona egnet som weekendtur, stop på rundrejse eller alternativ til indenrigsflyvning. Budskab: Mulighed for at udforske Andalusien og større spanske byer uden bil fra Casa Amar.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T16:11:15.404Z"
+      },
+      "test_state": {
+        "status": "needs_test",
+        "last_changed_at": "2026-07-23T16:08:36.746Z"
+      },
+      "editorial": {
+        "review_state": "approved",
+        "notes": "Merge draft created by Knowledge Architect",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T16:11:15.404Z"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "assets": [],
+      "tests": []
     }
   ]
 }
