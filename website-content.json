@@ -1,87 +1,195 @@
 {
-  "version": "1.0",
-  "updated": "2026-07-23",
+  "version": "1.2",
+  "updated": "2026-07-24",
   "page_id": "home",
   "status": "foundation",
-  "source_release": "v2026.07.23.50",
+  "source_release": "v2026.07.24.55",
   "sections": [
     {
       "id": "hero",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "life",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Spis ude – eller tag råvarerne med hjem.",
+        "body": "Fuengirola, La Cala og Málaga giver mange muligheder. Carrefour og lokale markeder gør det også nemt at lave mad hjemme.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Spis ude – eller tag råvarerne med hjem.",
+        "body": "Fuengirola, La Cala og Málaga giver mange muligheder. Carrefour og lokale markeder gør det også nemt at lave mad hjemme.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "house",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Tre soveværelser med plads til seks.",
+        "body": "Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Tre soveværelser med plads til seks.",
+        "body": "Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "roof-terrace",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Gå en tur gennem Casa Amar.",
+        "body": "Fra de første rum til patio, tagterrasse, pool og udsigt. Brug filtrene, eller se hele huset i én samlet billedrejse.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Gå en tur gennem Casa Amar.",
+        "body": "Fra de første rum til patio, tagterrasse, pool og udsigt. Brug filtrene, eller se hele huset i én samlet billedrejse.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "location",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Et ekstra sted med udsigt og ro.",
+        "body": "Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Et ekstra sted med udsigt og ro.",
+        "body": "Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "experiences",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "fit",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Om sommeren foregår meget af livet herude.",
+        "body": "Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Om sommeren foregår meget af livet herude.",
+        "body": "Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "practical",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "En god ramme om ferien.",
+        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "cta_label": "",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null
     },
     {
       "id": "final-cta",
-      "status": "needs_generation",
-      "live": null,
-      "draft": null,
+      "status": "imported_from_current_site",
+      "live": {
+        "headline": "Skal Casa Amar være jeres næste base?",
+        "body": "Tag den indledende snak med Michael om huset, området og om det passer til jeres ophold.",
+        "cta_label": "Kontakt Michael",
+        "cards": [],
+        "items": []
+      },
+      "draft": {
+        "headline": "Skal Casa Amar være jeres næste base?",
+        "body": "Tag den indledende snak med Michael om huset, området og om det passer til jeres ophold.",
+        "cta_label": "Kontakt Michael",
+        "cards": [],
+        "items": []
+      },
       "knowledge_sources": [],
       "asset_ids": [],
       "last_generated": null

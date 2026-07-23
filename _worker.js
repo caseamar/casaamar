@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.4-single-pass-page-generator",
+      version: "10.5-prefill-and-reliable-generation",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1115,8 +1115,9 @@ REGLER:
 - Følg Brand Profile og sidens kanalformål.
 - Følg hver sektions formål og dens COMPONENT CONTRACT.
 - Udfyld ALLE felter, som komponentkontrakten kræver. Returnér præcis det angivne antal cards eller items; ingen tomme titler eller tekster.
-- Ved generationMode "fill_missing": bevar eksisterende gode tekster, men udfyld og kompletter alle manglende felter på tværs af hele siden i samme svar.
-- Ved generationMode "complete": skriv hele siden samlet fra bunden som én koordineret fortælling.
+- Ved generationMode "fill_missing": bevar alt eksisterende indhold, medmindre et felt er tomt eller komponentkontrakten kræver flere elementer.
+- Ved generationMode "improve_current": brug den nuværende hjemmeside som redaktionelt udgangspunkt. Bevar stærke formuleringer, fjern gentagelser, forbedr flowet og udfyld alle mangler.
+- Ved generationMode "complete": skriv hele siden samlet fra bunden som én ny koordineret fortælling.
 - For komponenter uden cards/items skal de relevante arrays være tomme.
 - Hver sektion må kun have ét primært budskab.
 - Undgå gentagelser mellem sektioner. Hvis et budskab allerede er dækket, skal næste sektion tilføre en ny dimension.
@@ -1179,7 +1180,13 @@ ${JSON.stringify(knowledge)}`
   });
 
   const result = await response.json();
-  if (!response.ok) return json({ error: result?.error?.message || "Page Generator kunne ikke gennemføre." }, response.status);
+  if (!response.ok) {
+    return json({
+      error: result?.error?.message || "Hjemmesiden kunne ikke genereres.",
+      status: response.status,
+      type: result?.error?.type || "generation_error"
+    }, response.status);
+  }
 
   let generated = parseStructuredOutput(result);
   if (!generated) return json({ error: "AI returnerede et ugyldigt sideformat." }, 502);
@@ -1818,6 +1825,14 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (request.method === "POST" && url.pathname === "/api/page-generate") {
+      return handlePageGenerate(request, env);
+    }
+    if (request.method === "POST" && url.pathname === "/api/page-section-generate") {
+      return handlePageSectionGenerate(request, env);
+    }
+
+
 
     if (url.pathname === "/api/chat") {
       return handleChat(request, env);
@@ -1830,15 +1845,6 @@ export default {
     if (url.pathname === "/api/knowledge-suggest") {
       return handleKnowledgeSuggest(request, env);
     }
-
-    if (url.pathname === "/api/page-generate") {
-      return handlePageGenerate(request, env);
-    }
-
-    if (url.pathname === "/api/page-section-generate") {
-      return handlePageSectionGenerate(request, env);
-    }
-
-    return env.ASSETS.fetch(request);
+return env.ASSETS.fetch(request);
   }
 };

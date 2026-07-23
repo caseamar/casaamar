@@ -1,18 +1,21 @@
-release: v2026.07.24.54 — single-pass website generation and API routing fix
+release: v2026.07.24.55 — prefilled current website and reliable page generation
 
 Page Studio
-- "Generér komplet hjemmeside-draft" and "Udfyld alle manglende felter"
-  now use one complete-page API call instead of nine separate section calls.
-- Added completion meter with section count and percentage.
-- Added explicit diagnostics when Cloudflare returns HTML instead of JSON.
-- Section-level regeneration remains available.
+- Current homepage copy is prefilled into website-content.json.
+- Three clear AI modes:
+  1. Improve current content
+  2. Generate a completely new homepage
+  3. Fill only missing fields
+- Existing copy remains intact when generation fails.
+- Better error message when the Worker endpoint is not deployed.
 
 Worker
-- Page API routes are matched before asset fallback.
-- Full-page generator always returns every blueprint section.
-- Component contracts enforce exact card/item counts.
-- fill_missing mode preserves good existing copy and completes all missing
-  fields in one coordinated response.
-- complete mode writes the whole page as one coherent story.
+- POST page API routes are handled before asset fallback.
+- Added improve_current generation mode.
+- Better OpenAI/API error propagation.
 
-Worker: 10.4-single-pass-page-generator
+Workflow
+- Recommended first action: "Forbedr nuværende indhold".
+- Michael can review each section and regenerate only the parts he wants changed.
+
+Worker: 10.5-prefill-and-reliable-generation
