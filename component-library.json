@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-07-24",
   "principle": "The live website components and Page Studio read the same component contracts.",
   "components": {
@@ -78,7 +78,7 @@
         {
           "id": "cards",
           "type": "cards",
-          "label": "Kort",
+          "label": "Højdepunkter",
           "count": 4,
           "title_max_chars": 34,
           "body_max_chars": 120
@@ -201,7 +201,7 @@
         {
           "id": "cards",
           "type": "cards",
-          "label": "Scenarier",
+          "label": "Opholdstyper",
           "count": 4,
           "title_max_chars": 32,
           "body_max_chars": 130
@@ -225,7 +225,7 @@
         {
           "id": "items",
           "type": "fact_cards",
-          "label": "Praktiske kort",
+          "label": "Godt at vide",
           "count": 6,
           "title_max_chars": 28,
           "body_max_chars": 95

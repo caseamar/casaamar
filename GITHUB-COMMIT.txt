@@ -1,26 +1,21 @@
-feat(platform): consolidate Casa Amar into a stable six-module platform
+release: v2026.07.24.53 — complete AI-generated website components
 
-Summary
-- Rebuilt knowledge-center.html as the Casa Amar Platform dashboard.
-- Added a practical overview of Knowledge Objects, untested objects, review queue, website-ready content, gaps and local changes.
-- Added action-oriented tasks linking directly to AI Editor and Test Center.
-- Added system-health and recent-change panels.
-- Added knowledge-gaps.json and publisher-queue.json as stable operational datasets.
-- Registered gaps and publisher queue in knowledge-registry.json.
-- Froze the platform architecture around six modules:
-  Dashboard, AI Editor, Knowledge Objects, Test Center, Publisher and Concierge.
-- No changes were made to concierge behaviour or the core Knowledge Object model.
+Page Studio
+- AI must populate every mandatory field in every component.
+- Full-page generation now includes highlights, experience cards,
+  audience scenarios and practical fact cards.
+- Missing fields are detected and highlighted automatically.
+- Added “Udfyld alle manglende felter med AI”.
+- Full-page generation automatically finishes incomplete sections.
+- Each section shows Komplet or the exact number of missing fields.
+- Michael reviews and directs the AI; he is not expected to write cards manually.
 
-Files changed
-- index.html
-- _worker.js
-- knowledge-registry.json
-- knowledge-center.html
+Component labels
+- Kort renamed contextually to Højdepunkter, Oplevelser,
+  Opholdstyper and Godt at vide.
 
-Files added
-- knowledge-gaps.json
-- publisher-queue.json
-- PLATFORM-ARCHITECTURE.md
-
-Why
-The concept is now mature enough to consolidate. This release stops architectural drift and provides one stable control center. Future development can focus on content quality, tests and channel publishing without changing the foundation.
+Worker
+- Full page schema now supports cards and items.
+- Component contracts are supplied to the full-page generator.
+- Exact card/item counts and non-empty content are mandatory.
+- Worker: 10.3-complete-page-generation

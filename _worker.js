@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.2-component-contracts",
+      version: "10.3-complete-page-generation",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -877,6 +877,7 @@ REGLER:
 - Skriv aldrig kildeangivelser, dokumenthenvisninger, interne noter, objektnavne eller formuleringer som “ifølge…”, “kilden siger…” eller “udlejningsbureauets afstandsangivelser”.
 - Hvis en faktas præcision er usikker, udelad den eller skriv mere robust og naturligt; gengiv ikke usikkerheden som kildehenvisning.
 - Følg sektionens formål og den fælles COMPONENT CONTRACT. Returnér præcis de felter, komponenten kræver.
+- Udfyld ALLE obligatoriske felter. Hvis kontrakten kræver cards eller items, returnér præcis det angivne antal med både titel og tekst i hvert element. Ingen tomme felter.
 - Praktisk information skal bruge korte selvstændige kort, hvis komponenten kræver items/fact_cards. Skriv aldrig en lang tekstmur i body som erstatning.
 - Følg Casa Amars Brand Profile.
 - Michael tager den indledende dialog med gæsten. Henvis aldrig direkte til Rincon, bureauets hjemmeside eller til at gæsten selv skal kontrollere priser, tider, gebyrer, bookingvilkår eller tilgængelighed.
@@ -1007,6 +1008,14 @@ async function handlePageGenerate(request, env) {
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   if (!page) return json({ error: "Page Blueprint mangler den valgte side." }, 400);
 
+  const componentLibrary = await loadJsonAsset(request, env, "/component-library.json");
+  const pageContracts = Object.fromEntries(
+    (page.sections || []).map((section) => [
+      section.id,
+      componentLibrary?.components?.[section.component] || { fields: [], copy_rules: [] }
+    ])
+  );
+
   const bundle = await loadBundle(env, request);
   const knowledge = bundle.entries
     .filter((entry) =>
@@ -1031,10 +1040,28 @@ async function handlePageGenerate(request, env) {
       headline: { type: "string" },
       body: { type: "string" },
       cta_label: { type: "string" },
+      cards: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: { title: { type: "string" }, body: { type: "string" } },
+          required: ["title", "body"]
+        }
+      },
+      items: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: { title: { type: "string" }, body: { type: "string" } },
+          required: ["title", "body"]
+        }
+      },
       knowledge_sources: { type: "array", items: { type: "string" } },
       image_brief: { type: "array", items: { type: "string" } }
     },
-    required: ["id", "headline", "body", "cta_label", "knowledge_sources", "image_brief"]
+    required: ["id", "headline", "body", "cta_label", "cards", "items", "knowledge_sources", "image_brief"]
   };
 
   const response = await fetch("https://api.openai.com/v1/responses", {
@@ -1054,7 +1081,9 @@ REGLER:
 - Skriv aldrig kildeangivelser, dokumenthenvisninger, objektnavne, interne noter eller formuleringer som “ifølge…”, “kilden siger…” eller “udlejningsbureauets afstandsangivelser”.
 - Omskriv fakta til naturlig, selvstændig gæstetekst.
 - Følg Brand Profile og sidens kanalformål.
-- Følg hver sektions formål, komponent og tekstgrænser.
+- Følg hver sektions formål og dens COMPONENT CONTRACT.
+- Udfyld ALLE felter, som komponentkontrakten kræver. Returnér præcis det angivne antal cards eller items; ingen tomme titler eller tekster.
+- For komponenter uden cards/items skal de relevante arrays være tomme.
 - Hver sektion må kun have ét primært budskab.
 - Undgå gentagelser mellem sektioner. Hvis et budskab allerede er dækket, skal næste sektion tilføre en ny dimension.
 - Skriv konkret og visuelt, men uden overdrivelser eller turistbrochure-klichéer.
@@ -1072,6 +1101,9 @@ ${JSON.stringify(brand)}
 
 PAGE BLUEPRINT:
 ${JSON.stringify(page)}
+
+COMPONENT CONTRACTS:
+${JSON.stringify(pageContracts)}
 
 CURRENT WEBSITE CONTENT:
 ${JSON.stringify(currentContent)}
@@ -1112,11 +1144,8 @@ ${JSON.stringify(knowledge)}`
   const result = await response.json();
   if (!response.ok) return json({ error: result?.error?.message || "Page Generator kunne ikke gennemføre." }, response.status);
 
-  const outputText = result.output_text ||
-    result.output?.flatMap((item) => item.content || []).find((item) => item.type === "output_text")?.text;
-  let generated;
-  try { generated = JSON.parse(outputText); }
-  catch { return json({ error: "AI returnerede et ugyldigt sideformat." }, 502); }
+  let generated = parseStructuredOutput(result);
+  if (!generated) return json({ error: "AI returnerede et ugyldigt sideformat." }, 502);
 
   const previous = Array.isArray(currentContent.sections) ? currentContent.sections : [];
   const websiteContent = {
@@ -1132,12 +1161,19 @@ ${JSON.stringify(knowledge)}`
         id: section.id,
         status: "draft",
         live: old.live || null,
-        draft: {
-          headline: section.headline,
-          body: section.body,
-          cta_label: section.cta_label,
-          image_brief: section.image_brief
-        },
+        draft: (() => {
+          const definition = page.sections.find((item) => item.id === section.id) || {};
+          const contract = pageContracts[section.id] || { fields: [] };
+          const normalized = normalizeSectionDraft(section, contract, definition);
+          return {
+            headline: normalized.headline,
+            body: normalized.body,
+            cta_label: normalized.cta_label,
+            cards: normalized.cards,
+            items: normalized.items,
+            image_brief: normalized.image_brief
+          };
+        })(),
         knowledge_sources: section.knowledge_sources,
         asset_ids: old.asset_ids || [],
         last_generated: new Date().toISOString()
