@@ -104,8 +104,8 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.42</strong></div>
-<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Release</span><strong>v2026.07.23.43</strong></div>
+<div><span>Build</span><strong>2026-07-23 16:15</strong></div>
 <div><span>Worker</span><strong>9.3-review-workflow</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
@@ -133,7 +133,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <a class="button secondary" href="/knowledge-review.html">Review Center</a>
 <button class="secondary" id="selectNeedsTest">Vælg ikke testet</button>
 <button class="secondary" id="runSelectedTests">Test valgte objekter</button>
-<button class="secondary" id="finishSession">Afslut session <span id="changeCountTop"></span></button>
+
 <button class="secondary" id="exportChanges">Download ændringslog</button>
 <a class="button secondary" href="/knowledge-center.html">Knowledge Center</a>
 <a class="button secondary" href="/ai-test-runner.html">Fuld test</a>
@@ -725,7 +725,7 @@ q('#runActiveTests').addEventListener('click',()=>{
   if(activeId)setTimeout(()=>runTests([activeId]),100);
 });
 q('#startSession').addEventListener('click',startEditingSession);
-q('#finishSession').addEventListener('click',finishEditingSession);
+
 q('#exportChanges').addEventListener('click',()=>download('knowledge-changes.json',{version:'1.1',updated:new Date().toISOString(),changes}));
 </script><script>
 (async()=>{

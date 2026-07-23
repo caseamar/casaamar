@@ -10,7 +10,7 @@
 .release-panel strong{display:block;margin-top:3px;font-size:.8rem}
 @media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
 @media(max-width:800px){table,tbody,tr,td,th{display:block}thead{display:none}}
-</style></head><body><main><nav class="platform-nav">
+.batch-info{background:#fff6dc;color:#765500;border-radius:10px;padding:10px;margin-bottom:12px;line-height:1.45}.batch-info.cooldown{background:#e7edf7;color:#304f79}</style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
 <a href="/knowledge-review.html">Review Center</a>
@@ -19,23 +19,36 @@
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.42</strong></div>
-<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Release</span><strong>v2026.07.23.43</strong></div>
+<div><span>Build</span><strong>2026-07-23 16:15</strong></div>
 <div><span>Worker</span><strong>9.3-review-workflow</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section><h1>Casa Amar Test Center</h1><p>Et godt svar kan godt fejle, fordi testens forventninger er blevet forældede. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
-<div class="actions"><button class="primary" id="runAll">Kør viste tests én ad gangen</button><button id="reset">Nulstil resultater</button><button class="good" id="export">Eksportér opdaterede tests</button></div>
+</section><h1>Casa Amar Test Center</h1><p>Et godt svar kan godt fejle, fordi testens forventninger er blevet forældede. Testene køres nu i mindre batches for at undgå rate limits. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
+<div class="actions"><button class="primary" id="runBatch">Kør næste batch (maks. 10)</button><button id="reset">Nulstil resultater</button><button class="good" id="export">Eksportér opdaterede tests</button></div><div id="batchInfo" class="batch-info"></div>
 <table><thead><tr><th>Test</th><th>Spørgsmål</th><th>Status</th><th>Svar og handling</th></tr></thead><tbody id="tests"></tbody></table>
 <script>
 let suite={tests:[]};const q=s=>document.querySelector(s),norm=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();const sentenceCount=s=>(String(s||'').match(/[.!?]+(?=\s|$)/g)||[]).length||1;
 function evaluate(t,d){if((t.accepted_answers||[]).includes(norm(d.answer)))return{ok:true,checks:[{name:'accepteret svarvariant',ok:true,actual:'match'}]};const text=norm(d.answer),checks=[];checks.push({name:'intent',ok:!t.expected_intent||d.intent===t.expected_intent,actual:d.intent});checks.push({name:'needsHuman',ok:d.needsHuman===t.expected_needs_human,actual:d.needsHuman});if(t.must_include_any?.length)checks.push({name:'skal indeholde mindst ét',ok:t.must_include_any.some(v=>text.includes(norm(v))),actual:t.must_include_any.join(', ')});if(t.must_not_include_any?.length)checks.push({name:'må ikke indeholde',ok:!t.must_not_include_any.some(v=>text.includes(norm(v))),actual:t.must_not_include_any.join(', ')});if(t.max_sentences)checks.push({name:'maks. sætninger',ok:sentenceCount(d.answer)<=t.max_sentences,actual:sentenceCount(d.answer)});return{ok:checks.every(c=>c.ok),checks}}
-function render(){q('#tests').innerHTML=suite.tests.map((t,i)=>{const r=t.result,status=!r?'pending':r.running?'pending':r.ok?'passed':'failed';return`<tr><td><strong>${t.id}</strong><div class="details">${t.category||''}</div></td><td>${t.question}<div class="details">${t.notes||''}</div></td><td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':'Afventer'}</span></td><td class="answer">${r?.answer||''}${r?.checks?`<div class="checks">${r.checks.map(c=>`<div class="${c.ok?'check-ok':'check-bad'}">${c.ok?'✓':'✕'} ${c.name}: ${c.actual}</div>`).join('')}</div>`:''}${r&&!r.ok?`<div class="actions"><button class="good" data-accept="${i}">Godkend svar som korrekt</button><button data-run="${i}">Kør igen</button></div>`:''}</td></tr>`}).join('');q('#tests').querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>accept(Number(b.dataset.accept)));q('#tests').querySelectorAll('[data-run]').forEach(b=>b.onclick=()=>runTest(suite.tests[Number(b.dataset.run)]))}
+function render(){q('#tests').innerHTML=suite.tests.map((t,i)=>{const r=t.result,status=!r?'pending':r.running?'pending':r.ok?'passed':'failed';return`<tr><td><strong>${t.id}</strong><div class="details">${t.category||''}</div></td><td>${t.question}<div class="details">${t.notes||''}</div></td><td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':'Afventer'}</span></td><td class="answer">${r?.answer||''}${r?.checks?`<div class="checks">${r.checks.map(c=>`<div class="${c.ok?'check-ok':'check-bad'}">${c.ok?'✓':'✕'} ${c.name}: ${c.actual}</div>`).join('')}</div>`:''}${r&&!r.ok?`<div class="actions"><button class="good" data-accept="${i}">Godkend svar som korrekt</button><button data-run="${i}">Kør igen</button></div>`:''}</td></tr>`}).join('');q('#tests').querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>accept(Number(b.dataset.accept)));q('#tests').querySelectorAll('[data-run]').forEach(b=>b.onclick=()=>runTest(suite.tests[Number(b.dataset.run)]));if(typeof updateBatchInfo==='function')updateBatchInfo()}
 async function runTest(t){t.result={running:true};render();try{const res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:t.question,messages:[]})}),d=await res.json();if(!res.ok)throw new Error(d.detail||d.error||'API-fejl');const ev=evaluate(t,d);t.result={...ev,answer:d.answer,intent:d.intent,needsHuman:d.needsHuman,sentence_count:sentenceCount(d.answer)}}catch(e){t.result={ok:false,answer:'FEJL: '+e.message,checks:[]}}render()}
-async function runAll(){for(const t of suite.tests){await runTest(t);await new Promise(r=>setTimeout(r,1000))}}
+const BATCH_SIZE=10,COOLDOWN_MS=120000,COOLDOWN_KEY='casaTestBatchCooldownUntil';
+function remaining(){return Math.max(0,Number(localStorage.getItem(COOLDOWN_KEY)||0)-Date.now())}
+function updateBatchInfo(){
+ const left=remaining(),pending=suite.tests.filter(t=>!t.result).length,failed=suite.tests.filter(t=>t.result&&!t.result.ok).length,passed=suite.tests.filter(t=>t.result?.ok).length,b=q('#runBatch'),i=q('#batchInfo');
+ if(left>0){const s=Math.ceil(left/1000),m=Math.floor(s/60),r=s%60;i.className='batch-info cooldown';i.innerHTML=`Vent <strong>${m}:${String(r).padStart(2,'0')}</strong> før næste batch. ${passed} bestået, ${failed} fejlet, ${pending} afventer.`;b.disabled=true;b.textContent='Vent før næste batch'}
+ else{i.className='batch-info';i.innerHTML=`Der køres højst <strong>${BATCH_SIZE} tests</strong> ad gangen. Vent 2 minutter mellem batches. ${passed} bestået, ${failed} fejlet, ${pending} afventer.`;b.disabled=!pending;b.textContent=pending?`Kør næste batch (maks. ${BATCH_SIZE})`:'Alle tests er kørt'}
+}
+async function runBatch(){
+ if(remaining()>0)return updateBatchInfo();
+ const batch=suite.tests.filter(t=>!t.result).slice(0,BATCH_SIZE);
+ for(const t of batch){await runTest(t);await new Promise(r=>setTimeout(r,2500))}
+ localStorage.setItem(COOLDOWN_KEY,String(Date.now()+COOLDOWN_MS));updateBatchInfo()
+}
+setInterval(updateBatchInfo,1000);
 function accept(i){const t=suite.tests[i],r=t.result;if(!r?.answer)return;for(const c of r.checks||[])if(!c.ok){if(c.name==='intent')t.expected_intent=r.intent;if(c.name==='needsHuman')t.expected_needs_human=r.needsHuman;if(c.name==='maks. sætninger')t.max_sentences=Math.max(t.max_sentences||0,r.sentence_count||sentenceCount(r.answer))}t.accepted_answers=[...new Set([...(t.accepted_answers||[]),norm(r.answer)])];t.accepted_at=new Date().toISOString();t.accepted_by='Michael';t.result=evaluate(t,{answer:r.answer,intent:r.intent,needsHuman:r.needsHuman});t.result.answer=r.answer;localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));render()}
 function exportTests(){const payload={...suite,updated:new Date().toISOString(),version:'2.0'};payload.tests.forEach(t=>delete t.result);const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='ai-regression-tests.json';a.click()}
-q('#runAll').onclick=runAll;q('#reset').onclick=()=>{suite.tests.forEach(t=>delete t.result);render()};q('#export').onclick=exportTests;
+q('#runBatch').onclick=runBatch;q('#reset').onclick=()=>{suite.tests.forEach(t=>delete t.result);localStorage.removeItem(COOLDOWN_KEY);render();updateBatchInfo()};q('#export').onclick=exportTests;
 fetch('/ai-regression-tests.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{try{const local=JSON.parse(localStorage.getItem('casaRegressionTestsDraft')||'null');suite=local?.tests?local:raw}catch{suite=raw}render()});
 
 (async()=>{

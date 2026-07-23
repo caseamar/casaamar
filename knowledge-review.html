@@ -36,15 +36,15 @@ textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.42</strong></div>
-<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Release</span><strong>v2026.07.23.43</strong></div>
+<div><span>Build</span><strong>2026-07-23 16:15</strong></div>
 <div><span>Worker</span><strong>9.3-review-workflow</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
 <h1>Casa Amar Review Center</h1>
-<p class="lead">Gennemgå drafts uden at påvirke Concierge. Godkend-knappen bruger altid teksten, der står i feltet, også når du har rettet den uden først at klikke “Gem draft-rettelse”.</p>
-<div class="actions"><button class="primary" id="export">Lav samlet GitHub-fil</button><button id="nextDraft">Næste draft</button></div>
+<p class="lead">Gennemgå drafts uden at påvirke Concierge. Ændringer gemmes lokalt. Eksportér først fra Oversigt, når du er færdig på tværs af platformen.</p>
+<div class="actions"><button id="nextDraft">Næste draft</button></div>
 <section class="metrics">
 <div class="metric"><span>Alle objekter</span><strong id="mAll">0</strong></div><div class="metric"><span>Drafts</span><strong id="mDraft">0</strong></div><div class="metric"><span>Live + draft</span><strong id="mLiveDraft">0</strong></div><div class="metric"><span>Kun live</span><strong id="mLive">0</strong></div><div class="metric"><span>Arkiveret</span><strong id="mArchived">0</strong></div>
 </section>
@@ -81,7 +81,7 @@ function reject(){const c=getCard(activeKey);if(!c?.draft_version||!confirm('Kas
 function archiveCard(){const c=getCard(activeKey);if(!c||!confirm('Arkivér objektet?'))return;const before=clone(c);c.status='archived';c.lifecycle={...(c.lifecycle||{}),live_status:'archived'};record(c,before,'archive');render()}
 function nextDraft(){const drafts=filtered().filter(hasDraft);if(!drafts.length){activeKey=null;q('#editor').classList.add('hidden');q('#empty').classList.remove('hidden');return}const i=Math.max(-1,drafts.findIndex(c=>c.__key===activeKey));openCard(drafts[(i+1)%drafts.length].__key)}
 function exportFile(){const cards=data.cards.map(clean),payload={...data,cards,entries:cards,version:'2.1',updated:new Date().toISOString()};delete payload.__key;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='knowledge-cards.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-['search','status','category','test','channel'].forEach(id=>q('#'+id).addEventListener(id==='search'?'input':'change',render));q('#saveDraft').onclick=saveDraft;q('#approve').onclick=approve;q('#reject').onclick=reject;q('#archive').onclick=archiveCard;q('#nextDraft').onclick=nextDraft;q('#export').onclick=exportFile;
+['search','status','category','test','channel'].forEach(id=>q('#'+id).addEventListener(id==='search'?'input':'change',render));q('#saveDraft').onclick=saveDraft;q('#approve').onclick=approve;q('#reject').onclick=reject;q('#archive').onclick=archiveCard;q('#nextDraft').onclick=nextDraft;
 fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{changes=loadChanges();data={...raw,cards:applyChanges(runtime(clone(raw.cards||raw.entries||[])),changes)};const cats=[...new Set(data.cards.flatMap(c=>[c.category,c.draft_version?.category]).filter(Boolean))].sort();q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');render();const requested=new URLSearchParams(location.search).get('object');const found=data.cards.find(c=>c.id===requested);if(found)openCard(found.__key)});
 
 (async()=>{
