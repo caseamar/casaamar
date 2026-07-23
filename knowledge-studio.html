@@ -59,7 +59,7 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .match:not(.applied) .applied-banner{display:none}
 details.change-details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted);font-size:.8rem}
-.session-overview{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0 16px}
+.session-overview{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:12px 0 16px}
 .session-overview>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
 .session-overview span{display:block;color:var(--muted);font-size:.7rem}
 .session-overview strong{display:block;margin-top:4px;font-size:.9rem}
@@ -88,7 +88,8 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </div>
 <div class="session-overview">
   <div><span>Session</span><strong id="sessionState">Ikke startet</strong></div>
-  <div><span>Indlæst KB</span><strong id="sessionKbVersion">–</strong></div>
+  <div><span>KB-version</span><strong id="sessionKbVersion">–</strong></div>
+  <div><span>Sidst opdateret</span><strong id="sessionKbUpdated">–</strong></div>
   <div><span>Objekter</span><strong id="sessionObjectCount">0</strong></div>
   <div><span>Lokale ændringer</span><strong id="sessionLocalCount">0</strong></div>
   <div><span>Sidst gemt lokalt</span><strong id="sessionLastSaved">–</strong></div>
@@ -119,7 +120,8 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <button class="primary" id="suggest">Organisér indholdet</button>
 <button class="secondary" id="clear">Ryd</button>
 </div>
-<div class="notice" style="margin-top:10px">Du behøver ikke vælge et objekt først. Manuel markering bruges kun som ekstra signal. Links behandles som referencer og kræver faktatjek.</div>
+<div class="notice" style="margin-top:10px">Du behøver ikke vælge et objekt først. AI-forslaget indlæses i editoren, men gemmes først, når du klikker <strong>Gem til workspace</strong>.</div>
+<div id="inputStatus" class="hidden"></div>
 
 <div class="session-status">
 <span class="session-pill">Lokale ændringer: <strong id="sessionChanges">0</strong></span>
@@ -129,7 +131,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <div id="analysis" class="section"><p class="meta">AI-resultatet vises her.</p></div>
 
 <div id="editor" class="section">
-<h2>Godkendt redigering</h2>
+<h2>Redigering før gemning</h2>
 <div id="saveMessage" class="hidden"></div>
 <div class="editor-grid">
 <div><label>Titel</label><input id="editTitle"></div>
@@ -149,8 +151,8 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </div></div>
 </div>
 <div class="actions" style="margin-top:10px">
-<button class="primary" id="saveEdit">Gem ændring</button>
-<button class="secondary" id="runActiveTests">Gem og test nu</button>
+<button class="primary" id="saveEdit">Gem til workspace</button>
+<button class="secondary" id="runActiveTests">Gem til workspace og test</button>
 </div>
 <div id="relatedTests" class="section"><h3>Relevante tests</h3><div class="test-list"></div></div>
 </div>
@@ -158,7 +160,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </div>
 </main>
 <script>
-let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,lastResult=null;
+let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,pendingOperation=null,lastResult=null;
 const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
 const SESSION_KEY='casaKnowledgeSession';
 
@@ -180,6 +182,10 @@ function updateSessionOverview(){
 
   q('#sessionState').textContent=session?.active?'Aktiv':'Ikke startet';
   q('#sessionKbVersion').textContent=version;
+  const kbUpdated=data?.updated||data?.generated_at||data?.last_updated||null;
+  q('#sessionKbUpdated').textContent=kbUpdated
+    ? new Date(kbUpdated).toLocaleString('da-DK')
+    : 'Ikke angivet';
   q('#sessionObjectCount').textContent=objectCount;
   q('#sessionLocalCount').textContent=localCount;
   q('#sessionLastSaved').textContent=lastSaved?new Date(lastSaved).toLocaleString('da-DK'):'–';
@@ -332,6 +338,7 @@ function makeDraftVersion(card, values={}){
    created_by:'Michael',
    status:'draft',
    tests:values.tests ?? JSON.parse(JSON.stringify(card.tests||[])),
+   assets:values.assets ?? JSON.parse(JSON.stringify(card.draft_version?.assets||card.assets||[])),
    relations:values.relations ?? JSON.parse(JSON.stringify(card.relations||{
      related:[],supersedes:[],superseded_by:[]
    }))
@@ -431,7 +438,7 @@ function buildNewCard(op){
   trust:100,status:'draft',dynamic:false,updated:new Date().toISOString().slice(0,10),
   owner:'Michael',language:'da',
   channels:{ai:false,website:false,guest_guide:false,owner_guide:false},
-  maturity:'draft',tests:op.suggested_tests||[],
+  maturity:'draft',tests:op.suggested_tests||[],assets:[],
   lifecycle:{live_status:'draft_only',has_draft:true},
   draft_version:{
     title:op.title,category:op.category,summary:op.final_content,answer:op.final_content,
@@ -439,7 +446,7 @@ function buildNewCard(op){
     channels:{ai:true,website:false,guest_guide:true,owner_guide:true},
     maturity:'draft',status:'draft',created_at:new Date().toISOString(),
     updated_at:new Date().toISOString(),created_by:'Michael',
-    tests:op.suggested_tests||[],
+    tests:op.suggested_tests||[],assets:[],
     relations:{related:relationIds(op.suggested_relations),supersedes:[],superseded_by:[]}
   },
   test_state:{status:'needs_test',last_tested_at:null,last_changed_at:new Date().toISOString(),last_result:null},
@@ -451,63 +458,45 @@ function buildNewCard(op){
  };
 }
 
-function applyManagerOperation(op,forceCreate=false){
- const sourceInput=q('#inputText').value.trim();
- if(forceCreate||op.action==='create'||!op.card_id){
-   const card=buildNewCard(op);
-   data.cards.push(card);
-   changes.push({
-     id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
-     card_id:card.id,changed_at:new Date().toISOString(),before:null,
-     after:JSON.parse(JSON.stringify(card)),status:'approved_local',
-     source_input:sourceInput,manager_operation:'create'
-   });
-   activeId=card.id;fillEditor(card);selected.add(card.id);
-   return card;
- }
- let card=resolveCard(op);
+function stageManagerOperation(op,forceCreate=false){
+ pendingOperation={op:JSON.parse(JSON.stringify(op)),forceCreate};
+ pendingNew=null;
 
- // The Worker can occasionally reference an object from another registered
- // dataset that is not editable in knowledge-cards.json. Never fail or lose
- // the user's content: create a focused local object instead.
+ if(forceCreate||op.action==='create'||!op.card_id){
+   pendingNew=buildNewCard({...op,action:'create'});
+   activeId=null;
+   fillEditor(pendingNew);
+   return pendingNew;
+ }
+
+ const card=resolveCard(op);
  if(!card){
-   card=buildNewCard({
+   pendingNew=buildNewCard({
      ...op,
      action:'create',
      title:op.title||'Nyt Knowledge Object'
    });
-   card.editorial.notes=`Created locally because referenced object "${op.card_id||'unknown'}" was not available in the editable Knowledge Cards dataset.`;
-   data.cards.push(card);
-   changes.push({
-     id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
-     card_id:card.id,changed_at:new Date().toISOString(),before:null,
-     after:JSON.parse(JSON.stringify(card)),status:'approved_local',
-     source_input:sourceInput,manager_operation:'create_fallback'
-   });
-   activeId=card.id;fillEditor(card);selected.add(card.id);
-   return card;
+   pendingNew.editorial.notes=`Staged as new because referenced object "${op.card_id||'unknown'}" was not available in the editable Knowledge Cards dataset.`;
+   activeId=null;
+   fillEditor(pendingNew);
+   return pendingNew;
  }
- const before=JSON.parse(JSON.stringify(card));
- const draftTests=[...new Set([...(card.draft_version?.tests||card.tests||[]),...(op.suggested_tests||[])])];
- const draftRelations=JSON.parse(JSON.stringify(card.draft_version?.relations||card.relations||{related:[],supersedes:[],superseded_by:[]}));
- draftRelations.related=[...new Set([...(draftRelations.related||[]),...relationIds(op.suggested_relations)])];
- card.draft_version=makeDraftVersion(card,{
-   title:op.title||card.title,
-   category:op.category||card.category,
-   summary:op.final_content,
-   tests:draftTests,
-   relations:draftRelations
+
+ activeId=card.id;
+ fillEditor(card);
+
+ // Load the AI proposal into the editor without changing the saved object.
+ q('#editTitle').value=op.title||card.draft_version?.title||card.title||'';
+ q('#editCategory').value=op.category||card.draft_version?.category||card.category||'';
+ q('#editSummary').value=op.final_content||card.draft_version?.summary||card.summary||'';
+ q('#editMaturity').value='draft';
+
+ card._pending_tests=[...new Set([...(card._pending_tests||[]),...(op.suggested_tests||[])])];
+ card._pending_relations=(op.suggested_relations||[]).map(value=>{
+   const found=resolveCard({card_id:value,title:value});
+   return found?{card_id:found.id,title:found.title}:{card_id:null,title:value};
  });
- card.lifecycle={...(card.lifecycle||{}),live_status:'live',has_draft:true};
- card.updated=new Date().toISOString().slice(0,10);
- card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
- changes.push({
-   id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
-   card_id:card.id,changed_at:new Date().toISOString(),before,
-   after:JSON.parse(JSON.stringify(card)),status:'approved_local',
-   source_input:sourceInput,manager_operation:'update'
- });
- activeId=card.id;fillEditor(card);selected.add(card.id);
+
  return card;
 }
 
@@ -535,12 +524,12 @@ function renderAnalysis(result){
        ${op.action==='update'?'<div class="meta">Du kan i stedet oprette indholdet som et nyt objekt.</div>':''}
      </div>
      <div class="actions" style="margin-top:10px">
-       <button class="primary" data-apply-operation="${i}">Accepter AI's struktur</button>
+       <button class="primary" data-apply-operation="${i}">Indlæs forslag i editor</button>
        ${op.action==='update'?`<button class="secondary" data-force-new="${i}">Opret som nyt objekt i stedet</button>`:''}
        ${op.card_id?`<button class="secondary" data-select="${esc(op.card_id)}">Se eksisterende objekt</button>`:''}
      </div>
    </div>
-   <div class="applied-banner"><span>✓ Denne del er gemt i workspace</span></div>
+   <div class="applied-banner"><span>✓ Indlæst i editor — ikke gemt endnu</span></div>
  </article>`).join('');
 
  q('#analysis').innerHTML=`<h2>Knowledge Manager</h2>
@@ -554,22 +543,23 @@ function renderAnalysis(result){
    const op=result.operations[index];
    let card;
    try{
-     card=applyManagerOperation(op,forceCreate);
+     card=stageManagerOperation(op,forceCreate);
    }catch(error){
-     console.error('Knowledge operation failed',error,op);
-     alert(`Ændringen kunne ikke gemmes: ${error.message||'ukendt fejl'}`);
+     console.error('Knowledge operation staging failed',error,op);
+     alert(`Forslaget kunne ikke indlæses: ${error.message||'ukendt fejl'}`);
      return;
    }
    if(!card){
-     alert('Ændringen kunne ikke gemmes. Prøv "Opret som nyt objekt i stedet".');
+     alert('Forslaget kunne ikke indlæses i editoren.');
      return;
    }
-   localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
-   updateChangeCount();updateSessionOverview();renderList();
+   renderList();
    const article=q(`[data-operation="${index}"]`);
    if(article)article.classList.add('applied');
-   q('#saveMessage').className='success';
-   q('#saveMessage').innerHTML=`<strong>${esc(card.title)} er gemt i workspace.</strong> Du kan fortsætte med de øvrige forslag eller skrive nyt indhold.`;
+   q('#saveMessage').className='notice';
+   q('#saveMessage').innerHTML=`<strong>Forslaget er indlæst i editoren.</strong> Gennemgå tekst, synlighed, modenhed og kanaler. Klik derefter <strong>Gem til workspace</strong>.`;
+   q('#editor').scrollIntoView({behavior:'smooth',block:'start'});
+   setTimeout(()=>q('#editSummary').focus(),350);
  }
 
  q('#analysis').querySelectorAll('[data-apply-operation]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.applyOperation),false)));
@@ -622,24 +612,26 @@ function saveEdit(){
    card.tests=[...new Set([...(card.tests||[]),...card._pending_tests])];
    delete card._pending_tests;
  }
- if(!activeId){data.cards.push(card);activeId=card.id;pendingNew=null}
+ if(!activeId){
+   data.cards.push(card);
+   activeId=card.id;
+   pendingNew=null;
+ }
+ pendingOperation=null;
  changes.push({id:`change-${Date.now()}`,card_id:card.id,changed_at:new Date().toISOString(),before,after:JSON.parse(JSON.stringify(card)),status:'approved_local',source_input:q('#inputText').value.trim()});
  localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
  q('#saveMessage').className='success';
  const pendingCount=changes.length;
  q('#saveMessage').innerHTML=`<strong>Ændringen er gemt lokalt.</strong>
- Du kan fortsætte med næste emne eller godkende draften senere i Review Center. ${pendingCount} ændring${pendingCount===1?'':'er'} ligger nu lokalt og kommer med i den samlede GitHub-fil senere.
- <div class="next-actions">
-   <button class="secondary" id="nextInput">Fortsæt med nyt input</button>
-   <button class="secondary" id="nextTest">Test dette objekt</button>
- </div>`;
- q('#nextInput').addEventListener('click',()=>{
-   q('#inputText').value='';
-   q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
-   q('#inputText').focus();
-   window.scrollTo({top:0,behavior:'smooth'});
- });
- q('#nextTest').addEventListener('click',()=>runTests([card.id]));
+ Draften kan senere godkendes i Review Center. ${pendingCount} ændring${pendingCount===1?'':'er'} ligger nu i workspace.`;
+
+ q('#inputText').value='';
+ q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
+ q('#inputStatus').className='success';
+ q('#inputStatus').innerHTML='<strong>Gemt.</strong> Feltet er ryddet og klar til næste emne.';
+ q('#inputText').focus();
+ window.scrollTo({top:0,behavior:'smooth'});
+
  updateChangeCount();
  selected.add(card.id);renderList();fillEditor(card);
 }
@@ -682,9 +674,14 @@ q('#suggest').addEventListener('click',suggest);q('#saveEdit').addEventListener(
  saveEdit();
  btn.classList.add('is-success');
  btn.textContent='Gemt';
- setTimeout(()=>{btn.disabled=false;btn.classList.remove('is-success');btn.textContent='Gem ændring'},1200);
+ setTimeout(()=>{btn.disabled=false;btn.classList.remove('is-success');btn.textContent='Gem til workspace'},1200);
 });
-q('#clear').addEventListener('click',()=>{q('#inputText').value='';q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>'});
+q('#clear').addEventListener('click',()=>{
+ q('#inputText').value='';
+ q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
+ q('#inputStatus').className='hidden';
+ pendingOperation=null;pendingNew=null;
+});
 q('#newInput').addEventListener('click',()=>{q('#inputText').value='';q('#inputText').focus()});
 q('#selectNeedsTest').addEventListener('click',()=>{data.cards.filter(c=>c.test_state?.status==='needs_test').forEach(c=>selected.add(c.id));renderList()});
 q('#runSelectedTests').addEventListener('click',()=>runTests([...selected]));
