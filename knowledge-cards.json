@@ -1353,10 +1353,10 @@
       "title": "Brug af aircondition",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
+      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
       "keywords": [
         "aircondition",
         "varme",
@@ -1376,7 +1376,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -1417,12 +1417,15 @@
         "T12",
         "T13",
         "T17",
-        "T31"
+        "T31",
+        "Bekræft at fjernbetjeningerne er monteret på væggen under hver enhed og er funktionsdygtige.",
+        "Verificer antal og placering af de to olieovne i huset.",
+        "Test at enheder kan skiftes mellem køle- og varme-drift og at indstillinger påvirkes via fjernbetjeningen."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:42:33.445Z",
         "last_result": null
       }
     },
@@ -1432,10 +1435,10 @@
       "title": "Vaskemaskine og nøgle",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "answer": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "body": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "content": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
+      "summary": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "answer": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "body": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
+      "content": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
       "keywords": [
         "vaskemaskine",
         "forhave",
@@ -1454,7 +1457,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -1496,12 +1499,15 @@
         "T13",
         "T17",
         "T27",
-        "T31"
+        "T31",
+        "T01 - Bekræft at skabet er aflåst og nøgle findes på nøglebrættet i huset",
+        "T02 - Bekræft at vaskemaskinen har de nævnte programmer",
+        "T03 - Kontroller om der typisk efterlades vaskemiddel i skabet"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:54:43.175Z",
         "last_result": null
       }
     },
@@ -6083,10 +6089,278 @@
         "url": null,
         "checked": "2026-07-22"
       }
+    },
+    {
+      "id": "wifi-og-arbejde",
+      "title": "WiFi og arbejde",
+      "category": "Praktisk",
+      "summary": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "answer": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "body": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "content": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at mesh-enheden på 1. sal og i tagetagens skab er til stede og tilsluttet strøm.",
+        "Bekræft at mesh-enheden er forbundet til routeren i stuen via LAN-kabel (visuel kontrol).",
+        "Bekræft SSID 'Amar' og at adgangskoden matcher husets WiFi; verificer at adgangskoden findes på QR/RFC-tag, i info-materiale og på routeren.",
+        "Bekræft tilgængelighed af LAN-kabel i huset og at LAN-porte på mesh-enheder/router virker."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:11:54.283Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created locally because referenced object \"wifi\" was not available in the editable Knowledge Cards dataset."
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "tv-streaming-og-projektor-i-casa-amar",
+      "title": "TV, streaming og projektor i Casa Amar",
+      "category": "Huset / Faciliteter",
+      "summary": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "answer": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "body": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "content": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft model og funktion af projektoren (BenQ) og at den er klar til brug.",
+        "Txx - Bekræft at Chromecast fungerer og kan streame til stue-tv/projektor.",
+        "Txx - Bekræft tilgængelighed af HDMI- og phono-kabler og at B&O-højttaler kan tilsluttes både via Bluetooth og kabel.",
+        "Txx - Bekræft at internetforbindelsen kan håndtere streaming og online spil under realistisk belastning."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:23:29.055Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "airconditioning-use",
+          "adresse-til-casa-amar"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "opvaskemaskine-k-kken",
+      "title": "Opvaskemaskine (køkken)",
+      "category": "Huset / Køkken",
+      "summary": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "answer": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "body": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "content": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft placering af opvaskemaskine i køkkenet (foto/inspektion)",
+        "Bekræft mærke/model (Bosch)",
+        "Bekræft placering af salt og afspænding i skabet udenfor ved vaskemaskinen",
+        "Bekræft gæstepolitik omkring opvasketabs (findes i skab eller købes af gæst)"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:04:00.801Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "washing-machine-location"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "k-kken-og-kaffe",
+      "title": "Køkken og kaffe",
+      "category": "Huset",
+      "summary": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "answer": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "body": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "content": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft at kogepladen er induktion og fungerer som beskrevet (hurtig opvarmning, præcis regulering).",
+        "Txx - Bekræft at der er en indbygget emhætte under kogepladen, og at den suger damp/mados nedad.",
+        "Txx - Bekræft at ovnen er brugervenlig og egnet til bagning, stegning og opvarmning.",
+        "Bekræft at Lelit Mara X er til stede og funktionsdygtig",
+        "Bekræft at Mazzer-kværnen er til stede og har justerbar kværneindstilling",
+        "Bekræft at kaffevægt og knock box er til stede",
+        "Verificer at instruktionen om at slukke maskinen og tømme beholdere er praktisk og korrekt"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:19:57.788Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "adresse-til-casa-amar",
+          "pool-opening-safety-rule"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
     }
   ],
   "version": "1.5",
-  "updated": "2026-07-22",
+  "updated": "2026-07-23",
   "entries": [
     {
       "id": "parking-pueblo-aguila",
@@ -7441,10 +7715,10 @@
       "title": "Brug af aircondition",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
-      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme; for bedst effekt bør enhederne indstilles ens, mens døre og vinduer holdes lukkede.",
+      "summary": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "answer": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "body": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
+      "content": "Der er aircondition i stuen og alle soveværelser. Anlæggene kan både køle og varme. For optimal funktion skal alle enheder være indstillet til samme driftstilstand (enten køling eller varme); når der skiftes mellem sommer- og vinterdrift, ændres dette på den enkelte enheds fjernbetjening. Fjernbetjeningerne er monteret på væggen under hver enhed.\n\nBetjening (via fjernbetjening):\n- Temperatur\n- Blæserhastighed\n- Luftretning (op og ned)\nI daglig brug er det normalt tilstrækkeligt blot at regulere temperaturen.\n\nEnergiforbrug og miljø:\n- Sluk aircondition, når Casa Amar forlades eller når værelser ikke benyttes.\n- Ved køledrift køles rummene hurtigt, så det er energieffektivt at tænde efter behov frem for forudkøling.\n\nSupplerende varme:\nDer findes to olieovne, som kan benyttes i vinterhalvåret til ekstra varme på meget kolde dage.",
       "keywords": [
         "aircondition",
         "varme",
@@ -7464,7 +7738,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -7505,12 +7779,15 @@
         "T12",
         "T13",
         "T17",
-        "T31"
+        "T31",
+        "Bekræft at fjernbetjeningerne er monteret på væggen under hver enhed og er funktionsdygtige.",
+        "Verificer antal og placering af de to olieovne i huset.",
+        "Test at enheder kan skiftes mellem køle- og varme-drift og at indstillinger påvirkes via fjernbetjeningen."
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:42:33.445Z",
         "last_result": null
       }
     },
@@ -7520,10 +7797,10 @@
       "title": "Vaskemaskine og nøgle",
       "category": "Huset",
       "content_type": "procedure",
-      "summary": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "answer": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "body": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
-      "content": "Vaskemaskinen står i skabet i forhaven. Nøglen hænger på nøglebrættet i køkkenet.",
+      "summary": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "answer": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det.",
+      "body": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
+      "content": "Vaskemaskinen er placeret udendørs i et aflåst skab foran huset. Nøglen til skabet findes på nøglebrættet inde i huset (køkkenet). Maskinen er en almindelig vaskemaskine med programmer til finvask, hverdagsvask og højere temperaturer, så det er nemt at vaske under opholdet. Efter vask kan tøjet tørres på det tilhørende tørrestativ; det spanske klima gør ofte tøjet hurtigt tørt udendørs. Der kan være vaskemiddel og skyllemiddel i skabet, som tidligere gæster har efterladt — du er velkommen til at bruge det, men vi anbefaler, at du selv medbringer det, du får brug for.",
       "keywords": [
         "vaskemaskine",
         "forhave",
@@ -7542,7 +7819,7 @@
         "url": null,
         "checked": "2026-07-22"
       },
-      "updated": "2026-07-22",
+      "updated": "2026-07-23",
       "owner": "Michael",
       "language": "da",
       "links": [],
@@ -7584,12 +7861,15 @@
         "T13",
         "T17",
         "T27",
-        "T31"
+        "T31",
+        "T01 - Bekræft at skabet er aflåst og nøgle findes på nøglebrættet i huset",
+        "T02 - Bekræft at vaskemaskinen har de nævnte programmer",
+        "T03 - Kontroller om der typisk efterlades vaskemiddel i skabet"
       ],
       "test_state": {
         "status": "needs_test",
         "last_tested_at": null,
-        "last_changed_at": "2026-07-22",
+        "last_changed_at": "2026-07-23T07:54:43.175Z",
         "last_result": null
       }
     },
@@ -12170,6 +12450,274 @@
         "label": "Michael / Casa Amar",
         "url": null,
         "checked": "2026-07-22"
+      }
+    },
+    {
+      "id": "wifi-og-arbejde",
+      "title": "WiFi og arbejde",
+      "category": "Praktisk",
+      "summary": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "answer": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "body": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "content": "Internetsignalet kommer ind via routeren i stuen. Herfra er der almindeligt WiFi i huset, men da rækkehuset har tre etager og mange vægge af sten og beton, er der installeret et mesh-netværk for at sikre god dækning på 1. sal og i tagetagen.\n\nMesh-netværk\n- En mesh-enhed er forbundet til routeren i stuen via LAN-kabel. Denne installation må ikke ændres.\n- Der står en mesh-enhed i et værelse på 1. sal. Den skal altid have strøm.\n- Der står en mesh-enhed i skabet ved tagetagen. Den skal også altid have strøm.\n\nTilslutning til netværk\n- Du kan bruge husets almindelige WiFi (bedst i stueetagen) eller mesh-netværket (bedst på 1. sal og i tagetagen).\n- Mesh-netværket hedder \"Amar\"; adgangskoden er den samme som til husets WiFi.\n- Adgangskoden findes på QR-koden/RFC-tagget i huset, i husets informationsmateriale og på routeren i stuen.\n\nTilslutning med LAN-kabel\n- LAN-tilslutning kan ske via routeren i stuen eller en af mesh-enhederne (fx til Sonos, TV eller andet netværksudstyr).\n- Der findes et LAN-kabel i Casa Amar til gæstebrug.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft at mesh-enheden på 1. sal og i tagetagens skab er til stede og tilsluttet strøm.",
+        "Bekræft at mesh-enheden er forbundet til routeren i stuen via LAN-kabel (visuel kontrol).",
+        "Bekræft SSID 'Amar' og at adgangskoden matcher husets WiFi; verificer at adgangskoden findes på QR/RFC-tag, i info-materiale og på routeren.",
+        "Bekræft tilgængelighed af LAN-kabel i huset og at LAN-porte på mesh-enheder/router virker."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:11:54.283Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created locally because referenced object \"wifi\" was not available in the editable Knowledge Cards dataset."
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "tv-streaming-og-projektor-i-casa-amar",
+      "title": "TV, streaming og projektor i Casa Amar",
+      "category": "Huset / Faciliteter",
+      "summary": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "answer": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "body": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "content": "Der er to tv og én projektor i Casa Amar. TV i stuen: moderne 55\". TV i master bedroom: 42\" (ældre). Projektor: BenQ. Der findes Chromecast i huset, så man kan streame direkte; gæster kan også tilslutte egne enheder (spillekonsol, YouSee streamer, egen Chromecast, Apple TV m.v.) via HDMI. Der findes HDMI-kabler i huset. Internettet er tilstrækkeligt til at se film, tv og spille online, men gæster bruger egne abonnementer (log af dit login efter ophold). Ved brug af projektor anbefales tilslutning af ekstern højttaler. Der står en transportabel B&O-højttaler i stuen, som kan tages til projektorområdet. Højttaleren kan tilsluttes via Bluetooth eller phono/phone-kabel; der er et langt phono-kabel i huset, og projektorens udgang kan forbindes via phono til højttaleren. Alternativt tilsluttes højttaleren direkte til gæstens enhed (Chromecast, Apple TV, PC mv.).",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft model og funktion af projektoren (BenQ) og at den er klar til brug.",
+        "Txx - Bekræft at Chromecast fungerer og kan streame til stue-tv/projektor.",
+        "Txx - Bekræft tilgængelighed af HDMI- og phono-kabler og at B&O-højttaler kan tilsluttes både via Bluetooth og kabel.",
+        "Txx - Bekræft at internetforbindelsen kan håndtere streaming og online spil under realistisk belastning."
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T07:23:29.055Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "airconditioning-use",
+          "adresse-til-casa-amar"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "opvaskemaskine-k-kken",
+      "title": "Opvaskemaskine (køkken)",
+      "category": "Huset / Køkken",
+      "summary": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "answer": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "body": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "content": "Der findes en Bosch opvaskemaskine i køkkenet. Den er traditionel og let at bruge. Husk at fylde salt og afspænding, når der er behov; disse findes i skabet udenfor (ved vaskemaskinen). Opvasketabs kan findes i skabet fra tidligere gæster – ellers køber gæster selv det, der skal bruges. Brugte tabs må ikke efterlades til kommende gæster.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Bekræft placering af opvaskemaskine i køkkenet (foto/inspektion)",
+        "Bekræft mærke/model (Bosch)",
+        "Bekræft placering af salt og afspænding i skabet udenfor ved vaskemaskinen",
+        "Bekræft gæstepolitik omkring opvasketabs (findes i skab eller købes af gæst)"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:04:00.801Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "washing-machine-location"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
+      }
+    },
+    {
+      "id": "k-kken-og-kaffe",
+      "title": "Køkken og kaffe",
+      "category": "Huset",
+      "summary": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "answer": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "body": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "content": "Køkkenet er indrettet til at blive brugt og har ovn, opvaskemaskine, kogeplade, espressomaskine, kaffekværn, Nespresso-maskine, blender og toaster.\n\nKaffemaskiner og -udstyr:\n- Huset har en Lelit Mara X espressomaskine og en Mazzer kaffekværn til at lave espressobaserede drikke (espresso, cappuccino, latte osv.).\n- Der findes en kaffevægt og en knock box i huset.\n- Gæster skal selv medbringe købe hele kaffebønner. Der findes også en Nespresso-maskine (kapsler kan købes i supermarkeder).\n- Det er muligt at brygge klassisk filterkaffe; kværn bønnerne lidt grovere til filterkaffe. Kværningsgraden justeres på siden af Mazzer-kværnen — husk evt. at notere indstillingen, så du kan vende tilbage.\n\nAnbefalet udgangspunkt for espresso:\n- 19 gram friskkværnet kaffe → 38 gram i koppen (forhold 1:2)\n- Bryggetid cirka 25–30 sekunder\n- Brug kaffevægten til finjustering efter smag.\n\nPas godt på udstyret:\n- Hjælp gerne med at holde espressomaskinen ren.\n- Når du forlader huset, bedes du: slukke espressomaskinen, tømme vandbeholderen og tømme drypbakken.\n- Eventuelle rester af kaffebønner kan blive i huset til næste gæst.\n\nUanset om du vil have præcis espresso, en hurtig kapselkaffe eller en stor kande filterkaffe, er der udstyr til det. God fornøjelse!",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "draft",
+      "tests": [
+        "Txx - Bekræft at kogepladen er induktion og fungerer som beskrevet (hurtig opvarmning, præcis regulering).",
+        "Txx - Bekræft at der er en indbygget emhætte under kogepladen, og at den suger damp/mados nedad.",
+        "Txx - Bekræft at ovnen er brugervenlig og egnet til bagning, stegning og opvarmning.",
+        "Bekræft at Lelit Mara X er til stede og funktionsdygtig",
+        "Bekræft at Mazzer-kværnen er til stede og har justerbar kværneindstilling",
+        "Bekræft at kaffevægt og knock box er til stede",
+        "Verificer at instruktionen om at slukke maskinen og tømme beholdere er praktisk og korrekt"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T08:19:57.788Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "needs_review",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "pool-restaurant-takeaway",
+          "adresse-til-casa-amar",
+          "pool-opening-safety-rule"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-23"
       }
     }
   ]
