@@ -10,7 +10,17 @@
 .release-panel strong{display:block;margin-top:3px;font-size:.8rem}
 @media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
 @media(max-width:800px){table,tbody,tr,td,th{display:block}thead{display:none}}
-.batch-info{background:#fff6dc;color:#765500;border-radius:10px;padding:10px;margin-bottom:12px;line-height:1.45}.batch-info.cooldown{background:#e7edf7;color:#304f79}</style></head><body><main><nav class="platform-nav">
+.batch-info{background:#fff6dc;color:#765500;border-radius:10px;padding:10px;margin-bottom:12px;line-height:1.45}.batch-info.cooldown{background:#e7edf7;color:#304f79}
+.test-builder{background:#fff;border-radius:15px;padding:14px;margin:14px 0}
+.test-builder textarea{width:100%;min-height:130px;border:1px solid #d6cec3;border-radius:10px;padding:11px;font:inherit;line-height:1.45}
+.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.builder-grid label{font-size:.78rem;color:var(--muted)}
+.builder-grid input[type="text"],.builder-grid input:not([type]){width:100%}
+.key-star{font-size:1.15rem;cursor:pointer;user-select:none}
+.key-star.on{color:#b07a00}
+.rate-wait{background:#fff6dc;color:#765500;padding:8px;border-radius:9px;margin-top:6px}
+@media(max-width:700px){.builder-grid{grid-template-columns:1fr}}
+</style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
 <a href="/knowledge-review.html">Review Center</a>
@@ -19,36 +29,146 @@
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.48</strong></div>
-<div><span>Build</span><strong>2026-07-23 21:30</strong></div>
+<div><span>Release</span><strong>v2026.07.23.49</strong></div>
+<div><span>Build</span><strong>2026-07-23 22:30</strong></div>
 <div><span>Worker</span><strong>9.4-multi-object-manager</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section><h1>Casa Amar Test Center</h1><p>Et godt svar kan godt fejle, fordi testens forventninger er blevet forældede. Testene køres nu i mindre batches for at undgå rate limits. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
-<div class="actions"><button class="primary" id="runBatch">Kør næste batch (maks. 10)</button><button id="reset">Nulstil resultater</button><button class="good" id="export">Eksportér opdaterede tests</button></div><div id="batchInfo" class="batch-info"></div>
-<table><thead><tr><th>Test</th><th>Spørgsmål</th><th>Status</th><th>Svar og handling</th></tr></thead><tbody id="tests"></tbody></table>
+</section><h1>Casa Amar Test Center</h1><p>Brug Test Center til regressionstest, prompt-verifikation og egne nøglecases. Testene køres adaptivt, så rate limits ikke markeres som faglige fejl. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
+
+<section class="test-builder">
+<h2>Tilføj egne testspørgsmål</h2>
+<p class="meta">Indsæt ét spørgsmål pr. linje. Du kan tilføje mange på én gang og markere dem som nøglecases.</p>
+<textarea id="bulkQuestions" placeholder="Kan man tage toget til Granada?
+Er der barneseng og høj stol?
+Hvordan finder man huset sent om aftenen?"></textarea>
+<div class="builder-grid">
+<label>Kategori
+<input id="bulkCategory" value="Egne tests"></label>
+<label><input type="checkbox" id="bulkKey"> Markér alle som nøglecases</label>
+</div>
+<div class="actions">
+<button class="primary" id="addBulk">Tilføj spørgsmål som tests</button>
+<button id="runKey">Kør kun nøglecases</button>
+</div>
+<div id="bulkMessage"></div>
+</section>
+
+<div class="actions"><button class="primary" id="runBatch">Kør næste batch (maks. 5)</button><button id="reset">Nulstil resultater</button><button class="good" id="export">Eksportér opdaterede tests</button></div><div id="batchInfo" class="batch-info"></div>
+<table><thead><tr><th>Nøgle</th><th>Test</th><th>Spørgsmål</th><th>Status</th><th>Svar og handling</th></tr></thead><tbody id="tests"></tbody></table>
 <script>
 let suite={tests:[]};const q=s=>document.querySelector(s),norm=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();const sentenceCount=s=>(String(s||'').match(/[.!?]+(?=\s|$)/g)||[]).length||1;
 function evaluate(t,d){if((t.accepted_answers||[]).includes(norm(d.answer)))return{ok:true,checks:[{name:'accepteret svarvariant',ok:true,actual:'match'}]};const text=norm(d.answer),checks=[];checks.push({name:'intent',ok:!t.expected_intent||d.intent===t.expected_intent,actual:d.intent});checks.push({name:'needsHuman',ok:d.needsHuman===t.expected_needs_human,actual:d.needsHuman});if(t.must_include_any?.length)checks.push({name:'skal indeholde mindst ét',ok:t.must_include_any.some(v=>text.includes(norm(v))),actual:t.must_include_any.join(', ')});if(t.must_not_include_any?.length)checks.push({name:'må ikke indeholde',ok:!t.must_not_include_any.some(v=>text.includes(norm(v))),actual:t.must_not_include_any.join(', ')});if(t.max_sentences)checks.push({name:'maks. sætninger',ok:sentenceCount(d.answer)<=t.max_sentences,actual:sentenceCount(d.answer)});return{ok:checks.every(c=>c.ok),checks}}
-function render(){q('#tests').innerHTML=suite.tests.map((t,i)=>{const r=t.result,status=!r?'pending':r.running?'pending':r.ok?'passed':'failed';return`<tr><td><strong>${t.id}</strong><div class="details">${t.category||''}</div></td><td>${t.question}<div class="details">${t.notes||''}</div></td><td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':'Afventer'}</span></td><td class="answer">${r?.answer||''}${r?.checks?`<div class="checks">${r.checks.map(c=>`<div class="${c.ok?'check-ok':'check-bad'}">${c.ok?'✓':'✕'} ${c.name}: ${c.actual}</div>`).join('')}</div>`:''}${r&&!r.ok?`<div class="actions"><button class="good" data-accept="${i}">Godkend svar som korrekt</button><button data-run="${i}">Kør igen</button></div>`:''}</td></tr>`}).join('');q('#tests').querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>accept(Number(b.dataset.accept)));q('#tests').querySelectorAll('[data-run]').forEach(b=>b.onclick=()=>runTest(suite.tests[Number(b.dataset.run)]));if(typeof updateBatchInfo==='function')updateBatchInfo()}
-async function runTest(t){t.result={running:true};render();try{const res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:t.question,messages:[]})}),d=await res.json();if(!res.ok)throw new Error(d.detail||d.error||'API-fejl');const ev=evaluate(t,d);t.result={...ev,answer:d.answer,intent:d.intent,needsHuman:d.needsHuman,sentence_count:sentenceCount(d.answer)}}catch(e){t.result={ok:false,answer:'FEJL: '+e.message,checks:[]}}render()}
-const BATCH_SIZE=10,COOLDOWN_MS=120000,COOLDOWN_KEY='casaTestBatchCooldownUntil';
+function render(){q('#tests').innerHTML=suite.tests.map((t,i)=>{const r=t.result,status=!r?'pending':r.running?'pending':r.ok?'passed':'failed';return`<tr><td><button class="key-star ${t.key_case?'on':''}" data-key="${i}" title="Markér som nøglecase">${t.key_case?'★':'☆'}</button></td><td><strong>${t.id}</strong><div class="details">${t.category||''}</div></td><td>${t.question}<div class="details">${t.notes||''}</div></td><td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':'Afventer'}</span></td><td class="answer">${r?.answer||''}${r?.rate_limited?`<div class="rate-wait">Midlertidig kapacitetsfejl — ikke en faglig testfejl. Prøv igen senere.</div>`:''}${r?.checks?`<div class="checks">${r.checks.map(c=>`<div class="${c.ok?'check-ok':'check-bad'}">${c.ok?'✓':'✕'} ${c.name}: ${c.actual}</div>`).join('')}</div>`:''}${r&&!r.ok&&!r.rate_limited?`<div class="actions"><button class="good" data-accept="${i}">Godkend svar som korrekt</button><button data-run="${i}">Kør igen</button></div>`:r?.rate_limited?`<div class="actions"><button data-run="${i}">Prøv igen</button></div>`:''}</td></tr>`}).join('');q('#tests').querySelectorAll('[data-key]').forEach(b=>b.onclick=()=>toggleKey(Number(b.dataset.key)));q('#tests').querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>accept(Number(b.dataset.accept)));q('#tests').querySelectorAll('[data-run]').forEach(b=>b.onclick=()=>runTest(suite.tests[Number(b.dataset.run)]));if(typeof updateBatchInfo==='function')updateBatchInfo()}
+async function callChat(question){
+ const res=await fetch('/api/chat',{
+   method:'POST',
+   headers:{'content-type':'application/json'},
+   body:JSON.stringify({question,messages:[]})
+ });
+ const text=await res.text();
+ let data={};try{data=JSON.parse(text)}catch{data={error:text}}
+ return {res,data};
+}
+
+function isRateLimited(res,data){
+ const msg=String(data?.detail||data?.error||data?.answer||'').toLowerCase();
+ return res.status===429||msg.includes('for mange spørgsmål')||msg.includes('rate limit')||msg.includes('too many requests');
+}
+
+async function runTest(t){
+ t.result={running:true};render();
+ const delays=[0,15000,45000];
+ try{
+   for(let attempt=0;attempt<delays.length;attempt++){
+     if(delays[attempt])await new Promise(r=>setTimeout(r,delays[attempt]));
+     const {res,data}=await callChat(t.question);
+     if(isRateLimited(res,data)){
+       if(attempt===delays.length-1){
+         t.result={ok:false,rate_limited:true,answer:'Midlertidig kapacitetsgrænse. Testen er ikke vurderet.',checks:[]};
+         render();return;
+       }
+       continue;
+     }
+     if(!res.ok)throw new Error(data.detail||data.error||'API-fejl');
+     const ev=evaluate(t,data);
+     t.result={...ev,answer:data.answer,intent:data.intent,needsHuman:data.needsHuman,sentence_count:sentenceCount(data.answer)};
+     render();return;
+   }
+ }catch(e){
+   t.result={ok:false,answer:'FEJL: '+e.message,checks:[]};
+ }
+ render();
+}
+const BATCH_SIZE=5,COOLDOWN_MS=180000,COOLDOWN_KEY='casaTestBatchCooldownUntil';
 function remaining(){return Math.max(0,Number(localStorage.getItem(COOLDOWN_KEY)||0)-Date.now())}
 function updateBatchInfo(){
- const left=remaining(),pending=suite.tests.filter(t=>!t.result).length,failed=suite.tests.filter(t=>t.result&&!t.result.ok).length,passed=suite.tests.filter(t=>t.result?.ok).length,b=q('#runBatch'),i=q('#batchInfo');
- if(left>0){const s=Math.ceil(left/1000),m=Math.floor(s/60),r=s%60;i.className='batch-info cooldown';i.innerHTML=`Vent <strong>${m}:${String(r).padStart(2,'0')}</strong> før næste batch. ${passed} bestået, ${failed} fejlet, ${pending} afventer.`;b.disabled=true;b.textContent='Vent før næste batch'}
- else{i.className='batch-info';i.innerHTML=`Der køres højst <strong>${BATCH_SIZE} tests</strong> ad gangen. Vent 2 minutter mellem batches. ${passed} bestået, ${failed} fejlet, ${pending} afventer.`;b.disabled=!pending;b.textContent=pending?`Kør næste batch (maks. ${BATCH_SIZE})`:'Alle tests er kørt'}
+ const left=remaining(),pending=suite.tests.filter(t=>!t.result).length,failed=suite.tests.filter(t=>t.result&&!t.result.ok&&!t.result.rate_limited).length,passed=suite.tests.filter(t=>t.result?.ok).length,keyCount=suite.tests.filter(t=>t.key_case).length,b=q('#runBatch'),i=q('#batchInfo');
+ if(left>0){const s=Math.ceil(left/1000),m=Math.floor(s/60),r=s%60;i.className='batch-info cooldown';i.innerHTML=`Vent <strong>${m}:${String(r).padStart(2,'0')}</strong> før næste batch. ${passed} bestået, ${failed} fejlet, ${pending} afventer, ${keyCount} nøglecases.`;b.disabled=true;b.textContent='Vent før næste batch'}
+ else{i.className='batch-info';i.innerHTML=`Der køres højst <strong>${BATCH_SIZE} tests</strong> ad gangen. Vent 3 minutter mellem batches. ${passed} bestået, ${failed} fejlet, ${pending} afventer, ${keyCount} nøglecases.`;b.disabled=!pending;b.textContent=pending?`Kør næste batch (maks. ${BATCH_SIZE})`:'Alle tests er kørt'}
 }
 async function runBatch(){
  if(remaining()>0)return updateBatchInfo();
  const batch=suite.tests.filter(t=>!t.result).slice(0,BATCH_SIZE);
- for(const t of batch){await runTest(t);await new Promise(r=>setTimeout(r,2500))}
+ for(const t of batch){await runTest(t);await new Promise(r=>setTimeout(r,5000))}
+ for(const t of batch){if(t.result?.rate_limited)delete t.result}
  localStorage.setItem(COOLDOWN_KEY,String(Date.now()+COOLDOWN_MS));updateBatchInfo()
 }
 setInterval(updateBatchInfo,1000);
 function accept(i){const t=suite.tests[i],r=t.result;if(!r?.answer)return;for(const c of r.checks||[])if(!c.ok){if(c.name==='intent')t.expected_intent=r.intent;if(c.name==='needsHuman')t.expected_needs_human=r.needsHuman;if(c.name==='maks. sætninger')t.max_sentences=Math.max(t.max_sentences||0,r.sentence_count||sentenceCount(r.answer))}t.accepted_answers=[...new Set([...(t.accepted_answers||[]),norm(r.answer)])];t.accepted_at=new Date().toISOString();t.accepted_by='Michael';t.result=evaluate(t,{answer:r.answer,intent:r.intent,needsHuman:r.needsHuman});t.result.answer=r.answer;localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));render()}
+
+function nextTestId(){
+ const nums=suite.tests.map(t=>Number(String(t.id||'').replace(/\D/g,''))).filter(Number.isFinite);
+ return Math.max(0,...nums)+1;
+}
+function toggleKey(i){
+ suite.tests[i].key_case=!suite.tests[i].key_case;
+ localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));
+ render();
+}
+function addBulkTests(){
+ const lines=q('#bulkQuestions').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ if(!lines.length)return;
+ const category=q('#bulkCategory').value.trim()||'Egne tests';
+ const key=q('#bulkKey').checked;
+ let next=nextTestId(),added=0,skipped=0;
+ const existing=new Set(suite.tests.map(t=>norm(t.question)));
+ for(const question of lines){
+   if(existing.has(norm(question))){skipped++;continue}
+   suite.tests.push({
+     id:`T${String(next++).padStart(2,'0')}`,
+     category,
+     question,
+     notes:'Egen test til prompt- og svarverifikation.',
+     expected_intent:null,
+     expected_needs_human:false,
+     must_include_any:[],
+     must_not_include_any:['jeg kan booke','jeg kan undersøge','jeg kan kontakte'],
+     max_sentences:8,
+     key_case:key,
+     custom_test:true,
+     created_at:new Date().toISOString()
+   });
+   existing.add(norm(question));added++;
+ }
+ localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));
+ q('#bulkQuestions').value='';
+ q('#bulkMessage').innerHTML=`<p class="success"><strong>${added} tests tilføjet.</strong> ${skipped?`${skipped} dubletter blev sprunget over.`:''}</p>`;
+ render();
+}
+async function runKeyCases(){
+ const keys=suite.tests.filter(t=>t.key_case);
+ if(!keys.length)return alert('Markér først mindst én nøglecase med stjernen.');
+ q('#runKey').disabled=true;
+ for(const t of keys){
+   await runTest(t);
+   await new Promise(r=>setTimeout(r,7000));
+ }
+ q('#runKey').disabled=false;
+ localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));
+}
 function exportTests(){const payload={...suite,updated:new Date().toISOString(),version:'2.0'};payload.tests.forEach(t=>delete t.result);const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='ai-regression-tests.json';a.click()}
-q('#runBatch').onclick=runBatch;q('#reset').onclick=()=>{suite.tests.forEach(t=>delete t.result);localStorage.removeItem(COOLDOWN_KEY);render();updateBatchInfo()};q('#export').onclick=exportTests;
+q('#addBulk').onclick=addBulkTests;q('#runKey').onclick=runKeyCases;q('#runBatch').onclick=runBatch;q('#reset').onclick=()=>{suite.tests.forEach(t=>delete t.result);localStorage.removeItem(COOLDOWN_KEY);render();updateBatchInfo()};q('#export').onclick=exportTests;
 fetch('/ai-regression-tests.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{try{const local=JSON.parse(localStorage.getItem('casaRegressionTestsDraft')||'null');suite=local?.tests?local:raw}catch{suite=raw}render()});
 
 (async()=>{
