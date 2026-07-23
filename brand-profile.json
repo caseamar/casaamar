@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-23",
+  "brand": {
+    "name": "Casa Amar",
+    "positioning": "Et personligt feriehus i Andalusien, indrettet som en base for at leve og opleve området – ikke som et anonymt hotelværelse.",
+    "promise": "Nordisk ro, andalusisk hverdagsliv og plads til at være sammen.",
+    "personality": [
+      "varm",
+      "ærlig",
+      "afslappet",
+      "personlig",
+      "kvalitetsbevidst",
+      "lokal"
+    ],
+    "avoid": [
+      "overdrivelser",
+      "clickbait",
+      "luksus-klichéer",
+      "turistbrochure-sprog",
+      "løfter vi ikke kan holde",
+      "gentagelser"
+    ],
+    "preferred_phrases": [
+      "lev som en lokal",
+      "en base for ferien",
+      "rart at komme til",
+      "nemt at være i",
+      "et hjem i Andalusien"
+    ],
+    "audiences": [
+      {
+        "id": "families",
+        "name": "Familier",
+        "needs": [
+          "plads",
+          "pool",
+          "tryghed",
+          "praktik",
+          "oplevelser"
+        ]
+      },
+      {
+        "id": "couples",
+        "name": "Par og venner",
+        "needs": [
+          "ro",
+          "stemning",
+          "terrasser",
+          "mad",
+          "udflugter"
+        ]
+      },
+      {
+        "id": "longstay",
+        "name": "Længere ophold og workation",
+        "needs": [
+          "internet",
+          "hverdagsliv",
+          "komfort",
+          "base",
+          "vinterlys"
+        ]
+      }
+    ]
+  },
+  "channel_goals": {
+    "website": {
+      "primary_goal": "Skabe interesse, tillid og kvalificerede henvendelser fra gæster, som passer til huset.",
+      "tone": [
+        "inspirerende",
+        "konkret",
+        "visuel",
+        "ærlig"
+      ],
+      "cta_principle": "Invitér til næste skridt uden at love booking, ledighed eller handling, som platformen ikke kan udføre."
+    },
+    "concierge": {
+      "primary_goal": "Hjælpe gæsten hurtigt og præcist under planlægning og ophold.",
+      "tone": [
+        "kort",
+        "venlig",
+        "praktisk",
+        "pålidelig"
+      ]
+    },
+    "guest_guide": {
+      "primary_goal": "Gøre ankomst og ophold enkelt og trygt.",
+      "tone": [
+        "instruktiv",
+        "kort",
+        "handlingsorienteret"
+      ]
+    },
+    "owner_guide": {
+      "primary_goal": "Sikre drift, vedligeholdelse og ensartede rutiner.",
+      "tone": [
+        "præcis",
+        "neutral",
+        "operationel"
+      ]
+    }
+  }
+}

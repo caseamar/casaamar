@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Brand Studio</title>
+<style>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:24px}
+h1,h2{font-family:Georgia,serif}.lead{max-width:850px;color:var(--muted);line-height:1.5}.panel{background:#fff;border-radius:15px;padding:15px;margin:12px 0}
+label{display:block;font-size:.76rem;color:var(--muted);margin-top:10px}input,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:110px;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}
+.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px;margin-top:10px}
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
+.release{font-size:.72rem;color:var(--muted);margin:10px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style></head><body><main><nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/brand-studio.html">Brand Studio</a>
+<a href="/page-studio.html">Page Studio</a>
+<a href="/asset-brief.html">Billedplan</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
+<div class="release">Release v2026.07.23.50 · Brand model 1.0</div>
+<h1>Brand Studio</h1>
+<p class="lead">Her styrer du Casa Amars identitet og formålet med hver kanal. AI bruger profilen, når den skriver hjemmesidetekster, concierge-svar og guider. Du ændrer principperne ét sted – ikke i hver enkelt tekst.</p>
+<div class="panel">
+<label>Positionering<textarea id="positioning"></textarea></label>
+<label>Brandløfte<textarea id="promise"></textarea></label>
+<div class="grid">
+<label>Personlighed – kommasepareret<input id="personality"></label>
+<label>Undgå – kommasepareret<input id="avoid"></label>
+</div>
+<label>Foretrukne formuleringer – kommasepareret<input id="phrases"></label>
+</div>
+<div class="panel"><h2>Hjemmesidens formål</h2>
+<label>Primært mål<textarea id="websiteGoal"></textarea></label>
+<label>Tone – kommasepareret<input id="websiteTone"></label>
+<label>CTA-princip<textarea id="ctaPrinciple"></textarea></label>
+</div>
+<button class="primary" id="save">Gem Brand Profile</button>
+<div id="message"></div>
+<script>
+let profile;
+const q=s=>document.querySelector(s);
+fetch('/brand-profile.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
+ profile=data;
+ q('#positioning').value=data.brand.positioning;
+ q('#promise').value=data.brand.promise;
+ q('#personality').value=data.brand.personality.join(', ');
+ q('#avoid').value=data.brand.avoid.join(', ');
+ q('#phrases').value=data.brand.preferred_phrases.join(', ');
+ q('#websiteGoal').value=data.channel_goals.website.primary_goal;
+ q('#websiteTone').value=data.channel_goals.website.tone.join(', ');
+ q('#ctaPrinciple').value=data.channel_goals.website.cta_principle;
+});
+q('#save').onclick=async()=>{
+ profile.brand.positioning=q('#positioning').value.trim();
+ profile.brand.promise=q('#promise').value.trim();
+ profile.brand.personality=q('#personality').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.brand.avoid=q('#avoid').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.brand.preferred_phrases=q('#phrases').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.channel_goals.website.primary_goal=q('#websiteGoal').value.trim();
+ profile.channel_goals.website.tone=q('#websiteTone').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.channel_goals.website.cta_principle=q('#ctaPrinciple').value.trim();
+ profile.updated=new Date().toISOString();
+ const text=JSON.stringify(profile,null,2);
+ if(window.showSaveFilePicker){
+  try{const h=await showSaveFilePicker({suggestedName:'brand-profile.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]});const w=await h.createWritable();await w.write(text);await w.close()}catch(e){if(e.name==='AbortError')return;throw e}
+ }else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='brand-profile.json';a.click()}
+ q('#message').innerHTML='<p class="success">Brand Profile er gemt og klar til upload i GitHub.</p>';
+};
+</script></main></body></html>

@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "object_model": {
+    "id": "stable unique id",
+    "canonical_content": {
+      "live": "factual, detailed source knowledge",
+      "draft": "optional new factual version"
+    },
+    "channel_content": {
+      "website": {
+        "live": "approved marketing copy",
+        "draft": "AI-generated or edited website copy"
+      },
+      "concierge": {
+        "live": "approved response context",
+        "draft": "optional"
+      },
+      "guest_guide": {
+        "live": "approved practical copy",
+        "draft": "optional"
+      },
+      "owner_guide": {
+        "live": "approved operational copy",
+        "draft": "optional"
+      }
+    },
+    "assets": "references to asset-library.json",
+    "relations": "links to other knowledge objects",
+    "versioning": "canonical and each channel can be reviewed independently"
+  },
+  "principles": [
+    "Knowledge owns facts.",
+    "Brand profile owns tone, positioning and channel goals.",
+    "Page blueprint owns narrative, section purpose, text limits and asset roles.",
+    "Website content is generated from knowledge + brand + page blueprint.",
+    "HTML owns presentation and components, not editorial copy.",
+    "No channel draft becomes live without explicit approval."
+  ]
+}

@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "9.4-multi-object-manager",
+      version: "10.0-content-platform-foundation",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -772,6 +772,165 @@ function editorCandidates(inputText, entries, selectedIds = []) {
         match_percent: Math.max(1, Math.min(99, Math.round((candidate.score / max) * 96)))
       };
     });
+}
+
+
+async function handlePageGenerate(request, env) {
+  if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
+
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const brand = payload.brand || {};
+  const blueprint = payload.blueprint || {};
+  const currentContent = payload.current_content || {};
+  const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
+  if (!page) return json({ error: "Page Blueprint mangler den valgte side." }, 400);
+
+  const bundle = await loadBundle(env, request);
+  const knowledge = bundle.entries
+    .filter((entry) =>
+      entry?.status !== "archived" &&
+      entry?.lifecycle?.live_status !== "draft_only" &&
+      entry?.channels?.website !== false
+    )
+    .slice(0, 120)
+    .map((entry) => ({
+      id: entry.id,
+      title: entry.title,
+      category: entry.category,
+      content: entry.summary || entry.answer || entry.content || "",
+      keywords: entry.keywords || []
+    }));
+
+  const sectionSchema = {
+    type: "object",
+    additionalProperties: false,
+    properties: {
+      id: { type: "string" },
+      headline: { type: "string" },
+      body: { type: "string" },
+      cta_label: { type: "string" },
+      knowledge_sources: { type: "array", items: { type: "string" } },
+      image_brief: { type: "array", items: { type: "string" } }
+    },
+    required: ["id", "headline", "body", "cta_label", "knowledge_sources", "image_brief"]
+  };
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions: `Du er senior conversion copywriter, brandredaktør og informationsarkitekt for Casa Amar.
+
+Skriv en komplet hjemmeside som én sammenhængende fortælling. Formålet er at skabe attention, lyst, tillid og kvalificerede henvendelser – ikke blot at gengive fakta.
+
+REGLER:
+- Brug kun fakta fra Knowledge Base.
+- Følg Brand Profile og sidens kanalformål.
+- Følg hver sektions formål, komponent og tekstgrænser.
+- Hver sektion må kun have ét primært budskab.
+- Undgå gentagelser mellem sektioner. Hvis et budskab allerede er dækket, skal næste sektion tilføre en ny dimension.
+- Skriv konkret og visuelt, men uden overdrivelser eller turistbrochure-klichéer.
+- Hjemmesidetekst må gerne være mere emotionel end concierge-kontekst.
+- CTA'er må ikke love booking, kontakt, undersøgelse eller ledighed, som platformen ikke selv kan udføre.
+- Skriv på dansk.
+- cta_label skal være tom streng, hvis sektionen ikke tillader CTA.
+- Angiv de Knowledge Object-id'er, der understøtter hver sektion.
+- Angiv et kort billedbrief for hvert planlagt billedslot.`,
+      input: [{
+        role: "user",
+        content: `BRAND PROFILE:
+${JSON.stringify(brand)}
+
+PAGE BLUEPRINT:
+${JSON.stringify(page)}
+
+CURRENT WEBSITE CONTENT:
+${JSON.stringify(currentContent)}
+
+KNOWLEDGE:
+${JSON.stringify(knowledge)}`
+      }],
+      reasoning: { effort: "medium" },
+      text: {
+        verbosity: "medium",
+        format: {
+          type: "json_schema",
+          name: "casa_amar_page_draft",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              page_summary: { type: "string" },
+              repetition_score: { type: "integer", minimum: 0, maximum: 100 },
+              repetition_notes: { type: "array", items: { type: "string" } },
+              sections: {
+                type: "array",
+                minItems: page.sections.length,
+                maxItems: page.sections.length,
+                items: sectionSchema
+              }
+            },
+            required: ["page_summary", "repetition_score", "repetition_notes", "sections"]
+          }
+        }
+      },
+      max_output_tokens: 7000,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) return json({ error: result?.error?.message || "Page Generator kunne ikke gennemføre." }, response.status);
+
+  const outputText = result.output_text ||
+    result.output?.flatMap((item) => item.content || []).find((item) => item.type === "output_text")?.text;
+  let generated;
+  try { generated = JSON.parse(outputText); }
+  catch { return json({ error: "AI returnerede et ugyldigt sideformat." }, 502); }
+
+  const previous = Array.isArray(currentContent.sections) ? currentContent.sections : [];
+  const websiteContent = {
+    ...currentContent,
+    version: "1.1",
+    updated: new Date().toISOString(),
+    page_id: page.id,
+    status: "draft",
+    sections: generated.sections.map((section) => {
+      const old = previous.find((item) => item.id === section.id) || {};
+      return {
+        ...old,
+        id: section.id,
+        status: "draft",
+        live: old.live || null,
+        draft: {
+          headline: section.headline,
+          body: section.body,
+          cta_label: section.cta_label,
+          image_brief: section.image_brief
+        },
+        knowledge_sources: section.knowledge_sources,
+        asset_ids: old.asset_ids || [],
+        last_generated: new Date().toISOString()
+      };
+    })
+  };
+
+  return json({
+    website_content: websiteContent,
+    quality: {
+      repetition_score: generated.repetition_score,
+      repetition_notes: generated.repetition_notes,
+      page_summary: generated.page_summary
+    }
+  });
 }
 
 async function handleKnowledgeSuggest(request, env) {
@@ -1383,6 +1542,10 @@ export default {
 
     if (url.pathname === "/api/knowledge-suggest") {
       return handleKnowledgeSuggest(request, env);
+    }
+
+    if (url.pathname === "/api/page-generate") {
+      return handlePageGenerate(request, env);
     }
 
     return env.ASSETS.fetch(request);

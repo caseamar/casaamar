@@ -1,0 +1,272 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-23",
+  "pages": [
+    {
+      "id": "home",
+      "name": "Forside",
+      "goal": "Skabe lyst, vise huset og området, kvalificere forventninger og føre relevante gæster til kontakt/booking via bureau.",
+      "narrative": [
+        "Attention: skab en umiddelbar følelse af stedet",
+        "Desire: hjælp gæsten med at forestille sig opholdet",
+        "Proof: vis huset, pladsen og de konkrete kvaliteter",
+        "Context: forklar beliggenheden og oplevelserne",
+        "Fit: gør det tydeligt hvem huset passer til",
+        "Trust: besvar de vigtigste praktiske spørgsmål",
+        "Action: invitér til næste skridt"
+      ],
+      "global_rules": {
+        "avoid_repetition": true,
+        "one_primary_message_per_section": true,
+        "write_page_as_one_story": true,
+        "mobile_first": true,
+        "facts_must_come_from_knowledge": true,
+        "max_primary_ctas": 3
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "component": "hero",
+          "purpose": "Attention og følelsen af Casa Amar.",
+          "headline_max_chars": 55,
+          "body_max_chars": 180,
+          "image_slots": [
+            {
+              "role": "hero-landscape",
+              "count": 1,
+              "priority": "critical"
+            }
+          ],
+          "cta": {
+            "allowed": true,
+            "label_goal": "Se huset eller tag næste skridt"
+          },
+          "must_not_cover": [
+            "poolregler",
+            "wifi",
+            "parkering",
+            "lange faktalister"
+          ]
+        },
+        {
+          "id": "life",
+          "component": "editorial-gallery",
+          "purpose": "Gør det muligt at forestille sig ferien og hverdagen i huset.",
+          "headline_max_chars": 60,
+          "body_max_chars": 420,
+          "image_slots": [
+            {
+              "role": "morning-lifestyle",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "terrace-life",
+              "count": 2,
+              "priority": "high"
+            },
+            {
+              "role": "evening-atmosphere",
+              "count": 1,
+              "priority": "high"
+            }
+          ],
+          "cta": {
+            "allowed": false
+          }
+        },
+        {
+          "id": "house",
+          "component": "feature-grid",
+          "purpose": "Dokumentér huset, pladsen og indretningen uden salgsklichéer.",
+          "headline_max_chars": 55,
+          "body_max_chars": 300,
+          "card_count": 4,
+          "card_body_max_chars": 120,
+          "image_slots": [
+            {
+              "role": "living-room",
+              "count": 1,
+              "priority": "critical"
+            },
+            {
+              "role": "bedrooms",
+              "count": 3,
+              "priority": "critical"
+            },
+            {
+              "role": "kitchen",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "bathrooms",
+              "count": 2,
+              "priority": "high"
+            }
+          ],
+          "cta": {
+            "allowed": true,
+            "label_goal": "Se hele huset"
+          }
+        },
+        {
+          "id": "roof-terrace",
+          "component": "full-bleed-story",
+          "purpose": "Fremhæv tagterrassen som husets særlige ekstra rum.",
+          "headline_max_chars": 55,
+          "body_max_chars": 300,
+          "image_slots": [
+            {
+              "role": "roof-day",
+              "count": 1,
+              "priority": "critical"
+            },
+            {
+              "role": "roof-sunset",
+              "count": 1,
+              "priority": "critical"
+            },
+            {
+              "role": "roof-projector",
+              "count": 1,
+              "priority": "high"
+            }
+          ],
+          "cta": {
+            "allowed": false
+          }
+        },
+        {
+          "id": "location",
+          "component": "map-and-story",
+          "purpose": "Forklar ærligt beliggenheden som en base mellem lokalområdet, kysten og Málaga.",
+          "headline_max_chars": 60,
+          "body_max_chars": 420,
+          "image_slots": [
+            {
+              "role": "cerros-context",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "map",
+              "count": 1,
+              "priority": "critical"
+            },
+            {
+              "role": "local-life",
+              "count": 2,
+              "priority": "medium"
+            }
+          ],
+          "cta": {
+            "allowed": true,
+            "label_goal": "Se området"
+          }
+        },
+        {
+          "id": "experiences",
+          "component": "visual-cards",
+          "purpose": "Inspirér med forskellige typer oplevelser uden at gøre forsiden til en komplet guide.",
+          "headline_max_chars": 60,
+          "body_max_chars": 220,
+          "card_count": 6,
+          "card_body_max_chars": 105,
+          "image_slots": [
+            {
+              "role": "beach",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "malaga",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "mijas-pueblo",
+              "count": 1,
+              "priority": "high"
+            },
+            {
+              "role": "food-market",
+              "count": 1,
+              "priority": "medium"
+            },
+            {
+              "role": "mountains",
+              "count": 1,
+              "priority": "medium"
+            },
+            {
+              "role": "golf-padel",
+              "count": 1,
+              "priority": "medium"
+            }
+          ],
+          "cta": {
+            "allowed": true,
+            "label_goal": "Udforsk oplevelser"
+          }
+        },
+        {
+          "id": "fit",
+          "component": "audience-scenarios",
+          "purpose": "Hjælp gæsten med at vurdere om huset passer til deres type ophold.",
+          "headline_max_chars": 60,
+          "body_max_chars": 220,
+          "card_count": 4,
+          "card_body_max_chars": 130,
+          "image_slots": [
+            {
+              "role": "guest-scenarios",
+              "count": 4,
+              "priority": "medium"
+            }
+          ],
+          "cta": {
+            "allowed": false
+          }
+        },
+        {
+          "id": "practical",
+          "component": "expectation-panel",
+          "purpose": "Skab tillid gennem ærlig forventningsafstemning.",
+          "headline_max_chars": 60,
+          "body_max_chars": 500,
+          "fact_count": 6,
+          "image_slots": [
+            {
+              "role": "arrival-practical",
+              "count": 2,
+              "priority": "medium"
+            }
+          ],
+          "cta": {
+            "allowed": false
+          }
+        },
+        {
+          "id": "final-cta",
+          "component": "conversion-cta",
+          "purpose": "Saml fortællingen og invitér den rette gæst til næste skridt.",
+          "headline_max_chars": 60,
+          "body_max_chars": 220,
+          "image_slots": [
+            {
+              "role": "closing-emotion",
+              "count": 1,
+              "priority": "high"
+            }
+          ],
+          "cta": {
+            "allowed": true,
+            "required": true,
+            "label_goal": "Kontakt eller se bookingmulighed via bureau"
+          }
+        }
+      ]
+    }
+  ]
+}

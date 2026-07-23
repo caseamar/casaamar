@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-23",
+  "page_id": "home",
+  "status": "foundation",
+  "source_release": "v2026.07.23.50",
+  "sections": [
+    {
+      "id": "hero",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "life",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "house",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "roof-terrace",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "location",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "experiences",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "fit",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "practical",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    },
+    {
+      "id": "final-cta",
+      "status": "needs_generation",
+      "live": null,
+      "draft": null,
+      "knowledge_sources": [],
+      "asset_ids": [],
+      "last_generated": null
+    }
+  ]
+}

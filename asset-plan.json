@@ -1,0 +1,168 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-23",
+  "page_id": "home",
+  "requirements": [
+    {
+      "role": "hero-landscape",
+      "count": 1,
+      "priority": "critical",
+      "section_id": "hero",
+      "status": "missing"
+    },
+    {
+      "role": "morning-lifestyle",
+      "count": 1,
+      "priority": "high",
+      "section_id": "life",
+      "status": "missing"
+    },
+    {
+      "role": "terrace-life",
+      "count": 2,
+      "priority": "high",
+      "section_id": "life",
+      "status": "missing"
+    },
+    {
+      "role": "evening-atmosphere",
+      "count": 1,
+      "priority": "high",
+      "section_id": "life",
+      "status": "missing"
+    },
+    {
+      "role": "living-room",
+      "count": 1,
+      "priority": "critical",
+      "section_id": "house",
+      "status": "missing"
+    },
+    {
+      "role": "bedrooms",
+      "count": 3,
+      "priority": "critical",
+      "section_id": "house",
+      "status": "missing"
+    },
+    {
+      "role": "kitchen",
+      "count": 1,
+      "priority": "high",
+      "section_id": "house",
+      "status": "missing"
+    },
+    {
+      "role": "bathrooms",
+      "count": 2,
+      "priority": "high",
+      "section_id": "house",
+      "status": "missing"
+    },
+    {
+      "role": "roof-day",
+      "count": 1,
+      "priority": "critical",
+      "section_id": "roof-terrace",
+      "status": "missing"
+    },
+    {
+      "role": "roof-sunset",
+      "count": 1,
+      "priority": "critical",
+      "section_id": "roof-terrace",
+      "status": "missing"
+    },
+    {
+      "role": "roof-projector",
+      "count": 1,
+      "priority": "high",
+      "section_id": "roof-terrace",
+      "status": "missing"
+    },
+    {
+      "role": "cerros-context",
+      "count": 1,
+      "priority": "high",
+      "section_id": "location",
+      "status": "missing"
+    },
+    {
+      "role": "map",
+      "count": 1,
+      "priority": "critical",
+      "section_id": "location",
+      "status": "missing"
+    },
+    {
+      "role": "local-life",
+      "count": 2,
+      "priority": "medium",
+      "section_id": "location",
+      "status": "missing"
+    },
+    {
+      "role": "beach",
+      "count": 1,
+      "priority": "high",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "malaga",
+      "count": 1,
+      "priority": "high",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "mijas-pueblo",
+      "count": 1,
+      "priority": "high",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "food-market",
+      "count": 1,
+      "priority": "medium",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "mountains",
+      "count": 1,
+      "priority": "medium",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "golf-padel",
+      "count": 1,
+      "priority": "medium",
+      "section_id": "experiences",
+      "status": "missing"
+    },
+    {
+      "role": "guest-scenarios",
+      "count": 4,
+      "priority": "medium",
+      "section_id": "fit",
+      "status": "missing"
+    },
+    {
+      "role": "arrival-practical",
+      "count": 2,
+      "priority": "medium",
+      "section_id": "practical",
+      "status": "missing"
+    },
+    {
+      "role": "closing-emotion",
+      "count": 1,
+      "priority": "high",
+      "section_id": "final-cta",
+      "status": "missing"
+    }
+  ]
+}
