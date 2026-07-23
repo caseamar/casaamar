@@ -25,6 +25,7 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .list{max-height:760px;overflow:auto;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:auto 1fr auto;gap:9px;padding:11px 6px;border-bottom:1px solid var(--line);align-items:start;border-radius:9px}
 .row.active{background:#edf4f0;box-shadow:inset 3px 0 0 var(--ok)}
+.row-purpose{margin-top:4px;color:var(--muted);font-size:.68rem;line-height:1.35}
 #editor.flash{animation:editorFlash 1.2s ease}
 @keyframes editorFlash{0%{box-shadow:0 0 0 4px rgba(43,116,80,.25)}100%{box-shadow:none}}
 .row input{width:auto;margin-top:3px}.row strong{display:block;font-size:.9rem}.meta{color:var(--muted);font-size:.73rem;margin-top:3px}
@@ -75,9 +76,23 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 .next-actions button{flex:1;min-width:180px}
 .success strong{display:block;margin-bottom:3px}
 @media(max-width:900px){main{padding:14px}.layout{grid-template-columns:1fr}.editor-grid,.filters,.diff-grid{grid-template-columns:1fr}}
+
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+.platform-nav a:hover{background:#edf4f0}
+
 </style>
 </head>
 <body><main>
+<nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
 <h1>Casa Amar AI Editor</h1>
 <p class="lead">Start en redigeringssession, skriv ny viden naturligt, og afslut først sessionen, når du vil lave én samlet GitHub-fil.</p>
 <div class="workflow">
@@ -665,7 +680,10 @@ function runTests(ids){
 Promise.all([fetch('/knowledge-cards.json').then(r=>r.json()),fetch('/ai-regression-tests.json').then(r=>r.json())]).then(([cardsData,testData])=>{
  data.cards=cardsData.cards||cardsData.entries||[];tests=testData;
  const cats=[...new Set(data.cards.map(c=>c.category))].sort();q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
- updateChangeCount();updateSessionOverview();renderList();if(data.cards[0])openCard(data.cards[0].id);
+ updateChangeCount();updateSessionOverview();renderList();
+ const requested=new URLSearchParams(location.search).get('object');
+ if(requested&&getCard(requested))openCard(requested);
+ else if(data.cards[0])openCard(data.cards[0].id);
 });
 q('#search').addEventListener('input',renderList);q('#category').addEventListener('change',renderList);
 q('#suggest').addEventListener('click',suggest);q('#saveEdit').addEventListener('click',()=>{

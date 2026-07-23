@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Knowledge Architect</title>
+<style>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1260px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);max-width:920px;line-height:1.5}
+button,a,input,select{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit}
+button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0}.metric,.panel{background:#fff;border-radius:15px;padding:14px}.metric span{display:block;color:var(--muted);font-size:.7rem}.metric strong{display:block;font-size:1.55rem;margin-top:4px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.issue{border:1px solid var(--line);border-radius:13px;padding:13px;margin-top:10px}.issue h3{margin:0 0 5px}.meta{color:var(--muted);font-size:.73rem;line-height:1.45}.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.card{background:#f7f4ef;border-radius:10px;padding:10px}.card strong{display:block}.excerpt{margin-top:5px;font-size:.74rem;line-height:1.4;color:#44534e}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.pill{display:inline-block;border-radius:999px;padding:4px 7px;font-size:.66rem;font-weight:850}.bad{background:#f7ded9;color:var(--bad)}.warn{background:#fff0ca;color:#745200}.ok{background:#e1f1e7;color:#265f42}
+.notice{background:#fff6dc;padding:10px;border-radius:10px;color:#765500}.success{background:#e7f4ec;padding:10px;border-radius:10px;color:#205c3d}
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+@media(max-width:800px){.metrics{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
+<h1>Casa Amar Knowledge Architect</h1>
+<p class="lead">Finder dubletter, identiske ID’er, uklare titler og stærkt overlappende objekter. Værktøjet ændrer ikke noget automatisk. Du kan åbne et objekt i Studio, bruge et titelforslag eller arkivere en åbenlys dublet lokalt.</p>
+
+<section class="metrics">
+<div class="metric"><span>Knowledge Objects</span><strong id="mAll">0</strong></div>
+<div class="metric"><span>Identiske titler</span><strong id="mTitles">0</strong></div>
+<div class="metric"><span>Identiske ID’er</span><strong id="mIds">0</strong></div>
+<div class="metric"><span>Stærkt overlap</span><strong id="mOverlap">0</strong></div>
+<div class="metric"><span>Uklare titler</span><strong id="mVague">0</strong></div>
+</section>
+
+<section class="panel">
+<div class="filters">
+<select id="type">
+<option value="">Alle problemer</option>
+<option value="duplicate_title">Identiske titler</option>
+<option value="duplicate_id">Identiske ID’er</option>
+<option value="overlap">Stærkt overlap</option>
+<option value="vague">Uklare titler</option>
+</select>
+<input id="search" placeholder="Søg i problemer">
+<button id="refresh">Analysér igen</button>
+<button class="primary" id="export">Lav samlet GitHub-fil</button>
+</div>
+<div id="message"></div>
+<div id="issues"></div>
+</section>
+
+<script>
+const q=s=>document.querySelector(s);
+const KEY='casaKnowledgeChanges';
+let data={cards:[]},changes=[],issues=[];
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function clone(v){return JSON.parse(JSON.stringify(v))}
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim()}
+function tokens(s){const stop=new Set(['casa','amar','til','ved','for','med','og','i','på','om','det','den','de','et','en']);return [...new Set(norm(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x)))]}
+function content(c){return c.draft_version?.summary||c.summary||c.answer||c.content||c.body||''}
+function loadChanges(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+function saveChanges(){localStorage.setItem(KEY,JSON.stringify(changes))}
+function applyWorkspace(cards,items){const map=new Map(cards.map(c=>[c.id,c]));for(const ch of items){if(ch?.after?.id)map.set(ch.after.id,clone(ch.after))}return [...map.values()]}
+function similarity(a,b){
+ const A=new Set(tokens(a)),B=new Set(tokens(b));if(!A.size||!B.size)return 0;
+ const intersection=[...A].filter(x=>B.has(x)).length;
+ return intersection/(A.size+B.size-intersection);
+}
+function purposeTitle(c){
+ const text=norm(content(c));
+ const category=c.category||'Praktisk';
+ if(/adresse|calle zopilote|husnummer/.test(text)&&/find|ankomst|adgang|kore/.test(text))return'Sådan finder du Casa Amar';
+ if(/adresse|calle zopilote|husnummer/.test(text))return'Casa Amars officielle adresse';
+ if(/parkering|parkere|p-plads/.test(text))return'Parkering ved Casa Amar';
+ if(/pool|bassin|livredder/.test(text)&&/adgang|kort|port/.test(text))return'Adgang til poolområdet';
+ if(/pool|bassin|livredder/.test(text))return'Poolens faciliteter og regler';
+ if(/wifi|internet|mesh/.test(text))return'Wi-Fi og internet i Casa Amar';
+ if(/aircondition|klimaanlæg|køling/.test(text))return'Aircondition og varme';
+ if(/bus|tog|taxa/.test(text))return'Transport mellem Cerros del Águila og Fuengirola';
+ return`${category}: ${c.title}`;
+}
+function isVague(c){
+ const title=norm(c.title);
+ return title.length<8||['praktisk','information','området','huset','adresse til casa amar'].includes(title);
+}
+function analyze(){
+ issues=[];
+ const cards=data.cards.filter(c=>c.status!=='archived');
+ const byTitle=new Map(),byId=new Map();
+ cards.forEach(c=>{
+   const t=norm(c.title);if(!byTitle.has(t))byTitle.set(t,[]);byTitle.get(t).push(c);
+   const id=String(c.id||'');if(!byId.has(id))byId.set(id,[]);byId.get(id).push(c);
+ });
+ for(const [key,group] of byTitle){if(key&&group.length>1)issues.push({type:'duplicate_title',title:`${group.length} objekter har samme titel`,cards:group,score:100})}
+ for(const [key,group] of byId){if(key&&group.length>1)issues.push({type:'duplicate_id',title:`${group.length} objekter har samme ID: ${key}`,cards:group,score:100})}
+ for(let i=0;i<cards.length;i++)for(let j=i+1;j<cards.length;j++){
+   if(norm(cards[i].title)===norm(cards[j].title)||cards[i].id===cards[j].id)continue;
+   const score=similarity(`${cards[i].title} ${content(cards[i])}`,`${cards[j].title} ${content(cards[j])}`);
+   if(score>=.64)issues.push({type:'overlap',title:'Stærkt indholdsoverlap',cards:[cards[i],cards[j]],score:Math.round(score*100)});
+ }
+ cards.filter(isVague).forEach(c=>issues.push({type:'vague',title:'Titel kan gøres mere entydig',cards:[c],score:0,suggestion:purposeTitle(c)}));
+ metrics();render();
+}
+function metrics(){
+ q('#mAll').textContent=data.cards.length;
+ q('#mTitles').textContent=issues.filter(x=>x.type==='duplicate_title').length;
+ q('#mIds').textContent=issues.filter(x=>x.type==='duplicate_id').length;
+ q('#mOverlap').textContent=issues.filter(x=>x.type==='overlap').length;
+ q('#mVague').textContent=issues.filter(x=>x.type==='vague').length;
+}
+function filtered(){
+ const type=q('#type').value,term=norm(q('#search').value);
+ return issues.filter(x=>(!type||x.type===type)&&(!term||norm(x.title+' '+x.cards.map(c=>c.title).join(' ')).includes(term)));
+}
+function render(){
+ const list=filtered();
+ q('#issues').innerHTML=list.length?list.map((issue,idx)=>`
+ <article class="issue">
+   <span class="pill ${issue.type==='duplicate_id'?'bad':'warn'}">${esc(issue.type.replaceAll('_',' '))}</span>
+   <h3>${esc(issue.title)}</h3>
+   ${issue.score?`<div class="meta">Overlap-score: ${issue.score}%</div>`:''}
+   <div class="cards">${issue.cards.map(c=>`
+     <div class="card">
+       <strong>${esc(c.title)}</strong>
+       <div class="meta">${esc(c.category)} · ${esc(c.id)} · ${esc(c.status||'active')}</div>
+       <div class="excerpt">${esc(content(c).slice(0,210))}${content(c).length>210?'…':''}</div>
+       <div class="actions">
+         <a href="/knowledge-studio.html?object=${encodeURIComponent(c.id)}">Åbn i Studio</a>
+         <a href="/knowledge-review.html?object=${encodeURIComponent(c.id)}">Åbn i Review</a>
+         ${issue.type==='vague'?`<button class="good" data-rename="${esc(c.id)}" data-title="${esc(issue.suggestion)}">Brug titelforslag</button>`:''}
+         <button data-archive="${esc(c.id)}">Arkivér lokalt</button>
+       </div>
+     </div>`).join('')}</div>
+   ${issue.suggestion?`<p class="notice"><strong>Forslag:</strong> ${esc(issue.suggestion)}</p>`:''}
+ </article>`).join(''):'<p class="success">Ingen problemer matcher det valgte filter.</p>';
+
+ q('#issues').querySelectorAll('[data-rename]').forEach(btn=>btn.addEventListener('click',()=>rename(btn.dataset.rename,btn.dataset.title)));
+ q('#issues').querySelectorAll('[data-archive]').forEach(btn=>btn.addEventListener('click',()=>archive(btn.dataset.archive)));
+}
+function record(card,before,action){
+ changes.push({id:`architect-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,card_id:card.id,changed_at:new Date().toISOString(),before,after:clone(card),status:'approved_local',manager_operation:action});
+ saveChanges();
+}
+function rename(id,title){
+ const card=data.cards.find(c=>c.id===id);if(!card)return;
+ const before=clone(card);
+ if(card.draft_version)card.draft_version.title=title;
+ else{
+   card.draft_version={title,category:card.category,summary:content(card),answer:content(card),body:content(card),content:content(card),visibility:card.visibility,channels:clone(card.channels||{}),maturity:'draft',status:'draft',created_at:new Date().toISOString(),updated_at:new Date().toISOString(),created_by:'Michael',tests:clone(card.tests||[]),assets:clone(card.assets||[]),relations:clone(card.relations||{related:[],supersedes:[],superseded_by:[]})};
+   card.lifecycle={...(card.lifecycle||{}),live_status:'live',has_draft:true};
+ }
+ record(card,before,'architect_rename');q('#message').innerHTML='<p class="success">Titelforslaget er gemt som draft.</p>';analyze();
+}
+function archive(id){
+ const card=data.cards.find(c=>c.id===id);if(!card||!confirm(`Arkivér "${card.title}" lokalt?`))return;
+ const before=clone(card);card.status='archived';card.lifecycle={...(card.lifecycle||{}),live_status:'archived'};
+ record(card,before,'architect_archive');q('#message').innerHTML='<p class="success">Objektet er arkiveret lokalt.</p>';analyze();
+}
+function exportFile(){
+ const payload={...data,version:'2.0',updated:new Date().toISOString(),entries:data.cards};
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='knowledge-cards.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+q('#type').addEventListener('change',render);q('#search').addEventListener('input',render);q('#refresh').addEventListener('click',analyze);q('#export').addEventListener('click',exportFile);
+fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{
+ changes=loadChanges();const server=raw.cards||raw.entries||[];data={...raw,cards:applyWorkspace(server,changes)};analyze();
+});
+</script>
+</main></body></html>

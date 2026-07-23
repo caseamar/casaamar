@@ -22,9 +22,23 @@ button,a{border:1px solid #d6cec3;border-radius:11px;padding:10px 14px;backgroun
 .answer{white-space:pre-wrap;line-height:1.55;background:#f7f5f0;border-radius:11px;padding:12px}
 pre{white-space:pre-wrap;word-break:break-word;background:#f5f2ec;border-radius:10px;padding:11px;font-size:.75rem;max-height:320px;overflow:auto}
 .hidden{display:none}@media(max-width:780px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+.platform-nav a:hover{background:#edf4f0}
+
 </style>
 </head>
 <body><main>
+<nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
 <h1>Casa Amar Knowledge Debug Center</h1>
 <p class="lead">Se hele kæden fra deployment og indlæst Knowledge Base til AI-søgeplan, valgte objekter og gæstens endelige svar.</p>
 <div class="actions">
@@ -74,7 +88,7 @@ async function health(){
    const aiObjects=(cards.cards||cards.entries||[]).filter(c=>c.status!=='archived'&&c.channels?.ai!==false).length;
    const loaded=(status.datasets||[]).filter(d=>d.loaded).length;
    q('#system').innerHTML=`
-     <div class="status"><span>Aktiv Worker</span><span class="pill ${chat.version==='9.0-pipeline'?'ok':'bad'}">${esc(chat.version||'ukendt')}</span></div>
+     <div class="status"><span>Aktiv Worker</span><span class="pill ${chat.version==='8.3-ai-search-planner'?'ok':'bad'}">${esc(chat.version||'ukendt')}</span></div>
      <div class="status"><span>Knowledge Platform</span><span class="pill ${status.ok?'ok':'bad'}">${status.ok?'OK':'Fejl'}</span></div>
      <div class="status"><span>Indlæste datasæt</span><strong>${loaded}/${(status.datasets||[]).length}</strong></div>
      <div class="status"><span>Knowledge Objects i filen</span><strong>${objects}</strong></div>
@@ -103,24 +117,17 @@ async function run(){
    const plan=data.searchPlan||{};
    const terms=[...(plan.terms||[]),...(plan.concepts||[])];
    const matches=data.knowledgeMatches||[];
-   const pipeline=data.pipeline||{};
 
    q('#result').innerHTML=`
      <div class="step"><h3>1. Spørgsmål</h3><div>${esc(question)}</div></div>
-     <div class="step"><h3>2. Pipeline</h3>
-       <div class="status"><span>Rute</span><strong>${esc(pipeline.route||'ukendt')}</strong></div>
-       <div class="status"><span>Search Planner</span><span class="pill ${pipeline.planner?.status==='completed'?'ok':'warn'}">${esc(pipeline.planner?.status||'ukendt')}</span></div>
-       <div class="status"><span>Retrieval</span><span class="pill ${pipeline.retrieval?.count>0?'ok':'bad'}">${esc(pipeline.retrieval?.count??0)} objekter</span></div>
-       <div class="status"><span>Svarmodel</span><span class="pill ${pipeline.generation?.status==='completed'?'ok':'warn'}">${esc(pipeline.generation?.status||'ikke kørt')}</span></div>
-     </div>
-     <div class="step"><h3>3. AI Search Planner</h3>
+     <div class="step"><h3>2. AI Search Planner</h3>
        <div class="chips">${terms.length?terms.map(t=>`<span class="chip">${esc(t)}</span>`).join(''):'<span class="pill warn">Ingen diagnostik returneret</span>'}</div>
        <p class="meta">Intent: ${esc(plan.intent||'ukendt')} · confidence: ${esc(plan.confidence??'ukendt')}%</p>
      </div>
-     <div class="step"><h3>4. Valgte Knowledge Objects</h3>
+     <div class="step"><h3>3. Valgte Knowledge Objects</h3>
        ${matches.length?matches.map(m=>`<div class="match"><span><strong>${esc(m.title)}</strong><br><small>${esc(m.id)}</small></span><strong>${esc(m.score??'–')}</strong></div>`).join(''):'<span class="pill bad">Ingen objekter fundet</span>'}
      </div>
-     <div class="step"><h3>5. Endeligt svar</h3><div class="answer">${esc(data.answer||'Intet svar')}</div>
+     <div class="step"><h3>4. Endeligt svar</h3><div class="answer">${esc(data.answer||'Intet svar')}</div>
        <p><span class="pill ${data.needsHuman?'warn':'ok'}">${data.needsHuman?'Handoff':'Besvaret af KB'}</span>
        <span class="pill">Confidence ${esc(data.confidence??'–')}</span></p>
      </div>`;

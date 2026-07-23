@@ -19,9 +19,23 @@ textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px
 .diff{display:grid;grid-template-columns:1fr 1fr;gap:10px}.box{background:#f7f4ef;border-radius:11px;padding:11px;white-space:pre-wrap;line-height:1.45;font-size:.87rem}
 .notice{background:#fff6dc;border-radius:10px;padding:10px;color:#765500}.success{background:#e7f4ec;border-radius:10px;padding:10px;color:#205c3d}
 .hidden{display:none}@media(max-width:900px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.diff{grid-template-columns:1fr}}
+
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+.platform-nav a:hover{background:#edf4f0}
+
 </style>
 </head>
 <body><main>
+<nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
 <h1>Casa Amar Review Center</h1>
 <p class="lead">Gennemgå drafts uden at påvirke den version, Concierge bruger. En live-version kan fortsætte, mens en ny draft redigeres. Først når du godkender, bliver draften den nye live-version.</p>
 <div class="top">
@@ -236,6 +250,8 @@ Promise.all([
  const cats=[...new Set(data.cards.flatMap(c=>[c.category,c.draft_version?.category]).filter(Boolean))].sort();
  q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
  render();
+ const requested=new URLSearchParams(location.search).get('object');
+ if(requested&&getCard(requested))openCard(requested);
 });
 </script>
 </main></body></html>
