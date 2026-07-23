@@ -19,43 +19,132 @@
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.47</strong></div>
-<div><span>Build</span><strong>2026-07-23 20:40</strong></div>
+<div><span>Release</span><strong>v2026.07.23.48</strong></div>
+<div><span>Build</span><strong>2026-07-23 21:30</strong></div>
 <div><span>Worker</span><strong>9.4-multi-object-manager</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section><h1>Casa Amar Knowledge Architect</h1><p class="lead">Ved sammenskrivning kan du vælge mellem en sikker draft eller direkte godkendelse. Direkte godkendelse opretter det nye live-objekt og arkiverer kildeobjekterne lokalt med det samme.</p>
-<section class="panel"><div class="filters"><select id="type"><option value="">Alle problemer</option><option value="duplicate_title">Identiske titler</option><option value="duplicate_id">Identiske ID’er</option><option value="overlap">Stærkt overlap</option><option value="vague">Uklare titler</option></select><input id="search" placeholder="Søg"><button id="refresh">Analysér igen</button></div><div id="message"></div><div id="issues"></div></section>
+</section><h1>Casa Amar Knowledge Architect</h1><p class="lead">Relaterede dubletter og overlap samles nu i én gruppe. Du tager derfor kun stilling én gang, også når fire eller flere objekter hænger sammen.</p>
+<section class="panel"><div class="filters"><select id="type"><option value="">Alle problemer</option><option value="duplicate_title">Identiske titler</option><option value="duplicate_id">Identiske ID’er</option><option value="overlap">Stærkt overlap</option><option value="vague">Uklare titler</option></select><input id="search" placeholder="Søg"><button id="refresh">Analysér igen</button><button id="showResolved">Vis behandlede grupper igen</button></div><div id="message"></div><div id="issues"></div></section>
 <script>
-const q=s=>document.querySelector(s),KEY='casaKnowledgeChanges';let data={cards:[]},changes=[],issues=[];const clone=v=>JSON.parse(JSON.stringify(v));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim();
+const q=s=>document.querySelector(s),KEY='casaKnowledgeChanges';let data={cards:[]},changes=[],issues=[],resolvedClusters=new Set(JSON.parse(localStorage.getItem('casaResolvedArchitectClusters')||'[]'));const clone=v=>JSON.parse(JSON.stringify(v));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim();
 function runtime(cards){const seen={};return cards.map((c,i)=>{seen[c.id]=(seen[c.id]||0)+1;c.__key=`${c.id}::${seen[c.id]}::${i}`;return c})}function clean(c){const x=clone(c);delete x.__key;return x}function content(c){return c.draft_version?.summary||c.summary||c.answer||c.content||c.body||''}function tokens(s){const stop=new Set(['casa','amar','til','ved','for','med','og','i','på','om','det','den','de','et','en']);return[...new Set(norm(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x)))]}function similarity(a,b){const A=new Set(tokens(a)),B=new Set(tokens(b));if(!A.size||!B.size)return 0;return[...A].filter(x=>B.has(x)).length/(A.size+B.size-[...A].filter(x=>B.has(x)).length)}
 function loadChanges(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}}function saveChanges(){localStorage.setItem(KEY,JSON.stringify(changes))}function applyChanges(cards,items){for(const ch of items){let i=ch.runtime_key?cards.findIndex(c=>c.__key===ch.runtime_key):-1;if(i<0&&ch.after?.title)i=cards.findIndex(c=>c.id===ch.card_id&&c.title===ch.before?.title);if(i>=0)cards[i]={...clone(ch.after),__key:cards[i].__key};else if(ch.after)cards.push({...clone(ch.after),__key:`${ch.after.id}::new::${Date.now()}`})}return cards}
 function record(c,before,action){changes.push({id:`architect-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,runtime_key:c.__key,card_id:c.id,changed_at:new Date().toISOString(),before:before?clean(before):null,after:clean(c),status:'approved_local',manager_operation:action});saveChanges()}
 function titleSuggestion(c){const text=norm(content(c));if(/adresse|calle zopilote|husnummer/.test(text)&&/find|ankomst|adgang|kore/.test(text))return'Sådan finder du Casa Amar';if(/adresse|calle zopilote|husnummer/.test(text))return'Casa Amars officielle adresse';if(/parkering|parkere/.test(text))return'Parkering ved Casa Amar';if(/pool/.test(text)&&/adgang|kort|port/.test(text))return'Adgang til poolområdet';if(/pool/.test(text))return'Poolens faciliteter og regler';if(/wifi|internet/.test(text))return'Wi-Fi og internet i Casa Amar';return`${c.category||'Viden'}: ${c.title}`}
 function mergedText(cards){const paras=[];for(const c of cards)for(const p of content(c).split(/\n+/).map(x=>x.trim()).filter(Boolean))if(!paras.some(x=>norm(x)===norm(p)))paras.push(p);return paras.join('\n\n')}
 function mergedTitle(cards){
- const unique=[...new Set(cards.map(c=>c.title))];
  const common=cards[0].category||'Samlet viden';
+ const unique=[...new Set(cards.map(c=>c.title))];
  if(unique.length===1){
    const title=unique[0];
-   return norm(title).startsWith(norm(common)+ ' ')?title:titleSuggestion(cards[0]);
+   return norm(title).startsWith(norm(common)+' ')?title:titleSuggestion(cards[0]);
  }
- const cleaned=unique.map(title=>{
-   const prefix=norm(common);
-   const value=norm(title);
-   return value.startsWith(prefix+' ')?title.replace(new RegExp(`^${common}\s*[:\-]\s*`,'i'),''):title;
- });
- return `${common}: ${cleaned.join(' og ')}`;
+ const cleaned=[...new Set(unique.map(title=>title.replace(new RegExp(`^${common}\\s*[:\\-]\\s*`,'i'),'').trim()))];
+ if(cleaned.length===1)return `${common}: ${cleaned[0]}`;
+ return `${common}: samlet information`;
 }
-function analyze(){issues=[];const cards=data.cards.filter(c=>c.status!=='archived'),byT=new Map(),byI=new Map();cards.forEach(c=>{const t=norm(c.title);if(!byT.has(t))byT.set(t,[]);byT.get(t).push(c);if(!byI.has(c.id))byI.set(c.id,[]);byI.get(c.id).push(c)});for(const g of byT.values())if(g.length>1)issues.push({type:'duplicate_title',cards:g,title:'Identiske titler'});for(const g of byI.values())if(g.length>1)issues.push({type:'duplicate_id',cards:g,title:'Identiske ID’er'});for(let i=0;i<cards.length;i++)for(let j=i+1;j<cards.length;j++){if(cards[i].id===cards[j].id||norm(cards[i].title)===norm(cards[j].title))continue;const s=similarity(cards[i].title+' '+content(cards[i]),cards[j].title+' '+content(cards[j]));if(s>=.64)issues.push({type:'overlap',cards:[cards[i],cards[j]],title:`Stærkt overlap (${Math.round(s*100)} %)`})}cards.filter(c=>norm(c.title).length<8||['malaga','ronda','praktisk','information','området','huset','adresse til casa amar'].includes(norm(c.title))).forEach(c=>issues.push({type:'vague',cards:[c],title:'Titel kan gøres mere entydig',suggestion:titleSuggestion(c)}));render()}
-function filtered(){const type=q('#type').value,term=norm(q('#search').value);return issues.filter(x=>(!type||x.type===type)&&(!term||norm(x.title+' '+x.cards.map(c=>c.title).join(' ')).includes(term)))}
+function analyze(){
+ issues=[];
+ const cards=data.cards.filter(c=>c.status!=='archived');
+ const edges=[],byT=new Map(),byI=new Map();
+
+ cards.forEach(c=>{
+   const t=norm(c.title);
+   if(!byT.has(t))byT.set(t,[]);
+   byT.get(t).push(c);
+   if(!byI.has(c.id))byI.set(c.id,[]);
+   byI.get(c.id).push(c);
+ });
+
+ for(const group of byT.values())if(group.length>1)
+   for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++)edges.push([group[i],group[j],'duplicate_title',100]);
+
+ for(const group of byI.values())if(group.length>1)
+   for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++)edges.push([group[i],group[j],'duplicate_id',100]);
+
+ for(let i=0;i<cards.length;i++)for(let j=i+1;j<cards.length;j++){
+   if(cards[i].id===cards[j].id||norm(cards[i].title)===norm(cards[j].title))continue;
+   const s=similarity(cards[i].title+' '+content(cards[i]),cards[j].title+' '+content(cards[j]));
+   if(s>=.64)edges.push([cards[i],cards[j],'overlap',Math.round(s*100)]);
+ }
+
+ const adjacency=new Map(cards.map(c=>[c.__key,new Set()]));
+ const meta=new Map();
+ for(const [a,b,type,score] of edges){
+   adjacency.get(a.__key)?.add(b.__key);
+   adjacency.get(b.__key)?.add(a.__key);
+   meta.set([a.__key,b.__key].sort().join('|'),{type,score});
+ }
+
+ const visited=new Set();
+ for(const card of cards){
+   if(visited.has(card.__key)||!(adjacency.get(card.__key)?.size))continue;
+   const stack=[card.__key],component=[];
+   while(stack.length){
+     const key=stack.pop();
+     if(visited.has(key))continue;
+     visited.add(key);
+     const found=cards.find(c=>c.__key===key);
+     if(found)component.push(found);
+     for(const next of adjacency.get(key)||[])if(!visited.has(next))stack.push(next);
+   }
+   if(component.length<2)continue;
+
+   let hasId=false,hasTitle=false,maxOverlap=0;
+   for(let i=0;i<component.length;i++)for(let j=i+1;j<component.length;j++){
+     const m=meta.get([component[i].__key,component[j].__key].sort().join('|'));
+     if(!m)continue;
+     if(m.type==='duplicate_id')hasId=true;
+     if(m.type==='duplicate_title')hasTitle=true;
+     if(m.type==='overlap')maxOverlap=Math.max(maxOverlap,m.score);
+   }
+
+   issues.push({
+     type:hasId?'duplicate_id':hasTitle?'duplicate_title':'overlap',
+     cards:component,
+     title:hasId
+       ? `${component.length} objekter hænger sammen og indeholder identiske ID’er`
+       : hasTitle
+         ? `${component.length} objekter hænger sammen og har identiske titler`
+         : `${component.length} objekter hænger sammen med op til ${maxOverlap}% overlap`,
+     cluster_key:component.map(c=>c.__key).sort().join('|'),
+     score:maxOverlap||100
+   });
+ }
+
+ cards.filter(c=>norm(c.title).length<8||['malaga','ronda','cordoba','praktisk','information','området','huset','adresse til casa amar'].includes(norm(c.title)))
+   .forEach(c=>issues.push({type:'vague',cards:[c],title:'Titel kan gøres mere entydig',suggestion:titleSuggestion(c)}));
+
+ render();
+}
+function filtered(){
+ const type=q('#type').value,term=norm(q('#search').value);
+ return issues.filter(x=>
+   !resolvedClusters.has(x.cluster_key||'') &&
+   (!type||x.type===type) &&
+   (!term||norm(x.title+' '+x.cards.map(c=>c.title).join(' ')).includes(term))
+ );
+}
 function render(){q('#issues').innerHTML=filtered().map((it,n)=>{const merge=it.cards.length>1,title=merge?mergedTitle(it.cards):it.suggestion,text=merge?mergedText(it.cards):'';return`<article class="issue"><span class="warn">${esc(it.type.replaceAll('_',' '))}</span><h3>${esc(it.title)}</h3><div class="cards">${it.cards.map(c=>`<div class="card"><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.id)}</div><div class="excerpt">${esc(content(c).slice(0,230))}${content(c).length>230?'…':''}</div><div class="actions"><a href="/knowledge-studio.html?object=${encodeURIComponent(c.id)}">Åbn i Studio</a><a href="/knowledge-review.html?object=${encodeURIComponent(c.id)}">Åbn i Review</a></div></div>`).join('')}</div>${!merge?`<div class="before-after"><div class="titlebox"><span class="meta">Nuværende titel</span><strong>${esc(it.cards[0].title)}</strong></div><strong>→</strong><div class="titlebox"><span class="meta">Foreslået titel</span><strong>${esc(title)}</strong></div></div><button class="good" data-rename="${esc(it.cards[0].__key)}" data-title="${esc(title)}">Brug titlen “${esc(title)}”</button>`:`<div class="proposal"><h3>Forslag til sammenskrivning</h3><label>Ny titel</label><input style="width:100%" data-merge-title="${n}" value="${esc(title)}"><label>Ny samlet tekst</label><textarea data-merge-text="${n}">${esc(text)}</textarea><div class="actions">
       <button class="good" data-merge="${n}" data-mode="draft">Opret som draft</button>
       <button class="primary" data-merge="${n}" data-mode="publish">Godkend og gør live nu</button>
     </div>
-    <div class="applied-state hidden" data-merge-status="${n}"></div></div>`}</article>`}).join('')||'<p class="success">Ingen problemer matcher filteret.</p>';q('#issues').querySelectorAll('[data-rename]').forEach(b=>b.onclick=()=>rename(b.dataset.rename,b.dataset.title));q('#issues').querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>mergeIssue(Number(b.dataset.merge),b.dataset.mode||'draft'))}
+    <div class="applied-state hidden" data-merge-status="${n}"></div></div>`}</article>`}).join('')||'<p class="success">Ingen problemer matcher filteret.</p>';q('#issues').querySelectorAll('[data-rename]').forEach(b=>b.onclick=()=>rename(b.dataset.rename,b.dataset.title,b));q('#issues').querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>mergeIssue(Number(b.dataset.merge),b.dataset.mode||'draft'))}
 function draftFrom(c,title,summary){return{title,category:c.category,summary,answer:summary,body:summary,content:summary,visibility:c.visibility||'internal',channels:clone(c.channels||{ai:true,website:false,guest_guide:true,owner_guide:true}),maturity:'draft',status:'draft',created_at:new Date().toISOString(),updated_at:new Date().toISOString(),created_by:'Michael',tests:clone(c.tests||[]),assets:clone(c.assets||[]),relations:clone(c.relations||{related:[],supersedes:[],superseded_by:[]})}}
-function rename(k,title){const c=data.cards.find(x=>x.__key===k);if(!c)return;const before=clone(c);c.draft_version={...(c.draft_version||draftFrom(c,c.title,content(c))),title,updated_at:new Date().toISOString()};c.lifecycle={...(c.lifecycle||{}),live_status:'live',has_draft:true};record(c,before,'architect_rename');q('#message').innerHTML=`<p class="success">Titlen <strong>${esc(title)}</strong> er gemt som draft og kan godkendes i Review Center.</p>`;analyze()}
+function rename(k,title,button){
+ const c=data.cards.find(x=>x.__key===k);if(!c)return;
+ const before=clone(c);
+ c.draft_version={...(c.draft_version||draftFrom(c,c.title,content(c))),title,updated_at:new Date().toISOString()};
+ c.lifecycle={...(c.lifecycle||{}),live_status:'live',has_draft:true};
+ record(c,before,'architect_rename');
+ if(button){
+   button.disabled=true;
+   button.textContent=`✓ Titlen “${title}” er gemt som draft`;
+   button.closest('.issue')?.classList.add('saved-card');
+ }
+ q('#message').innerHTML=`<p class="success">Titlen <strong>${esc(title)}</strong> er gemt som draft og kan godkendes i Review Center.</p>`;
+}
 function slug(s){return norm(s).replace(/\s+/g,'-')||`merged-${Date.now()}`}
 function mergeIssue(n,mode='draft'){
  const it=filtered()[n];
@@ -119,7 +208,10 @@ function mergeIssue(n,mode='draft'){
     statusBox.classList.remove('hidden');
     statusBox.innerHTML=`✓ Sammenskrivningen <strong>${esc(title)}</strong> er godkendt og gjort live. ${sources.length} kildeobjekter er arkiveret lokalt.`;
    }
-   q('#message').innerHTML=`<p class="success"><strong>Gennemført.</strong> Den nye live-version er gemt i workspace. Eksportér senere fra Oversigt.</p>`;
+   resolvedClusters.add(it.cluster_key||'');
+   localStorage.setItem('casaResolvedArchitectClusters',JSON.stringify([...resolvedClusters]));
+   q('#message').innerHTML=`<p class="success"><strong>Gennemført.</strong> Hele gruppen er behandlet én gang og skjules nu fra listen.</p>`;
+   setTimeout(render,650);
   }else{
    const c={
     id,title,category:it.cards[0].category||'Viden',
@@ -144,7 +236,10 @@ function mergeIssue(n,mode='draft'){
     statusBox.classList.remove('hidden');
     statusBox.innerHTML=`✓ Sammenskrivningen <strong>${esc(title)}</strong> er oprettet som draft. Kildeobjekterne er fortsat live.`;
    }
-   q('#message').innerHTML=`<p class="success">Draften <strong>${esc(title)}</strong> er oprettet og kan godkendes i Review Center.</p>`;
+   resolvedClusters.add(it.cluster_key||'');
+   localStorage.setItem('casaResolvedArchitectClusters',JSON.stringify([...resolvedClusters]));
+   q('#message').innerHTML=`<p class="success">Hele gruppen er behandlet én gang og skjules nu fra listen. Draften <strong>${esc(title)}</strong> kan godkendes i Review Center.</p>`;
+   setTimeout(render,650);
   }
 
   const article=statusBox?.closest('.issue');
@@ -160,7 +255,8 @@ function mergeIssue(n,mode='draft'){
  }
 }
 function exportFile(){const cards=data.cards.map(clean),payload={...data,cards,entries:cards,version:'2.1',updated:new Date().toISOString()};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='knowledge-cards.json';a.click()}
-q('#type').onchange=render;q('#search').oninput=render;q('#refresh').onclick=analyze;fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{changes=loadChanges();data={...raw,cards:applyChanges(runtime(clone(raw.cards||raw.entries||[])),changes)};analyze()});
+q('#type').onchange=render;q('#search').oninput=render;q('#refresh').onclick=analyze;
+q('#showResolved').onclick=()=>{resolvedClusters.clear();localStorage.removeItem('casaResolvedArchitectClusters');render()};fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{changes=loadChanges();data={...raw,cards:applyChanges(runtime(clone(raw.cards||raw.entries||[])),changes)};analyze()});
 
 (async()=>{
  try{
