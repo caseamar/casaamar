@@ -232,9 +232,8 @@
         {
           "id": "practical",
           "component": "expectation-panel",
-          "purpose": "Skab tillid gennem ærlig forventningsafstemning.",
+          "purpose": "Skab tillid med seks korte og selvstændige 'godt at vide'-kort.",
           "headline_max_chars": 60,
-          "body_max_chars": 500,
           "fact_count": 6,
           "image_slots": [
             {

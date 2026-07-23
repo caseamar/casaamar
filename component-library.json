@@ -1,0 +1,282 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-24",
+  "principle": "The live website components and Page Studio read the same component contracts.",
+  "components": {
+    "hero": {
+      "label": "Hero",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 55,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Intro",
+          "max_chars": 180,
+          "required": true
+        },
+        {
+          "id": "cta_label",
+          "type": "text",
+          "label": "CTA",
+          "max_chars": 28,
+          "required": true
+        }
+      ],
+      "copy_rules": [
+        "Skab attention og lyst.",
+        "Ingen praktiske detaljer.",
+        "Én tydelig CTA."
+      ]
+    },
+    "editorial-gallery": {
+      "label": "Livsstilsfortælling",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Tekst",
+          "max_chars": 420,
+          "required": true
+        }
+      ],
+      "copy_rules": [
+        "Skriv visuelt og sanseligt.",
+        "Undgå gentagelser fra hero.",
+        "Ingen CTA."
+      ]
+    },
+    "feature-grid": {
+      "label": "Husets kvaliteter",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 55,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Intro",
+          "max_chars": 300,
+          "required": true
+        },
+        {
+          "id": "cards",
+          "type": "cards",
+          "label": "Kort",
+          "count": 4,
+          "title_max_chars": 34,
+          "body_max_chars": 120
+        }
+      ],
+      "copy_rules": [
+        "Dokumentér huset konkret.",
+        "Hvert kort skal have sit eget emne."
+      ]
+    },
+    "full-bleed-story": {
+      "label": "Visuel historie",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 55,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Tekst",
+          "max_chars": 300,
+          "required": true
+        }
+      ],
+      "copy_rules": [
+        "Fokusér på ét særligt sted eller én oplevelse.",
+        "Ingen praktisk opremsning."
+      ]
+    },
+    "map-and-story": {
+      "label": "Beliggenhed",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Tekst",
+          "max_chars": 420,
+          "required": true
+        },
+        {
+          "id": "cta_label",
+          "type": "text",
+          "label": "CTA",
+          "max_chars": 28,
+          "required": false
+        }
+      ],
+      "copy_rules": [
+        "Forklar beliggenheden som en fordel og en ærlig forventningsafstemning.",
+        "Ingen kildehenvisninger.",
+        "Undgå prisoplysninger."
+      ]
+    },
+    "visual-cards": {
+      "label": "Oplevelseskort",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Intro",
+          "max_chars": 220,
+          "required": true
+        },
+        {
+          "id": "cards",
+          "type": "cards",
+          "label": "Oplevelser",
+          "count": 6,
+          "title_max_chars": 32,
+          "body_max_chars": 105
+        },
+        {
+          "id": "cta_label",
+          "type": "text",
+          "label": "CTA",
+          "max_chars": 28,
+          "required": false
+        }
+      ],
+      "copy_rules": [
+        "Inspirér, men forklar ikke alt.",
+        "Hvert kort skal tilføre noget nyt."
+      ]
+    },
+    "audience-scenarios": {
+      "label": "Hvem passer huset til",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Intro",
+          "max_chars": 220,
+          "required": true
+        },
+        {
+          "id": "cards",
+          "type": "cards",
+          "label": "Scenarier",
+          "count": 4,
+          "title_max_chars": 32,
+          "body_max_chars": 130
+        }
+      ],
+      "copy_rules": [
+        "Hjælp gæsten med at vurdere fit.",
+        "Skriv konkrete opholdsscenarier."
+      ]
+    },
+    "expectation-panel": {
+      "label": "Godt at vide",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "items",
+          "type": "fact_cards",
+          "label": "Praktiske kort",
+          "count": 6,
+          "title_max_chars": 28,
+          "body_max_chars": 95
+        }
+      ],
+      "copy_rules": [
+        "Brug korte, selvstændige kort – aldrig én lang tekstmur.",
+        "Medtag kun de vigtigste forventningsafstemmende fakta.",
+        "Ingen priser, ingen kildehenvisninger og ingen opfordring til at tjekke hos andre.",
+        "Ved booking eller spørgsmål tager Michael den indledende dialog."
+      ]
+    },
+    "conversion-cta": {
+      "label": "Afsluttende CTA",
+      "fields": [
+        {
+          "id": "headline",
+          "type": "text",
+          "label": "Overskrift",
+          "max_chars": 60,
+          "required": true
+        },
+        {
+          "id": "body",
+          "type": "textarea",
+          "label": "Tekst",
+          "max_chars": 220,
+          "required": true
+        },
+        {
+          "id": "cta_label",
+          "type": "text",
+          "label": "CTA",
+          "max_chars": 28,
+          "required": true
+        }
+      ],
+      "copy_rules": [
+        "Michael tager den indledende dialog.",
+        "Henvis aldrig gæsten til Rincon, bureauets hjemmeside eller til selv at kontrollere bookingvilkår.",
+        "CTA skal føre til kontakt med Michael."
+      ]
+    }
+  },
+  "design_contract": {
+    "fonts": {
+      "display": "Website CSS variable --font-display",
+      "body": "Website CSS variable --font-body"
+    },
+    "spacing": "Controlled by website component CSS, never by editorial content.",
+    "responsive": "The same component id must be used by Page Studio and the live renderer.",
+    "migration_rule": "When component fields or design limits change, update component-library.json first; Page Studio adapts from the contract."
+  }
+}

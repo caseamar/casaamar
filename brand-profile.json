@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-07-23",
+  "updated": "2026-07-24",
   "brand": {
     "name": "Casa Amar",
     "positioning": "Et personligt feriehus i Andalusien, indrettet som en base for at leve og opleve området – ikke som et anonymt hotelværelse.",
@@ -73,7 +73,21 @@
         "visuel",
         "ærlig"
       ],
-      "cta_principle": "Invitér til næste skridt uden at love booking, ledighed eller handling, som platformen ikke kan udføre."
+      "cta_principle": "Invitér til næste skridt uden at love booking, ledighed eller handling, som platformen ikke kan udføre.",
+      "lead_journey": {
+        "primary_contact": "Michael",
+        "rule": "Michael tager den indledende dialog med gæsten og beder derefter gæsten tage kontakt til bureauet/kunden, når det er relevant.",
+        "never_do": [
+          "Henvis ikke direkte til Rincon.",
+          "Send ikke gæsten til bureauets hjemmeside.",
+          "Bed ikke gæsten selv tjekke priser, tider, gebyrer eller bookingvilkår hos andre."
+        ],
+        "cta_examples": [
+          "Kontakt Michael",
+          "Spørg Michael om huset",
+          "Tag en uforpligtende snak"
+        ]
+      }
     },
     "concierge": {
       "primary_goal": "Hjælpe gæsten hurtigt og præcist under planlægning og ophold.",

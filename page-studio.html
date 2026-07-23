@@ -9,9 +9,9 @@ h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);line-height:1.5;max-
 .section-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.meta{color:var(--muted);font-size:.72rem;line-height:1.4}
 textarea,input{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:100px;line-height:1.45}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
-.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.card-editor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.mini-card{background:#f7f4ef;border-radius:10px;padding:9px}.mini-card textarea{min-height:70px}.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:10px}.operation-editor>.full{grid-column:1/-1}.quick-actions button{font-size:.72rem}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
-@media(max-width:900px){.story{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+@media(max-width:900px){.story{grid-template-columns:1fr 1fr}.grid,.operation-editor,.card-editor{grid-template-columns:1fr}.operation-editor>.full{grid-column:auto}}
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.23.51 · Page model 1.0 · Worker 10.1-section-regenerator</p>
+<p class="meta">Release v2026.07.24.52 · Page model 1.0 · Worker 10.2-component-contracts</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -41,39 +41,63 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <div id="sections"></div>
 <script>
 const q=s=>document.querySelector(s);
-let brand,blueprint,content;
+let brand,blueprint,content,components;
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 Promise.all([
  fetch('/brand-profile.json',{cache:'no-store'}).then(r=>r.json()),
  fetch('/page-blueprint.json',{cache:'no-store'}).then(r=>r.json()),
- fetch('/website-content.json',{cache:'no-store'}).then(r=>r.json())
-]).then(([b,p,c])=>{brand=b;blueprint=p;content=c;render()});
+ fetch('/website-content.json',{cache:'no-store'}).then(r=>r.json()),
+ fetch('/component-library.json',{cache:'no-store'}).then(r=>r.json())
+]).then(([b,p,c,lib])=>{brand=b;blueprint=p;content=c;components=lib;render()});
+function fieldHtml(field,draft,sectionId){
+ const value=draft?.[field.id]||'';
+ if(field.type==='textarea'){
+   return `<label>${esc(field.label)}<textarea data-field="${field.id}" maxlength="${field.max_chars||''}">${esc(value)}</textarea></label>`;
+ }
+ if(field.type==='text'){
+   return `<label>${esc(field.label)}<input data-field="${field.id}" maxlength="${field.max_chars||''}" value="${esc(value)}"></label>`;
+ }
+ if(field.type==='cards'||field.type==='fact_cards'){
+   const cards=Array.isArray(draft?.[field.id])?draft[field.id]:[];
+   return `<div class="full"><strong>${esc(field.label)}</strong><div class="card-editor">${Array.from({length:field.count||cards.length||1},(_,i)=>{
+     const card=cards[i]||{};
+     return `<div class="mini-card"><label>Titel<input data-card-field="${field.id}" data-card-index="${i}" data-card-prop="title" maxlength="${field.title_max_chars||''}" value="${esc(card.title||'')}"></label><label>Tekst<textarea data-card-field="${field.id}" data-card-index="${i}" data-card-prop="body" maxlength="${field.body_max_chars||''}">${esc(card.body||'')}</textarea></label></div>`;
+   }).join('')}</div></div>`;
+ }
+ return '';
+}
 function render(){
  const page=blueprint.pages[0];
  q('#story').innerHTML=page.narrative.map((x,i)=>`<div><strong>${i+1}</strong><br>${esc(x)}</div>`).join('');
  q('#sections').innerHTML=page.sections.map(section=>{
   const stored=content.sections.find(x=>x.id===section.id)||{};
-  const draft=stored.draft||{headline:'',body:'',cta_label:'',cards:[]};
+  const draft=stored.draft||{};
+  const contract=components.components[section.component]||{fields:[],copy_rules:[]};
   return `<article class="section" data-id="${section.id}">
-   <div class="section-head"><div><h2>${esc(section.id)}</h2><div class="meta">${esc(section.component)} · ${esc(section.purpose)}</div></div><strong>${stored.status||'needs_generation'}</strong></div>
-   <div class="grid">
-    <label>Overskrift<input data-field="headline" value="${esc(draft.headline||'')}"></label>
-    <label>CTA<input data-field="cta_label" value="${esc(draft.cta_label||'')}"></label>
-   </div>
-   <label>Tekst<textarea data-field="body">${esc(draft.body||'')}</textarea></label>
-   <div class="meta">Maks. overskrift: ${section.headline_max_chars||'–'} tegn · Maks. tekst: ${section.body_max_chars||'–'} tegn · Billedslots: ${(section.image_slots||[]).reduce((n,x)=>n+x.count,0)}</div>
+   <div class="section-head"><div><h2>${esc(section.id)}</h2><div class="meta">${esc(contract.label||section.component)} · ${esc(section.purpose)}</div></div><strong>${stored.status||'needs_generation'}</strong></div>
+   <div class="operation-editor">${contract.fields.map(field=>fieldHtml(field,draft,section.id)).join('')}</div>
+   <div class="notice"><strong>Komponentregler:</strong><br>${(contract.copy_rules||[]).map(rule=>`• ${esc(rule)}`).join('<br>')}</div>
    <div class="section-tools">
-     <label>Lille instruktion til AI
-       <textarea class="section-instruction" data-section-instruction placeholder="Fx: Gør teksten mere stemningsfuld. Fjern afstandsangivelser og skriv mindre teknisk."></textarea>
-     </label>
-     <div class="actions">
-       <button class="good" data-regenerate="${section.id}">Generér ny version af denne sektion</button>
+     <div class="actions quick-actions">
+       <button data-quick="${section.id}" data-prompt="Gør teksten kortere og mere præcis.">Kortere</button>
+       <button data-quick="${section.id}" data-prompt="Gør teksten mere inspirerende og visuel uden overdrivelser.">Mere inspirerende</button>
+       <button data-quick="${section.id}" data-prompt="Gør teksten mere konkret og mindre generisk.">Mere konkret</button>
+       <button data-quick="${section.id}" data-prompt="Omskriv sektionen helt fra bunden.">Omskriv helt</button>
      </div>
-     <div class="small-note">AI må ikke skrive kildeangivelser, “ifølge…”, interne noter eller dokumentreferencer i den synlige tekst.</div>
+     <label>Lille instruktion til AI<textarea class="section-instruction" data-section-instruction placeholder="Fx: Fokusér mere på følelsen af at have en god base."></textarea></label>
+     <div class="actions"><button class="good" data-regenerate="${section.id}">Generér ny version af denne sektion</button></div>
+     <div class="small-note">AI bruger komponentens design- og tekstregler. Synlig tekst må ikke indeholde kilder, interne noter eller henvisninger til Rincon.</div>
      <div data-section-status="${section.id}"></div>
    </div>
-  </article>`}).join('');
+  </article>`;
+ }).join('');
  q('#sections').querySelectorAll('[data-regenerate]').forEach(btn=>btn.onclick=()=>regenerateSection(btn.dataset.regenerate,btn));
+ q('#sections').querySelectorAll('[data-quick]').forEach(btn=>btn.onclick=()=>{
+   const article=q(`[data-id="${btn.dataset.quick}"]`);
+   const input=article?.querySelector('[data-section-instruction]');
+   if(input)input.value=btn.dataset.prompt;
+   article?.querySelector('[data-regenerate]')?.click();
+ });
 }
 async function generate(){
  const button=q('#generate');button.disabled=true;button.textContent='AI skriver hele siden…';q('#status').innerHTML='<p class="notice">Dette kan tage op til et minut.</p>';
@@ -146,6 +170,14 @@ function collect(){
   const el=q(`[data-id="${stored.id}"]`);if(!el)return;
   stored.draft=stored.draft||{};
   el.querySelectorAll('[data-field]').forEach(field=>stored.draft[field.dataset.field]=field.value.trim());
+  const groups={};
+  el.querySelectorAll('[data-card-field]').forEach(field=>{
+    const key=field.dataset.cardField,index=Number(field.dataset.cardIndex),prop=field.dataset.cardProp;
+    groups[key]=groups[key]||[];
+    groups[key][index]=groups[key][index]||{};
+    groups[key][index][prop]=field.value.trim();
+  });
+  Object.entries(groups).forEach(([key,value])=>stored.draft[key]=value);
   stored.status='draft';
  });
  content.updated=new Date().toISOString();return content;

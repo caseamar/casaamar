@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.1-section-regenerator",
+      version: "10.2-component-contracts",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -776,6 +776,48 @@ function editorCandidates(inputText, entries, selectedIds = []) {
 
 
 
+
+function parseStructuredOutput(result) {
+  const candidates = [
+    result?.output_text,
+    ...(result?.output || []).flatMap((item) => (item.content || []).map((content) => content?.text))
+  ].filter(Boolean);
+
+  for (const raw of candidates) {
+    const cleaned = String(raw)
+      .trim()
+      .replace(/^```(?:json)?\s*/i, "")
+      .replace(/\s*```$/i, "");
+    try { return JSON.parse(cleaned); } catch {}
+    const start = cleaned.indexOf("{");
+    const end = cleaned.lastIndexOf("}");
+    if (start >= 0 && end > start) {
+      try { return JSON.parse(cleaned.slice(start, end + 1)); } catch {}
+    }
+  }
+  return null;
+}
+
+function normalizeSectionDraft(generated, contract, section) {
+  const value = generated && typeof generated === "object" ? generated : {};
+  const normalized = {
+    headline: String(value.headline || ""),
+    body: String(value.body || ""),
+    cta_label: section?.cta?.allowed ? String(value.cta_label || "") : "",
+    cards: Array.isArray(value.cards) ? value.cards : [],
+    items: Array.isArray(value.items) ? value.items : [],
+    image_brief: Array.isArray(value.image_brief) ? value.image_brief : [],
+    knowledge_sources: Array.isArray(value.knowledge_sources) ? value.knowledge_sources : [],
+    note: String(value.note || "")
+  };
+
+  for (const field of contract?.fields || []) {
+    if (field.type === "fact_cards" && !normalized.items.length && normalized.cards.length) normalized.items = normalized.cards;
+    if (field.type === "cards" && !normalized.cards.length && normalized.items.length) normalized.cards = normalized.items;
+  }
+  return normalized;
+}
+
 async function handlePageSectionGenerate(request, env) {
   if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
 
@@ -789,6 +831,9 @@ async function handlePageSectionGenerate(request, env) {
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   const section = page?.sections?.find((item) => item.id === payload.section_id);
   if (!page || !section) return json({ error: "Den valgte sektion findes ikke i Page Blueprint." }, 400);
+
+  const componentLibrary = await loadJsonAsset(request, env, "/component-library.json");
+  const contract = componentLibrary?.components?.[section.component] || { fields: [], copy_rules: [] };
 
   const bundle = await loadBundle(env, request);
   const knowledge = bundle.entries
@@ -831,8 +876,10 @@ REGLER:
 - Teksten skal fungere som færdig, offentlig hjemmesidetekst.
 - Skriv aldrig kildeangivelser, dokumenthenvisninger, interne noter, objektnavne eller formuleringer som “ifølge…”, “kilden siger…” eller “udlejningsbureauets afstandsangivelser”.
 - Hvis en faktas præcision er usikker, udelad den eller skriv mere robust og naturligt; gengiv ikke usikkerheden som kildehenvisning.
-- Følg sektionens formål, komponent, længdegrænser og CTA-regler.
+- Følg sektionens formål og den fælles COMPONENT CONTRACT. Returnér præcis de felter, komponenten kræver.
+- Praktisk information skal bruge korte selvstændige kort, hvis komponenten kræver items/fact_cards. Skriv aldrig en lang tekstmur i body som erstatning.
 - Følg Casa Amars Brand Profile.
+- Michael tager den indledende dialog med gæsten. Henvis aldrig direkte til Rincon, bureauets hjemmeside eller til at gæsten selv skal kontrollere priser, tider, gebyrer, bookingvilkår eller tilgængelighed.
 - Undgå at gentage budskaber, der allerede står i de øvrige sektioner.
 - Skriv konkret, attraktivt og troværdigt.
 - Brugerens lille instruktion har høj prioritet, så længe den ikke strider mod fakta eller brand.
@@ -844,6 +891,9 @@ ${JSON.stringify(brand)}
 
 VALGT SEKTION:
 ${JSON.stringify(section)}
+
+COMPONENT CONTRACT:
+${JSON.stringify(contract)}
 
 BRUGERINSTRUKTION:
 ${payload.instruction || "Ingen ekstra instruktion."}
@@ -871,11 +921,29 @@ ${JSON.stringify(knowledge)}`
               headline: { type: "string" },
               body: { type: "string" },
               cta_label: { type: "string" },
+              cards: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: { title: { type: "string" }, body: { type: "string" } },
+                  required: ["title", "body"]
+                }
+              },
+              items: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: { title: { type: "string" }, body: { type: "string" } },
+                  required: ["title", "body"]
+                }
+              },
               image_brief: { type: "array", items: { type: "string" } },
               knowledge_sources: { type: "array", items: { type: "string" } },
               note: { type: "string" }
             },
-            required: ["headline", "body", "cta_label", "image_brief", "knowledge_sources", "note"]
+            required: ["headline", "body", "cta_label", "cards", "items", "image_brief", "knowledge_sources", "note"]
           }
         }
       },
@@ -887,22 +955,42 @@ ${JSON.stringify(knowledge)}`
   const result = await response.json();
   if (!response.ok) return json({ error: result?.error?.message || "Sektionen kunne ikke genereres." }, response.status);
 
-  const outputText = result.output_text ||
-    result.output?.flatMap((item) => item.content || []).find((item) => item.type === "output_text")?.text;
+  let generated = parseStructuredOutput(result);
 
-  let generated;
-  try { generated = JSON.parse(outputText); }
-  catch { return json({ error: "AI returnerede et ugyldigt sektionsformat." }, 502); }
+  if (!generated) {
+    const retry = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.OPENAI_API_KEY}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        model: env.OPENAI_MODEL || DEFAULT_MODEL,
+        instructions: "Returnér kun ét gyldigt JSON-objekt. Ingen markdown og ingen forklaring.",
+        input: [{ role: "user", content: JSON.stringify(result) }],
+        text: { verbosity: "low" },
+        max_output_tokens: 1800,
+        store: false
+      })
+    });
+    const retryResult = await retry.json();
+    generated = parseStructuredOutput(retryResult);
+  }
 
+  if (!generated) return json({ error: "Sektionen kunne ikke struktureres efter automatisk genforsøg." }, 502);
+
+  const normalized = normalizeSectionDraft(generated, contract, section);
   return json({
     section: {
-      headline: generated.headline,
-      body: generated.body,
-      cta_label: section.cta?.allowed ? generated.cta_label : "",
-      image_brief: generated.image_brief
+      headline: normalized.headline,
+      body: normalized.body,
+      cta_label: normalized.cta_label,
+      cards: normalized.cards,
+      items: normalized.items,
+      image_brief: normalized.image_brief
     },
-    knowledge_sources: generated.knowledge_sources,
-    note: generated.note
+    knowledge_sources: normalized.knowledge_sources,
+    note: normalized.note
   });
 }
 
@@ -971,7 +1059,8 @@ REGLER:
 - Undgå gentagelser mellem sektioner. Hvis et budskab allerede er dækket, skal næste sektion tilføre en ny dimension.
 - Skriv konkret og visuelt, men uden overdrivelser eller turistbrochure-klichéer.
 - Hjemmesidetekst må gerne være mere emotionel end concierge-kontekst.
-- CTA'er må ikke love booking, kontakt, undersøgelse eller ledighed, som platformen ikke selv kan udføre.
+- CTA'er må ikke love booking, undersøgelse eller ledighed, som platformen ikke selv kan udføre.
+- Michael tager den indledende dialog. Henvis aldrig direkte til Rincon, bureauets hjemmeside eller til at gæsten selv skal kontrollere priser, tider, gebyrer eller bookingvilkår.
 - Skriv på dansk.
 - cta_label skal være tom streng, hvis sektionen ikke tillader CTA.
 - Angiv de Knowledge Object-id'er, der understøtter hver sektion.
