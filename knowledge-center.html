@@ -64,6 +64,7 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 .knowledge-health{margin-top:14px}.health-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
 .health-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.health-grid span{display:block;color:var(--muted);font-size:.68rem}
 .health-grid strong{display:block;font-size:1.25rem;margin-top:4px}@media(max-width:900px){.health-grid{grid-template-columns:1fr 1fr}}
+.export-tip{margin-top:10px;background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 </style>
 </head>
 <body>
@@ -78,8 +79,8 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.44</strong></div>
-<div><span>Build</span><strong>2026-07-23 18:15</strong></div>
+<div><span>Release</span><strong>v2026.07.23.46</strong></div>
+<div><span>Build</span><strong>2026-07-23 20:10</strong></div>
 <div><span>Worker</span><strong>9.4-multi-object-manager</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
@@ -148,8 +149,10 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 <div><span>Status</span><strong id="dashboardExportStatus">Ingen ændringer</strong></div>
 </div>
 <button class="primary" id="dashboardExport">Eksportér alle workspace-ændringer</button>
-<p class="meta">Der laves én samlet <code>knowledge-cards.json</code>, som du derefter uploader til GitHub.</p>
+<p class="meta">Filen gemmes som <code>knowledge-cards.json</code>. I Edge/Chrome vælger du blot den eksisterende fil og godkender overskrivning, så Windows ikke laver (2), (3) eller (4).</p>
 <div id="dashboardExportMessage"></div>
+<p class="notice export-tip"><strong>Vigtigt:</strong> Når gem-dialogen åbner, vælg den eksisterende <code>knowledge-cards.json</code> i Downloads og klik <strong>Gem</strong> → <strong>Erstat</strong>. Så bevares det korrekte filnavn.</p>
+
 </section>
 
 </main>
@@ -255,8 +258,36 @@ load();
   try{
    const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Kunne ikke indlæse knowledge-cards.json');return r.json()});
    const cards=apply(raw.cards||raw.entries||[],changes()),payload={...raw,version:'2.1',updated:new Date().toISOString(),cards,entries:cards};
-   const text=JSON.stringify(payload,null,2),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='knowledge-cards.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-   m.innerHTML='<p class="success"><strong>Samlet fil oprettet.</strong> Upload knowledge-cards.json til GitHub.</p>';
+   const text=JSON.stringify(payload,null,2);
+
+   if(window.showSaveFilePicker){
+     try{
+       const handle=await window.showSaveFilePicker({
+         suggestedName:'knowledge-cards.json',
+         types:[{
+           description:'JSON-fil',
+           accept:{'application/json':['.json']}
+         }]
+       });
+       const writable=await handle.createWritable();
+       await writable.write(text);
+       await writable.close();
+     }catch(error){
+       if(error?.name==='AbortError'){
+         m.innerHTML='<p class="error">Eksporten blev annulleret.</p>';
+         return;
+       }
+       throw error;
+     }
+   }else{
+     const a=document.createElement('a');
+     a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));
+     a.download='knowledge-cards.json';
+     a.click();
+     setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+   }
+
+   m.innerHTML='<p class="success"><strong>Samlet fil gemt som knowledge-cards.json.</strong> Upload filen direkte til GitHub uden at omdøbe den.</p>';
   }catch(e){m.innerHTML=`<p class="error">Eksporten fejlede: ${e.message}</p>`}
   finally{b.textContent='Eksportér alle workspace-ændringer';refresh()}
  }
