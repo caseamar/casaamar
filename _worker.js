@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.0-content-platform-foundation",
+      version: "10.1-section-regenerator",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -775,6 +775,137 @@ function editorCandidates(inputText, entries, selectedIds = []) {
 }
 
 
+
+async function handlePageSectionGenerate(request, env) {
+  if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
+
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const brand = payload.brand || {};
+  const blueprint = payload.blueprint || {};
+  const currentContent = payload.current_content || {};
+  const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
+  const section = page?.sections?.find((item) => item.id === payload.section_id);
+  if (!page || !section) return json({ error: "Den valgte sektion findes ikke i Page Blueprint." }, 400);
+
+  const bundle = await loadBundle(env, request);
+  const knowledge = bundle.entries
+    .filter((entry) =>
+      entry?.status !== "archived" &&
+      entry?.lifecycle?.live_status !== "draft_only" &&
+      entry?.channels?.website !== false
+    )
+    .slice(0, 120)
+    .map((entry) => ({
+      id: entry.id,
+      title: entry.title,
+      category: entry.category,
+      content: entry.summary || entry.answer || entry.content || "",
+      keywords: entry.keywords || []
+    }));
+
+  const otherSections = (currentContent.sections || [])
+    .filter((item) => item.id !== section.id)
+    .map((item) => ({
+      id: item.id,
+      headline: item.draft?.headline || item.live?.headline || "",
+      body: item.draft?.body || item.live?.body || ""
+    }));
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions: `Du er senior conversion copywriter for Casa Amar.
+
+Omskriv kun den valgte hjemmesidesektion.
+
+REGLER:
+- Brug kun fakta fra Knowledge Base.
+- Teksten skal fungere som færdig, offentlig hjemmesidetekst.
+- Skriv aldrig kildeangivelser, dokumenthenvisninger, interne noter, objektnavne eller formuleringer som “ifølge…”, “kilden siger…” eller “udlejningsbureauets afstandsangivelser”.
+- Hvis en faktas præcision er usikker, udelad den eller skriv mere robust og naturligt; gengiv ikke usikkerheden som kildehenvisning.
+- Følg sektionens formål, komponent, længdegrænser og CTA-regler.
+- Følg Casa Amars Brand Profile.
+- Undgå at gentage budskaber, der allerede står i de øvrige sektioner.
+- Skriv konkret, attraktivt og troværdigt.
+- Brugerens lille instruktion har høj prioritet, så længe den ikke strider mod fakta eller brand.
+- Skriv på dansk.`,
+      input: [{
+        role: "user",
+        content: `BRAND:
+${JSON.stringify(brand)}
+
+VALGT SEKTION:
+${JSON.stringify(section)}
+
+BRUGERINSTRUKTION:
+${payload.instruction || "Ingen ekstra instruktion."}
+
+NUVÆRENDE VERSION:
+${JSON.stringify((currentContent.sections || []).find((item) => item.id === section.id) || {})}
+
+ØVRIGE SEKTIONER PÅ SIDEN:
+${JSON.stringify(otherSections)}
+
+KNOWLEDGE:
+${JSON.stringify(knowledge)}`
+      }],
+      reasoning: { effort: "medium" },
+      text: {
+        verbosity: "medium",
+        format: {
+          type: "json_schema",
+          name: "casa_amar_section_draft",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              headline: { type: "string" },
+              body: { type: "string" },
+              cta_label: { type: "string" },
+              image_brief: { type: "array", items: { type: "string" } },
+              knowledge_sources: { type: "array", items: { type: "string" } },
+              note: { type: "string" }
+            },
+            required: ["headline", "body", "cta_label", "image_brief", "knowledge_sources", "note"]
+          }
+        }
+      },
+      max_output_tokens: 1800,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) return json({ error: result?.error?.message || "Sektionen kunne ikke genereres." }, response.status);
+
+  const outputText = result.output_text ||
+    result.output?.flatMap((item) => item.content || []).find((item) => item.type === "output_text")?.text;
+
+  let generated;
+  try { generated = JSON.parse(outputText); }
+  catch { return json({ error: "AI returnerede et ugyldigt sektionsformat." }, 502); }
+
+  return json({
+    section: {
+      headline: generated.headline,
+      body: generated.body,
+      cta_label: section.cta?.allowed ? generated.cta_label : "",
+      image_brief: generated.image_brief
+    },
+    knowledge_sources: generated.knowledge_sources,
+    note: generated.note
+  });
+}
+
 async function handlePageGenerate(request, env) {
   if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
 
@@ -832,6 +963,8 @@ Skriv en komplet hjemmeside som én sammenhængende fortælling. Formålet er at
 
 REGLER:
 - Brug kun fakta fra Knowledge Base.
+- Skriv aldrig kildeangivelser, dokumenthenvisninger, objektnavne, interne noter eller formuleringer som “ifølge…”, “kilden siger…” eller “udlejningsbureauets afstandsangivelser”.
+- Omskriv fakta til naturlig, selvstændig gæstetekst.
 - Følg Brand Profile og sidens kanalformål.
 - Følg hver sektions formål, komponent og tekstgrænser.
 - Hver sektion må kun have ét primært budskab.
@@ -1546,6 +1679,10 @@ export default {
 
     if (url.pathname === "/api/page-generate") {
       return handlePageGenerate(request, env);
+    }
+
+    if (url.pathname === "/api/page-section-generate") {
+      return handlePageSectionGenerate(request, env);
     }
 
     return env.ASSETS.fetch(request);
