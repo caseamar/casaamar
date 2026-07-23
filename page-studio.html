@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.55 · Page model 1.0 · Worker 10.5-prefill-and-reliable-generation</p>
+<p class="meta">Release v2026.07.24.56 · Page model 1.0 · Worker 10.6-page-studio-button-fix</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -39,11 +39,11 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <div class="actions">
 <button class="primary" id="generateFresh">Generér helt ny forside</button>
 <button class="good" id="improveCurrent">Forbedr nuværende indhold</button>
-<button id="fillMissing">Udfyld kun manglende felter</button>
+<button id="fillMissing">Udfyld kun manglende felter</button><button id="testPageApi">Test Page Generator</button>
 <button id="export">Gem website-content.json</button>
 <a href="/page-preview.html" target="_blank">Åbn preview</a>
 </div>
-<div class="completion-meter"><div id="completionBar"></div></div><div id="completionText" class="meta"></div><div id="status"></div>
+<div class="completion-meter"><div id="completionBar"></div></div><div id="completionText" class="meta"></div><div id="status"></div><div id="technicalStatus" class="meta"></div>
 </div>
 <div id="sections"></div>
 <script>
@@ -126,6 +126,24 @@ function markMissingFields(){
    }
  }
 }
+
+document.addEventListener('click',(event)=>{
+ const regenerate=event.target.closest('[data-regenerate]');
+ if(regenerate){
+   event.preventDefault();
+   regenerateSection(regenerate.dataset.regenerate,regenerate);
+   return;
+ }
+ const quick=event.target.closest('[data-quick]');
+ if(quick){
+   event.preventDefault();
+   const article=q(`[data-id="${quick.dataset.quick}"]`);
+   const input=article?.querySelector('[data-section-instruction]');
+   if(input)input.value=quick.dataset.prompt||'';
+   article?.querySelector('[data-regenerate]')?.click();
+ }
+});
+
 function render(){
  const page=blueprint.pages[0];
  q('#story').innerHTML=page.narrative.map((x,i)=>`<div><strong>${i+1}</strong><br>${esc(x)}</div>`).join('');
@@ -151,13 +169,6 @@ function render(){
    </div>
   </article>`;
  }).join('');
- q('#sections').querySelectorAll('[data-regenerate]').forEach(btn=>btn.onclick=()=>regenerateSection(btn.dataset.regenerate,btn));
- q('#sections').querySelectorAll('[data-quick]').forEach(btn=>btn.onclick=()=>{
-   const article=q(`[data-id="${btn.dataset.quick}"]`);
-   const input=article?.querySelector('[data-section-instruction]');
-   if(input)input.value=btn.dataset.prompt;
-   article?.querySelector('[data-regenerate]')?.click();
- });
  markMissingFields();
  const summary=completionSummary();
  const bar=q('#completionBar'),text=q('#completionText');
@@ -206,6 +217,8 @@ function completionSummary(){
 }
 
 async function generateCompletePage(mode='complete'){
+ const technical=q('#technicalStatus');
+ if(technical)technical.textContent=`Starter ${mode}…`;
  const freshButton=q('#generateFresh'),improveButton=q('#improveCurrent');
  const fillButton=q('#fillMissing');
  const status=q('#status');
@@ -217,9 +230,11 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator…';
 
  try{
    const result=await requestCompletePage(mode);
+   if(technical)technical.textContent='Svar modtaget. Opdaterer Page Studio…';
    content=result.website_content;
    localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
    render();
@@ -233,10 +248,12 @@ async function generateCompletePage(mode='complete'){
    }
  }catch(error){
    status.innerHTML=`<p class="notice"><strong>Det nuværende indhold er bevaret.</strong> ${esc(error.message)}</p>`;
+   if(technical)technical.textContent=`Fejl: ${error.message}`;
  }finally{
    freshButton.disabled=false;improveButton.disabled=false;
    fillButton.disabled=false;
    activeButton.textContent=originalText;
+   if(technical && !technical.textContent.startsWith('Fejl:'))technical.textContent='Klar.';
  }
 }
 
@@ -244,8 +261,7 @@ async function fillAllMissing(){
  return generateCompletePage('fill_missing');
 }
 
-async function generateFresh(){return generateCompletePage('complete');}
-async function improveCurrent(){return generateCompletePage('improve_current');}
+
 function collect(){
  content.sections.forEach(stored=>{
   const el=q(`[data-id="${stored.id}"]`);if(!el)return;
@@ -270,5 +286,35 @@ async function exportContent(){
  }else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='website-content.json';a.click()}
  q('#status').innerHTML='<p class="success">website-content.json er gemt og klar til GitHub.</p>';
 }
-q('#generateFresh').onclick=generateFresh;q('#improveCurrent').onclick=improveCurrent;q('#fillMissing').onclick=()=>fillAllMissing();q('#export').onclick=exportContent;
+function bindPageStudioActions(){
+ const fresh=q('#generateFresh');
+ const improve=q('#improveCurrent');
+ const fill=q('#fillMissing');
+ const exportBtn=q('#export');
+
+ if(fresh)fresh.addEventListener('click',()=>generateCompletePage('complete'));
+ if(improve)improve.addEventListener('click',()=>generateCompletePage('improve_current'));
+ if(fill)fill.addEventListener('click',()=>generateCompletePage('fill_missing'));
+ if(exportBtn)exportBtn.addEventListener('click',exportContent);
+ const testBtn=q('#testPageApi');
+ if(testBtn)testBtn.addEventListener('click',async()=>{
+   const status=q('#status');
+   testBtn.disabled=true;testBtn.textContent='Tester…';
+   try{
+     const response=await fetch('/api/page-health',{headers:{accept:'application/json'}});
+     const raw=await response.text();
+     let result;try{result=JSON.parse(raw)}catch{throw new Error(`Endpoint svarer ikke med JSON (${response.status})`)}
+     if(!response.ok)throw new Error(result.error||'Page Generator er ikke aktiv');
+     status.innerHTML=`<p class="success"><strong>Page Generator virker.</strong> Worker ${esc(result.worker||'ukendt')}.</p>`;
+   }catch(error){
+     status.innerHTML=`<p class="notice"><strong>Page Generator virker ikke endnu.</strong> ${esc(error.message)}</p>`;
+   }finally{
+     testBtn.disabled=false;testBtn.textContent='Test Page Generator';
+   }
+ });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ bindPageStudioActions();
+});
 </script></main></body></html>

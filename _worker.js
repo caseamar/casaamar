@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.5-prefill-and-reliable-generation",
+      version: "10.6-page-studio-button-fix",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1824,6 +1824,11 @@ ${JSON.stringify({
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (request.method === "GET" && url.pathname === "/api/page-health") {
+      return json({ ok: true, worker: "10.6-page-studio-button-fix", endpoint: "page-generator" });
+    }
+
 
     if (request.method === "POST" && url.pathname === "/api/page-generate") {
       return handlePageGenerate(request, env);
