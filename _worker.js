@@ -1016,7 +1016,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "8.3-ai-search-planner",
+      version: "9.0-pipeline",
       method: "POST"
     });
   }
@@ -1059,7 +1059,21 @@ async function handleChat(request, env) {
     const policyDecision = evaluateDecisionPolicies(question, bundle.decisionPolicies);
     const deterministic = policyDecision || deterministicRoute(question, bundle);
 
-    if (deterministic) {
+    // Only genuinely hard routes may bypass the Knowledge Base.
+    // The old code also returned the generic fallback here, so retrieval never ran.
+    const genericDeterministicIntents = new Set([
+      "general_question",
+      "general",
+      "fallback",
+      "unknown"
+    ]);
+
+    const hardDeterministic = Boolean(
+      deterministic &&
+      !genericDeterministicIntents.has(String(deterministic.intent || "").toLowerCase())
+    );
+
+    if (hardDeterministic) {
       return json({
         ...deterministic,
         knowledgeVersion: bundle.version,
@@ -1067,7 +1081,15 @@ async function handleChat(request, env) {
         webSearchUsed: false,
         model: policyDecision ? "decision-policy-engine" : "deterministic-policy",
         matchedPolicy: deterministic.matchedPolicy || null,
-        responseId: null
+        responseId: null,
+        pipeline: {
+          route: "hard_deterministic",
+          planner: { status: "skipped" },
+          retrieval: { status: "skipped", count: 0 },
+          generation: { status: "skipped" }
+        },
+        searchPlan: null,
+        knowledgeMatches: []
       });
     }
 
@@ -1075,6 +1097,39 @@ async function handleChat(request, env) {
     const retrievalQuery = searchPlanText(question, searchPlan);
     const relevant = selectKnowledge(retrievalQuery, bundle.entries);
     const conversation = normaliseMessages(payload.messages);
+
+    // A generic deterministic response is now only a true fallback after retrieval.
+    if (relevant.length === 0 && deterministic) {
+      return json({
+        ...deterministic,
+        knowledgeVersion: bundle.version,
+        sourcesLoaded: bundle.sources.map((source) => source.id),
+        webSearchUsed: false,
+        model: "deterministic-fallback-after-retrieval",
+        matchedPolicy: deterministic.matchedPolicy || null,
+        responseId: null,
+        pipeline: {
+          route: "fallback_after_retrieval",
+          planner: {
+            status: "completed",
+            confidence: searchPlan.confidence
+          },
+          retrieval: {
+            status: "completed",
+            count: 0,
+            query: retrievalQuery
+          },
+          generation: { status: "skipped" }
+        },
+        searchPlan: {
+          intent: searchPlan.intent,
+          terms: searchPlan.search_terms,
+          concepts: searchPlan.related_concepts,
+          confidence: searchPlan.confidence
+        },
+        knowledgeMatches: []
+      });
+    }
 
     const instructions = buildSystemInstructions(bundle.conciergePolicy);
 
@@ -1250,7 +1305,25 @@ ${JSON.stringify({
         id: entry.id,
         title: entry.title,
         score: entry._retrieval_score || null
-      }))
+      })),
+      pipeline: {
+        route: "knowledge_generation",
+        planner: {
+          status: "completed",
+          confidence: searchPlan.confidence,
+          terms: searchPlan.search_terms.length,
+          concepts: searchPlan.related_concepts.length
+        },
+        retrieval: {
+          status: "completed",
+          count: relevant.length,
+          query: retrievalQuery
+        },
+        generation: {
+          status: "completed",
+          model: result?.model || env.OPENAI_MODEL || DEFAULT_MODEL
+        }
+      }
     });
   } catch (error) {
     console.error("Casa Amar AI exception", error);
