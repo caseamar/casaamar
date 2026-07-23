@@ -1,21 +1,18 @@
-release: v2026.07.24.53 — complete AI-generated website components
+release: v2026.07.24.54 — single-pass website generation and API routing fix
 
 Page Studio
-- AI must populate every mandatory field in every component.
-- Full-page generation now includes highlights, experience cards,
-  audience scenarios and practical fact cards.
-- Missing fields are detected and highlighted automatically.
-- Added “Udfyld alle manglende felter med AI”.
-- Full-page generation automatically finishes incomplete sections.
-- Each section shows Komplet or the exact number of missing fields.
-- Michael reviews and directs the AI; he is not expected to write cards manually.
-
-Component labels
-- Kort renamed contextually to Højdepunkter, Oplevelser,
-  Opholdstyper and Godt at vide.
+- "Generér komplet hjemmeside-draft" and "Udfyld alle manglende felter"
+  now use one complete-page API call instead of nine separate section calls.
+- Added completion meter with section count and percentage.
+- Added explicit diagnostics when Cloudflare returns HTML instead of JSON.
+- Section-level regeneration remains available.
 
 Worker
-- Full page schema now supports cards and items.
-- Component contracts are supplied to the full-page generator.
-- Exact card/item counts and non-empty content are mandatory.
-- Worker: 10.3-complete-page-generation
+- Page API routes are matched before asset fallback.
+- Full-page generator always returns every blueprint section.
+- Component contracts enforce exact card/item counts.
+- fill_missing mode preserves good existing copy and completes all missing
+  fields in one coordinated response.
+- complete mode writes the whole page as one coherent story.
+
+Worker: 10.4-single-pass-page-generator

@@ -9,7 +9,7 @@ h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);line-height:1.5;max-
 .section-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.meta{color:var(--muted);font-size:.72rem;line-height:1.4}
 textarea,input{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:100px;line-height:1.45}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
-.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.card-editor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.mini-card{background:#f7f4ef;border-radius:10px;padding:9px}.mini-card textarea{min-height:70px}.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:10px}.operation-editor>.full{grid-column:1/-1}.quick-actions button{font-size:.72rem}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.completion{display:inline-block;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:850}.complete{background:#e1f1e7;color:#265f42}.incomplete{background:#fff0ca;color:#745200}.field-missing{outline:2px solid #c98a37;background:#fffaf0}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.card-editor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.mini-card{background:#f7f4ef;border-radius:10px;padding:9px}.mini-card textarea{min-height:70px}.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:10px}.operation-editor>.full{grid-column:1/-1}.quick-actions button{font-size:.72rem}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.completion-meter{height:12px;background:#e7e1d8;border-radius:999px;overflow:hidden;margin:12px 0 6px}.completion-meter>div{height:100%;width:0;background:#2b7450;transition:width .25s}.completion{display:inline-block;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:850}.complete{background:#e1f1e7;color:#265f42}.incomplete{background:#fff0ca;color:#745200}.field-missing{outline:2px solid #c98a37;background:#fffaf0}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 @media(max-width:900px){.story{grid-template-columns:1fr 1fr}.grid,.operation-editor,.card-editor{grid-template-columns:1fr}.operation-editor>.full{grid-column:auto}}
 </style></head><body><main><nav class="platform-nav">
@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.53 · Page model 1.0 · Worker 10.3-complete-page-generation</p>
+<p class="meta">Release v2026.07.24.54 · Page model 1.0 · Worker 10.4-single-pass-page-generator</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -36,7 +36,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <button id="export">Gem website-content.json</button>
 <a href="/page-preview.html" target="_blank">Åbn preview</a>
 </div>
-<div id="status"></div>
+<div class="completion-meter"><div id="completionBar"></div></div><div id="completionText" class="meta"></div><div id="status"></div>
 </div>
 <div id="sections"></div>
 <script>
@@ -152,137 +152,93 @@ function render(){
    article?.querySelector('[data-regenerate]')?.click();
  });
  markMissingFields();
+ const summary=completionSummary();
+ const bar=q('#completionBar'),text=q('#completionText');
+ if(bar)bar.style.width=`${summary.percentage}%`;
+ if(text)text.textContent=`${summary.complete} af ${summary.total} sektioner komplette · ${summary.percentage}%`;
 }
 
-async function requestSection(sectionId,instruction){
- const response=await fetch('/api/page-section-generate',{
+async function requestCompletePage(mode='complete'){
+ const response=await fetch('/api/page-generate',{
    method:'POST',
-   headers:{'content-type':'application/json'},
+   headers:{'content-type':'application/json','accept':'application/json'},
    body:JSON.stringify({
      page_id:'home',
-     section_id:sectionId,
-     instruction,
      brand,
      blueprint,
-     current_content:collect()
+     current_content:collect(),
+     mode
    })
  });
- const result=await response.json();
- if(!response.ok)throw new Error(result.error||`Sektionen ${sectionId} kunne ikke genereres`);
+ const contentType=response.headers.get('content-type')||'';
+ const raw=await response.text();
+
+ if(!contentType.includes('application/json')){
+   throw new Error(`API-endpointet returnerede HTML i stedet for JSON (${response.status}). Kontrollér at _worker.js fra denne release er deployet.`);
+ }
+
+ let result;
+ try{result=JSON.parse(raw)}
+ catch{throw new Error('API returnerede ugyldig JSON.')}
+
+ if(!response.ok)throw new Error(result.error||'Hjemmesiden kunne ikke genereres.');
  return result;
 }
-async function fillAllMissing(options={}){
- const button=q('#fillMissing'),status=q('#status');
- const initial=allMissingSections();
- if(!initial.length){
-   status.innerHTML='<p class="success"><strong>Alt er allerede udfyldt.</strong> Alle obligatoriske felter og kort har indhold.</p>';
-   return {completed:0,remaining:0};
- }
- button.disabled=true;button.textContent='AI udfylder mangler…';
- let completed=0,errors=[];
- status.innerHTML=`<p class="notice">AI udfylder ${initial.length} sektioner. Du skal ikke skrive felterne selv.</p>`;
- try{
-   for(const item of initial){
-     try{
-       const result=await requestSection(
-         item.section.id,
-         `Udfyld ALLE obligatoriske felter i komponenten. Der mangler aktuelt: ${item.missing.join(', ')}. Bevar gode eksisterende felter, men returnér en komplet sektion med præcis det krævede antal kort.`
-       );
-       const stored=content.sections.find(x=>x.id===item.section.id);
-       stored.draft=result.section;
-       stored.knowledge_sources=result.knowledge_sources||stored.knowledge_sources||[];
-       stored.status='draft';
-       stored.last_generated=new Date().toISOString();
-       completed++;
-       localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
-       await new Promise(r=>setTimeout(r,1200));
-     }catch(error){errors.push(`${item.section.id}: ${error.message}`)}
-   }
-   render();
-   const remaining=allMissingSections();
-   if(!remaining.length){
-     status.innerHTML=`<p class="success"><strong>Hjemmeside-draften er komplet.</strong> AI har udfyldt alle obligatoriske felter, højdepunkter, oplevelser og praktiske kort.</p>`;
-   }else{
-     status.innerHTML=`<p class="notice"><strong>${completed} sektioner udfyldt.</strong> ${remaining.length} sektioner mangler stadig noget og kan prøves igen. ${errors.length?esc(errors.join(' · ')):''}</p>`;
-   }
-   return {completed,remaining:remaining.length};
- }finally{
-   button.disabled=false;button.textContent='Udfyld alle manglende felter med AI';
- }
-}
-async function generate(){
- const button=q('#generate');button.disabled=true;button.textContent='AI skriver hele siden…';q('#status').innerHTML='<p class="notice">Dette kan tage op til et minut.</p>';
- try{
-  const response=await fetch('/api/page-generate',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({page_id:'home',brand,blueprint,current_content:content})});
-  const result=await response.json();
-  if(!response.ok)throw new Error(result.error||'Kunne ikke generere siden');
-  content=result.website_content;
-  localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
-  render();
-  const missing=allMissingSections();
-  if(missing.length){
-    q('#status').innerHTML=`<p class="notice"><strong>Grunddraft genereret.</strong> AI færdiggør nu automatisk ${missing.length} sektioner med manglende felter.</p>`;
-    await fillAllMissing({automatic:true});
-  }else{
-    q('#status').innerHTML=`<p class="success"><strong>Komplet hjemmeside-draft genereret.</strong> Alle felter er udfyldt. Repetitionskontrol: ${result.quality?.repetition_score??'–'}.</p>`;
-  }
- }catch(e){q('#status').innerHTML=`<p class="notice">${esc(e.message)}</p>`}
- finally{button.disabled=false;button.textContent='Generér komplet hjemmeside-draft'}
+
+function completionSummary(){
+ const all=blueprint.pages[0].sections;
+ const details=all.map(section=>({
+   id:section.id,
+   missing:missingFields(section).length
+ }));
+ const totalFields=details.reduce((sum,item)=>sum+Math.max(1,item.missing===0?1:item.missing),0);
+ const missing=details.reduce((sum,item)=>sum+item.missing,0);
+ const complete=details.filter(item=>item.missing===0).length;
+ const percentage=Math.round((complete/all.length)*100);
+ return {details,missing,complete,total:all.length,percentage};
 }
 
-async function regenerateSection(sectionId,button){
- const section=blueprint.pages[0].sections.find(x=>x.id===sectionId);
- const stored=content.sections.find(x=>x.id===sectionId);
- const article=q(`[data-id="${sectionId}"]`);
- if(!section||!stored||!article)return;
+async function generateCompletePage(mode='complete'){
+ const generateButton=q('#generate');
+ const fillButton=q('#fillMissing');
+ const status=q('#status');
 
- // Keep any manual edits already made before asking AI to revise.
- stored.draft=stored.draft||{};
- article.querySelectorAll('[data-field]').forEach(field=>stored.draft[field.dataset.field]=field.value.trim());
-
- const instruction=article.querySelector('[data-section-instruction]')?.value.trim()||'';
- const status=article.querySelector(`[data-section-status="${sectionId}"]`);
- button.disabled=true;
- button.textContent='AI skriver ny version…';
- status.innerHTML='<p class="notice">Sektionen regenereres med kendskab til resten af siden, så gentagelser undgås.</p>';
+ generateButton.disabled=true;
+ fillButton.disabled=true;
+ const isFill=mode==='fill_missing';
+ const activeButton=isFill?fillButton:generateButton;
+ const originalText=activeButton.textContent;
+ activeButton.textContent=isFill?'AI udfylder hele siden…':'AI genererer hele siden…';
+ status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
 
  try{
-   const response=await fetch('/api/page-section-generate',{
-     method:'POST',
-     headers:{'content-type':'application/json'},
-     body:JSON.stringify({
-       page_id:'home',
-       section_id:sectionId,
-       instruction,
-       brand,
-       blueprint,
-       current_content:collect()
-     })
-   });
-   const result=await response.json();
-   if(!response.ok)throw new Error(result.error||'Sektionen kunne ikke genereres');
-
-   stored.draft=result.section;
-   stored.knowledge_sources=result.knowledge_sources||stored.knowledge_sources||[];
-   stored.status=missingFields(section,stored.draft).length?'incomplete':'draft';
-   stored.last_generated=new Date().toISOString();
+   const result=await requestCompletePage(mode);
+   content=result.website_content;
    localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
    render();
 
-   const refreshed=q(`[data-id="${sectionId}"]`);
-   refreshed?.scrollIntoView({behavior:'smooth',block:'center'});
-   refreshed?.querySelector(`[data-section-status="${sectionId}"]`)?.insertAdjacentHTML(
-     'beforeend',
-     missingFields(section,stored.draft).length
-       ? `<p class="notice"><strong>Ny version genereret, men ${missingFields(section,stored.draft).length} felter mangler stadig.</strong> Klik “Udfyld alle manglende felter med AI”.</p>`
-       : `<p class="success"><strong>Komplet ny version genereret.</strong> ${esc(result.note||'Gennemgå teksten og previewet.')}</p>`
-   );
+   const summary=completionSummary();
+   if(summary.missing===0){
+     status.innerHTML=`<p class="success"><strong>Komplet hjemmeside-draft genereret.</strong> ${summary.complete}/${summary.total} sektioner er komplette · ${summary.percentage}% · Repetitionskontrol: ${result.quality?.repetition_score??'–'}.</p>`;
+   }else{
+     const missingText=summary.details.filter(x=>x.missing).map(x=>`${x.id}: ${x.missing}`).join(' · ');
+     status.innerHTML=`<p class="notice"><strong>${summary.complete}/${summary.total} sektioner komplette (${summary.percentage}%).</strong> Mangler: ${missingText}</p>`;
+   }
  }catch(error){
    status.innerHTML=`<p class="notice">${esc(error.message)}</p>`;
  }finally{
-   button.disabled=false;
-   button.textContent='Generér ny version af denne sektion';
+   generateButton.disabled=false;
+   fillButton.disabled=false;
+   activeButton.textContent=originalText;
  }
+}
+
+async function fillAllMissing(){
+ return generateCompletePage('fill_missing');
+}
+
+async function generate(){
+ return generateCompletePage('complete');
 }
 function collect(){
  content.sections.forEach(stored=>{

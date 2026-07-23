@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.3-complete-page-generation",
+      version: "10.4-single-pass-page-generator",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -828,6 +828,7 @@ async function handlePageSectionGenerate(request, env) {
   const brand = payload.brand || {};
   const blueprint = payload.blueprint || {};
   const currentContent = payload.current_content || {};
+  const generationMode = payload.mode || "complete";
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   const section = page?.sections?.find((item) => item.id === payload.section_id);
   if (!page || !section) return json({ error: "Den valgte sektion findes ikke i Page Blueprint." }, 400);
@@ -995,6 +996,37 @@ ${JSON.stringify(knowledge)}`
   });
 }
 
+
+function completeSectionFromContract(sectionDraft, contract, definition, previousDraft = {}) {
+  const normalized = normalizeSectionDraft(sectionDraft, contract, definition);
+  const output = {
+    headline: normalized.headline || previousDraft.headline || "",
+    body: normalized.body || previousDraft.body || "",
+    cta_label: normalized.cta_label || previousDraft.cta_label || "",
+    cards: normalized.cards || [],
+    items: normalized.items || [],
+    image_brief: normalized.image_brief || previousDraft.image_brief || []
+  };
+
+  for (const field of contract?.fields || []) {
+    if (field.type === "cards") {
+      const current = Array.isArray(output.cards) ? output.cards : [];
+      output.cards = Array.from({ length: field.count || current.length || 0 }, (_, index) => {
+        const item = current[index] || previousDraft.cards?.[index] || {};
+        return { title: String(item.title || ""), body: String(item.body || "") };
+      });
+    }
+    if (field.type === "fact_cards") {
+      const current = Array.isArray(output.items) ? output.items : [];
+      output.items = Array.from({ length: field.count || current.length || 0 }, (_, index) => {
+        const item = current[index] || previousDraft.items?.[index] || {};
+        return { title: String(item.title || ""), body: String(item.body || "") };
+      });
+    }
+  }
+  return output;
+}
+
 async function handlePageGenerate(request, env) {
   if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
 
@@ -1083,6 +1115,8 @@ REGLER:
 - Følg Brand Profile og sidens kanalformål.
 - Følg hver sektions formål og dens COMPONENT CONTRACT.
 - Udfyld ALLE felter, som komponentkontrakten kræver. Returnér præcis det angivne antal cards eller items; ingen tomme titler eller tekster.
+- Ved generationMode "fill_missing": bevar eksisterende gode tekster, men udfyld og kompletter alle manglende felter på tværs af hele siden i samme svar.
+- Ved generationMode "complete": skriv hele siden samlet fra bunden som én koordineret fortælling.
 - For komponenter uden cards/items skal de relevante arrays være tomme.
 - Hver sektion må kun have ét primært budskab.
 - Undgå gentagelser mellem sektioner. Hvis et budskab allerede er dækket, skal næste sektion tilføre en ny dimension.
@@ -1104,6 +1138,9 @@ ${JSON.stringify(page)}
 
 COMPONENT CONTRACTS:
 ${JSON.stringify(pageContracts)}
+
+GENERATION MODE:
+${generationMode}
 
 CURRENT WEBSITE CONTENT:
 ${JSON.stringify(currentContent)}
@@ -1154,27 +1191,18 @@ ${JSON.stringify(knowledge)}`
     updated: new Date().toISOString(),
     page_id: page.id,
     status: "draft",
-    sections: generated.sections.map((section) => {
-      const old = previous.find((item) => item.id === section.id) || {};
+    sections: page.sections.map((definition) => {
+      const section = generated.sections.find((item) => item.id === definition.id) || {};
+      const old = previous.find((item) => item.id === definition.id) || {};
+      const contract = pageContracts[definition.id] || { fields: [] };
+      const draft = completeSectionFromContract(section, contract, definition, old.draft || {});
       return {
         ...old,
-        id: section.id,
+        id: definition.id,
         status: "draft",
         live: old.live || null,
-        draft: (() => {
-          const definition = page.sections.find((item) => item.id === section.id) || {};
-          const contract = pageContracts[section.id] || { fields: [] };
-          const normalized = normalizeSectionDraft(section, contract, definition);
-          return {
-            headline: normalized.headline,
-            body: normalized.body,
-            cta_label: normalized.cta_label,
-            cards: normalized.cards,
-            items: normalized.items,
-            image_brief: normalized.image_brief
-          };
-        })(),
-        knowledge_sources: section.knowledge_sources,
+        draft,
+        knowledge_sources: Array.isArray(section.knowledge_sources) ? section.knowledge_sources : (old.knowledge_sources || []),
         asset_ids: old.asset_ids || [],
         last_generated: new Date().toISOString()
       };
@@ -1789,6 +1817,7 @@ ${JSON.stringify({
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
 
     if (url.pathname === "/api/chat") {
       return handleChat(request, env);
