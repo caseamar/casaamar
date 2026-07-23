@@ -1,130 +1,52 @@
-<!doctype html>
-<html lang="da">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar AI – Test Runner</title>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Test Center</title>
 <style>
-:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--ok:#256b45;--bad:#a83b31;--warn:#9a6a16}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
-main{max-width:1180px;margin:auto;padding:28px}
-h1{margin:0 0 8px;font-family:Georgia,serif;font-size:2rem}p{line-height:1.5}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
-button,input{font:inherit}button{border:0;border-radius:12px;padding:11px 16px;font-weight:700;cursor:pointer}
-.primary{background:var(--clay);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid #d6d1c6}
-.endpoint{display:flex;gap:8px;align-items:center;flex:1;min-width:280px}.endpoint input{width:100%;padding:11px;border:1px solid #d6d1c6;border-radius:12px}
-.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:18px}
-.metric{background:#fff;border-radius:14px;padding:14px}.metric strong{display:block;font-size:1.6rem}
-table{width:100%;border-collapse:separate;border-spacing:0 8px}
-th{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
-td{background:#fff;padding:12px;vertical-align:top}
-td:first-child{border-radius:12px 0 0 12px}td:last-child{border-radius:0 12px 12px 0}
-.status{display:inline-block;padding:5px 8px;border-radius:999px;font-size:.72rem;font-weight:800}
-.pending{background:#ece8df}.running{background:#fff0ca;color:#795400}.passed{background:#dff2e7;color:var(--ok)}.failed{background:#fae3df;color:var(--bad)}
-.response{max-width:460px;white-space:pre-wrap;font-size:.86rem;line-height:1.45}
-.details{font-size:.74rem;color:#65716c;margin-top:6px}
-@media(max-width:800px){main{padding:16px}.summary{grid-template-columns:1fr 1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{margin-bottom:12px}td{border-radius:0!important}td:first-child{border-radius:12px 12px 0 0!important}td:last-child{border-radius:0 0 12px 12px!important}}
-</style>
-</head>
-<body>
-<main>
-<h1>Casa Amar AI – regressionstest</h1>
-<p>Kør testene efter ændringer i AI, policy, intents eller vidensbase. Testværktøjet bruger den valgte <code>/api/chat</code>-adresse.</p>
-<div class="toolbar">
-  <div class="endpoint"><input id="endpoint" value="https://casaamarv2.pages.dev/api/chat" aria-label="API endpoint"></div>
-  <button class="primary" id="runAll">Kør viste tests én ad gangen</button>
-  <button class="secondary" id="reset">Nulstil</button>
-</div>
-<div class="summary">
-  <div class="metric"><span>I alt</span><strong id="total">0</strong></div>
-  <div class="metric"><span>Bestået</span><strong id="passed">0</strong></div>
-  <div class="metric"><span>Fejlet</span><strong id="failed">0</strong></div>
-  <div class="metric"><span>Afventer</span><strong id="pending">0</strong></div>
-</div>
-<table>
-<thead><tr><th>ID</th><th>Spørgsmål</th><th>Status</th><th>Svar og kontrol</th></tr></thead>
-<tbody id="tests"></tbody>
-</table>
-</main>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--bad:#a83b31}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1320px;margin:auto;padding:24px}h1{font-family:Georgia,serif}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);color:#fff;border-color:var(--clay)}.good{background:var(--ok);color:#fff;border-color:var(--ok)}table{width:100%;border-collapse:separate;border-spacing:0 8px}td,th{background:#fff;padding:12px;text-align:left;vertical-align:top}.status{border-radius:999px;padding:5px 8px;font-size:.7rem;font-weight:850}.passed{background:#e1f1e7;color:#265f42}.failed{background:#f7ded9;color:#8a2c25}.pending{background:#eee}.details{font-size:.72rem;color:var(--muted);line-height:1.4;margin-top:5px}.answer{max-width:600px;line-height:1.45}.checks{margin-top:7px;font-size:.72rem}.check-bad{color:#9b3028}.check-ok{color:#256442}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+.platform-nav a:hover{background:#edf4f0}
+.release-panel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 16px}
+.release-panel>div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px}
+.release-panel span{display:block;color:var(--muted);font-size:.66rem}
+.release-panel strong{display:block;margin-top:3px;font-size:.8rem}
+@media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){table,tbody,tr,td,th{display:block}thead{display:none}}
+</style></head><body><main><nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav><section class="release-panel">
+<div><span>Release</span><strong>v2026.07.23.42</strong></div>
+<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Worker</span><strong>9.3-review-workflow</strong></div>
+<div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
+<div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
+</section><h1>Casa Amar Test Center</h1><p>Et godt svar kan godt fejle, fordi testens forventninger er blevet forældede. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
+<div class="actions"><button class="primary" id="runAll">Kør viste tests én ad gangen</button><button id="reset">Nulstil resultater</button><button class="good" id="export">Eksportér opdaterede tests</button></div>
+<table><thead><tr><th>Test</th><th>Spørgsmål</th><th>Status</th><th>Svar og handling</th></tr></thead><tbody id="tests"></tbody></table>
 <script>
-let suite={tests:[]};
-const tbody=document.querySelector('#tests');
-const stats={total:document.querySelector('#total'),passed:document.querySelector('#passed'),failed:document.querySelector('#failed'),pending:document.querySelector('#pending')};
+let suite={tests:[]};const q=s=>document.querySelector(s),norm=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();const sentenceCount=s=>(String(s||'').match(/[.!?]+(?=\s|$)/g)||[]).length||1;
+function evaluate(t,d){if((t.accepted_answers||[]).includes(norm(d.answer)))return{ok:true,checks:[{name:'accepteret svarvariant',ok:true,actual:'match'}]};const text=norm(d.answer),checks=[];checks.push({name:'intent',ok:!t.expected_intent||d.intent===t.expected_intent,actual:d.intent});checks.push({name:'needsHuman',ok:d.needsHuman===t.expected_needs_human,actual:d.needsHuman});if(t.must_include_any?.length)checks.push({name:'skal indeholde mindst ét',ok:t.must_include_any.some(v=>text.includes(norm(v))),actual:t.must_include_any.join(', ')});if(t.must_not_include_any?.length)checks.push({name:'må ikke indeholde',ok:!t.must_not_include_any.some(v=>text.includes(norm(v))),actual:t.must_not_include_any.join(', ')});if(t.max_sentences)checks.push({name:'maks. sætninger',ok:sentenceCount(d.answer)<=t.max_sentences,actual:sentenceCount(d.answer)});return{ok:checks.every(c=>c.ok),checks}}
+function render(){q('#tests').innerHTML=suite.tests.map((t,i)=>{const r=t.result,status=!r?'pending':r.running?'pending':r.ok?'passed':'failed';return`<tr><td><strong>${t.id}</strong><div class="details">${t.category||''}</div></td><td>${t.question}<div class="details">${t.notes||''}</div></td><td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':'Afventer'}</span></td><td class="answer">${r?.answer||''}${r?.checks?`<div class="checks">${r.checks.map(c=>`<div class="${c.ok?'check-ok':'check-bad'}">${c.ok?'✓':'✕'} ${c.name}: ${c.actual}</div>`).join('')}</div>`:''}${r&&!r.ok?`<div class="actions"><button class="good" data-accept="${i}">Godkend svar som korrekt</button><button data-run="${i}">Kør igen</button></div>`:''}</td></tr>`}).join('');q('#tests').querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>accept(Number(b.dataset.accept)));q('#tests').querySelectorAll('[data-run]').forEach(b=>b.onclick=()=>runTest(suite.tests[Number(b.dataset.run)]))}
+async function runTest(t){t.result={running:true};render();try{const res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:t.question,messages:[]})}),d=await res.json();if(!res.ok)throw new Error(d.detail||d.error||'API-fejl');const ev=evaluate(t,d);t.result={...ev,answer:d.answer,intent:d.intent,needsHuman:d.needsHuman,sentence_count:sentenceCount(d.answer)}}catch(e){t.result={ok:false,answer:'FEJL: '+e.message,checks:[]}}render()}
+async function runAll(){for(const t of suite.tests){await runTest(t);await new Promise(r=>setTimeout(r,1000))}}
+function accept(i){const t=suite.tests[i],r=t.result;if(!r?.answer)return;for(const c of r.checks||[])if(!c.ok){if(c.name==='intent')t.expected_intent=r.intent;if(c.name==='needsHuman')t.expected_needs_human=r.needsHuman;if(c.name==='maks. sætninger')t.max_sentences=Math.max(t.max_sentences||0,r.sentence_count||sentenceCount(r.answer))}t.accepted_answers=[...new Set([...(t.accepted_answers||[]),norm(r.answer)])];t.accepted_at=new Date().toISOString();t.accepted_by='Michael';t.result=evaluate(t,{answer:r.answer,intent:r.intent,needsHuman:r.needsHuman});t.result.answer=r.answer;localStorage.setItem('casaRegressionTestsDraft',JSON.stringify(suite));render()}
+function exportTests(){const payload={...suite,updated:new Date().toISOString(),version:'2.0'};payload.tests.forEach(t=>delete t.result);const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='ai-regression-tests.json';a.click()}
+q('#runAll').onclick=runAll;q('#reset').onclick=()=>{suite.tests.forEach(t=>delete t.result);render()};q('#export').onclick=exportTests;
+fetch('/ai-regression-tests.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{try{const local=JSON.parse(localStorage.getItem('casaRegressionTestsDraft')||'null');suite=local?.tests?local:raw}catch{suite=raw}render()});
 
-function sentenceCount(text){return (String(text).match(/[.!?]+(?:\s|$)/g)||[]).length||1}
-function normalise(text){return String(text||'').toLocaleLowerCase('da')}
-function evaluate(test,data){
-  const text=normalise(data.answer);
-  const checks=[];
-  checks.push({name:'intent',ok:!test.expected_intent||data.intent===test.expected_intent,actual:data.intent});
-  checks.push({name:'needsHuman',ok:data.needsHuman===test.expected_needs_human,actual:data.needsHuman});
-  if(test.must_include_any?.length){
-    checks.push({name:'skal indeholde mindst ét',ok:test.must_include_any.some(v=>text.includes(normalise(v))),actual:test.must_include_any.join(', ')});
-  }
-  if(test.must_not_include_any?.length){
-    checks.push({name:'må ikke indeholde',ok:!test.must_not_include_any.some(v=>text.includes(normalise(v))),actual:test.must_not_include_any.join(', ')});
-  }
-  if(test.max_sentences){
-    checks.push({name:'maks. sætninger',ok:sentenceCount(data.answer)<=test.max_sentences,actual:sentenceCount(data.answer)});
-  }
-  return {ok:checks.every(c=>c.ok),checks};
-}
-function render(){
-  tbody.innerHTML='';
-  suite.tests.forEach(test=>{
-    const tr=document.createElement('tr');
-    const result=test.result;
-    const status=result?.running?'running':result?(result.ok?'passed':'failed'):'pending';
-    tr.innerHTML=`<td><strong>${test.id}</strong><div class="details">${test.category}</div></td>
-      <td>${test.question}<div class="details">${test.notes||''}</div></td>
-      <td><span class="status ${status}">${status==='passed'?'Bestået':status==='failed'?'Fejlet':status==='running'?'Kører':'Afventer'}</span></td>
-      <td><div class="response">${result?.answer||''}</div><div class="details">${result?.checks?result.checks.map(c=>`${c.ok?'✓':'✗'} ${c.name}: ${c.actual}`).join('<br>'):''}</div></td>`;
-    tbody.appendChild(tr);
-  });
-  const complete=suite.tests.filter(t=>t.result&&!t.result.running);
-  stats.total.textContent=suite.tests.length;
-  stats.passed.textContent=complete.filter(t=>t.result.ok).length;
-  stats.failed.textContent=complete.filter(t=>!t.result.ok).length;
-  stats.pending.textContent=suite.tests.length-complete.length;
-}
-async function runTest(test){
-  test.result={running:true};render();
-  try{
-    let response;
-    let data;
-    for(let attempt=1;attempt<=3;attempt++){
-      response=await fetch(document.querySelector('#endpoint').value,{
-        method:'POST',headers:{'content-type':'application/json'},
-        body:JSON.stringify({question:test.question,messages:[]})
-      });
-      data=await response.json();
-      if(response.ok) break;
-      const rateLimited=response.status===429 || /for mange spørgsmål|rate limit/i.test(data.detail||data.error||'');
-      if(!rateLimited || attempt===3) throw new Error(data.detail||data.error||`HTTP ${response.status}`);
-      await new Promise(r=>setTimeout(r,attempt*1800));
-    }
-    const evaluation=evaluate(test,data);
-    test.result={...evaluation,answer:data.answer};
-  }catch(error){
-    test.result={ok:false,answer:`FEJL: ${error.message}`,checks:[]};
-  }
-  render();
-}
-document.querySelector('#runAll').addEventListener('click',async()=>{
-  document.querySelector('#runAll').disabled=true;
-  for(const test of suite.tests){await runTest(test);await new Promise(r=>setTimeout(r,900))}
-  document.querySelector('#runAll').disabled=false;
-});
-document.querySelector('#reset').addEventListener('click',()=>{suite.tests.forEach(t=>delete t.result);render()});
-fetch('ai-regression-tests.json').then(r=>r.json()).then(data=>{
-  const params=new URLSearchParams(location.search);
-  const selectedParam=params.get('selected');
-  const saved=JSON.parse(localStorage.getItem('casaSelectedTests')||'[]');
-  const selectedIds=(selectedParam?selectedParam.split(','):saved).filter(Boolean);
-  suite=data;
-  if(selectedIds.length)suite.tests=suite.tests.filter(t=>selectedIds.includes(t.id));
-  render();
-}).catch(e=>{tbody.innerHTML=`<tr><td colspan="4">Kunne ikke indlæse testfilen: ${e.message}</td></tr>`});
-</script>
-</body>
-</html>
+(async()=>{
+ try{
+  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json());
+  const count=(raw.cards||raw.entries||[]).length;
+  document.querySelectorAll('[data-release-objects]').forEach(el=>el.textContent=count);
+ }catch{}
+ let changes=0;
+ try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]').length}catch{}
+ document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
+})();
+
+</script></main></body></html>

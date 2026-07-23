@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="da">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Knowledge Architect</title>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Knowledge Architect</title>
 <style>
-:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
-main{max-width:1260px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);max-width:920px;line-height:1.5}
-button,a,input,select{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit}
-button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
-.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0}.metric,.panel{background:#fff;border-radius:15px;padding:14px}.metric span{display:block;color:var(--muted);font-size:.7rem}.metric strong{display:block;font-size:1.55rem;margin-top:4px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.issue{border:1px solid var(--line);border-radius:13px;padding:13px;margin-top:10px}.issue h3{margin:0 0 5px}.meta{color:var(--muted);font-size:.73rem;line-height:1.45}.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.card{background:#f7f4ef;border-radius:10px;padding:10px}.card strong{display:block}.excerpt{margin-top:5px;font-size:.74rem;line-height:1.4;color:#44534e}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.pill{display:inline-block;border-radius:999px;padding:4px 7px;font-size:.66rem;font-weight:850}.bad{background:#f7ded9;color:var(--bad)}.warn{background:#fff0ca;color:#745200}.ok{background:#e1f1e7;color:#265f42}
-.notice{background:#fff6dc;padding:10px;border-radius:10px;color:#765500}.success{background:#e7f4ec;padding:10px;border-radius:10px;color:#205c3d}
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1260px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);line-height:1.5}button,a,input,select,textarea{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit}button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}.panel,.issue{background:#fff;border-radius:15px;padding:14px}.issue{border:1px solid var(--line);margin-top:10px}.filters,.actions{display:flex;gap:8px;flex-wrap:wrap}.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.card,.proposal{background:#f7f4ef;border-radius:11px;padding:11px}.meta{font-size:.73rem;color:var(--muted);line-height:1.4}.excerpt{margin-top:5px;font-size:.76rem;line-height:1.4}.before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:9px 0}.titlebox{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px}textarea{width:100%;min-height:160px;line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.warn{background:#fff0ca;color:#745200;padding:5px 8px;border-radius:999px;font-size:.67rem;font-weight:800}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
 .platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
-@media(max-width:800px){.metrics{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}}
-</style>
-</head>
-<body><main>
-<nav class="platform-nav">
+.platform-nav a:hover{background:#edf4f0}
+.release-panel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 16px}
+.release-panel>div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px}
+.release-panel span{display:block;color:var(--muted);font-size:.66rem}
+.release-panel strong{display:block;margin-top:3px;font-size:.8rem}
+@media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.cards,.before-after{grid-template-columns:1fr}}
+</style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
 <a href="/knowledge-review.html">Review Center</a>
@@ -27,150 +18,41 @@ button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background
 <a href="/ai-test-runner.html">Test Center</a>
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
-</nav>
-<h1>Casa Amar Knowledge Architect</h1>
-<p class="lead">Finder dubletter, identiske ID’er, uklare titler og stærkt overlappende objekter. Værktøjet ændrer ikke noget automatisk. Du kan åbne et objekt i Studio, bruge et titelforslag eller arkivere en åbenlys dublet lokalt.</p>
-
-<section class="metrics">
-<div class="metric"><span>Knowledge Objects</span><strong id="mAll">0</strong></div>
-<div class="metric"><span>Identiske titler</span><strong id="mTitles">0</strong></div>
-<div class="metric"><span>Identiske ID’er</span><strong id="mIds">0</strong></div>
-<div class="metric"><span>Stærkt overlap</span><strong id="mOverlap">0</strong></div>
-<div class="metric"><span>Uklare titler</span><strong id="mVague">0</strong></div>
-</section>
-
-<section class="panel">
-<div class="filters">
-<select id="type">
-<option value="">Alle problemer</option>
-<option value="duplicate_title">Identiske titler</option>
-<option value="duplicate_id">Identiske ID’er</option>
-<option value="overlap">Stærkt overlap</option>
-<option value="vague">Uklare titler</option>
-</select>
-<input id="search" placeholder="Søg i problemer">
-<button id="refresh">Analysér igen</button>
-<button class="primary" id="export">Lav samlet GitHub-fil</button>
-</div>
-<div id="message"></div>
-<div id="issues"></div>
-</section>
-
+</nav><section class="release-panel">
+<div><span>Release</span><strong>v2026.07.23.42</strong></div>
+<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Worker</span><strong>9.3-review-workflow</strong></div>
+<div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
+<div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
+</section><h1>Casa Amar Knowledge Architect</h1><p class="lead">Titelforslag viser altid før og efter. Ved dubletter og stærkt overlap får du et konkret forslag til samlet titel og tekst. Sammenskrivning oprettes som draft; de eksisterende live-objekter fortsætter, indtil draften godkendes i Review Center.</p>
+<section class="panel"><div class="filters"><select id="type"><option value="">Alle problemer</option><option value="duplicate_title">Identiske titler</option><option value="duplicate_id">Identiske ID’er</option><option value="overlap">Stærkt overlap</option><option value="vague">Uklare titler</option></select><input id="search" placeholder="Søg"><button id="refresh">Analysér igen</button><button class="primary" id="export">Lav samlet GitHub-fil</button></div><div id="message"></div><div id="issues"></div></section>
 <script>
-const q=s=>document.querySelector(s);
-const KEY='casaKnowledgeChanges';
-let data={cards:[]},changes=[],issues=[];
+const q=s=>document.querySelector(s),KEY='casaKnowledgeChanges';let data={cards:[]},changes=[],issues=[];const clone=v=>JSON.parse(JSON.stringify(v));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim();
+function runtime(cards){const seen={};return cards.map((c,i)=>{seen[c.id]=(seen[c.id]||0)+1;c.__key=`${c.id}::${seen[c.id]}::${i}`;return c})}function clean(c){const x=clone(c);delete x.__key;return x}function content(c){return c.draft_version?.summary||c.summary||c.answer||c.content||c.body||''}function tokens(s){const stop=new Set(['casa','amar','til','ved','for','med','og','i','på','om','det','den','de','et','en']);return[...new Set(norm(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x)))]}function similarity(a,b){const A=new Set(tokens(a)),B=new Set(tokens(b));if(!A.size||!B.size)return 0;return[...A].filter(x=>B.has(x)).length/(A.size+B.size-[...A].filter(x=>B.has(x)).length)}
+function loadChanges(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}}function saveChanges(){localStorage.setItem(KEY,JSON.stringify(changes))}function applyChanges(cards,items){for(const ch of items){let i=ch.runtime_key?cards.findIndex(c=>c.__key===ch.runtime_key):-1;if(i<0&&ch.after?.title)i=cards.findIndex(c=>c.id===ch.card_id&&c.title===ch.before?.title);if(i>=0)cards[i]={...clone(ch.after),__key:cards[i].__key};else if(ch.after)cards.push({...clone(ch.after),__key:`${ch.after.id}::new::${Date.now()}`})}return cards}
+function record(c,before,action){changes.push({id:`architect-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,runtime_key:c.__key,card_id:c.id,changed_at:new Date().toISOString(),before:before?clean(before):null,after:clean(c),status:'approved_local',manager_operation:action});saveChanges()}
+function titleSuggestion(c){const text=norm(content(c));if(/adresse|calle zopilote|husnummer/.test(text)&&/find|ankomst|adgang|kore/.test(text))return'Sådan finder du Casa Amar';if(/adresse|calle zopilote|husnummer/.test(text))return'Casa Amars officielle adresse';if(/parkering|parkere/.test(text))return'Parkering ved Casa Amar';if(/pool/.test(text)&&/adgang|kort|port/.test(text))return'Adgang til poolområdet';if(/pool/.test(text))return'Poolens faciliteter og regler';if(/wifi|internet/.test(text))return'Wi-Fi og internet i Casa Amar';return`${c.category||'Viden'}: ${c.title}`}
+function mergedText(cards){const paras=[];for(const c of cards)for(const p of content(c).split(/\n+/).map(x=>x.trim()).filter(Boolean))if(!paras.some(x=>norm(x)===norm(p)))paras.push(p);return paras.join('\n\n')}
+function mergedTitle(cards){const unique=[...new Set(cards.map(c=>c.title))];if(unique.length===1)return titleSuggestion(cards[0]);const common=cards[0].category||'Samlet viden';return`${common}: ${unique.join(' og ')}`}
+function analyze(){issues=[];const cards=data.cards.filter(c=>c.status!=='archived'),byT=new Map(),byI=new Map();cards.forEach(c=>{const t=norm(c.title);if(!byT.has(t))byT.set(t,[]);byT.get(t).push(c);if(!byI.has(c.id))byI.set(c.id,[]);byI.get(c.id).push(c)});for(const g of byT.values())if(g.length>1)issues.push({type:'duplicate_title',cards:g,title:'Identiske titler'});for(const g of byI.values())if(g.length>1)issues.push({type:'duplicate_id',cards:g,title:'Identiske ID’er'});for(let i=0;i<cards.length;i++)for(let j=i+1;j<cards.length;j++){if(cards[i].id===cards[j].id||norm(cards[i].title)===norm(cards[j].title))continue;const s=similarity(cards[i].title+' '+content(cards[i]),cards[j].title+' '+content(cards[j]));if(s>=.64)issues.push({type:'overlap',cards:[cards[i],cards[j]],title:`Stærkt overlap (${Math.round(s*100)} %)`})}cards.filter(c=>norm(c.title).length<8||['malaga','ronda','praktisk','information','området','huset','adresse til casa amar'].includes(norm(c.title))).forEach(c=>issues.push({type:'vague',cards:[c],title:'Titel kan gøres mere entydig',suggestion:titleSuggestion(c)}));render()}
+function filtered(){const type=q('#type').value,term=norm(q('#search').value);return issues.filter(x=>(!type||x.type===type)&&(!term||norm(x.title+' '+x.cards.map(c=>c.title).join(' ')).includes(term)))}
+function render(){q('#issues').innerHTML=filtered().map((it,n)=>{const merge=it.cards.length>1,title=merge?mergedTitle(it.cards):it.suggestion,text=merge?mergedText(it.cards):'';return`<article class="issue"><span class="warn">${esc(it.type.replaceAll('_',' '))}</span><h3>${esc(it.title)}</h3><div class="cards">${it.cards.map(c=>`<div class="card"><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.id)}</div><div class="excerpt">${esc(content(c).slice(0,230))}${content(c).length>230?'…':''}</div><div class="actions"><a href="/knowledge-studio.html?object=${encodeURIComponent(c.id)}">Åbn i Studio</a><a href="/knowledge-review.html?object=${encodeURIComponent(c.id)}">Åbn i Review</a></div></div>`).join('')}</div>${!merge?`<div class="before-after"><div class="titlebox"><span class="meta">Nuværende titel</span><strong>${esc(it.cards[0].title)}</strong></div><strong>→</strong><div class="titlebox"><span class="meta">Foreslået titel</span><strong>${esc(title)}</strong></div></div><button class="good" data-rename="${esc(it.cards[0].__key)}" data-title="${esc(title)}">Brug titlen “${esc(title)}”</button>`:`<div class="proposal"><h3>Forslag til sammenskrivning</h3><label>Ny titel</label><input style="width:100%" data-merge-title="${n}" value="${esc(title)}"><label>Ny samlet tekst</label><textarea data-merge-text="${n}">${esc(text)}</textarea><div class="actions"><button class="good" data-merge="${n}">Opret sammenskrivning som draft</button></div></div>`}</article>`}).join('')||'<p class="success">Ingen problemer matcher filteret.</p>';q('#issues').querySelectorAll('[data-rename]').forEach(b=>b.onclick=()=>rename(b.dataset.rename,b.dataset.title));q('#issues').querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>mergeIssue(Number(b.dataset.merge)))}
+function draftFrom(c,title,summary){return{title,category:c.category,summary,answer:summary,body:summary,content:summary,visibility:c.visibility||'internal',channels:clone(c.channels||{ai:true,website:false,guest_guide:true,owner_guide:true}),maturity:'draft',status:'draft',created_at:new Date().toISOString(),updated_at:new Date().toISOString(),created_by:'Michael',tests:clone(c.tests||[]),assets:clone(c.assets||[]),relations:clone(c.relations||{related:[],supersedes:[],superseded_by:[]})}}
+function rename(k,title){const c=data.cards.find(x=>x.__key===k);if(!c)return;const before=clone(c);c.draft_version={...(c.draft_version||draftFrom(c,c.title,content(c))),title,updated_at:new Date().toISOString()};c.lifecycle={...(c.lifecycle||{}),live_status:'live',has_draft:true};record(c,before,'architect_rename');q('#message').innerHTML=`<p class="success">Titlen <strong>${esc(title)}</strong> er gemt som draft og kan godkendes i Review Center.</p>`;analyze()}
+function slug(s){return norm(s).replace(/\s+/g,'-')||`merged-${Date.now()}`}
+function mergeIssue(n){const it=filtered()[n];if(!it)return;const title=q(`[data-merge-title="${n}"]`).value.trim(),summary=q(`[data-merge-text="${n}"]`).value.trim();if(!title||!summary)return alert('Titel og tekst skal udfyldes.');const id=slug(title)+'-'+Date.now().toString().slice(-5),sources=it.cards.map(c=>({id:c.id,title:c.title}));const c={id,title,category:it.cards[0].category||'Viden',summary:'',answer:'',body:'',content:'',keywords:[],visibility:'internal',trust:100,status:'draft',dynamic:false,updated:new Date().toISOString().slice(0,10),owner:'Michael',language:'da',channels:{ai:false,website:false,guest_guide:false,owner_guide:false},maturity:'draft',lifecycle:{live_status:'draft_only',has_draft:true},draft_version:{...draftFrom(it.cards[0],title,summary),merge_sources:sources},test_state:{status:'needs_test',last_changed_at:new Date().toISOString()},editorial:{review_state:'needs_review',notes:'Merge draft created by Knowledge Architect'},relations:{related:[],supersedes:sources.map(s=>s.id),superseded_by:[]},assets:[],__key:`${id}::new`};data.cards.push(c);record(c,null,'architect_merge_draft');q('#message').innerHTML=`<p class="success">Sammenskrivningen <strong>${esc(title)}</strong> er oprettet som draft. Kilderne forbliver live, indtil du godkender den i Review Center.</p>`;analyze()}
+function exportFile(){const cards=data.cards.map(clean),payload={...data,cards,entries:cards,version:'2.1',updated:new Date().toISOString()};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='knowledge-cards.json';a.click()}
+q('#type').onchange=render;q('#search').oninput=render;q('#refresh').onclick=analyze;q('#export').onclick=exportFile;fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{changes=loadChanges();data={...raw,cards:applyChanges(runtime(clone(raw.cards||raw.entries||[])),changes)};analyze()});
 
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function clone(v){return JSON.parse(JSON.stringify(v))}
-function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim()}
-function tokens(s){const stop=new Set(['casa','amar','til','ved','for','med','og','i','på','om','det','den','de','et','en']);return [...new Set(norm(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x)))]}
-function content(c){return c.draft_version?.summary||c.summary||c.answer||c.content||c.body||''}
-function loadChanges(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
-function saveChanges(){localStorage.setItem(KEY,JSON.stringify(changes))}
-function applyWorkspace(cards,items){const map=new Map(cards.map(c=>[c.id,c]));for(const ch of items){if(ch?.after?.id)map.set(ch.after.id,clone(ch.after))}return [...map.values()]}
-function similarity(a,b){
- const A=new Set(tokens(a)),B=new Set(tokens(b));if(!A.size||!B.size)return 0;
- const intersection=[...A].filter(x=>B.has(x)).length;
- return intersection/(A.size+B.size-intersection);
-}
-function purposeTitle(c){
- const text=norm(content(c));
- const category=c.category||'Praktisk';
- if(/adresse|calle zopilote|husnummer/.test(text)&&/find|ankomst|adgang|kore/.test(text))return'Sådan finder du Casa Amar';
- if(/adresse|calle zopilote|husnummer/.test(text))return'Casa Amars officielle adresse';
- if(/parkering|parkere|p-plads/.test(text))return'Parkering ved Casa Amar';
- if(/pool|bassin|livredder/.test(text)&&/adgang|kort|port/.test(text))return'Adgang til poolområdet';
- if(/pool|bassin|livredder/.test(text))return'Poolens faciliteter og regler';
- if(/wifi|internet|mesh/.test(text))return'Wi-Fi og internet i Casa Amar';
- if(/aircondition|klimaanlæg|køling/.test(text))return'Aircondition og varme';
- if(/bus|tog|taxa/.test(text))return'Transport mellem Cerros del Águila og Fuengirola';
- return`${category}: ${c.title}`;
-}
-function isVague(c){
- const title=norm(c.title);
- return title.length<8||['praktisk','information','området','huset','adresse til casa amar'].includes(title);
-}
-function analyze(){
- issues=[];
- const cards=data.cards.filter(c=>c.status!=='archived');
- const byTitle=new Map(),byId=new Map();
- cards.forEach(c=>{
-   const t=norm(c.title);if(!byTitle.has(t))byTitle.set(t,[]);byTitle.get(t).push(c);
-   const id=String(c.id||'');if(!byId.has(id))byId.set(id,[]);byId.get(id).push(c);
- });
- for(const [key,group] of byTitle){if(key&&group.length>1)issues.push({type:'duplicate_title',title:`${group.length} objekter har samme titel`,cards:group,score:100})}
- for(const [key,group] of byId){if(key&&group.length>1)issues.push({type:'duplicate_id',title:`${group.length} objekter har samme ID: ${key}`,cards:group,score:100})}
- for(let i=0;i<cards.length;i++)for(let j=i+1;j<cards.length;j++){
-   if(norm(cards[i].title)===norm(cards[j].title)||cards[i].id===cards[j].id)continue;
-   const score=similarity(`${cards[i].title} ${content(cards[i])}`,`${cards[j].title} ${content(cards[j])}`);
-   if(score>=.64)issues.push({type:'overlap',title:'Stærkt indholdsoverlap',cards:[cards[i],cards[j]],score:Math.round(score*100)});
- }
- cards.filter(isVague).forEach(c=>issues.push({type:'vague',title:'Titel kan gøres mere entydig',cards:[c],score:0,suggestion:purposeTitle(c)}));
- metrics();render();
-}
-function metrics(){
- q('#mAll').textContent=data.cards.length;
- q('#mTitles').textContent=issues.filter(x=>x.type==='duplicate_title').length;
- q('#mIds').textContent=issues.filter(x=>x.type==='duplicate_id').length;
- q('#mOverlap').textContent=issues.filter(x=>x.type==='overlap').length;
- q('#mVague').textContent=issues.filter(x=>x.type==='vague').length;
-}
-function filtered(){
- const type=q('#type').value,term=norm(q('#search').value);
- return issues.filter(x=>(!type||x.type===type)&&(!term||norm(x.title+' '+x.cards.map(c=>c.title).join(' ')).includes(term)));
-}
-function render(){
- const list=filtered();
- q('#issues').innerHTML=list.length?list.map((issue,idx)=>`
- <article class="issue">
-   <span class="pill ${issue.type==='duplicate_id'?'bad':'warn'}">${esc(issue.type.replaceAll('_',' '))}</span>
-   <h3>${esc(issue.title)}</h3>
-   ${issue.score?`<div class="meta">Overlap-score: ${issue.score}%</div>`:''}
-   <div class="cards">${issue.cards.map(c=>`
-     <div class="card">
-       <strong>${esc(c.title)}</strong>
-       <div class="meta">${esc(c.category)} · ${esc(c.id)} · ${esc(c.status||'active')}</div>
-       <div class="excerpt">${esc(content(c).slice(0,210))}${content(c).length>210?'…':''}</div>
-       <div class="actions">
-         <a href="/knowledge-studio.html?object=${encodeURIComponent(c.id)}">Åbn i Studio</a>
-         <a href="/knowledge-review.html?object=${encodeURIComponent(c.id)}">Åbn i Review</a>
-         ${issue.type==='vague'?`<button class="good" data-rename="${esc(c.id)}" data-title="${esc(issue.suggestion)}">Brug titelforslag</button>`:''}
-         <button data-archive="${esc(c.id)}">Arkivér lokalt</button>
-       </div>
-     </div>`).join('')}</div>
-   ${issue.suggestion?`<p class="notice"><strong>Forslag:</strong> ${esc(issue.suggestion)}</p>`:''}
- </article>`).join(''):'<p class="success">Ingen problemer matcher det valgte filter.</p>';
+(async()=>{
+ try{
+  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json());
+  const count=(raw.cards||raw.entries||[]).length;
+  document.querySelectorAll('[data-release-objects]').forEach(el=>el.textContent=count);
+ }catch{}
+ let changes=0;
+ try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]').length}catch{}
+ document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
+})();
 
- q('#issues').querySelectorAll('[data-rename]').forEach(btn=>btn.addEventListener('click',()=>rename(btn.dataset.rename,btn.dataset.title)));
- q('#issues').querySelectorAll('[data-archive]').forEach(btn=>btn.addEventListener('click',()=>archive(btn.dataset.archive)));
-}
-function record(card,before,action){
- changes.push({id:`architect-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,card_id:card.id,changed_at:new Date().toISOString(),before,after:clone(card),status:'approved_local',manager_operation:action});
- saveChanges();
-}
-function rename(id,title){
- const card=data.cards.find(c=>c.id===id);if(!card)return;
- const before=clone(card);
- if(card.draft_version)card.draft_version.title=title;
- else{
-   card.draft_version={title,category:card.category,summary:content(card),answer:content(card),body:content(card),content:content(card),visibility:card.visibility,channels:clone(card.channels||{}),maturity:'draft',status:'draft',created_at:new Date().toISOString(),updated_at:new Date().toISOString(),created_by:'Michael',tests:clone(card.tests||[]),assets:clone(card.assets||[]),relations:clone(card.relations||{related:[],supersedes:[],superseded_by:[]})};
-   card.lifecycle={...(card.lifecycle||{}),live_status:'live',has_draft:true};
- }
- record(card,before,'architect_rename');q('#message').innerHTML='<p class="success">Titelforslaget er gemt som draft.</p>';analyze();
-}
-function archive(id){
- const card=data.cards.find(c=>c.id===id);if(!card||!confirm(`Arkivér "${card.title}" lokalt?`))return;
- const before=clone(card);card.status='archived';card.lifecycle={...(card.lifecycle||{}),live_status:'archived'};
- record(card,before,'architect_archive');q('#message').innerHTML='<p class="success">Objektet er arkiveret lokalt.</p>';analyze();
-}
-function exportFile(){
- const payload={...data,version:'2.0',updated:new Date().toISOString(),entries:data.cards};
- const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='knowledge-cards.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-}
-q('#type').addEventListener('change',render);q('#search').addEventListener('input',render);q('#refresh').addEventListener('click',analyze);q('#export').addEventListener('click',exportFile);
-fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{
- changes=loadChanges();const server=raw.cards||raw.entries||[];data={...raw,cards:applyWorkspace(server,changes)};analyze();
-});
-</script>
-</main></body></html>
+</script></main></body></html>

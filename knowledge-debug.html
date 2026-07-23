@@ -27,6 +27,16 @@ pre{white-space:pre-wrap;word-break:break-word;background:#f5f2ec;border-radius:
 .platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
 .platform-nav a:hover{background:#edf4f0}
 
+
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
+.platform-nav a:hover{background:#edf4f0}
+.release-panel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 16px}
+.release-panel>div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px}
+.release-panel span{display:block;color:var(--muted);font-size:.66rem}
+.release-panel strong{display:block;margin-top:3px;font-size:.8rem}
+@media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body><main>
@@ -39,6 +49,13 @@ pre{white-space:pre-wrap;word-break:break-word;background:#f5f2ec;border-radius:
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
+<section class="release-panel">
+<div><span>Release</span><strong>v2026.07.23.42</strong></div>
+<div><span>Build</span><strong>2026-07-23 14:30</strong></div>
+<div><span>Worker</span><strong>9.3-review-workflow</strong></div>
+<div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
+<div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
+</section>
 <h1>Casa Amar Knowledge Debug Center</h1>
 <p class="lead">Se hele kæden fra deployment og indlæst Knowledge Base til AI-søgeplan, valgte objekter og gæstens endelige svar.</p>
 <div class="actions">
@@ -140,4 +157,16 @@ q('#health').addEventListener('click',health);
 q('#run').addEventListener('click',run);
 health();
 </script>
-</main></body></html>
+</main><script>
+(async()=>{
+ try{
+  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json());
+  const count=(raw.cards||raw.entries||[]).length;
+  document.querySelectorAll('[data-release-objects]').forEach(el=>el.textContent=count);
+ }catch{}
+ let changes=0;
+ try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]').length}catch{}
+ document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
+})();
+</script>
+</body></html>

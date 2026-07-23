@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "5.0",
+      version: "9.3-review-workflow",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
