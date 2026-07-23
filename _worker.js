@@ -295,6 +295,22 @@ function knowledgeText(entries) {
   }).join("\n\n---\n\n");
 }
 
+function removeUnsupportedOffers(text) {
+  let value = String(text || "").trim();
+
+  const unsupportedEndingPatterns = [
+    /\n*\s*Vil du have, at jeg (?:prøver at )?(?:booke|reservere|kontakte|ringe|sende|undersøge|tjekke)[^?]*\?\s*$/i,
+    /\n*\s*Skal jeg (?:prøve at )?(?:booke|reservere|kontakte|ringe|sende|undersøge|tjekke)[^?]*\?\s*$/i,
+    /\n*\s*Jeg kan (?:også )?(?:booke|reservere|kontakte|ringe|sende|undersøge|tjekke)[^.?!]*(?:[.?!])?\s*$/i
+  ];
+
+  for (const pattern of unsupportedEndingPatterns) {
+    value = value.replace(pattern, "").trim();
+  }
+
+  return value;
+}
+
 function extractOutputText(result) {
   const candidates = [];
 
@@ -559,6 +575,13 @@ SVAR:
 - Objekter med visibility=internal må bruges som intern AI-kontekst, når channels.ai ikke er false.
 - Visibility styrer publicering af råt indhold, ikke om Concierge må bruge objektet.
 - Hvis de relevante objekter indeholder svaret, må du ikke sende gæsten videre til Michael.
+- Du må aldrig love eller tilbyde handlinger, som platformen ikke kan udføre.
+- Du må ikke tilbyde at booke, reservere, kontakte, ringe, sende, undersøge, tjekke ledighed, tjekke åbningstider eller følge op senere.
+- Undgå formuleringer som: "Vil du have, at jeg booker?", "Jeg kan undersøge", "Jeg kan tjekke", "Jeg kan kontakte dem" og lignende.
+- Når spørgsmålet er besvaret, skal du stoppe. Afslut ikke automatisk med et nyt spørgsmål.
+- Stil kun et opfølgende spørgsmål, når det er nødvendigt for at forstå eller besvare gæstens oprindelige behov.
+- Hvis aktuelle eller dynamiske oplysninger mangler, må du kort henvise til det relevante link eller udbyderen. Du må ikke tilbyde selv at kontrollere oplysningerne.
+- Vær varm, lokal, praktisk og ærlig om dine begrænsninger. Skab aha-oplevelser uden at skabe forventninger om servicefunktioner, der ikke findes.
 
 Returnér altid struktureret JSON efter det krævede schema.`;
 }
@@ -1016,7 +1039,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "9.0-pipeline",
+      version: "9.1-honest-concierge",
       method: "POST"
     });
   }
@@ -1233,6 +1256,9 @@ ${JSON.stringify({
       };
     }
 
+    structured.answer = removeUnsupportedOffers(structured.answer);
+    structured.follow_up = removeUnsupportedOffers(structured.follow_up);
+
     const alreadyAsked = recentAssistantQuestion(conversation);
     let followUp = structured.follow_up;
 
@@ -1270,7 +1296,12 @@ ${JSON.stringify({
         structured.answer || ""
       );
 
-    if (needsHuman || answerNeedsConfirmation) {
+    const unsupportedFollowUp =
+      /booke|reservere|kontakte|ringe|sende|undersøge|tjekke|følge op/i.test(
+        followUp || ""
+      );
+
+    if (needsHuman || answerNeedsConfirmation || unsupportedFollowUp) {
       followUp = null;
     }
 
