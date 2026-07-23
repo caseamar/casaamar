@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Review Center</title>
+<style>
+:root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1320px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);max-width:900px;line-height:1.5}
+.top,.filters,.actions{display:flex;gap:8px;flex-wrap:wrap}.top{margin:16px 0}
+button,a,select,input{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit}
+button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0}.metric,.panel{background:#fff;border-radius:15px;padding:14px}.metric span{font-size:.72rem;color:var(--muted);display:block}.metric strong{font-size:1.55rem;display:block;margin-top:4px}
+.layout{display:grid;grid-template-columns:390px 1fr;gap:14px}.filters{margin-bottom:10px}.filters>*{min-width:0}
+#list{max-height:720px;overflow:auto}.row{padding:11px 8px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:9px}.row:hover,.row.active{background:#eef4f0}.row strong{display:block}.meta{font-size:.73rem;color:var(--muted);line-height:1.4}
+.badge{display:inline-block;border-radius:999px;padding:4px 7px;font-size:.66rem;font-weight:850;margin-top:5px}.draft{background:#fff0ca;color:#745200}.live{background:#e1f1e7;color:#265f42}.archived{background:#eee;color:#555}
+textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px;padding:11px;font:inherit;line-height:1.45}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:10px}.box{background:#f7f4ef;border-radius:11px;padding:11px;white-space:pre-wrap;line-height:1.45;font-size:.87rem}
+.notice{background:#fff6dc;border-radius:10px;padding:10px;color:#765500}.success{background:#e7f4ec;border-radius:10px;padding:10px;color:#205c3d}
+.hidden{display:none}@media(max-width:900px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.diff{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<h1>Casa Amar Review Center</h1>
+<p class="lead">Gennemgå drafts uden at påvirke den version, Concierge bruger. En live-version kan fortsætte, mens en ny draft redigeres. Først når du godkender, bliver draften den nye live-version.</p>
+<div class="top">
+<a href="/knowledge-studio.html">Til Knowledge Studio</a>
+<a href="/knowledge-center.html">Til Dashboard</a>
+<button class="primary" id="export">Lav samlet GitHub-fil</button>
+</div>
+
+<section class="metrics">
+<div class="metric"><span>Alle objekter</span><strong id="mAll">0</strong></div>
+<div class="metric"><span>Drafts</span><strong id="mDraft">0</strong></div>
+<div class="metric"><span>Live + draft</span><strong id="mLiveDraft">0</strong></div>
+<div class="metric"><span>Kun live</span><strong id="mLive">0</strong></div>
+<div class="metric"><span>Arkiveret</span><strong id="mArchived">0</strong></div>
+</section>
+
+<div class="layout">
+<section class="panel">
+<div class="filters">
+<input id="search" placeholder="Søg titel eller indhold">
+<select id="status">
+<option value="draft">Kun drafts</option>
+<option value="">Alle statusser</option>
+<option value="live_draft">Live + draft</option>
+<option value="draft_only">Kun nye drafts</option>
+<option value="live">Kun live</option>
+<option value="archived">Arkiveret</option>
+</select>
+<select id="category"><option value="">Alle kategorier</option></select>
+<select id="test"><option value="">Alle teststatusser</option><option value="needs_test">Ikke testet</option><option value="tested">Testet</option></select>
+<select id="channel"><option value="">Alle kanaler</option><option value="ai">AI</option><option value="website">Hjemmeside</option><option value="guest_guide">Gæsteguide</option><option value="owner_guide">Ejerguide</option></select>
+</div>
+<div id="count" class="meta"></div>
+<div id="list"></div>
+</section>
+
+<section class="panel">
+<div id="empty"><h2>Vælg et objekt</h2><p class="meta">Start med filteret “Kun drafts” og gennemgå listen ét objekt ad gangen.</p></div>
+<div id="editor" class="hidden">
+<h2 id="title"></h2>
+<div id="statusLine" class="meta"></div>
+<div id="message"></div>
+<h3>Draft-indhold</h3>
+<textarea id="draftText"></textarea>
+<div class="actions" style="margin-top:10px">
+<button id="saveDraft">Gem draft-rettelse</button>
+<button class="good" id="approve">Godkend som ny live-version</button>
+<button id="reject">Kassér draft</button>
+<button id="archive">Arkivér objekt</button>
+</div>
+<details style="margin-top:14px">
+<summary><strong>Sammenlign live og draft</strong></summary>
+<div class="diff" style="margin-top:10px">
+<div><h3>Nuværende live</h3><div class="box" id="liveText"></div></div>
+<div><h3>Ny draft</h3><div class="box" id="draftPreview"></div></div>
+</div>
+</details>
+</div>
+</section>
+</div>
+
+<script>
+const q=s=>document.querySelector(s);
+const CHANGES_KEY='casaKnowledgeChanges';
+let data={cards:[]},activeId=null,changes=[];
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function clone(v){return JSON.parse(JSON.stringify(v))}
+function loadChanges(){try{return JSON.parse(localStorage.getItem(CHANGES_KEY)||'[]')}catch{return []}}
+function saveChanges(){localStorage.setItem(CHANGES_KEY,JSON.stringify(changes))}
+function download(name,obj){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function cardStatus(c){
+ if(c.status==='archived')return'archived';
+ if(c.lifecycle?.live_status==='draft_only')return'draft_only';
+ if(c.draft_version)return'live_draft';
+ return'live';
+}
+function hasDraft(c){return Boolean(c.draft_version)}
+function currentDraft(c){return c.draft_version||null}
+function applyWorkspaceChanges(cards,items){
+ const map=new Map(cards.map(c=>[c.id,c]));
+ for(const change of items){
+   if(!change?.after?.id)continue;
+   map.set(change.after.id,clone(change.after));
+ }
+ return [...map.values()];
+}
+function addChange(card,before,action){
+ changes.push({
+   id:`review-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+   card_id:card.id,changed_at:new Date().toISOString(),before,
+   after:clone(card),status:'approved_local',manager_operation:action
+ });
+ saveChanges();
+}
+function metrics(){
+ q('#mAll').textContent=data.cards.length;
+ q('#mDraft').textContent=data.cards.filter(hasDraft).length;
+ q('#mLiveDraft').textContent=data.cards.filter(c=>cardStatus(c)==='live_draft').length;
+ q('#mLive').textContent=data.cards.filter(c=>cardStatus(c)==='live').length;
+ q('#mArchived').textContent=data.cards.filter(c=>cardStatus(c)==='archived').length;
+}
+function filtered(){
+ const term=q('#search').value.toLowerCase().trim();
+ const status=q('#status').value,cat=q('#category').value,test=q('#test').value,channel=q('#channel').value;
+ return data.cards.filter(c=>{
+   const s=cardStatus(c),draft=c.draft_version;
+   if(status==='draft'&&!draft)return false;
+   if(status&&status!=='draft'&&s!==status)return false;
+   if(cat&&c.category!==cat&&draft?.category!==cat)return false;
+   if(test==='needs_test'&&c.test_state?.status!=='needs_test')return false;
+   if(test==='tested'&&c.test_state?.status==='needs_test')return false;
+   const channels=draft?.channels||c.channels||{};
+   if(channel&&!channels[channel])return false;
+   const text=[c.title,c.summary,draft?.title,draft?.summary,...(c.keywords||[])].join(' ').toLowerCase();
+   return !term||text.includes(term);
+ });
+}
+function render(){
+ metrics();
+ const list=filtered();
+ q('#count').textContent=`${list.length} objekter vist`;
+ q('#list').innerHTML=list.map(c=>{
+   const s=cardStatus(c),label=s==='draft_only'?'Kun draft':s==='live_draft'?'Live + draft':s==='archived'?'Arkiveret':'Live';
+   return `<div class="row ${activeId===c.id?'active':''}" data-id="${esc(c.id)}">
+     <strong>${esc(c.draft_version?.title||c.title)}</strong>
+     <div class="meta">${esc(c.draft_version?.category||c.category)} · ${esc(c.id)}</div>
+     <span class="badge ${s==='archived'?'archived':s==='live'?'live':'draft'}">${label}</span>
+   </div>`;
+ }).join('');
+ q('#list').querySelectorAll('[data-id]').forEach(el=>el.addEventListener('click',()=>openCard(el.dataset.id)));
+ if(activeId&&!data.cards.some(c=>c.id===activeId)){activeId=null;q('#editor').classList.add('hidden');q('#empty').classList.remove('hidden')}
+}
+function getCard(id){return data.cards.find(c=>c.id===id)}
+function openCard(id){
+ activeId=id;const c=getCard(id);if(!c)return;
+ q('#empty').classList.add('hidden');q('#editor').classList.remove('hidden');
+ q('#title').textContent=c.draft_version?.title||c.title;
+ q('#statusLine').textContent=`Status: ${cardStatus(c)} · Modenhed: ${c.maturity||'ukendt'} · Test: ${c.test_state?.status||'ukendt'}`;
+ q('#draftText').value=c.draft_version?.summary||'';
+ q('#liveText').textContent=c.lifecycle?.live_status==='draft_only'?'Der findes endnu ingen live-version.':(c.summary||c.answer||'');
+ q('#draftPreview').textContent=c.draft_version?.summary||'Ingen draft.';
+ q('#approve').disabled=!c.draft_version;
+ q('#reject').disabled=!c.draft_version;
+ q('#message').innerHTML='';
+ render();
+}
+function saveDraft(){
+ const c=getCard(activeId);if(!c?.draft_version)return;
+ const before=clone(c);
+ const value=q('#draftText').value.trim();
+ c.draft_version.summary=value;c.draft_version.answer=value;c.draft_version.body=value;c.draft_version.content=value;
+ c.draft_version.updated_at=new Date().toISOString();
+ addChange(c,before,'review_edit_draft');
+ q('#draftPreview').textContent=value;
+ q('#message').innerHTML='<p class="success">Draft-rettelsen er gemt lokalt.</p>';
+}
+function approve(){
+ const c=getCard(activeId);if(!c?.draft_version)return;
+ const before=clone(c),d=c.draft_version;
+ c.title=d.title||c.title;c.category=d.category||c.category;c.summary=d.summary||'';
+ c.answer=d.answer||c.summary;c.body=d.body||c.summary;c.content=d.content||c.body;
+ c.visibility=d.visibility||c.visibility;c.channels=clone(d.channels||c.channels||{});
+ c.tests=clone(d.tests||c.tests||[]);c.relations=clone(d.relations||c.relations||{related:[],supersedes:[],superseded_by:[]});
+ c.status='active';c.maturity='verified';c.updated=new Date().toISOString().slice(0,10);
+ c.editorial={...(c.editorial||{}),review_state:'approved',reviewed_by:'Michael',reviewed_at:new Date().toISOString(),notes:c.editorial?.notes||''};
+ c.lifecycle={...(c.lifecycle||{}),live_status:'live',has_draft:false,last_published_at:new Date().toISOString()};
+ delete c.draft_version;
+ addChange(c,before,'publish_draft');
+ q('#message').innerHTML='<p class="success">Draften er nu godkendt som ny live-version.</p>';
+ openCard(c.id);
+}
+function reject(){
+ const c=getCard(activeId);if(!c?.draft_version)return;
+ if(!confirm('Kassér draften? Den nuværende live-version ændres ikke.'))return;
+ const before=clone(c);
+ if(c.lifecycle?.live_status==='draft_only'){
+   c.status='archived';c.lifecycle={...(c.lifecycle||{}),live_status:'archived',has_draft:false};
+ }else{
+   delete c.draft_version;c.lifecycle={...(c.lifecycle||{}),live_status:'live',has_draft:false};
+ }
+ addChange(c,before,'reject_draft');openCard(c.id);
+}
+function archiveCard(){
+ const c=getCard(activeId);if(!c)return;
+ if(!confirm('Arkivér objektet? Concierge vil ikke bruge det efter næste GitHub-upload.'))return;
+ const before=clone(c);c.status='archived';c.lifecycle={...(c.lifecycle||{}),live_status:'archived',has_draft:hasDraft(c)};
+ addChange(c,before,'archive');openCard(c.id);
+}
+async function exportFile(){
+ const payload={...data,version:'2.0',updated:new Date().toISOString().slice(0,10),entries:data.cards};
+ const contents=JSON.stringify(payload,null,2);
+ try{
+   if(window.showSaveFilePicker){
+     const handle=await window.showSaveFilePicker({suggestedName:'knowledge-cards.json',types:[{description:'JSON-fil',accept:{'application/json':['.json']}}]});
+     const writable=await handle.createWritable();await writable.write(contents);await writable.close();
+     alert('Den samlede knowledge-cards.json er gemt og klar til GitHub.');
+     return;
+   }
+ }catch(e){if(e?.name==='AbortError')return}
+ download('knowledge-cards.json',payload);
+}
+['search','status','category','test','channel'].forEach(id=>q('#'+id).addEventListener(id==='search'?'input':'change',render));
+q('#saveDraft').addEventListener('click',saveDraft);q('#approve').addEventListener('click',approve);q('#reject').addEventListener('click',reject);q('#archive').addEventListener('click',archiveCard);q('#export').addEventListener('click',exportFile);
+
+Promise.all([
+ fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json())
+]).then(([cardsData])=>{
+ changes=loadChanges();
+ const serverCards=cardsData.cards||cardsData.entries||[];
+ data={...cardsData,cards:applyWorkspaceChanges(serverCards,changes)};
+ const cats=[...new Set(data.cards.flatMap(c=>[c.category,c.draft_version?.category]).filter(Boolean))].sort();
+ q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
+ render();
+});
+</script>
+</main></body></html>

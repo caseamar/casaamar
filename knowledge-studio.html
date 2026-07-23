@@ -97,6 +97,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <div class="topbar">
 <button class="primary" id="startSession">Start ny redigeringssession</button>
 <button class="secondary" id="newInput">Nyt input</button>
+<a class="button secondary" href="/knowledge-review.html">Review Center</a>
 <button class="secondary" id="selectNeedsTest">Vælg ikke testet</button>
 <button class="secondary" id="runSelectedTests">Test valgte objekter</button>
 <button class="secondary" id="finishSession">Afslut session <span id="changeCountTop"></span></button>
@@ -303,6 +304,40 @@ function resolveCard(op){
 
  return null;
 }
+function hasDraft(card){
+ return Boolean(card?.draft_version);
+}
+
+function liveSnapshot(card){
+ const clone=JSON.parse(JSON.stringify(card));
+ delete clone.draft_version;
+ return clone;
+}
+
+function makeDraftVersion(card, values={}){
+ return {
+   title:values.title ?? card.title ?? '',
+   category:values.category ?? card.category ?? '',
+   summary:values.summary ?? card.summary ?? card.answer ?? '',
+   answer:values.summary ?? card.answer ?? card.summary ?? '',
+   body:values.summary ?? card.body ?? card.summary ?? '',
+   content:values.summary ?? card.content ?? card.body ?? card.summary ?? '',
+   visibility:values.visibility ?? card.visibility ?? 'internal',
+   channels:values.channels ?? JSON.parse(JSON.stringify(card.channels||{
+     ai:true,website:false,guest_guide:true,owner_guide:true
+   })),
+   maturity:'draft',
+   created_at:card.draft_version?.created_at || new Date().toISOString(),
+   updated_at:new Date().toISOString(),
+   created_by:'Michael',
+   status:'draft',
+   tests:values.tests ?? JSON.parse(JSON.stringify(card.tests||[])),
+   relations:values.relations ?? JSON.parse(JSON.stringify(card.relations||{
+     related:[],supersedes:[],superseded_by:[]
+   }))
+ };
+}
+
 function slugify(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
 function renderList(){
  const term=q('#search').value.toLowerCase(),cat=q('#category').value;
@@ -310,16 +345,23 @@ function renderList(){
  q('#objectList').innerHTML=visible.map(c=>`<div class="row ${activeId===c.id?'active':''}">
  <input type="checkbox" data-id="${esc(c.id)}" ${selected.has(c.id)?'checked':''}>
  <div data-open="${esc(c.id)}" style="cursor:pointer"><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.id)}</div></div>
- <span class="badge ${c.test_state?.status==='needs_test'?'needs':'tested'}">${c.test_state?.status==='needs_test'?'Ikke testet':'OK'}</span>
+ <span class="badge ${c.lifecycle?.live_status==='draft_only'?'draft':hasDraft(c)?'hasdraft':'live'}">${
+   c.lifecycle?.live_status==='draft_only'?'Kun draft':hasDraft(c)?'Live + draft':'Live'
+ }</span>
  </div>`).join('');
  q('#selectedInfo').textContent=`${selected.size} valgt`;
  q('#objectList').querySelectorAll('input[data-id]').forEach(el=>el.addEventListener('change',()=>{el.checked?selected.add(el.dataset.id):selected.delete(el.dataset.id);renderList()}));
  q('#objectList').querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',()=>openCard(el.dataset.open)));
 }
 function fillEditor(card){
- q('#editTitle').value=card.title||'';q('#editCategory').value=card.category||'';q('#editSummary').value=card.summary||card.answer||'';
- q('#editVisibility').value=card.visibility||'internal';q('#editMaturity').value=card.maturity||'imported';
- q('#chAi').checked=card.channels?.ai!==false;q('#chWeb').checked=!!card.channels?.website;q('#chGuest').checked=card.channels?.guest_guide!==false;q('#chOwner').checked=card.channels?.owner_guide!==false;
+ const source=card.draft_version||card;
+ q('#editTitle').value=source.title||card.title||'';
+ q('#editCategory').value=source.category||card.category||'';
+ q('#editSummary').value=source.summary||source.answer||card.summary||card.answer||'';
+ q('#editVisibility').value=source.visibility||card.visibility||'internal';
+ q('#editMaturity').value=hasDraft(card)?'draft':(card.maturity||'imported');
+ const channels=source.channels||card.channels||{};
+ q('#chAi').checked=channels.ai!==false;q('#chWeb').checked=!!channels.website;q('#chGuest').checked=channels.guest_guide!==false;q('#chOwner').checked=channels.owner_guide!==false;
  const ids=card.tests||[];q('#relatedTests .test-list').innerHTML=ids.map(id=>`<span class="test-chip">${esc(id)}</span>`).join('')||'<span class="meta">Ingen tests knyttet endnu.</span>';
 }
 function openCard(id){
@@ -384,12 +426,22 @@ function relationIds(values){
 function buildNewCard(op){
  return {
   id:slugify(op.title)||`new-object-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
-  title:op.title,category:op.category,summary:op.final_content,answer:op.final_content,
-  body:op.final_content,content:op.final_content,keywords:[],visibility:'internal',
-  trust:100,status:'active',dynamic:false,updated:new Date().toISOString().slice(0,10),
+  title:op.title,category:op.category,summary:'',answer:'',
+  body:'',content:'',keywords:[],visibility:'internal',
+  trust:100,status:'draft',dynamic:false,updated:new Date().toISOString().slice(0,10),
   owner:'Michael',language:'da',
-  channels:{ai:true,website:false,guest_guide:true,owner_guide:true},
+  channels:{ai:false,website:false,guest_guide:false,owner_guide:false},
   maturity:'draft',tests:op.suggested_tests||[],
+  lifecycle:{live_status:'draft_only',has_draft:true},
+  draft_version:{
+    title:op.title,category:op.category,summary:op.final_content,answer:op.final_content,
+    body:op.final_content,content:op.final_content,visibility:'internal',
+    channels:{ai:true,website:false,guest_guide:true,owner_guide:true},
+    maturity:'draft',status:'draft',created_at:new Date().toISOString(),
+    updated_at:new Date().toISOString(),created_by:'Michael',
+    tests:op.suggested_tests||[],
+    relations:{related:relationIds(op.suggested_relations),supersedes:[],superseded_by:[]}
+  },
   test_state:{status:'needs_test',last_tested_at:null,last_changed_at:new Date().toISOString(),last_result:null},
   editorial:{review_state:'needs_review',website_candidate:false,notes:'Created by Knowledge Manager'},
   quality:{completeness:70,test_coverage:false,requires_refresh:false,conflict_status:'none'},
@@ -436,12 +488,19 @@ function applyManagerOperation(op,forceCreate=false){
    return card;
  }
  const before=JSON.parse(JSON.stringify(card));
- card.summary=op.final_content;card.answer=op.final_content;card.body=op.final_content;card.content=op.final_content;
+ const draftTests=[...new Set([...(card.draft_version?.tests||card.tests||[]),...(op.suggested_tests||[])])];
+ const draftRelations=JSON.parse(JSON.stringify(card.draft_version?.relations||card.relations||{related:[],supersedes:[],superseded_by:[]}));
+ draftRelations.related=[...new Set([...(draftRelations.related||[]),...relationIds(op.suggested_relations)])];
+ card.draft_version=makeDraftVersion(card,{
+   title:op.title||card.title,
+   category:op.category||card.category,
+   summary:op.final_content,
+   tests:draftTests,
+   relations:draftRelations
+ });
+ card.lifecycle={...(card.lifecycle||{}),live_status:'live',has_draft:true};
  card.updated=new Date().toISOString().slice(0,10);
  card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
- card.tests=[...new Set([...(card.tests||[]),...(op.suggested_tests||[])])];
- card.relations=card.relations||{related:[],supersedes:[],superseded_by:[]};
- card.relations.related=[...new Set([...(card.relations.related||[]),...relationIds(op.suggested_relations)])];
  changes.push({
    id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
    card_id:card.id,changed_at:new Date().toISOString(),before,
@@ -543,9 +602,16 @@ function saveEdit(){
  }else if(pendingNew){
    card=pendingNew;before=null;
  }else{return alert('Vælg et forslag eller et objekt først.')}
- card.title=q('#editTitle').value.trim();card.category=q('#editCategory').value.trim();card.summary=q('#editSummary').value.trim();card.answer=card.summary;card.body=card.body||card.summary;card.content=card.body;
- card.visibility=q('#editVisibility').value;card.maturity=q('#editMaturity').value;card.updated=new Date().toISOString().slice(0,10);
- card.channels={ai:q('#chAi').checked,website:q('#chWeb').checked,guest_guide:q('#chGuest').checked,owner_guide:q('#chOwner').checked};
+ const draftChannels={ai:q('#chAi').checked,website:q('#chWeb').checked,guest_guide:q('#chGuest').checked,owner_guide:q('#chOwner').checked};
+ card.draft_version=makeDraftVersion(card,{
+   title:q('#editTitle').value.trim(),
+   category:q('#editCategory').value.trim(),
+   summary:q('#editSummary').value.trim(),
+   visibility:q('#editVisibility').value,
+   channels:draftChannels
+ });
+ card.lifecycle={...(card.lifecycle||{}),live_status:card.lifecycle?.live_status||'live',has_draft:true};
+ card.updated=new Date().toISOString().slice(0,10);
  card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
  if(card._pending_relations?.length){
    card.relations=card.relations||{related:[],supersedes:[],superseded_by:[]};
@@ -562,7 +628,7 @@ function saveEdit(){
  q('#saveMessage').className='success';
  const pendingCount=changes.length;
  q('#saveMessage').innerHTML=`<strong>Ændringen er gemt lokalt.</strong>
- Du kan fortsætte med næste emne. ${pendingCount} ændring${pendingCount===1?'':'er'} ligger nu lokalt og kommer med i den samlede GitHub-fil senere.
+ Du kan fortsætte med næste emne eller godkende draften senere i Review Center. ${pendingCount} ændring${pendingCount===1?'':'er'} ligger nu lokalt og kommer med i den samlede GitHub-fil senere.
  <div class="next-actions">
    <button class="secondary" id="nextInput">Fortsæt med nyt input</button>
    <button class="secondary" id="nextTest">Test dette objekt</button>

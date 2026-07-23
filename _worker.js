@@ -211,6 +211,7 @@ function selectKnowledge(question, entries, limit = 6) {
   return (entries || [])
     .filter((entry) =>
       entry?.status !== "archived" &&
+      entry?.lifecycle?.live_status !== "draft_only" &&
       entry?.channels?.ai !== false
     )
     .map((entry) => {
@@ -1039,7 +1040,7 @@ async function handleChat(request, env) {
     return json({
       ok: true,
       service: "Casa Amar AI",
-      version: "9.1-honest-concierge",
+      version: "9.2-live-draft-model",
       method: "POST"
     });
   }
