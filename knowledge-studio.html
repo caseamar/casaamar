@@ -59,7 +59,13 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .match:not(.applied) .applied-banner{display:none}
 details.change-details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted);font-size:.8rem}
+.session-overview{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0 16px}
+.session-overview>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+.session-overview span{display:block;color:var(--muted);font-size:.7rem}
+.session-overview strong{display:block;margin-top:4px;font-size:.9rem}
 .session-status{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+@media(max-width:900px){.session-overview{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.session-overview{grid-template-columns:1fr}}
 .session-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.75rem}
 .session-pill strong{color:var(--ink)}
 .workflow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
@@ -73,18 +79,27 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </head>
 <body><main>
 <h1>Casa Amar AI Editor</h1>
-<p class="lead">Skriv ny viden naturligt. AI organiserer automatisk dit indhold i op til tre fokuserede Knowledge Objects. Du kontrollerer primært, at indholdet ikke er åbenlyst forkert.</p>
+<p class="lead">Start en redigeringssession, skriv ny viden naturligt, og afslut først sessionen, når du vil lave én samlet GitHub-fil.</p>
 <div class="workflow">
-  <span><strong>1</strong> Beskriv ændringen</span>
-  <span><strong>2</strong> Brug forslag og gem</span>
-  <span><strong>3</strong> Fortsæt med flere ændringer</span>
-  <span><strong>4</strong> Lav én samlet GitHub-fil</span>
+  <span><strong>1</strong> Start session</span>
+  <span><strong>2</strong> Skriv, organisér og gem</span>
+  <span><strong>3</strong> Fortsæt med flere emner</span>
+  <span><strong>4</strong> Afslut session og eksportér</span>
 </div>
+<div class="session-overview">
+  <div><span>Session</span><strong id="sessionState">Ikke startet</strong></div>
+  <div><span>Indlæst KB</span><strong id="sessionKbVersion">–</strong></div>
+  <div><span>Objekter</span><strong id="sessionObjectCount">0</strong></div>
+  <div><span>Lokale ændringer</span><strong id="sessionLocalCount">0</strong></div>
+  <div><span>Sidst gemt lokalt</span><strong id="sessionLastSaved">–</strong></div>
+</div>
+
 <div class="topbar">
-<button class="primary" id="newInput">Nyt input</button>
+<button class="primary" id="startSession">Start ny redigeringssession</button>
+<button class="secondary" id="newInput">Nyt input</button>
 <button class="secondary" id="selectNeedsTest">Vælg ikke testet</button>
 <button class="secondary" id="runSelectedTests">Test valgte objekter</button>
-<button class="secondary" id="saveGithubFile">Lav samlet GitHub-fil <span id="changeCountTop"></span></button>
+<button class="secondary" id="finishSession">Afslut session <span id="changeCountTop"></span></button>
 <button class="secondary" id="exportChanges">Download ændringslog</button>
 <a class="button secondary" href="/knowledge-center.html">Knowledge Center</a>
 <a class="button secondary" href="/ai-test-runner.html">Fuld test</a>
@@ -144,6 +159,81 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <script>
 let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,lastResult=null;
 const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
+const SESSION_KEY='casaKnowledgeSession';
+
+function readSession(){
+  try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch{return null}
+}
+
+function writeSession(session){
+  localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+  updateSessionOverview();
+}
+
+function updateSessionOverview(){
+  const session=readSession();
+  const version=data?.version||data?.updated||'ukendt';
+  const objectCount=data?.cards?.length||0;
+  const localCount=changes.length;
+  const lastSaved=changes.length?changes[changes.length-1]?.changed_at:null;
+
+  q('#sessionState').textContent=session?.active?'Aktiv':'Ikke startet';
+  q('#sessionKbVersion').textContent=version;
+  q('#sessionObjectCount').textContent=objectCount;
+  q('#sessionLocalCount').textContent=localCount;
+  q('#sessionLastSaved').textContent=lastSaved?new Date(lastSaved).toLocaleString('da-DK'):'–';
+
+  const startBtn=q('#startSession');
+  const finishBtn=q('#finishSession');
+  if(startBtn){
+    startBtn.textContent=session?.active?'Session i gang':'Start ny redigeringssession';
+    startBtn.disabled=Boolean(session?.active);
+  }
+  if(finishBtn){
+    finishBtn.disabled=!session?.active||localCount===0;
+  }
+}
+
+function startEditingSession(){
+  const existing=readSession();
+  if(existing?.active)return;
+  const session={
+    active:true,
+    started_at:new Date().toISOString(),
+    kb_version:data?.version||data?.updated||'ukendt',
+    object_count:data?.cards?.length||0,
+    baseline_change_count:changes.length
+  };
+  writeSession(session);
+  q('#inputText').focus();
+}
+
+async function finishEditingSession(){
+  const session=readSession();
+  if(!session?.active){
+    alert('Start først en redigeringssession.');
+    return;
+  }
+  if(changes.length===0){
+    alert('Der er ingen lokale ændringer i denne session.');
+    return;
+  }
+
+  await saveGithubFile();
+
+  const finished={
+    ...session,
+    active:false,
+    finished_at:new Date().toISOString(),
+    exported_change_count:changes.length
+  };
+  writeSession(finished);
+
+  q('#saveMessage').className='success';
+  q('#saveMessage').innerHTML=`<strong>Sessionen er afsluttet.</strong>
+  Den samlede knowledge-cards.json er klar til upload i GitHub.`;
+}
+
 function updateChangeCount(){
  const count=changes.length;
  const top=document.querySelector('#changeCountTop');
@@ -171,16 +261,48 @@ async function saveGithubFile(){
      const writable=await handle.createWritable();
      await writable.write(contents);
      await writable.close();
-     alert(`Den samlede fil knowledge-cards.json er gemt med ${changes.length} lokale ændringer. Upload den til GitHub og overskriv den eksisterende fil.`);
+     alert(`Sessionen er afsluttet. Den samlede knowledge-cards.json er gemt med ${changes.length} lokale ændringer.`);
      return;
    }
  }catch(error){
    if(error?.name==='AbortError')return;
  }
  download('knowledge-cards.json',payload);
- alert(`Den samlede fil er downloadet med ${changes.length} lokale ændringer. Hvis Windows tilføjer (1) eller (2), omdøb den til knowledge-cards.json før upload til GitHub.`);
+ alert(`Sessionen er afsluttet. Den samlede fil er downloadet med ${changes.length} lokale ændringer. Hvis Windows tilføjer (1) eller (2), omdøb den til knowledge-cards.json før upload til GitHub.`);
 }
 function getCard(id){return data.cards.find(c=>c.id===id)}
+
+function normaliseObjectKey(value){
+ return String(value||'')
+   .toLowerCase()
+   .normalize('NFD')
+   .replace(/[\u0300-\u036f]/g,'')
+   .replace(/[^a-z0-9]+/g,'-')
+   .replace(/^-|-$/g,'');
+}
+
+function resolveCard(op){
+ const requestedId=String(op?.card_id||'').trim();
+ if(requestedId){
+   const exact=getCard(requestedId);
+   if(exact)return exact;
+
+   const bySlug=data.cards.find(card=>
+     normaliseObjectKey(card.slug||card.id)===normaliseObjectKey(requestedId)
+   );
+   if(bySlug)return bySlug;
+ }
+
+ const requestedTitle=normaliseObjectKey(op?.title);
+ if(requestedTitle){
+   const byTitle=data.cards.find(card=>
+     normaliseObjectKey(card.title)===requestedTitle
+   );
+   if(byTitle)return byTitle;
+ }
+
+ return null;
+}
 function slugify(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
 function renderList(){
  const term=q('#search').value.toLowerCase(),cat=q('#category').value;
@@ -291,8 +413,28 @@ function applyManagerOperation(op,forceCreate=false){
    activeId=card.id;fillEditor(card);selected.add(card.id);
    return card;
  }
- const card=getCard(op.card_id);
- if(!card)return null;
+ let card=resolveCard(op);
+
+ // The Worker can occasionally reference an object from another registered
+ // dataset that is not editable in knowledge-cards.json. Never fail or lose
+ // the user's content: create a focused local object instead.
+ if(!card){
+   card=buildNewCard({
+     ...op,
+     action:'create',
+     title:op.title||'Nyt Knowledge Object'
+   });
+   card.editorial.notes=`Created locally because referenced object "${op.card_id||'unknown'}" was not available in the editable Knowledge Cards dataset.`;
+   data.cards.push(card);
+   changes.push({
+     id:`change-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+     card_id:card.id,changed_at:new Date().toISOString(),before:null,
+     after:JSON.parse(JSON.stringify(card)),status:'approved_local',
+     source_input:sourceInput,manager_operation:'create_fallback'
+   });
+   activeId=card.id;fillEditor(card);selected.add(card.id);
+   return card;
+ }
  const before=JSON.parse(JSON.stringify(card));
  card.summary=op.final_content;card.answer=op.final_content;card.body=op.final_content;card.content=op.final_content;
  card.updated=new Date().toISOString().slice(0,10);
@@ -351,10 +493,20 @@ function renderAnalysis(result){
 
  function accept(index,forceCreate){
    const op=result.operations[index];
-   const card=applyManagerOperation(op,forceCreate);
-   if(!card)return alert('Objektet kunne ikke behandles.');
+   let card;
+   try{
+     card=applyManagerOperation(op,forceCreate);
+   }catch(error){
+     console.error('Knowledge operation failed',error,op);
+     alert(`Ændringen kunne ikke gemmes: ${error.message||'ukendt fejl'}`);
+     return;
+   }
+   if(!card){
+     alert('Ændringen kunne ikke gemmes. Prøv "Opret som nyt objekt i stedet".');
+     return;
+   }
    localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
-   updateChangeCount();renderList();
+   updateChangeCount();updateSessionOverview();renderList();
    const article=q(`[data-operation="${index}"]`);
    if(article)article.classList.add('applied');
    q('#saveMessage').className='success';
@@ -363,9 +515,28 @@ function renderAnalysis(result){
 
  q('#analysis').querySelectorAll('[data-apply-operation]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.applyOperation),false)));
  q('#analysis').querySelectorAll('[data-force-new]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.forceNew),true)));
- q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>openCard(btn.dataset.select)));
+ q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{
+   const opIndex=Number(btn.closest('[data-operation]')?.dataset.operation);
+   const op=result.operations[opIndex];
+   const card=resolveCard(op);
+   if(card){
+     openCard(card.id);
+     return;
+   }
+   btn.classList.add('is-error');
+   btn.textContent='Ikke i redigerbar KB';
+   setTimeout(()=>{
+     btn.classList.remove('is-error');
+     btn.textContent='Se eksisterende objekt';
+   },1800);
+ }));
 }
 function saveEdit(){
+ const session=readSession();
+ if(!session?.active){
+   alert('Start først en redigeringssession.');
+   return;
+ }
  let card,before;
  if(activeId){
    card=getCard(activeId);before=JSON.parse(JSON.stringify(card));
@@ -407,6 +578,11 @@ function saveEdit(){
  selected.add(card.id);renderList();fillEditor(card);
 }
 async function suggest(){
+ const session=readSession();
+ if(!session?.active){
+   alert('Start først en redigeringssession.');
+   return;
+ }
  const input=q('#inputText').value.trim();if(!input)return alert('Skriv den nye viden først.');
  q('#suggest').disabled=true;q('#analysis').innerHTML='<p>AI søger i hele Knowledge Base…</p>';
  try{
@@ -431,7 +607,7 @@ function runTests(ids){
 Promise.all([fetch('/knowledge-cards.json').then(r=>r.json()),fetch('/ai-regression-tests.json').then(r=>r.json())]).then(([cardsData,testData])=>{
  data.cards=cardsData.cards||cardsData.entries||[];tests=testData;
  const cats=[...new Set(data.cards.map(c=>c.category))].sort();q('#category').innerHTML='<option value="">Alle kategorier</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
- updateChangeCount();renderList();if(data.cards[0])openCard(data.cards[0].id);
+ updateChangeCount();updateSessionOverview();renderList();if(data.cards[0])openCard(data.cards[0].id);
 });
 q('#search').addEventListener('input',renderList);q('#category').addEventListener('change',renderList);
 q('#suggest').addEventListener('click',suggest);q('#saveEdit').addEventListener('click',()=>{
@@ -450,6 +626,7 @@ q('#runActiveTests').addEventListener('click',()=>{
   saveEdit();
   if(activeId)setTimeout(()=>runTests([activeId]),100);
 });
-q('#saveGithubFile').addEventListener('click',saveGithubFile);
+q('#startSession').addEventListener('click',startEditingSession);
+q('#finishSession').addEventListener('click',finishEditingSession);
 q('#exportChanges').addEventListener('click',()=>download('knowledge-changes.json',{version:'1.1',updated:new Date().toISOString(),changes}));
 </script></body></html>
