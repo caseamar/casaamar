@@ -60,6 +60,10 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 .workspace-summary>div{background:#f7f4ef;border-radius:10px;padding:10px}.workspace-summary span{display:block;color:var(--muted);font-size:.7rem}
 .workspace-summary strong{display:block;margin-top:4px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px;margin-top:10px}
 .error{background:#f7ded9;color:#8a2c25;padding:10px;border-radius:10px;margin-top:10px}@media(max-width:700px){.workspace-summary{grid-template-columns:1fr}}
+
+.knowledge-health{margin-top:14px}.health-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
+.health-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.health-grid span{display:block;color:var(--muted);font-size:.68rem}
+.health-grid strong{display:block;font-size:1.25rem;margin-top:4px}@media(max-width:900px){.health-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -74,9 +78,9 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.43</strong></div>
-<div><span>Build</span><strong>2026-07-23 16:15</strong></div>
-<div><span>Worker</span><strong>9.3-review-workflow</strong></div>
+<div><span>Release</span><strong>v2026.07.23.44</strong></div>
+<div><span>Build</span><strong>2026-07-23 18:15</strong></div>
+<div><span>Worker</span><strong>9.4-multi-object-manager</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
@@ -119,6 +123,21 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 </section>
 </aside>
 </div>
+
+
+<section class="panel knowledge-health">
+<h2>Knowledge Health</h2>
+<p class="meta">Et hurtigt serviceeftersyn. Tallene inkluderer lokale workspace-ændringer.</p>
+<div class="health-grid">
+<div><span>Live objekter</span><strong id="healthLive">–</strong></div>
+<div><span>Drafts</span><strong id="healthDrafts">–</strong></div>
+<div><span>Ikke testet</span><strong id="healthUntested">–</strong></div>
+<div><span>Dublerede titler</span><strong id="healthDupTitles">–</strong></div>
+<div><span>Dublerede ID’er</span><strong id="healthDupIds">–</strong></div>
+<div><span>Meget brede objekter</span><strong id="healthBroad">–</strong></div>
+</div>
+<p><a class="button" href="/knowledge-architect.html">Gennemgå struktur</a> <a class="button" href="/knowledge-review.html">Gennemgå drafts</a></p>
+</section>
 
 <section class="panel workspace-export">
 <h2>Afslut arbejdet</h2>
@@ -242,6 +261,36 @@ load();
   finally{b.textContent='Eksportér alle workspace-ændringer';refresh()}
  }
  q('#dashboardExport')?.addEventListener('click',exportAll);refresh();
+})();
+</script>
+
+
+<script>
+(async()=>{
+ const clone=v=>JSON.parse(JSON.stringify(v));
+ let changes=[];try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]')}catch{}
+ function apply(cards){
+  const result=clone(cards);
+  for(const ch of changes){
+   if(!ch?.after?.id)continue;
+   let idx=ch.before?.title?result.findIndex(c=>c.id===ch.card_id&&c.title===ch.before.title):-1;
+   if(idx<0){const m=result.map((c,i)=>[c,i]).filter(([c])=>c.id===ch.card_id);if(m.length===1)idx=m[0][1]}
+   if(idx>=0)result[idx]=clone(ch.after);else result.push(clone(ch.after));
+  }
+  return result;
+ }
+ try{
+  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()),cards=apply(raw.cards||raw.entries||[]);
+  const active=cards.filter(c=>c.status!=='archived');
+  const titleCounts={},idCounts={};
+  active.forEach(c=>{const t=String(c.title||'').toLowerCase().trim();titleCounts[t]=(titleCounts[t]||0)+1;idCounts[c.id]=(idCounts[c.id]||0)+1});
+  document.querySelector('#healthLive').textContent=active.filter(c=>c.lifecycle?.live_status!=='draft_only').length;
+  document.querySelector('#healthDrafts').textContent=active.filter(c=>c.draft_version).length;
+  document.querySelector('#healthUntested').textContent=active.filter(c=>c.test_state?.status==='needs_test').length;
+  document.querySelector('#healthDupTitles').textContent=Object.values(titleCounts).filter(n=>n>1).length;
+  document.querySelector('#healthDupIds').textContent=Object.values(idCounts).filter(n=>n>1).length;
+  document.querySelector('#healthBroad').textContent=active.filter(c=>String(c.draft_version?.summary||c.summary||c.content||'').length>1800).length;
+ }catch{}
 })();
 </script>
 

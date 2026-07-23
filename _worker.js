@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "9.3-review-workflow",
+      version: "9.4-multi-object-manager",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -820,16 +820,18 @@ Michael skriver frit og detaljeret. Han skal ikke administrere Knowledge Objects
 
 Din opgave:
 1. Forstå alt relevant indhold.
-2. Fordel det bedst muligt på højst 3 fokuserede Knowledge Objects.
-3. Opdater eksisterende objekter, når de naturligt dækker emnet.
+2. Fordel alt relevant indhold på 1-3 fokuserede Knowledge Objects. Brug flere objekter, når inputtet indeholder flere selvstændige emner.
+3. Opdater gerne flere eksisterende objekter fra samme input, når forskellige dele af inputtet hører hjemme forskellige steder.
 4. Opret nye objekter, når et eksisterende objekt ellers bliver for bredt, eller når emnet ikke findes.
 5. Bevar alle eksisterende korrekte fakta. Slet aldrig viden.
 6. Ved modstridende oplysninger: brug handlingen review.
 7. Undgå brede samleobjekter. Objekter skal være fokuserede og genbrugelige.
 8. Concierge må senere kombinere op til 3 relevante objekter i ét svar.
-9. Returnér en samlet plan med 1-3 operationer.
-10. Links er kun referencer. Gæt aldrig indhold bag et link.
-11. Svar på dansk og hold begrundelser korte.
+9. Returnér en samlet plan med 1-3 operationer. Undlad ikke relevant information blot for at holde antallet nede.
+10. Hver operation skal angive de konkrete dele af brugerens input, som hører til objektet.
+11. Undgå at lægge samme faktum ind i flere objekter, medmindre faktummet reelt er nødvendigt begge steder.
+12. Links er kun referencer. Gæt aldrig indhold bag et link.
+13. Svar på dansk og hold begrundelser korte.
 
 Handlinger:
 - update: udvid et eksisterende objekt.
@@ -874,12 +876,13 @@ ${JSON.stringify(candidateContext)}`
                     final_content: { type: "string" },
                     reason: { type: "string" },
                     changed_facts: { type: "array", items: { type: "string" } },
+                    source_excerpts: { type: "array", items: { type: "string" } },
                     suggested_relations: { type: "array", items: { type: "string" } },
                     suggested_tests: { type: "array", items: { type: "string" } }
                   },
                   required: [
                     "action","card_id","title","category","before_content",
-                    "final_content","reason","changed_facts",
+                    "final_content","reason","changed_facts","source_excerpts",
                     "suggested_relations","suggested_tests"
                   ]
                 }

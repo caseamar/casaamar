@@ -50,6 +50,14 @@ textarea{min-height:135px;resize:vertical}.filters{display:grid;grid-template-co
 .hidden{display:none}
 .field-help{margin:5px 0 8px;color:var(--muted);font-size:.78rem;line-height:1.4}
 .plan-summary{background:#f3eee6;border-radius:12px;padding:12px;margin:10px 0;line-height:1.45}
+.batch-plan-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.operation-select{display:flex;align-items:center;gap:8px;background:#f7f4ef;border-radius:10px;padding:8px;margin-bottom:9px}
+.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.operation-editor .full{grid-column:1/-1}
+.operation-editor textarea{min-height:150px}
+.source-excerpts{background:#eef4f0;border-radius:10px;padding:10px;margin-top:9px}
+.source-excerpts blockquote{margin:6px 0;padding-left:9px;border-left:3px solid #8aa99a;font-size:.78rem}
+@media(max-width:760px){.operation-editor{grid-template-columns:1fr}.operation-editor .full{grid-column:auto}}
 .operation-number{display:inline-flex;width:25px;height:25px;border-radius:50%;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-weight:850;margin-right:7px}
 .override-box{background:#fff7e1;border:1px solid #ead7a7;border-radius:11px;padding:10px;margin-top:10px}
 .final-version{background:#f5f8f6;border:1px solid #d9e7df;border-left:5px solid var(--ok);border-radius:12px;padding:13px;margin-top:10px;line-height:1.5;font-size:.88rem;white-space:pre-wrap}
@@ -104,9 +112,9 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.23.43</strong></div>
-<div><span>Build</span><strong>2026-07-23 16:15</strong></div>
-<div><span>Worker</span><strong>9.3-review-workflow</strong></div>
+<div><span>Release</span><strong>v2026.07.23.44</strong></div>
+<div><span>Build</span><strong>2026-07-23 18:15</strong></div>
+<div><span>Worker</span><strong>9.4-multi-object-manager</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
@@ -152,7 +160,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <button class="primary" id="suggest">Organisér indholdet</button>
 <button class="secondary" id="clear">Ryd</button>
 </div>
-<div class="notice" style="margin-top:10px">Du behøver ikke vælge et objekt først. AI-forslaget indlæses i editoren, men gemmes først, når du klikker <strong>Gem til workspace</strong>.</div>
+<div class="notice" style="margin-top:10px">Du behøver ikke kende objekterne. AI kan opdatere eller oprette op til tre objekter fra samme input. Du vælger og gennemgår forslagene før samlet gemning.</div>
 <div id="inputStatus" class="hidden"></div>
 
 <div class="session-status">
@@ -192,7 +200,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </div>
 </main>
 <script>
-let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,pendingOperation=null,lastResult=null;
+let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,pendingOperation=null,pendingBatch=[],lastResult=null;
 const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
 const SESSION_KEY='casaKnowledgeSession';
 
@@ -532,84 +540,175 @@ function stageManagerOperation(op,forceCreate=false){
  return card;
 }
 
+function operationModeLabel(op){
+ return op.action==='update'?'Opdatér eksisterende objekt':op.action==='create'?'Opret nyt objekt':'Kræver gennemgang';
+}
+
 function renderAnalysis(result){
  lastResult=result;
+ pendingBatch=(result.operations||[]).map((op,index)=>({
+   ...JSON.parse(JSON.stringify(op)),
+   index,
+   selected:true,
+   forceCreate:op.action==='create'||!op.card_id,
+   visibility:'internal',
+   maturity:'draft',
+   channels:{ai:true,website:false,guest_guide:true,owner_guide:true}
+ }));
+
  const candidates=(result.candidates||[]).map(c=>`<div class="candidate-line">
    <div><strong>${esc(c.title)}</strong><div class="meta">${esc(c.category)} · ${esc(c.reason||'')}</div></div>
    <span class="score">${c.match_score}%</span>
  </div>`).join('');
 
- const operations=(result.operations||[]).map((op,i)=>`<article class="match ${i===0?'recommended':''}" data-operation="${i}">
+ const operations=pendingBatch.map((op,i)=>`<article class="match ${i===0?'recommended':''}" data-operation="${i}">
    <div class="match-body">
+     <label class="operation-select">
+       <input type="checkbox" data-op-selected="${i}" checked>
+       <strong>Medtag handling ${i+1}</strong>
+     </label>
      <div class="match-head">
        <div>
          <h3><span class="operation-number">${i+1}</span>${esc(op.title)}</h3>
-         <div class="meta">${op.action==='update'?'Opdater eksisterende objekt':op.action==='create'?'Opret nyt objekt':'Kræver review'} · ${esc(op.category)}</div>
+         <div class="meta">${operationModeLabel(op)} · ${esc(op.category)}</div>
        </div>
        <span class="score">${result.confidence}%</span>
      </div>
      <p class="meta">${esc(op.reason)}</p>
-     <h3 style="margin-bottom:6px">Færdigt indhold</h3>
-     <div class="final-version">${esc(op.final_content)}</div>
-     ${(op.changed_facts||[]).length?`<div class="section"><h3>Indhold der behandles</h3><ul class="facts">${op.changed_facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`:''}
-     <div class="override-box"><strong>AI's valg:</strong> ${op.action==='update'?'Opdatér eksisterende objekt':'Opret nyt objekt'}.
-       ${op.action==='update'?'<div class="meta">Du kan i stedet oprette indholdet som et nyt objekt.</div>':''}
+
+     ${(op.source_excerpts||[]).length?`<div class="source-excerpts"><strong>Dette fra dit input placeres her:</strong>${op.source_excerpts.map(x=>`<blockquote>${esc(x)}</blockquote>`).join('')}</div>`:''}
+
+     <div class="operation-editor">
+       <label>Titel<input data-op-title="${i}" value="${esc(op.title)}"></label>
+       <label>Kategori<input data-op-category="${i}" value="${esc(op.category)}"></label>
+       <label>Handling
+         <select data-op-mode="${i}">
+           <option value="update" ${op.action==='update'?'selected':''}>Opdatér eksisterende</option>
+           <option value="create" ${op.action==='create'||!op.card_id?'selected':''}>Opret nyt objekt</option>
+         </select>
+       </label>
+       <label>Modenhed
+         <select data-op-maturity="${i}">
+           <option value="draft" selected>Draft</option>
+           <option value="review">Review</option>
+           <option value="verified">Godkendt</option>
+         </select>
+       </label>
+       <label class="full">Foreslået indhold
+         <textarea data-op-content="${i}">${esc(op.final_content)}</textarea>
+       </label>
+       <div class="full channels">
+         <strong>Kanaler</strong>
+         <label><input type="checkbox" data-op-channel="${i}" value="ai" checked> AI</label>
+         <label><input type="checkbox" data-op-channel="${i}" value="website"> Hjemmeside</label>
+         <label><input type="checkbox" data-op-channel="${i}" value="guest_guide" checked> Gæsteguide</label>
+         <label><input type="checkbox" data-op-channel="${i}" value="owner_guide" checked> Ejerguide</label>
+       </div>
      </div>
-     <div class="actions" style="margin-top:10px">
-       <button class="primary" data-apply-operation="${i}">Indlæs forslag i editor</button>
-       ${op.action==='update'?`<button class="secondary" data-force-new="${i}">Opret som nyt objekt i stedet</button>`:''}
-       ${op.card_id?`<button class="secondary" data-select="${esc(op.card_id)}">Se eksisterende objekt</button>`:''}
-     </div>
+     ${op.card_id?`<div class="actions"><button class="secondary" data-select="${i}">Se eksisterende objekt</button></div>`:''}
    </div>
-   <div class="applied-banner"><span>✓ Indlæst i editor — ikke gemt endnu</span></div>
  </article>`).join('');
 
- q('#analysis').innerHTML=`<h2>Knowledge Manager</h2>
- <div class="plan-summary"><strong>Plan:</strong> ${esc(result.summary)}<br>
- <span class="meta">${esc(result.structure_reason)} · Confidence ${result.confidence}%</span></div>
- ${result.review_required?'<p class="notice">Planen indeholder usikkerhed eller konflikt. Gennemgå indholdet ekstra grundigt.</p>':''}
+ q('#analysis').innerHTML=`<h2>AI's fordelingsplan</h2>
+ <div class="plan-summary"><strong>${esc(result.summary)}</strong><br>
+ <span class="meta">${esc(result.structure_reason)} · Confidence ${result.confidence}% · ${pendingBatch.length} handling${pendingBatch.length===1?'':'er'}</span></div>
+ ${result.review_required?'<p class="notice">Planen indeholder usikkerhed eller konflikt. Gennemgå forslagene ekstra grundigt.</p>':''}
+ <div class="batch-plan-actions">
+   <button class="primary" id="saveBatchPlan">Gem valgte forslag til workspace</button>
+   <button class="secondary" id="selectAllOps">Vælg alle</button>
+   <button class="secondary" id="clearAllOps">Fravælg alle</button>
+ </div>
  ${operations||'<p class="notice">Der blev ikke genereret en anvendelig plan.</p>'}
  <div class="section"><h3>Fundne eksisterende objekter</h3>${candidates||'<p class="meta">Ingen relevante kandidater fundet.</p>'}</div>`;
 
- function accept(index,forceCreate){
-   const op=result.operations[index];
-   let card;
-   try{
-     card=stageManagerOperation(op,forceCreate);
-   }catch(error){
-     console.error('Knowledge operation staging failed',error,op);
-     alert(`Forslaget kunne ikke indlæses: ${error.message||'ukendt fejl'}`);
-     return;
+ const syncOperation=(i)=>{
+   const op=pendingBatch[i];
+   op.selected=q(`[data-op-selected="${i}"]`)?.checked!==false;
+   op.title=q(`[data-op-title="${i}"]`)?.value.trim()||op.title;
+   op.category=q(`[data-op-category="${i}"]`)?.value.trim()||op.category;
+   const mode=q(`[data-op-mode="${i}"]`)?.value||op.action;
+   op.forceCreate=mode==='create';
+   op.action=mode;
+   op.maturity=q(`[data-op-maturity="${i}"]`)?.value||'draft';
+   op.final_content=q(`[data-op-content="${i}"]`)?.value.trim()||op.final_content;
+   op.channels={ai:false,website:false,guest_guide:false,owner_guide:false};
+   q('#analysis').querySelectorAll(`[data-op-channel="${i}"]`).forEach(box=>op.channels[box.value]=box.checked);
+   return op;
+ };
+
+ async function saveBatch(){
+   const selectedOps=pendingBatch.map((_,i)=>syncOperation(i)).filter(op=>op.selected);
+   if(!selectedOps.length)return alert('Vælg mindst ét forslag.');
+
+   const input=q('#inputText').value.trim();
+   let saved=0;
+   for(const op of selectedOps){
+     const existing=!op.forceCreate?resolveCard(op):null;
+     let card,before;
+
+     if(existing){
+       card=existing;
+       before=JSON.parse(JSON.stringify(card));
+       const draftTests=[...new Set([...(card.draft_version?.tests||card.tests||[]),...(op.suggested_tests||[])])];
+       const draftRelations=JSON.parse(JSON.stringify(card.draft_version?.relations||card.relations||{related:[],supersedes:[],superseded_by:[]}));
+       draftRelations.related=[...new Set([...(draftRelations.related||[]),...relationIds(op.suggested_relations)])];
+       card.draft_version=makeDraftVersion(card,{
+         title:op.title,category:op.category,summary:op.final_content,
+         visibility:op.visibility||'internal',channels:op.channels,
+         tests:draftTests,relations:draftRelations
+       });
+       card.draft_version.maturity=op.maturity;
+       card.lifecycle={...(card.lifecycle||{}),live_status:'live',has_draft:true};
+       card.updated=new Date().toISOString().slice(0,10);
+       card.test_state={...(card.test_state||{}),status:'needs_test',last_changed_at:new Date().toISOString(),last_result:null};
+     }else{
+       card=buildNewCard({...op,action:'create'});
+       card.draft_version.title=op.title;
+       card.draft_version.category=op.category;
+       card.draft_version.summary=op.final_content;
+       card.draft_version.answer=op.final_content;
+       card.draft_version.body=op.final_content;
+       card.draft_version.content=op.final_content;
+       card.draft_version.channels=op.channels;
+       card.draft_version.maturity=op.maturity;
+       before=null;
+       data.cards.push(card);
+     }
+
+     changes.push({
+       id:`change-${Date.now()}-${saved}-${Math.random().toString(36).slice(2,6)}`,
+       card_id:card.id,
+       changed_at:new Date().toISOString(),
+       before,
+       after:JSON.parse(JSON.stringify(card)),
+       status:'approved_local',
+       source_input:input,
+       manager_operation:existing?'multi_update':'multi_create'
+     });
+     selected.add(card.id);
+     saved++;
    }
-   if(!card){
-     alert('Forslaget kunne ikke indlæses i editoren.');
-     return;
-   }
-   renderList();
-   const article=q(`[data-operation="${index}"]`);
-   if(article)article.classList.add('applied');
-   q('#saveMessage').className='notice';
-   q('#saveMessage').innerHTML=`<strong>Forslaget er indlæst i editoren.</strong> Gennemgå tekst, synlighed, modenhed og kanaler. Klik derefter <strong>Gem til workspace</strong>.`;
-   q('#editor').scrollIntoView({behavior:'smooth',block:'start'});
-   setTimeout(()=>q('#editSummary').focus(),350);
+
+   localStorage.setItem('casaKnowledgeChanges',JSON.stringify(changes));
+   pendingBatch=[];
+   q('#inputText').value='';
+   q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
+   q('#inputStatus').className='success';
+   q('#inputStatus').innerHTML=`<strong>${saved} forslag gemt.</strong> Feltet er ryddet og klar til næste emne.`;
+   q('#saveMessage').className='success';
+   q('#saveMessage').innerHTML=`<strong>${saved} objekt${saved===1?'':'er'} gemt i workspace.</strong> De kan gennemgås i Review Center.`;
+   updateChangeCount();updateSessionOverview();renderList();
+   q('#inputText').focus();
+   window.scrollTo({top:0,behavior:'smooth'});
  }
 
- q('#analysis').querySelectorAll('[data-apply-operation]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.applyOperation),false)));
- q('#analysis').querySelectorAll('[data-force-new]').forEach(btn=>btn.addEventListener('click',()=>accept(Number(btn.dataset.forceNew),true)));
+ q('#saveBatchPlan')?.addEventListener('click',saveBatch);
+ q('#selectAllOps')?.addEventListener('click',()=>q('#analysis').querySelectorAll('[data-op-selected]').forEach(x=>x.checked=true));
+ q('#clearAllOps')?.addEventListener('click',()=>q('#analysis').querySelectorAll('[data-op-selected]').forEach(x=>x.checked=false));
  q('#analysis').querySelectorAll('[data-select]').forEach(btn=>btn.addEventListener('click',()=>{
-   const opIndex=Number(btn.closest('[data-operation]')?.dataset.operation);
-   const op=result.operations[opIndex];
+   const op=pendingBatch[Number(btn.dataset.select)];
    const card=resolveCard(op);
-   if(card){
-     openCard(card.id);
-     return;
-   }
-   btn.classList.add('is-error');
-   btn.textContent='Ikke i redigerbar KB';
-   setTimeout(()=>{
-     btn.classList.remove('is-error');
-     btn.textContent='Se eksisterende objekt';
-   },1800);
+   if(card)openCard(card.id);else alert('Objektet findes ikke entydigt i den redigerbare Knowledge Base.');
  }));
 }
 function saveEdit(){
@@ -674,7 +773,7 @@ async function suggest(){
    return;
  }
  const input=q('#inputText').value.trim();if(!input)return alert('Skriv den nye viden først.');
- q('#suggest').disabled=true;q('#analysis').innerHTML='<p>AI søger i hele Knowledge Base…</p>';
+ q('#suggest').disabled=true;q('#analysis').innerHTML='<p>AI analyserer indholdet og fordeler det på relevante objekter…</p>';
  try{
    const r=await fetch('/api/knowledge-suggest',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({input,selected_ids:[...selected]})});
    const result=await r.json();if(!r.ok)throw new Error(result.detail||result.error);renderAnalysis(result);
@@ -686,7 +785,7 @@ async function suggest(){
  }finally{
    q('#suggest').disabled=false;
    q('#suggest').classList.remove('is-loading');
-   if(!q('#suggest').classList.contains('is-error'))q('#suggest').textContent=q('#suggest').dataset.originalText||'Find det rigtige objekt';
+   if(!q('#suggest').classList.contains('is-error'))q('#suggest').textContent=q('#suggest').dataset.originalText||'Analysér og fordel indholdet';
  }
 }
 function testsFor(ids){return [...new Set(ids.flatMap(id=>getCard(id)?.tests||[]))]}
@@ -715,9 +814,14 @@ q('#clear').addEventListener('click',()=>{
  q('#inputText').value='';
  q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
  q('#inputStatus').className='hidden';
- pendingOperation=null;pendingNew=null;
+ pendingOperation=null;pendingNew=null;pendingBatch=[];
 });
-q('#newInput').addEventListener('click',()=>{q('#inputText').value='';q('#inputText').focus()});
+q('#newInput').addEventListener('click',()=>{
+ q('#inputText').value='';
+ q('#analysis').innerHTML='<p class="meta">AI-resultatet vises her.</p>';
+ pendingBatch=[];
+ q('#inputText').focus();
+});
 q('#selectNeedsTest').addEventListener('click',()=>{data.cards.filter(c=>c.test_state?.status==='needs_test').forEach(c=>selected.add(c.id));renderList()});
 q('#runSelectedTests').addEventListener('click',()=>runTests([...selected]));
 q('#runActiveTests').addEventListener('click',()=>{
