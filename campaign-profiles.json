@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-24",
+  "campaigns": [
+    {
+      "id": "summer-family",
+      "name": "Sommer med familien",
+      "status": "draft",
+      "seasons": [
+        "summer"
+      ],
+      "audiences": [
+        "families"
+      ],
+      "visual_priorities": [
+        "pool",
+        "terraces",
+        "beach",
+        "children-friendly",
+        "shared meals"
+      ]
+    },
+    {
+      "id": "winter-light",
+      "name": "Vinterlys og længere ophold",
+      "status": "draft",
+      "seasons": [
+        "winter"
+      ],
+      "audiences": [
+        "longstay",
+        "couples"
+      ],
+      "visual_priorities": [
+        "sunlight",
+        "workation",
+        "coffee",
+        "local-life",
+        "day-trips"
+      ]
+    },
+    {
+      "id": "couples-autumn",
+      "name": "Efterår for par og venner",
+      "status": "draft",
+      "seasons": [
+        "autumn"
+      ],
+      "audiences": [
+        "couples"
+      ],
+      "visual_priorities": [
+        "roof-terrace",
+        "sunset",
+        "food",
+        "Málaga",
+        "quiet moments"
+      ]
+    }
+  ]
+}

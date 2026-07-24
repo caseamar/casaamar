@@ -1,0 +1,136 @@
+{
+  "version": "1.1",
+  "updated": "2026-07-24",
+  "principles": [
+    "Original assets are never overwritten or deleted by AI.",
+    "Manual links are authoritative and remain stable.",
+    "Current usage is factual and generated from published content.",
+    "AI matches are dynamic suggestions and can be recalculated as new knowledge objects, pages and campaigns are added.",
+    "Locked placements can never be changed automatically.",
+    "New AI analysis never breaks existing approved usage."
+  ],
+  "asset_schema": {
+    "id": "stable unique id",
+    "type": "image | video | map | document",
+    "source": {
+      "original_path": "relative GitHub path or future object-storage key",
+      "filename": "original filename",
+      "checksum": "optional content hash",
+      "uploaded_at": "ISO timestamp"
+    },
+    "manual_metadata": {
+      "title": "owner title",
+      "description": "owner description",
+      "labels": [],
+      "season": [],
+      "audiences": [],
+      "campaigns": []
+    },
+    "ai_profile": {
+      "status": "pending | analyzed | needs_review",
+      "labels": [],
+      "scene": [],
+      "objects": [],
+      "mood": [],
+      "season": [],
+      "audiences": [],
+      "campaigns": [],
+      "quality": {
+        "overall": 0,
+        "sharpness": 0,
+        "lighting": 0,
+        "composition": 0
+      },
+      "format": {
+        "orientation": "landscape | portrait | square",
+        "aspect_ratio": "",
+        "width": 0,
+        "height": 0
+      },
+      "suggested_uses": [],
+      "analysis_version": "",
+      "analyzed_at": null,
+      "history": []
+    },
+    "relations": {
+      "manual_links": [],
+      "ai_matches": [],
+      "current_usage": [],
+      "locked_placements": []
+    },
+    "lifecycle": {
+      "status": "active | reserve | seasonal | campaign | rejected | archived",
+      "valid_from": null,
+      "valid_to": null,
+      "supersedes": [],
+      "superseded_by": []
+    },
+    "variants": {
+      "original": "",
+      "web": "",
+      "mobile": "",
+      "thumbnail": ""
+    },
+    "analysis_queue": {
+      "visual_status": "pending | queued | analyzing | analyzed | failed",
+      "relation_status": "pending | queued | scanning | current | failed",
+      "visual_analysis_version": "",
+      "relation_scan_version": "",
+      "visual_reason": "",
+      "relation_reason": "",
+      "last_visual_analysis": null,
+      "last_relation_scan": null,
+      "retry_count": 0,
+      "last_error": null
+    }
+  },
+  "relation_schema": {
+    "target_type": "knowledge_object | page_section | campaign | audience | season",
+    "target_id": "stable target id",
+    "relation_type": "manual | ai_suggestion | current_usage | locked",
+    "score": 0,
+    "reason": "",
+    "model_version": "",
+    "created_at": "",
+    "last_evaluated_at": ""
+  },
+  "recalculation_rules": {
+    "on_new_asset": [
+      "Analyze the asset.",
+      "Match against all live and draft knowledge objects.",
+      "Match against page sections, audiences, seasons and campaigns.",
+      "Do not activate any placement automatically."
+    ],
+    "on_new_or_changed_knowledge_object": [
+      "Re-evaluate AI matches for relevant assets.",
+      "Preserve manual links, current usage and locked placements.",
+      "Store suggestions separately from approved relations."
+    ],
+    "on_page_or_campaign_change": [
+      "Re-evaluate suitable assets.",
+      "Never replace a locked or currently approved asset without explicit approval."
+    ]
+  },
+  "automation": {
+    "visual_reanalysis_triggers": [
+      "new asset",
+      "manual request",
+      "visual analysis version changes",
+      "asset metadata materially changes"
+    ],
+    "relation_recalculation_triggers": [
+      "new or changed knowledge object",
+      "new page section",
+      "new campaign or audience",
+      "asset labels change",
+      "manual request"
+    ],
+    "safety": [
+      "visual analysis appends history before replacing the current AI profile",
+      "manual labels are never replaced",
+      "locked placements are never replaced",
+      "current approved usage is never replaced",
+      "only AI suggestions are recalculated automatically"
+    ]
+  }
+}

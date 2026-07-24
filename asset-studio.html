@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Amar Asset Studio</title>
+<style>
+:root{--ink:#20332d;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--clay:#bc6245;--warn:#805b00}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1320px;margin:auto;padding:24px}
+h1,h2,h3{font-family:Georgia,serif}.lead{max-width:900px;color:var(--muted);line-height:1.5}.panel{background:#fff;border-radius:15px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#f7f4ef;border-radius:11px;padding:12px}.stat strong{font-size:1.6rem;display:block}
+.actions{display:flex;gap:8px;flex-wrap:wrap}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}
+.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
+input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:90px}
+.asset-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.asset{background:#fff;border-radius:14px;padding:12px;border:1px solid var(--line)}.asset-preview{height:160px;border-radius:11px;background:#e8e2d8;display:grid;place-items:center;color:var(--muted);overflow:hidden}.asset-preview img{width:100%;height:100%;object-fit:cover}
+.badge{display:inline-block;padding:4px 7px;border-radius:999px;background:#edf2ef;font-size:.65rem;margin:2px}.locked{background:#fff0ca;color:#745200}.suggestion{background:#e9edf7;color:#31486d}.usage{background:#e1f1e7;color:#265f42}
+.meta{font-size:.72rem;color:var(--muted);line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
+@media(max-width:900px){.grid,.asset-list{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid,.asset-list{grid-template-columns:1fr}}
+</style></head><body><main><nav class="platform-nav">
+<a href="/knowledge-center.html">Oversigt</a>
+<a href="/knowledge-studio.html">Knowledge Studio</a>
+<a href="/knowledge-review.html">Review Center</a>
+<a href="/knowledge-architect.html">Knowledge Architect</a>
+<a href="/brand-studio.html">Brand Studio</a>
+<a href="/page-studio.html">Page Studio</a>
+<a href="/asset-studio.html">Asset Studio</a>
+<a href="/photo-missions.html">Foto-manus</a>
+<a href="/asset-brief.html">Billedplan</a>
+<a href="/ai-test-runner.html">Test Center</a>
+<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/">Se hjemmesiden</a>
+</nav>
+<p class="meta">Release v2026.07.24.62 · Asset relation model 1.0</p>
+<h1>Asset Studio</h1>
+<p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
+
+<section class="panel">
+<div class="grid">
+<div class="stat"><strong id="assetCount">0</strong><span>Assets</span></div>
+<div class="stat"><strong id="analyzedCount">0</strong><span>AI-analyseret</span></div>
+<div class="stat"><strong id="suggestionCount">0</strong><span>AI-relationer</span></div>
+<div class="stat"><strong id="lockedCount">0</strong><span>Låste placeringer</span></div>
+</div>
+</section>
+
+<section class="panel">
+<h2>Registrér billeder</h2>
+<p class="meta">I denne grundversion registreres filer og metadata lokalt. Selve billedfilerne uploades fortsat til GitHub under fx <code>images/</code>. Senere kobler vi automatisk billedanalyse på ved upload.</p>
+<div class="actions">
+<input id="assetFiles" type="file" accept="image/*,video/*" multiple style="max-width:520px">
+<button class="primary" id="registerAssets">Registrér valgte filer</button>
+<button id="importManifest">Importer eksisterende hjemmesidebilleder</button>
+<button class="good" id="analyzePending">Analyser ikke-analyserede billeder</button>
+<button id="reanalyzeAll">Genanalysér alle billeder</button>
+<button id="scanRelations">Genberegn AI-relationer</button><button id="autoSync">Kontrollér ændringer nu</button>
+<button id="exportAssets">Gem asset-library.json</button>
+<button id="exportRelations">Gem relation-registry.json</button>
+</div>
+<div id="message"></div>
+<div id="queueStatus" class="meta"></div>
+<div style="height:10px;background:#e8e2d8;border-radius:999px;overflow:hidden;margin-top:8px"><div id="queueBar" style="height:100%;width:0;background:#2b7450"></div></div>
+</section>
+
+<section class="panel">
+<h2>Filtrér</h2>
+<div class="grid">
+<label>Søg<input id="search" placeholder="terrasse, sommer, hero..."></label>
+<label>Status<select id="statusFilter"><option value="">Alle</option><option>active</option><option>reserve</option><option>seasonal</option><option>campaign</option><option>rejected</option><option>archived</option></select></label>
+<label>Sæson<select id="seasonFilter"><option value="">Alle</option><option>spring</option><option>summer</option><option>autumn</option><option>winter</option></select></label>
+<label>Relation<select id="relationFilter"><option value="">Alle</option><option value="manual">Manuel</option><option value="suggested">AI-forslag</option><option value="usage">Aktuel brug</option><option value="locked">Låst</option></select></label>
+</div>
+</section>
+
+<div id="assets" class="asset-list"></div>
+
+<script>
+const q=s=>document.querySelector(s);
+let library,registry,knowledge=[],manifest,platformSignature=null;
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const slug=s=>String(s||'asset').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+Promise.all([
+ fetch('/asset-library.json',{cache:'no-store'}).then(r=>r.json()),
+ fetch('/relation-registry.json',{cache:'no-store'}).then(r=>r.json()),
+ fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({entries:[]})),
+ fetch('/asset-manifest.json',{cache:'no-store'}).then(r=>r.json()),
+ fetch('/api/platform-signature',{cache:'no-store'}).then(r=>r.json()).catch(()=>null)
+]).then(([a,r,k,m,sig])=>{
+ library=JSON.parse(localStorage.getItem('casaAssetLibrary')||'null')||a;
+ registry=JSON.parse(localStorage.getItem('casaRelationRegistry')||'null')||r;
+ knowledge=Array.isArray(k)?k:(k.entries||k.cards||[]);
+ manifest=m;platformSignature=sig;
+ normalizeAssets();
+ render();
+ scheduleAutomaticWork();
+});
+
+const VISUAL_VERSION='visual-labels-1';
+const RELATION_VERSION='relation-baseline-2';
+
+function normalizeAssets(){
+ for(const asset of library.assets||[]){
+  asset.ai_profile=asset.ai_profile||{};
+  asset.ai_profile.history=Array.isArray(asset.ai_profile.history)?asset.ai_profile.history:[];
+  asset.analysis_queue=asset.analysis_queue||{
+   visual_status:asset.ai_profile.status==='analyzed'?'analyzed':'pending',
+   relation_status:'pending',
+   visual_analysis_version:asset.ai_profile.analysis_version||'',
+   relation_scan_version:'',
+   visual_reason:'Legacy asset normalization.',
+   relation_reason:'Relation status unknown.',
+   last_visual_analysis:asset.ai_profile.analyzed_at||null,
+   last_relation_scan:null,
+   retry_count:0,
+   last_error:null
+  };
+ }
+}
+function assetFromManifest(item){
+ const stem=item.filename.replace(/\.[^.]+$/,'');
+ return {
+  id:`asset-${slug(stem)}`,type:item.type||'image',
+  source:{original_path:item.path,filename:item.filename,checksum:null,uploaded_at:null},
+  preview_url:'/'+item.path,
+  manual_metadata:{title:stem.replace(/-/g,' '),description:'',labels:[],season:[],audiences:[],campaigns:[]},
+  ai_profile:{status:'pending',labels:[],scene:[],objects:[],mood:[],season:[],audiences:[],campaigns:[],quality:{overall:0,sharpness:0,lighting:0,composition:0},format:{orientation:'',aspect_ratio:'',width:0,height:0},suggested_uses:[],analysis_version:'',analyzed_at:null,history:[]},
+  analysis_queue:{visual_status:'pending',relation_status:'pending',visual_analysis_version:'',relation_scan_version:'',visual_reason:'Imported from asset manifest.',relation_reason:'New asset.',last_visual_analysis:null,last_relation_scan:null,retry_count:0,last_error:null},
+  relations:{manual_links:[],ai_matches:[],current_usage:[],locked_placements:[]},
+  lifecycle:{status:'active',valid_from:null,valid_to:null,supersedes:[],superseded_by:[]},
+  variants:{original:'/'+item.path,web:'/'+item.path,mobile:'',thumbnail:''}
+ };
+}
+function queueCounts(){
+ const assets=library.assets||[];
+ return {
+  visual:assets.filter(a=>['pending','queued','failed'].includes(a.analysis_queue?.visual_status)||a.analysis_queue?.visual_analysis_version!==VISUAL_VERSION).length,
+  relations:assets.filter(a=>a.analysis_queue?.relation_status!=='current'||a.analysis_queue?.relation_scan_version!==RELATION_VERSION).length
+ };
+}
+function setQueueProgress(done,total,label){
+ q('#queueBar').style.width=total?`${Math.round(done/total*100)}%`:'0%';
+ q('#queueStatus').textContent=`${label} · ${done}/${total}`;
+}
+function relationCount(asset,type){
+ const rel=asset.relations||{};
+ if(type==='manual')return (rel.manual_links||[]).length;
+ if(type==='suggested')return (rel.ai_matches||[]).length;
+ if(type==='usage')return (rel.current_usage||[]).length;
+ if(type==='locked')return (rel.locked_placements||[]).length;
+ return 0;
+}
+function render(){
+ const assets=library.assets||[];
+ q('#assetCount').textContent=assets.length;
+ q('#analyzedCount').textContent=assets.filter(x=>x.ai_profile?.status==='analyzed').length;
+ q('#suggestionCount').textContent=assets.reduce((n,x)=>n+relationCount(x,'suggested'),0);
+ q('#lockedCount').textContent=assets.reduce((n,x)=>n+relationCount(x,'locked'),0);
+ const term=q('#search').value.toLowerCase(),status=q('#statusFilter').value,season=q('#seasonFilter').value,relation=q('#relationFilter').value;
+ const filtered=assets.filter(asset=>{
+  const text=JSON.stringify(asset).toLowerCase();
+  return (!term||text.includes(term))&&(!status||asset.lifecycle?.status===status)&&(!season||(asset.manual_metadata?.season||[]).includes(season)||(asset.ai_profile?.season||[]).includes(season))&&(!relation||relationCount(asset,relation)>0);
+ });
+ q('#assets').innerHTML=filtered.map(asset=>`<article class="asset">
+  <div class="asset-preview">${asset.preview_url?`<img src="${esc(asset.preview_url)}">`:'Billedpreview efter GitHub-upload'}</div>
+  <h3>${esc(asset.manual_metadata?.title||asset.source?.filename)}</h3>
+  <div class="meta">${esc(asset.id)} · ${esc(asset.lifecycle?.status||'active')} · AI: ${esc(asset.ai_profile?.status||'pending')} · Visuel kø: ${esc(asset.analysis_queue?.visual_status||'pending')} · Relationer: ${esc(asset.analysis_queue?.relation_status||'pending')}</div>
+  <p>${esc(asset.manual_metadata?.description||'Ingen beskrivelse endnu.')}</p>
+  <div>${(asset.ai_profile?.labels||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join('')}</div>
+  <div>
+   ${(asset.relations?.current_usage||[]).map(x=>`<span class="badge usage">Bruges: ${esc(x.target_id)}</span>`).join('')}
+   ${(asset.relations?.locked_placements||[]).map(x=>`<span class="badge locked">Låst: ${esc(x.target_id)}</span>`).join('')}
+   ${(asset.relations?.ai_matches||[]).slice(0,5).map(x=>`<span class="badge suggestion">${esc(x.target_id)} ${x.score}%</span>`).join('')}
+  </div>
+  <div class="actions" style="margin-top:8px">
+   <button data-edit="${asset.id}">Redigér metadata</button>
+   <button data-lock="${asset.id}">Tilføj låst placering</button><button data-analyze="${asset.id}">Analysér igen</button>
+  </div>
+ </article>`).join('');
+ q('#assets').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editAsset(b.dataset.edit));
+ q('#assets').querySelectorAll('[data-lock]').forEach(b=>b.onclick=()=>lockPlacement(b.dataset.lock));
+ q('#assets').querySelectorAll('[data-analyze]').forEach(b=>b.onclick=()=>analyzeSingle(b.dataset.analyze,b));
+}
+function saveLocal(){
+ library.updated=new Date().toISOString();
+ registry.updated=new Date().toISOString();
+ localStorage.setItem('casaAssetLibrary',JSON.stringify(library));
+ localStorage.setItem('casaRelationRegistry',JSON.stringify(registry));
+ render();
+}
+q('#registerAssets').onclick=()=>{
+ const input=q('#assetFiles'),files=[...input.files];if(!files.length)return;
+ for(const file of files){
+  const id=`asset-${slug(file.name.replace(/\.[^.]+$/,''))}-${Date.now().toString().slice(-6)}-${Math.random().toString(36).slice(2,5)}`;
+  library.assets.push({
+   id,type:file.type.startsWith('video/')?'video':'image',
+   source:{original_path:`images/${file.name}`,filename:file.name,checksum:null,uploaded_at:new Date().toISOString()},
+   preview_url:URL.createObjectURL(file),
+   manual_metadata:{title:file.name.replace(/\.[^.]+$/,''),description:'',labels:[],season:[],audiences:[],campaigns:[]},
+   ai_profile:{status:'pending',labels:[],scene:[],objects:[],mood:[],season:[],audiences:[],campaigns:[],quality:{overall:0,sharpness:0,lighting:0,composition:0},format:{orientation:'',aspect_ratio:'',width:0,height:0},suggested_uses:[],analysis_version:'',analyzed_at:null},
+   relations:{manual_links:[],ai_matches:[],current_usage:[],locked_placements:[]},
+   lifecycle:{status:'reserve',valid_from:null,valid_to:null,supersedes:[],superseded_by:[]},
+   variants:{original:`images/${file.name}`,web:'',mobile:'',thumbnail:''}
+  });
+ }
+ input.value='';saveLocal();
+ q('#message').innerHTML=`<p class="success">${files.length} assets registreret. Originalfilerne skal fortsat uploades til GitHub.</p>`;
+};
+
+q('#importManifest').onclick=()=>{
+ const known=new Set((library.assets||[]).map(a=>a.source?.original_path));
+ const missing=(manifest?.assets||[]).filter(item=>!known.has(item.path));
+ missing.forEach(item=>library.assets.push(assetFromManifest(item)));
+ saveLocal();
+ q('#message').innerHTML=`<p class="success">${missing.length} eksisterende billeder importeret. ${manifest.assets.length-missing.length} fandtes allerede.</p>`;
+};
+async function analyzeAsset(asset){
+ const previous=JSON.parse(JSON.stringify(asset.ai_profile||{}));
+ asset.analysis_queue.visual_status='analyzing';
+ asset.analysis_queue.last_error=null;saveLocal();
+ const response=await fetch('/api/asset-analyze',{
+  method:'POST',
+  headers:{'content-type':'application/json','accept':'application/json'},
+  body:JSON.stringify({asset,analysis_version:VISUAL_VERSION})
+ });
+ const raw=await response.text();let result;
+ try{result=JSON.parse(raw)}catch{throw new Error(`Analyse-endpoint returnerede ikke JSON (${response.status})`)}
+ if(!response.ok)throw new Error(result.error||result.detail||'Billedanalyse fejlede');
+ asset.ai_profile.history=Array.isArray(asset.ai_profile.history)?asset.ai_profile.history:[];
+ if(previous.analysis_version||previous.analyzed_at)asset.ai_profile.history.unshift({profile:previous,replaced_at:result.analyzed_at,reason:asset.analysis_queue.visual_reason||'Reanalysis'});
+ asset.ai_profile={...asset.ai_profile,...result.profile,status:'analyzed',analysis_version:result.analysis_version,analyzed_at:result.analyzed_at,history:asset.ai_profile.history.slice(0,10)};
+ asset.analysis_queue.visual_status='analyzed';
+ asset.analysis_queue.visual_analysis_version=result.analysis_version;
+ asset.analysis_queue.last_visual_analysis=result.analyzed_at;
+ asset.analysis_queue.visual_reason='';
+ asset.analysis_queue.relation_status='pending';
+ asset.analysis_queue.relation_reason='Visual labels changed.';
+ asset.analysis_queue.retry_count=0;
+ asset.analysis_queue.last_error=null;
+}
+async function analyzeQueue(forceAll=false){
+ const candidates=(library.assets||[]).filter(a=>forceAll||a.analysis_queue?.visual_status!=='analyzed'||a.analysis_queue?.visual_analysis_version!==VISUAL_VERSION);
+ if(!candidates.length){q('#message').innerHTML='<p class="success">Alle billeder har den aktuelle visuelle analyse.</p>';return}
+ q('#analyzePending').disabled=true;q('#reanalyzeAll').disabled=true;
+ let done=0,failed=0;setQueueProgress(0,candidates.length,'Visuel analyse');
+ for(const asset of candidates){
+  try{
+   asset.analysis_queue.visual_reason=forceAll?'Manual full reanalysis':asset.analysis_queue.visual_reason||'Pending or version changed';
+   await analyzeAsset(asset);
+  }catch(error){
+   failed++;asset.analysis_queue.visual_status='failed';asset.analysis_queue.retry_count=(asset.analysis_queue.retry_count||0)+1;asset.analysis_queue.last_error=error.message;
+  }
+  done++;saveLocal();setQueueProgress(done,candidates.length,'Visuel analyse');
+  await new Promise(r=>setTimeout(r,2500));
+ }
+ q('#analyzePending').disabled=false;q('#reanalyzeAll').disabled=false;
+ q('#message').innerHTML=`<p class="${failed?'notice':'success'}">${done-failed} billeder analyseret. ${failed} fejlede og kan prøves igen.</p>`;
+ if(done-failed>0)await scanRelationsViaWorker('visual_analysis_completed');
+}
+async function analyzeSingle(id,button){
+ const asset=library.assets.find(a=>a.id===id);if(!asset)return;
+ button.disabled=true;button.textContent='Analyserer…';
+ try{asset.analysis_queue.visual_reason='Manual single reanalysis';await analyzeAsset(asset);saveLocal();await scanRelationsViaWorker('single_asset_reanalysis');q('#message').innerHTML='<p class="success">Billedet er analyseret igen, og relationerne er opdateret.</p>'}
+ catch(error){asset.analysis_queue.visual_status='failed';asset.analysis_queue.last_error=error.message;saveLocal();q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`}
+ finally{button.disabled=false;button.textContent='Analysér igen'}
+}
+q('#analyzePending').onclick=()=>analyzeQueue(false);
+q('#reanalyzeAll').onclick=()=>{if(confirm('Dette genanalyserer alle billeder visuelt. Manuelle labels, låsninger og aktuel brug bevares.'))analyzeQueue(true)};
+function editAsset(id){
+ const asset=library.assets.find(x=>x.id===id);if(!asset)return;
+ const title=prompt('Titel',asset.manual_metadata.title);if(title===null)return;
+ const description=prompt('Beskrivelse',asset.manual_metadata.description||'');if(description===null)return;
+ const labels=prompt('Manuelle labels, kommasepareret',(asset.manual_metadata.labels||[]).join(', '));if(labels===null)return;
+ asset.manual_metadata.title=title.trim();asset.manual_metadata.description=description.trim();asset.manual_metadata.labels=labels.split(',').map(x=>x.trim()).filter(Boolean);saveLocal();
+}
+function lockPlacement(id){
+ const asset=library.assets.find(x=>x.id===id);if(!asset)return;
+ const target=prompt('Lås billedet til hvilket sidefelt eller objekt? Fx home.hero.image');if(!target)return;
+ asset.relations.locked_placements.push({target_type:'page_section',target_id:target,relation_type:'locked',score:100,reason:'Låst manuelt af Michael',model_version:'manual',created_at:new Date().toISOString(),last_evaluated_at:new Date().toISOString()});
+ saveLocal();
+}
+function tokens(value){return new Set(String(value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z0-9]+/).filter(x=>x.length>2))}
+function scoreAssetToKnowledge(asset,obj){
+ const a=tokens([asset.manual_metadata?.title,asset.manual_metadata?.description,...(asset.manual_metadata?.labels||[]),...(asset.ai_profile?.labels||[]),...(asset.ai_profile?.scene||[]),...(asset.ai_profile?.objects||[])].join(' '));
+ const b=tokens([obj.title,obj.category,obj.summary,obj.answer,obj.content,...(obj.keywords||[])].join(' '));
+ let common=0;for(const token of a)if(b.has(token))common++;
+ return Math.min(99,Math.round((common/Math.max(3,Math.min(a.size,b.size)))*100));
+}
+async function scanRelationsViaWorker(reason='manual'){
+ const assets=library.assets||[];
+ setQueueProgress(0,1,'Relation scan');
+ const response=await fetch('/api/asset-relation-scan',{
+  method:'POST',
+  headers:{'content-type':'application/json','accept':'application/json'},
+  body:JSON.stringify({assets,reason})
+ });
+ const raw=await response.text();let result;
+ try{result=JSON.parse(raw)}catch{throw new Error(`Relation endpoint returnerede ikke JSON (${response.status})`)}
+ if(!response.ok)throw new Error(result.error||result.detail||'Relation scan fejlede');
+ const now=new Date().toISOString();
+ for(const item of result.suggestions||[]){
+  const asset=assets.find(a=>a.id===item.asset_id);if(!asset)continue;
+  asset.relations.ai_matches=item.matches||[];
+  asset.analysis_queue.relation_status='current';
+  asset.analysis_queue.relation_scan_version=result.scan_version||RELATION_VERSION;
+  asset.analysis_queue.last_relation_scan=now;
+  asset.analysis_queue.relation_reason='';
+ }
+ registry.relations=assets.flatMap(asset=>(asset.relations.ai_matches||[]).map(rel=>({asset_id:asset.id,...rel})));
+ registry.last_scan=now;registry.scan_reason=reason;
+ registry.platform_signature=platformSignature;
+ saveLocal();setQueueProgress(1,1,'Relation scan');
+ return result;
+}
+q('#scanRelations').onclick=async()=>{
+ try{const result=await scanRelationsViaWorker('manual_scan');q('#message').innerHTML=`<p class="success">Relation scan gennemført for ${result.scanned_assets} assets mod ${result.scanned_knowledge_objects} Knowledge Objects. Manuelle og låste relationer er bevaret.</p>`}
+ catch(error){q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`}
+};
+async function scheduleAutomaticWork(){
+ const imported=(manifest?.assets||[]).filter(item=>!(library.assets||[]).some(a=>a.source?.original_path===item.path));
+ if(imported.length)q('#message').innerHTML=`<p class="notice">${imported.length} eksisterende hjemmesidebilleder kan importeres.</p>`;
+ const previous=registry.platform_signature||{};
+ const changed=platformSignature&&(
+  previous.knowledge_signature!==platformSignature.knowledge_signature||
+  previous.page_signature!==platformSignature.page_signature||
+  previous.campaign_signature!==platformSignature.campaign_signature
+ );
+ if(changed){
+  for(const asset of library.assets||[]){
+   asset.analysis_queue.relation_status='pending';
+   asset.analysis_queue.relation_reason='Knowledge, page or campaign structure changed.';
+  }
+  saveLocal();
+  try{await scanRelationsViaWorker('automatic_platform_change')}catch(error){q('#message').innerHTML=`<p class="notice">Automatisk relation scan afventer: ${esc(error.message)}</p>`}
+ }
+}
+q('#autoSync').onclick=async()=>{
+ try{
+  platformSignature=await fetch('/api/platform-signature',{cache:'no-store'}).then(r=>r.json());
+  await scheduleAutomaticWork();
+  const counts=queueCounts();
+  q('#message').innerHTML=`<p class="success">Kontrol gennemført. ${counts.visual} visuelle analyser og ${counts.relations} relation scans afventer.</p>`;
+ }catch(error){q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`}
+};
+async function downloadJson(name,data){
+ const text=JSON.stringify(data,null,2);
+ if(window.showSaveFilePicker){
+  try{const h=await showSaveFilePicker({suggestedName:name,types:[{description:'JSON',accept:{'application/json':['.json']}}]});const w=await h.createWritable();await w.write(text);await w.close();return}catch(e){if(e.name==='AbortError')return}
+ }
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download=name;a.click();
+}
+q('#exportAssets').onclick=()=>downloadJson('asset-library.json',library);
+q('#exportRelations').onclick=()=>downloadJson('relation-registry.json',registry);
+['search','statusFilter','seasonFilter','relationFilter'].forEach(id=>q('#'+id).addEventListener('input',render));
+</script></main></body></html>

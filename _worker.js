@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "11.0-confidence-gap-engine",
+      version: "11.2-asset-analysis-queue",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1200,6 +1200,257 @@ function deterministicPageFallback(page, pageContracts, currentContent) {
   };
 }
 
+
+
+
+function absoluteAssetUrl(request, path) {
+  const url = new URL(request.url);
+  return new URL(String(path || "").replace(/^\/+/, ""), `${url.protocol}//${url.host}/`).toString();
+}
+
+async function handleAssetAnalyze(request, env) {
+  if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
+
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const asset = payload.asset || {};
+  const imagePath = asset?.variants?.original || asset?.source?.original_path;
+  if (!imagePath) return json({ error: "Asset mangler billedsti." }, 400);
+
+  const imageUrl = absoluteAssetUrl(request, imagePath);
+  const analysisVersion = payload.analysis_version || "visual-labels-1";
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions: `Du analyserer billeder til Casa Amars Asset Studio.
+
+Returnér kun observerbare eller forsigtigt afledte metadata. Gæt ikke identitet, præcis lokation, sæson eller personer, hvis det ikke kan ses sikkert.
+
+Vurder:
+- scene og rum
+- synlige objekter
+- stemning
+- sandsynlige sæsoner og målgrupper
+- egnethed til hjemmesidens roller
+- teknisk og redaktionel billedkvalitet
+- konkrete forbedringer eller begrænsninger
+
+Labels skal være korte og genanvendelige. Skriv på dansk.`,
+      input: [{
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text: `ASSET:
+${JSON.stringify({
+  id: asset.id,
+  path: imagePath,
+  manual_metadata: asset.manual_metadata || {}
+})}`
+          },
+          {
+            type: "input_image",
+            image_url: imageUrl,
+            detail: "high"
+          }
+        ]
+      }],
+      text: {
+        verbosity: "medium",
+        format: {
+          type: "json_schema",
+          name: "casa_asset_analysis",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              labels: { type: "array", items: { type: "string" } },
+              scene: { type: "array", items: { type: "string" } },
+              objects: { type: "array", items: { type: "string" } },
+              mood: { type: "array", items: { type: "string" } },
+              season: { type: "array", items: { type: "string" } },
+              audiences: { type: "array", items: { type: "string" } },
+              campaigns: { type: "array", items: { type: "string" } },
+              quality: {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  overall: { type: "integer", minimum: 0, maximum: 100 },
+                  sharpness: { type: "integer", minimum: 0, maximum: 100 },
+                  lighting: { type: "integer", minimum: 0, maximum: 100 },
+                  composition: { type: "integer", minimum: 0, maximum: 100 }
+                },
+                required: ["overall", "sharpness", "lighting", "composition"]
+              },
+              format: {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  orientation: { type: "string" },
+                  aspect_ratio: { type: "string" }
+                },
+                required: ["orientation", "aspect_ratio"]
+              },
+              suggested_uses: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    role: { type: "string" },
+                    score: { type: "integer", minimum: 0, maximum: 100 },
+                    reason: { type: "string" }
+                  },
+                  required: ["role", "score", "reason"]
+                }
+              },
+              improvement_notes: { type: "array", items: { type: "string" } },
+              confidence: { type: "integer", minimum: 0, maximum: 100 }
+            },
+            required: [
+              "labels", "scene", "objects", "mood", "season", "audiences",
+              "campaigns", "quality", "format", "suggested_uses",
+              "improvement_notes", "confidence"
+            ]
+          }
+        }
+      },
+      max_output_tokens: 2200,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) {
+    return json({
+      error: result?.error?.message || "Billedet kunne ikke analyseres.",
+      status: response.status
+    }, response.status);
+  }
+
+  const parsed = parseStructuredOutput(result);
+  if (!parsed) return json({ error: "AI returnerede et ugyldigt analyseformat." }, 502);
+
+  return json({
+    ok: true,
+    asset_id: asset.id,
+    image_url: imageUrl,
+    analysis_version: analysisVersion,
+    analyzed_at: new Date().toISOString(),
+    profile: parsed
+  });
+}
+
+async function handlePlatformSignature(request, env) {
+  const bundle = await loadBundle(env, request);
+  const pageBlueprint = await assetJson(env, request, "/page-blueprint.json");
+  const campaigns = await assetJson(env, request, "/campaign-profiles.json");
+
+  const knowledgeParts = bundle.entries.map((entry) => [
+    entry.id, entry.updated, entry.version,
+    entry.lifecycle?.live_status, entry.title
+  ].join("|")).sort();
+
+  const pageParts = (pageBlueprint?.pages || []).flatMap((page) =>
+    (page.sections || []).map((section) => `${page.id}|${section.id}|${section.component}`)
+  ).sort();
+
+  const campaignParts = (campaigns?.campaigns || []).map((campaign) =>
+    `${campaign.id}|${campaign.status}|${(campaign.visual_priorities || []).join(",")}`
+  ).sort();
+
+  const simpleHash = (parts) => {
+    let hash = 2166136261;
+    for (const char of parts.join("||")) {
+      hash ^= char.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return (hash >>> 0).toString(16);
+  };
+
+  return json({
+    ok: true,
+    knowledge_signature: simpleHash(knowledgeParts),
+    page_signature: simpleHash(pageParts),
+    campaign_signature: simpleHash(campaignParts),
+    knowledge_count: bundle.entries.length,
+    generated_at: new Date().toISOString()
+  });
+}
+
+async function handleAssetRelationScan(request, env) {
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const assets = Array.isArray(payload.assets) ? payload.assets : [];
+  const bundle = await loadBundle(env, request);
+  const knowledge = bundle.entries.filter((entry) => entry?.status !== "archived");
+
+  const tokenize = (value) => new Set(
+    String(value || "").toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .split(/[^a-z0-9]+/).filter((token) => token.length > 2)
+  );
+
+  const score = (asset, entry) => {
+    const a = tokenize(JSON.stringify({
+      title: asset?.manual_metadata?.title,
+      description: asset?.manual_metadata?.description,
+      manual_labels: asset?.manual_metadata?.labels,
+      ai_labels: asset?.ai_profile?.labels,
+      scene: asset?.ai_profile?.scene,
+      objects: asset?.ai_profile?.objects,
+      mood: asset?.ai_profile?.mood
+    }));
+    const b = tokenize(JSON.stringify({
+      title: entry?.title,
+      category: entry?.category,
+      summary: entry?.summary,
+      answer: entry?.answer,
+      content: entry?.content,
+      keywords: entry?.keywords
+    }));
+    let common = 0;
+    for (const token of a) if (b.has(token)) common++;
+    return Math.min(99, Math.round((common / Math.max(3, Math.min(a.size, b.size))) * 100));
+  };
+
+  const now = new Date().toISOString();
+  const suggestions = assets.map((asset) => ({
+    asset_id: asset.id,
+    matches: knowledge.map((entry) => ({
+      target_type: "knowledge_object",
+      target_id: entry.id,
+      relation_type: "ai_suggestion",
+      score: score(asset, entry),
+      reason: "Dynamisk match mellem asset-profil og Knowledge Object.",
+      model_version: "relation-baseline-1",
+      created_at: now,
+      last_evaluated_at: now
+    })).filter((match) => match.score >= 25)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 20)
+  }));
+
+  return json({
+    ok: true,
+    scan_version: "relation-baseline-1",
+    scanned_assets: assets.length,
+    scanned_knowledge_objects: knowledge.length,
+    suggestions,
+    preserve: ["manual_links", "current_usage", "locked_placements"]
+  });
+}
 
 async function handleKnowledgeGapDraft(request) {
   let payload;
@@ -2119,7 +2370,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "11.0-confidence-gap-engine",
+          worker: "11.2-asset-analysis-queue",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2127,13 +2378,37 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "11.0-confidence-gap-engine",
+          worker: "11.2-asset-analysis-queue",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+    if (request.method === "POST" && url.pathname === "/api/asset-analyze") {
+      try {
+        return await handleAssetAnalyze(request, env);
+      } catch (error) {
+        return json({ error: "Billedanalysen kunne ikke gennemføres.", detail: String(error?.message || error) }, 500);
+      }
+    }
+
+    if (request.method === "GET" && url.pathname === "/api/platform-signature") {
+      try {
+        return await handlePlatformSignature(request, env);
+      } catch (error) {
+        return json({ error: "Platform-signaturen kunne ikke beregnes.", detail: String(error?.message || error) }, 500);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/asset-relation-scan") {
+      try {
+        return await handleAssetRelationScan(request, env);
+      } catch (error) {
+        return json({ error: "Asset-relationer kunne ikke genberegnes.", detail: String(error?.message || error) }, 500);
+      }
+    }
 
     if (request.method === "POST" && url.pathname === "/api/knowledge-gap-draft") {
       try {

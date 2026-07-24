@@ -1,0 +1,1222 @@
+{
+  "version": "1.1",
+  "updated": "2026-07-24",
+  "assets": [
+    {
+      "id": "asset-casa-amar-koekken-ovn",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-koekken-ovn.webp",
+        "filename": "casa-amar-koekken-ovn.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-koekken-ovn.webp",
+      "manual_metadata": {
+        "title": "casa amar koekken ovn",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-koekken-ovn.webp",
+        "web": "/images/casa-amar-koekken-ovn.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-entre",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-entre.webp",
+        "filename": "casa-amar-v2-entre.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-entre.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 entre",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-entre.webp",
+        "web": "/images/casa-amar-v2-entre.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-hero-patio",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-hero-patio.webp",
+        "filename": "casa-amar-v2-hero-patio.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-hero-patio.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 hero patio",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-hero-patio.webp",
+        "web": "/images/casa-amar-v2-hero-patio.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-kaffe",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-kaffe.webp",
+        "filename": "casa-amar-v2-kaffe.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-kaffe.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 kaffe",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-kaffe.webp",
+        "web": "/images/casa-amar-v2-kaffe.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-koekken",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-koekken.webp",
+        "filename": "casa-amar-v2-koekken.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-koekken.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 koekken",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-koekken.webp",
+        "web": "/images/casa-amar-v2-koekken.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-master-bedroom",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-master-bedroom.webp",
+        "filename": "casa-amar-v2-master-bedroom.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-master-bedroom.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 master bedroom",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-master-bedroom.webp",
+        "web": "/images/casa-amar-v2-master-bedroom.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-patio-detalje",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-patio-detalje.webp",
+        "filename": "casa-amar-v2-patio-detalje.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-patio-detalje.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 patio detalje",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-patio-detalje.webp",
+        "web": "/images/casa-amar-v2-patio-detalje.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-patio-spiseplads",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-patio-spiseplads.webp",
+        "filename": "casa-amar-v2-patio-spiseplads.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-patio-spiseplads.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 patio spiseplads",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-patio-spiseplads.webp",
+        "web": "/images/casa-amar-v2-patio-spiseplads.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-pool",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-pool.webp",
+        "filename": "casa-amar-v2-pool.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-pool.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 pool",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-pool.webp",
+        "web": "/images/casa-amar-v2-pool.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-projektor",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-projektor.webp",
+        "filename": "casa-amar-v2-projektor.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-projektor.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 projektor",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-projektor.webp",
+        "web": "/images/casa-amar-v2-projektor.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-solnedgang",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-solnedgang.webp",
+        "filename": "casa-amar-v2-solnedgang.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-solnedgang.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 solnedgang",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-solnedgang.webp",
+        "web": "/images/casa-amar-v2-solnedgang.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-sovevaerelse-2",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-sovevaerelse-2.webp",
+        "filename": "casa-amar-v2-sovevaerelse-2.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-sovevaerelse-2.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 sovevaerelse 2",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-sovevaerelse-2.webp",
+        "web": "/images/casa-amar-v2-sovevaerelse-2.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-sovevaerelse-3",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-sovevaerelse-3.webp",
+        "filename": "casa-amar-v2-sovevaerelse-3.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-sovevaerelse-3.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 sovevaerelse 3",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-sovevaerelse-3.webp",
+        "web": "/images/casa-amar-v2-sovevaerelse-3.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-stue",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-stue.webp",
+        "filename": "casa-amar-v2-stue.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-stue.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 stue",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-stue.webp",
+        "web": "/images/casa-amar-v2-stue.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-tagterrasse",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-tagterrasse.webp",
+        "filename": "casa-amar-v2-tagterrasse.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-tagterrasse.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 tagterrasse",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-tagterrasse.webp",
+        "web": "/images/casa-amar-v2-tagterrasse.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    },
+    {
+      "id": "asset-casa-amar-v2-udsigt",
+      "type": "image",
+      "source": {
+        "original_path": "images/casa-amar-v2-udsigt.webp",
+        "filename": "casa-amar-v2-udsigt.webp",
+        "checksum": null,
+        "uploaded_at": null
+      },
+      "preview_url": "/images/casa-amar-v2-udsigt.webp",
+      "manual_metadata": {
+        "title": "casa amar v2 udsigt",
+        "description": "",
+        "labels": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": []
+      },
+      "ai_profile": {
+        "status": "pending",
+        "labels": [],
+        "scene": [],
+        "objects": [],
+        "mood": [],
+        "season": [],
+        "audiences": [],
+        "campaigns": [],
+        "quality": {
+          "overall": 0,
+          "sharpness": 0,
+          "lighting": 0,
+          "composition": 0
+        },
+        "format": {
+          "orientation": "",
+          "aspect_ratio": "",
+          "width": 0,
+          "height": 0
+        },
+        "suggested_uses": [],
+        "analysis_version": "",
+        "analyzed_at": null,
+        "history": []
+      },
+      "analysis_queue": {
+        "visual_status": "pending",
+        "relation_status": "pending",
+        "visual_analysis_version": "",
+        "relation_scan_version": "",
+        "visual_reason": "Imported from current website manifest.",
+        "relation_reason": "New asset requires matching.",
+        "last_visual_analysis": null,
+        "last_relation_scan": null,
+        "retry_count": 0,
+        "last_error": null
+      },
+      "relations": {
+        "manual_links": [],
+        "ai_matches": [],
+        "current_usage": [],
+        "locked_placements": []
+      },
+      "lifecycle": {
+        "status": "active",
+        "valid_from": null,
+        "valid_to": null,
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "variants": {
+        "original": "/images/casa-amar-v2-udsigt.webp",
+        "web": "/images/casa-amar-v2-udsigt.webp",
+        "mobile": "",
+        "thumbnail": ""
+      }
+    }
+  ]
+}

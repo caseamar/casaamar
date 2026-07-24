@@ -1,22 +1,32 @@
-release: v2026.07.24.60 — confidence and knowledge-gap engine
+release: v2026.07.24.62 — automatic asset import, analysis queue and relabeling
 
-Page Studio
-- Confidence score per section.
-- Subscores for factual safety, brand fit, website fit and knowledge coverage.
-- Clear reasons behind every score.
-- Quality summary across the complete homepage.
-- Low-confidence sections can propose one or more concrete Knowledge Objects.
+Existing images
+- Generated asset-manifest.json from the 16 image paths referenced by the current website.
+- asset-library.json is prefilled with those current website images.
+- Asset Studio can import any future manifest images not yet registered.
 
-Knowledge gaps
-- "Opret som AI-foreslået draft" creates a draft object in the local workspace.
-- Draft stores:
-  - why it was created
-  - which Page Studio section triggered it
-  - what information Michael needs to add
-  - priority
-- AI must not invent missing facts.
+Visual analysis queue
+- Added POST /api/asset-analyze using multimodal AI.
+- Analyzes scene, objects, mood, season, audiences, campaigns, quality,
+  format, suggested uses and improvement notes.
+- Processes pending images sequentially with progress and retry state.
+- Supports single-image reanalysis and full-library reanalysis.
+- Previous AI profiles are retained in analysis history.
 
-Worker
-- Full-page schema includes confidence and gap recommendations.
-- Added POST /api/knowledge-gap-draft.
-- Worker: 11.0-confidence-gap-engine
+Automatic relabeling and relation updates
+- Visual reanalysis is triggered by new assets, analysis-version changes
+  or a manual request.
+- Relation scans are triggered by changes to Knowledge Objects, page
+  structure, campaigns or asset labels.
+- Added GET /api/platform-signature to detect those changes.
+- Only AI suggestions are replaced.
+- Manual labels, manual links, current usage and locked placements remain intact.
+
+Files
+- asset-manifest.json
+- asset-library.json v1.1
+- asset-model.json v1.1
+- Asset Studio queue controls and status
+
+Release: v2026.07.24.62
+Worker: 11.2-asset-analysis-queue

@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-24",
+  "generated_from": "current website references",
+  "assets": [
+    {
+      "path": "images/casa-amar-koekken-ovn.webp",
+      "filename": "casa-amar-koekken-ovn.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-entre.webp",
+      "filename": "casa-amar-v2-entre.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-hero-patio.webp",
+      "filename": "casa-amar-v2-hero-patio.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-kaffe.webp",
+      "filename": "casa-amar-v2-kaffe.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-koekken.webp",
+      "filename": "casa-amar-v2-koekken.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-master-bedroom.webp",
+      "filename": "casa-amar-v2-master-bedroom.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-patio-detalje.webp",
+      "filename": "casa-amar-v2-patio-detalje.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-patio-spiseplads.webp",
+      "filename": "casa-amar-v2-patio-spiseplads.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-pool.webp",
+      "filename": "casa-amar-v2-pool.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-projektor.webp",
+      "filename": "casa-amar-v2-projektor.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-solnedgang.webp",
+      "filename": "casa-amar-v2-solnedgang.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-sovevaerelse-2.webp",
+      "filename": "casa-amar-v2-sovevaerelse-2.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-sovevaerelse-3.webp",
+      "filename": "casa-amar-v2-sovevaerelse-3.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-stue.webp",
+      "filename": "casa-amar-v2-stue.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-tagterrasse.webp",
+      "filename": "casa-amar-v2-tagterrasse.webp",
+      "type": "image"
+    },
+    {
+      "path": "images/casa-amar-v2-udsigt.webp",
+      "filename": "casa-amar-v2-udsigt.webp",
+      "type": "image"
+    }
+  ]
+}
