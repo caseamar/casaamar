@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.6-page-studio-button-fix",
+      version: "10.7-page-generator-runtime-fix",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -833,7 +833,7 @@ async function handlePageSectionGenerate(request, env) {
   const section = page?.sections?.find((item) => item.id === payload.section_id);
   if (!page || !section) return json({ error: "Den valgte sektion findes ikke i Page Blueprint." }, 400);
 
-  const componentLibrary = await loadJsonAsset(request, env, "/component-library.json");
+  const componentLibrary = await assetJson(env, request, "/component-library.json");
   const contract = componentLibrary?.components?.[section.component] || { fields: [], copy_rules: [] };
 
   const bundle = await loadBundle(env, request);
@@ -1040,7 +1040,7 @@ async function handlePageGenerate(request, env) {
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   if (!page) return json({ error: "Page Blueprint mangler den valgte side." }, 400);
 
-  const componentLibrary = await loadJsonAsset(request, env, "/component-library.json");
+  const componentLibrary = await assetJson(env, request, "/component-library.json");
   const pageContracts = Object.fromEntries(
     (page.sections || []).map((section) => [
       section.id,
@@ -1826,15 +1826,33 @@ export default {
     const url = new URL(request.url);
 
     if (request.method === "GET" && url.pathname === "/api/page-health") {
-      return json({ ok: true, worker: "10.6-page-studio-button-fix", endpoint: "page-generator" });
+      return json({ ok: true, worker: "10.7-page-generator-runtime-fix", endpoint: "page-generator" });
     }
 
 
     if (request.method === "POST" && url.pathname === "/api/page-generate") {
-      return handlePageGenerate(request, env);
+      try {
+        return await handlePageGenerate(request, env);
+      } catch (error) {
+        console.error("Page Generator runtime error", error);
+        return json({
+          error: "Page Generator kunne ikke gennemføre.",
+          detail: String(error?.message || error),
+          worker: "10.7-page-generator-runtime-fix"
+        }, 500);
+      }
     }
     if (request.method === "POST" && url.pathname === "/api/page-section-generate") {
-      return handlePageSectionGenerate(request, env);
+      try {
+        return await handlePageSectionGenerate(request, env);
+      } catch (error) {
+        console.error("Section Generator runtime error", error);
+        return json({
+          error: "Sektionen kunne ikke genereres.",
+          detail: String(error?.message || error),
+          worker: "10.7-page-generator-runtime-fix"
+        }, 500);
+      }
     }
 
 

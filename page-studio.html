@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.56 · Page model 1.0 · Worker 10.6-page-studio-button-fix</p>
+<p class="meta">Release v2026.07.24.57 · Page model 1.0 · Worker 10.7-page-generator-runtime-fix</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -199,7 +199,10 @@ async function requestCompletePage(mode='complete'){
  try{result=JSON.parse(raw)}
  catch{throw new Error('API returnerede ugyldig JSON.')}
 
- if(!response.ok)throw new Error(result.error||'Hjemmesiden kunne ikke genereres.');
+ if(!response.ok){
+   const details=result.detail?` — ${result.detail}`:'';
+   throw new Error(`${result.error||'Hjemmesiden kunne ikke genereres.'}${details}`);
+ }
  return result;
 }
 
@@ -230,7 +233,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.7-page-generator-runtime-fix…';
 
  try{
    const result=await requestCompletePage(mode);

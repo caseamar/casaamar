@@ -1,13 +1,16 @@
-release: v2026.07.24.56 — Page Studio button and endpoint hotfix
+fix(page-generator): repair runtime failure
 
-Page Studio
-- Rebuilt all main button bindings using DOMContentLoaded and addEventListener.
-- Added delegated click handling for section regeneration and quick-action buttons.
-- Removed stale wrapper functions and duplicate event bindings.
-- Added immediate technical status feedback when a button is clicked.
-- Added "Test Page Generator" button.
+Root cause
+- Page generation used loadJsonAsset(), but that function did not exist.
+- The existing asset helper is assetJson(env, request, pathname).
+- Every page-generation request therefore failed before calling OpenAI.
 
-Worker
-- Added GET /api/page-health for deployment verification.
-- Ensured page generation routes are available before asset fallback.
-- Worker: 10.6-page-studio-button-fix
+Fix
+- Replaced both invalid calls with assetJson().
+- Added endpoint-level try/catch with precise JSON diagnostics.
+- Page Studio now displays Worker error details instead of a generic message.
+- Page Generator health endpoint reports 10.7-page-generator-runtime-fix.
+
+Release
+- v2026.07.24.57
+- Worker 10.7-page-generator-runtime-fix
