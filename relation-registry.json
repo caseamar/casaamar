@@ -1,9 +1,139 @@
 {
   "version": "1.0",
-  "updated": "2026-07-24",
+  "updated": "2026-07-24T14:13:30.950Z",
   "knowledge_version": null,
   "asset_version": "1.0",
-  "relations": [],
-  "last_scan": null,
-  "scan_reason": null
+  "relations": [
+    {
+      "asset_id": "asset-casa-amar-v2-master-bedroom",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-sovevaerelse-2",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-sovevaerelse-3",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-02-7c8ee17b16",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-11-53207a1bec",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-12-88b503b667",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-13-893534c20e",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-35-52fa436096",
+      "target_type": "knowledge_object",
+      "target_id": "kitchen",
+      "relation_type": "ai_suggestion",
+      "score": 30,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-35-52fa436096",
+      "target_type": "knowledge_object",
+      "target_id": "house-overview",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-38-a27f30f626",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    },
+    {
+      "asset_id": "asset-casa-amar-39-d8456b1658",
+      "target_type": "knowledge_object",
+      "target_id": "golf-clubs-house",
+      "relation_type": "ai_suggestion",
+      "score": 25,
+      "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+      "model_version": "relation-baseline-1",
+      "created_at": "2026-07-24T14:13:29.460Z",
+      "last_evaluated_at": "2026-07-24T14:13:29.460Z"
+    }
+  ],
+  "last_scan": "2026-07-24T14:13:30.915Z",
+  "scan_reason": "visual_analysis_completed",
+  "platform_signature": {
+    "ok": true,
+    "knowledge_signature": "9de24a7f",
+    "page_signature": "4b8cb879",
+    "campaign_signature": "7383f63e",
+    "knowledge_count": 135,
+    "generated_at": "2026-07-24T14:09:26.518Z"
+  }
 }

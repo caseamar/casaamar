@@ -1,0 +1,13 @@
+{
+  "release": "v2026.07.24.69",
+  "created_at": "2026-07-24T14:48:20.567Z",
+  "worker": "11.9-ai-description-review",
+  "counts": {
+    "knowledge_objects": 117,
+    "knowledge_changes": 176,
+    "website_sections": 9,
+    "assets": 57,
+    "relations": 11,
+    "photo_missions": 21
+  }
+}

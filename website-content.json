@@ -1,13 +1,13 @@
 {
-  "version": "1.2",
-  "updated": "2026-07-24",
+  "version": "1.1",
+  "updated": "2026-07-24T14:23:20.610Z",
   "page_id": "home",
-  "status": "foundation",
+  "status": "draft",
   "source_release": "v2026.07.24.55",
   "sections": [
     {
       "id": "hero",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "En god ramme om ferien.",
         "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
@@ -17,18 +17,39 @@
       },
       "draft": {
         "headline": "En god ramme om ferien.",
-        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
-        "cta_label": "",
+        "body": "Et roligt og praktisk feriehus i bakkerne – nem base til både stranddage, golf og byudflugter. Casa Amar er tænkt som et hjem, hvor der er plads til samvær, rolige morgener og aftener med udsigt.",
+        "cta_label": "Kontakt Michael",
         "cards": [],
-        "items": []
+        "items": [],
+        "image_brief": [
+          "Hero-landscape: bredt dagbillede af husets facade i morgenlys med bakker og kyst i baggrunden; indbydende indgang og terrasser synlige."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "house-overview",
+        "beach-city",
+        "outdoor",
+        "seasons"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 88,
+        "level": "high",
+        "factual_confidence": 90,
+        "brand_fit": 95,
+        "website_fit": 92,
+        "knowledge_coverage": 85,
+        "reasons": [
+          "Teksten bygger direkte på husets overordnede facts og beliggenhedsskildringer i knowledge-objekter.",
+          "Sprog og tone er tilpasset Brand Profile: varm, ærlig og personlig."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "life",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Spis ude – eller tag råvarerne med hjem.",
         "body": "Fuengirola, La Cala og Málaga giver mange muligheder. Carrefour og lokale markeder gør det også nemt at lave mad hjemme.",
@@ -38,18 +59,41 @@
       },
       "draft": {
         "headline": "Spis ude – eller tag råvarerne med hjem.",
-        "body": "Fuengirola, La Cala og Málaga giver mange muligheder. Carrefour og lokale markeder gør det også nemt at lave mad hjemme.",
+        "body": "Morgenen kan starte på tagterrassen med kaffe; senere vælger I mellem lokale tapas i Fuengirola eller en hurtig tur til supermarkedet og sæsonens råvarer fra markeder. Køkkenet i huset inviterer til fælles måltider, når I trænger til ro og hjemlighed.",
         "cta_label": "",
         "cards": [],
-        "items": []
+        "items": [],
+        "image_brief": [
+          "Morning-lifestyle: morgenkaffe på et bord med udsigt fra tagterrassen, blødt morgenlys.",
+          "Terrace-life (1): patio-spiseplads dækket til et måltid med lokale råvarer synlige.",
+          "Terrace-life (2): afslappet eftermiddagsstemning på terrassen med planter og solsejl.",
+          "Evening-atmosphere: dæmpet aftenbelysning på terrassen med to glas vin på bordet."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "beach-city",
+        "kitchen",
+        "nearby"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 90,
+        "level": "high",
+        "factual_confidence": 92,
+        "brand_fit": 94,
+        "website_fit": 90,
+        "knowledge_coverage": 88,
+        "reasons": [
+          "Beskrivelser af lokale byer og muligheder for indkøb er understøttet af knowledge-objekter.",
+          "Køkkenets udstyr og funktion er dokumenteret i kitchen-objektet."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "house",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Tre soveværelser med plads til seks.",
         "body": "Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.",
@@ -59,18 +103,61 @@
       },
       "draft": {
         "headline": "Tre soveværelser med plads til seks.",
-        "body": "Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro.",
-        "cta_label": "",
-        "cards": [],
-        "items": []
+        "body": "Soveværelserne skal først og fremmest fungere: gode senge, opbevaring, aircondition og ro. Huset har to badeværelser, en stue, et veludstyret køkken, patio og en tagterrasse som ekstra opholdsrum.",
+        "cta_label": "Se hele huset",
+        "cards": [
+          {
+            "title": "Plads til seks",
+            "body": "Huset har tre soveværelser og to badeværelser — indrettet til op til 6 gæster med fleksibel sengeopsætning og plads til bagage."
+          },
+          {
+            "title": "Køkken til madlavning",
+            "body": "Veludstyret køkken med ovn, opvaskemaskine, espressomaskine, Nespresso og blender — velegnet til både hurtige måltider og længere fællesmiddage."
+          },
+          {
+            "title": "Komfort og søvn",
+            "body": "Gode senge, sengelinned og håndklæder er klar ved ankomst; aircondition og opvarmning sikrer komfort året rundt."
+          },
+          {
+            "title": "WiFi og arbejde",
+            "body": "Mesh-WiFi dækker stueetagen, første sal og tagterrassen — robust nok til streaming og almindeligt hjemmearbejde."
+          }
+        ],
+        "items": [],
+        "image_brief": [
+          "Living-room: lys stue med siddepladser, vinduer mod patio og tydelig hjemlig stemning.",
+          "Bedrooms: billede af et af soveværelserne med dobbeltseng og rolig indretning.",
+          "Kitchen: køkkenø/arbejdsflade med espressomaskine og køkkenredskaber synlige.",
+          "Bathrooms: neutralt, rent badeværelse med håndklæder på plads."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "house-overview",
+        "kitchen",
+        "linen-towels",
+        "wifi",
+        "climate",
+        "outdoor"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 95,
+        "level": "high",
+        "factual_confidence": 98,
+        "brand_fit": 94,
+        "website_fit": 95,
+        "knowledge_coverage": 98,
+        "reasons": [
+          "Alle påstande er direkte dækket af house-overview og supplerende facts om udstyr og services.",
+          "Korte, konkrete facts matcher component contractets krav om dokumentation uden salgssprog."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "roof-terrace",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Gå en tur gennem Casa Amar.",
         "body": "Fra de første rum til patio, tagterrasse, pool og udsigt. Brug filtrene, eller se hele huset i én samlet billedrejse.",
@@ -83,15 +170,36 @@
         "body": "Fra de første rum til patio, tagterrasse, pool og udsigt. Brug filtrene, eller se hele huset i én samlet billedrejse.",
         "cta_label": "",
         "cards": [],
-        "items": []
+        "items": [],
+        "image_brief": [
+          "Roof-day: tagterrassen i dagslys med sofa, solsejl og udsigt mod bakkerne og kysten.",
+          "Roof-sunset: tagterrassen i gyldent lys ved solnedgang med bløde puder og tæpper.",
+          "Roof-projector: aftenscene med projektor på taget, tæpper og puder klar til filmunderholdning."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "outdoor",
+        "house-overview"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 82,
+        "level": "medium",
+        "factual_confidence": 84,
+        "brand_fit": 90,
+        "website_fit": 80,
+        "knowledge_coverage": 78,
+        "reasons": [
+          "Beskrivelsen bygger på overordnede facts om patio og tagterrasse i knowledge-objekterne.",
+          "Der er dokumentation for tagterrassens møbler og projektor i outdoor-objektet."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "location",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Et ekstra sted med udsigt og ro.",
         "body": "Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.",
@@ -101,18 +209,42 @@
       },
       "draft": {
         "headline": "Et ekstra sted med udsigt og ro.",
-        "body": "Her er loungestol, hjørnesofa, bord, store krukker og solsejl. Mod den ene side ses Mijas Pueblo og bakkerne. Fra sofaen ses Fuengirola, havet og på klare dage bjergene mod øst.",
-        "cta_label": "",
+        "body": "Casa Amar ligger i bakkerne med udsigt mod både Mijas-bakkerne og kysten. Tæt på findes et lokalt supermarked, en restaurant og Gran Parque de Mijas med stier og legeplads. Huset fungerer som en praktisk base til både strand, by og bjerge.",
+        "cta_label": "Se området",
         "cards": [],
-        "items": []
+        "items": [],
+        "image_brief": [
+          "Cerros-context: oversigtsbillede af området fra en højere vinkel med både bakker og hav i horisonten.",
+          "Map: stiliseret kortudsnit der viser husets placering mellem bakkerne og kysten.",
+          "Local-life (1): nærliggende café eller butik i lokalområdet.",
+          "Local-life (2): stier eller legeplads i Gran Parque de Mijas."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "outdoor",
+        "nearby",
+        "beach-city",
+        "rincon-distance-reference"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 88,
+        "level": "high",
+        "factual_confidence": 90,
+        "brand_fit": 92,
+        "website_fit": 90,
+        "knowledge_coverage": 88,
+        "reasons": [
+          "Placering og nærområde er understøttet af flere knowledge-objekter, herunder lokale faciliteter.",
+          "Formuleringen undgår præcise afstandstal for at holde forventningerne realistiske."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "experiences",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "En god ramme om ferien.",
         "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
@@ -122,18 +254,70 @@
       },
       "draft": {
         "headline": "En god ramme om ferien.",
-        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "body": "Casa Amar fungerer som base for både korte stranddage og længere dagsudflugter. Her er inspiration til forskellige dage og stemninger — uden at forsøge at være en komplet guide.",
         "cta_label": "",
-        "cards": [],
-        "items": []
+        "cards": [
+          {
+            "title": "Strand og strandliv",
+            "body": "Fuengirola, Los Boliches og La Cala ligger tæt nok til en afslappet stranddag med korte køreture og nem adgang."
+          },
+          {
+            "title": "Málaga på en dag",
+            "body": "En dagstur til Málaga giver kultur, caféer og markeder — nemt at kombinere med en aften tilbage på huset."
+          },
+          {
+            "title": "Mijas og parkens ro",
+            "body": "Mijas-pueblo og Gran Parque de Mijas byder på stier, legepladser og små lokale restauranter til rolige dage."
+          },
+          {
+            "title": "Madmarkeder og indkøb",
+            "body": "Lokale supermarkeder og marksituationer gør det nemt at fylde køleskabet til fællesmiddage hjemme."
+          },
+          {
+            "title": "Bjerge og længere ture",
+            "body": "Ronda, Caminito del Rey eller Sierra Nevada er oplagte ture for dem, der vil videre end kysten."
+          },
+          {
+            "title": "Golf, padel og strandaktiviteter",
+            "body": "Uanset om I tager en golfrunde eller en padel-session, findes faciliteter i området — og noget udstyr findes i huset."
+          }
+        ],
+        "items": [],
+        "image_brief": [
+          "Beach: sol, sand og kystliv fra en lokal strand i nærheden.",
+          "Malaga: udsnit af byliv i Málaga med kultur og caféer synligt.",
+          "Mijas-pueblo: smalle gader eller udsigtspunkt fra Mijas.",
+          "Food-market: farverige lokale råvarer og boder.",
+          "Mountains: dramatisk landskab fra en bjergudflugt.",
+          "Golf-padel: banescene eller udstyr i brug."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "beach-city",
+        "day-trips",
+        "multi-day",
+        "nearby",
+        "sports-equipment"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 90,
+        "level": "high",
+        "factual_confidence": 92,
+        "brand_fit": 93,
+        "website_fit": 90,
+        "knowledge_coverage": 90,
+        "reasons": [
+          "Hver oplevelsestype er funderet i flere knowledge-objekter (strand/by, dagsture, multi-day og sport).",
+          "Kortfattede beskrivelser holder sig inden for dokumenterede muligheder i området."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "fit",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Om sommeren foregår meget af livet herude.",
         "body": "Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.",
@@ -143,18 +327,60 @@
       },
       "draft": {
         "headline": "Om sommeren foregår meget af livet herude.",
-        "body": "Spisebord til seks, grill, parasoller, store solsenge og skygge på de varmeste tidspunkter. Bougainvillea og krukker giver farve og duft.",
+        "body": "Casa Amar passer til dem, der søger plads til at være sammen uden at være i centrum: familiegrupper, par, venner og dem, der arbejder et stykke tid fra et andet sted. Huset fungerer både som base for aktive dage og for rolige aftener sammen.",
         "cta_label": "",
-        "cards": [],
-        "items": []
+        "cards": [
+          {
+            "title": "Familier med børn",
+            "body": "God plads, babyseng, højstol, trappegitter og strandudstyr gør hverdagen nemmere for børnefamilier."
+          },
+          {
+            "title": "Par og venner",
+            "body": "Terrasser, tagterrasse og tagprojektor giver rum til stemning og samvær — ideelt til ro og privatliv."
+          },
+          {
+            "title": "Længere ophold & workation",
+            "body": "Mesh-WiFi, køkken og rolige rum gør huset velegnet til længere ophold, hvor hverdagsliv og arbejde skal fungere."
+          },
+          {
+            "title": "Aktive dage",
+            "body": "Kort adgang til golfbaner, padelfaciliteter og vandrestier — og noget udstyr findes i huset."
+          }
+        ],
+        "items": [],
+        "image_brief": [
+          "Guest-scenarios (1): familie ved spisebordet med børn og legetøj synligt.",
+          "Guest-scenarios (2): par på tagterrassen med aftensstemning.",
+          "Guest-scenarios (3): laptop og kaffe i stuen for workation-stemning.",
+          "Guest-scenarios (4): golfbag eller strandudstyr pakket klar."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "children",
+        "outdoor",
+        "wifi",
+        "sports-equipment",
+        "house-overview"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 92,
+        "level": "high",
+        "factual_confidence": 93,
+        "brand_fit": 95,
+        "website_fit": 92,
+        "knowledge_coverage": 92,
+        "reasons": [
+          "Scenarierne er sammensat af dokumenterede faciliteter og målgrupper i knowledge-basen.",
+          "Sproget hjælper gæsten med at vurdere fit uden at overdrive funktionaliteten."
+        ],
+        "gap_recommendations": []
+      }
     },
     {
       "id": "practical",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "En god ramme om ferien.",
         "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
@@ -163,19 +389,90 @@
         "items": []
       },
       "draft": {
-        "headline": "En god ramme om ferien.",
-        "body": "Et roligt og praktisk feriehus i bakkerne – tæt på strand, golf, indkøb og oplevelser.",
+        "headline": "Godt at vide før ankomst.",
+        "body": "Seks korte facts, der hjælper med praktiske forventninger ved opholdet. For detaljer og bekræftelse tager Michael indledende dialog ved reservation.",
         "cta_label": "",
         "cards": [],
-        "items": []
+        "items": [
+          {
+            "title": "Ankomst og nøgle",
+            "body": "Michael tager den indledende dialog om check-in-tider og nøgleovergivelse; konkrete detaljer bekræftes ved reservation."
+          },
+          {
+            "title": "Parkering",
+            "body": "Der er parkeringsmulighed ved huset; kontakt Michael for vejledning ved særlige behov."
+          },
+          {
+            "title": "Pool og sikkerhed",
+            "body": "Poolen er en del af området; gæster bedes følge de husregler, der udleveres ved ankomst."
+          },
+          {
+            "title": "Rengøring",
+            "body": "Rengøring og håndklæder/sengelinned er forberedt ved ankomst; praktiske detaljer afklares med Michael."
+          },
+          {
+            "title": "Husdyr",
+            "body": "Husdyr er ikke tilladt uden forudgående aftale — kontakt Michael ved forespørgsel."
+          },
+          {
+            "title": "Rygning",
+            "body": "Rygning indendørs er ikke tilladt; udendørs rygeområde angives ved ankomst."
+          }
+        ],
+        "image_brief": [
+          "Arrival-practical (1): nøgleoverlevering eller ankomstscene.",
+          "Arrival-practical (2): parkeringsplads ved huset eller tydelig adgangsvej."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "arrival-practical",
+        "house-overview",
+        "outdoor",
+        "cleaning",
+        "pets",
+        "safety"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 80,
+        "level": "medium",
+        "factual_confidence": 78,
+        "brand_fit": 90,
+        "website_fit": 85,
+        "knowledge_coverage": 70,
+        "reasons": [
+          "Praktiske punkter er generelle og formuleret neutralt for at undgå at opfinde detaljer.",
+          "Der henvises til Michael for bekræftelser, som overholder side-reglerne."
+        ],
+        "gap_recommendations": [
+          {
+            "title": "Præcise check-in-tider",
+            "category": "Praktisk information",
+            "reason": "Check-in- og check-out-tider mangler i knowledge-basen; det gør det svært at give præcis information.",
+            "requested_information": [
+              "Standard check-in tid",
+              "Standard check-out tid",
+              "Procedure ved sen ankomst"
+            ],
+            "priority": "high"
+          },
+          {
+            "title": "Parkeringskapacitet",
+            "category": "Praktisk information",
+            "reason": "Det vil hjælpe gæsterne at kende antal parkeringspladser og eventuelle begrænsninger.",
+            "requested_information": [
+              "Antal parkeringspladser",
+              "Eventuelle tilladelser eller afgifter"
+            ],
+            "priority": "medium"
+          }
+        ]
+      }
     },
     {
       "id": "final-cta",
-      "status": "imported_from_current_site",
+      "status": "draft",
       "live": {
         "headline": "Skal Casa Amar være jeres næste base?",
         "body": "Tag den indledende snak med Michael om huset, området og om det passer til jeres ophold.",
@@ -184,15 +481,34 @@
         "items": []
       },
       "draft": {
-        "headline": "Skal Casa Amar være jeres næste base?",
-        "body": "Tag den indledende snak med Michael om huset, området og om det passer til jeres ophold.",
+        "headline": "Klar til at spørge eller booke?",
+        "body": "Hvis Casa Amar lyder som den rette ramme for jeres ophold, tager Michael den indledende dialog. Kontakt ham for spørgsmål, bekræftelse af detaljer og næste skridt.",
         "cta_label": "Kontakt Michael",
         "cards": [],
-        "items": []
+        "items": [],
+        "image_brief": [
+          "Closing-emotion: varm aftenscene på terrassen med lys og udsigt, inviterende stemning."
+        ]
       },
-      "knowledge_sources": [],
+      "knowledge_sources": [
+        "house-overview",
+        "contact"
+      ],
       "asset_ids": [],
-      "last_generated": null
+      "last_generated": "2026-07-24T14:23:20.610Z",
+      "quality": {
+        "confidence": 94,
+        "level": "high",
+        "factual_confidence": 95,
+        "brand_fit": 98,
+        "website_fit": 97,
+        "knowledge_coverage": 90,
+        "reasons": [
+          "CTA følger kontrakten: Michael tager den indledende dialog.",
+          "Formuleringen opfordrer til kontakt uden at love bookingfunktionalitet."
+        ],
+        "gap_recommendations": []
+      }
     }
   ]
 }
