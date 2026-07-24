@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.8-generation-mode-scope-fix",
+      version: "10.9-page-output-repair",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1026,6 +1026,144 @@ function completeSectionFromContract(sectionDraft, contract, definition, previou
   return output;
 }
 
+
+async function repairPageOutputWithAI(rawResult, page, pageContracts, env) {
+  const rawText = JSON.stringify(rawResult);
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions: `Du reparerer kun formatet på et tidligere AI-svar.
+
+Returnér ét gyldigt JSON-objekt og intet andet.
+Det skal indeholde:
+- page_summary: string
+- repetition_score: integer 0-100
+- repetition_notes: array of strings
+- sections: én sektion for hver id i PAGE BLUEPRINT
+
+Hver sektion skal have:
+- id
+- headline
+- body
+- cta_label
+- cards
+- items
+- knowledge_sources
+- image_brief
+
+Bevar så meget som muligt af det oprindelige indhold. Udfyld manglende felter med sikre tomme værdier eller korte neutrale tekster. Ingen markdown.`,
+      input: [{
+        role: "user",
+        content: `PAGE BLUEPRINT:
+${JSON.stringify(page)}
+
+COMPONENT CONTRACTS:
+${JSON.stringify(pageContracts)}
+
+OUTPUT TO REPAIR:
+${rawText}`
+      }],
+      text: {
+        verbosity: "low",
+        format: {
+          type: "json_schema",
+          name: "repaired_casa_amar_page",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              page_summary: { type: "string" },
+              repetition_score: { type: "integer", minimum: 0, maximum: 100 },
+              repetition_notes: { type: "array", items: { type: "string" } },
+              sections: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    id: { type: "string" },
+                    headline: { type: "string" },
+                    body: { type: "string" },
+                    cta_label: { type: "string" },
+                    cards: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          title: { type: "string" },
+                          body: { type: "string" }
+                        },
+                        required: ["title", "body"]
+                      }
+                    },
+                    items: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          title: { type: "string" },
+                          body: { type: "string" }
+                        },
+                        required: ["title", "body"]
+                      }
+                    },
+                    knowledge_sources: { type: "array", items: { type: "string" } },
+                    image_brief: { type: "array", items: { type: "string" } }
+                  },
+                  required: [
+                    "id","headline","body","cta_label",
+                    "cards","items","knowledge_sources","image_brief"
+                  ]
+                }
+              }
+            },
+            required: ["page_summary","repetition_score","repetition_notes","sections"]
+          }
+        }
+      },
+      max_output_tokens: 7000,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) return null;
+  return parseStructuredOutput(result);
+}
+
+function deterministicPageFallback(page, pageContracts, currentContent) {
+  const previous = Array.isArray(currentContent?.sections) ? currentContent.sections : [];
+  return {
+    page_summary: "Eksisterende indhold bevaret. Manglende felter er klargjort til videre AI-udfyldning.",
+    repetition_score: 0,
+    repetition_notes: ["Automatisk fallback blev brugt, fordi AI-output ikke kunne parses."],
+    sections: page.sections.map((definition) => {
+      const old = previous.find((item) => item.id === definition.id) || {};
+      const draft = old.draft || old.live || {};
+      const contract = pageContracts[definition.id] || { fields: [] };
+      const normalized = completeSectionFromContract(draft, contract, definition, draft);
+      return {
+        id: definition.id,
+        headline: normalized.headline || definition.id,
+        body: normalized.body || "",
+        cta_label: normalized.cta_label || "",
+        cards: normalized.cards || [],
+        items: normalized.items || [],
+        knowledge_sources: old.knowledge_sources || [],
+        image_brief: normalized.image_brief || []
+      };
+    })
+  };
+}
+
 async function handlePageGenerate(request, env) {
   if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
 
@@ -1189,7 +1327,14 @@ ${JSON.stringify(knowledge)}`
   }
 
   let generated = parseStructuredOutput(result);
-  if (!generated) return json({ error: "AI returnerede et ugyldigt sideformat." }, 502);
+
+  if (!generated) {
+    generated = await repairPageOutputWithAI(result, page, pageContracts, env);
+  }
+
+  if (!generated) {
+    generated = deterministicPageFallback(page, pageContracts, currentContent);
+  }
 
   const previous = Array.isArray(currentContent.sections) ? currentContent.sections : [];
   const websiteContent = {
@@ -1221,7 +1366,11 @@ ${JSON.stringify(knowledge)}`
     quality: {
       repetition_score: generated.repetition_score,
       repetition_notes: generated.repetition_notes,
-      page_summary: generated.page_summary
+      page_summary: generated.page_summary,
+      repaired: Boolean(generated?.repetition_notes?.some?.((note) =>
+        String(note).toLowerCase().includes("fallback") ||
+        String(note).toLowerCase().includes("reparer")
+      ))
     }
   });
 }
@@ -1830,7 +1979,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "10.8-generation-mode-scope-fix",
+          worker: "10.9-page-output-repair",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -1838,7 +1987,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "10.8-generation-mode-scope-fix",
+          worker: "10.9-page-output-repair",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);

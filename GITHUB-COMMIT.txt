@@ -1,19 +1,16 @@
-fix(page-generator): declare generationMode in the correct function scope
+fix(page-generator): automatically repair malformed full-page AI output
 
-Root cause
-- generationMode was referenced by handlePageGenerate().
-- It had accidentally been declared inside handlePageSectionGenerate().
-- Full-page generation therefore failed with:
-  "generationMode is not defined".
+Problem
+- Full-page generation still stopped when OpenAI returned an output shape
+  that could not be parsed exactly.
 
 Fix
-- Removed the misplaced declaration from the section generator.
-- Declared generationMode inside handlePageGenerate().
-- Enhanced /api/page-health to verify:
-  - component-library.json can be loaded
-  - OpenAI is configured
-  - component contracts are available
+- Added automatic AI format-repair pass.
+- Added deterministic fallback preserving current website content.
+- Page generation no longer hard-fails with "ugyldigt sideformat".
+- Existing content remains available even if the repair pass fails.
+- Page Studio reports when output was automatically repaired.
 
 Release
-- v2026.07.24.58
-- Worker 10.8-generation-mode-scope-fix
+- v2026.07.24.59
+- Worker 10.9-page-output-repair

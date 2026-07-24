@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.58 · Page model 1.0 · Worker 10.8-generation-mode-scope-fix</p>
+<p class="meta">Release v2026.07.24.59 · Page model 1.0 · Worker 10.9-page-output-repair</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -233,7 +233,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.8-generation-mode-scope-fix…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.9-page-output-repair…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -244,10 +244,10 @@ async function generateCompletePage(mode='complete'){
 
    const summary=completionSummary();
    if(summary.missing===0){
-     status.innerHTML=`<p class="success"><strong>Komplet hjemmeside-draft genereret.</strong> ${summary.complete}/${summary.total} sektioner er komplette · ${summary.percentage}% · Repetitionskontrol: ${result.quality?.repetition_score??'–'}.</p>`;
+     status.innerHTML=`<p class="success"><strong>Hjemmeside-draft behandlet.</strong> ${summary.complete}/${summary.total} sektioner er komplette · ${summary.percentage}% · Repetitionskontrol: ${result.quality?.repetition_score??'–'}.${result.quality?.repaired?' Outputtet blev automatisk repareret.':''}</p>`;
    }else{
      const missingText=summary.details.filter(x=>x.missing).map(x=>`${x.id}: ${x.missing}`).join(' · ');
-     status.innerHTML=`<p class="notice"><strong>${summary.complete}/${summary.total} sektioner komplette (${summary.percentage}%).</strong> Mangler: ${missingText}</p>`;
+     status.innerHTML=`<p class="notice"><strong>${summary.complete}/${summary.total} sektioner komplette (${summary.percentage}%).</strong> Mangler: ${missingText}.${result.quality?.repaired?' AI-outputtet blev automatisk repareret, og eksisterende indhold er bevaret.':''}</p>`;
    }
  }catch(error){
    status.innerHTML=`<p class="notice"><strong>Det nuværende indhold er bevaret.</strong> ${esc(error.message)}</p>`;
