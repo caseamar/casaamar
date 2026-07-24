@@ -1,22 +1,18 @@
-release: v2026.07.24.66 — direct Asset Upload Manager
+fix(asset-upload): restore click and drag-and-drop initialization
 
-Asset Studio
-- Users can drag or select images directly in Asset Studio.
-- Optional shared context and season can be supplied before upload.
-- New images upload directly to GitHub under images/library.
-- Upload automatically triggers GitHub sync, Asset Object creation,
-  visual analysis and relation recalculation.
-- Filename collisions never overwrite silently.
-- Explicit replacement mode preserves the existing asset identity,
-  manual metadata and relations while queuing visual reanalysis.
+Root cause
+- Obsolete JavaScript still referenced removed buttons:
+  registerAssets and importManifest.
+- The resulting null.onclick error stopped the script before upload
+  click and drag handlers were registered.
 
-Security
-- Upload requires Cloudflare secret GITHUB_TOKEN.
-- Token is used only server-side in _worker.js.
-- No token is exposed to the browser or repository files.
+Fix
+- Removed obsolete handlers.
+- Added guarded initializeUploadManager().
+- Added explicit click, keyboard and drag/drop event listeners.
+- Added upload UI readiness status.
+- Added hover, focus and drag-active feedback.
+- Kept the existing direct GitHub upload, sync, analysis and relation flow.
 
-Testing
-- Added TEST-ASSET-UPLOAD-MANAGER.md.
-
-Release: v2026.07.24.66
-Worker: 11.6-asset-upload-manager
+Release: v2026.07.24.67
+Worker: 11.7-upload-manager-runtime-fix
