@@ -24,7 +24,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.57 · Page model 1.0 · Worker 10.7-page-generator-runtime-fix</p>
+<p class="meta">Release v2026.07.24.58 · Page model 1.0 · Worker 10.8-generation-mode-scope-fix</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -233,7 +233,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.7-page-generator-runtime-fix…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.8-generation-mode-scope-fix…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -307,8 +307,9 @@ function bindPageStudioActions(){
      const response=await fetch('/api/page-health',{headers:{accept:'application/json'}});
      const raw=await response.text();
      let result;try{result=JSON.parse(raw)}catch{throw new Error(`Endpoint svarer ikke med JSON (${response.status})`)}
-     if(!response.ok)throw new Error(result.error||'Page Generator er ikke aktiv');
-     status.innerHTML=`<p class="success"><strong>Page Generator virker.</strong> Worker ${esc(result.worker||'ukendt')}.</p>`;
+     if(!response.ok)throw new Error(`${result.error||'Page Generator er ikke aktiv'}${result.detail?` — ${result.detail}`:''}`);
+     const technical=q('#technicalStatus');if(technical)technical.textContent='Klar.';
+     status.innerHTML=`<p class="success"><strong>Page Generator virker.</strong> Worker ${esc(result.worker||'ukendt')} · ${result.component_contracts||0} komponentkontrakter · OpenAI ${result.openai_configured?'forbundet':'mangler'}.</p>`;
    }catch(error){
      status.innerHTML=`<p class="notice"><strong>Page Generator virker ikke endnu.</strong> ${esc(error.message)}</p>`;
    }finally{

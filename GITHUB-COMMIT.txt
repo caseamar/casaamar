@@ -1,16 +1,19 @@
-fix(page-generator): repair runtime failure
+fix(page-generator): declare generationMode in the correct function scope
 
 Root cause
-- Page generation used loadJsonAsset(), but that function did not exist.
-- The existing asset helper is assetJson(env, request, pathname).
-- Every page-generation request therefore failed before calling OpenAI.
+- generationMode was referenced by handlePageGenerate().
+- It had accidentally been declared inside handlePageSectionGenerate().
+- Full-page generation therefore failed with:
+  "generationMode is not defined".
 
 Fix
-- Replaced both invalid calls with assetJson().
-- Added endpoint-level try/catch with precise JSON diagnostics.
-- Page Studio now displays Worker error details instead of a generic message.
-- Page Generator health endpoint reports 10.7-page-generator-runtime-fix.
+- Removed the misplaced declaration from the section generator.
+- Declared generationMode inside handlePageGenerate().
+- Enhanced /api/page-health to verify:
+  - component-library.json can be loaded
+  - OpenAI is configured
+  - component contracts are available
 
 Release
-- v2026.07.24.57
-- Worker 10.7-page-generator-runtime-fix
+- v2026.07.24.58
+- Worker 10.8-generation-mode-scope-fix

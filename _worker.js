@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.7-page-generator-runtime-fix",
+      version: "10.8-generation-mode-scope-fix",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -828,7 +828,6 @@ async function handlePageSectionGenerate(request, env) {
   const brand = payload.brand || {};
   const blueprint = payload.blueprint || {};
   const currentContent = payload.current_content || {};
-  const generationMode = payload.mode || "complete";
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   const section = page?.sections?.find((item) => item.id === payload.section_id);
   if (!page || !section) return json({ error: "Den valgte sektion findes ikke i Page Blueprint." }, 400);
@@ -1037,6 +1036,7 @@ async function handlePageGenerate(request, env) {
   const brand = payload.brand || {};
   const blueprint = payload.blueprint || {};
   const currentContent = payload.current_content || {};
+  const generationMode = payload.mode || "complete";
   const page = (blueprint.pages || []).find((item) => item.id === (payload.page_id || "home"));
   if (!page) return json({ error: "Page Blueprint mangler den valgte side." }, 400);
 
@@ -1826,7 +1826,23 @@ export default {
     const url = new URL(request.url);
 
     if (request.method === "GET" && url.pathname === "/api/page-health") {
-      return json({ ok: true, worker: "10.7-page-generator-runtime-fix", endpoint: "page-generator" });
+      try {
+        const componentLibrary = await assetJson(env, request, "/component-library.json");
+        return json({
+          ok: true,
+          worker: "10.8-generation-mode-scope-fix",
+          endpoint: "page-generator",
+          openai_configured: Boolean(env.OPENAI_API_KEY),
+          component_contracts: Object.keys(componentLibrary?.components || {}).length
+        });
+      } catch (error) {
+        return json({
+          ok: false,
+          worker: "10.8-generation-mode-scope-fix",
+          error: "Page Generator dependency check failed.",
+          detail: String(error?.message || error)
+        }, 500);
+      }
     }
 
 
