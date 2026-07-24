@@ -1,18 +1,14 @@
-fix(asset-upload): restore click and drag-and-drop initialization
+feat(asset-upload): batched uploads, per-image context and visible pipeline status
 
-Root cause
-- Obsolete JavaScript still referenced removed buttons:
-  registerAssets and importManifest.
-- The resulting null.onclick error stopped the script before upload
-  click and drag handlers were registered.
+- 20 MB is now clearly described as a per-file limit, not a total upload limit.
+- Multiple eligible images are processed automatically in batches of five.
+- Oversized or unsupported files remain visible, are skipped, and do not block other images.
+- Upload selection shows total images, total size, batch count and files requiring action.
+- Each image has its own optional description and season.
+- Each image shows pipeline status:
+  upload → Asset Object → AI analysis → relations → ready.
+- Completed assets show GitHub path and Asset Object ID.
+- Upload results remain visible after completion instead of disappearing.
 
-Fix
-- Removed obsolete handlers.
-- Added guarded initializeUploadManager().
-- Added explicit click, keyboard and drag/drop event listeners.
-- Added upload UI readiness status.
-- Added hover, focus and drag-active feedback.
-- Kept the existing direct GitHub upload, sync, analysis and relation flow.
-
-Release: v2026.07.24.67
-Worker: 11.7-upload-manager-runtime-fix
+Release: v2026.07.24.68
+Worker: 11.8-batched-upload-status
