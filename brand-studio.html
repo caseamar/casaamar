@@ -10,6 +10,11 @@ label{display:block;font-size:.76rem;color:var(--muted);margin-top:10px}input,te
 .success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px;margin-top:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 .release{font-size:.72rem;color:var(--muted);margin:10px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -24,8 +29,8 @@ label{display:block;font-size:.76rem;color:var(--muted);margin-top:10px}input,te
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<div class="release">Release v2026.07.24.63 · Brand model 1.0</div>
-<h1>Brand Studio</h1>
+<div class="release">Release v2026.07.24.64 · Brand model 1.0</div>
+<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Brand Studio</h1>
 <p class="lead">Her styrer du Casa Amars identitet og formålet med hver kanal. AI bruger profilen, når den skriver hjemmesidetekster, concierge-svar og guider. Du ændrer principperne ét sted – ikke i hver enkelt tekst.</p>
 <div class="panel">
 <label>Positionering<textarea id="positioning"></textarea></label>
@@ -41,12 +46,14 @@ label{display:block;font-size:.76rem;color:var(--muted);margin-top:10px}input,te
 <label>Tone – kommasepareret<input id="websiteTone"></label>
 <label>CTA-princip<textarea id="ctaPrinciple"></textarea></label>
 </div>
-<button class="primary" id="save">Gem Brand Profile</button>
+<a href="/knowledge-center.html">Til Dashboard</a>
 <div id="message"></div>
 <script>
 let profile;
 const q=s=>document.querySelector(s);
 fetch('/brand-profile.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
+ const local=localStorage.getItem('casaBrandProfile');
+ if(local){try{data=JSON.parse(local)}catch{}}
  profile=data;
  q('#positioning').value=data.brand.positioning;
  q('#promise').value=data.brand.promise;
@@ -73,4 +80,29 @@ q('#save').onclick=async()=>{
  }else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='brand-profile.json';a.click()}
  q('#message').innerHTML='<p class="success">Brand Profile er gemt og klar til upload i GitHub.</p>';
 };
+
+let brandSaveTimer;
+function collectBrand(){
+ profile.brand.positioning=q('#positioning').value.trim();
+ profile.brand.promise=q('#promise').value.trim();
+ profile.brand.personality=q('#personality').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.brand.avoid=q('#avoid').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.brand.preferred_phrases=q('#phrases').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.channel_goals.website.primary_goal=q('#websiteGoal').value.trim();
+ profile.channel_goals.website.tone=q('#websiteTone').value.split(',').map(x=>x.trim()).filter(Boolean);
+ profile.channel_goals.website.cta_principle=q('#ctaPrinciple').value.trim();
+ profile.updated=new Date().toISOString();
+ return profile;
+}
+function autosaveBrand(){
+ const banner=q('#autosaveBanner');
+ if(banner)banner.classList.add('saving');
+ clearTimeout(brandSaveTimer);
+ brandSaveTimer=setTimeout(()=>{
+  localStorage.setItem('casaBrandProfile',JSON.stringify(collectBrand()));
+  localStorage.setItem('casaWorkspaceLastSaved',new Date().toISOString());
+  if(banner){banner.classList.remove('saving');banner.querySelector('span:last-child').textContent='Brand Profile er gemt automatisk. Udgiv samlet fra Dashboard.'}
+ },350);
+}
+document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',autosaveBrand));
 </script></main></body></html>

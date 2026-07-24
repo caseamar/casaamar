@@ -19,6 +19,11 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 .completion{display:inline-block;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:850}.complete{background:#e1f1e7;color:#265f42}.incomplete{background:#fff0ca;color:#745200}.field-missing{outline:2px solid #c98a37;background:#fffaf0}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 @media(max-width:900px){.quality-summary{grid-template-columns:1fr 1fr}.choice-grid{grid-template-columns:1fr}.story{grid-template-columns:1fr 1fr}.grid,.operation-editor,.card-editor{grid-template-columns:1fr}.operation-editor>.full{grid-column:auto}}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -33,7 +38,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.63 · Page model 1.0 · Worker 11.3-asset-progress-feedback</p>
+<p class="meta">Release v2026.07.24.64 · Page model 1.0 · Worker 11.4-autosave-single-publish</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -49,7 +54,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <button class="primary" id="generateFresh">Generér helt ny forside</button>
 <button class="good" id="improveCurrent">Forbedr nuværende indhold</button>
 <button id="fillMissing">Udfyld kun manglende felter</button><button id="testPageApi">Test Page Generator</button>
-<button id="export">Gem website-content.json</button>
+
 <a href="/page-preview.html" target="_blank">Åbn preview</a>
 </div>
 <div class="completion-meter"><div id="completionBar"></div></div>
@@ -301,7 +306,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.3-asset-progress-feedback…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.4-autosave-single-publish…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -348,7 +353,10 @@ function collect(){
   Object.entries(groups).forEach(([key,value])=>stored.draft[key]=value);
   stored.status='draft';
  });
- content.updated=new Date().toISOString();return content;
+ content.updated=new Date().toISOString();
+ localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
+ localStorage.setItem('casaWorkspaceLastSaved',new Date().toISOString());
+ return content;
 }
 
 async function createGapDraft(sectionId,gapIndex,button){
@@ -391,7 +399,7 @@ function bindPageStudioActions(){
  if(fresh)fresh.addEventListener('click',()=>generateCompletePage('complete'));
  if(improve)improve.addEventListener('click',()=>generateCompletePage('improve_current'));
  if(fill)fill.addEventListener('click',()=>generateCompletePage('fill_missing'));
- if(exportBtn)exportBtn.addEventListener('click',exportContent);
+ 
  const testBtn=q('#testPageApi');
  if(testBtn)testBtn.addEventListener('click',async()=>{
    const status=q('#status');

@@ -9,6 +9,11 @@
 .actions{display:flex;gap:8px;flex-wrap:wrap}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 @media(max-width:760px){.mission-grid{grid-template-columns:1fr}}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -23,13 +28,13 @@
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.63 · Photo Mission model 1.0</p>
+<p class="meta">Release v2026.07.24.64 · Photo Mission model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Foto-manus</h1>
 <p>AI omsætter sidernes billedslots, lav visuel confidence og manglende assets til konkrete fotoopgaver. Listen er et arbejdsmanus til næste tur til Spanien.</p>
 <section class="panel">
 <div class="actions">
 <button class="primary" id="generate">Generér foto-manus</button>
-<button id="export">Gem photo-missions.json</button>
+
 <a href="/asset-studio.html">Åbn Asset Studio</a>
 </div>
 <div id="message"></div>
@@ -81,7 +86,8 @@ q('#generate').onclick=()=>{
   });
  }
  missions={version:'1.1',updated:new Date().toISOString(),missions:generated};
- localStorage.setItem('casaPhotoMissions',JSON.stringify(missions));render();
+ localStorage.setItem('casaPhotoMissions',JSON.stringify(missions));
+ localStorage.setItem('casaWorkspaceLastSaved',new Date().toISOString());render();
  q('#message').innerHTML=`<p class="success">${generated.length} konkrete fotoopgaver er genereret ud fra manglende asset-roller.</p>`;
 };
 q('#export').onclick=()=>{

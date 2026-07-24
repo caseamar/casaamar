@@ -14,6 +14,11 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 .meta{font-size:.72rem;color:var(--muted);line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}.working{background:#eaf0f7;color:#28445f;padding:10px;border-radius:10px}.spinner{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:7px}@keyframes spin{to{transform:rotate(360deg)}}button[disabled]{opacity:.58;cursor:wait}.operation-log{margin-top:8px;padding:9px;background:#f7f4ef;border-radius:10px;max-height:170px;overflow:auto;font-size:.72rem;line-height:1.45}.operation-log div{padding:3px 0;border-bottom:1px solid #ebe4da}.operation-log div:last-child{border-bottom:0}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 @media(max-width:900px){.grid,.asset-list{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid,.asset-list{grid-template-columns:1fr}}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -28,7 +33,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.63 · Asset relation model 1.0</p>
+<p class="meta">Release v2026.07.24.64 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Asset Studio</h1>
 <p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
 
@@ -51,8 +56,8 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <button class="good" id="analyzePending">Analyser ikke-analyserede billeder</button>
 <button id="reanalyzeAll">Genanalysér alle billeder</button>
 <button id="scanRelations">Genberegn AI-relationer</button><button id="autoSync">Kontrollér ændringer nu</button>
-<button id="exportAssets">Gem asset-library.json</button>
-<button id="exportRelations">Gem relation-registry.json</button>
+
+
 </div>
 <div id="message"></div>
 <div id="queueStatus" class="meta"></div>
@@ -192,6 +197,7 @@ function saveLocal(){
  registry.updated=new Date().toISOString();
  localStorage.setItem('casaAssetLibrary',JSON.stringify(library));
  localStorage.setItem('casaRelationRegistry',JSON.stringify(registry));
+ localStorage.setItem('casaWorkspaceLastSaved',new Date().toISOString());
  render();
 }
 q('#registerAssets').onclick=()=>{
@@ -376,7 +382,6 @@ async function downloadJson(name,data){
  }
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download=name;a.click();
 }
-q('#exportAssets').onclick=()=>downloadJson('asset-library.json',library);
-q('#exportRelations').onclick=()=>downloadJson('relation-registry.json',registry);
+
 ['search','statusFilter','seasonFilter','relationFilter'].forEach(id=>q('#'+id).addEventListener('input',render));
 </script></main></body></html>

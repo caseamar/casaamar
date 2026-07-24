@@ -26,6 +26,11 @@ textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px
 @media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
 
 @media(max-width:900px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.diff{grid-template-columns:1fr}}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style></head>
 <body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
@@ -41,13 +46,13 @@ textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.63</strong></div>
-<div><span>Build</span><strong>2026-07-24 08:45</strong></div>
-<div><span>Worker</span><strong>11.3-asset-progress-feedback</strong></div>
+<div><span>Release</span><strong>v2026.07.24.64</strong></div>
+<div><span>Build</span><strong>2026-07-24 09:30</strong></div>
+<div><span>Worker</span><strong>11.4-autosave-single-publish</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
-<h1>Casa Amar Review Center</h1>
+<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar Review Center</h1>
 <p class="lead">Gennemgå drafts uden at påvirke Concierge. Ændringer gemmes lokalt. Eksportér først fra Oversigt, når du er færdig på tværs af platformen.</p>
 <div class="actions"><button id="nextDraft">Næste draft</button></div>
 <section class="metrics">

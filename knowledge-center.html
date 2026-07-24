@@ -65,6 +65,15 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 .health-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.health-grid span{display:block;color:var(--muted);font-size:.68rem}
 .health-grid strong{display:block;font-size:1.25rem;margin-top:4px}@media(max-width:900px){.health-grid{grid-template-columns:1fr 1fr}}
 .export-tip{margin-top:10px;background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
+.publish-status-grid{grid-template-columns:repeat(3,1fr)}
+.operation-log{margin-top:10px;background:#f7f4ef;border-radius:10px;padding:10px;max-height:220px;overflow:auto;font-size:.74rem;line-height:1.5}
+.operation-log div{padding:3px 0;border-bottom:1px solid #e8e0d5}.operation-log div:last-child{border-bottom:0}
+@media(max-width:760px){.publish-status-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -84,9 +93,9 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.63</strong></div>
-<div><span>Build</span><strong>2026-07-24 08:45</strong></div>
-<div><span>Worker</span><strong>11.3-asset-progress-feedback</strong></div>
+<div><span>Release</span><strong>v2026.07.24.64</strong></div>
+<div><span>Build</span><strong>2026-07-24 09:30</strong></div>
+<div><span>Worker</span><strong>11.4-autosave-single-publish</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
@@ -146,18 +155,22 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 </section>
 
 <section class="panel workspace-export">
-<h2>Afslut arbejdet</h2>
-<p>Brug først eksporten, når du er færdig i Knowledge Studio, Review Center og Knowledge Architect.</p>
-<div class="workspace-summary">
-<div><span>Lokale ændringer</span><strong id="dashboardLocalChanges">0</strong></div>
-<div><span>Drafts</span><strong id="dashboardDrafts">0</strong></div>
-<div><span>Status</span><strong id="dashboardExportStatus">Ingen ændringer</strong></div>
-</div>
-<button class="primary" id="dashboardExport">Eksportér alle workspace-ændringer</button>
-<p class="meta">Filen gemmes som <code>knowledge-cards.json</code>. I Edge/Chrome vælger du blot den eksisterende fil og godkender overskrivning, så Windows ikke laver (2), (3) eller (4).</p>
-<div id="dashboardExportMessage"></div>
-<p class="notice export-tip"><strong>Vigtigt:</strong> Når gem-dialogen åbner, vælg den eksisterende <code>knowledge-cards.json</code> i Downloads og klik <strong>Gem</strong> → <strong>Erstat</strong>. Så bevares det korrekte filnavn.</p>
+<h2>Udgiv ny version</h2>
+<p>Alt arbejde gemmes automatisk i browserens workspace. Her samler du én komplet udgivelsespakke med Knowledge, hjemmesideindhold, brand, assets, relationer og foto-manus.</p>
 
+<div class="workspace-summary publish-status-grid">
+<div><span>Knowledge</span><strong id="publishKnowledgeStatus">Indlæser…</strong></div>
+<div><span>Website</span><strong id="publishWebsiteStatus">Indlæser…</strong></div>
+<div><span>Brand</span><strong id="publishBrandStatus">Indlæser…</strong></div>
+<div><span>Assets</span><strong id="publishAssetStatus">Indlæser…</strong></div>
+<div><span>Relationer</span><strong id="publishRelationStatus">Indlæser…</strong></div>
+<div><span>Senest autosavet</span><strong id="publishLastSaved">–</strong></div>
+</div>
+
+<button class="primary" id="publishEverything">Udgiv ny version</button>
+<p class="meta">I Edge/Chrome vælger du én mappe. Systemet skriver alle opdaterede JSON-filer i mappen med de korrekte filnavne. Upload derefter filerne til GitHub.</p>
+<div id="publishMessage"></div>
+<div id="publishLog" class="operation-log" hidden></div>
 </section>
 
 <section class="panel">
@@ -208,7 +221,7 @@ async function load(){
   const tasks=[];
   if(needsTest)tasks.push(task('T','Test ændrede objekter','Kør kun de tests, der er knyttet til objekter ændret siden sidste test.',needsTest,'/knowledge-studio.html','Vælg og test'));
   if(review)tasks.push(task('R','Gennemgå importeret viden','Forbedr de importerede kort løbende. Du behøver ikke gøre dem alle færdige nu.',review,'/knowledge-studio.html','Åbn editor'));
-  if(changes.length)tasks.push(task('↥','Eksportér godkendte ændringer','Lokale browserændringer er endnu ikke lagt i GitHub.',changes.length,'/knowledge-studio.html','Eksportér'));
+  if(changes.length)tasks.push(task('↥','Udgiv gemte ændringer','Workspace-ændringer er autosavet og klar til samlet udgivelse.',changes.length,'#publishEverything','Udgiv'));
   if(gaps)tasks.push(task('?','Luk Knowledge Gaps','Tilføj eller undersøg viden, som assistenten mangler.',gaps,'/knowledge-studio.html','Behandl'));
   if(publisher)tasks.push(task('P','Publicér godkendt indhold','Godkendte opgaver venter på fremtidige kanaler.',publisher,'/knowledge-studio.html','Gennemgå'));
   if(!tasks.length)tasks.push(task('✓','Platformen er ajour','Der er ingen registrerede hasteopgaver. Fortsæt med indhold, når det giver mening.','','/knowledge-studio.html','Tilføj viden'));
@@ -247,68 +260,7 @@ load();
 })();
 </script>
 
-<script>
-(()=>{
- const q=s=>document.querySelector(s),KEY='casaKnowledgeChanges',clone=v=>JSON.parse(JSON.stringify(v));
- function changes(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}}
- function apply(cards,items){
-  const result=clone(cards);
-  for(const ch of items){
-   if(!ch?.after?.id)continue;
-   let idx=-1;
-   if(ch.before?.title)idx=result.findIndex(c=>c.id===ch.card_id&&c.title===ch.before.title);
-   if(idx<0){const m=result.map((c,i)=>[c,i]).filter(([c])=>c.id===ch.card_id);if(m.length===1)idx=m[0][1]}
-   if(idx>=0)result[idx]=clone(ch.after);else result.push(clone(ch.after));
-  }
-  return result;
- }
- async function refresh(){
-  const items=changes();q('#dashboardLocalChanges').textContent=items.length;
-  q('#dashboardExportStatus').textContent=items.length?'Klar til eksport':'Ingen ændringer';
-  q('#dashboardExport').disabled=!items.length;
-  try{const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json());q('#dashboardDrafts').textContent=apply(raw.cards||raw.entries||[],items).filter(c=>c.draft_version).length}catch{q('#dashboardDrafts').textContent='–'}
- }
- async function exportAll(){
-  const b=q('#dashboardExport'),m=q('#dashboardExportMessage');b.disabled=true;b.textContent='Samler workspace…';
-  try{
-   const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Kunne ikke indlæse knowledge-cards.json');return r.json()});
-   const cards=apply(raw.cards||raw.entries||[],changes()),payload={...raw,version:'2.1',updated:new Date().toISOString(),cards,entries:cards};
-   const text=JSON.stringify(payload,null,2);
 
-   if(window.showSaveFilePicker){
-     try{
-       const handle=await window.showSaveFilePicker({
-         suggestedName:'knowledge-cards.json',
-         types:[{
-           description:'JSON-fil',
-           accept:{'application/json':['.json']}
-         }]
-       });
-       const writable=await handle.createWritable();
-       await writable.write(text);
-       await writable.close();
-     }catch(error){
-       if(error?.name==='AbortError'){
-         m.innerHTML='<p class="error">Eksporten blev annulleret.</p>';
-         return;
-       }
-       throw error;
-     }
-   }else{
-     const a=document.createElement('a');
-     a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));
-     a.download='knowledge-cards.json';
-     a.click();
-     setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-   }
-
-   m.innerHTML='<p class="success"><strong>Samlet fil gemt som knowledge-cards.json.</strong> Upload filen direkte til GitHub uden at omdøbe den.</p>';
-  }catch(e){m.innerHTML=`<p class="error">Eksporten fejlede: ${e.message}</p>`}
-  finally{b.textContent='Eksportér alle workspace-ændringer';refresh()}
- }
- q('#dashboardExport')?.addEventListener('click',exportAll);refresh();
-})();
-</script>
 
 
 <script>
@@ -337,6 +289,176 @@ load();
   document.querySelector('#healthDupIds').textContent=Object.values(idCounts).filter(n=>n>1).length;
   document.querySelector('#healthBroad').textContent=active.filter(c=>String(c.draft_version?.summary||c.summary||c.content||'').length>1800).length;
  }catch{}
+})();
+</script>
+
+
+<script>
+(()=>{
+ const q=s=>document.querySelector(s);
+ const clone=value=>JSON.parse(JSON.stringify(value));
+ const jsonLocal=(key,fallback=null)=>{
+  try{const value=localStorage.getItem(key);return value?JSON.parse(value):fallback}catch{return fallback}
+ };
+ const textFile=(name,data)=>({name,text:JSON.stringify(data,null,2)});
+
+ function applyKnowledgeChanges(cards,changes){
+  const result=clone(cards);
+  for(const change of changes||[]){
+   const after=change?.after;
+   if(!after?.id)continue;
+   let index=-1;
+   if(change.before?.title){
+    index=result.findIndex(card=>card.id===change.card_id&&card.title===change.before.title);
+   }
+   if(index<0){
+    const matches=result.map((card,i)=>[card,i]).filter(([card])=>card.id===change.card_id);
+    if(matches.length===1)index=matches[0][1];
+   }
+   if(index>=0)result[index]=clone(after);else result.push(clone(after));
+  }
+  return result;
+ }
+
+ async function fetchJson(path){
+  const response=await fetch(path,{cache:'no-store'});
+  if(!response.ok)throw new Error(`${path} kunne ikke indlæses`);
+  return response.json();
+ }
+
+ async function buildPublishFiles(){
+  const [
+   knowledgeBase,websiteBase,brandBase,assetBase,relationBase,
+   missionsBase,campaignBase,assetManifest,assetModel
+  ]=await Promise.all([
+   fetchJson('/knowledge-cards.json'),
+   fetchJson('/website-content.json'),
+   fetchJson('/brand-profile.json'),
+   fetchJson('/asset-library.json'),
+   fetchJson('/relation-registry.json'),
+   fetchJson('/photo-missions.json'),
+   fetchJson('/campaign-profiles.json'),
+   fetchJson('/asset-manifest.json'),
+   fetchJson('/asset-model.json')
+  ]);
+
+  const knowledgeChanges=jsonLocal('casaKnowledgeChanges',[]);
+  const baseCards=knowledgeBase.cards||knowledgeBase.entries||[];
+  const cards=applyKnowledgeChanges(baseCards,knowledgeChanges);
+  const knowledge={...knowledgeBase,version:'2.1',updated:new Date().toISOString(),cards,entries:cards};
+
+  const website=jsonLocal('casaWebsiteContentDraft',websiteBase);
+  const brand=jsonLocal('casaBrandProfile',brandBase);
+  const assets=jsonLocal('casaAssetLibrary',assetBase);
+  const relations=jsonLocal('casaRelationRegistry',relationBase);
+  const missions=jsonLocal('casaPhotoMissions',missionsBase);
+
+  const snapshot={
+   release:'v2026.07.24.64',
+   created_at:new Date().toISOString(),
+   worker:'11.4-autosave-single-publish',
+   counts:{
+    knowledge_objects:cards.length,
+    knowledge_changes:knowledgeChanges.length,
+    website_sections:(website.sections||[]).length,
+    assets:(assets.assets||[]).length,
+    relations:(relations.relations||[]).length,
+    photo_missions:(missions.missions||[]).length
+   }
+  };
+
+  return [
+   textFile('knowledge-cards.json',knowledge),
+   textFile('website-content.json',website),
+   textFile('brand-profile.json',brand),
+   textFile('asset-library.json',assets),
+   textFile('relation-registry.json',relations),
+   textFile('photo-missions.json',missions),
+   textFile('campaign-profiles.json',campaignBase),
+   textFile('asset-manifest.json',assetManifest),
+   textFile('asset-model.json',assetModel),
+   textFile('workspace-release.json',snapshot)
+  ];
+ }
+
+ function log(message){
+  const target=q('#publishLog');
+  target.hidden=false;
+  target.insertAdjacentHTML('beforeend',`<div>${message}</div>`);
+  target.scrollTop=target.scrollHeight;
+ }
+
+ async function writeFiles(files){
+  if(window.showDirectoryPicker){
+   const directory=await window.showDirectoryPicker({mode:'readwrite'});
+   for(const file of files){
+    log(`Skriver ${file.name}…`);
+    const handle=await directory.getFileHandle(file.name,{create:true});
+    const writable=await handle.createWritable();
+    await writable.write(file.text);
+    await writable.close();
+   }
+   return 'folder';
+  }
+
+  for(const file of files){
+   const link=document.createElement('a');
+   link.href=URL.createObjectURL(new Blob([file.text],{type:'application/json'}));
+   link.download=file.name;
+   document.body.appendChild(link);
+   link.click();
+   link.remove();
+   setTimeout(()=>URL.revokeObjectURL(link.href),1500);
+   await new Promise(resolve=>setTimeout(resolve,350));
+  }
+  return 'downloads';
+ }
+
+ async function refreshPublishStatus(){
+  const changes=jsonLocal('casaKnowledgeChanges',[]);
+  const website=jsonLocal('casaWebsiteContentDraft',null);
+  const brand=jsonLocal('casaBrandProfile',null);
+  const assets=jsonLocal('casaAssetLibrary',null);
+  const relations=jsonLocal('casaRelationRegistry',null);
+  q('#publishKnowledgeStatus').textContent=changes.length?`${changes.length} ændringer`:'Ajour';
+  q('#publishWebsiteStatus').textContent=website?'Autosavet':'Basisversion';
+  q('#publishBrandStatus').textContent=brand?'Autosavet':'Basisversion';
+  q('#publishAssetStatus').textContent=assets?`${assets.assets?.length||0} assets`:'Basisversion';
+  q('#publishRelationStatus').textContent=relations?`${relations.relations?.length||0} relationer`:'Basisversion';
+  const saved=localStorage.getItem('casaWorkspaceLastSaved');
+  q('#publishLastSaved').textContent=saved?new Date(saved).toLocaleString('da-DK'):'Ingen lokale ændringer';
+ }
+
+ q('#publishEverything')?.addEventListener('click',async()=>{
+  const button=q('#publishEverything'),message=q('#publishMessage'),logTarget=q('#publishLog');
+  button.disabled=true;button.textContent='Samler og kvalitetssikrer…';
+  logTarget.hidden=false;logTarget.innerHTML='';
+  try{
+   log('Indlæser basisfiler og lokale workspace-ændringer…');
+   const publishFiles=await buildPublishFiles();
+   log(`${publishFiles.length} filer er samlet.`);
+   button.textContent='Vælg mappe til udgivelsen…';
+   const mode=await writeFiles(publishFiles);
+   const now=new Date().toISOString();
+   localStorage.setItem('casaLastPublished',now);
+   message.innerHTML=`<p class="success"><strong>Udgivelsespakken er oprettet.</strong> ${mode==='folder'?'Alle filer er skrevet i den valgte mappe.':'Filerne er downloadet.'} Upload dem samlet til GitHub.</p>`;
+   log('✓ Udgivelsen er færdig. Ingen workspace-data er slettet.');
+  }catch(error){
+   if(error?.name==='AbortError'){
+    message.innerHTML='<p class="notice">Udgivelsen blev annulleret. Alt arbejde er fortsat autosavet.</p>';
+    log('Udgivelsen blev annulleret.');
+   }else{
+    message.innerHTML=`<p class="error">Udgivelsen fejlede: ${error.message}</p>`;
+    log(`⚠ ${error.message}`);
+   }
+  }finally{
+   button.disabled=false;button.textContent='Udgiv ny version';
+   refreshPublishStatus();
+  }
+ });
+
+ window.addEventListener('storage',refreshPublishStatus);
+ refreshPublishStatus();
 })();
 </script>
 

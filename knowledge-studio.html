@@ -99,6 +99,11 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 .release-panel strong{display:block;margin-top:3px;font-size:.8rem}
 @media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
 
+
+.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
+.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
+.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
+
 </style>
 </head>
 <body><main>
@@ -117,13 +122,13 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.63</strong></div>
-<div><span>Build</span><strong>2026-07-24 08:45</strong></div>
-<div><span>Worker</span><strong>11.3-asset-progress-feedback</strong></div>
+<div><span>Release</span><strong>v2026.07.24.64</strong></div>
+<div><span>Build</span><strong>2026-07-24 09:30</strong></div>
+<div><span>Worker</span><strong>11.4-autosave-single-publish</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
-<h1>Casa Amar AI Editor</h1>
+<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar AI Editor</h1>
 <p class="lead">Start en redigeringssession, skriv ny viden naturligt, og afslut først sessionen, når du vil lave én samlet GitHub-fil.</p>
 <div class="workflow">
   <span><strong>1</strong> Start session</span>

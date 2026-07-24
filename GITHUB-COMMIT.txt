@@ -1,9 +1,31 @@
-release: v2026.07.24.63 — visible progress and wait-state feedback in Asset Studio
+release: v2026.07.24.64 — autosave everywhere and one publish action
 
-- Immediate working state, spinner, progress bar and live operation log.
-- Buttons disabled while long-running operations are active.
-- Relation scan logs each asset and completion.
-- Visual analysis logs each image, success and failure.
-- Change checks explain what is being inspected.
+Autosave
+- Brand Profile autosaves to browser workspace.
+- Website Content autosaves on every field change.
+- Asset Library and Relation Registry already autosave and now update the
+  shared workspace timestamp.
+- Photo Missions autosave.
+- Editing pages clearly state that file publishing happens from Dashboard.
 
-Worker: 11.3-asset-progress-feedback
+Single publish flow
+- Removed individual JSON export buttons from Page Studio, Asset Studio,
+  Brand Studio and Photo Missions.
+- Dashboard now has one "Udgiv ny version" action.
+- It assembles and writes:
+  knowledge-cards.json
+  website-content.json
+  brand-profile.json
+  asset-library.json
+  relation-registry.json
+  photo-missions.json
+  campaign-profiles.json
+  asset-manifest.json
+  asset-model.json
+  workspace-release.json
+- Edge/Chrome users select one folder and all files are written with correct
+  stable filenames.
+- Workspace data remains intact after publishing.
+
+Release: v2026.07.24.64
+Worker: 11.4-autosave-single-publish
