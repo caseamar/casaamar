@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated": "2026-07-24",
   "principles": [
     "Original assets are never overwritten or deleted by AI.",
@@ -16,7 +16,9 @@
       "original_path": "relative GitHub path or future object-storage key",
       "filename": "original filename",
       "checksum": "optional content hash",
-      "uploaded_at": "ISO timestamp"
+      "uploaded_at": "ISO timestamp",
+      "github_sha": "Git blob SHA used for move/replacement detection",
+      "source_state": "present | missing | replaced | moved"
     },
     "manual_metadata": {
       "title": "owner title",
@@ -63,7 +65,13 @@
       "valid_from": null,
       "valid_to": null,
       "supersedes": [],
-      "superseded_by": []
+      "superseded_by": [],
+      "missing_since": null,
+      "deletion_review": {
+        "status": "none | needs_review | replacement_required | approved_for_archive",
+        "reason": "",
+        "reviewed_at": null
+      }
     },
     "variants": {
       "original": "",
@@ -132,5 +140,13 @@
       "current approved usage is never replaced",
       "only AI suggestions are recalculated automatically"
     ]
+  },
+  "sync_engine": {
+    "new_file": "Create a pending Asset Object and queue visual analysis.",
+    "same_sha_new_path": "Treat as moved/renamed and preserve the Asset Object, analysis and relations.",
+    "same_path_new_sha": "Treat as replaced content; preserve manual metadata and relations, queue visual reanalysis.",
+    "missing_file": "Mark source_missing. Never delete automatically.",
+    "missing_but_in_use": "Block archive until replacement or explicit owner decision.",
+    "delete_asset_object": "Only after explicit manual confirmation and only when no locked/current usage remains."
   }
 }

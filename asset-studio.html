@@ -9,6 +9,7 @@ h1,h2,h3{font-family:Georgia,serif}.lead{max-width:900px;color:var(--muted);line
 .actions{display:flex;gap:8px;flex-wrap:wrap}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}
 .primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
 input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:90px}
+.sync-change{background:#f7f4ef;border-radius:11px;padding:10px;margin:8px 0}.sync-change.missing{border-left:5px solid #bc6245}.sync-change.safe{border-left:5px solid #2b7450}.sync-change.warn{border-left:5px solid #c78a1c}.sync-change label{display:flex;gap:8px;align-items:start}.sync-change input{width:auto;margin-top:3px}
 .asset-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.asset{background:#fff;border-radius:14px;padding:12px;border:1px solid var(--line)}.asset-preview{height:160px;border-radius:11px;background:#e8e2d8;display:grid;place-items:center;color:var(--muted);overflow:hidden}.asset-preview img{width:100%;height:100%;object-fit:cover}
 .badge{display:inline-block;padding:4px 7px;border-radius:999px;background:#edf2ef;font-size:.65rem;margin:2px}.locked{background:#fff0ca;color:#745200}.suggestion{background:#e9edf7;color:#31486d}.usage{background:#e1f1e7;color:#265f42}
 .meta{font-size:.72rem;color:var(--muted);line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}.working{background:#eaf0f7;color:#28445f;padding:10px;border-radius:10px}.spinner{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:7px}@keyframes spin{to{transform:rotate(360deg)}}button[disabled]{opacity:.58;cursor:wait}.operation-log{margin-top:8px;padding:9px;background:#f7f4ef;border-radius:10px;max-height:170px;overflow:auto;font-size:.72rem;line-height:1.45}.operation-log div{padding:3px 0;border-bottom:1px solid #ebe4da}.operation-log div:last-child{border-bottom:0}
@@ -33,7 +34,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.64 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.65 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Asset Studio</h1>
 <p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
 
@@ -43,16 +44,22 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <div class="stat"><strong id="analyzedCount">0</strong><span>AI-analyseret</span></div>
 <div class="stat"><strong id="suggestionCount">0</strong><span>AI-relationer</span></div>
 <div class="stat"><strong id="lockedCount">0</strong><span>Låste placeringer</span></div>
+<div class="stat"><strong id="githubCount">–</strong><span>Filer i GitHub</span></div>
+<div class="stat"><strong id="newCount">0</strong><span>Nye filer</span></div>
+<div class="stat"><strong id="missingCount">0</strong><span>Mangler i GitHub</span></div>
+<div class="stat"><strong id="replaceCount">0</strong><span>Flyttet/udskiftet</span></div>
 </div>
 </section>
 
 <section class="panel">
-<h2>Registrér billeder</h2>
-<p class="meta">I denne grundversion registreres filer og metadata lokalt. Selve billedfilerne uploades fortsat til GitHub under fx <code>images/</code>. Senere kobler vi automatisk billedanalyse på ved upload.</p>
+<h2>GitHub-billedbibliotek</h2>
+<p class="meta">GitHub er master for selve billedfilerne. Upload nye billeder til <code>images/library/</code>. Asset Studio finder automatisk nye, flyttede, udskiftede og slettede filer og bevarer godkendte relationer.</p>
 <div class="actions">
-<input id="assetFiles" type="file" accept="image/*,video/*" multiple style="max-width:520px">
-<button class="primary" id="registerAssets">Registrér valgte filer</button>
-<button id="importManifest">Importer eksisterende hjemmesidebilleder</button>
+<input id="assetFiles" type="file" accept="image/*,video/*" multiple style="max-width:520px" title="Kun til midlertidig lokal registrering. Upload permanente filer til GitHub først.">
+<button id="registerAssets">Registrér midlertidigt lokalt</button>
+<button class="primary" id="syncGithub">Synkronisér hele GitHub-biblioteket</button>
+<a href="https://github.com/caseamar/casaamar/tree/main/images" target="_blank" rel="noopener">Åbn billedmappen i GitHub</a>
+<button id="importManifest">Importer manifest-backup</button>
 <button class="good" id="analyzePending">Analyser ikke-analyserede billeder</button>
 <button id="reanalyzeAll">Genanalysér alle billeder</button>
 <button id="scanRelations">Genberegn AI-relationer</button><button id="autoSync">Kontrollér ændringer nu</button>
@@ -63,6 +70,30 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <div id="queueStatus" class="meta"></div>
 <div id="operationState" class="operation-log" hidden></div>
 <div style="height:10px;background:#e8e2d8;border-radius:999px;overflow:hidden;margin-top:8px"><div id="queueBar" style="height:100%;width:0;background:#2b7450"></div></div>
+</section>
+
+
+<section class="panel" id="syncReviewPanel" hidden>
+<h2>Ændringer fundet i GitHub</h2>
+<p class="meta">Gennemgå ændringerne. Nye og flyttede filer kan anvendes automatisk. Slettede filer arkiveres aldrig automatisk.</p>
+<div id="syncSummary" class="grid"></div>
+<div id="syncChanges"></div>
+<div class="actions">
+<button class="primary" id="applySync">Anvend sikre ændringer</button>
+<button id="cancelSync">Annullér</button>
+</div>
+</section>
+
+
+<section class="panel">
+<h2>Sådan uploader og sletter du billeder</h2>
+<div class="grid">
+<div class="stat"><strong>1</strong><span>Upload nye originaler til <code>images/library/</code> i GitHub.</span></div>
+<div class="stat"><strong>2</strong><span>Klik <em>Synkronisér hele GitHub-biblioteket</em>.</span></div>
+<div class="stat"><strong>3</strong><span>Gennemgå nye, flyttede, udskiftede og manglende filer.</span></div>
+<div class="stat"><strong>4</strong><span>Anvend ændringer. AI-analyse og relation scan starter for relevante filer.</span></div>
+</div>
+<p class="notice"><strong>Sletning:</strong> Slet filen i GitHub og synkronisér. Asset Studio sletter aldrig Asset Object eller relationer automatisk. Filer i brug markeres som <em>replacement required</em>.</p>
 </section>
 
 <section class="panel">
@@ -79,7 +110,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 
 <script>
 const q=s=>document.querySelector(s);
-let library,registry,knowledge=[],manifest,platformSignature=null;
+let library,registry,knowledge=[],manifest,platformSignature=null,pendingGithubDiff=null;
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const slug=s=>String(s||'asset').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 Promise.all([
@@ -105,6 +136,10 @@ function normalizeAssets(){
  for(const asset of library.assets||[]){
   asset.ai_profile=asset.ai_profile||{};
   asset.ai_profile.history=Array.isArray(asset.ai_profile.history)?asset.ai_profile.history:[];
+  asset.source=asset.source||{};
+  asset.source.source_state=asset.source.source_state||'present';
+  asset.lifecycle=asset.lifecycle||{};
+  asset.lifecycle.deletion_review=asset.lifecycle.deletion_review||{status:'none',reason:'',reviewed_at:null};
   asset.analysis_queue=asset.analysis_queue||{
    visual_status:asset.ai_profile.status==='analyzed'?'analyzed':'pending',
    relation_status:'pending',
@@ -175,7 +210,7 @@ function render(){
  q('#assets').innerHTML=filtered.map(asset=>`<article class="asset">
   <div class="asset-preview">${asset.preview_url?`<img src="${esc(asset.preview_url)}">`:'Billedpreview efter GitHub-upload'}</div>
   <h3>${esc(asset.manual_metadata?.title||asset.source?.filename)}</h3>
-  <div class="meta">${esc(asset.id)} · ${esc(asset.lifecycle?.status||'active')} · AI: ${esc(asset.ai_profile?.status||'pending')} · Visuel kø: ${esc(asset.analysis_queue?.visual_status||'pending')} · Relationer: ${esc(asset.analysis_queue?.relation_status||'pending')}</div>
+  <div class="meta">${esc(asset.id)} · ${esc(asset.lifecycle?.status||'active')} · Kilde: ${esc(asset.source?.source_state||'present')} · AI: ${esc(asset.ai_profile?.status||'pending')} · Visuel kø: ${esc(asset.analysis_queue?.visual_status||'pending')} · Relationer: ${esc(asset.analysis_queue?.relation_status||'pending')}</div>
   <p>${esc(asset.manual_metadata?.description||'Ingen beskrivelse endnu.')}</p>
   <div>${(asset.ai_profile?.labels||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join('')}</div>
   <div>
@@ -217,6 +252,111 @@ q('#registerAssets').onclick=()=>{
  }
  input.value='';saveLocal();
  q('#message').innerHTML=`<p class="success">${files.length} assets registreret. Originalfilerne skal fortsat uploades til GitHub.</p>`;
+};
+
+
+function newAssetFromGithub(item){
+ const stem=item.filename.replace(/\.[^.]+$/,'');
+ let id=`asset-${slug(stem)}`;
+ let suffix=2;
+ while((library.assets||[]).some(asset=>asset.id===id))id=`asset-${slug(stem)}-${suffix++}`;
+ return {
+  id,type:'image',
+  source:{original_path:item.path,filename:item.filename,github_sha:item.github_sha,source_state:'present',checksum:null,uploaded_at:new Date().toISOString()},
+  preview_url:'/'+item.path,
+  manual_metadata:{title:stem.replace(/[-_]/g,' '),description:'',labels:[],season:[],audiences:[],campaigns:[]},
+  ai_profile:{status:'pending',labels:[],scene:[],objects:[],mood:[],season:[],audiences:[],campaigns:[],quality:{overall:0,sharpness:0,lighting:0,composition:0},format:{orientation:'',aspect_ratio:'',width:0,height:0},suggested_uses:[],analysis_version:'',analyzed_at:null,history:[]},
+  analysis_queue:{visual_status:'pending',relation_status:'pending',visual_analysis_version:'',relation_scan_version:'',visual_reason:'New GitHub asset.',relation_reason:'New asset.',last_visual_analysis:null,last_relation_scan:null,retry_count:0,last_error:null},
+  relations:{manual_links:[],ai_matches:[],current_usage:[],locked_placements:[]},
+  lifecycle:{status:'reserve',valid_from:null,valid_to:null,supersedes:[],superseded_by:[],missing_since:null,deletion_review:{status:'none',reason:'',reviewed_at:null}},
+  variants:{original:'/'+item.path,web:'/'+item.path,mobile:'',thumbnail:''}
+ };
+}
+function syncChangeHtml(type,item,index){
+ if(type==='added')return `<div class="sync-change safe"><label><input type="checkbox" data-sync-type="added" data-sync-index="${index}" checked><span><strong>Nyt billede</strong><br>${esc(item.path)}<br><span class="meta">Oprettes som reserve og sættes i analysekø.</span></span></label></div>`;
+ if(type==='moved')return `<div class="sync-change safe"><label><input type="checkbox" data-sync-type="moved" data-sync-index="${index}" checked><span><strong>Flyttet eller omdøbt</strong><br>${esc(item.old_path)} → ${esc(item.new_path)}<br><span class="meta">Asset Object, labels og relationer bevares.</span></span></label></div>`;
+ if(type==='replaced')return `<div class="sync-change warn"><label><input type="checkbox" data-sync-type="replaced" data-sync-index="${index}" checked><span><strong>Fil udskiftet</strong><br>${esc(item.new_path)}<br><span class="meta">Manuelle data bevares. Visuel genanalyse sættes i kø.</span></span></label></div>`;
+ return `<div class="sync-change missing"><label><input type="checkbox" data-sync-type="missing" data-sync-index="${index}" ${item.safe_to_archive?'checked':''}><span><strong>Fil mangler i GitHub</strong><br>${esc(item.path)}<br><span class="meta">${item.safe_to_archive?'Kan markeres som manglende og sendes til arkiv-review.':'Bruges eller er låst. Skal erstattes eller vurderes manuelt.'}</span></span></label></div>`;
+}
+function renderGithubDiff(result){
+ pendingGithubDiff=result;
+ const diff=result.diff;
+ q('#githubCount').textContent=result.inventory.count;
+ q('#newCount').textContent=diff.added.length;
+ q('#missingCount').textContent=diff.missing.length;
+ q('#replaceCount').textContent=diff.moved.length+diff.replaced.length;
+ q('#syncReviewPanel').hidden=false;
+ q('#syncSummary').innerHTML=`
+  <div class="stat"><strong>${diff.added.length}</strong><span>Nye</span></div>
+  <div class="stat"><strong>${diff.moved.length}</strong><span>Flyttet/omdøbt</span></div>
+  <div class="stat"><strong>${diff.replaced.length}</strong><span>Udskiftet</span></div>
+  <div class="stat"><strong>${diff.missing.length}</strong><span>Mangler</span></div>`;
+ q('#syncChanges').innerHTML=
+  diff.added.map((x,i)=>syncChangeHtml('added',x,i)).join('')+
+  diff.moved.map((x,i)=>syncChangeHtml('moved',x,i)).join('')+
+  diff.replaced.map((x,i)=>syncChangeHtml('replaced',x,i)).join('')+
+  diff.missing.map((x,i)=>syncChangeHtml('missing',x,i)).join('');
+ q('#syncReviewPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function syncGithubLibrary(){
+ const controls=['syncGithub','analyzePending','reanalyzeAll','scanRelations','autoSync','registerAssets'];
+ setBusy('github-sync','Læser hele GitHub-billedbiblioteket…',controls);
+ appendOperation('Scanner alle billedfiler under images/ og undermapper.');
+ appendOperation('Sammenligner filstier og GitHub SHA med Asset Library.');
+ try{
+  const response=await fetch('/api/github-asset-diff',{
+   method:'POST',
+   headers:{'content-type':'application/json','accept':'application/json'},
+   body:JSON.stringify({assets:library.assets||[]})
+  });
+  const raw=await response.text();let result;
+  try{result=JSON.parse(raw)}catch{throw new Error(`GitHub sync returnerede ikke JSON (${response.status})`)}
+  if(!response.ok)throw new Error(result.error||result.detail||'GitHub sync fejlede');
+  renderGithubDiff(result);
+  finishBusy(`Scanning færdig. ${result.inventory.count} billeder fundet i GitHub.`,true,controls);
+ }catch(error){
+  finishBusy(`GitHub sync fejlede: ${error.message}`,false,controls);
+  q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`;
+ }
+}
+q('#syncGithub').onclick=syncGithubLibrary;
+q('#cancelSync').onclick=()=>{pendingGithubDiff=null;q('#syncReviewPanel').hidden=true};
+q('#applySync').onclick=async()=>{
+ if(!pendingGithubDiff)return;
+ const selected={added:[],moved:[],replaced:[],missing:[]};
+ q('#syncChanges').querySelectorAll('input[data-sync-type]:checked').forEach(input=>{
+  selected[input.dataset.syncType].push(Number(input.dataset.syncIndex));
+ });
+ const diff=pendingGithubDiff.diff,now=new Date().toISOString();
+ for(const index of selected.added)library.assets.push(newAssetFromGithub(diff.added[index]));
+ for(const index of selected.moved){
+  const item=diff.moved[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
+  asset.source.original_path=item.new_path;asset.source.filename=item.filename;asset.source.github_sha=item.github_sha;asset.source.source_state='present';
+  asset.preview_url='/'+item.new_path;asset.variants.original='/'+item.new_path;asset.variants.web='/'+item.new_path;
+  asset.analysis_queue.relation_status='pending';asset.analysis_queue.relation_reason='Asset path changed.';
+ }
+ for(const index of selected.replaced){
+  const item=diff.replaced[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
+  asset.source.github_sha=item.new_sha;asset.source.source_state='replaced';
+  asset.ai_profile.history=asset.ai_profile.history||[];
+  asset.analysis_queue.visual_status='pending';asset.analysis_queue.visual_reason='GitHub file content replaced.';
+  asset.analysis_queue.relation_status='pending';asset.analysis_queue.relation_reason='Replacement requires new labels.';
+ }
+ for(const index of selected.missing){
+  const item=diff.missing[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
+  asset.source.source_state='missing';asset.lifecycle.missing_since=asset.lifecycle.missing_since||now;
+  const blocked=(asset.relations.current_usage||[]).length||(asset.relations.locked_placements||[]).length;
+  asset.lifecycle.deletion_review={
+   status:blocked?'replacement_required':'needs_review',
+   reason:blocked?'Source is missing but asset is still used or locked.':'Source is missing from GitHub.',
+   reviewed_at:null
+  };
+ }
+ saveLocal();
+ q('#syncReviewPanel').hidden=true;
+ q('#message').innerHTML=`<p class="success">Synkronisering anvendt. Nye og udskiftede billeder er sat i analysekø. Slettede filer er kun markeret til review.</p>`;
+ pendingGithubDiff=null;
+ await analyzeQueue(false);
 };
 
 q('#importManifest').onclick=()=>{

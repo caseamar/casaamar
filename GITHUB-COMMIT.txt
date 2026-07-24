@@ -1,31 +1,27 @@
-release: v2026.07.24.64 — autosave everywhere and one publish action
+release: v2026.07.24.65 — scalable GitHub Asset Sync Engine
 
-Autosave
-- Brand Profile autosaves to browser workspace.
-- Website Content autosaves on every field change.
-- Asset Library and Relation Registry already autosave and now update the
-  shared workspace timestamp.
-- Photo Missions autosave.
-- Editing pages clearly state that file publishing happens from Dashboard.
+GitHub is now the master source for image files.
 
-Single publish flow
-- Removed individual JSON export buttons from Page Studio, Asset Studio,
-  Brand Studio and Photo Missions.
-- Dashboard now has one "Udgiv ny version" action.
-- It assembles and writes:
-  knowledge-cards.json
-  website-content.json
-  brand-profile.json
-  asset-library.json
-  relation-registry.json
-  photo-missions.json
-  campaign-profiles.json
-  asset-manifest.json
-  asset-model.json
-  workspace-release.json
-- Edge/Chrome users select one folder and all files are written with correct
-  stable filenames.
-- Workspace data remains intact after publishing.
+Sync engine
+- Recursively scans all supported images under images/ and subfolders.
+- Compares GitHub blob SHA and path with Asset Library.
+- Detects:
+  - new files
+  - moved/renamed files
+  - replaced file content
+  - deleted/missing files
+- Move/rename preserves Asset Object, AI analysis and relations.
+- Replacement preserves manual metadata and relations, then queues reanalysis.
+- Deletion never removes an Asset Object automatically.
+- Missing files still in use or locked become replacement_required.
 
-Release: v2026.07.24.64
-Worker: 11.4-autosave-single-publish
+Upload workflow
+- New permanent files go to images/library/.
+- Asset Studio provides a direct GitHub folder link.
+- Sync review is shown before changes are applied.
+
+Testing
+- Added TEST-KERNEFUNKTIONER.md with six concrete tests.
+
+Release: v2026.07.24.65
+Worker: 11.5-github-asset-sync

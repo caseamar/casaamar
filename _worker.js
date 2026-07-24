@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "11.4-autosave-single-publish",
+      version: "11.5-github-asset-sync",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1206,6 +1206,148 @@ function deterministicPageFallback(page, pageContracts, currentContent) {
 function absoluteAssetUrl(request, path) {
   const url = new URL(request.url);
   return new URL(String(path || "").replace(/^\/+/, ""), `${url.protocol}//${url.host}/`).toString();
+}
+
+
+function isAllowedAssetPath(path, settings) {
+  const normalized = String(path || "").replace(/^\/+/, "");
+  const roots = settings?.github?.scan_roots || ["images"];
+  const extensions = settings?.github?.allowed_extensions || [".jpg", ".jpeg", ".png", ".webp"];
+  return roots.some((root) => normalized === root || normalized.startsWith(`${root}/`)) &&
+    extensions.some((extension) => normalized.toLowerCase().endsWith(extension));
+}
+
+async function handleGithubAssetInventory(request, env) {
+  const settings = await assetJson(env, request, "/asset-sync-settings.json");
+  const github = settings.github || {};
+  const owner = github.owner;
+  const repository = github.repository;
+  const branch = github.branch || "main";
+  if (!owner || !repository) return json({ error: "GitHub asset sync mangler owner eller repository." }, 500);
+
+  const endpoint = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}/git/trees/${encodeURIComponent(branch)}?recursive=1`;
+  const headers = {
+    "accept": "application/vnd.github+json",
+    "user-agent": "Casa-Amar-Asset-Sync"
+  };
+  if (env.GITHUB_TOKEN) headers.authorization = `Bearer ${env.GITHUB_TOKEN}`;
+
+  const response = await fetch(endpoint, { headers });
+  const result = await response.json();
+  if (!response.ok) {
+    return json({
+      error: result?.message || "GitHub-billedbiblioteket kunne ikke læses.",
+      status: response.status,
+      repository: `${owner}/${repository}`,
+      branch
+    }, response.status);
+  }
+
+  const assets = (result.tree || [])
+    .filter((item) => item.type === "blob" && isAllowedAssetPath(item.path, settings))
+    .map((item) => ({
+      path: item.path,
+      filename: item.path.split("/").pop(),
+      github_sha: item.sha,
+      size: item.size || null,
+      url: `/${item.path}`
+    }))
+    .sort((a, b) => a.path.localeCompare(b.path));
+
+  return json({
+    ok: true,
+    repository: `${owner}/${repository}`,
+    branch,
+    truncated: Boolean(result.truncated),
+    assets,
+    count: assets.length,
+    scanned_at: new Date().toISOString(),
+    recommended_upload_root: github.recommended_upload_root || "images/library"
+  });
+}
+
+async function handleGithubAssetDiff(request, env) {
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const inventoryResponse = await handleGithubAssetInventory(request, env);
+  const inventory = await inventoryResponse.clone().json();
+  if (!inventoryResponse.ok) return inventoryResponse;
+
+  const libraryAssets = Array.isArray(payload.assets) ? payload.assets : [];
+  const remote = inventory.assets || [];
+  const remoteByPath = new Map(remote.map((item) => [item.path, item]));
+  const remoteBySha = new Map(remote.filter((item) => item.github_sha).map((item) => [item.github_sha, item]));
+  const localByPath = new Map(libraryAssets.map((asset) => [String(asset?.source?.original_path || "").replace(/^\/+/, ""), asset]));
+  const localBySha = new Map(libraryAssets.filter((asset) => asset?.source?.github_sha).map((asset) => [asset.source.github_sha, asset]));
+
+  const added = [];
+  const moved = [];
+  const replaced = [];
+  const unchanged = [];
+  const matchedLocalIds = new Set();
+
+  for (const item of remote) {
+    const byPath = localByPath.get(item.path);
+    if (byPath) {
+      matchedLocalIds.add(byPath.id);
+      if (byPath.source?.github_sha && byPath.source.github_sha !== item.github_sha) {
+        replaced.push({
+          asset_id: byPath.id,
+          old_path: item.path,
+          new_path: item.path,
+          old_sha: byPath.source.github_sha,
+          new_sha: item.github_sha,
+          filename: item.filename
+        });
+      } else {
+        unchanged.push({ asset_id: byPath.id, path: item.path, github_sha: item.github_sha });
+      }
+      continue;
+    }
+
+    const bySha = localBySha.get(item.github_sha);
+    if (bySha && !matchedLocalIds.has(bySha.id)) {
+      matchedLocalIds.add(bySha.id);
+      moved.push({
+        asset_id: bySha.id,
+        old_path: String(bySha.source?.original_path || "").replace(/^\/+/, ""),
+        new_path: item.path,
+        github_sha: item.github_sha,
+        filename: item.filename
+      });
+      continue;
+    }
+
+    added.push(item);
+  }
+
+  const missing = libraryAssets
+    .filter((asset) => {
+      const path = String(asset?.source?.original_path || "").replace(/^\/+/, "");
+      return path && !remoteByPath.has(path) && !remoteBySha.has(asset?.source?.github_sha) && !matchedLocalIds.has(asset.id);
+    })
+    .map((asset) => ({
+      asset_id: asset.id,
+      path: String(asset.source.original_path || "").replace(/^\/+/, ""),
+      filename: asset.source.filename,
+      current_usage: asset.relations?.current_usage || [],
+      locked_placements: asset.relations?.locked_placements || [],
+      safe_to_archive: !(asset.relations?.current_usage || []).length && !(asset.relations?.locked_placements || []).length
+    }));
+
+  return json({
+    ok: true,
+    inventory: {
+      repository: inventory.repository,
+      branch: inventory.branch,
+      count: inventory.count,
+      scanned_at: inventory.scanned_at,
+      recommended_upload_root: inventory.recommended_upload_root
+    },
+    diff: { added, moved, replaced, missing, unchanged_count: unchanged.length }
+  });
 }
 
 async function handleAssetAnalyze(request, env) {
@@ -2370,7 +2512,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "11.4-autosave-single-publish",
+          worker: "11.5-github-asset-sync",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2378,13 +2520,29 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "11.4-autosave-single-publish",
+          worker: "11.5-github-asset-sync",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+    if (request.method === "GET" && url.pathname === "/api/github-asset-inventory") {
+      try {
+        return await handleGithubAssetInventory(request, env);
+      } catch (error) {
+        return json({ error: "GitHub-billedbiblioteket kunne ikke læses.", detail: String(error?.message || error) }, 500);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/github-asset-diff") {
+      try {
+        return await handleGithubAssetDiff(request, env);
+      } catch (error) {
+        return json({ error: "GitHub-synkroniseringen kunne ikke beregnes.", detail: String(error?.message || error) }, 500);
+      }
+    }
 
     if (request.method === "POST" && url.pathname === "/api/asset-analyze") {
       try {

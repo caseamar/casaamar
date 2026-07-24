@@ -93,9 +93,9 @@ a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.64</strong></div>
-<div><span>Build</span><strong>2026-07-24 09:30</strong></div>
-<div><span>Worker</span><strong>11.4-autosave-single-publish</strong></div>
+<div><span>Release</span><strong>v2026.07.24.65</strong></div>
+<div><span>Build</span><strong>2026-07-24 10:30</strong></div>
+<div><span>Worker</span><strong>11.5-github-asset-sync</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
@@ -329,7 +329,7 @@ load();
  async function buildPublishFiles(){
   const [
    knowledgeBase,websiteBase,brandBase,assetBase,relationBase,
-   missionsBase,campaignBase,assetManifest,assetModel
+   missionsBase,campaignBase,assetManifest,assetModel,assetSyncSettings
   ]=await Promise.all([
    fetchJson('/knowledge-cards.json'),
    fetchJson('/website-content.json'),
@@ -339,7 +339,8 @@ load();
    fetchJson('/photo-missions.json'),
    fetchJson('/campaign-profiles.json'),
    fetchJson('/asset-manifest.json'),
-   fetchJson('/asset-model.json')
+   fetchJson('/asset-model.json'),
+   fetchJson('/asset-sync-settings.json')
   ]);
 
   const knowledgeChanges=jsonLocal('casaKnowledgeChanges',[]);
@@ -354,9 +355,9 @@ load();
   const missions=jsonLocal('casaPhotoMissions',missionsBase);
 
   const snapshot={
-   release:'v2026.07.24.64',
+   release:'v2026.07.24.65',
    created_at:new Date().toISOString(),
-   worker:'11.4-autosave-single-publish',
+   worker:'11.5-github-asset-sync',
    counts:{
     knowledge_objects:cards.length,
     knowledge_changes:knowledgeChanges.length,
@@ -377,6 +378,7 @@ load();
    textFile('campaign-profiles.json',campaignBase),
    textFile('asset-manifest.json',assetManifest),
    textFile('asset-model.json',assetModel),
+   textFile('asset-sync-settings.json',assetSyncSettings),
    textFile('workspace-release.json',snapshot)
   ];
  }
