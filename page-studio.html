@@ -38,7 +38,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.68 · Page model 1.0 · Worker 11.8-batched-upload-status</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.69 · Page model 1.0 · Worker 11.9-ai-description-review</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -306,7 +306,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.8-batched-upload-status…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.9-ai-description-review…';
 
  try{
    const result=await requestCompletePage(mode);

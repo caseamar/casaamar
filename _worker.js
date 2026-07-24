@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "11.8-batched-upload-status",
+      version: "11.9-ai-description-review",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1476,6 +1476,114 @@ async function handleGithubAssetDiff(request, env) {
       recommended_upload_root: inventory.recommended_upload_root
     },
     diff: { added, moved, replaced, missing, unchanged_count: unchanged.length }
+  });
+}
+
+
+async function handleAssetDescriptionAssist(request, env) {
+  if (!env.OPENAI_API_KEY) return json({ error: "OPENAI_API_KEY mangler i Cloudflare." }, 503);
+
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const mode = payload.mode === "review" ? "review" : "proposal";
+  const filename = String(payload.filename || "");
+  const currentDescription = String(payload.description || "").trim();
+  const imageDataUrl = String(payload.image_data_url || "");
+  if (!imageDataUrl.startsWith("data:image/")) {
+    return json({ error: "Billeddata mangler eller er ugyldige." }, 400);
+  }
+
+  const instructions = mode === "proposal"
+    ? `Du skriver neutral metadata til Casa Amars billedbibliotek.
+
+Beskriv kun det, der med rimelig sikkerhed kan ses på billedet.
+Du må gerne læse synlig tekst og skilte.
+Du må ikke tilføje adresse, bydel, afstand, parkeringsråd, anbefalinger, åbningstider, kvalitet, popularitet eller anden ekstern viden, medmindre det står synligt i billedet.
+Skriv én færdig dansk billedbeskrivelse på 1-2 korte sætninger.
+Beskrivelsen skal kunne gemmes direkte som visuel metadata.
+Undgå formuleringer som "billedet viser", "man kan se" og "sandsynligvis".`
+    : `Du er kvalitetskontrol for Casa Amars billedmetadata.
+
+Sammenhold teksten med det synlige billede.
+Markér påstande, som ikke kan verificeres visuelt, herunder lokation, afstand, parkeringsråd, anbefalinger, åbningstider og praktiske oplysninger.
+Returnér en korrigeret, neutral dansk billedbeskrivelse på 1-2 korte sætninger, som kun beskriver det synlige motiv.
+Forklar kort, hvad der blev fjernet eller ændret.
+Hvis teksten allerede er korrekt, skal du tydeligt sige det.`;
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      model: env.OPENAI_MODEL || DEFAULT_MODEL,
+      instructions,
+      input: [{
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text: JSON.stringify({
+              mode,
+              filename,
+              current_description: currentDescription
+            })
+          },
+          {
+            type: "input_image",
+            image_url: imageDataUrl,
+            detail: "high"
+          }
+        ]
+      }],
+      text: {
+        verbosity: "medium",
+        format: {
+          type: "json_schema",
+          name: "asset_description_assist",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              suggested_description: { type: "string" },
+              review_status: { type: "string", enum: ["approved", "improved", "needs_attention"] },
+              review_summary: { type: "string" },
+              unsupported_claims: { type: "array", items: { type: "string" } },
+              visual_confidence: { type: "integer", minimum: 0, maximum: 100 }
+            },
+            required: [
+              "suggested_description", "review_status", "review_summary",
+              "unsupported_claims", "visual_confidence"
+            ]
+          }
+        }
+      },
+      max_output_tokens: 900,
+      store: false
+    })
+  });
+
+  const result = await response.json();
+  if (!response.ok) {
+    return json({
+      error: result?.error?.message || "AI-beskrivelsen kunne ikke behandles.",
+      status: response.status
+    }, response.status);
+  }
+
+  const parsed = parseStructuredOutput(result);
+  if (!parsed) return json({ error: "AI returnerede et ugyldigt reviewformat." }, 502);
+
+  return json({
+    ok: true,
+    mode,
+    filename,
+    reviewed_at: new Date().toISOString(),
+    ...parsed
   });
 }
 
@@ -2641,7 +2749,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "11.8-batched-upload-status",
+          worker: "11.9-ai-description-review",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2649,7 +2757,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "11.8-batched-upload-status",
+          worker: "11.9-ai-description-review",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2686,6 +2794,14 @@ export default {
         return await handleGithubAssetDiff(request, env);
       } catch (error) {
         return json({ error: "GitHub-synkroniseringen kunne ikke beregnes.", detail: String(error?.message || error) }, 500);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/asset-description-assist") {
+      try {
+        return await handleAssetDescriptionAssist(request, env);
+      } catch (error) {
+        return json({ error: "AI-forslag eller review kunne ikke gennemføres.", detail: String(error?.message || error) }, 500);
       }
     }
 
