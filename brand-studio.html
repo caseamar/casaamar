@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Brand Studio</title>
+<title>Casa Amar Stil og tone</title>
 <style>
 :root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:24px}
@@ -15,22 +15,23 @@ label{display:block;font-size:.76rem;color:var(--muted);margin-top:10px}input,te
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<div class="release">Release v2026.07.24.69 · Brand model 1.0</div>
-<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Brand Studio</h1>
+<div class="release">Release v2026.07.24.70 · Brand model 1.0</div>
+<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Stil og tone</h1>
 <p class="lead">Her styrer du Casa Amars identitet og formålet med hver kanal. AI bruger profilen, når den skriver hjemmesidetekster, concierge-svar og guider. Du ændrer principperne ét sted – ikke i hver enkelt tekst.</p>
 <div class="panel">
 <label>Positionering<textarea id="positioning"></textarea></label>
@@ -105,4 +106,5 @@ function autosaveBrand(){
  },350);
 }
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',autosaveBrand));
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

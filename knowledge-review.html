@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Review Center</title>
+<title>Casa Amar Godkend forslag</title>
 <style>
 :root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
@@ -31,28 +31,29 @@ textarea{width:100%;min-height:210px;border:1px solid #d6cec3;border-radius:10px
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head>
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head>
 <body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.69</strong></div>
-<div><span>Build</span><strong>2026-07-24 14:00</strong></div>
-<div><span>Worker</span><strong>11.9-ai-description-review</strong></div>
+<div><span>Release</span><strong>v2026.07.24.70</strong></div>
+<div><span>Build</span><strong>2026-07-24 16:00</strong></div>
+<div><span>Worker</span><strong>12.0-mission-control-ux</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
 </section>
-<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar Review Center</h1>
+<div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar Godkend forslag</h1>
 <p class="lead">Gennemgå drafts uden at påvirke Concierge. Ændringer gemmes lokalt. Eksportér først fra Oversigt, når du er færdig på tværs af platformen.</p>
 <div class="actions"><button id="nextDraft">Næste draft</button></div>
 <section class="metrics">
@@ -105,4 +106,5 @@ fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()).then(raw=>{c
  document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
 })();
 
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

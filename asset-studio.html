@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Asset Studio</title>
+<title>Casa Amar Billeder</title>
 <style>
 :root{--ink:#20332d;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--clay:#bc6245;--warn:#805b00}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1320px;margin:auto;padding:24px}
@@ -22,23 +22,24 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.69 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
-<h1>Asset Studio</h1>
-<p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
+<p class="meta">Release v2026.07.24.70 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<h1>Billeder</h1>
+<p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Videnemner, sider eller kampagner oprettes.</p>
 
 <section class="panel">
 <div class="grid">
@@ -55,7 +56,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 
 <section class="panel">
 <h2>Tilføj billeder til Casa Amar</h2>
-<p class="meta">Vælg eller træk billeder ind her. Brug AI-forslag til en neutral visuel beskrivelse og AI-review til at fjerne påstande, der ikke kan ses på billedet. Derefter uploader Asset Studio, analyserer billedet og opdaterer relationerne.</p>
+<p class="meta">Vælg eller træk billeder ind her. Brug AI-forslag til en neutral visuel beskrivelse og AI-review til at fjerne påstande, der ikke kan ses på billedet. Derefter uploader Billeder, analyserer billedet og opdaterer relationerne.</p>
 
 <div id="uploadDropzone" class="upload-dropzone" tabindex="0">
 <strong>Træk billeder hertil</strong>
@@ -128,12 +129,12 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <section class="panel">
 <h2>Sådan vedligeholder du billedbiblioteket</h2>
 <div class="grid">
-<div class="stat"><strong>1</strong><span>Træk nye billeder ind i Asset Studio.</span></div>
+<div class="stat"><strong>1</strong><span>Træk nye billeder ind i Billeder.</span></div>
 <div class="stat"><strong>2</strong><span>Klik <em>Upload og behandl billeder</em>.</span></div>
 <div class="stat"><strong>3</strong><span>AI analyserer og foreslår labels, sæson og anvendelse.</span></div>
 <div class="stat"><strong>4</strong><span>Gennemgå metadata og udgiv samlet fra Dashboard.</span></div>
 </div>
-<p class="notice"><strong>Sletning:</strong> Slet filen i GitHub og synkronisér. Asset Studio sletter aldrig Asset Object eller relationer automatisk. Filer i brug markeres som <em>replacement required</em>.</p>
+<p class="notice"><strong>Sletning:</strong> Slet filen i GitHub og synkronisér. Billeder sletter aldrig Asset Object eller relationer automatisk. Filer i brug markeres som <em>replacement required</em>.</p>
 </section>
 
 <section class="panel">
@@ -623,7 +624,7 @@ q('#uploadSelected')?.addEventListener('click',async()=>{
  }
  finishBusy(`${completed} billeder behandlet. ${failed} fejlede.`,failed===0,controls);
  if(!failed){
-  q('#message').innerHTML=`<p class="success"><strong>${completed} billeder er færdigbehandlet.</strong> De er uploadet til GitHub, oprettet i Asset Studio, analyseret og matchet. Resultaterne står under hvert billede.</p>`;
+  q('#message').innerHTML=`<p class="success"><strong>${completed} billeder er færdigbehandlet.</strong> De er uploadet til GitHub, oprettet i Billeder, analyseret og matchet. Resultaterne står under hvert billede.</p>`;
  }
 });
 
@@ -853,11 +854,11 @@ async function scanRelationsViaWorker(reason='manual'){
  registry.last_scan=now;registry.scan_reason=reason;
  registry.platform_signature=platformSignature;
  saveLocal();setQueueProgress(Math.max(1,assets.length),Math.max(1,assets.length),'Relation scan');
- finishBusy(`Relation scan færdig. ${result.scanned_assets} billeder blev kontrolleret mod ${result.scanned_knowledge_objects} Knowledge Objects.`,true,controls);
+ finishBusy(`Relation scan færdig. ${result.scanned_assets} billeder blev kontrolleret mod ${result.scanned_knowledge_objects} Videnemner.`,true,controls);
  return result;
 }
 q('#scanRelations').onclick=async()=>{
- try{const result=await scanRelationsViaWorker('manual_scan');q('#message').innerHTML=`<p class="success">Relation scan gennemført for ${result.scanned_assets} assets mod ${result.scanned_knowledge_objects} Knowledge Objects. Manuelle og låste relationer er bevaret.</p>`}
+ try{const result=await scanRelationsViaWorker('manual_scan');q('#message').innerHTML=`<p class="success">Relation scan gennemført for ${result.scanned_assets} assets mod ${result.scanned_knowledge_objects} Videnemner. Manuelle og låste relationer er bevaret.</p>`}
  catch(error){finishBusy(`Relation scan stoppede: ${error.message}`,false,['scanRelations','autoSync','analyzePending','reanalyzeAll','importManifest','registerAssets']);q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`;}
 };
 async function scheduleAutomaticWork(){
@@ -885,7 +886,7 @@ q('#autoSync').onclick=async()=>{
  appendOperation('Beregner ny platformsignatur.');
  try{
   platformSignature=await fetch('/api/platform-signature',{cache:'no-store'}).then(r=>r.json());
-  appendOperation(`Knowledge Objects fundet: ${platformSignature.knowledge_count||0}.`);
+  appendOperation(`Videnemner fundet: ${platformSignature.knowledge_count||0}.`);
   await scheduleAutomaticWork();
   const counts=queueCounts();
   finishBusy(`Kontrol gennemført. ${counts.visual} visuelle analyser og ${counts.relations} relation scans afventer.`,true,controls);
@@ -901,4 +902,5 @@ async function downloadJson(name,data){
 }
 
 ['search','statusFilter','seasonFilter','relationFilter'].forEach(id=>q('#'+id).addEventListener('input',render));
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

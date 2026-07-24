@@ -1,19 +1,14 @@
-feat(asset-metadata): AI description proposal and independent review
+feat(platform): Casa Amar AI Mission Control UX/UI refresh
 
-- Each selected image now has:
-  - Lav AI-forslag
-  - AI-review tekst
-  - Brug AI-forslag
-- Proposal only describes visually observable content.
-- Review compares the user's text with the image and flags unsupported claims.
-- Review shows:
-  - approved / improved / needs attention
-  - visual confidence
-  - short explanation
-  - unsupported claims
-- Clear next-step CTA is shown for each image.
-- Manual context remains optional; upload can continue without it.
-- Description review happens before GitHub upload, reducing metadata errors.
+- Rebuilt dashboard as AI-first Mission Control.
+- Added one prioritized next action, task plan, platform health and timeline.
+- Separated platform version, workspace changes and live content version.
+- Added content-release.json and release tracking.
+- Added modern shared platform design system.
+- Added plain-language navigation and guided introductions on all work areas.
+- Hid developer terminology behind user-friendly labels.
+- Reframed publishing as a clear, guided GitHub handoff with explicit status.
+- Added shared Product Principles and Mission Control test guide.
 
-Release: v2026.07.24.69
-Worker: 11.9-ai-description-review
+Release: v2026.07.24.70
+Worker: 12.0-mission-control-ux

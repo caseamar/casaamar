@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "11.9-ai-description-review",
+      version: "12.0-mission-control-ux",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2749,7 +2749,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "11.9-ai-description-review",
+          worker: "12.0-mission-control-ux",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2757,7 +2757,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "11.9-ai-description-review",
+          worker: "12.0-mission-control-ux",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);

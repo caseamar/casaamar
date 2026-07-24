@@ -3,466 +3,185 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Platform</title>
+<title>Casa Amar AI · Mission Control</title>
+<link rel="stylesheet" href="/platform-ui.css">
 <style>
-:root{
-  --ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--card:#fff;
-  --muted:#69756f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
-main{max-width:1240px;margin:auto;padding:28px}
-h1,h2,h3{font-family:Georgia,serif}
-h1{margin:0 0 5px;font-size:2.1rem}
-.lead{max-width:780px;color:var(--muted);line-height:1.5;margin:0}
-nav{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
-a.button,button{display:inline-flex;align-items:center;justify-content:center;border-radius:11px;padding:10px 14px;font-weight:750;text-decoration:none;border:1px solid #d6cec3;background:#fff;color:var(--ink);cursor:pointer;font:inherit}
-a.primary{background:var(--clay);border-color:var(--clay);color:#fff}
-.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
-.metric,.panel{background:var(--card);border-radius:16px;padding:16px}
-.metric span{display:block;color:var(--muted);font-size:.75rem}
-.metric strong{display:block;font-size:1.75rem;margin-top:5px}
-.metric.attention strong{color:var(--warn)}
-.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
-.panel h2{margin-top:0}
-.task{display:grid;grid-template-columns:auto 1fr auto;gap:11px;padding:13px 0;border-bottom:1px solid var(--line);align-items:start}
-.task:last-child{border-bottom:0}
-.icon{width:34px;height:34px;border-radius:10px;background:#f2ede5;display:flex;align-items:center;justify-content:center;font-weight:850}
-.task strong{display:block}
-.meta{font-size:.75rem;color:var(--muted);margin-top:4px;line-height:1.4}
-.pill{padding:5px 8px;border-radius:999px;background:#fff0ca;color:#745200;font-size:.68rem;font-weight:800;white-space:nowrap}
-.good{background:#e1f1e7;color:var(--ok)}
-.system{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
-.system:last-child{border-bottom:0}
-.recent{padding:10px 0;border-bottom:1px solid var(--line)}
-.recent:last-child{border-bottom:0}
-.empty{color:var(--muted);padding:16px 0}
-.section-link{font-size:.8rem;color:var(--clay);font-weight:750;text-decoration:none}
-@media(max-width:950px){.metrics{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}}
-@media(max-width:560px){main{padding:16px}.metrics{grid-template-columns:1fr 1fr}}
-
-.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
-.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
-.platform-nav a:hover{background:#edf4f0}
-
-
-.platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
-.platform-nav a{border:1px solid #d6cec3;border-radius:999px;padding:7px 10px;background:#fff;color:var(--ink);font-size:.74rem;font-weight:750;text-decoration:none}
-.platform-nav a:hover{background:#edf4f0}
-.release-panel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 16px}
-.release-panel>div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px}
-.release-panel span{display:block;color:var(--muted);font-size:.66rem}
-.release-panel strong{display:block;margin-top:3px;font-size:.8rem}
-@media(max-width:800px){.release-panel{grid-template-columns:1fr 1fr}}
-
-
-.workspace-export{margin-top:14px}.workspace-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
-.workspace-summary>div{background:#f7f4ef;border-radius:10px;padding:10px}.workspace-summary span{display:block;color:var(--muted);font-size:.7rem}
-.workspace-summary strong{display:block;margin-top:4px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px;margin-top:10px}
-.error{background:#f7ded9;color:#8a2c25;padding:10px;border-radius:10px;margin-top:10px}@media(max-width:700px){.workspace-summary{grid-template-columns:1fr}}
-
-.knowledge-health{margin-top:14px}.health-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
-.health-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.health-grid span{display:block;color:var(--muted);font-size:.68rem}
-.health-grid strong{display:block;font-size:1.25rem;margin-top:4px}@media(max-width:900px){.health-grid{grid-template-columns:1fr 1fr}}
-.export-tip{margin-top:10px;background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
-
-.autosave-banner{display:flex;align-items:center;gap:8px;margin:10px 0;padding:9px 11px;border-radius:10px;background:#e7f4ec;color:#205c3d;font-size:.74rem}
-.autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
-.autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
-
-.publish-status-grid{grid-template-columns:repeat(3,1fr)}
-.operation-log{margin-top:10px;background:#f7f4ef;border-radius:10px;padding:10px;max-height:220px;overflow:auto;font-size:.74rem;line-height:1.5}
-.operation-log div{padding:3px 0;border-bottom:1px solid #e8e0d5}.operation-log div:last-child{border-bottom:0}
-@media(max-width:760px){.publish-status-grid{grid-template-columns:1fr 1fr}}
+main{max-width:1380px;margin:auto}
+.mc-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:15px;margin-bottom:15px}
+.mc-focus{background:linear-gradient(145deg,#fff,#fbf7f1);border:1px solid var(--ca-line);border-radius:24px;padding:24px;box-shadow:var(--ca-shadow)}
+.mc-focus .label{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--ca-accent)}
+.mc-focus h2{font-size:1.75rem;margin:8px 0 8px}.mc-focus p{color:var(--ca-muted);line-height:1.55;max-width:700px}
+.mc-impact{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.mc-impact span{padding:7px 9px;border-radius:10px;background:var(--ca-surface-2);font-size:.72rem;font-weight:750}
+.mc-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.mc-buttons a,.mc-buttons button{padding:11px 14px;border-radius:12px;text-decoration:none;font-weight:850;border:1px solid var(--ca-line);background:white;color:var(--ca-text);cursor:pointer}
+.mc-buttons .primary{background:var(--ca-accent);color:white;border-color:var(--ca-accent)}
+.mc-health{background:#17352b;color:white;border-radius:24px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.mc-score{font-size:3.6rem;font-weight:900;letter-spacing:-.06em}.mc-health p{color:rgba(255,255,255,.7);line-height:1.5}
+.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}
+.mc-card{background:white;border:1px solid var(--ca-line);border-radius:20px;padding:19px}
+.mc-card h2{margin:0 0 5px;font-size:1.05rem}.mc-card>.intro{color:var(--ca-muted);font-size:.78rem;line-height:1.45;margin:0 0 13px}
+.mc-task{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--ca-line)}
+.mc-task:first-of-type{border-top:0}.mc-rank{width:32px;height:32px;border-radius:10px;background:var(--ca-surface-2);display:grid;place-items:center;font-weight:900}
+.mc-task strong{display:block;font-size:.83rem}.mc-task small{display:block;color:var(--ca-muted);margin-top:3px;line-height:1.35}
+.mc-task a{font-size:.72rem;font-weight:850;color:var(--ca-accent);text-decoration:none}
+.mc-release{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.mc-release div{background:var(--ca-surface-2);padding:11px;border-radius:12px}.mc-release span{display:block;color:var(--ca-muted);font-size:.64rem}.mc-release strong{font-size:.8rem}
+.mc-timeline{display:grid;gap:9px}.mc-event{display:grid;grid-template-columns:10px 1fr;gap:10px}.mc-event i{width:9px;height:9px;border-radius:50%;background:var(--ca-green);margin-top:5px}.mc-event strong{display:block;font-size:.78rem}.mc-event span{color:var(--ca-muted);font-size:.7rem}
+.publish-panel{margin-top:15px;background:white;border:1px solid var(--ca-line);border-radius:22px;padding:21px}.publish-panel h2{margin:0 0 5px}.publish-panel p{color:var(--ca-muted);line-height:1.5}
+.publish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:13px 0}.publish-grid div{background:var(--ca-surface-2);padding:10px;border-radius:11px}.publish-grid span{display:block;font-size:.63rem;color:var(--ca-muted)}.publish-grid strong{font-size:.8rem}
+.operation-log{background:var(--ca-surface-2);border-radius:12px;padding:10px;margin-top:10px;font-size:.72rem;max-height:190px;overflow:auto}.operation-log div{padding:4px 0;border-bottom:1px solid var(--ca-line)}
+.notice{background:var(--ca-amber-soft);color:#74500f;padding:10px;border-radius:11px}.success{background:var(--ca-green-soft);color:var(--ca-green);padding:10px;border-radius:11px}
+@media(max-width:900px){.mc-hero,.mc-grid{grid-template-columns:1fr}.publish-grid,.mc-release{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 <main>
-<nav class="platform-nav">
-<a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
-<a href="/photo-missions.html">Foto-manus</a>
-<a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
-<a href="/">Se hjemmesiden</a>
-</nav>
-<section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.69</strong></div>
-<div><span>Build</span><strong>2026-07-24 14:00</strong></div>
-<div><span>Worker</span><strong>11.9-ai-description-review</strong></div>
-<div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
-<div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section>
-<h1>Casa Amar Platform</h1>
-<p class="lead">Ét kontrolcenter for viden, AI-redigering, test og publicering. Arkitekturen er nu fast: Dashboard, AI Editor, Knowledge Objects, Test Center, Publisher og Concierge.</p>
-
-<nav>
-<a class="button primary" href="/knowledge-studio.html">Åbn AI Editor</a>
-<a class="button" href="/ai-test-runner.html">Åbn Test Center</a>
-<a class="button" href="/knowledge-debug.html">Åbn Debug Center</a>
-<a class="button" href="/knowledge-review.html">Åbn Review Center</a>
-<a class="button" href="/">Se hjemmesiden</a>
-<button id="refresh">Opdatér overblik</button>
-</nav>
-
-<section class="metrics">
-<div class="metric"><span>Knowledge Objects</span><strong id="objects">…</strong></div>
-<div class="metric attention"><span>Ikke testet</span><strong id="needsTest">…</strong></div>
-<div class="metric attention"><span>Afventer review</span><strong id="review">…</strong></div>
-<div class="metric"><span>Website-klare</span><strong id="website">…</strong></div>
-<div class="metric attention"><span>Knowledge Gaps</span><strong id="gaps">…</strong></div>
-<div class="metric"><span>Lokale ændringer</span><strong id="changes">…</strong></div>
+<section class="mc-hero" id="next-best-action">
+ <article class="mc-focus">
+  <div class="label">AI's anbefaling lige nu</div>
+  <h2 id="focusTitle">Jeg analyserer dit projekt…</h2>
+  <p id="focusText">Et øjeblik — jeg finder den opgave, der giver størst værdi med mindst muligt arbejde.</p>
+  <div class="mc-impact" id="focusImpact"></div>
+  <div class="mc-buttons"><a class="primary" id="focusCta" href="#">Åbn opgaven</a><button id="showAlternatives">Vis andre muligheder</button></div>
+ </article>
+ <aside class="mc-health">
+  <div><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;opacity:.7">Platformens sundhed</div><div class="mc-score" id="healthScore">–</div></div>
+  <div><strong id="healthLabel">Kontrollerer…</strong><p id="healthExplanation">Status forklares med almindelige ord — ikke tekniske fejlkoder.</p></div>
+ </aside>
 </section>
 
-<div class="layout">
-<section class="panel">
-<h2>Næste handlinger</h2>
-<div id="tasks"></div>
+<section class="mc-grid">
+ <article class="mc-card">
+  <h2>Din arbejdsplan</h2>
+  <p class="intro">AI prioriterer. Start øverst, eller vælg noget andet, når det passer bedre til din tid.</p>
+  <div id="taskList"></div>
+ </article>
+ <article class="mc-card">
+  <h2>Er alt udgivet?</h2>
+  <p class="intro">Platformversion, dit igangværende arbejde og den senest offentliggjorte indholdsversion holdes adskilt.</p>
+  <div class="mc-release">
+   <div><span>Platform</span><strong>v2026.07.24.70</strong></div>
+   <div><span>Senest live</span><strong id="liveContent">Indlæser…</strong></div>
+   <div><span>Ikke udgivet</span><strong id="unpublishedCount">Kontrollerer…</strong></div>
+  </div>
+  <div id="releaseExplanation" class="notice" style="margin-top:11px">Jeg kontrollerer, om der ligger ændringer i dit workspace.</div>
+ </article>
+ <article class="mc-card">
+  <h2>Hvad er sket siden sidst?</h2>
+  <p class="intro">En enkel aktivitetslinje, så du kan se, at platformen arbejder og husker resultatet.</p>
+  <div class="mc-timeline" id="timeline"></div>
+ </article>
+ <article class="mc-card">
+  <h2>Alle arbejdsområder</h2>
+  <p class="intro">Brug dem direkte, når du vil. Normalt guider AI dig til det rigtige sted.</p>
+  <div class="mc-task"><div class="mc-rank">H</div><div><strong>Hjemmesiden</strong><small>Forbedr budskaber, sektioner og billeder.</small></div><a href="/page-studio.html">Åbn</a></div>
+  <div class="mc-task"><div class="mc-rank">B</div><div><strong>Billeder</strong><small>Upload, analyser, ryd op og find de bedste motiver.</small></div><a href="/asset-studio.html">Åbn</a></div>
+  <div class="mc-task"><div class="mc-rank">V</div><div><strong>Viden</strong><small>Tilføj fakta og idéer; AI organiserer dem.</small></div><a href="/knowledge-studio.html">Åbn</a></div>
+  <div class="mc-task"><div class="mc-rank">F</div><div><strong>Fotoopgaver</strong><small>Se præcis hvad du bør fotografere næste gang.</small></div><a href="/photo-missions.html">Åbn</a></div>
+ </article>
 </section>
 
-<aside>
-<section class="panel">
-<h2>Systemstatus</h2>
-<div id="system"></div>
-</section>
-
-<section class="panel" style="margin-top:15px">
-<h2>Seneste lokale ændringer</h2>
-<div id="recent"></div>
-</section>
-</aside>
-</div>
-
-
-<section class="panel knowledge-health">
-<h2>Knowledge Health</h2>
-<p class="meta">Et hurtigt serviceeftersyn. Tallene inkluderer lokale workspace-ændringer.</p>
-<div class="health-grid">
-<div><span>Live objekter</span><strong id="healthLive">–</strong></div>
-<div><span>Drafts</span><strong id="healthDrafts">–</strong></div>
-<div><span>Ikke testet</span><strong id="healthUntested">–</strong></div>
-<div><span>Dublerede titler</span><strong id="healthDupTitles">–</strong></div>
-<div><span>Dublerede ID’er</span><strong id="healthDupIds">–</strong></div>
-<div><span>Meget brede objekter</span><strong id="healthBroad">–</strong></div>
-</div>
-<p><a class="button" href="/knowledge-architect.html">Gennemgå struktur</a> <a class="button" href="/knowledge-review.html">Gennemgå drafts</a></p>
-</section>
-
-<section class="panel workspace-export">
-<h2>Udgiv ny version</h2>
-<p>Alt arbejde gemmes automatisk i browserens workspace. Her samler du én komplet udgivelsespakke med Knowledge, hjemmesideindhold, brand, assets, relationer og foto-manus.</p>
-
-<div class="workspace-summary publish-status-grid">
-<div><span>Knowledge</span><strong id="publishKnowledgeStatus">Indlæser…</strong></div>
-<div><span>Website</span><strong id="publishWebsiteStatus">Indlæser…</strong></div>
-<div><span>Brand</span><strong id="publishBrandStatus">Indlæser…</strong></div>
-<div><span>Assets</span><strong id="publishAssetStatus">Indlæser…</strong></div>
-<div><span>Relationer</span><strong id="publishRelationStatus">Indlæser…</strong></div>
-<div><span>Senest autosavet</span><strong id="publishLastSaved">–</strong></div>
-</div>
-
-<button class="primary" id="publishEverything">Udgiv ny version</button>
-<p class="meta">I Edge/Chrome vælger du én mappe. Systemet skriver alle opdaterede JSON-filer i mappen med de korrekte filnavne. Upload derefter filerne til GitHub.</p>
-<div id="publishMessage"></div>
-<div id="publishLog" class="operation-log" hidden></div>
-</section>
-
-<section class="panel">
-<h2>Content Platform</h2>
-<p>Knowledge ejer fakta. Brand Studio ejer stemmen. Page Studio ejer sidens fortælling, konverteringsmål og komponentregler. Billedplanen viser præcis hvilke billeder der mangler.</p>
-<p><a class="button" href="/brand-studio.html">Åbn Brand Studio</a> <a class="button" href="/page-studio.html">Åbn Page Studio</a> <a class="button" href="/asset-brief.html">Åbn Billedplan</a></p>
-</section>
-<section class="panel">
-<h2>Asset & Relation Engine</h2>
-<p>Billeder og videoer har nu deres egen objektmodel, importkø, visuelle analysehistorik og automatisk relation scan. AI-relationer kan genberegnes, mens manuelle links, aktuel brug og låste placeringer bevares.</p>
-<p><a class="button" href="/asset-studio.html">Åbn Asset Studio</a> <a class="button" href="/photo-missions.html">Åbn Foto-manus</a></p>
+<section class="publish-panel" id="publish">
+ <h2>Klargør ændringer til GitHub</h2>
+ <p><strong>Dette er sidste skridt i platformen.</strong> AI samler alle autosavede ændringer, laver en ny indholdsversion og skriver filerne i én mappe. Derefter uploader du dem samlet til GitHub. Når Cloudflare har deployet, bliver den nye indholdsversion vist som live.</p>
+ <div class="publish-grid">
+  <div><span>Viden</span><strong id="publishKnowledgeStatus">–</strong></div>
+  <div><span>Hjemmeside</span><strong id="publishWebsiteStatus">–</strong></div>
+  <div><span>Billeder</span><strong id="publishAssetStatus">–</strong></div>
+  <div><span>Seneste autosave</span><strong id="publishLastSaved">–</strong></div>
+ </div>
+ <div class="mc-buttons"><button class="primary" id="publishEverything">Klargør og download til GitHub</button></div>
+ <div id="publishMessage"></div><div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-
+<script src="/platform-shell.js"></script>
 <script>
 const q=s=>document.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function localChanges(){try{return JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]')}catch{return []}}
-function task(icon,title,text,count,href,label){
- return `<div class="task"><div class="icon">${icon}</div><div><strong>${esc(title)}</strong><div class="meta">${esc(text)}</div></div><a class="section-link" href="${href}">${count?esc(count)+' · ':''}${esc(label)}</a></div>`;
+const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
+async function fetchJson(path,fallback={}){try{const r=await fetch(path,{cache:"no-store"});return r.ok?await r.json():fallback}catch{return fallback}}
+function countWorkspace(){
+ const changes=localJson("casaKnowledgeChanges",[]);
+ return {changes, count:changes.length+["casaWebsiteContentDraft","casaBrandProfile","casaAssetLibrary","casaRelationRegistry","casaPhotoMissions"].filter(k=>localStorage.getItem(k)).length};
 }
-async function load(){
- q('#refresh').disabled=true;
- try{
-  const [cardsRes,statusRes,gapsRes,pubRes]=await Promise.all([
-   fetch('/knowledge-cards.json',{cache:'no-store'}),
-   fetch('/api/status',{cache:'no-store'}),
-   fetch('/knowledge-gaps.json',{cache:'no-store'}),
-   fetch('/publisher-queue.json',{cache:'no-store'})
-  ]);
-  const cardsData=await cardsRes.json(),status=await statusRes.json();
-  const gapsData=await gapsRes.json(),pubData=await pubRes.json();
-  const cards=cardsData.cards||cardsData.entries||[];
-  const changes=localChanges();
-  const needsTest=cards.filter(c=>c.test_state?.status==='needs_test').length;
-  const review=cards.filter(c=>['imported','needs_review','draft'].includes(c.maturity)||c.editorial?.review_state==='needs_review').length;
-  const website=cards.filter(c=>c.channels?.website||c.editorial?.website_candidate).length;
-  const gaps=(gapsData.gaps||[]).filter(g=>g.status!=='closed').length;
-  const publisher=(pubData.items||[]).filter(i=>i.status!=='published').length;
-
-  q('#objects').textContent=cards.length;
-  q('#needsTest').textContent=needsTest;
-  q('#review').textContent=review;
-  q('#website').textContent=website;
-  q('#gaps').textContent=gaps;
-  q('#changes').textContent=changes.length;
-
-  const tasks=[];
-  if(needsTest)tasks.push(task('T','Test ændrede objekter','Kør kun de tests, der er knyttet til objekter ændret siden sidste test.',needsTest,'/knowledge-studio.html','Vælg og test'));
-  if(review)tasks.push(task('R','Gennemgå importeret viden','Forbedr de importerede kort løbende. Du behøver ikke gøre dem alle færdige nu.',review,'/knowledge-studio.html','Åbn editor'));
-  if(changes.length)tasks.push(task('↥','Udgiv gemte ændringer','Workspace-ændringer er autosavet og klar til samlet udgivelse.',changes.length,'#publishEverything','Udgiv'));
-  if(gaps)tasks.push(task('?','Luk Knowledge Gaps','Tilføj eller undersøg viden, som assistenten mangler.',gaps,'/knowledge-studio.html','Behandl'));
-  if(publisher)tasks.push(task('P','Publicér godkendt indhold','Godkendte opgaver venter på fremtidige kanaler.',publisher,'/knowledge-studio.html','Gennemgå'));
-  if(!tasks.length)tasks.push(task('✓','Platformen er ajour','Der er ingen registrerede hasteopgaver. Fortsæt med indhold, når det giver mening.','','/knowledge-studio.html','Tilføj viden'));
-  q('#tasks').innerHTML=tasks.join('');
-
-  q('#system').innerHTML=`
-   <div class="system"><span>Knowledge Platform</span><span class="pill ${status.ok?'good':''}">${status.ok?'OK':'Fejl'}</span></div>
-   <div class="system"><span>Indlæste datasæt</span><strong>${(status.datasets||[]).filter(d=>d.loaded).length}/${(status.datasets||[]).length}</strong></div>
-   <div class="system"><span>AI Editor</span><span class="pill good">Aktiv</span></div>
-   <div class="system"><span>Concierge</span><span class="pill good">Aktiv</span></div>
-   <div class="system"><span>Register</span><strong>${esc(status.registryVersion||'–')}</strong></div>`;
-
-  const latest=[...changes].reverse().slice(0,6);
-  q('#recent').innerHTML=latest.length?latest.map(c=>`
-   <div class="recent"><strong>${esc(c.after?.title||c.card_id)}</strong>
-   <div class="meta">${new Date(c.changed_at).toLocaleString('da-DK')} · ikke testet</div></div>`).join(''):
-   '<div class="empty">Ingen lokale ændringer i denne browser.</div>';
- }catch(error){
-  q('#tasks').innerHTML=`<div class="empty">Overblikket kunne ikke indlæses: ${esc(error.message)}</div>`;
-  q('#system').innerHTML='<div class="system"><span>Status</span><span class="pill">Fejl</span></div>';
- }finally{q('#refresh').disabled=false}
+function taskHtml(rank,title,text,href,label){
+ return `<div class="mc-task"><div class="mc-rank">${rank}</div><div><strong>${title}</strong><small>${text}</small></div><a href="${href}">${label} →</a></div>`;
 }
-q('#refresh').addEventListener('click',load);
-load();
-</script>
-<script>
-(async()=>{
- try{
-  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json());
-  const count=(raw.cards||raw.entries||[]).length;
-  document.querySelectorAll('[data-release-objects]').forEach(el=>el.textContent=count);
- }catch{}
- let changes=0;
- try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]').length}catch{}
- document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
-})();
-</script>
-
-
-
-
-<script>
-(async()=>{
- const clone=v=>JSON.parse(JSON.stringify(v));
- let changes=[];try{changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]')}catch{}
- function apply(cards){
-  const result=clone(cards);
-  for(const ch of changes){
-   if(!ch?.after?.id)continue;
-   let idx=ch.before?.title?result.findIndex(c=>c.id===ch.card_id&&c.title===ch.before.title):-1;
-   if(idx<0){const m=result.map((c,i)=>[c,i]).filter(([c])=>c.id===ch.card_id);if(m.length===1)idx=m[0][1]}
-   if(idx>=0)result[idx]=clone(ch.after);else result.push(clone(ch.after));
-  }
-  return result;
- }
- try{
-  const raw=await fetch('/knowledge-cards.json',{cache:'no-store'}).then(r=>r.json()),cards=apply(raw.cards||raw.entries||[]);
-  const active=cards.filter(c=>c.status!=='archived');
-  const titleCounts={},idCounts={};
-  active.forEach(c=>{const t=String(c.title||'').toLowerCase().trim();titleCounts[t]=(titleCounts[t]||0)+1;idCounts[c.id]=(idCounts[c.id]||0)+1});
-  document.querySelector('#healthLive').textContent=active.filter(c=>c.lifecycle?.live_status!=='draft_only').length;
-  document.querySelector('#healthDrafts').textContent=active.filter(c=>c.draft_version).length;
-  document.querySelector('#healthUntested').textContent=active.filter(c=>c.test_state?.status==='needs_test').length;
-  document.querySelector('#healthDupTitles').textContent=Object.values(titleCounts).filter(n=>n>1).length;
-  document.querySelector('#healthDupIds').textContent=Object.values(idCounts).filter(n=>n>1).length;
-  document.querySelector('#healthBroad').textContent=active.filter(c=>String(c.draft_version?.summary||c.summary||c.content||'').length>1800).length;
- }catch{}
-})();
-</script>
-
-
-<script>
-(()=>{
- const q=s=>document.querySelector(s);
- const clone=value=>JSON.parse(JSON.stringify(value));
- const jsonLocal=(key,fallback=null)=>{
-  try{const value=localStorage.getItem(key);return value?JSON.parse(value):fallback}catch{return fallback}
- };
- const textFile=(name,data)=>({name,text:JSON.stringify(data,null,2)});
-
- function applyKnowledgeChanges(cards,changes){
-  const result=clone(cards);
-  for(const change of changes||[]){
-   const after=change?.after;
-   if(!after?.id)continue;
-   let index=-1;
-   if(change.before?.title){
-    index=result.findIndex(card=>card.id===change.card_id&&card.title===change.before.title);
-   }
-   if(index<0){
-    const matches=result.map((card,i)=>[card,i]).filter(([card])=>card.id===change.card_id);
-    if(matches.length===1)index=matches[0][1];
-   }
-   if(index>=0)result[index]=clone(after);else result.push(clone(after));
-  }
-  return result;
- }
-
- async function fetchJson(path){
-  const response=await fetch(path,{cache:'no-store'});
-  if(!response.ok)throw new Error(`${path} kunne ikke indlæses`);
-  return response.json();
- }
-
- async function buildPublishFiles(){
-  const [
-   knowledgeBase,websiteBase,brandBase,assetBase,relationBase,
-   missionsBase,campaignBase,assetManifest,assetModel,assetSyncSettings
-  ]=await Promise.all([
-   fetchJson('/knowledge-cards.json'),
-   fetchJson('/website-content.json'),
-   fetchJson('/brand-profile.json'),
-   fetchJson('/asset-library.json'),
-   fetchJson('/relation-registry.json'),
-   fetchJson('/photo-missions.json'),
-   fetchJson('/campaign-profiles.json'),
-   fetchJson('/asset-manifest.json'),
-   fetchJson('/asset-model.json'),
-   fetchJson('/asset-sync-settings.json')
-  ]);
-
-  const knowledgeChanges=jsonLocal('casaKnowledgeChanges',[]);
-  const baseCards=knowledgeBase.cards||knowledgeBase.entries||[];
-  const cards=applyKnowledgeChanges(baseCards,knowledgeChanges);
-  const knowledge={...knowledgeBase,version:'2.1',updated:new Date().toISOString(),cards,entries:cards};
-
-  const website=jsonLocal('casaWebsiteContentDraft',websiteBase);
-  const brand=jsonLocal('casaBrandProfile',brandBase);
-  const assets=jsonLocal('casaAssetLibrary',assetBase);
-  const relations=jsonLocal('casaRelationRegistry',relationBase);
-  const missions=jsonLocal('casaPhotoMissions',missionsBase);
-
-  const snapshot={
-   release:'v2026.07.24.69',
-   created_at:new Date().toISOString(),
-   worker:'11.9-ai-description-review',
-   counts:{
-    knowledge_objects:cards.length,
-    knowledge_changes:knowledgeChanges.length,
-    website_sections:(website.sections||[]).length,
-    assets:(assets.assets||[]).length,
-    relations:(relations.relations||[]).length,
-    photo_missions:(missions.missions||[]).length
-   }
-  };
-
-  return [
-   textFile('knowledge-cards.json',knowledge),
-   textFile('website-content.json',website),
-   textFile('brand-profile.json',brand),
-   textFile('asset-library.json',assets),
-   textFile('relation-registry.json',relations),
-   textFile('photo-missions.json',missions),
-   textFile('campaign-profiles.json',campaignBase),
-   textFile('asset-manifest.json',assetManifest),
-   textFile('asset-model.json',assetModel),
-   textFile('asset-sync-settings.json',assetSyncSettings),
-   textFile('workspace-release.json',snapshot)
-  ];
- }
-
- function log(message){
-  const target=q('#publishLog');
-  target.hidden=false;
-  target.insertAdjacentHTML('beforeend',`<div>${message}</div>`);
-  target.scrollTop=target.scrollHeight;
- }
-
- async function writeFiles(files){
-  if(window.showDirectoryPicker){
-   const directory=await window.showDirectoryPicker({mode:'readwrite'});
-   for(const file of files){
-    log(`Skriver ${file.name}…`);
-    const handle=await directory.getFileHandle(file.name,{create:true});
-    const writable=await handle.createWritable();
-    await writable.write(file.text);
-    await writable.close();
-   }
-   return 'folder';
-  }
-
-  for(const file of files){
-   const link=document.createElement('a');
-   link.href=URL.createObjectURL(new Blob([file.text],{type:'application/json'}));
-   link.download=file.name;
-   document.body.appendChild(link);
-   link.click();
-   link.remove();
-   setTimeout(()=>URL.revokeObjectURL(link.href),1500);
-   await new Promise(resolve=>setTimeout(resolve,350));
-  }
-  return 'downloads';
- }
-
- async function refreshPublishStatus(){
-  const changes=jsonLocal('casaKnowledgeChanges',[]);
-  const website=jsonLocal('casaWebsiteContentDraft',null);
-  const brand=jsonLocal('casaBrandProfile',null);
-  const assets=jsonLocal('casaAssetLibrary',null);
-  const relations=jsonLocal('casaRelationRegistry',null);
-  q('#publishKnowledgeStatus').textContent=changes.length?`${changes.length} ændringer`:'Ajour';
-  q('#publishWebsiteStatus').textContent=website?'Autosavet':'Basisversion';
-  q('#publishBrandStatus').textContent=brand?'Autosavet':'Basisversion';
-  q('#publishAssetStatus').textContent=assets?`${assets.assets?.length||0} assets`:'Basisversion';
-  q('#publishRelationStatus').textContent=relations?`${relations.relations?.length||0} relationer`:'Basisversion';
-  const saved=localStorage.getItem('casaWorkspaceLastSaved');
-  q('#publishLastSaved').textContent=saved?new Date(saved).toLocaleString('da-DK'):'Ingen lokale ændringer';
- }
-
- q('#publishEverything')?.addEventListener('click',async()=>{
-  const button=q('#publishEverything'),message=q('#publishMessage'),logTarget=q('#publishLog');
-  button.disabled=true;button.textContent='Samler og kvalitetssikrer…';
-  logTarget.hidden=false;logTarget.innerHTML='';
-  try{
-   log('Indlæser basisfiler og lokale workspace-ændringer…');
-   const publishFiles=await buildPublishFiles();
-   log(`${publishFiles.length} filer er samlet.`);
-   button.textContent='Vælg mappe til udgivelsen…';
-   const mode=await writeFiles(publishFiles);
-   const now=new Date().toISOString();
-   localStorage.setItem('casaLastPublished',now);
-   message.innerHTML=`<p class="success"><strong>Udgivelsespakken er oprettet.</strong> ${mode==='folder'?'Alle filer er skrevet i den valgte mappe.':'Filerne er downloadet.'} Upload dem samlet til GitHub.</p>`;
-   log('✓ Udgivelsen er færdig. Ingen workspace-data er slettet.');
-  }catch(error){
-   if(error?.name==='AbortError'){
-    message.innerHTML='<p class="notice">Udgivelsen blev annulleret. Alt arbejde er fortsat autosavet.</p>';
-    log('Udgivelsen blev annulleret.');
-   }else{
-    message.innerHTML=`<p class="error">Udgivelsen fejlede: ${error.message}</p>`;
-    log(`⚠ ${error.message}`);
-   }
-  }finally{
-   button.disabled=false;button.textContent='Udgiv ny version';
-   refreshPublishStatus();
-  }
- });
-
- window.addEventListener('storage',refreshPublishStatus);
+async function loadMission(){
+ const [cardsData,gapsData,assetsData,releaseData]=await Promise.all([
+  fetchJson("/knowledge-cards.json",{}),fetchJson("/knowledge-gaps.json",{gaps:[]}),
+  fetchJson("/asset-library.json",{assets:[]}),fetchJson("/content-release.json",{})
+ ]);
+ const cards=cardsData.cards||cardsData.entries||[];
+ const workspace=countWorkspace();
+ const untested=cards.filter(c=>c.test_state?.status==="needs_test").length;
+ const review=cards.filter(c=>["imported","needs_review","draft"].includes(c.maturity)||c.editorial?.review_state==="needs_review").length;
+ const gaps=(gapsData.gaps||[]).filter(g=>g.status!=="closed").length;
+ const pendingAssets=(localJson("casaAssetLibrary",assetsData).assets||[]).filter(a=>a.analysis_queue?.visual_status!=="analyzed"||a.source?.source_state==="missing").length;
+ const tasks=[];
+ if(workspace.count)tasks.push({rank:"1",title:"Udgiv dit færdige arbejde",text:`${workspace.count} ændringer er autosavet, men endnu ikke live.`,href:"#publish",label:"Klargør"});
+ if(pendingAssets)tasks.push({rank:String(tasks.length+1),title:"Gennemgå billeder der kræver opmærksomhed",text:`${pendingAssets} billeder mangler analyse, kilde eller review.`,href:"/asset-studio.html",label:"Åbn billeder"});
+ if(review)tasks.push({rank:String(tasks.length+1),title:"Godkend AI's vigtigste forslag",text:`${review} vidensemner kræver din vurdering. Start med de mest usikre.`,href:"/knowledge-review.html",label:"Start review"});
+ if(untested)tasks.push({rank:String(tasks.length+1),title:"Kør relevante kvalitetstjek",text:`${untested} ændrede emner mangler test. Beståede tests behøver ikke køres igen.`,href:"/ai-test-runner.html",label:"Kør test"});
+ if(gaps)tasks.push({rank:String(tasks.length+1),title:"Tilføj manglende viden",text:`AI har identificeret ${gaps} konkrete huller i den viden, chatbotten eller hjemmesiden bruger.`,href:"/knowledge-studio.html",label:"Tilføj"});
+ if(!tasks.length)tasks.push({rank:"✓",title:"Alt er ajour",text:"Der er ingen kritiske opgaver. AI anbefaler, at du arbejder videre med billeder eller nyt indhold, når du har noget nyt.",href:"/photo-missions.html",label:"Se fotoopgaver"});
+ q("#taskList").innerHTML=tasks.slice(0,5).map(t=>taskHtml(t.rank,t.title,t.text,t.href,t.label)).join("");
+ const first=tasks[0];q("#focusTitle").textContent=first.title;q("#focusText").textContent=first.text;q("#focusCta").href=first.href;q("#focusCta").textContent=first.label+" nu";
+ q("#focusImpact").innerHTML=`<span>Prioritet 1</span><span>${workspace.count?"Sikrer at arbejdet bliver live":"AI-valgt næste skridt"}</span><span>Du kan altid vælge noget andet</span>`;
+ const issues=untested+review+gaps+pendingAssets;
+ const score=Math.max(55,Math.min(100,100-Math.min(40,Math.round(issues/8))));
+ q("#healthScore").textContent=score+"%";q("#healthLabel").textContent=score>=90?"Casa Amar har det godt":score>=75?"Der er nogle ting at følge op på":"AI anbefaler en oprydningsrunde";
+ q("#healthExplanation").textContent=issues?`${issues} forhold kræver opmærksomhed, men du behøver ikke løse dem alle på én gang.`:"Ingen kendte problemer kræver din handling.";
+ q("#liveContent").textContent=releaseData.content_version||"Ukendt";
+ q("#unpublishedCount").textContent=workspace.count?`${workspace.count} ændringer`:"0 ændringer";
+ q("#releaseExplanation").className=workspace.count?"notice":"success";
+ q("#releaseExplanation").textContent=workspace.count?"Dit arbejde er gemt sikkert i browseren, men er ikke live endnu. Brug udgivelsesområdet nederst.":"Alt registreret arbejde er udgivet. Der er ingen lokale ændringer.";
+ const events=[];
+ const lastSaved=localStorage.getItem("casaWorkspaceLastSaved");const lastPublished=localStorage.getItem("casaLastPublished");
+ if(lastSaved)events.push(["Workspace autosavet",new Date(lastSaved).toLocaleString("da-DK")]);
+ if(lastPublished)events.push(["Udgivelsespakke klargjort",new Date(lastPublished).toLocaleString("da-DK")]);
+ events.push(["Live indhold",releaseData.published_at?new Date(releaseData.published_at).toLocaleString("da-DK"):"Baseline"]);
+ q("#timeline").innerHTML=events.map(([a,b])=>`<div class="mc-event"><i></i><div><strong>${a}</strong><span>${b}</span></div></div>`).join("");
  refreshPublishStatus();
-})();
+}
+function refreshPublishStatus(){
+ const ws=countWorkspace(),website=localStorage.getItem("casaWebsiteContentDraft"),assets=localJson("casaAssetLibrary",null);
+ q("#publishKnowledgeStatus").textContent=ws.changes.length?`${ws.changes.length} ændringer`:"Ajour";
+ q("#publishWebsiteStatus").textContent=website?"Autosavet":"Ajour";
+ q("#publishAssetStatus").textContent=assets?`${assets.assets?.length||0} billeder`:"Ajour";
+ const saved=localStorage.getItem("casaWorkspaceLastSaved");q("#publishLastSaved").textContent=saved?new Date(saved).toLocaleString("da-DK"):"Ingen lokale ændringer";
+}
+function applyKnowledgeChanges(cards,changes){
+ const result=JSON.parse(JSON.stringify(cards));
+ for(const change of changes||[]){const after=change?.after;if(!after?.id)continue;let i=result.findIndex(c=>c.id===change.card_id&&(change.before?.title?c.title===change.before.title:true));if(i>=0)result[i]=after;else result.push(after)}return result;
+}
+async function buildPublishFiles(){
+ const paths=["knowledge-cards.json","website-content.json","brand-profile.json","asset-library.json","relation-registry.json","photo-missions.json","campaign-profiles.json","asset-manifest.json","asset-model.json","asset-sync-settings.json","product-manifest.json"];
+ const base=await Promise.all(paths.map(p=>fetchJson("/"+p,{})));const map=Object.fromEntries(paths.map((p,i)=>[p,base[i]]));
+ const changes=localJson("casaKnowledgeChanges",[]),baseCards=map["knowledge-cards.json"].cards||map["knowledge-cards.json"].entries||[];
+ const cards=applyKnowledgeChanges(baseCards,changes);
+ map["knowledge-cards.json"]={...map["knowledge-cards.json"],updated:new Date().toISOString(),cards,entries:cards};
+ map["website-content.json"]=localJson("casaWebsiteContentDraft",map["website-content.json"]);
+ map["brand-profile.json"]=localJson("casaBrandProfile",map["brand-profile.json"]);
+ map["asset-library.json"]=localJson("casaAssetLibrary",map["asset-library.json"]);
+ map["relation-registry.json"]=localJson("casaRelationRegistry",map["relation-registry.json"]);
+ map["photo-missions.json"]=localJson("casaPhotoMissions",map["photo-missions.json"]);
+ const now=new Date(),seq=String(now.getHours()).padStart(2,"0")+String(now.getMinutes()).padStart(2,"0");
+ const contentVersion=`content-${now.toISOString().slice(0,10).replaceAll("-",".")}-${seq}`;
+ map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.70",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
+ map["workspace-release.json"]={platform_version:"v2026.07.24.70",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
+ return Object.entries(map).map(([name,data])=>({name,text:JSON.stringify(data,null,2)}));
+}
+async function writeFiles(items){
+ if(window.showDirectoryPicker){const dir=await showDirectoryPicker({mode:"readwrite"});for(const item of items){const h=await dir.getFileHandle(item.name,{create:true});const w=await h.createWritable();await w.write(item.text);await w.close()}return}
+ for(const item of items){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([item.text],{type:"application/json"}));a.download=item.name;a.click();await new Promise(r=>setTimeout(r,250))}
+}
+q("#publishEverything").onclick=async()=>{
+ const btn=q("#publishEverything"),log=q("#publishLog");btn.disabled=true;btn.textContent="AI samler og kvalitetssikrer…";log.hidden=false;log.innerHTML="";
+ const add=x=>log.insertAdjacentHTML("beforeend",`<div>${x}</div>`);
+ try{add("Samler autosavede ændringer…");const items=await buildPublishFiles();add(`Klargør ${items.length} filer med stabile filnavne…`);btn.textContent="Vælg mappe til GitHub-filer";await writeFiles(items);localStorage.setItem("casaLastPublished",new Date().toISOString());localStorage.setItem("casaPreparedContentVersion",JSON.parse(items.find(x=>x.name==="content-release.json").text).content_version);
+  q("#publishMessage").innerHTML='<div class="success"><strong>Udgivelsespakken er klar.</strong><br>Næste handling: Upload alle filerne til roden af GitHub. Vent derefter på den grønne Cloudflare-deployment. Dit workspace nulstilles først, når live-versionen er bekræftet.</div>';add("✓ Pakken er klargjort. Workspace er bevaret som sikkerhed.");
+ }catch(e){q("#publishMessage").innerHTML=`<div class="notice">Udgivelsen blev ikke færdig: ${e.message}. Intet arbejde er tabt.</div>`}finally{btn.disabled=false;btn.textContent="Klargør og download til GitHub";refreshPublishStatus()}
+};
+q("#showAlternatives").onclick=()=>q("#taskList").scrollIntoView({behavior:"smooth"});
+loadMission();
 </script>
-
-</body>
-</html>
+</body></html>

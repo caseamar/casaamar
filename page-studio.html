@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Page Studio</title>
+<title>Casa Amar Hjemmesiden</title>
 <style>
 :root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#805b00}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1320px;margin:auto;padding:24px}
@@ -24,23 +24,24 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.69 · Page model 1.0 · Worker 11.9-ai-description-review</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
-<h1>Page Studio</h1>
-<p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
+<p class="meta">Release v2026.07.24.70 · Page model 1.0 · Worker 12.0-mission-control-ux</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<h1>Hjemmesiden</h1>
+<p class="lead">Viden ejer fakta. Stil og tone ejer stemmen. Hjemmesiden ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
 <div class="panel">
 <h2>Vælg hvordan AI skal arbejde</h2>
@@ -306,11 +307,11 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.9-ai-description-review…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 12.0-mission-control-ux…';
 
  try{
    const result=await requestCompletePage(mode);
-   if(technical)technical.textContent='Svar modtaget. Opdaterer Page Studio…';
+   if(technical)technical.textContent='Svar modtaget. Opdaterer Hjemmesiden…';
    content=result.website_content;
    localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
    render();
@@ -422,4 +423,5 @@ function bindPageStudioActions(){
 document.addEventListener('DOMContentLoaded',()=>{
  bindPageStudioActions();
 });
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

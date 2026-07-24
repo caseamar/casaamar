@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Amar Foto-manus</title>
+<title>Casa Amar Fotoopgaver</title>
 <style>
 :root{--ink:#20332d;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--clay:#bc6245}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}
@@ -14,28 +14,29 @@
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
-<a href="/photo-missions.html">Foto-manus</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
+<a href="/photo-missions.html">Fotoopgaver</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.69 · Photo Mission model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
-<h1>Foto-manus</h1>
+<p class="meta">Release v2026.07.24.70 · Photo Mission model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<h1>Fotoopgaver</h1>
 <p>AI omsætter sidernes billedslots, lav visuel confidence og manglende assets til konkrete fotoopgaver. Listen er et arbejdsmanus til næste tur til Spanien.</p>
 <section class="panel">
 <div class="actions">
 <button class="primary" id="generate">Generér foto-manus</button>
 
-<a href="/asset-studio.html">Åbn Asset Studio</a>
+<a href="/asset-studio.html">Åbn Billeder</a>
 </div>
 <div id="message"></div>
 </section>
@@ -93,4 +94,5 @@ q('#generate').onclick=()=>{
 q('#export').onclick=()=>{
  const text=JSON.stringify(missions,null,2),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='photo-missions.json';a.click();
 };
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

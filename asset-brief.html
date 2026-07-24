@@ -4,20 +4,21 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:24px}h1,h2{font-family:Georgia,serif}
 .panel{background:#fff;border-radius:15px;padding:14px;margin:10px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.item{background:#f7f4ef;border-radius:11px;padding:11px}.critical{border-left:5px solid #bc6245}.high{border-left:5px solid #c99b45}.medium{border-left:5px solid #8aa99a}.meta{font-size:.72rem;color:var(--muted)}button,a{border:1px solid #d6cec3;border-radius:10px;padding:8px 10px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem}@media(max-width:800px){.grid{grid-template-columns:1fr}}
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
-</nav><p class="meta">Release v2026.07.24.69 · Asset plan 1.0</p><h1>Billedplan</h1>
+</nav><p class="meta">Release v2026.07.24.70 · Asset plan 1.0</p><h1>Billedplan</h1>
 <p>Planen er afledt direkte af forsidens komponenter. Den viser både billeder, der skaber lyst, og praktiske billeder, der senere kan bruges af gæsteguide og concierge.</p>
 <div id="content"></div>
 <script>
@@ -25,4 +26,5 @@ fetch('/asset-plan.json',{cache:'no-store'}).then(r=>r.json()).then(plan=>{
  const groups={};plan.requirements.forEach(x=>(groups[x.section_id]??=[]).push(x));
  document.querySelector('#content').innerHTML=Object.entries(groups).map(([section,items])=>`<section class="panel"><h2>${section}</h2><div class="grid">${items.map(x=>`<div class="item ${x.priority}"><strong>${x.role}</strong><div class="meta">${x.count} billede(r) · prioritet: ${x.priority} · status: ${x.status}</div></div>`).join('')}</div></section>`).join('');
 });
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

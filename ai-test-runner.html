@@ -1,4 +1,4 @@
-<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Test Center</title>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Kvalitetstjek</title>
 <style>
 :root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--bad:#a83b31}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1320px;margin:auto;padding:24px}h1{font-family:Georgia,serif}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);color:#fff;border-color:var(--clay)}.good{background:var(--ok);color:#fff;border-color:var(--ok)}table{width:100%;border-collapse:separate;border-spacing:0 8px}td,th{background:#fff;padding:12px;text-align:left;vertical-align:top}.status{border-radius:999px;padding:5px 8px;font-size:.7rem;font-weight:850}.passed{background:#e1f1e7;color:#265f42}.failed{background:#f7ded9;color:#8a2c25}.pending{background:#eee}.details{font-size:.72rem;color:var(--muted);line-height:1.4;margin-top:5px}.answer{max-width:600px;line-height:1.45}.checks{margin-top:7px;font-size:.72rem}.check-bad{color:#9b3028}.check-ok{color:#256442}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
@@ -20,26 +20,27 @@
 .key-star.on{color:#b07a00}
 .rate-wait{background:#fff6dc;color:#765500;padding:8px;border-radius:9px;margin-top:6px}
 @media(max-width:700px){.builder-grid{grid-template-columns:1fr}}
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.69</strong></div>
-<div><span>Build</span><strong>2026-07-24 14:00</strong></div>
-<div><span>Worker</span><strong>11.9-ai-description-review</strong></div>
+<div><span>Release</span><strong>v2026.07.24.70</strong></div>
+<div><span>Build</span><strong>2026-07-24 16:00</strong></div>
+<div><span>Worker</span><strong>12.0-mission-control-ux</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section><h1>Casa Amar Test Center</h1><p>Brug Test Center til regressionstest, prompt-verifikation og egne nøglecases. Testene køres adaptivt, så rate limits ikke markeres som faglige fejl. Klik <strong>Godkend svar som korrekt</strong>; Test Center opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
+</section><h1>Casa Amar Kvalitetstjek</h1><p>Brug Kvalitetstjek til regressionstest, prompt-verifikation og egne nøglecases. Testene køres adaptivt, så rate limits ikke markeres som faglige fejl. Klik <strong>Godkend svar som korrekt</strong>; Kvalitetstjek opdaterer de sikre kriterier og gemmer svaret som en accepteret variant. Eksportér derefter den samlede <code>ai-regression-tests.json</code>.</p>
 
 <section class="test-builder">
 <h2>Tilføj egne testspørgsmål</h2>
@@ -187,4 +188,5 @@ fetch('/ai-regression-tests.json',{cache:'no-store'}).then(r=>r.json()).then(raw
  document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
 })();
 
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>

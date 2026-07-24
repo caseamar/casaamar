@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-24",
+  "product_name": "Casa Amar AI",
+  "promise": "AI arbejder. Du beslutter.",
+  "principles": [
+    "AI foreslår altid det bedste næste skridt.",
+    "Brugeren må aldrig være i tvivl om status eller resultat.",
+    "Tekniske begreber skjules, indtil de er nødvendige.",
+    "Én tydelig primær handling pr. skærm.",
+    "Alle AI-processer viser aktivitet, resultat og næste handling.",
+    "Brugeren kan altid overstyre AI.",
+    "Platformversion, arbejdsændringer og udgivet indhold er tre forskellige ting."
+  ],
+  "terminology": {
+    "Knowledge Studio": "Viden",
+    "Review Center": "Godkend forslag",
+    "Knowledge Architect": "Struktur og oprydning",
+    "Brand Studio": "Stil og tone",
+    "Page Studio": "Hjemmesiden",
+    "Asset Studio": "Billeder",
+    "Foto-manus": "Fotoopgaver",
+    "Test Center": "Kvalitetstjek",
+    "Debug Center": "Teknisk hjælp",
+    "Hero": "Forsidens store billede",
+    "Metadata": "Oplysninger om billedet",
+    "Confidence": "AI-sikkerhed",
+    "Draft": "Kladde"
+  }
+}

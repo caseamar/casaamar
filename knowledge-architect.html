@@ -1,4 +1,4 @@
-<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Knowledge Architect</title>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Amar Struktur og oprydning</title>
 <style>
 :root{--ink:#20332d;--clay:#bc6245;--paper:#f4f0e7;--muted:#68746f;--line:#e5ded3;--ok:#2b7450;--warn:#8b6412;--bad:#a83b31}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}main{max-width:1260px;margin:auto;padding:24px}h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);line-height:1.5}button,a,input,select,textarea{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit}button,a{font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}.panel,.issue{background:#fff;border-radius:15px;padding:14px}.issue{border:1px solid var(--line);margin-top:10px}.filters,.actions{display:flex;gap:8px;flex-wrap:wrap}.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.card,.proposal{background:#f7f4ef;border-radius:11px;padding:11px}.meta{font-size:.73rem;color:var(--muted);line-height:1.4}.excerpt{margin-top:5px;font-size:.76rem;line-height:1.4}.before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:9px 0}.titlebox{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px}textarea{width:100%;min-height:160px;line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.saved-card{border:2px solid var(--ok);box-shadow:0 0 0 3px rgba(43,116,80,.08)}.applied-state{margin-top:10px;background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px;font-weight:750}.warn{background:#fff0ca;color:#745200;padding:5px 8px;border-radius:999px;font-size:.67rem;font-weight:800}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:rgba(244,240,231,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
@@ -15,26 +15,27 @@
 .autosave-dot{width:8px;height:8px;border-radius:50%;background:#2b7450}
 .autosave-banner.saving{background:#fff6dc;color:#765500}.autosave-banner.saving .autosave-dot{background:#c78a1c}
 
-</style></head><body><main><nav class="platform-nav">
+</style><link rel="stylesheet" href="/platform-ui.css">
+</head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
-<a href="/knowledge-studio.html">Knowledge Studio</a>
-<a href="/knowledge-review.html">Review Center</a>
-<a href="/knowledge-architect.html">Knowledge Architect</a>
-<a href="/brand-studio.html">Brand Studio</a>
-<a href="/page-studio.html">Page Studio</a>
-<a href="/asset-studio.html">Asset Studio</a>
+<a href="/knowledge-studio.html">Viden</a>
+<a href="/knowledge-review.html">Godkend forslag</a>
+<a href="/knowledge-architect.html">Struktur og oprydning</a>
+<a href="/brand-studio.html">Stil og tone</a>
+<a href="/page-studio.html">Hjemmesiden</a>
+<a href="/asset-studio.html">Billeder</a>
 <a href="/photo-missions.html">Foto-manus</a>
 <a href="/asset-brief.html">Billedplan</a>
-<a href="/ai-test-runner.html">Test Center</a>
-<a href="/knowledge-debug.html">Debug Center</a>
+<a href="/ai-test-runner.html">Kvalitetstjek</a>
+<a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav><section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.69</strong></div>
-<div><span>Build</span><strong>2026-07-24 14:00</strong></div>
-<div><span>Worker</span><strong>11.9-ai-description-review</strong></div>
+<div><span>Release</span><strong>v2026.07.24.70</strong></div>
+<div><span>Build</span><strong>2026-07-24 16:00</strong></div>
+<div><span>Worker</span><strong>12.0-mission-control-ux</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
 <div><span>Lokale ændringer</span><strong data-release-changes>–</strong></div>
-</section><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar Knowledge Architect</h1><p class="lead">Relaterede dubletter og overlap samles nu i én gruppe. Du tager derfor kun stilling én gang, også når fire eller flere objekter hænger sammen.</p>
+</section><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div><h1>Casa Amar Struktur og oprydning</h1><p class="lead">Relaterede dubletter og overlap samles nu i én gruppe. Du tager derfor kun stilling én gang, også når fire eller flere objekter hænger sammen.</p>
 <section class="panel"><div class="filters"><select id="type"><option value="">Alle problemer</option><option value="duplicate_title">Identiske titler</option><option value="duplicate_id">Identiske ID’er</option><option value="overlap">Stærkt overlap</option><option value="vague">Uklare titler</option></select><input id="search" placeholder="Søg"><button id="refresh">Analysér igen</button><button id="showResolved">Vis behandlede grupper igen</button></div><div id="message"></div><div id="issues"></div></section>
 <script>
 const q=s=>document.querySelector(s),KEY='casaKnowledgeChanges';let data={cards:[]},changes=[],issues=[],resolvedClusters=new Set(JSON.parse(localStorage.getItem('casaResolvedArchitectClusters')||'[]'));const clone=v=>JSON.parse(JSON.stringify(v));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9æøå]+/g,' ').trim();
@@ -153,7 +154,7 @@ function rename(k,title,button){
    button.textContent=`✓ Titlen “${title}” er gemt som draft`;
    button.closest('.issue')?.classList.add('saved-card');
  }
- q('#message').innerHTML=`<p class="success">Titlen <strong>${esc(title)}</strong> er gemt som draft og kan godkendes i Review Center.</p>`;
+ q('#message').innerHTML=`<p class="success">Titlen <strong>${esc(title)}</strong> er gemt som draft og kan godkendes i Godkend forslag.</p>`;
 }
 function slug(s){return norm(s).replace(/\s+/g,'-')||`merged-${Date.now()}`}
 function mergeIssue(n,mode='draft'){
@@ -198,7 +199,7 @@ function mergeIssue(n,mode='draft'){
     maturity:'verified',
     lifecycle:{live_status:'live',has_draft:false,last_published_at:new Date().toISOString()},
     test_state:{status:'needs_test',last_changed_at:new Date().toISOString()},
-    editorial:{review_state:'approved',reviewed_by:'Michael',reviewed_at:new Date().toISOString(),notes:'Merged and approved in Knowledge Architect'},
+    editorial:{review_state:'approved',reviewed_by:'Michael',reviewed_at:new Date().toISOString(),notes:'Merged and approved in Struktur og oprydning'},
     relations:{related:[],supersedes:sources.map(s=>s.id),superseded_by:[]},
     assets:[],
     __key:`${id}::new`
@@ -234,7 +235,7 @@ function mergeIssue(n,mode='draft'){
     lifecycle:{live_status:'draft_only',has_draft:true},
     draft_version:{...draftFrom(it.cards[0],title,summary),merge_sources:sources},
     test_state:{status:'needs_test',last_changed_at:new Date().toISOString()},
-    editorial:{review_state:'needs_review',notes:'Merge draft created by Knowledge Architect'},
+    editorial:{review_state:'needs_review',notes:'Merge draft created by Struktur og oprydning'},
     relations:{related:[],supersedes:sources.map(s=>s.id),superseded_by:[]},
     assets:[],
     __key:`${id}::new`
@@ -248,7 +249,7 @@ function mergeIssue(n,mode='draft'){
    }
    resolvedClusters.add(it.cluster_key||'');
    localStorage.setItem('casaResolvedArchitectClusters',JSON.stringify([...resolvedClusters]));
-   q('#message').innerHTML=`<p class="success">Hele gruppen er behandlet én gang og skjules nu fra listen. Draften <strong>${esc(title)}</strong> kan godkendes i Review Center.</p>`;
+   q('#message').innerHTML=`<p class="success">Hele gruppen er behandlet én gang og skjules nu fra listen. Draften <strong>${esc(title)}</strong> kan godkendes i Godkend forslag.</p>`;
    setTimeout(render,650);
   }
 
@@ -279,4 +280,5 @@ q('#showResolved').onclick=()=>{resolvedClusters.clear();localStorage.removeItem
  document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
 })();
 
-</script></main></body></html>
+</script></main><script src="/platform-shell.js"></script>
+</body></html>
