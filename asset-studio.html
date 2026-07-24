@@ -11,7 +11,7 @@ h1,h2,h3{font-family:Georgia,serif}.lead{max-width:900px;color:var(--muted);line
 input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:90px}
 .asset-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.asset{background:#fff;border-radius:14px;padding:12px;border:1px solid var(--line)}.asset-preview{height:160px;border-radius:11px;background:#e8e2d8;display:grid;place-items:center;color:var(--muted);overflow:hidden}.asset-preview img{width:100%;height:100%;object-fit:cover}
 .badge{display:inline-block;padding:4px 7px;border-radius:999px;background:#edf2ef;font-size:.65rem;margin:2px}.locked{background:#fff0ca;color:#745200}.suggestion{background:#e9edf7;color:#31486d}.usage{background:#e1f1e7;color:#265f42}
-.meta{font-size:.72rem;color:var(--muted);line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+.meta{font-size:.72rem;color:var(--muted);line-height:1.45}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}.working{background:#eaf0f7;color:#28445f;padding:10px;border-radius:10px}.spinner{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:7px}@keyframes spin{to{transform:rotate(360deg)}}button[disabled]{opacity:.58;cursor:wait}.operation-log{margin-top:8px;padding:9px;background:#f7f4ef;border-radius:10px;max-height:170px;overflow:auto;font-size:.72rem;line-height:1.45}.operation-log div{padding:3px 0;border-bottom:1px solid #ebe4da}.operation-log div:last-child{border-bottom:0}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
 @media(max-width:900px){.grid,.asset-list{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid,.asset-list{grid-template-columns:1fr}}
 </style></head><body><main><nav class="platform-nav">
@@ -28,7 +28,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.62 · Asset relation model 1.0</p>
+<p class="meta">Release v2026.07.24.63 · Asset relation model 1.0</p>
 <h1>Asset Studio</h1>
 <p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
 
@@ -56,6 +56,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 </div>
 <div id="message"></div>
 <div id="queueStatus" class="meta"></div>
+<div id="operationState" class="operation-log" hidden></div>
 <div style="height:10px;background:#e8e2d8;border-radius:999px;overflow:hidden;margin-top:8px"><div id="queueBar" style="height:100%;width:0;background:#2b7450"></div></div>
 </section>
 
@@ -138,6 +139,15 @@ function setQueueProgress(done,total,label){
  q('#queueBar').style.width=total?`${Math.round(done/total*100)}%`:'0%';
  q('#queueStatus').textContent=`${label} · ${done}/${total}`;
 }
+
+let activeOperation=null;
+function setBusy(operation,label,buttons=[]){
+ activeOperation=operation; const state=q('#operationState'); state.hidden=false;
+ state.innerHTML=`<div><span class="spinner"></span><strong>${label}</strong></div><div>Afvent – siden arbejder stadig. Luk ikke fanen.</div>`;
+ buttons.forEach(id=>{const el=q('#'+id);if(el)el.disabled=true});
+}
+function appendOperation(message){const state=q('#operationState');state.hidden=false;state.insertAdjacentHTML('beforeend',`<div>${esc(message)}</div>`);state.scrollTop=state.scrollHeight;}
+function finishBusy(message,success=true,buttons=[]){activeOperation=null;const state=q('#operationState');state.hidden=false;state.innerHTML=`<div><strong>${success?'✓':'⚠'} ${esc(message)}</strong></div>`;buttons.forEach(id=>{const el=q('#'+id);if(el)el.disabled=false});}
 function relationCount(asset,type){
  const rel=asset.relations||{};
  if(type==='manual')return (rel.manual_links||[]).length;
@@ -204,10 +214,12 @@ q('#registerAssets').onclick=()=>{
 };
 
 q('#importManifest').onclick=()=>{
+ setBusy('manifest-import','Importerer eksisterende hjemmesidebilleder…',['importManifest','registerAssets']);
  const known=new Set((library.assets||[]).map(a=>a.source?.original_path));
  const missing=(manifest?.assets||[]).filter(item=>!known.has(item.path));
  missing.forEach(item=>library.assets.push(assetFromManifest(item)));
  saveLocal();
+ finishBusy(`${missing.length} billeder importeret. ${manifest.assets.length-missing.length} fandtes allerede.`,true,['importManifest','registerAssets']);
  q('#message').innerHTML=`<p class="success">${missing.length} eksisterende billeder importeret. ${manifest.assets.length-missing.length} fandtes allerede.</p>`;
 };
 async function analyzeAsset(asset){
@@ -237,21 +249,25 @@ async function analyzeAsset(asset){
 async function analyzeQueue(forceAll=false){
  const candidates=(library.assets||[]).filter(a=>forceAll||a.analysis_queue?.visual_status!=='analyzed'||a.analysis_queue?.visual_analysis_version!==VISUAL_VERSION);
  if(!candidates.length){q('#message').innerHTML='<p class="success">Alle billeder har den aktuelle visuelle analyse.</p>';return}
- q('#analyzePending').disabled=true;q('#reanalyzeAll').disabled=true;
+ const controls=['analyzePending','reanalyzeAll','scanRelations','autoSync','importManifest','registerAssets'];
+ setBusy('visual-analysis',`Analyserer ${candidates.length} billeder…`,controls);
  let done=0,failed=0;setQueueProgress(0,candidates.length,'Visuel analyse');
+ appendOperation('Billeder analyseres ét ad gangen for at undgå overbelastning.');
  for(const asset of candidates){
+  appendOperation(`Starter ${asset.source?.filename||asset.id}…`);
   try{
    asset.analysis_queue.visual_reason=forceAll?'Manual full reanalysis':asset.analysis_queue.visual_reason||'Pending or version changed';
    await analyzeAsset(asset);
+   appendOperation(`✓ ${asset.source?.filename||asset.id} analyseret.`);
   }catch(error){
    failed++;asset.analysis_queue.visual_status='failed';asset.analysis_queue.retry_count=(asset.analysis_queue.retry_count||0)+1;asset.analysis_queue.last_error=error.message;
+   appendOperation(`⚠ ${asset.source?.filename||asset.id} fejlede: ${error.message}`);
   }
   done++;saveLocal();setQueueProgress(done,candidates.length,'Visuel analyse');
   await new Promise(r=>setTimeout(r,2500));
  }
- q('#analyzePending').disabled=false;q('#reanalyzeAll').disabled=false;
  q('#message').innerHTML=`<p class="${failed?'notice':'success'}">${done-failed} billeder analyseret. ${failed} fejlede og kan prøves igen.</p>`;
- if(done-failed>0)await scanRelationsViaWorker('visual_analysis_completed');
+ if(done-failed>0){appendOperation('Den visuelle analyse er færdig. Starter automatisk relation scan…');await scanRelationsViaWorker('visual_analysis_completed');}else{finishBusy(`Analyse afsluttet. ${failed} billeder fejlede.`,failed===0,controls);}
 }
 async function analyzeSingle(id,button){
  const asset=library.assets.find(a=>a.id===id);if(!asset)return;
@@ -284,7 +300,11 @@ function scoreAssetToKnowledge(asset,obj){
 }
 async function scanRelationsViaWorker(reason='manual'){
  const assets=library.assets||[];
- setQueueProgress(0,1,'Relation scan');
+ const controls=['scanRelations','autoSync','analyzePending','reanalyzeAll','importManifest','registerAssets'];
+ setBusy('relation-scan',`Genberegner AI-relationer for ${assets.length} billeder…`,controls);
+ setQueueProgress(0,Math.max(1,assets.length),'Relation scan');
+ appendOperation('Henter den aktuelle Knowledge Base og sammenligner billedernes labels.');
+ appendOperation('Manuelle links, låsninger og aktuel brug bevares.');
  const response=await fetch('/api/asset-relation-scan',{
   method:'POST',
   headers:{'content-type':'application/json','accept':'application/json'},
@@ -294,7 +314,11 @@ async function scanRelationsViaWorker(reason='manual'){
  try{result=JSON.parse(raw)}catch{throw new Error(`Relation endpoint returnerede ikke JSON (${response.status})`)}
  if(!response.ok)throw new Error(result.error||result.detail||'Relation scan fejlede');
  const now=new Date().toISOString();
+ let processed=0;
  for(const item of result.suggestions||[]){
+  processed++;
+  setQueueProgress(processed,Math.max(1,result.suggestions.length),'Relation scan');
+  appendOperation(`Behandler ${item.asset_id}: ${(item.matches||[]).length} forslag fundet.`);
   const asset=assets.find(a=>a.id===item.asset_id);if(!asset)continue;
   asset.relations.ai_matches=item.matches||[];
   asset.analysis_queue.relation_status='current';
@@ -305,12 +329,13 @@ async function scanRelationsViaWorker(reason='manual'){
  registry.relations=assets.flatMap(asset=>(asset.relations.ai_matches||[]).map(rel=>({asset_id:asset.id,...rel})));
  registry.last_scan=now;registry.scan_reason=reason;
  registry.platform_signature=platformSignature;
- saveLocal();setQueueProgress(1,1,'Relation scan');
+ saveLocal();setQueueProgress(Math.max(1,assets.length),Math.max(1,assets.length),'Relation scan');
+ finishBusy(`Relation scan færdig. ${result.scanned_assets} billeder blev kontrolleret mod ${result.scanned_knowledge_objects} Knowledge Objects.`,true,controls);
  return result;
 }
 q('#scanRelations').onclick=async()=>{
  try{const result=await scanRelationsViaWorker('manual_scan');q('#message').innerHTML=`<p class="success">Relation scan gennemført for ${result.scanned_assets} assets mod ${result.scanned_knowledge_objects} Knowledge Objects. Manuelle og låste relationer er bevaret.</p>`}
- catch(error){q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`}
+ catch(error){finishBusy(`Relation scan stoppede: ${error.message}`,false,['scanRelations','autoSync','analyzePending','reanalyzeAll','importManifest','registerAssets']);q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`;}
 };
 async function scheduleAutomaticWork(){
  const imported=(manifest?.assets||[]).filter(item=>!(library.assets||[]).some(a=>a.source?.original_path===item.path));
@@ -322,6 +347,7 @@ async function scheduleAutomaticWork(){
   previous.campaign_signature!==platformSignature.campaign_signature
  );
  if(changed){
+  appendOperation('Ændringer er fundet. Relationerne markeres som forældede og genberegnes nu.');
   for(const asset of library.assets||[]){
    asset.analysis_queue.relation_status='pending';
    asset.analysis_queue.relation_reason='Knowledge, page or campaign structure changed.';
@@ -331,12 +357,17 @@ async function scheduleAutomaticWork(){
  }
 }
 q('#autoSync').onclick=async()=>{
+ const controls=['autoSync','scanRelations','analyzePending','reanalyzeAll','importManifest','registerAssets'];
+ setBusy('change-check','Kontrollerer ændringer i Knowledge, sider og kampagner…',controls);
+ appendOperation('Beregner ny platformsignatur.');
  try{
   platformSignature=await fetch('/api/platform-signature',{cache:'no-store'}).then(r=>r.json());
+  appendOperation(`Knowledge Objects fundet: ${platformSignature.knowledge_count||0}.`);
   await scheduleAutomaticWork();
   const counts=queueCounts();
+  finishBusy(`Kontrol gennemført. ${counts.visual} visuelle analyser og ${counts.relations} relation scans afventer.`,true,controls);
   q('#message').innerHTML=`<p class="success">Kontrol gennemført. ${counts.visual} visuelle analyser og ${counts.relations} relation scans afventer.</p>`;
- }catch(error){q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`}
+ }catch(error){finishBusy(`Kontrollen fejlede: ${error.message}`,false,controls);q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`;}
 };
 async function downloadJson(name,data){
  const text=JSON.stringify(data,null,2);

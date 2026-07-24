@@ -1,32 +1,9 @@
-release: v2026.07.24.62 — automatic asset import, analysis queue and relabeling
+release: v2026.07.24.63 — visible progress and wait-state feedback in Asset Studio
 
-Existing images
-- Generated asset-manifest.json from the 16 image paths referenced by the current website.
-- asset-library.json is prefilled with those current website images.
-- Asset Studio can import any future manifest images not yet registered.
+- Immediate working state, spinner, progress bar and live operation log.
+- Buttons disabled while long-running operations are active.
+- Relation scan logs each asset and completion.
+- Visual analysis logs each image, success and failure.
+- Change checks explain what is being inspected.
 
-Visual analysis queue
-- Added POST /api/asset-analyze using multimodal AI.
-- Analyzes scene, objects, mood, season, audiences, campaigns, quality,
-  format, suggested uses and improvement notes.
-- Processes pending images sequentially with progress and retry state.
-- Supports single-image reanalysis and full-library reanalysis.
-- Previous AI profiles are retained in analysis history.
-
-Automatic relabeling and relation updates
-- Visual reanalysis is triggered by new assets, analysis-version changes
-  or a manual request.
-- Relation scans are triggered by changes to Knowledge Objects, page
-  structure, campaigns or asset labels.
-- Added GET /api/platform-signature to detect those changes.
-- Only AI suggestions are replaced.
-- Manual labels, manual links, current usage and locked placements remain intact.
-
-Files
-- asset-manifest.json
-- asset-library.json v1.1
-- asset-model.json v1.1
-- Asset Studio queue controls and status
-
-Release: v2026.07.24.62
-Worker: 11.2-asset-analysis-queue
+Worker: 11.3-asset-progress-feedback
