@@ -1,16 +1,22 @@
-fix(page-generator): automatically repair malformed full-page AI output
+release: v2026.07.24.60 — confidence and knowledge-gap engine
 
-Problem
-- Full-page generation still stopped when OpenAI returned an output shape
-  that could not be parsed exactly.
+Page Studio
+- Confidence score per section.
+- Subscores for factual safety, brand fit, website fit and knowledge coverage.
+- Clear reasons behind every score.
+- Quality summary across the complete homepage.
+- Low-confidence sections can propose one or more concrete Knowledge Objects.
 
-Fix
-- Added automatic AI format-repair pass.
-- Added deterministic fallback preserving current website content.
-- Page generation no longer hard-fails with "ugyldigt sideformat".
-- Existing content remains available even if the repair pass fails.
-- Page Studio reports when output was automatically repaired.
+Knowledge gaps
+- "Opret som AI-foreslået draft" creates a draft object in the local workspace.
+- Draft stores:
+  - why it was created
+  - which Page Studio section triggered it
+  - what information Michael needs to add
+  - priority
+- AI must not invent missing facts.
 
-Release
-- v2026.07.24.59
-- Worker 10.9-page-output-repair
+Worker
+- Full-page schema includes confidence and gap recommendations.
+- Added POST /api/knowledge-gap-draft.
+- Worker: 11.0-confidence-gap-engine

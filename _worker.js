@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "10.9-page-output-repair",
+      version: "11.0-confidence-gap-engine",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1116,11 +1116,34 @@ ${rawText}`
                       }
                     },
                     knowledge_sources: { type: "array", items: { type: "string" } },
-                    image_brief: { type: "array", items: { type: "string" } }
+                    image_brief: { type: "array", items: { type: "string" } },
+                    confidence: { type: "integer" },
+                    factual_confidence: { type: "integer" },
+                    brand_fit: { type: "integer" },
+                    website_fit: { type: "integer" },
+                    knowledge_coverage: { type: "integer" },
+                    confidence_reasons: { type: "array", items: { type: "string" } },
+                    gap_recommendations: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          title: { type: "string" },
+                          category: { type: "string" },
+                          reason: { type: "string" },
+                          requested_information: { type: "array", items: { type: "string" } },
+                          priority: { type: "string" }
+                        },
+                        required: ["title","category","reason","requested_information","priority"]
+                      }
+                    }
                   },
                   required: [
                     "id","headline","body","cta_label",
-                    "cards","items","knowledge_sources","image_brief"
+                    "cards","items","knowledge_sources","image_brief",
+                    "confidence","factual_confidence","brand_fit","website_fit",
+                    "knowledge_coverage","confidence_reasons","gap_recommendations"
                   ]
                 }
               }
@@ -1158,10 +1181,92 @@ function deterministicPageFallback(page, pageContracts, currentContent) {
         cards: normalized.cards || [],
         items: normalized.items || [],
         knowledge_sources: old.knowledge_sources || [],
-        image_brief: normalized.image_brief || []
+        image_brief: normalized.image_brief || [],
+        confidence: 45,
+        factual_confidence: 45,
+        brand_fit: 70,
+        website_fit: 60,
+        knowledge_coverage: 40,
+        confidence_reasons: ["Eksisterende tekst er bevaret, men AI-outputtet kunne ikke kvalitetsvurderes sikkert."],
+        gap_recommendations: [{
+          title: `Knowledge gap: ${definition.id}`,
+          category: definition.id,
+          reason: "Sektionen kunne ikke understøttes eller vurderes sikkert fra den aktuelle Knowledge Base.",
+          requested_information: ["Gennemgå og tilføj de konkrete fakta, som sektionen skal bygge på."],
+          priority: "medium"
+        }]
       };
     })
   };
+}
+
+
+async function handleKnowledgeGapDraft(request) {
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig forespørgsel." }, 400); }
+
+  const gap = payload.gap || {};
+  const now = new Date().toISOString();
+  const id = `ai-gap-${String(gap.title || payload.section_id || "knowledge").toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-${Date.now().toString().slice(-6)}`;
+
+  const card = {
+    id,
+    title: gap.title || `Knowledge gap: ${payload.section_id || "website"}`,
+    category: gap.category || "AI foreslået",
+    summary: "",
+    answer: "",
+    body: "",
+    content: "",
+    keywords: [],
+    visibility: "internal",
+    trust: 0,
+    status: "draft",
+    maturity: "draft",
+    owner: "Michael",
+    language: "da",
+    channels: { ai: true, website: true, guest_guide: false, owner_guide: false },
+    lifecycle: { live_status: "draft_only", has_draft: true },
+    draft_version: {
+      title: gap.title || `Knowledge gap: ${payload.section_id || "website"}`,
+      category: gap.category || "AI foreslået",
+      summary: "",
+      answer: "",
+      body: "",
+      content: "",
+      updated_at: now
+    },
+    editorial: {
+      review_state: "ai_suggested",
+      notes: gap.reason || "Oprettet automatisk på grund af lav confidence i Page Studio."
+    },
+    ai_suggestion: {
+      source: "page_studio_confidence",
+      section_id: payload.section_id || "",
+      reason: gap.reason || "",
+      requested_information: Array.isArray(gap.requested_information) ? gap.requested_information : [],
+      priority: gap.priority || "medium",
+      created_at: now
+    },
+    test_state: { status: "needs_test", last_changed_at: now },
+    assets: [],
+    relations: { related: [], supersedes: [], superseded_by: [] },
+    updated: now.slice(0,10)
+  };
+
+  return json({
+    ok: true,
+    card,
+    change: {
+      action: "create",
+      source: "page_studio_confidence",
+      reason: gap.reason || "Lav confidence",
+      created_at: now,
+      after: card
+    }
+  });
 }
 
 async function handlePageGenerate(request, env) {
@@ -1229,9 +1334,30 @@ async function handlePageGenerate(request, env) {
         }
       },
       knowledge_sources: { type: "array", items: { type: "string" } },
-      image_brief: { type: "array", items: { type: "string" } }
+      image_brief: { type: "array", items: { type: "string" } },
+      confidence: { type: "integer", minimum: 0, maximum: 100 },
+      factual_confidence: { type: "integer", minimum: 0, maximum: 100 },
+      brand_fit: { type: "integer", minimum: 0, maximum: 100 },
+      website_fit: { type: "integer", minimum: 0, maximum: 100 },
+      knowledge_coverage: { type: "integer", minimum: 0, maximum: 100 },
+      confidence_reasons: { type: "array", items: { type: "string" } },
+      gap_recommendations: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            title: { type: "string" },
+            category: { type: "string" },
+            reason: { type: "string" },
+            requested_information: { type: "array", items: { type: "string" } },
+            priority: { type: "string", enum: ["high","medium","low"] }
+          },
+          required: ["title","category","reason","requested_information","priority"]
+        }
+      }
     },
-    required: ["id", "headline", "body", "cta_label", "cards", "items", "knowledge_sources", "image_brief"]
+    required: ["id", "headline", "body", "cta_label", "cards", "items", "knowledge_sources", "image_brief", "confidence", "factual_confidence", "brand_fit", "website_fit", "knowledge_coverage", "confidence_reasons", "gap_recommendations"]
   };
 
   const response = await fetch("https://api.openai.com/v1/responses", {
@@ -1253,6 +1379,10 @@ REGLER:
 - Følg Brand Profile og sidens kanalformål.
 - Følg hver sektions formål og dens COMPONENT CONTRACT.
 - Udfyld ALLE felter, som komponentkontrakten kræver. Returnér præcis det angivne antal cards eller items; ingen tomme titler eller tekster.
+- Vurder hver sektion med confidence 0-100 samt delscorer for faktuel sikkerhed, brand-fit, website-fit og knowledge-dækning.
+- Confidence må kun være høj, når teksten er tydeligt understøttet af verificerede Knowledge Objects.
+- Hvis knowledge-dækning er under 75 eller faktuel sikkerhed er under sektionens nødvendige niveau, foreslå konkrete knowledge-gap objekter.
+- Et gap-forslag skal forklare præcis hvilken information Michael skal tilføje; opfind aldrig den manglende information.
 - Ved generationMode "fill_missing": bevar alt eksisterende indhold, medmindre et felt er tomt eller komponentkontrakten kræver flere elementer.
 - Ved generationMode "improve_current": brug den nuværende hjemmeside som redaktionelt udgangspunkt. Bevar stærke formuleringer, fjern gentagelser, forbedr flowet og udfyld alle mangler.
 - Ved generationMode "complete": skriv hele siden samlet fra bunden som én ny koordineret fortælling.
@@ -1355,6 +1485,16 @@ ${JSON.stringify(knowledge)}`
         live: old.live || null,
         draft,
         knowledge_sources: Array.isArray(section.knowledge_sources) ? section.knowledge_sources : (old.knowledge_sources || []),
+        quality: {
+          confidence: Number(section.confidence || 0),
+          level: Number(section.confidence || 0) >= 85 ? "high" : Number(section.confidence || 0) >= 70 ? "medium" : "low",
+          factual_confidence: Number(section.factual_confidence || 0),
+          brand_fit: Number(section.brand_fit || 0),
+          website_fit: Number(section.website_fit || 0),
+          knowledge_coverage: Number(section.knowledge_coverage || 0),
+          reasons: Array.isArray(section.confidence_reasons) ? section.confidence_reasons : [],
+          gap_recommendations: Array.isArray(section.gap_recommendations) ? section.gap_recommendations : []
+        },
         asset_ids: old.asset_ids || [],
         last_generated: new Date().toISOString()
       };
@@ -1979,7 +2119,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "10.9-page-output-repair",
+          worker: "11.0-confidence-gap-engine",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -1987,13 +2127,21 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "10.9-page-output-repair",
+          worker: "11.0-confidence-gap-engine",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+    if (request.method === "POST" && url.pathname === "/api/knowledge-gap-draft") {
+      try {
+        return await handleKnowledgeGapDraft(request, env);
+      } catch (error) {
+        return json({ error: "Knowledge gap-draft kunne ikke oprettes.", detail: String(error?.message || error) }, 500);
+      }
+    }
 
     if (request.method === "POST" && url.pathname === "/api/page-generate") {
       try {

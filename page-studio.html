@@ -9,9 +9,16 @@ h1,h2,h3{font-family:Georgia,serif}.lead{color:var(--muted);line-height:1.5;max-
 .section-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.meta{color:var(--muted);font-size:.72rem;line-height:1.4}
 textarea,input{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:100px;line-height:1.45}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}.primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
-.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.card-editor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.mini-card{background:#f7f4ef;border-radius:10px;padding:9px}.mini-card textarea{min-height:70px}.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:10px}.operation-editor>.full{grid-column:1/-1}.quick-actions button{font-size:.72rem}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.choice-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.choice-grid span{display:block;color:var(--muted);font-size:.72rem;line-height:1.4;margin-top:4px}.completion-meter{height:12px;background:#e7e1d8;border-radius:999px;overflow:hidden;margin:12px 0 6px}.completion-meter>div{height:100%;width:0;background:#2b7450;transition:width .25s}.completion{display:inline-block;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:850}.complete{background:#e1f1e7;color:#265f42}.incomplete{background:#fff0ca;color:#745200}.field-missing{outline:2px solid #c98a37;background:#fffaf0}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.section-tools{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.section-instruction{min-height:74px}.card-editor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}.mini-card{background:#f7f4ef;border-radius:10px;padding:9px}.mini-card textarea{min-height:70px}.operation-editor{display:grid;grid-template-columns:1fr 1fr;gap:10px}.operation-editor>.full{grid-column:1/-1}.quick-actions button{font-size:.72rem}.small-note{font-size:.68rem;color:var(--muted);margin-top:5px}.success{background:#e7f4ec;color:#205c3d;padding:10px;border-radius:10px}.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.choice-grid>div{background:#f7f4ef;border-radius:10px;padding:10px}.choice-grid span{display:block;color:var(--muted);font-size:.72rem;line-height:1.4;margin-top:4px}.completion-meter{height:12px;background:#e7e1d8;border-radius:999px;overflow:hidden;margin:12px 0 6px}.completion-meter>div{height:100%;width:0;background:#2b7450;transition:width .25s}.quality-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.quality-summary>div{background:#f7f4ef;border-radius:10px;padding:10px}
+.confidence{display:inline-block;padding:5px 8px;border-radius:999px;font-size:.68rem;font-weight:850}
+.conf-high{background:#e1f1e7;color:#265f42}.conf-medium{background:#fff0ca;color:#745200}.conf-low{background:#f9dfd8;color:#8a3629}
+.reason-list{font-size:.72rem;color:var(--muted);line-height:1.45;margin:8px 0}
+.gap-box{background:#fff6dc;border-radius:10px;padding:10px;margin-top:9px}
+.gap-box button{margin-top:7px}
+.completion{display:inline-block;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:850}.complete{background:#e1f1e7;color:#265f42}.incomplete{background:#fff0ca;color:#745200}.field-missing{outline:2px solid #c98a37;background:#fffaf0}.notice{background:#fff6dc;color:#765500;padding:10px;border-radius:10px}
 .platform-nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;background:rgba(244,240,231,.96);padding:10px 0;border-bottom:1px solid var(--line)}.platform-nav a{border-radius:999px;font-size:.72rem;padding:7px 10px}
-@media(max-width:900px){.choice-grid{grid-template-columns:1fr}.story{grid-template-columns:1fr 1fr}.grid,.operation-editor,.card-editor{grid-template-columns:1fr}.operation-editor>.full{grid-column:auto}}
+@media(max-width:900px){.quality-summary{grid-template-columns:1fr 1fr}.choice-grid{grid-template-columns:1fr}.story{grid-template-columns:1fr 1fr}.grid,.operation-editor,.card-editor{grid-template-columns:1fr}.operation-editor>.full{grid-column:auto}}
 </style></head><body><main><nav class="platform-nav">
 <a href="/knowledge-center.html">Oversigt</a>
 <a href="/knowledge-studio.html">Knowledge Studio</a>
@@ -24,7 +31,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.59 · Page model 1.0 · Worker 10.9-page-output-repair</p>
+<p class="meta">Release v2026.07.24.60 · Page model 1.0 · Worker 11.0-confidence-gap-engine</p>
 <h1>Page Studio</h1>
 <p class="lead">Knowledge Studio ejer fakta. Brand Studio ejer stemmen. Page Studio ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -43,7 +50,10 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <button id="export">Gem website-content.json</button>
 <a href="/page-preview.html" target="_blank">Åbn preview</a>
 </div>
-<div class="completion-meter"><div id="completionBar"></div></div><div id="completionText" class="meta"></div><div id="status"></div><div id="technicalStatus" class="meta"></div>
+<div class="completion-meter"><div id="completionBar"></div></div>
+<div id="completionText" class="meta"></div>
+<div id="qualitySummary" class="quality-summary"></div>
+<div id="status"></div><div id="technicalStatus" class="meta"></div>
 </div>
 <div id="sections"></div>
 <script>
@@ -134,6 +144,14 @@ document.addEventListener('click',(event)=>{
    regenerateSection(regenerate.dataset.regenerate,regenerate);
    return;
  }
+
+ const gapButton=event.target.closest('[data-create-gap]');
+ if(gapButton){
+   event.preventDefault();
+   createGapDraft(gapButton.dataset.createGap,Number(gapButton.dataset.gapIndex),gapButton);
+   return;
+ }
+
  const quick=event.target.closest('[data-quick]');
  if(quick){
    event.preventDefault();
@@ -144,6 +162,38 @@ document.addEventListener('click',(event)=>{
  }
 });
 
+
+function confidenceClass(score){
+ if(score>=85)return 'conf-high';
+ if(score>=70)return 'conf-medium';
+ return 'conf-low';
+}
+function qualityFor(sectionId){
+ const stored=content.sections.find(x=>x.id===sectionId)||{};
+ return stored.quality||{
+   confidence:0,
+   level:'unknown',
+   reasons:['Sektionen er endnu ikke kvalitetsvurderet.'],
+   factual_confidence:0,
+   brand_fit:0,
+   website_fit:0,
+   knowledge_coverage:0,
+   gap_recommendations:[]
+ };
+}
+function renderQualitySummary(){
+ const target=q('#qualitySummary');if(!target)return;
+ const qualities=blueprint.pages[0].sections.map(s=>qualityFor(s.id));
+ const high=qualities.filter(x=>x.confidence>=85).length;
+ const medium=qualities.filter(x=>x.confidence>=70&&x.confidence<85).length;
+ const low=qualities.filter(x=>x.confidence<70).length;
+ const gaps=qualities.reduce((n,x)=>n+(x.gap_recommendations?.length||0),0);
+ target.innerHTML=`
+  <div><strong>${high}</strong><span class="meta">Høj confidence</span></div>
+  <div><strong>${medium}</strong><span class="meta">Middel confidence</span></div>
+  <div><strong>${low}</strong><span class="meta">Lav confidence</span></div>
+  <div><strong>${gaps}</strong><span class="meta">Foreslåede knowledge gaps</span></div>`;
+}
 function render(){
  const page=blueprint.pages[0];
  q('#story').innerHTML=page.narrative.map((x,i)=>`<div><strong>${i+1}</strong><br>${esc(x)}</div>`).join('');
@@ -152,9 +202,24 @@ function render(){
   const draft=stored.draft||{};
   const contract=components.components[section.component]||{fields:[],copy_rules:[]};
   return `<article class="section" data-id="${section.id}">
-   <div class="section-head"><div><h2>${esc(section.id)}</h2><div class="meta">${esc(contract.label||section.component)} · ${esc(section.purpose)}</div></div><span class="completion ${missingFields(section,draft).length?'incomplete':'complete'}">${missingFields(section,draft).length?`${missingFields(section,draft).length} mangler`:'Komplet'}</span></div>
+   <div class="section-head"><div><h2>${esc(section.id)}</h2><div class="meta">${esc(contract.label||section.component)} · ${esc(section.purpose)}</div></div><div><span class="completion ${missingFields(section,draft).length?'incomplete':'complete'}">${missingFields(section,draft).length?`${missingFields(section,draft).length} mangler`:'Komplet'}</span> <span class="confidence ${confidenceClass(qualityFor(section.id).confidence)}">${qualityFor(section.id).confidence||0}% confidence</span></div></div>
    <div class="operation-editor">${contract.fields.map(field=>fieldHtml(field,draft,section.id)).join('')}</div>
-   <div class="notice"><strong>Komponentregler:</strong><br>${(contract.copy_rules||[]).map(rule=>`• ${esc(rule)}`).join('<br>')}</div>
+   <div class="notice"><strong>Komponentregler:</strong><br>${(contract.copy_rules||[]).map(rule=>`• ${esc(rule)}`).join('<br>')}</div><div class="panel-quality">
+ <strong>Kvalitetsvurdering</strong>
+ <div class="reason-list">
+  Faktuel sikkerhed: ${qualityFor(section.id).factual_confidence||0}% ·
+  Brand-fit: ${qualityFor(section.id).brand_fit||0}% ·
+  Website-fit: ${qualityFor(section.id).website_fit||0}% ·
+  Knowledge-dækning: ${qualityFor(section.id).knowledge_coverage||0}%<br>
+  ${(qualityFor(section.id).reasons||[]).map(reason=>`• ${esc(reason)}`).join('<br>')}
+ </div>
+ ${(qualityFor(section.id).gap_recommendations||[]).map((gap,index)=>`
+  <div class="gap-box">
+   <strong>${esc(gap.title||'Foreslået knowledge object')}</strong>
+   <div class="meta">${esc(gap.reason||'Mangler faktagrundlag.')}</div>
+   <button data-create-gap="${section.id}" data-gap-index="${index}">Opret som AI-foreslået draft</button>
+  </div>`).join('')}
+</div>
    <div class="section-tools">
      <div class="actions quick-actions">
        <button data-quick="${section.id}" data-prompt="Gør teksten kortere og mere præcis.">Kortere</button>
@@ -170,6 +235,7 @@ function render(){
   </article>`;
  }).join('');
  markMissingFields();
+ renderQualitySummary();
  const summary=completionSummary();
  const bar=q('#completionBar'),text=q('#completionText');
  if(bar)bar.style.width=`${summary.percentage}%`;
@@ -233,7 +299,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 10.9-page-output-repair…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 11.0-confidence-gap-engine…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -281,6 +347,31 @@ function collect(){
   stored.status='draft';
  });
  content.updated=new Date().toISOString();return content;
+}
+
+async function createGapDraft(sectionId,gapIndex,button){
+ const stored=content.sections.find(x=>x.id===sectionId);
+ const gap=stored?.quality?.gap_recommendations?.[gapIndex];
+ if(!gap)return;
+ button.disabled=true;button.textContent='Opretter draft…';
+ try{
+   const response=await fetch('/api/knowledge-gap-draft',{
+     method:'POST',
+     headers:{'content-type':'application/json','accept':'application/json'},
+     body:JSON.stringify({section_id:sectionId,gap})
+   });
+   const raw=await response.text();
+   let result;try{result=JSON.parse(raw)}catch{throw new Error('API returnerede ugyldig JSON.')}
+   if(!response.ok)throw new Error(`${result.error||'Draft kunne ikke oprettes'}${result.detail?` — ${result.detail}`:''}`);
+   const local=JSON.parse(localStorage.getItem('casaKnowledgeWorkspaceChanges')||'[]');
+   local.push(result.change);
+   localStorage.setItem('casaKnowledgeWorkspaceChanges',JSON.stringify(local));
+   button.textContent='✓ Draft oprettet i workspace';
+   button.closest('.gap-box')?.classList.add('success');
+ }catch(error){
+   button.disabled=false;button.textContent='Prøv igen';
+   q('#status').innerHTML=`<p class="notice">${esc(error.message)}</p>`;
+ }
 }
 async function exportContent(){
  const text=JSON.stringify(collect(),null,2);
