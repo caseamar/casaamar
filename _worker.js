@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "11.5-github-asset-sync",
+      version: "11.6-asset-upload-manager",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1215,6 +1215,135 @@ function isAllowedAssetPath(path, settings) {
   const extensions = settings?.github?.allowed_extensions || [".jpg", ".jpeg", ".png", ".webp"];
   return roots.some((root) => normalized === root || normalized.startsWith(`${root}/`)) &&
     extensions.some((extension) => normalized.toLowerCase().endsWith(extension));
+}
+
+
+function safeUploadFilename(filename) {
+  const raw = String(filename || "image")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9._-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+  const dot = raw.lastIndexOf(".");
+  const base = (dot > 0 ? raw.slice(0, dot) : raw).toLowerCase() || "image";
+  const extension = dot > 0 ? raw.slice(dot).toLowerCase() : "";
+  return `${base}${extension}`;
+}
+
+function githubHeaders(env) {
+  const headers = {
+    "accept": "application/vnd.github+json",
+    "user-agent": "Casa-Amar-Asset-Upload",
+    "x-github-api-version": "2022-11-28"
+  };
+  if (env.GITHUB_TOKEN) headers.authorization = `Bearer ${env.GITHUB_TOKEN}`;
+  return headers;
+}
+
+async function githubPathInfo(owner, repository, path, branch, env) {
+  const endpoint = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}/contents/${path.split("/").map(encodeURIComponent).join("/")}?ref=${encodeURIComponent(branch)}`;
+  const response = await fetch(endpoint, { headers: githubHeaders(env) });
+  if (response.status === 404) return null;
+  const result = await response.json();
+  if (!response.ok) throw new Error(result?.message || `GitHub path check failed (${response.status})`);
+  return result;
+}
+
+async function uniqueGithubPath(owner, repository, root, filename, branch, env) {
+  const normalized = safeUploadFilename(filename);
+  const dot = normalized.lastIndexOf(".");
+  const base = dot > 0 ? normalized.slice(0, dot) : normalized;
+  const extension = dot > 0 ? normalized.slice(dot) : "";
+  let candidate = `${root.replace(/\/+$/, "")}/${normalized}`;
+  let sequence = 2;
+  while (await githubPathInfo(owner, repository, candidate, branch, env)) {
+    candidate = `${root.replace(/\/+$/, "")}/${base}-${sequence++}${extension}`;
+    if (sequence > 999) throw new Error("Kunne ikke finde et ledigt filnavn.");
+  }
+  return candidate;
+}
+
+async function handleGithubAssetUploadStatus(request, env) {
+  const settings = await assetJson(env, request, "/asset-sync-settings.json");
+  return json({
+    ok: true,
+    configured: Boolean(env.GITHUB_TOKEN),
+    repository: `${settings.github?.owner || ""}/${settings.github?.repository || ""}`,
+    branch: settings.github?.branch || "main",
+    upload_root: settings.github?.managed_upload_root || "images/library",
+    max_upload_bytes: settings.github?.max_upload_bytes || 20971520
+  });
+}
+
+async function handleGithubAssetUpload(request, env) {
+  if (!env.GITHUB_TOKEN) {
+    return json({
+      error: "Direkte upload er ikke aktiveret.",
+      detail: "Tilføj Cloudflare-secret GITHUB_TOKEN med write-adgang til repository contents."
+    }, 503);
+  }
+
+  let payload;
+  try { payload = await request.json(); }
+  catch { return json({ error: "Ugyldig uploadforespørgsel." }, 400); }
+
+  const settings = await assetJson(env, request, "/asset-sync-settings.json");
+  const github = settings.github || {};
+  const owner = github.owner;
+  const repository = github.repository;
+  const branch = github.branch || "main";
+  const uploadRoot = github.managed_upload_root || "images/library";
+  const maxBytes = github.max_upload_bytes || 20971520;
+
+  const filename = safeUploadFilename(payload.filename);
+  const contentBase64 = String(payload.content_base64 || "").replace(/^data:[^;]+;base64,/, "");
+  const estimatedBytes = Math.floor(contentBase64.length * 0.75);
+  if (!filename || !contentBase64) return json({ error: "Filnavn eller filindhold mangler." }, 400);
+  if (estimatedBytes > maxBytes) return json({ error: `Filen er større end ${Math.round(maxBytes / 1048576)} MB.` }, 413);
+
+  let path;
+  let existingSha = null;
+  if (payload.replace_path) {
+    path = String(payload.replace_path).replace(/^\/+/, "");
+    const existing = await githubPathInfo(owner, repository, path, branch, env);
+    if (!existing?.sha) return json({ error: "Den valgte fil til erstatning findes ikke længere." }, 409);
+    existingSha = existing.sha;
+  } else {
+    path = await uniqueGithubPath(owner, repository, uploadRoot, filename, branch, env);
+  }
+
+  const endpoint = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}/contents/${path.split("/").map(encodeURIComponent).join("/")}`;
+  const body = {
+    message: payload.replace_path
+      ? `Replace asset ${path} via Asset Studio`
+      : `Upload asset ${path} via Asset Studio`,
+    content: contentBase64,
+    branch
+  };
+  if (existingSha) body.sha = existingSha;
+
+  const response = await fetch(endpoint, {
+    method: "PUT",
+    headers: { ...githubHeaders(env), "content-type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    return json({
+      error: result?.message || "Billedet kunne ikke uploades til GitHub.",
+      status: response.status
+    }, response.status);
+  }
+
+  return json({
+    ok: true,
+    path,
+    filename: path.split("/").pop(),
+    github_sha: result?.content?.sha || null,
+    commit_sha: result?.commit?.sha || null,
+    replaced: Boolean(existingSha),
+    uploaded_at: new Date().toISOString()
+  });
 }
 
 async function handleGithubAssetInventory(request, env) {
@@ -2512,7 +2641,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "11.5-github-asset-sync",
+          worker: "11.6-asset-upload-manager",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2520,13 +2649,29 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "11.5-github-asset-sync",
+          worker: "11.6-asset-upload-manager",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+    if (request.method === "GET" && url.pathname === "/api/github-upload-status") {
+      try {
+        return await handleGithubAssetUploadStatus(request, env);
+      } catch (error) {
+        return json({ error: "Uploadstatus kunne ikke læses.", detail: String(error?.message || error) }, 500);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/github-asset-upload") {
+      try {
+        return await handleGithubAssetUpload(request, env);
+      } catch (error) {
+        return json({ error: "Billedet kunne ikke uploades.", detail: String(error?.message || error) }, 500);
+      }
+    }
 
     if (request.method === "GET" && url.pathname === "/api/github-asset-inventory") {
       try {

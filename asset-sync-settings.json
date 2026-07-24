@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-07-24",
   "github": {
     "owner": "caseamar",
@@ -16,7 +16,9 @@
       ".webp",
       ".gif",
       ".avif"
-    ]
+    ],
+    "managed_upload_root": "images/library",
+    "max_upload_bytes": 20971520
   },
   "sync_rules": {
     "new_file": "Create a pending Asset Object and queue visual analysis.",
@@ -25,5 +27,24 @@
     "missing_file": "Mark source_missing. Never delete automatically.",
     "missing_but_in_use": "Block archive until replacement or explicit owner decision.",
     "delete_asset_object": "Only after explicit manual confirmation and only when no locked/current usage remains."
+  },
+  "upload_manager": {
+    "workflow": [
+      "Select or drag images into Asset Studio.",
+      "Review file names and optional common description.",
+      "Upload directly to GitHub managed folder.",
+      "Synchronize Asset Library.",
+      "Analyze new images.",
+      "Recalculate dynamic relations."
+    ],
+    "collision_policy": "Never overwrite silently. Generate a unique filename unless replacement is explicitly selected.",
+    "supported_types": [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/gif",
+      "image/avif"
+    ],
+    "github_token_requirement": "Cloudflare secret GITHUB_TOKEN with repository contents write permission."
   }
 }

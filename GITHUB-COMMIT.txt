@@ -1,27 +1,22 @@
-release: v2026.07.24.65 — scalable GitHub Asset Sync Engine
+release: v2026.07.24.66 — direct Asset Upload Manager
 
-GitHub is now the master source for image files.
+Asset Studio
+- Users can drag or select images directly in Asset Studio.
+- Optional shared context and season can be supplied before upload.
+- New images upload directly to GitHub under images/library.
+- Upload automatically triggers GitHub sync, Asset Object creation,
+  visual analysis and relation recalculation.
+- Filename collisions never overwrite silently.
+- Explicit replacement mode preserves the existing asset identity,
+  manual metadata and relations while queuing visual reanalysis.
 
-Sync engine
-- Recursively scans all supported images under images/ and subfolders.
-- Compares GitHub blob SHA and path with Asset Library.
-- Detects:
-  - new files
-  - moved/renamed files
-  - replaced file content
-  - deleted/missing files
-- Move/rename preserves Asset Object, AI analysis and relations.
-- Replacement preserves manual metadata and relations, then queues reanalysis.
-- Deletion never removes an Asset Object automatically.
-- Missing files still in use or locked become replacement_required.
-
-Upload workflow
-- New permanent files go to images/library/.
-- Asset Studio provides a direct GitHub folder link.
-- Sync review is shown before changes are applied.
+Security
+- Upload requires Cloudflare secret GITHUB_TOKEN.
+- Token is used only server-side in _worker.js.
+- No token is exposed to the browser or repository files.
 
 Testing
-- Added TEST-KERNEFUNKTIONER.md with six concrete tests.
+- Added TEST-ASSET-UPLOAD-MANAGER.md.
 
-Release: v2026.07.24.65
-Worker: 11.5-github-asset-sync
+Release: v2026.07.24.66
+Worker: 11.6-asset-upload-manager

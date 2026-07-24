@@ -9,6 +9,7 @@ h1,h2,h3{font-family:Georgia,serif}.lead{max-width:900px;color:var(--muted);line
 .actions{display:flex;gap:8px;flex-wrap:wrap}button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:750;text-decoration:none;cursor:pointer}
 .primary{background:var(--clay);border-color:var(--clay);color:#fff}.good{background:var(--ok);border-color:var(--ok);color:#fff}
 input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;padding:10px;font:inherit}textarea{min-height:90px}
+.upload-dropzone{border:2px dashed #b9afa2;border-radius:14px;padding:28px;text-align:center;background:#faf8f4;cursor:pointer;margin:12px 0}.upload-dropzone.dragover{border-color:#2b7450;background:#edf6f1}.upload-dropzone strong,.upload-dropzone span{display:block}.upload-dropzone span{margin-top:5px;color:var(--muted);font-size:.78rem}.upload-queue{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}.upload-item{display:grid;grid-template-columns:58px 1fr auto;gap:9px;align-items:center;background:#f7f4ef;border-radius:10px;padding:8px}.upload-thumb{width:58px;height:48px;border-radius:7px;object-fit:cover;background:#ddd}.upload-item input{padding:6px}.upload-state{font-size:.68rem;color:var(--muted)}@media(max-width:760px){.upload-queue{grid-template-columns:1fr}}
 .sync-change{background:#f7f4ef;border-radius:11px;padding:10px;margin:8px 0}.sync-change.missing{border-left:5px solid #bc6245}.sync-change.safe{border-left:5px solid #2b7450}.sync-change.warn{border-left:5px solid #c78a1c}.sync-change label{display:flex;gap:8px;align-items:start}.sync-change input{width:auto;margin-top:3px}
 .asset-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.asset{background:#fff;border-radius:14px;padding:12px;border:1px solid var(--line)}.asset-preview{height:160px;border-radius:11px;background:#e8e2d8;display:grid;place-items:center;color:var(--muted);overflow:hidden}.asset-preview img{width:100%;height:100%;object-fit:cover}
 .badge{display:inline-block;padding:4px 7px;border-radius:999px;background:#edf2ef;font-size:.65rem;margin:2px}.locked{background:#fff0ca;color:#745200}.suggestion{background:#e9edf7;color:#31486d}.usage{background:#e1f1e7;color:#265f42}
@@ -34,7 +35,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <a href="/knowledge-debug.html">Debug Center</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.65 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.66 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Asset Studio</h1>
 <p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Knowledge Objects, sider eller kampagner oprettes.</p>
 
@@ -52,20 +53,56 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 </section>
 
 <section class="panel">
-<h2>GitHub-billedbibliotek</h2>
-<p class="meta">GitHub er master for selve billedfilerne. Upload nye billeder til <code>images/library/</code>. Asset Studio finder automatisk nye, flyttede, udskiftede og slettede filer og bevarer godkendte relationer.</p>
-<div class="actions">
-<input id="assetFiles" type="file" accept="image/*,video/*" multiple style="max-width:520px" title="Kun til midlertidig lokal registrering. Upload permanente filer til GitHub først.">
-<button id="registerAssets">Registrér midlertidigt lokalt</button>
-<button class="primary" id="syncGithub">Synkronisér hele GitHub-biblioteket</button>
-<a href="https://github.com/caseamar/casaamar/tree/main/images" target="_blank" rel="noopener">Åbn billedmappen i GitHub</a>
-<button id="importManifest">Importer manifest-backup</button>
-<button class="good" id="analyzePending">Analyser ikke-analyserede billeder</button>
-<button id="reanalyzeAll">Genanalysér alle billeder</button>
-<button id="scanRelations">Genberegn AI-relationer</button><button id="autoSync">Kontrollér ændringer nu</button>
+<h2>Tilføj billeder til Casa Amar</h2>
+<p class="meta">Vælg eller træk billeder ind her. Asset Studio uploader dem til det administrerede GitHub-bibliotek, synkroniserer Asset Objects, analyserer billederne og opdaterer relationerne.</p>
 
-
+<div id="uploadDropzone" class="upload-dropzone" tabindex="0">
+<strong>Træk billeder hertil</strong>
+<span>eller klik for at vælge filer</span>
+<input id="assetFiles" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple hidden>
 </div>
+
+<div id="uploadManager" hidden>
+<div class="grid">
+<label>Fælles beskrivelse (valgfri)
+<textarea id="uploadDescription" placeholder="Fx: Nye billeder af tagterrassen efter ombygningen."></textarea>
+</label>
+<label>Fælles sæson
+<select id="uploadSeason">
+<option value="">AI foreslår</option>
+<option value="all-season">Hele året</option>
+<option value="spring">Forår</option>
+<option value="summer">Sommer</option>
+<option value="autumn">Efterår</option>
+<option value="winter">Vinter</option>
+</select>
+</label>
+<label>Behandling
+<select id="uploadMode">
+<option value="new">Tilføj som nye billeder</option>
+<option value="replace">Erstat ét eksisterende billede</option>
+</select>
+</label>
+<label id="replaceAssetLabel" hidden>Vælg billede der skal erstattes
+<select id="replaceAsset"></select>
+</label>
+</div>
+<div id="uploadQueue" class="upload-queue"></div>
+<div class="actions">
+<button class="primary" id="uploadSelected">Upload og behandl billeder</button>
+<button id="clearUploadQueue">Ryd valgte filer</button>
+</div>
+</div>
+
+<div class="actions">
+<button class="good" id="syncGithub">Synkronisér hele biblioteket</button>
+<a href="https://github.com/caseamar/casaamar/tree/main/images/library" target="_blank" rel="noopener">Åbn billedlager i GitHub</a>
+<button id="analyzePending">Analyser ikke-analyserede billeder</button>
+<button id="reanalyzeAll">Genanalysér alle billeder</button>
+<button id="scanRelations">Genberegn AI-relationer</button>
+<button id="autoSync">Kontrollér ændringer nu</button>
+</div>
+<div id="uploadStatus" class="meta"></div>
 <div id="message"></div>
 <div id="queueStatus" class="meta"></div>
 <div id="operationState" class="operation-log" hidden></div>
@@ -86,12 +123,12 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 
 
 <section class="panel">
-<h2>Sådan uploader og sletter du billeder</h2>
+<h2>Sådan vedligeholder du billedbiblioteket</h2>
 <div class="grid">
-<div class="stat"><strong>1</strong><span>Upload nye originaler til <code>images/library/</code> i GitHub.</span></div>
-<div class="stat"><strong>2</strong><span>Klik <em>Synkronisér hele GitHub-biblioteket</em>.</span></div>
-<div class="stat"><strong>3</strong><span>Gennemgå nye, flyttede, udskiftede og manglende filer.</span></div>
-<div class="stat"><strong>4</strong><span>Anvend ændringer. AI-analyse og relation scan starter for relevante filer.</span></div>
+<div class="stat"><strong>1</strong><span>Træk nye billeder ind i Asset Studio.</span></div>
+<div class="stat"><strong>2</strong><span>Klik <em>Upload og behandl billeder</em>.</span></div>
+<div class="stat"><strong>3</strong><span>AI analyserer og foreslår labels, sæson og anvendelse.</span></div>
+<div class="stat"><strong>4</strong><span>Gennemgå metadata og udgiv samlet fra Dashboard.</span></div>
 </div>
 <p class="notice"><strong>Sletning:</strong> Slet filen i GitHub og synkronisér. Asset Studio sletter aldrig Asset Object eller relationer automatisk. Filer i brug markeres som <em>replacement required</em>.</p>
 </section>
@@ -110,7 +147,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 
 <script>
 const q=s=>document.querySelector(s);
-let library,registry,knowledge=[],manifest,platformSignature=null,pendingGithubDiff=null;
+let library,registry,knowledge=[],manifest,platformSignature=null,pendingGithubDiff=null,uploadFiles=[],uploadConfiguration=null;
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const slug=s=>String(s||'asset').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 Promise.all([
@@ -127,6 +164,7 @@ Promise.all([
  normalizeAssets();
  render();
  scheduleAutomaticWork();
+ loadUploadStatus();
 });
 
 const VISUAL_VERSION='visual-labels-1';
@@ -255,6 +293,132 @@ q('#registerAssets').onclick=()=>{
 };
 
 
+
+function bytesToSize(bytes){
+ if(bytes<1024)return `${bytes} B`;
+ if(bytes<1048576)return `${(bytes/1024).toFixed(1)} KB`;
+ return `${(bytes/1048576).toFixed(1)} MB`;
+}
+function uniqueClientFilename(filename,index){
+ const clean=filename.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/-+/g,'-').toLowerCase();
+ return clean||`image-${index+1}.jpg`;
+}
+function renderUploadQueue(){
+ const manager=q('#uploadManager');
+ manager.hidden=!uploadFiles.length;
+ q('#uploadQueue').innerHTML=uploadFiles.map((entry,index)=>`
+  <div class="upload-item">
+   <img class="upload-thumb" src="${entry.preview}">
+   <div>
+    <input data-upload-name="${index}" value="${esc(entry.filename)}">
+    <div class="upload-state">${esc(entry.file.type)} · ${bytesToSize(entry.file.size)} · ${esc(entry.status)}</div>
+   </div>
+   <button data-remove-upload="${index}">Fjern</button>
+  </div>`).join('');
+ q('#uploadQueue').querySelectorAll('[data-upload-name]').forEach(input=>input.oninput=()=>uploadFiles[Number(input.dataset.uploadName)].filename=input.value);
+ q('#uploadQueue').querySelectorAll('[data-remove-upload]').forEach(button=>button.onclick=()=>{
+  const index=Number(button.dataset.removeUpload);
+  URL.revokeObjectURL(uploadFiles[index].preview);
+  uploadFiles.splice(index,1);renderUploadQueue();
+ });
+}
+function acceptUploadFiles(fileList){
+ const allowed=['image/jpeg','image/png','image/webp','image/gif','image/avif'];
+ const maxBytes=uploadConfiguration?.max_upload_bytes||20971520;
+ const rejected=[];
+ for(const file of [...fileList]){
+  if(!allowed.includes(file.type)){rejected.push(`${file.name}: filtypen understøttes ikke`);continue}
+  if(file.size>maxBytes){rejected.push(`${file.name}: større end ${Math.round(maxBytes/1048576)} MB`);continue}
+  uploadFiles.push({file,filename:uniqueClientFilename(file.name,uploadFiles.length),preview:URL.createObjectURL(file),status:'Klar'});
+ }
+ renderUploadQueue();
+ if(rejected.length)q('#message').innerHTML=`<p class="notice">${rejected.map(esc).join('<br>')}</p>`;
+}
+function fileToBase64(file){
+ return new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onload=()=>resolve(String(reader.result).split(',')[1]);
+  reader.onerror=()=>reject(reader.error||new Error('Filen kunne ikke læses'));
+  reader.readAsDataURL(file);
+ });
+}
+async function loadUploadStatus(){
+ try{
+  const response=await fetch('/api/github-upload-status',{cache:'no-store'});
+  const result=await response.json();
+  uploadConfiguration=result;
+  q('#uploadStatus').innerHTML=result.configured
+   ? `Direkte upload er aktiv · Lager: <code>${esc(result.upload_root)}</code> · Maks. ${Math.round(result.max_upload_bytes/1048576)} MB pr. fil.`
+   : `<span class="notice">Direkte upload mangler GitHub-forbindelse. GITHUB_TOKEN skal tilføjes som Cloudflare-secret.</span>`;
+  q('#uploadSelected').disabled=!result.configured;
+ }catch(error){
+  q('#uploadStatus').textContent=`Uploadstatus kunne ikke læses: ${error.message}`;
+  q('#uploadSelected').disabled=true;
+ }
+}
+const dropzone=q('#uploadDropzone'),fileInput=q('#assetFiles');
+dropzone.onclick=()=>fileInput.click();
+dropzone.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();fileInput.click()}};
+fileInput.onchange=()=>{acceptUploadFiles(fileInput.files);fileInput.value=''};
+['dragenter','dragover'].forEach(name=>dropzone.addEventListener(name,event=>{event.preventDefault();dropzone.classList.add('dragover')}));
+['dragleave','drop'].forEach(name=>dropzone.addEventListener(name,event=>{event.preventDefault();dropzone.classList.remove('dragover')}));
+dropzone.addEventListener('drop',event=>acceptUploadFiles(event.dataTransfer.files));
+q('#clearUploadQueue').onclick=()=>{uploadFiles.forEach(x=>URL.revokeObjectURL(x.preview));uploadFiles=[];renderUploadQueue()};
+q('#uploadMode').onchange=()=>{
+ const replace=q('#uploadMode').value==='replace';
+ q('#replaceAssetLabel').hidden=!replace;
+ q('#replaceAsset').innerHTML=(library.assets||[]).filter(a=>a.source?.source_state!=='missing').map(a=>`<option value="${esc(a.id)}">${esc(a.manual_metadata?.title||a.source?.filename)} · ${esc(a.source?.original_path)}</option>`).join('');
+ if(replace&&uploadFiles.length>1){
+  q('#message').innerHTML='<p class="notice">Erstatning kan kun gennemføres med én valgt fil.</p>';
+ }
+};
+q('#uploadSelected').onclick=async()=>{
+ if(!uploadFiles.length)return;
+ const replacing=q('#uploadMode').value==='replace';
+ if(replacing&&uploadFiles.length!==1){q('#message').innerHTML='<p class="notice">Vælg præcis én fil ved erstatning.</p>';return}
+ const controls=['uploadSelected','syncGithub','analyzePending','reanalyzeAll','scanRelations','autoSync'];
+ setBusy('direct-upload',`Uploader ${uploadFiles.length} billeder til Casa Amar…`,controls);
+ const description=q('#uploadDescription').value.trim(),season=q('#uploadSeason').value;
+ let completed=0,failed=0;
+ for(let index=0;index<uploadFiles.length;index++){
+  const entry=uploadFiles[index];
+  entry.status='Uploader…';renderUploadQueue();
+  appendOperation(`Læser ${entry.filename}…`);
+  try{
+   const base64=await fileToBase64(entry.file);
+   const replaceAsset=replacing?library.assets.find(a=>a.id===q('#replaceAsset').value):null;
+   const response=await fetch('/api/github-asset-upload',{
+    method:'POST',
+    headers:{'content-type':'application/json','accept':'application/json'},
+    body:JSON.stringify({
+     filename:entry.filename,
+     content_base64:base64,
+     replace_path:replaceAsset?.source?.original_path||null
+    })
+   });
+   const raw=await response.text();let result;
+   try{result=JSON.parse(raw)}catch{throw new Error(`Upload-endpoint returnerede ikke JSON (${response.status})`)}
+   if(!response.ok)throw new Error(result.error||result.detail||'Upload fejlede');
+   entry.status='Uploadet';
+   appendOperation(`✓ ${entry.filename} gemt som ${result.path}`);
+   completed++;
+  }catch(error){
+   entry.status=`Fejl: ${error.message}`;failed++;appendOperation(`⚠ ${entry.filename}: ${error.message}`);
+  }
+  renderUploadQueue();setQueueProgress(index+1,uploadFiles.length,'Upload');
+ }
+ if(completed){
+  appendOperation('Upload færdig. Synkroniserer Asset Library…');
+  await syncGithubLibrary(true);
+  if(pendingGithubDiff){
+   q('#syncChanges').querySelectorAll('input[data-sync-type]').forEach(input=>input.checked=true);
+   await applyPendingSync(true,description,season);
+  }
+ }
+ finishBusy(`${completed} billeder behandlet. ${failed} fejlede.`,failed===0,controls);
+ if(!failed){uploadFiles.forEach(x=>URL.revokeObjectURL(x.preview));uploadFiles=[];renderUploadQueue()}
+};
+
 function newAssetFromGithub(item){
  const stem=item.filename.replace(/\.[^.]+$/,'');
  let id=`asset-${slug(stem)}`;
@@ -298,7 +462,7 @@ function renderGithubDiff(result){
   diff.missing.map((x,i)=>syncChangeHtml('missing',x,i)).join('');
  q('#syncReviewPanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
-async function syncGithubLibrary(){
+async function syncGithubLibrary(fromUpload=false){
  const controls=['syncGithub','analyzePending','reanalyzeAll','scanRelations','autoSync','registerAssets'];
  setBusy('github-sync','Læser hele GitHub-billedbiblioteket…',controls);
  appendOperation('Scanner alle billedfiler under images/ og undermapper.');
@@ -313,7 +477,8 @@ async function syncGithubLibrary(){
   try{result=JSON.parse(raw)}catch{throw new Error(`GitHub sync returnerede ikke JSON (${response.status})`)}
   if(!response.ok)throw new Error(result.error||result.detail||'GitHub sync fejlede');
   renderGithubDiff(result);
-  finishBusy(`Scanning færdig. ${result.inventory.count} billeder fundet i GitHub.`,true,controls);
+  if(fromUpload)q('#syncReviewPanel').hidden=true;
+  else finishBusy(`Scanning færdig. ${result.inventory.count} billeder fundet i GitHub.`,true,controls);
  }catch(error){
   finishBusy(`GitHub sync fejlede: ${error.message}`,false,controls);
   q('#message').innerHTML=`<p class="notice">${esc(error.message)}</p>`;
@@ -321,14 +486,25 @@ async function syncGithubLibrary(){
 }
 q('#syncGithub').onclick=syncGithubLibrary;
 q('#cancelSync').onclick=()=>{pendingGithubDiff=null;q('#syncReviewPanel').hidden=true};
-q('#applySync').onclick=async()=>{
+async function applyPendingSync(autoApply=false,description='',season=''){
  if(!pendingGithubDiff)return;
  const selected={added:[],moved:[],replaced:[],missing:[]};
- q('#syncChanges').querySelectorAll('input[data-sync-type]:checked').forEach(input=>{
-  selected[input.dataset.syncType].push(Number(input.dataset.syncIndex));
- });
+ if(autoApply){
+  selected.added=pendingGithubDiff.diff.added.map((_,i)=>i);
+  selected.moved=pendingGithubDiff.diff.moved.map((_,i)=>i);
+  selected.replaced=pendingGithubDiff.diff.replaced.map((_,i)=>i);
+ }else{
+  q('#syncChanges').querySelectorAll('input[data-sync-type]:checked').forEach(input=>{
+   selected[input.dataset.syncType].push(Number(input.dataset.syncIndex));
+  });
+ }
  const diff=pendingGithubDiff.diff,now=new Date().toISOString();
- for(const index of selected.added)library.assets.push(newAssetFromGithub(diff.added[index]));
+ for(const index of selected.added){
+  const asset=newAssetFromGithub(diff.added[index]);
+  if(description)asset.manual_metadata.description=description;
+  if(season)asset.manual_metadata.season=[season];
+  library.assets.push(asset);
+ }
  for(const index of selected.moved){
   const item=diff.moved[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
   asset.source.original_path=item.new_path;asset.source.filename=item.filename;asset.source.github_sha=item.github_sha;asset.source.source_state='present';
@@ -338,6 +514,8 @@ q('#applySync').onclick=async()=>{
  for(const index of selected.replaced){
   const item=diff.replaced[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
   asset.source.github_sha=item.new_sha;asset.source.source_state='replaced';
+  if(description)asset.manual_metadata.description=description;
+  if(season)asset.manual_metadata.season=[season];
   asset.ai_profile.history=asset.ai_profile.history||[];
   asset.analysis_queue.visual_status='pending';asset.analysis_queue.visual_reason='GitHub file content replaced.';
   asset.analysis_queue.relation_status='pending';asset.analysis_queue.relation_reason='Replacement requires new labels.';
@@ -346,18 +524,13 @@ q('#applySync').onclick=async()=>{
   const item=diff.missing[index],asset=library.assets.find(a=>a.id===item.asset_id);if(!asset)continue;
   asset.source.source_state='missing';asset.lifecycle.missing_since=asset.lifecycle.missing_since||now;
   const blocked=(asset.relations.current_usage||[]).length||(asset.relations.locked_placements||[]).length;
-  asset.lifecycle.deletion_review={
-   status:blocked?'replacement_required':'needs_review',
-   reason:blocked?'Source is missing but asset is still used or locked.':'Source is missing from GitHub.',
-   reviewed_at:null
-  };
+  asset.lifecycle.deletion_review={status:blocked?'replacement_required':'needs_review',reason:blocked?'Source is missing but asset is still used or locked.':'Source is missing from GitHub.',reviewed_at:null};
  }
- saveLocal();
- q('#syncReviewPanel').hidden=true;
+ saveLocal();q('#syncReviewPanel').hidden=true;pendingGithubDiff=null;
  q('#message').innerHTML=`<p class="success">Synkronisering anvendt. Nye og udskiftede billeder er sat i analysekø. Slettede filer er kun markeret til review.</p>`;
- pendingGithubDiff=null;
  await analyzeQueue(false);
-};
+}
+q('#applySync').onclick=()=>applyPendingSync(false);
 
 q('#importManifest').onclick=()=>{
  setBusy('manifest-import','Importerer eksisterende hjemmesidebilleder…',['importManifest','registerAssets']);
