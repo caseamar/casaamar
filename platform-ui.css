@@ -41,3 +41,33 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 .ca-help-panel h3{margin:0 0 7px}.ca-help-panel p{font-size:.78rem;color:var(--ca-muted);line-height:1.5}
 .ca-hidden{display:none!important}
 @media(max-width:800px){.ca-shell{padding:0 14px 30px}.ca-page-guide{grid-template-columns:1fr}.ca-status-strip{grid-template-columns:1fr 1fr}.ca-topbar{align-items:flex-start}.ca-top-actions{flex-wrap:wrap;justify-content:flex-end}}
+
+/* Guided workflow 12.1 */
+.ca-workflow{background:#fff;border:1px solid var(--ca-line);border-radius:18px;padding:14px 16px;margin:0 0 17px}
+.ca-workflow-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:11px}
+.ca-workflow-head strong{display:block;font-size:.84rem}.ca-workflow-head span{display:block;color:var(--ca-muted);font-size:.7rem;margin-top:3px;line-height:1.4}
+.ca-workflow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.ca-workflow-step{position:relative;padding:9px 10px 9px 34px;background:var(--ca-surface-2);border-radius:11px;color:var(--ca-muted);font-size:.68rem;font-weight:750}
+.ca-workflow-step i{position:absolute;left:9px;top:8px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#e7e5df;font-style:normal;font-size:.62rem}
+.ca-workflow-step.active{background:var(--ca-amber-soft);color:#71500f}.ca-workflow-step.active i{background:#e2ad45;color:white}
+.ca-workflow-step.done{background:var(--ca-green-soft);color:var(--ca-green)}.ca-workflow-step.done i{background:var(--ca-green);color:white}
+.ca-coach{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:start;background:linear-gradient(135deg,#fff8e9,#fff);border:1px solid #ead9aa;border-radius:16px;padding:14px 15px;margin:12px 0}
+.ca-coach-icon{width:40px;height:40px;border-radius:13px;background:#17352b;color:white;display:grid;place-items:center;font-weight:900}
+.ca-coach strong{display:block;font-size:.85rem}.ca-coach p{margin:4px 0 0;color:#6f5a25;font-size:.75rem;line-height:1.5}
+.ca-coach a,.ca-coach button{align-self:center;padding:9px 11px;border-radius:10px;background:var(--ca-accent);border:0;color:white;text-decoration:none;font-weight:850;font-size:.72rem;white-space:nowrap;cursor:pointer}
+.ca-live-process{background:#17352b;color:#fff;border-radius:18px;padding:17px;margin:13px 0;box-shadow:var(--ca-shadow)}
+.ca-live-process h3{margin:0 0 5px;font-size:1rem}.ca-live-process p{margin:0;color:rgba(255,255,255,.72);font-size:.76rem;line-height:1.45}
+.ca-process-grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:12px}
+.ca-process-bar{height:8px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
+.ca-process-bar div{height:100%;width:24%;background:#f18a68;border-radius:999px;animation:caProcess 1.7s ease-in-out infinite alternate}
+@keyframes caProcess{from{transform:translateX(-20%)}to{transform:translateX(330%)}}
+.ca-process-time{font-size:.67rem;color:rgba(255,255,255,.68);white-space:nowrap}
+.ca-review-footer{position:sticky;bottom:12px;z-index:80;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border:1px solid var(--ca-line);border-radius:18px;padding:14px 16px;margin-top:18px;box-shadow:0 18px 45px rgba(20,35,30,.16)}
+.ca-review-footer h3{margin:0 0 5px;font-size:.98rem}.ca-review-footer p{margin:0;color:var(--ca-muted);font-size:.74rem;line-height:1.45}
+.ca-review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+.ca-review-actions button,.ca-review-actions a{padding:10px 13px;border-radius:11px;border:1px solid var(--ca-line);background:white;color:var(--ca-text);font-weight:850;text-decoration:none;cursor:pointer}
+.ca-review-actions .approve{background:var(--ca-green);border-color:var(--ca-green);color:white}
+.ca-review-actions .publish{background:var(--ca-accent);border-color:var(--ca-accent);color:white}
+.ca-result-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:11px 0}
+.ca-result-summary div{background:var(--ca-surface-2);border-radius:10px;padding:9px}.ca-result-summary span{display:block;color:var(--ca-muted);font-size:.62rem}.ca-result-summary strong{display:block;margin-top:3px;font-size:.82rem}
+@media(max-width:760px){.ca-workflow-steps{grid-template-columns:1fr 1fr}.ca-coach{grid-template-columns:36px 1fr}.ca-coach>a,.ca-coach>button{grid-column:2}.ca-result-summary{grid-template-columns:1fr 1fr}}

@@ -59,7 +59,7 @@ main{max-width:1380px;margin:auto}
   <h2>Er alt udgivet?</h2>
   <p class="intro">Platformversion, dit igangværende arbejde og den senest offentliggjorte indholdsversion holdes adskilt.</p>
   <div class="mc-release">
-   <div><span>Platform</span><strong>v2026.07.24.70</strong></div>
+   <div><span>Platform</span><strong>v2026.07.24.71</strong></div>
    <div><span>Senest live</span><strong id="liveContent">Indlæser…</strong></div>
    <div><span>Ikke udgivet</span><strong id="unpublishedCount">Kontrollerer…</strong></div>
   </div>
@@ -81,15 +81,18 @@ main{max-width:1380px;margin:auto}
 </section>
 
 <section class="publish-panel" id="publish">
- <h2>Klargør ændringer til GitHub</h2>
- <p><strong>Dette er sidste skridt i platformen.</strong> AI samler alle autosavede ændringer, laver en ny indholdsversion og skriver filerne i én mappe. Derefter uploader du dem samlet til GitHub. Når Cloudflare har deployet, bliver den nye indholdsversion vist som live.</p>
- <div class="publish-grid">
+ <h2>Gør dine godkendte ændringer live</h2>
+ <p><strong>Dette er sidste trin.</strong> Jeg samler hele dit aktuelle arbejde — AI's ændringer, dine egne rettelser, godkendt viden, hjemmesideindhold, billeder, billedoplysninger, relationer, fotoopgaver og stilindstillinger. Du får én samlet mappe, som du uploader til GitHub. Cloudflare opdaterer derefter hjemmesiden automatisk.</p>
+ <div class="ca-coach">
+<div class="ca-coach-icon">4</div><div><strong>Det er dette, der kommer med</strong><p>Alt autosavet og godkendt arbejde i platformen — ikke kun AI's ændringer. Klik på knappen nedenfor, vælg en tom mappe, og upload derefter alle filerne til GitHub.</p></div>
+</div>
+<div class="publish-grid">
   <div><span>Viden</span><strong id="publishKnowledgeStatus">–</strong></div>
   <div><span>Hjemmeside</span><strong id="publishWebsiteStatus">–</strong></div>
   <div><span>Billeder</span><strong id="publishAssetStatus">–</strong></div>
   <div><span>Seneste autosave</span><strong id="publishLastSaved">–</strong></div>
  </div>
- <div class="mc-buttons"><button class="primary" id="publishEverything">Klargør og download til GitHub</button></div>
+ <div class="mc-buttons"><button class="primary" id="publishEverything">Saml filer til GitHub</button></div>
  <div id="publishMessage"></div><div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
@@ -166,8 +169,8 @@ async function buildPublishFiles(){
  map["photo-missions.json"]=localJson("casaPhotoMissions",map["photo-missions.json"]);
  const now=new Date(),seq=String(now.getHours()).padStart(2,"0")+String(now.getMinutes()).padStart(2,"0");
  const contentVersion=`content-${now.toISOString().slice(0,10).replaceAll("-",".")}-${seq}`;
- map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.70",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
- map["workspace-release.json"]={platform_version:"v2026.07.24.70",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
+ map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.71",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
+ map["workspace-release.json"]={platform_version:"v2026.07.24.71",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
  return Object.entries(map).map(([name,data])=>({name,text:JSON.stringify(data,null,2)}));
 }
 async function writeFiles(items){
@@ -178,8 +181,8 @@ q("#publishEverything").onclick=async()=>{
  const btn=q("#publishEverything"),log=q("#publishLog");btn.disabled=true;btn.textContent="AI samler og kvalitetssikrer…";log.hidden=false;log.innerHTML="";
  const add=x=>log.insertAdjacentHTML("beforeend",`<div>${x}</div>`);
  try{add("Samler autosavede ændringer…");const items=await buildPublishFiles();add(`Klargør ${items.length} filer med stabile filnavne…`);btn.textContent="Vælg mappe til GitHub-filer";await writeFiles(items);localStorage.setItem("casaLastPublished",new Date().toISOString());localStorage.setItem("casaPreparedContentVersion",JSON.parse(items.find(x=>x.name==="content-release.json").text).content_version);
-  q("#publishMessage").innerHTML='<div class="success"><strong>Udgivelsespakken er klar.</strong><br>Næste handling: Upload alle filerne til roden af GitHub. Vent derefter på den grønne Cloudflare-deployment. Dit workspace nulstilles først, når live-versionen er bekræftet.</div>';add("✓ Pakken er klargjort. Workspace er bevaret som sikkerhed.");
- }catch(e){q("#publishMessage").innerHTML=`<div class="notice">Udgivelsen blev ikke færdig: ${e.message}. Intet arbejde er tabt.</div>`}finally{btn.disabled=false;btn.textContent="Klargør og download til GitHub";refreshPublishStatus()}
+  q("#publishMessage").innerHTML='<div class="success"><strong>Udgivelsespakken er klar.</strong><br>Du skal nu åbne GitHub og uploade alle filerne fra den valgte mappe til repositoryets rod. Commit ændringerne. Vent derefter på den grønne Cloudflare-deployment. Gå tilbage til Mission Control bagefter; den nye indholdsversion skal stå som live. Dit arbejde bevares som sikkerhed, indtil live-versionen er bekræftet.</div>';add("✓ Pakken er klargjort. Workspace er bevaret som sikkerhed.");
+ }catch(e){q("#publishMessage").innerHTML=`<div class="notice">Udgivelsen blev ikke færdig: ${e.message}. Intet arbejde er tabt.</div>`}finally{btn.disabled=false;btn.textContent="Saml filer til GitHub";refreshPublishStatus()}
 };
 q("#showAlternatives").onclick=()=>q("#taskList").scrollIntoView({behavior:"smooth"});
 loadMission();

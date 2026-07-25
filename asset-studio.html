@@ -37,7 +37,7 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.70 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.71 · Asset relation model 1.0</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Billeder</h1>
 <p class="lead">Billeder og videoer behandles som selvstændige Asset Objects. Manuelle relationer, faktisk brug og låste placeringer bevares. AI-forslag kan genberegnes, når nye Videnemner, sider eller kampagner oprettes.</p>
 
@@ -108,6 +108,9 @@ input,select,textarea{width:100%;border:1px solid #d6cec3;border-radius:10px;pad
 <div id="uploadStatus" class="meta"></div>
 <div class="meta">20 MB er grænsen pr. enkelt fil — ikke for hele uploaden. Mange billeder opdeles automatisk i batches.</div><div id="uploadUiStatus" class="meta"></div>
 <div id="message"></div>
+<section id="assetNextStep" class="ca-coach">
+<div class="ca-coach-icon">→</div><div><strong>Når billederne ser rigtige ud</strong><p>Beskrivelser, sæson, labels og relationer gemmes automatisk. Gå til udgivelse, når du vil gøre alle godkendte platformændringer til én samlet live-version.</p></div><a href="/knowledge-center.html#publish">Gå til udgivelse</a>
+</section>
 <div id="queueStatus" class="meta"></div>
 <div id="operationState" class="operation-log" hidden></div>
 <div style="height:10px;background:#e8e2d8;border-radius:999px;overflow:hidden;margin-top:8px"><div id="queueBar" style="height:100%;width:0;background:#2b7450"></div></div>
@@ -624,7 +627,7 @@ q('#uploadSelected')?.addEventListener('click',async()=>{
  }
  finishBusy(`${completed} billeder behandlet. ${failed} fejlede.`,failed===0,controls);
  if(!failed){
-  q('#message').innerHTML=`<p class="success"><strong>${completed} billeder er færdigbehandlet.</strong> De er uploadet til GitHub, oprettet i Billeder, analyseret og matchet. Resultaterne står under hvert billede.</p>`;
+  q('#message').innerHTML=`<p class="success"><strong>Jeg er færdig med billederne.</strong> ${completed} billeder er uploadet, oprettet, analyseret og matchet. Læs beskrivelserne under billederne og ret kun det, du ønsker. Når du er tilfreds, er næste skridt at gå til udgivelse, så billedoplysninger og relationer kommer med i den samlede indholdsversion.</p>`;
  }
 });
 

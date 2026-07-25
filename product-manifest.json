@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -10,7 +10,12 @@
     "Én tydelig primær handling pr. skærm.",
     "Alle AI-processer viser aktivitet, resultat og næste handling.",
     "Brugeren kan altid overstyre AI.",
-    "Platformversion, arbejdsændringer og udgivet indhold er tre forskellige ting."
+    "Platformversion, arbejdsændringer og udgivet indhold er tre forskellige ting.",
+    "Review er en tilstand, ikke en ekstra knap: brugeren ser og retter resultatet direkte.",
+    "Efter hver afsluttet handling gives en konkret instruktion i almindeligt dansk.",
+    "Godkendelse og offentliggørelse er adskilte trin.",
+    "Udgivelse indeholder hele det aktuelle workspace: både AI's arbejde og brugerens egne rettelser.",
+    "Lange processer viser løbende aktivitet og seneste aktivitetstidspunkt."
   ],
   "terminology": {
     "Knowledge Studio": "Viden",
@@ -26,5 +31,15 @@
     "Metadata": "Oplysninger om billedet",
     "Confidence": "AI-sikkerhed",
     "Draft": "Kladde"
-  }
+  },
+  "canonical_workflow": [
+    "AI arbejder",
+    "Brugeren læser og retter direkte",
+    "Brugeren godkender eller fortryder",
+    "Platformen guider direkte til udgivelse",
+    "Hele det godkendte workspace samles",
+    "Brugeren uploader pakken til GitHub",
+    "Cloudflare gør versionen live",
+    "Mission Control bekræfter den live indholdsversion"
+  ]
 }

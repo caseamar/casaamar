@@ -127,10 +127,51 @@ guide.innerHTML=`
  <a class="ca-guide-cta" href="${cfg.href}">${cfg.cta} →</a>`;
 nav.insertAdjacentElement("afterend",guide);
 
+
+const workflow=document.createElement("section");
+workflow.className="ca-workflow";
+workflow.id="caWorkflow";
+workflow.innerHTML=`
+ <div class="ca-workflow-head">
+  <div><strong id="caWorkflowTitle">Sådan bliver en ændring gennemført</strong><span id="caWorkflowHelp">AI arbejder først. Du læser og retter resultatet. Du godkender. Til sidst gør du ændringerne live.</span></div>
+  <span class="ca-pill" id="caWorkflowState">Trin 1 af 4</span>
+ </div>
+ <div class="ca-workflow-steps">
+  <div class="ca-workflow-step active" data-ca-step="1"><i>1</i>AI arbejder</div>
+  <div class="ca-workflow-step" data-ca-step="2"><i>2</i>Du læser og retter</div>
+  <div class="ca-workflow-step" data-ca-step="3"><i>3</i>Du godkender</div>
+  <div class="ca-workflow-step" data-ca-step="4"><i>4</i>Gør ændringerne live</div>
+ </div>`;
+guide.insertAdjacentElement("afterend",workflow);
+
+window.CasaWorkflow={
+ set(step,title,help){
+  const safe=Math.max(1,Math.min(4,Number(step)||1));
+  document.querySelectorAll("[data-ca-step]").forEach(el=>{
+   const n=Number(el.dataset.caStep);
+   el.classList.toggle("done",n<safe);
+   el.classList.toggle("active",n===safe);
+  });
+  const state=document.querySelector("#caWorkflowState");
+  if(state)state.textContent=`Trin ${safe} af 4`;
+  if(title)document.querySelector("#caWorkflowTitle").textContent=title;
+  if(help)document.querySelector("#caWorkflowHelp").textContent=help;
+  localStorage.setItem("casaWorkflowState",JSON.stringify({path:location.pathname,step:safe,title,help,updated_at:new Date().toISOString()}));
+ },
+ coach({title,text,href,label,id="caInlineCoach"}){
+  document.querySelector("#"+id)?.remove();
+  const box=document.createElement("section");box.className="ca-coach";box.id=id;
+  box.innerHTML=`<div class="ca-coach-icon">→</div><div><strong>${title}</strong><p>${text}</p></div>${href?`<a href="${href}">${label||"Fortsæt"} →</a>`:""}`;
+  const target=document.querySelector("#caWorkflow");
+  target?.insertAdjacentElement("afterend",box);
+  return box;
+ }
+};
+
 const status=document.createElement("section");
 status.className="ca-status-strip";
 status.innerHTML=`
- <div><span>Platformversion</span><strong id="caPlatformVersion">v2026.07.24.70</strong></div>
+ <div><span>Platformversion</span><strong id="caPlatformVersion">v2026.07.24.71</strong></div>
  <div><span>Senest udgivet indhold</span><strong id="caContentVersion">Indlæser…</strong></div>
  <div><span>Ikke udgivet arbejde</span><strong id="caWorkspaceState">Kontrollerer…</strong></div>
  <div><span>Seneste autosave</span><strong id="caLastSaved">–</strong></div>`;
@@ -170,6 +211,25 @@ const workspaceCount=changes.length+[website,brand,assets].filter(Boolean).lengt
 document.querySelector("#caWorkspaceState").textContent=workspaceCount?`${workspaceCount} ændringer`:"Alt udgivet";
 const saved=localStorage.getItem("casaWorkspaceLastSaved");
 document.querySelector("#caLastSaved").textContent=saved?new Date(saved).toLocaleString("da-DK"):"Ingen lokale ændringer";
+const approvedWebsite=localStorage.getItem("casaWebsiteApprovedAt");
+const approvedKnowledge=localStorage.getItem("casaKnowledgeApprovedAt");
+if(path==="/knowledge-center.html"){
+ const hasWork=workspaceCount>0;
+ window.CasaWorkflow.set(hasWork?4:1,
+  hasWork?"Dit arbejde er klar til sidste trin":"AI finder din vigtigste opgave",
+  hasWork?"Du har autosavede ændringer. Gå til udgivelse, kontrollér indholdet i pakken, og gør ændringerne live.":"Start den opgave, AI anbefaler. Platformen guider dig videre bagefter.");
+}else if(path==="/page-studio.html"){
+ window.CasaWorkflow.set(approvedWebsite?4:1,
+  approvedWebsite?"Hjemmesideændringerne er godkendt":"Lad AI hjælpe med hjemmesiden",
+  approvedWebsite?"Du er færdig her. Gå nu til udgivelse og gør dine godkendte ændringer live.":"Start AI. Når AI er færdig, læser og retter du direkte på siden, før du godkender.");
+}else if(path==="/knowledge-review.html"){
+ window.CasaWorkflow.set(2,"Læs og ret AI's forslag","Tag stilling til teksten direkte. Godkend, når du er tilfreds, eller afvis forslaget.");
+}else if(path==="/ai-test-runner.html"){
+ window.CasaWorkflow.set(3,"Kontrollér det godkendte arbejde","Kør kun relevante tests. Når de er bestået, går du videre til udgivelse.");
+}else{
+ window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
+}
+
 fetch("/content-release.json",{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
 }).catch(()=>document.querySelector("#caContentVersion").textContent="Kunne ikke læses");

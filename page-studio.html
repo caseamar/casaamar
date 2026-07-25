@@ -39,7 +39,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.70 · Page model 1.0 · Worker 12.0-mission-control-ux</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.71 · Page model 1.0 · Worker 12.1-guided-workflow</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Hjemmesiden</h1>
 <p class="lead">Viden ejer fakta. Stil og tone ejer stemmen. Hjemmesiden ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -64,9 +64,26 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <div id="status"></div><div id="technicalStatus" class="meta"></div>
 </div>
 <div id="sections"></div>
+<section id="pageReviewFooter" class="ca-review-footer ca-hidden">
+ <h3 id="pageReviewTitle">Nu er det din tur</h3>
+ <p id="pageReviewText">Læs AI's tekster direkte på siden. Ret det, du ikke er tilfreds med. Når alt ser rigtigt ud, godkender du ændringerne.</p>
+ <div id="pageResultSummary" class="ca-result-summary"></div>
+ <div class="ca-review-actions">
+  <button class="approve" id="approvePageChanges">Godkend ændringerne</button>
+  <button id="discardPageChanges">Fortryd AI's ændringer</button>
+ </div>
+</section>
+<section id="pageApprovedFooter" class="ca-review-footer ca-hidden">
+ <h3>Du er færdig med hjemmesiden</h3>
+ <p>Jeg har gemt både AI's forslag og de rettelser, du selv har lavet. Ændringerne er endnu ikke synlige på hjemmesiden. Du skal nu gå til udgivelse.</p>
+ <div class="ca-review-actions">
+  <a class="publish" href="/knowledge-center.html#publish">Gå til udgivelse</a>
+  <a href="/page-preview.html" target="_blank">Se hjemmesiden først</a>
+ </div>
+</section>
 <script>
 const q=s=>document.querySelector(s);
-let brand,blueprint,content,components;
+let brand,blueprint,content,components,pageAiSnapshot=null,pageProcessTimer=null,pageProcessStarted=null,pageProcessStage=0;
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 Promise.all([
  fetch('/brand-profile.json',{cache:'no-store'}).then(r=>r.json()),
@@ -293,8 +310,97 @@ function completionSummary(){
  return {details,missing,complete,total:all.length,percentage};
 }
 
+
+function pageProcessHtml(mode){
+ const label=mode==='fill_missing'?'udfylder de manglende felter':mode==='improve_current'?'forbedrer det eksisterende indhold':'skriver et samlet nyt forslag';
+ return `<section class="ca-live-process" id="pageLiveProcess">
+  <h3>Jeg arbejder på hjemmesiden</h3>
+  <p id="pageProcessMessage">Jeg ${label}. Du kan blive på siden; dit eksisterende indhold er gemt.</p>
+  <div class="ca-process-grid"><div class="ca-process-bar"><div></div></div><div class="ca-process-time" id="pageProcessTime">Starter…</div></div>
+ </section>`;
+}
+function startPageHeartbeat(mode){
+ pageProcessStarted=Date.now();pageProcessStage=0;
+ const messages=[
+  'Jeg gennemgår de eksisterende tekster og finder mangler.',
+  'Jeg sammenholder teksten med din viden og den ønskede stil.',
+  'Jeg koordinerer sektionerne, så de ikke gentager hinanden.',
+  'Jeg kontrollerer længde, tydelighed og formål for hver sektion.',
+  'Jeg er stadig i gang. Det tager længere tid end normalt, men dit indhold er gemt.'
+ ];
+ const update=()=>{
+  const elapsed=Math.floor((Date.now()-pageProcessStarted)/1000);
+  const stage=Math.min(messages.length-1,Math.floor(elapsed/18));
+  pageProcessStage=stage;
+  const msg=q('#pageProcessMessage'),time=q('#pageProcessTime');
+  if(msg)msg.textContent=messages[stage];
+  if(time)time.textContent=`Arbejdet har kørt i ${elapsed} sek. · Seneste aktivitet nu`;
+ };
+ update();pageProcessTimer=setInterval(update,3000);
+}
+function stopPageHeartbeat(){if(pageProcessTimer)clearInterval(pageProcessTimer);pageProcessTimer=null}
+function countPageChanges(before,after){
+ let changed=0,filled=0;
+ const beforeMap=new Map((before?.sections||[]).map(s=>[s.id,s]));
+ for(const section of after?.sections||[]){
+  const old=beforeMap.get(section.id)?.draft||{},now=section.draft||{};
+  for(const [key,value] of Object.entries(now)){
+   const a=JSON.stringify(value??''),b=JSON.stringify(old[key]??'');
+   if(a!==b){changed++;if((old[key]===undefined||old[key]===''||old[key]===null)&&value)filled++}
+  }
+ }
+ return {changed,filled};
+}
+function showPageReview(result){
+ const summary=completionSummary();
+ const counts=countPageChanges(pageAiSnapshot,content);
+ q('#pageReviewFooter').classList.remove('ca-hidden');
+ q('#pageApprovedFooter').classList.add('ca-hidden');
+ q('#pageResultSummary').innerHTML=`
+  <div><span>Felter ændret</span><strong>${counts.changed}</strong></div>
+  <div><span>Mangler udfyldt</span><strong>${counts.filled}</strong></div>
+  <div><span>Sektioner komplette</span><strong>${summary.complete}/${summary.total}</strong></div>
+  <div><span>Skal vurderes</span><strong>${summary.missing}</strong></div>`;
+ window.CasaWorkflow?.set(2,"Jeg er færdig — nu er det din tur",
+  "Læs teksterne på denne side. Ret det, du ikke er tilfreds med. Når du er færdig, klik på “Godkend ændringerne” nederst.");
+ window.CasaWorkflow?.coach({
+  title:"Læs og ret direkte på siden",
+  text:"Du behøver ikke åbne et særskilt review. AI's forslag står allerede i felterne. Ret kun det, du ønsker. Godkend derefter nederst på siden.",
+  href:"#pageReviewFooter",label:"Gå til godkendelse",id:"pageReviewCoach"
+ });
+ q('#pageReviewFooter').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function approvePageWork(){
+ collect();
+ localStorage.setItem('casaWebsiteApprovedAt',new Date().toISOString());
+ localStorage.setItem('casaWorkspaceLastSaved',new Date().toISOString());
+ q('#pageReviewFooter').classList.add('ca-hidden');
+ q('#pageApprovedFooter').classList.remove('ca-hidden');
+ window.CasaWorkflow?.set(4,"Hjemmesideændringerne er godkendt",
+  "Jeg har gemt både AI's arbejde og dine egne rettelser. De er ikke live endnu. Gå nu til udgivelse.");
+ window.CasaWorkflow?.coach({
+  title:"Gør ændringerne synlige på hjemmesiden",
+  text:"Du er færdig på denne side. Klik på “Gå til udgivelse”. Udgivelsespakken indeholder AI's ændringer, dine rettelser og alle andre autosavede ændringer i platformen.",
+  href:"/knowledge-center.html#publish",label:"Gå til udgivelse",id:"pageApprovedCoach"
+ });
+ q('#pageApprovedFooter').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function discardPageWork(){
+ if(!pageAiSnapshot)return;
+ if(!confirm('Vil du fortryde AI-forslaget og gendanne indholdet, som det var før AI gik i gang?'))return;
+ content=JSON.parse(JSON.stringify(pageAiSnapshot));
+ localStorage.setItem('casaWebsiteContentDraft',JSON.stringify(content));
+ localStorage.removeItem('casaWebsiteApprovedAt');
+ render();
+ q('#pageReviewFooter').classList.add('ca-hidden');
+ window.CasaWorkflow?.set(1,"AI-forslaget er fortrudt","Det tidligere indhold er gendannet. Du kan starte AI igen eller fortsætte med dine egne rettelser.");
+ q('#status').innerHTML='<p class="success"><strong>Det tidligere indhold er gendannet.</strong> Intet andet arbejde er ændret.</p>';
+}
+
 async function generateCompletePage(mode='complete'){
  const technical=q('#technicalStatus');
+ pageAiSnapshot=JSON.parse(JSON.stringify(content));
+ localStorage.removeItem('casaWebsiteApprovedAt');
  if(technical)technical.textContent=`Starter ${mode}…`;
  const freshButton=q('#generateFresh'),improveButton=q('#improveCurrent');
  const fillButton=q('#fillMissing');
@@ -306,8 +412,8 @@ async function generateCompletePage(mode='complete'){
  const activeButton=isFill?fillButton:(isImprove?improveButton:freshButton);
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
- status.innerHTML='<p class="notice">AI arbejder nu i ét samlet kald og koordinerer alle sektioner for at undgå gentagelser.</p>';
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 12.0-mission-control-ux…';
+ status.innerHTML=pageProcessHtml(mode);startPageHeartbeat(mode);window.CasaWorkflow?.set(1,'Jeg arbejder på hjemmesiden','Du skal ikke gøre noget endnu. Jeg viser løbende aktivitet og fortæller tydeligt, når det er din tur.');
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 12.1-guided-workflow…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -317,20 +423,23 @@ async function generateCompletePage(mode='complete'){
    render();
 
    const summary=completionSummary();
+   stopPageHeartbeat();
    if(summary.missing===0){
-     status.innerHTML=`<p class="success"><strong>Hjemmeside-draft behandlet.</strong> ${summary.complete}/${summary.total} sektioner er komplette · ${summary.percentage}% · Repetitionskontrol: ${result.quality?.repetition_score??'–'}.${result.quality?.repaired?' Outputtet blev automatisk repareret.':''}</p>`;
+     status.innerHTML=`<p class="success"><strong>Jeg er færdig med at skrive.</strong> Alle ${summary.total} sektioner er udfyldt og autosavet. Nu skal du læse teksterne og rette det, du ikke er tilfreds med.</p>`;
    }else{
      const missingText=summary.details.filter(x=>x.missing).map(x=>`${x.id}: ${x.missing}`).join(' · ');
-     status.innerHTML=`<p class="notice"><strong>${summary.complete}/${summary.total} sektioner komplette (${summary.percentage}%).</strong> Mangler: ${missingText}.${result.quality?.repaired?' AI-outputtet blev automatisk repareret, og eksisterende indhold er bevaret.':''}</p>`;
+     status.innerHTML=`<p class="notice"><strong>Jeg er færdig med det, jeg kunne udfylde.</strong> ${summary.complete}/${summary.total} sektioner er komplette. Følgende kræver din vurdering: ${missingText}. Læs og ret direkte i felterne.</p>`;
    }
+   showPageReview(result);
  }catch(error){
+   stopPageHeartbeat();
    status.innerHTML=`<p class="notice"><strong>Det nuværende indhold er bevaret.</strong> ${esc(error.message)}</p>`;
    if(technical)technical.textContent=`Fejl: ${error.message}`;
  }finally{
    freshButton.disabled=false;improveButton.disabled=false;
    fillButton.disabled=false;
    activeButton.textContent=originalText;
-   if(technical && !technical.textContent.startsWith('Fejl:'))technical.textContent='Klar.';
+   if(technical && !technical.textContent.startsWith('Fejl:'))technical.textContent='AI er færdig. Læs, ret og godkend nu.';
  }
 }
 
@@ -400,6 +509,8 @@ function bindPageStudioActions(){
  if(fresh)fresh.addEventListener('click',()=>generateCompletePage('complete'));
  if(improve)improve.addEventListener('click',()=>generateCompletePage('improve_current'));
  if(fill)fill.addEventListener('click',()=>generateCompletePage('fill_missing'));
+ if(q('#approvePageChanges'))q('#approvePageChanges').addEventListener('click',approvePageWork);
+ if(q('#discardPageChanges'))q('#discardPageChanges').addEventListener('click',discardPageWork);
  
  const testBtn=q('#testPageApi');
  if(testBtn)testBtn.addEventListener('click',async()=>{
