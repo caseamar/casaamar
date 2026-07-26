@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.80
-Worker: 13.1-platform-status-timestamps
+Release: v2026.07.24.82
+Worker: 13.3-intelligent-start-position
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

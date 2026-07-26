@@ -1,6 +1,6 @@
 # Test Platform Status
-Release: v2026.07.24.80
-Worker: 13.1-platform-status-timestamps
+Release: v2026.07.24.82
+Worker: 13.3-intelligent-start-position
 1. Kontrollér version, Bygget og Live siden i Mission Control.
 2. Kontrollér samme status på Billeder, Viden og Hjemmesiden.
 3. Tider vises på dansk i Europe/Copenhagen.

@@ -33,7 +33,7 @@ main{max-width:1380px;margin:auto}
 @media(max-width:900px){.mc-hero,.mc-grid{grid-template-columns:1fr}.publish-grid,.mc-release{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body>
+<body id="top">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -89,18 +89,22 @@ main{max-width:1380px;margin:auto}
    <h3>Udgivelseskvittering</h3>
    <div class="rc-facts">
     <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
-    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform" data-platform-version>Indlæser…</strong></div>
+    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform" data-platform-version>Indlæser…</strong><small>Bygget <b data-platform-build>Indlæser…</b></small></div>
     <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
     <div class="rc-fact"><span>Dine ændringer</span><strong id="rcChangeCount">–</strong></div>
     <div class="rc-fact"><span>Tekniske filer</span><strong id="rcFileCount">–</strong></div>
     <div class="rc-fact"><span>GitHub før upload</span><strong id="rcBaselineCommit">–</strong></div>
     <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
+    <div class="rc-fact"><span>Live bekræftet</span><strong id="rcReceiptLiveAt">–</strong></div>
    </div>
    <div class="rc-versions">
     <span class="rc-version">Platform <strong data-platform-version>Indlæser…</strong></span>
     <span class="rc-version">Worker <strong data-worker-version>Indlæser…</strong></span>
-    <span class="rc-version">Live-match <strong id="rcVersionMatch">Kontrolleres</strong></span>
+    <span class="rc-version">Offentlig verifikation <strong id="rcVersionMatch">Kontrolleres</strong></span>
    </div>
+   <p id="rcVerificationHelp" style="margin:8px 0 0;color:var(--ca-muted);font-size:.68rem;line-height:1.45">
+    Offentlig verifikation betyder, at platformen har hentet udgivelseskvitteringen fra den offentlige hjemmeside og kontrolleret release-id, indholdsversion og platformversion. “Afventer” betyder derfor ikke en fejl — kontrollen er endnu ikke afsluttet.
+   </p>
    <h3 style="margin-top:14px">Det bliver udgivet</h3>
    <ul class="rc-file-list" id="rcChangeList"></ul>
    <details style="margin-top:12px"><summary style="cursor:pointer;font-size:.72rem;font-weight:800">Vis de tekniske filer</summary><ul class="rc-file-list" id="rcFileList"></ul></details>
@@ -312,6 +316,7 @@ function renderReleaseCenter(){
  rcQ("#rcFileCount").textContent=s?.file_count?`${s.file_count} filer`:"–";
  rcQ("#rcBaselineCommit").textContent=s?.baseline_commit_short||"–";
  rcQ("#rcCurrentCommit").textContent=s?.current_commit_short||"–";
+ rcQ("#rcReceiptLiveAt").textContent=s?.live_at?(typeof casaFormatDateTime==="function"?casaFormatDateTime(s.live_at):rcDate(s.live_at)):"Ikke bekræftet";
  rcQ("#rcPreparedTime").textContent=rcDate(s?.prepared_at);
  rcQ("#rcGithubTime").textContent=rcDate(s?.github_detected_at);
  rcQ("#rcDeployTime").textContent=rcDate(s?.deploying_at);
@@ -319,8 +324,15 @@ function renderReleaseCenter(){
  rcQ("#rcLiveTime").textContent=rcDate(s?.live_at);
  rcQ("#rcChangeList").innerHTML=(s?.changes?.length?s.changes:["Ingen brugerændringer registreret"]).map(x=>`<li>${x}</li>`).join("");
  rcQ("#rcFileList").innerHTML=rcFileNames(s).map(x=>`<li>${x}</li>`).join("");
- rcQ("#rcVersionMatch").textContent=s?.live_at?"Ja":s?.state==="github"||s?.state==="deploying"?"Afventer":"Ikke kontrolleret";
- rcQ("#rcVersionMatch").className=s?.live_at?"rc-sync ok":"rc-sync warn";
+ const verified=Boolean(s?.verified_checks?.public_release_id&&s?.verified_checks?.public_content_version);
+ const verificationText=!s?"Ikke startet":
+  verified?"Bekræftet":
+  s?.state==="verifying"?`${s.verification_matches||0} af 2 match`:
+  s?.state==="github"||s?.state==="deploying"?"Afventer offentlig kontrol":
+  s?.state==="live"?"Ældre udgivelse – ikke verificeret med ny metode":
+  "Afventer GitHub-upload";
+ rcQ("#rcVersionMatch").textContent=verificationText;
+ rcQ("#rcVersionMatch").className=verified?"rc-sync ok":"rc-sync warn";
  rcSetProgress(s?.state||"none");
  const wait=rcQ("#rcWaitMore"),later=rcQ("#rcDoLater"),again=rcQ("#rcPrepareAgain");
  [wait,later,again].forEach(x=>x.hidden=true);
@@ -473,7 +485,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"13.1-platform-status-timestamps",
+  worker_version:"13.3-intelligent-start-position",
   content_version:releaseData.content_version,
   change_count:Number(releaseData.change_count||0),
   changes:Array.isArray(releaseData.changes)?releaseData.changes:[],
@@ -508,4 +520,51 @@ checkReleaseStatus(false);
 setInterval(()=>{const s=rcSession();if(s&&s.state!=="live")checkReleaseStatus(false)},3600000);
 })();
 </script>
+
+<script>
+(()=>{
+ const RELEASE_KEY="casaReleaseSessionV2";
+ if("scrollRestoration" in history)history.scrollRestoration="manual";
+
+ function readReleaseSession(){
+  try{return JSON.parse(localStorage.getItem(RELEASE_KEY)||"null")}catch{return null}
+ }
+ function activePublishState(session){
+  return Boolean(session&&["prepared","github","deploying","verifying"].includes(session.state));
+ }
+ function explicitPublishNavigation(){
+  return location.hash==="#publish" || new URLSearchParams(location.search).get("view")==="publish";
+ }
+ function chooseStartPosition(){
+  const session=readReleaseSession();
+  const shouldOpenPublish=explicitPublishNavigation()||activePublishState(session);
+
+  requestAnimationFrame(()=>{
+   if(shouldOpenPublish){
+    document.querySelector("#publish")?.scrollIntoView({block:"start",behavior:"auto"});
+   }else{
+    window.scrollTo({top:0,left:0,behavior:"auto"});
+   }
+  });
+ }
+ function clearPublishHashAfterLive(){
+  const session=readReleaseSession();
+  if(session?.state==="live"&&location.hash==="#publish"){
+   history.replaceState(null,"",location.pathname+location.search);
+  }
+ }
+
+ window.addEventListener("pageshow",()=>{
+  clearPublishHashAfterLive();
+  chooseStartPosition();
+ },{once:true});
+
+ document.addEventListener("click",event=>{
+  const link=event.target.closest('a[href="#publish"],a[href$="knowledge-center.html#publish"],a[href$="knowledge-center#publish"]');
+  if(!link)return;
+  setTimeout(()=>document.querySelector("#publish")?.scrollIntoView({block:"start",behavior:"smooth"}),0);
+ });
+})();
+</script>
+
 </body></html>

@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.80
-Worker: 13.1-platform-status-timestamps
+Release: v2026.07.24.82
+Worker: 13.3-intelligent-start-position
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.80",
-  "build": "2026-07-26T18:30:00+02:00",
-  "worker_version": "13.1-platform-status-timestamps",
-  "release_name": "Platform Status Timestamps",
-  "generated_at": "2026-07-26T18:30:00+02:00",
+  "platform_version": "v2026.07.24.82",
+  "build": "2026-07-26T19:45:00+02:00",
+  "worker_version": "13.3-intelligent-start-position",
+  "release_name": "Intelligent Start Position",
+  "generated_at": "2026-07-26T19:45:00+02:00",
   "build_timezone": "Europe/Copenhagen"
 }
