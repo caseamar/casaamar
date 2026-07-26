@@ -59,7 +59,7 @@ main{max-width:1380px;margin:auto}
   <h2>Er alt udgivet?</h2>
   <p class="intro">Platformversion, dit igangværende arbejde og den senest offentliggjorte indholdsversion holdes adskilt.</p>
   <div class="mc-release">
-   <div><span>Platform</span><strong>v2026.07.24.72</strong></div>
+   <div><span>Platform</span><strong data-platform-version>Indlæser…</strong></div>
    <div><span>Senest live</span><strong id="liveContent">Indlæser…</strong></div>
    <div><span>Ikke udgivet</span><strong id="unpublishedCount">Kontrollerer…</strong></div>
   </div>
@@ -89,15 +89,15 @@ main{max-width:1380px;margin:auto}
    <h3>Udgivelseskvittering</h3>
    <div class="rc-facts">
     <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
-    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform">v2026.07.24.72</strong></div>
+    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform" data-platform-version>Indlæser…</strong></div>
     <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
     <div class="rc-fact"><span>Antal filer</span><strong id="rcFileCount">–</strong></div>
     <div class="rc-fact"><span>GitHub før upload</span><strong id="rcBaselineCommit">–</strong></div>
     <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
    </div>
    <div class="rc-versions">
-    <span class="rc-version">Platform <strong>v2026.07.24.72</strong></span>
-    <span class="rc-version">Worker <strong>12.2-release-center</strong></span>
+    <span class="rc-version">Platform <strong data-platform-version>Indlæser…</strong></span>
+    <span class="rc-version">Worker <strong data-worker-version>Indlæser…</strong></span>
     <span class="rc-version">Live-match <strong id="rcVersionMatch">Kontrolleres</strong></span>
    </div>
    <ul class="rc-file-list" id="rcFileList"></ul>
@@ -197,8 +197,8 @@ async function buildPublishFiles(){
  map["photo-missions.json"]=localJson("casaPhotoMissions",map["photo-missions.json"]);
  const now=new Date(),seq=String(now.getHours()).padStart(2,"0")+String(now.getMinutes()).padStart(2,"0");
  const contentVersion=`content-${now.toISOString().slice(0,10).replaceAll("-",".")}-${seq}`;
- map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.72",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
- map["workspace-release.json"]={platform_version:"v2026.07.24.72",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
+ map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
+ map["workspace-release.json"]={platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
  return Object.entries(map).map(([name,data])=>({name,text:JSON.stringify(data,null,2)}));
 }
 async function writeFiles(items){
@@ -331,8 +331,8 @@ async function createReleaseSession(items){
  const releaseData=releaseItem?JSON.parse(releaseItem.text):{};
  const session={
   release_id:id,
-  platform_version:"v2026.07.24.72",
-  worker_version:"12.2-release-center",
+  platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
+  worker_version:"12.3-single-version-source",
   content_version:releaseData.content_version,
   prepared_at:now.toISOString(),
   state:"prepared",

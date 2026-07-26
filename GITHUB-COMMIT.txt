@@ -1,17 +1,12 @@
-feat(release): Mission Control 2.0 Release Center
+fix(versioning): use one authoritative platform manifest everywhere
 
-- Added publish state machine:
-  prepared → GitHub commit detected → Cloudflare/live verification → workspace reset.
-- Added release receipt with independent release ID stamped with platform and worker versions.
-- Shows exact file count and file names for upload peace of mind.
-- Captures baseline GitHub commit before package creation.
-- Polls frequently only during an active publish session.
-- Gives clear reminders when GitHub has not changed.
-- Allows wait, defer, or prepare again without losing workspace changes.
-- Checks once per hour while Mission Control remains open.
-- Resets workspace only after the expected content version is confirmed live.
-- Added richer content-release and workspace-release manifests.
-- Added Mission Control 3.0 backlog.
+- Added platform-manifest.json as the only source of platform, build and worker versions.
+- Public website and every platform area now load the same manifest.
+- Removed user-visible hardcoded platform version values.
+- Release receipts stamp the manifest version used to create the package.
+- Release observer reports the same platform manifest.
+- Added no-store/no-cache rules for version metadata and platform shell.
+- Added cross-page version consistency test.
 
-Release: v2026.07.24.72
-Worker: 12.2-release-center
+Release: v2026.07.24.73
+Worker: 12.3-single-version-source

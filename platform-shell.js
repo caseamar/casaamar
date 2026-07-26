@@ -1,5 +1,28 @@
 
 (()=>{
+
+async function loadPlatformManifest(){
+ try{
+  const response=await fetch(`/platform-manifest.json?ts=${Date.now()}`,{cache:"no-store"});
+  if(!response.ok)throw new Error(`HTTP ${response.status}`);
+  const manifest=await response.json();
+  const version=manifest.platform_version||"Ukendt";
+  const build=manifest.build||"Ukendt";
+  const worker=manifest.worker_version||"Ukendt";
+  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
+  document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=build);
+  document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
+  document.documentElement.dataset.platformVersion=version;
+  window.CASA_PLATFORM_MANIFEST=manifest;
+  return manifest;
+ }catch(error){
+  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent="Kunne ikke læses");
+  console.error("Platformmanifest kunne ikke indlæses",error);
+  return null;
+ }
+}
+window.CasaPlatformManifestPromise=loadPlatformManifest();
+
 const PAGES={
  "/knowledge-center.html":{
   title:"Mission Control",
@@ -171,7 +194,7 @@ window.CasaWorkflow={
 const status=document.createElement("section");
 status.className="ca-status-strip";
 status.innerHTML=`
- <div><span>Platformversion</span><strong id="caPlatformVersion">v2026.07.24.72</strong></div>
+ <div><span>Platformversion</span><strong id="caPlatformVersion">Indlæser…</strong></div>
  <div><span>Senest udgivet indhold</span><strong id="caContentVersion">Indlæser…</strong></div>
  <div><span>Ikke udgivet arbejde</span><strong id="caWorkspaceState">Kontrollerer…</strong></div>
  <div><span>Seneste autosave</span><strong id="caLastSaved">–</strong></div>`;

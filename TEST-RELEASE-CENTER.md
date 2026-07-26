@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.72
-Worker: 12.2-release-center
+Release: v2026.07.24.73
+Worker: 12.3-single-version-source
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

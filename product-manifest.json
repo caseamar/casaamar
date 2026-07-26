@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -64,5 +64,11 @@
       "timestamps",
       "status"
     ]
+  },
+  "single_version_source": {
+    "file": "platform-manifest.json",
+    "rule": "All user-visible platform, build and worker values must load from this file.",
+    "cache": "no-store",
+    "consistency_check": "UI values are populated after manifest load; no page owns a separate version value."
   }
 }

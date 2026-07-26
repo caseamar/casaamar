@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "12.2-release-center",
+      version: "12.3-single-version-source",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1385,10 +1385,7 @@ async function handleReleaseObserver(request, env) {
       commit
     },
     live_release: liveRelease,
-    platform: {
-      version: "v2026.07.24.72",
-      worker: "12.2-release-center"
-    }
+    platform: await assetJson(env, request, "/platform-manifest.json")
   });
 }
 
@@ -2795,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "12.2-release-center",
+          worker: "12.3-single-version-source",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2803,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "12.2-release-center",
+          worker: "12.3-single-version-source",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
