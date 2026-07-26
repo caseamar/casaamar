@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.86
-Worker: 13.7-authoritative-route-sync
+Release: v2026.07.24.87
+Worker: 13.8-clear-current-vs-historical-version
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.

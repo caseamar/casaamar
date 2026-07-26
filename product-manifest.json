@@ -1,5 +1,5 @@
 {
-  "version": "3.6",
+  "version": "3.7",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -137,5 +137,12 @@
     "consistency_gate": "Version, build and worker must match before the status is accepted.",
     "cache_strategy": "Release-specific shell/manifest URLs plus no-store headers.",
     "diagnostics": "Visible warning if the deployed files do not belong to the same release."
+  },
+  "version_label_clarity": {
+    "current_platform": "Clearly labelled as Platformen du bruger nu.",
+    "historical_platform": "Clearly labelled as Denne udgivelse blev lavet med.",
+    "historical_source": "Release session platform_version and prepared_at.",
+    "current_source": "Current platform manifest and Worker metadata.",
+    "goal": "Prevent historical release receipts from being mistaken for the active platform version."
   }
 }

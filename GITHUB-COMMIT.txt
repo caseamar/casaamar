@@ -1,12 +1,11 @@
-fix(platform): authoritative route and release synchronisation
+fix(ux): distinguish current platform from historical release version
 
-- Worker internally maps extensionless admin URLs to the current HTML assets.
-- No redirects are used.
-- Added /api/platform-meta as authoritative deployed Worker metadata.
-- Platform status is accepted only when manifest and Worker version/build match.
-- Added visible mismatch warning instead of silently showing an old version.
-- Versioned every platform-shell reference with this release.
-- Added no-store headers for both /knowledge-center and /knowledge-center.html.
+- Added a clearly separated “Platformen du bruger nu” status.
+- Renamed the historical receipt field to “Denne udgivelse blev lavet med”.
+- Historical release platform/build now come from the release session.
+- Added a plain-language explanation of the two version concepts.
+- Renamed the historical chip to “Historisk platform”.
+- Preserved old release versions as valid audit history.
 
-Release: v2026.07.24.86
-Worker: 13.7-authoritative-route-sync
+Release: v2026.07.24.87
+Worker: 13.8-clear-current-vs-historical-version

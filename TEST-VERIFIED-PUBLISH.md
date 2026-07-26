@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.86
-Worker: 13.7-authoritative-route-sync
+Release: v2026.07.24.87
+Worker: 13.8-clear-current-vs-historical-version
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

@@ -33,7 +33,7 @@ main{max-width:1380px;margin:auto}
 @media(max-width:900px){.mc-hero,.mc-grid{grid-template-columns:1fr}.publish-grid,.mc-release{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body data-expected-platform="v2026.07.24.86" data-expected-build="2026-07-26T22:45:00+02:00" id="top">
+<body data-expected-platform="v2026.07.24.87" data-expected-build="2026-07-26T23:05:00+02:00" id="top">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -82,14 +82,18 @@ main{max-width:1380px;margin:auto}
 
 <section class="rc-center" id="publish">
  <h2>Udgivelsescenter</h2>
- <p class="rc-intro">Her følger du én udgivelse fra klargjorte filer til en bekræftet live-version. Platformen nulstiller først opgaven, når den forventede indholdsversion faktisk er live.</p>
+ <p class="rc-intro">Her følger du én konkret udgivelse. Versionsnummeret i kvitteringen er historisk og viser, hvilken platform der lavede netop den udgivelse. Den aktuelle platform vises separat, så de to aldrig forveksles.</p>
 
  <div class="rc-receipt">
   <article class="rc-manifest">
    <h3>Udgivelseskvittering</h3>
    <div class="rc-facts">
     <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
-    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform" data-platform-version>Indlæser…</strong><small>Bygget <b data-platform-build>Indlæser…</b></small></div>
+    <div class="rc-fact rc-historical-platform">
+      <span>Denne udgivelse blev lavet med</span>
+      <strong id="rcHistoricalPlatform">–</strong>
+      <small>Platformens build på udgivelsestidspunktet: <b id="rcHistoricalBuild">–</b></small>
+    </div>
     <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
     <div class="rc-fact"><span>Dine ændringer</span><strong id="rcChangeCount">–</strong></div>
     <div class="rc-fact"><span>Tekniske filer</span><strong id="rcFileCount">–</strong></div>
@@ -97,8 +101,16 @@ main{max-width:1380px;margin:auto}
     <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
     <div class="rc-fact"><span>Live bekræftet</span><strong id="rcReceiptLiveAt">–</strong></div>
    </div>
+   <div class="rc-current-platform">
+    <span>Platformen du bruger nu</span>
+    <strong data-platform-version>Indlæser…</strong>
+    <small>Bygget <b data-platform-build>Indlæser…</b> · Worker <b data-worker-version>Indlæser…</b></small>
+   </div>
+   <p class="rc-version-explanation">
+    <strong>Sådan læses versionsnumrene:</strong> “Platformen du bruger nu” er den aktuelle softwareversion. “Denne udgivelse blev lavet med” er et historisk stempel, som bevares i kvitteringen.
+   </p>
    <div class="rc-versions">
-    <span class="rc-version">Platform <strong data-platform-version>Indlæser…</strong></span>
+    <span class="rc-version">Historisk platform <strong id="rcHistoricalPlatformChip">–</strong></span>
     <span class="rc-version">Worker <strong data-worker-version>Indlæser…</strong></span>
     <span class="rc-version">Offentlig verifikation <strong id="rcVersionMatch">Kontrolleres</strong></span>
    </div>
@@ -132,7 +144,7 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.86"></script>
+<script src="/platform-shell.js?v=20260724.87"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -311,6 +323,11 @@ function rcFileNames(session){return session?.files||[]}
 function renderReleaseCenter(){
  const s=rcSession();
  rcQ("#rcReleaseId").textContent=s?.release_id||"Ikke startet";
+ const historicalPlatform=s?.platform_version||"–";
+ const historicalBuild=s?.prepared_at||"–";
+ rcQ("#rcHistoricalPlatform").textContent=historicalPlatform;
+ rcQ("#rcHistoricalPlatformChip").textContent=historicalPlatform;
+ rcQ("#rcHistoricalBuild").textContent=historicalBuild!=="–"?(typeof casaFormatDateTime==="function"?casaFormatDateTime(historicalBuild):rcDate(historicalBuild)):"–";
  rcQ("#rcContentVersion").textContent=s?.content_version||"–";
  rcQ("#rcChangeCount").textContent=s?`${s.change_count||0} ændringer`:"–";
  rcQ("#rcFileCount").textContent=s?.file_count?`${s.file_count} filer`:"–";
@@ -485,7 +502,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"13.7-authoritative-route-sync",
+  worker_version:"13.8-clear-current-vs-historical-version",
   content_version:releaseData.content_version,
   change_count:Number(releaseData.change_count||0),
   changes:Array.isArray(releaseData.changes)?releaseData.changes:[],
