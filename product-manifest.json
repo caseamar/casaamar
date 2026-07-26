@@ -1,5 +1,5 @@
 {
-  "version": "3.9",
+  "version": "2.6",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -85,90 +85,5 @@
     "hidden_tab": "checks stop immediately",
     "routing": "no custom redirects and no URL rewriting",
     "public_website": "manifest loaded once; no polling"
-  },
-  "verified_publish": {
-    "user_facing_count": "Counts workspace changes, not generated files.",
-    "technical_file_count": "Shown separately for upload reconciliation.",
-    "live_gate": [
-      "new GitHub commit detected",
-      "minimum deployment delay elapsed",
-      "public content-release.json matches release_id",
-      "public content-release.json matches content_version",
-      "public content-release.json matches platform_version",
-      "two consecutive public matches"
-    ],
-    "workspace_reset": "Only after the full live gate passes."
-  },
-  "platform_status": {
-    "fields": [
-      "platform version",
-      "build timestamp",
-      "verified live timestamp"
-    ],
-    "timezone": "Europe/Copenhagen",
-    "build_source": "platform-manifest.json",
-    "live_source": "verified publish live_at"
-  },
-  "platform_status_consistency": {
-    "public_badge": "version and formatted build date both bound to platform-manifest selectors",
-    "knowledge_center": "shows build date, verified-live date and plain-language public verification status",
-    "legacy_release_status": "explicitly labelled as not verified with the newer method"
-  },
-  "knowledge_center_start_position": {
-    "default": "top of Mission Control",
-    "publish_view": "release center only when navigation explicitly targets #publish",
-    "active_release": "release center while a publish session is prepared, in GitHub, deploying or verifying",
-    "completed_release": "returns to top; release receipt remains accessible below",
-    "browser_scroll_restoration": "manual"
-  },
-  "version_cache_sync": {
-    "authoritative_source": "platform-manifest.json",
-    "admin_shell": "versioned query parameter on every HTML page",
-    "manifest_fetch": "release-specific query parameter plus timestamp",
-    "build_timezone": "Europe/Copenhagen",
-    "goal": "Public website and Knowledge Center must show the same platform version and build timestamp immediately after deployment."
-  },
-  "authoritative_route_sync": {
-    "extensionless_routes": "Worker internally serves the corresponding current .html asset; no redirects.",
-    "platform_sources": [
-      "platform-manifest.json",
-      "/api/platform-meta"
-    ],
-    "consistency_gate": "Version, build and worker must match before the status is accepted.",
-    "cache_strategy": "Release-specific shell/manifest URLs plus no-store headers.",
-    "diagnostics": "Visible warning if the deployed files do not belong to the same release."
-  },
-  "version_label_clarity": {
-    "current_platform": "Clearly labelled as Platformen du bruger nu.",
-    "historical_platform": "Clearly labelled as Denne udgivelse blev lavet med.",
-    "historical_source": "Release session platform_version and prepared_at.",
-    "current_source": "Current platform manifest and Worker metadata.",
-    "goal": "Prevent historical release receipts from being mistaken for the active platform version."
-  },
-  "release_center_version_model": {
-    "current_platform_panel": "Always populated from the current platform shell/manifest.",
-    "historical_receipt_panel": "Always populated from the saved release session.",
-    "separation": "Two distinct visual cards with independent labels and data sources.",
-    "historical_fields": [
-      "release id",
-      "content version",
-      "platform",
-      "worker",
-      "prepared time",
-      "commits",
-      "live confirmation"
-    ],
-    "goal": "A historical release can never visually masquerade as the active platform."
-  },
-  "canonical_mission_control": {
-    "canonical_asset": "mission-control-v89.html",
-    "worker_routes": [
-      "/knowledge-center",
-      "/knowledge-center.html",
-      "/mission-control-v89.html"
-    ],
-    "reason": "A brand-new asset name prevents an old Knowledge Center HTML file from being mistaken for the current UI.",
-    "historical_data": "Still displayed only inside the explicitly historical release receipt.",
-    "build_timestamp": "Generated from the actual package creation time in Europe/Copenhagen."
   }
 }
