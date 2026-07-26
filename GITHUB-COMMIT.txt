@@ -1,15 +1,3 @@
-feat(release): verified publish with user-change receipt
-
-- Shows user changes as the primary release count.
-- Lists the actual changes included in the release.
-- Keeps technical file count separate for upload reconciliation.
-- Adds a five-stage publish flow with public website verification.
-- Generates collision-proof release IDs and content versions with seconds and nonce.
-- Never confirms live before a newer GitHub commit is detected.
-- Requires a minimum deployment delay and two consecutive public manifest matches.
-- Verifies release ID, content version and platform version.
-- Clears workspace only after verified public delivery.
-- Final receipt explains exactly which changes are live.
-
-Release: v2026.07.24.79
-Worker: 13.0-verified-publish
+feat(status): platform build and verified-live timestamps
+Release: v2026.07.24.80
+Worker: 13.1-platform-status-timestamps

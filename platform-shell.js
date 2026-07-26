@@ -1,6 +1,17 @@
 
 (()=>{
 
+function casaFormatDateTime(value){
+ if(!value)return "Ikke registreret";
+ const date=new Date(value);
+ if(Number.isNaN(date.getTime()))return String(value);
+ return new Intl.DateTimeFormat("da-DK",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Copenhagen"}).format(date).replace(" kl. "," · kl. ");
+}
+function casaLatestLiveAt(){
+ try{const s=JSON.parse(localStorage.getItem("casaReleaseSessionV2")||"null");if(s?.state==="live"&&s?.live_at)return s.live_at}catch{}
+ return localStorage.getItem("casaLastConfirmedLiveAt");
+}
+
 
 const CASA_SUPERVISOR_INTERVAL_MS=60*1000;
 const CASA_SUPERVISOR_IDLE_MS=15*60*1000;
@@ -8,7 +19,7 @@ let casaSupervisorTimer=null,casaSupervisorLastActivity=Date.now(),casaSuperviso
 function applyPlatformManifest(manifest){
  const version=manifest?.platform_version||"Ukendt",build=manifest?.build||"Ukendt",worker=manifest?.worker_version||"Ukendt";
  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
- document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=build);
+ document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=casaFormatDateTime(build));
  document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
  document.documentElement.dataset.platformVersion=version;window.CASA_PLATFORM_MANIFEST=manifest;
 }
@@ -215,7 +226,7 @@ window.CasaWorkflow={
 const status=document.createElement("section");
 status.className="ca-status-strip";
 status.innerHTML=`
- <div><span>Platformversion</span><strong id="caPlatformVersion">Indlæser…</strong></div>
+ <div class="ca-platform-status"><span>Platformstatus</span><strong id="caPlatformVersion">Indlæser…</strong><small>Bygget <b data-platform-build>Indlæser…</b></small><small>Live siden <b id="caPlatformLiveAt">Kontrollerer…</b></small></div>
  <div><span>Senest udgivet indhold</span><strong id="caContentVersion">Indlæser…</strong></div>
  <div><span>Ikke udgivet arbejde</span><strong id="caWorkspaceState">Kontrollerer…</strong></div>
  <div><span>Seneste autosave</span><strong id="caLastSaved">–</strong></div>`;
@@ -274,7 +285,9 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch("/content-release.json",{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
-}).catch(()=>document.querySelector("#caContentVersion").textContent="Kunne ikke læses");
+ const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
+ const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);
+}).catch(()=>{document.querySelector("#caContentVersion").textContent="Kunne ikke læses";const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(casaLatestLiveAt())});
 })();

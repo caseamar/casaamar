@@ -93,3 +93,5 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 .rc-versions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.rc-version{padding:6px 8px;border-radius:9px;background:#fff;border:1px solid var(--ca-line);font-size:.65rem}
 .rc-sync{font-weight:850}.rc-sync.ok{color:var(--ca-green)}.rc-sync.warn{color:var(--ca-amber)}
 @media(max-width:850px){.rc-receipt{grid-template-columns:1fr}.rc-file-list{columns:1}}
+
+.ca-status-strip small{display:block;margin-top:4px;color:var(--ca-muted);font-size:.62rem;line-height:1.35}.ca-status-strip small b{color:var(--ca-text);font-weight:750}.ca-platform-status{min-width:0}

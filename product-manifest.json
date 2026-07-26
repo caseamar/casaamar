@@ -1,5 +1,5 @@
 {
-  "version": "3.0",
+  "version": "3.1",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -98,5 +98,15 @@
       "two consecutive public matches"
     ],
     "workspace_reset": "Only after the full live gate passes."
+  },
+  "platform_status": {
+    "fields": [
+      "platform version",
+      "build timestamp",
+      "verified live timestamp"
+    ],
+    "timezone": "Europe/Copenhagen",
+    "build_source": "platform-manifest.json",
+    "live_source": "verified publish live_at"
   }
 }

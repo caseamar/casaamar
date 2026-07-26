@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.79
-Worker: 13.0-verified-publish
+Release: v2026.07.24.80
+Worker: 13.1-platform-status-timestamps
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

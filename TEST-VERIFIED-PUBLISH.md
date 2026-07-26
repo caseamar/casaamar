@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.79
-Worker: 13.0-verified-publish
+Release: v2026.07.24.80
+Worker: 13.1-platform-status-timestamps
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.
