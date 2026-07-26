@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.84
-Worker: 13.5-stable-status-recovery
+Release: v2026.07.24.85
+Worker: 13.6-version-cache-sync
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

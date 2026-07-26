@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.84
-Worker: 13.5-stable-status-recovery
+Release: v2026.07.24.85
+Worker: 13.6-version-cache-sync
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

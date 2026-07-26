@@ -1,10 +1,10 @@
 # Test konsistent Platformstatus
 
-Release: v2026.07.24.84
-Worker: 13.5-stable-status-recovery
+Release: v2026.07.24.85
+Worker: 13.6-version-cache-sync
 
 1. Offentlig hjemmeside:
-   - DEV-badge viser `v2026.07.24.84`
+   - DEV-badge viser `v2026.07.24.85`
    - dato vises på dansk, ikke som rå ISO-streng
 2. Mission Control:
    - Platform viser version, Bygget og Live siden

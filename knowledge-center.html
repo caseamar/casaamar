@@ -132,7 +132,7 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js"></script>
+<script src="/platform-shell.js?v=20260724.85"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -485,7 +485,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"13.5-stable-status-recovery",
+  worker_version:"13.6-version-cache-sync",
   content_version:releaseData.content_version,
   change_count:Number(releaseData.change_count||0),
   changes:Array.isArray(releaseData.changes)?releaseData.changes:[],

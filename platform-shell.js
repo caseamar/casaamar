@@ -21,10 +21,13 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
  document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=casaFormatDateTime(build));
  document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
- document.documentElement.dataset.platformVersion=version;window.CASA_PLATFORM_MANIFEST=manifest;
+ document.documentElement.dataset.platformVersion=version;
+ document.documentElement.dataset.platformBuild=build;
+ document.documentElement.dataset.workerVersion=worker;
+ window.CASA_PLATFORM_MANIFEST=manifest;
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.85&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 function removeSupervisorBanner(){document.querySelector("#caSupervisorBanner")?.remove()}
@@ -285,7 +288,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.85&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

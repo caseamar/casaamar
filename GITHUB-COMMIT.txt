@@ -1,11 +1,11 @@
-fix(recovery): restore full website and keep status handling conservative
+fix(versioning): force website and Knowledge Center into sync
 
-- Restored from the last known-good full website release.
-- Removed the experimental runtime-state architecture.
-- Kept one manifest as the visible version/build source.
-- Fixed the public badge to show a Danish formatted timestamp.
-- Clarified public verification states in the Release Center.
-- Added live-confirmed timestamp to the release receipt.
+- Set the real Danish build timestamp for this package.
+- Added a release-specific query parameter to platform-shell.js on every admin page.
+- Added release-specific cache-busting to platform-manifest.json and content-release.json.
+- Strengthened no-cache headers for Knowledge Center, shell and manifest.
+- Kept platform-manifest.json as the authoritative visible version/build source.
+- Added a cross-page version and timestamp consistency test.
 
-Release: v2026.07.24.84
-Worker: 13.5-stable-status-recovery
+Release: v2026.07.24.85
+Worker: 13.6-version-cache-sync

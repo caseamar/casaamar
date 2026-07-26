@@ -1,5 +1,5 @@
 {
-  "version": "3.3",
+  "version": "3.5",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -120,5 +120,12 @@
     "active_release": "release center while a publish session is prepared, in GitHub, deploying or verifying",
     "completed_release": "returns to top; release receipt remains accessible below",
     "browser_scroll_restoration": "manual"
+  },
+  "version_cache_sync": {
+    "authoritative_source": "platform-manifest.json",
+    "admin_shell": "versioned query parameter on every HTML page",
+    "manifest_fetch": "release-specific query parameter plus timestamp",
+    "build_timezone": "Europe/Copenhagen",
+    "goal": "Public website and Knowledge Center must show the same platform version and build timestamp immediately after deployment."
   }
 }
