@@ -1,5 +1,5 @@
 {
-  "version": "2.5",
+  "version": "2.6",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -77,18 +77,13 @@
     "mission_control": "Recomputed immediately after live confirmation.",
     "legacy_sessions": "Reconciled once for compatibility."
   },
-  "safe_automatic_refresh": {
-    "route_strategy": "All platform routes redirect to explicit .html files.",
-    "check_interval": "30 seconds",
-    "reload": "Only after a confirmed version change.",
-    "recovery": "Cache-busting explicit HTML URL prevents ambiguous extensionless routing."
-  },
-  "idle_aware_refresh": {
-    "active_check": "every 30 seconds",
-    "pause_after": "15 minutes without activity",
+  "platform_supervisor": {
+    "automatic_reload": false,
+    "update_action": "User clicks Opdater platformen",
+    "check_interval": "60 seconds while visible and active",
+    "pause_after": "15 minutes inactivity",
     "hidden_tab": "checks stop immediately",
-    "resume": "one immediate check, then polling resumes",
-    "reload": "plain location.reload without redirects",
-    "publish_monitoring": "separate short-lived release process"
+    "routing": "no custom redirects and no URL rewriting",
+    "public_website": "manifest loaded once; no polling"
   }
 }

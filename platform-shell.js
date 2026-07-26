@@ -2,84 +2,46 @@
 (()=>{
 
 
-
-const CASA_VERSION_SEEN_KEY="casaPlatformVersionSeen";
-const CASA_IDLE_LIMIT_MS=15*60*1000;
-const CASA_VERSION_INTERVAL_MS=30*1000;
-let casaVersionTimer=null,casaReloading=false,casaPaused=false,casaLastActivity=Date.now();
-
+const CASA_SUPERVISOR_INTERVAL_MS=60*1000;
+const CASA_SUPERVISOR_IDLE_MS=15*60*1000;
+let casaSupervisorTimer=null,casaSupervisorLastActivity=Date.now(),casaSupervisorPaused=false,casaInstalledVersion=null;
 function applyPlatformManifest(manifest){
- const version=manifest?.platform_version||"Ukendt";
- const build=manifest?.build||"Ukendt";
- const worker=manifest?.worker_version||"Ukendt";
+ const version=manifest?.platform_version||"Ukendt",build=manifest?.build||"Ukendt",worker=manifest?.worker_version||"Ukendt";
  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
  document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=build);
  document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
- document.documentElement.dataset.platformVersion=version;
- window.CASA_PLATFORM_MANIFEST=manifest;
+ document.documentElement.dataset.platformVersion=version;window.CASA_PLATFORM_MANIFEST=manifest;
 }
 async function fetchPlatformManifest(){
- const r=await fetch(`/platform-manifest.json?_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
- if(!r.ok)throw new Error(`HTTP ${r.status}`); return r.json();
+ const response=await fetch(`/platform-manifest.json?_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
-function ensurePauseNotice(){
- let n=document.querySelector("#caIdlePauseNotice");
- if(!n){
-  n=document.createElement("div");n.id="caIdlePauseNotice";
-  n.style.cssText="position:fixed;inset:0;z-index:1400;background:rgba(20,35,30,.28);backdrop-filter:blur(5px);display:grid;place-items:center;padding:20px";
-  n.innerHTML=`<section style="max-width:480px;background:white;border-radius:20px;padding:24px;box-shadow:0 24px 65px rgba(20,35,30,.28);font-family:Inter,system-ui,sans-serif">
-   <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#e66542;font-weight:850">Platformen er sat på pause</div>
-   <h2 style="margin:8px 0;color:#14231e">Dit arbejde er gemt</h2>
-   <p style="margin:0;color:#66736e;line-height:1.55">Jeg har stoppet de automatiske kontroller efter 15 minutters inaktivitet.</p>
-   <button id="caResumeWork" style="margin-top:16px;padding:11px 14px;border:0;border-radius:11px;background:#e66542;color:white;font-weight:850;cursor:pointer">Fortsæt arbejdet</button>
-  </section>`;
-  document.body.appendChild(n);n.querySelector("#caResumeWork").onclick=resumePlatformWork;
- }
+function removeSupervisorBanner(){document.querySelector("#caSupervisorBanner")?.remove()}
+function showUpdateAvailable(manifest){
+ let banner=document.querySelector("#caSupervisorBanner");
+ if(!banner){banner=document.createElement("aside");banner.id="caSupervisorBanner";banner.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:1500;width:min(640px,calc(100vw - 28px));background:#17352b;color:white;border-radius:16px;padding:14px 16px;box-shadow:0 20px 55px rgba(20,35,30,.28);font-family:Inter,system-ui,sans-serif";document.body.appendChild(banner)}
+ banner.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;gap:14px"><div><strong style="display:block;font-size:.85rem">En ny platformversion er klar</strong><span style="display:block;margin-top:3px;color:rgba(255,255,255,.72);font-size:.72rem">Version ${manifest.platform_version}. Dit autosavede arbejde bevares.</span></div><button id="caSupervisorUpdateButton" style="border:0;border-radius:11px;padding:10px 13px;background:#e66542;color:white;font-weight:850;white-space:nowrap;cursor:pointer">Opdater platformen</button></div>`;
+ banner.querySelector("#caSupervisorUpdateButton").onclick=()=>{banner.querySelector("#caSupervisorUpdateButton").textContent="Opdaterer…";location.reload()};
 }
-function showUpdateNotice(v){
- let n=document.querySelector("#caPlatformUpdateNotice");
- if(!n){n=document.createElement("div");n.id="caPlatformUpdateNotice";
-  n.style.cssText="position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:1500;padding:12px 14px;border-radius:14px;background:#17352b;color:white;font:700 .78rem/1.45 Inter,system-ui,sans-serif";
-  document.body.appendChild(n);}
- n.innerHTML=`En ny platformversion <strong>${v}</strong> er klar. Platformen opdateres automatisk.`;
+function showPausedSupervisor(){
+ if(document.querySelector("#caSupervisorPause"))return;
+ const panel=document.createElement("aside");panel.id="caSupervisorPause";panel.style.cssText="position:fixed;right:20px;bottom:20px;z-index:1300;width:min(380px,calc(100vw - 40px));background:white;border:1px solid #e4e2dc;border-radius:16px;padding:15px;box-shadow:0 18px 45px rgba(20,35,30,.18);font-family:Inter,system-ui,sans-serif";
+ panel.innerHTML=`<strong style="display:block;color:#14231e;font-size:.82rem">Automatiske kontroller er sat på pause</strong><p style="margin:5px 0 11px;color:#66736e;font-size:.72rem;line-height:1.5">Der har ikke været aktivitet i 15 minutter. Dit arbejde er gemt, og platformen sender ikke flere versionsforespørgsler.</p><button id="caSupervisorResume" style="border:0;border-radius:10px;padding:9px 12px;background:#e66542;color:white;font-weight:850;cursor:pointer">Jeg er aktiv igen</button>`;
+ document.body.appendChild(panel);panel.querySelector("#caSupervisorResume").onclick=resumeSupervisor;
 }
-function reloadPlatform(v){if(casaReloading)return;casaReloading=true;showUpdateNotice(v);setTimeout(()=>location.reload(),1500)}
-async function loadPlatformManifest({checkForUpgrade=false}={}){
- try{
-  const previous=document.documentElement.dataset.platformVersion||window.CASA_PLATFORM_MANIFEST?.platform_version||sessionStorage.getItem(CASA_VERSION_SEEN_KEY)||null;
-  const manifest=await fetchPlatformManifest();applyPlatformManifest(manifest);
-  sessionStorage.setItem(CASA_VERSION_SEEN_KEY,manifest.platform_version||"");
-  if(checkForUpgrade&&previous&&manifest.platform_version&&previous!==manifest.platform_version)reloadPlatform(manifest.platform_version);
-  return manifest;
- }catch(e){console.error("Platformmanifest kunne ikke indlæses",e);return null}
+async function checkForPlatformUpdate(){
+ if(casaSupervisorPaused||document.visibilityState!=="visible")return;
+ try{const manifest=await fetchPlatformManifest();if(!casaInstalledVersion)casaInstalledVersion=document.documentElement.dataset.platformVersion||window.CASA_PLATFORM_MANIFEST?.platform_version||manifest.platform_version;if(manifest.platform_version===casaInstalledVersion)removeSupervisorBanner();else showUpdateAvailable(manifest)}catch(error){console.warn("Platform Supervisor kunne ikke kontrollere versionen",error)}
 }
-function stopVersionWatch(){if(casaVersionTimer)clearInterval(casaVersionTimer);casaVersionTimer=null}
-function beginVersionWatch(){
- stopVersionWatch();if(casaPaused||document.visibilityState!=="visible")return;
- casaVersionTimer=setInterval(()=>{
-  if(Date.now()-casaLastActivity>=CASA_IDLE_LIMIT_MS){pausePlatformWork();return}
-  loadPlatformManifest({checkForUpgrade:true});
- },CASA_VERSION_INTERVAL_MS);
-}
-function pausePlatformWork(){if(casaPaused)return;casaPaused=true;stopVersionWatch();ensurePauseNotice();document.documentElement.dataset.platformPaused="true"}
-async function resumePlatformWork(){
- casaPaused=false;casaLastActivity=Date.now();document.querySelector("#caIdlePauseNotice")?.remove();
- document.documentElement.dataset.platformPaused="false";await loadPlatformManifest({checkForUpgrade:true});beginVersionWatch();
-}
-function registerPlatformActivity(){casaLastActivity=Date.now();if(!casaPaused&&!casaVersionTimer&&document.visibilityState==="visible")beginVersionWatch()}
-["pointerdown","keydown","input","change","wheel","touchstart"].forEach(n=>document.addEventListener(n,registerPlatformActivity,{passive:true,capture:true}));
-window.CasaPlatformManifestPromise=new Promise(resolve=>{
- const initial=()=>loadPlatformManifest({checkForUpgrade:false}).then(resolve);
- if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial();
-});
-window.addEventListener("pageshow",()=>{if(!casaPaused)loadPlatformManifest({checkForUpgrade:true})});
-document.addEventListener("visibilitychange",()=>{
- if(document.visibilityState==="hidden")stopVersionWatch();
- else if(!casaPaused){casaLastActivity=Date.now();loadPlatformManifest({checkForUpgrade:true});beginVersionWatch()}
-});
-window.addEventListener("focus",()=>{if(!casaPaused){casaLastActivity=Date.now();loadPlatformManifest({checkForUpgrade:true});beginVersionWatch()}});
-beginVersionWatch();
-
+function stopSupervisor(){if(casaSupervisorTimer)clearInterval(casaSupervisorTimer);casaSupervisorTimer=null}
+function startSupervisor(){stopSupervisor();if(casaSupervisorPaused||document.visibilityState!=="visible")return;casaSupervisorTimer=setInterval(()=>{if(Date.now()-casaSupervisorLastActivity>=CASA_SUPERVISOR_IDLE_MS){casaSupervisorPaused=true;stopSupervisor();showPausedSupervisor();return}checkForPlatformUpdate()},CASA_SUPERVISOR_INTERVAL_MS)}
+async function resumeSupervisor(){casaSupervisorPaused=false;casaSupervisorLastActivity=Date.now();document.querySelector("#caSupervisorPause")?.remove();await checkForPlatformUpdate();startSupervisor()}
+function registerSupervisorActivity(){casaSupervisorLastActivity=Date.now()}
+["pointerdown","keydown","input","change","wheel","touchstart"].forEach(n=>document.addEventListener(n,registerSupervisorActivity,{passive:true,capture:true}));
+async function loadPlatformManifest(){try{const manifest=await fetchPlatformManifest();casaInstalledVersion=manifest.platform_version||null;applyPlatformManifest(manifest);return manifest}catch(error){console.error("Platformmanifest kunne ikke indlæses",error);return null}}
+window.CasaPlatformManifestPromise=new Promise(resolve=>{const initial=()=>loadPlatformManifest().then(result=>{startSupervisor();resolve(result)});if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial()});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")stopSupervisor();else if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
+window.addEventListener("focus",()=>{if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
 
 
 const PAGES={

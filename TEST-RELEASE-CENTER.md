@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.77
-Worker: 12.7-idle-aware-refresh
+Release: v2026.07.24.78
+Worker: 12.8-stable-platform-supervisor
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

@@ -1,12 +1,12 @@
-fix(platform): remove redirect loop and add idle-aware version checks
+fix(platform): restore stable UI and introduce a conservative Platform Supervisor
 
-- Removed _redirects and all URL rewriting.
-- Automatic updates now use plain location.reload().
-- Version polling runs only while the platform is visible and active.
-- Polling pauses after 15 minutes of inactivity.
-- Added “Fortsæt arbejdet” pause screen.
-- Returning to the tab performs one immediate version check.
-- Public website polling also stops when hidden or inactive.
+- Restored from the last known-good full Mission Control baseline.
+- Neutralized the previously deployed _redirects file.
+- Removed automatic reloads and all URL rewriting.
+- Added a visible “Opdater platformen” button when a newer version is detected.
+- Checks at most once per minute while visible and active.
+- Stops checks after 15 minutes of inactivity and in background tabs.
+- Public website does not poll.
 
-Release: v2026.07.24.77
-Worker: 12.7-idle-aware-refresh
+Release: v2026.07.24.78
+Worker: 12.8-stable-platform-supervisor
