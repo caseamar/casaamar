@@ -1,5 +1,5 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -70,5 +70,11 @@
     "rule": "All user-visible platform, build and worker values must load from this file.",
     "cache": "no-store",
     "consistency_check": "UI values are populated after manifest load; no page owns a separate version value."
+  },
+  "live_workspace_reconciliation": {
+    "rule": "Only workspace values included in the confirmed release are cleared.",
+    "newer_edits": "Preserved if their current value differs from the release snapshot.",
+    "mission_control": "Recomputed immediately after live confirmation.",
+    "legacy_sessions": "Reconciled once for compatibility."
   }
 }

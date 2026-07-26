@@ -136,7 +136,9 @@ function countWorkspace(){
 function taskHtml(rank,title,text,href,label){
  return `<div class="mc-task"><div class="mc-rank">${rank}</div><div><strong>${title}</strong><small>${text}</small></div><a href="${href}">${label} →</a></div>`;
 }
+let missionLoadSequence=0;
 async function loadMission(){
+ const missionSequence=++missionLoadSequence;
  const [cardsData,gapsData,assetsData,releaseData]=await Promise.all([
   fetchJson("/knowledge-cards.json",{}),fetchJson("/knowledge-gaps.json",{gaps:[]}),
   fetchJson("/asset-library.json",{assets:[]}),fetchJson("/content-release.json",{})
@@ -147,6 +149,7 @@ async function loadMission(){
  const review=cards.filter(c=>["imported","needs_review","draft"].includes(c.maturity)||c.editorial?.review_state==="needs_review").length;
  const gaps=(gapsData.gaps||[]).filter(g=>g.status!=="closed").length;
  const pendingAssets=(localJson("casaAssetLibrary",assetsData).assets||[]).filter(a=>a.analysis_queue?.visual_status!=="analyzed"||a.source?.source_state==="missing").length;
+ if(missionSequence!==missionLoadSequence)return;
  const tasks=[];
  if(workspace.count)tasks.push({rank:"1",title:"Udgiv dit færdige arbejde",text:`${workspace.count} ændringer er autosavet, men endnu ikke live.`,href:"#publish",label:"Klargør"});
  if(pendingAssets)tasks.push({rank:String(tasks.length+1),title:"Gennemgå billeder der kræver opmærksomhed",text:`${pendingAssets} billeder mangler analyse, kilde eller review.`,href:"/asset-studio.html",label:"Åbn billeder"});
@@ -228,7 +231,12 @@ let rcTimer=null;
 function rcQ(s){return document.querySelector(s)}
 function rcLocalJson(key,fallback=null){try{return JSON.parse(localStorage.getItem(key)||"null")??fallback}catch{return fallback}}
 function rcSession(){return rcLocalJson(RELEASE_KEY,null)}
-function rcSave(session){localStorage.setItem(RELEASE_KEY,JSON.stringify(session));renderReleaseCenter()}
+function rcSave(session){
+ localStorage.setItem(RELEASE_KEY,JSON.stringify(session));
+ renderReleaseCenter();
+ // The recommendation card and task list must reflect the reconciled workspace immediately.
+ if(typeof loadMission==="function")loadMission();
+}
 function rcDate(value){return value?new Date(value).toLocaleString("da-DK"):"Venter"}
 function rcSetMessage(text,type=""){const el=rcQ("#rcMessage");if(!el)return;el.className=`rc-message ${type}`.trim();el.innerHTML=text}
 function rcWorkspaceCount(){
@@ -283,14 +291,40 @@ function renderReleaseCenter(){
  }else if(s.state==="github"||s.state==="deploying"){
   rcSetMessage(`<strong>Jeg har fundet et nyt GitHub-commit ${s.current_commit_short||""}.</strong><br>Nu venter jeg på, at Cloudflare gør indholdsversion <strong>${s.content_version}</strong> live. Det tager normalt omkring ét minut.`);
  }else if(s.state==="live"){
-  rcSetMessage(`<strong>Udgivelse ${s.release_id} er nu live.</strong><br>${s.file_count} filer blev klargjort med platform ${s.platform_version}. Dit lokale workspace er nulstillet, fordi den forventede indholdsversion er bekræftet live.`,"success");
+  const remaining=s.workspace_reconciliation?.remaining_count||0;
+  if(remaining){
+   rcSetMessage(`<strong>Udgivelse ${s.release_id} er nu live.</strong><br>Det arbejde, der indgik i udgivelsen, er fjernet fra opgavelisten. <strong>${remaining} nyere ændringer</strong>, som blev lavet efter pakken, er bevaret og venter på en senere udgivelse.`,"success");
+  }else{
+   rcSetMessage(`<strong>Udgivelse ${s.release_id} er nu live.</strong><br>${s.file_count} filer blev klargjort med platform ${s.platform_version}. Den afsluttede udgivelsesopgave er fjernet, og Mission Control viser nu din næste reelle opgave.`,"success");
+  }
  }
 }
-function clearWorkspaceAfterLive(){
- WORKSPACE_KEYS.forEach(k=>localStorage.removeItem(k));
- localStorage.removeItem("casaWebsiteApprovedAt");
- localStorage.removeItem("casaKnowledgeApprovedAt");
+function clearWorkspaceAfterLive(session){
+ const snapshot=session?.workspace_snapshot||null;
+ const removed=[],preserved=[];
+ WORKSPACE_KEYS.forEach(key=>{
+  const current=localStorage.getItem(key);
+  if(current===null)return;
+  // For new releases, remove only the exact value included in the release.
+  // Newer edits made while deployment was running must remain unpublished.
+  if(snapshot&&Object.prototype.hasOwnProperty.call(snapshot,key)){
+   if(current===snapshot[key]){localStorage.removeItem(key);removed.push(key)}
+   else preserved.push(key);
+  }else{
+   // Compatibility for releases created before snapshot support.
+   localStorage.removeItem(key);removed.push(key);
+  }
+ });
+ if(!localStorage.getItem("casaWebsiteContentDraft"))localStorage.removeItem("casaWebsiteApprovedAt");
+ if(!localStorage.getItem("casaKnowledgeChanges")&&!localStorage.getItem("casaKnowledgeWorkspaceChanges"))localStorage.removeItem("casaKnowledgeApprovedAt");
  localStorage.setItem("casaWorkspaceLastSaved",new Date().toISOString());
+ session.workspace_reconciliation={
+  reconciled_at:new Date().toISOString(),
+  removed_keys:removed,
+  preserved_newer_keys:preserved,
+  remaining_count:rcWorkspaceCount()
+ };
+ return session.workspace_reconciliation;
 }
 async function checkReleaseStatus(manual=false){
  const s=rcSession();if(!s)return;
@@ -305,9 +339,16 @@ async function checkReleaseStatus(manual=false){
   }
  }
  if(live?.content_version===s.content_version){
-  if(s.state!=="live"){
-   s.state="live";s.live_at=new Date().toISOString();s.live_release=live;clearWorkspaceAfterLive();changed=true;
+  const firstLiveConfirmation=s.state!=="live";
+  s.state="live";
+  s.live_at=s.live_at||new Date().toISOString();
+  s.live_release=live;
+  // Reconcile once, or repair older sessions that reached live without updating Mission Control.
+  if(!s.workspace_reconciliation){
+   clearWorkspaceAfterLive(s);
+   changed=true;
   }
+  if(firstLiveConfirmation)changed=true;
  }
  s.last_checked_at=new Date().toISOString();
  if(manual&&!changed)s.manual_checks=(s.manual_checks||0)+1;
@@ -332,7 +373,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"12.3-single-version-source",
+  worker_version:"12.4-live-workspace-reconciliation",
   content_version:releaseData.content_version,
   prepared_at:now.toISOString(),
   state:"prepared",
@@ -342,7 +383,8 @@ async function createReleaseSession(items){
   baseline_commit_short:observed.github?.commit?.short_sha||null,
   reminder_count:0,
   deferred:false,
-  workspace_count_at_prepare:rcWorkspaceCount()
+  workspace_count_at_prepare:rcWorkspaceCount(),
+  workspace_snapshot:Object.fromEntries(WORKSPACE_KEYS.map(key=>[key,localStorage.getItem(key)]))
  };
  localStorage.setItem(RELEASE_KEY,JSON.stringify(session));
  return session;

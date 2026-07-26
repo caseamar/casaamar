@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.73
-Worker: 12.3-single-version-source
+Release: v2026.07.24.74
+Worker: 12.4-live-workspace-reconciliation
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

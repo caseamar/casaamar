@@ -1,12 +1,12 @@
-fix(versioning): use one authoritative platform manifest everywhere
+fix(release): reconcile Mission Control immediately after live confirmation
 
-- Added platform-manifest.json as the only source of platform, build and worker versions.
-- Public website and every platform area now load the same manifest.
-- Removed user-visible hardcoded platform version values.
-- Release receipts stamp the manifest version used to create the package.
-- Release observer reports the same platform manifest.
-- Added no-store/no-cache rules for version metadata and platform shell.
-- Added cross-page version consistency test.
+- Mission Control now refreshes immediately when a release becomes live.
+- The completed publish task disappears without requiring a page reload.
+- Release sessions capture an exact snapshot of workspace values.
+- Only values included in the confirmed release are cleared.
+- Newer edits made during deployment are preserved for the next release.
+- Existing live sessions are repaired once for backward compatibility.
+- Live confirmation explains whether newer unpublished work remains.
 
-Release: v2026.07.24.73
-Worker: 12.3-single-version-source
+Release: v2026.07.24.74
+Worker: 12.4-live-workspace-reconciliation
