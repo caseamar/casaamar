@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "13.6-version-cache-sync",
+      version: "13.7-authoritative-route-sync",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "13.6-version-cache-sync",
+          worker: "13.7-authoritative-route-sync",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,13 +2800,56 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "13.6-version-cache-sync",
+          worker: "13.7-authoritative-route-sync",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+
+    if (request.method === "GET" && url.pathname === "/api/platform-meta") {
+      return json({
+        ok: true,
+        platform_version: "v2026.07.24.86",
+        build: "2026-07-26T22:45:00+02:00",
+        worker_version: "13.7-authoritative-route-sync",
+        source: "worker-runtime"
+      }, 200, {
+        "cache-control": "no-store, no-cache, must-revalidate, max-age=0"
+      });
+    }
+
+    const platformRoutes = {
+      "/knowledge-center": "/knowledge-center.html",
+      "/knowledge-studio": "/knowledge-studio.html",
+      "/knowledge-review": "/knowledge-review.html",
+      "/knowledge-architect": "/knowledge-architect.html",
+      "/knowledge-debug": "/knowledge-debug.html",
+      "/brand-studio": "/brand-studio.html",
+      "/page-studio": "/page-studio.html",
+      "/page-preview": "/page-preview.html",
+      "/asset-studio": "/asset-studio.html",
+      "/asset-brief": "/asset-brief.html",
+      "/photo-missions": "/photo-missions.html",
+      "/ai-test-runner": "/ai-test-runner.html"
+    };
+
+    if (request.method === "GET" && platformRoutes[url.pathname]) {
+      const target = new URL(request.url);
+      target.pathname = platformRoutes[url.pathname];
+      target.searchParams.set("_route_release", "20260724.86");
+      const assetResponse = await env.ASSETS.fetch(new Request(target.toString(), request));
+      const headers = new Headers(assetResponse.headers);
+      headers.set("cache-control", "no-store, no-cache, must-revalidate, max-age=0");
+      headers.set("x-casa-platform-version", "v2026.07.24.86");
+      return new Response(assetResponse.body, {
+        status: assetResponse.status,
+        statusText: assetResponse.statusText,
+        headers
+      });
+    }
 
     if (request.method === "GET" && url.pathname === "/api/release-observer") {
       try {

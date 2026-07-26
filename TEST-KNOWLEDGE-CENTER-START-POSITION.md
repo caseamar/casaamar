@@ -1,7 +1,7 @@
 # Test intelligent startposition
 
-Release: v2026.07.24.85
-Worker: 13.6-version-cache-sync
+Release: v2026.07.24.86
+Worker: 13.7-authoritative-route-sync
 
 1. Åbn `/knowledge-center.html` uden aktiv udgivelse.
    - Siden skal starte helt i toppen.

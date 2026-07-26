@@ -1,5 +1,5 @@
 {
-  "version": "3.5",
+  "version": "3.6",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -127,5 +127,15 @@
     "manifest_fetch": "release-specific query parameter plus timestamp",
     "build_timezone": "Europe/Copenhagen",
     "goal": "Public website and Knowledge Center must show the same platform version and build timestamp immediately after deployment."
+  },
+  "authoritative_route_sync": {
+    "extensionless_routes": "Worker internally serves the corresponding current .html asset; no redirects.",
+    "platform_sources": [
+      "platform-manifest.json",
+      "/api/platform-meta"
+    ],
+    "consistency_gate": "Version, build and worker must match before the status is accepted.",
+    "cache_strategy": "Release-specific shell/manifest URLs plus no-store headers.",
+    "diagnostics": "Visible warning if the deployed files do not belong to the same release."
   }
 }

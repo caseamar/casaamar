@@ -1,11 +1,12 @@
-fix(versioning): force website and Knowledge Center into sync
+fix(platform): authoritative route and release synchronisation
 
-- Set the real Danish build timestamp for this package.
-- Added a release-specific query parameter to platform-shell.js on every admin page.
-- Added release-specific cache-busting to platform-manifest.json and content-release.json.
-- Strengthened no-cache headers for Knowledge Center, shell and manifest.
-- Kept platform-manifest.json as the authoritative visible version/build source.
-- Added a cross-page version and timestamp consistency test.
+- Worker internally maps extensionless admin URLs to the current HTML assets.
+- No redirects are used.
+- Added /api/platform-meta as authoritative deployed Worker metadata.
+- Platform status is accepted only when manifest and Worker version/build match.
+- Added visible mismatch warning instead of silently showing an old version.
+- Versioned every platform-shell reference with this release.
+- Added no-store headers for both /knowledge-center and /knowledge-center.html.
 
-Release: v2026.07.24.85
-Worker: 13.6-version-cache-sync
+Release: v2026.07.24.86
+Worker: 13.7-authoritative-route-sync

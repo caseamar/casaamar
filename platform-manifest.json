@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.85",
-  "build": "2026-07-26T22:15:00+02:00",
-  "worker_version": "13.6-version-cache-sync",
-  "release_name": "Version Cache Sync",
-  "generated_at": "2026-07-26T22:15:00+02:00",
+  "platform_version": "v2026.07.24.86",
+  "build": "2026-07-26T22:45:00+02:00",
+  "worker_version": "13.7-authoritative-route-sync",
+  "release_name": "Authoritative Route Sync",
+  "generated_at": "2026-07-26T22:45:00+02:00",
   "build_timezone": "Europe/Copenhagen"
 }

@@ -27,9 +27,28 @@ function applyPlatformManifest(manifest){
  window.CASA_PLATFORM_MANIFEST=manifest;
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.85&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.86&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
+
+function showPlatformConsistencyWarning(manifest,meta){
+ let panel=document.querySelector("#caPlatformConsistencyWarning");
+ if(!panel){
+  panel=document.createElement("aside");
+  panel.id="caPlatformConsistencyWarning";
+  panel.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:1700;width:min(720px,calc(100vw - 28px));background:#8a2f20;color:white;border-radius:16px;padding:14px 16px;box-shadow:0 20px 55px rgba(20,35,30,.28);font-family:Inter,system-ui,sans-serif";
+  document.body.appendChild(panel);
+ }
+ panel.innerHTML=`<strong style="display:block">Platformen er ikke færdig med at synkronisere</strong>
+ <span style="display:block;margin-top:4px;font-size:.73rem;line-height:1.45">
+ Hjemmesiden og kontrolcentret viser endnu ikke samme release. Manifest: ${manifest?.platform_version||"ukendt"} · Worker: ${meta?.platform_version||"ukendt"}.
+ Vent på den grønne Cloudflare-deployment og genindlæs derefter siden.
+ </span>`;
+}
+function removePlatformConsistencyWarning(){
+ document.querySelector("#caPlatformConsistencyWarning")?.remove();
+}
+
 function removeSupervisorBanner(){document.querySelector("#caSupervisorBanner")?.remove()}
 function showUpdateAvailable(manifest){
  let banner=document.querySelector("#caSupervisorBanner");
@@ -52,7 +71,32 @@ function startSupervisor(){stopSupervisor();if(casaSupervisorPaused||document.vi
 async function resumeSupervisor(){casaSupervisorPaused=false;casaSupervisorLastActivity=Date.now();document.querySelector("#caSupervisorPause")?.remove();await checkForPlatformUpdate();startSupervisor()}
 function registerSupervisorActivity(){casaSupervisorLastActivity=Date.now()}
 ["pointerdown","keydown","input","change","wheel","touchstart"].forEach(n=>document.addEventListener(n,registerSupervisorActivity,{passive:true,capture:true}));
-async function loadPlatformManifest(){try{const manifest=await fetchPlatformManifest();casaInstalledVersion=manifest.platform_version||null;applyPlatformManifest(manifest);return manifest}catch(error){console.error("Platformmanifest kunne ikke indlæses",error);return null}}
+async function loadPlatformManifest(){
+ try{
+  const [manifest,metaResponse]=await Promise.all([
+   fetchPlatformManifest(),
+   fetch(`/api/platform-meta?v=20260724.86&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+  ]);
+  const meta=metaResponse.ok?await metaResponse.json():null;
+  const consistent=Boolean(
+   meta &&
+   manifest.platform_version===meta.platform_version &&
+   manifest.build===meta.build &&
+   manifest.worker_version===meta.worker_version
+  );
+  if(!consistent){
+   showPlatformConsistencyWarning(manifest,meta);
+   throw new Error("Platformfilerne er ikke synkroniserede.");
+  }
+  removePlatformConsistencyWarning();
+  casaInstalledVersion=manifest.platform_version||null;
+  applyPlatformManifest(manifest);
+  return manifest;
+ }catch(error){
+  console.error("Platformstatus kunne ikke synkroniseres",error);
+  return null;
+ }
+}
 window.CasaPlatformManifestPromise=new Promise(resolve=>{const initial=()=>loadPlatformManifest().then(result=>{startSupervisor();resolve(result)});if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial()});
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")stopSupervisor();else if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
 window.addEventListener("focus",()=>{if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
@@ -288,7 +332,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.85&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.86&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);
