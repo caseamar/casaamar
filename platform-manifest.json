@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.88",
-  "build": "2026-07-26T23:30:00+02:00",
-  "worker_version": "13.9-release-center-version-clarity",
-  "release_name": "Release Center Version Clarity",
-  "generated_at": "2026-07-26T23:30:00+02:00",
+  "platform_version": "v2026.07.24.89",
+  "build": "2026-07-26T23:35:42+02:00",
+  "worker_version": "14.0-canonical-mission-control",
+  "release_name": "Canonical Mission Control",
+  "generated_at": "2026-07-26T23:35:42+02:00",
   "build_timezone": "Europe/Copenhagen"
 }

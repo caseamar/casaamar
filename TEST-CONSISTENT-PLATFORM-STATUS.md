@@ -1,10 +1,10 @@
 # Test konsistent Platformstatus
 
-Release: v2026.07.24.88
-Worker: 13.9-release-center-version-clarity
+Release: v2026.07.24.89
+Worker: 14.0-canonical-mission-control
 
 1. Offentlig hjemmeside:
-   - DEV-badge viser `v2026.07.24.88`
+   - DEV-badge viser `v2026.07.24.89`
    - dato vises på dansk, ikke som rå ISO-streng
 2. Mission Control:
    - Platform viser version, Bygget og Live siden

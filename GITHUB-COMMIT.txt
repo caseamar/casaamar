@@ -1,11 +1,13 @@
-fix(release-center): separate current platform from historical release receipt
+fix(mission-control): introduce a canonical versioned UI asset
 
-- Rebuilt the Release Center receipt into two distinct cards.
-- Current platform always shows the active version, build, worker and live content.
-- Historical receipt always shows the version and worker saved with that release.
-- Removed mixed current/historical chips from the receipt.
-- Added plain-language descriptions of both data sources.
-- Preserved historical release metadata for audit purposes.
+- Added mission-control-v89.html as the only canonical Mission Control HTML.
+- Worker serves both old Knowledge Center URLs from the canonical asset without redirects.
+- Old knowledge-center.html is now only a compatibility forwarder.
+- Updated all admin navigation links to the canonical page.
+- Added an unmistakable current-platform header.
+- Preserved historical release metadata only inside the historical receipt.
+- Build timestamp now uses the actual package creation time.
 
-Release: v2026.07.24.88
-Worker: 13.9-release-center-version-clarity
+Release: v2026.07.24.89
+Worker: 14.0-canonical-mission-control
+Build: 2026-07-26T23:35:42+02:00

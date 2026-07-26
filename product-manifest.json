@@ -1,5 +1,5 @@
 {
-  "version": "3.8",
+  "version": "3.9",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -159,5 +159,16 @@
       "live confirmation"
     ],
     "goal": "A historical release can never visually masquerade as the active platform."
+  },
+  "canonical_mission_control": {
+    "canonical_asset": "mission-control-v89.html",
+    "worker_routes": [
+      "/knowledge-center",
+      "/knowledge-center.html",
+      "/mission-control-v89.html"
+    ],
+    "reason": "A brand-new asset name prevents an old Knowledge Center HTML file from being mistaken for the current UI.",
+    "historical_data": "Still displayed only inside the explicitly historical release receipt.",
+    "build_timestamp": "Generated from the actual package creation time in Europe/Copenhagen."
   }
 }

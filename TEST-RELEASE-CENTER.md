@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.88
-Worker: 13.9-release-center-version-clarity
+Release: v2026.07.24.89
+Worker: 14.0-canonical-mission-control
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.
