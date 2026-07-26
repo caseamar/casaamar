@@ -33,7 +33,7 @@ main{max-width:1380px;margin:auto}
 @media(max-width:900px){.mc-hero,.mc-grid{grid-template-columns:1fr}.publish-grid,.mc-release{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body data-expected-platform="v2026.07.24.87" data-expected-build="2026-07-26T23:05:00+02:00" id="top">
+<body data-expected-platform="v2026.07.24.88" data-expected-build="2026-07-26T23:30:00+02:00" id="top">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -82,44 +82,49 @@ main{max-width:1380px;margin:auto}
 
 <section class="rc-center" id="publish">
  <h2>Udgivelsescenter</h2>
- <p class="rc-intro">Her følger du én konkret udgivelse. Versionsnummeret i kvitteringen er historisk og viser, hvilken platform der lavede netop den udgivelse. Den aktuelle platform vises separat, så de to aldrig forveksles.</p>
+ <p class="rc-intro">Øverst ser du platformen, du bruger nu. Under den ligger den historiske kvittering for den seneste udgivelse. De to områder er bevidst adskilt, så en gammel udgivelsesversion aldrig kan forveksles med den aktuelle platform.</p>
 
  <div class="rc-receipt">
   <article class="rc-manifest">
-   <h3>Udgivelseskvittering</h3>
-   <div class="rc-facts">
-    <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
-    <div class="rc-fact rc-historical-platform">
-      <span>Denne udgivelse blev lavet med</span>
-      <strong id="rcHistoricalPlatform">–</strong>
-      <small>Platformens build på udgivelsestidspunktet: <b id="rcHistoricalBuild">–</b></small>
+   <section class="rc-current-status-card">
+    <div class="rc-section-kicker">Aktuel platform</div>
+    <h3>Platformen du bruger nu</h3>
+    <div class="rc-current-status-grid">
+     <div><span>Version</span><strong data-platform-version>Indlæser…</strong></div>
+     <div><span>Bygget</span><strong data-platform-build>Indlæser…</strong></div>
+     <div><span>Worker</span><strong data-worker-version>Indlæser…</strong></div>
+     <div><span>Seneste live indhold</span><strong data-content-version id="rcCurrentContentVersion">Indlæser…</strong></div>
     </div>
-    <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
-    <div class="rc-fact"><span>Dine ændringer</span><strong id="rcChangeCount">–</strong></div>
-    <div class="rc-fact"><span>Tekniske filer</span><strong id="rcFileCount">–</strong></div>
-    <div class="rc-fact"><span>GitHub før upload</span><strong id="rcBaselineCommit">–</strong></div>
-    <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
-    <div class="rc-fact"><span>Live bekræftet</span><strong id="rcReceiptLiveAt">–</strong></div>
-   </div>
-   <div class="rc-current-platform">
-    <span>Platformen du bruger nu</span>
-    <strong data-platform-version>Indlæser…</strong>
-    <small>Bygget <b data-platform-build>Indlæser…</b> · Worker <b data-worker-version>Indlæser…</b></small>
-   </div>
-   <p class="rc-version-explanation">
-    <strong>Sådan læses versionsnumrene:</strong> “Platformen du bruger nu” er den aktuelle softwareversion. “Denne udgivelse blev lavet med” er et historisk stempel, som bevares i kvitteringen.
-   </p>
-   <div class="rc-versions">
-    <span class="rc-version">Historisk platform <strong id="rcHistoricalPlatformChip">–</strong></span>
-    <span class="rc-version">Worker <strong data-worker-version>Indlæser…</strong></span>
-    <span class="rc-version">Offentlig verifikation <strong id="rcVersionMatch">Kontrolleres</strong></span>
-   </div>
-   <p id="rcVerificationHelp" style="margin:8px 0 0;color:var(--ca-muted);font-size:.68rem;line-height:1.45">
-    Offentlig verifikation betyder, at platformen har hentet udgivelseskvitteringen fra den offentlige hjemmeside og kontrolleret release-id, indholdsversion og platformversion. “Afventer” betyder derfor ikke en fejl — kontrollen er endnu ikke afsluttet.
-   </p>
-   <h3 style="margin-top:14px">Det bliver udgivet</h3>
-   <ul class="rc-file-list" id="rcChangeList"></ul>
-   <details style="margin-top:12px"><summary style="cursor:pointer;font-size:.72rem;font-weight:800">Vis de tekniske filer</summary><ul class="rc-file-list" id="rcFileList"></ul></details>
+    <p>Dette er den softwareversion, som Mission Control kører på lige nu.</p>
+   </section>
+
+   <section class="rc-history-card">
+    <div class="rc-section-kicker">Historisk kvittering</div>
+    <h3>Seneste udgivelse</h3>
+    <p class="rc-history-intro">Oplysningerne herunder ændres ikke, når platformen senere bliver opdateret. De dokumenterer præcis, hvilken platform der lavede denne konkrete udgivelse.</p>
+    <div class="rc-facts">
+     <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
+     <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
+     <div class="rc-fact rc-historical-platform"><span>Udgivelsen blev lavet med</span><strong id="rcHistoricalPlatform">–</strong><small>Historisk platformversion</small></div>
+     <div class="rc-fact"><span>Historisk worker</span><strong id="rcHistoricalWorker">–</strong></div>
+     <div class="rc-fact"><span>Pakken blev samlet</span><strong id="rcHistoricalBuild">–</strong></div>
+     <div class="rc-fact"><span>Dine ændringer</span><strong id="rcChangeCount">–</strong></div>
+     <div class="rc-fact"><span>Tekniske filer</span><strong id="rcFileCount">–</strong></div>
+     <div class="rc-fact"><span>GitHub før upload</span><strong id="rcBaselineCommit">–</strong></div>
+     <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
+     <div class="rc-fact"><span>Live bekræftet</span><strong id="rcReceiptLiveAt">–</strong></div>
+    </div>
+
+    <div class="rc-verification-summary">
+     <span>Offentlig verifikation</span>
+     <strong id="rcVersionMatch">Kontrolleres</strong>
+     <small>Kontrollen sammenligner release-id, indholdsversion og platformversion på den offentlige hjemmeside.</small>
+    </div>
+
+    <h3 style="margin-top:14px">Det blev udgivet</h3>
+    <ul class="rc-file-list" id="rcChangeList"></ul>
+    <details style="margin-top:12px"><summary style="cursor:pointer;font-size:.72rem;font-weight:800">Vis de tekniske filer</summary><ul class="rc-file-list" id="rcFileList"></ul></details>
+   </section>
   </article>
 
   <article class="rc-state">
@@ -144,7 +149,7 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.87"></script>
+<script src="/platform-shell.js?v=20260724.88"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -324,10 +329,18 @@ function renderReleaseCenter(){
  const s=rcSession();
  rcQ("#rcReleaseId").textContent=s?.release_id||"Ikke startet";
  const historicalPlatform=s?.platform_version||"–";
+ const historicalWorker=s?.worker_version||"–";
  const historicalBuild=s?.prepared_at||"–";
  rcQ("#rcHistoricalPlatform").textContent=historicalPlatform;
- rcQ("#rcHistoricalPlatformChip").textContent=historicalPlatform;
+ rcQ("#rcHistoricalWorker").textContent=historicalWorker;
  rcQ("#rcHistoricalBuild").textContent=historicalBuild!=="–"?(typeof casaFormatDateTime==="function"?casaFormatDateTime(historicalBuild):rcDate(historicalBuild)):"–";
+ const currentContentEl=rcQ("#rcCurrentContentVersion");
+ if(currentContentEl){
+  fetch(`/content-release.json?_=${Date.now()}`,{cache:"no-store"})
+   .then(r=>r.ok?r.json():{})
+   .then(data=>{currentContentEl.textContent=data.content_version||"Ukendt"})
+   .catch(()=>{currentContentEl.textContent="Kunne ikke læses"});
+ }
  rcQ("#rcContentVersion").textContent=s?.content_version||"–";
  rcQ("#rcChangeCount").textContent=s?`${s.change_count||0} ændringer`:"–";
  rcQ("#rcFileCount").textContent=s?.file_count?`${s.file_count} filer`:"–";
@@ -502,7 +515,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"13.8-clear-current-vs-historical-version",
+  worker_version:"13.9-release-center-version-clarity",
   content_version:releaseData.content_version,
   change_count:Number(releaseData.change_count||0),
   changes:Array.isArray(releaseData.changes)?releaseData.changes:[],

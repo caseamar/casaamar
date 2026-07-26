@@ -1,11 +1,11 @@
-fix(ux): distinguish current platform from historical release version
+fix(release-center): separate current platform from historical release receipt
 
-- Added a clearly separated “Platformen du bruger nu” status.
-- Renamed the historical receipt field to “Denne udgivelse blev lavet med”.
-- Historical release platform/build now come from the release session.
-- Added a plain-language explanation of the two version concepts.
-- Renamed the historical chip to “Historisk platform”.
-- Preserved old release versions as valid audit history.
+- Rebuilt the Release Center receipt into two distinct cards.
+- Current platform always shows the active version, build, worker and live content.
+- Historical receipt always shows the version and worker saved with that release.
+- Removed mixed current/historical chips from the receipt.
+- Added plain-language descriptions of both data sources.
+- Preserved historical release metadata for audit purposes.
 
-Release: v2026.07.24.87
-Worker: 13.8-clear-current-vs-historical-version
+Release: v2026.07.24.88
+Worker: 13.9-release-center-version-clarity

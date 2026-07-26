@@ -1,8 +1,8 @@
 # Test af fælles versionskilde
 
-Forventet platformversion: v2026.07.24.87
-Forventet worker: 13.8-clear-current-vs-historical-version
-Forventet build: 2026-07-26T23:05:00+02:00
+Forventet platformversion: v2026.07.24.88
+Forventet worker: 13.9-release-center-version-clarity
+Forventet build: 2026-07-26T23:30:00+02:00
 
 1. Upload og overskriv alle filer, inklusive:
    - `platform-manifest.json`
@@ -13,7 +13,7 @@ Forventet build: 2026-07-26T23:05:00+02:00
 3. Åbn hjemmesiden i en ny fane.
 4. Åbn Mission Control i en anden fane.
 5. Lav Ctrl+F5 på begge sider.
-6. Begge steder skal vise præcis `v2026.07.24.87`.
+6. Begge steder skal vise præcis `v2026.07.24.88`.
 7. Åbn direkte `/platform-manifest.json`.
 8. Kontrollér at platform, build og worker svarer til ovenstående.
 9. Åbn Billeder, Hjemmesiden og Viden.

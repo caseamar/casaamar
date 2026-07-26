@@ -1,5 +1,5 @@
 {
-  "version": "3.7",
+  "version": "3.8",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -144,5 +144,20 @@
     "historical_source": "Release session platform_version and prepared_at.",
     "current_source": "Current platform manifest and Worker metadata.",
     "goal": "Prevent historical release receipts from being mistaken for the active platform version."
+  },
+  "release_center_version_model": {
+    "current_platform_panel": "Always populated from the current platform shell/manifest.",
+    "historical_receipt_panel": "Always populated from the saved release session.",
+    "separation": "Two distinct visual cards with independent labels and data sources.",
+    "historical_fields": [
+      "release id",
+      "content version",
+      "platform",
+      "worker",
+      "prepared time",
+      "commits",
+      "live confirmation"
+    ],
+    "goal": "A historical release can never visually masquerade as the active platform."
   }
 }

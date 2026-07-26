@@ -1,7 +1,7 @@
 # Test intelligent startposition
 
-Release: v2026.07.24.87
-Worker: 13.8-clear-current-vs-historical-version
+Release: v2026.07.24.88
+Worker: 13.9-release-center-version-clarity
 
 1. Åbn `/knowledge-center.html` uden aktiv udgivelse.
    - Siden skal starte helt i toppen.

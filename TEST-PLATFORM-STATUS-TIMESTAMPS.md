@@ -1,6 +1,6 @@
 # Test Platform Status
-Release: v2026.07.24.87
-Worker: 13.8-clear-current-vs-historical-version
+Release: v2026.07.24.88
+Worker: 13.9-release-center-version-clarity
 1. Kontrollér version, Bygget og Live siden i Mission Control.
 2. Kontrollér samme status på Billeder, Viden og Hjemmesiden.
 3. Tider vises på dansk i Europe/Copenhagen.

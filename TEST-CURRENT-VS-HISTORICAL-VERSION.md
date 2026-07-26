@@ -1,12 +1,12 @@
 # Test aktuelle og historiske versionsnumre
 
-Release: v2026.07.24.87
-Worker: 13.8-clear-current-vs-historical-version
+Release: v2026.07.24.88
+Worker: 13.9-release-center-version-clarity
 
 1. Åbn Knowledge Center og gå til Udgivelsescenteret.
 2. Øverst i kvitteringen skal stå:
    - “Platformen du bruger nu”
-   - `v2026.07.24.87`
+   - `v2026.07.24.88`
    - aktuelt build-tidspunkt
 3. Den gamle udgivelse skal fortsat vise sit historiske stempel under:
    - “Denne udgivelse blev lavet med”

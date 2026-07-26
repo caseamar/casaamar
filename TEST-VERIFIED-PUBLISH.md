@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.87
-Worker: 13.8-clear-current-vs-historical-version
+Release: v2026.07.24.88
+Worker: 13.9-release-center-version-clarity
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.
