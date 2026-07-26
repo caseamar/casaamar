@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "2.0",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -41,5 +41,28 @@
     "Brugeren uploader pakken til GitHub",
     "Cloudflare gør versionen live",
     "Mission Control bekræfter den live indholdsversion"
-  ]
+  ],
+  "release_center": {
+    "states": [
+      "workspace",
+      "prepared",
+      "github",
+      "deploying",
+      "live"
+    ],
+    "active_polling": "15 seconds initially, then 60 seconds",
+    "passive_polling": "once per hour while Mission Control is open",
+    "workspace_reset": "only when expected content_version is confirmed live",
+    "receipt_fields": [
+      "release_id",
+      "platform_version",
+      "worker_version",
+      "content_version",
+      "file_count",
+      "baseline_commit",
+      "detected_commit",
+      "timestamps",
+      "status"
+    ]
+  }
 }

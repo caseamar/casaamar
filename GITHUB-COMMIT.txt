@@ -1,16 +1,17 @@
-feat(ux): guided end-to-end workflow across the platform
+feat(release): Mission Control 2.0 Release Center
 
-- Added a shared four-step workflow:
-  AI works → user reads/edits → user approves → publish live.
-- Page Studio now shows live activity and elapsed time during long AI work.
-- AI output opens directly in review state; no redundant review button.
-- Added approve and discard actions with safe snapshot restoration.
-- Approval explicitly preserves both AI output and manual user edits.
-- Added direct "Gå til udgivelse" navigation after approval.
-- Publishing clearly includes the complete current workspace, not only AI changes.
-- Rewrote completion messages as concrete Danish instructions.
-- Added next-step coaching to Images, Knowledge, Brand, Review and Test.
-- Updated product principles and test coverage.
+- Added publish state machine:
+  prepared → GitHub commit detected → Cloudflare/live verification → workspace reset.
+- Added release receipt with independent release ID stamped with platform and worker versions.
+- Shows exact file count and file names for upload peace of mind.
+- Captures baseline GitHub commit before package creation.
+- Polls frequently only during an active publish session.
+- Gives clear reminders when GitHub has not changed.
+- Allows wait, defer, or prepare again without losing workspace changes.
+- Checks once per hour while Mission Control remains open.
+- Resets workspace only after the expected content version is confirmed live.
+- Added richer content-release and workspace-release manifests.
+- Added Mission Control 3.0 backlog.
 
-Release: v2026.07.24.71
-Worker: 12.1-guided-workflow
+Release: v2026.07.24.72
+Worker: 12.2-release-center

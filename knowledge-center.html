@@ -59,7 +59,7 @@ main{max-width:1380px;margin:auto}
   <h2>Er alt udgivet?</h2>
   <p class="intro">Platformversion, dit igangværende arbejde og den senest offentliggjorte indholdsversion holdes adskilt.</p>
   <div class="mc-release">
-   <div><span>Platform</span><strong>v2026.07.24.71</strong></div>
+   <div><span>Platform</span><strong>v2026.07.24.72</strong></div>
    <div><span>Senest live</span><strong id="liveContent">Indlæser…</strong></div>
    <div><span>Ikke udgivet</span><strong id="unpublishedCount">Kontrollerer…</strong></div>
   </div>
@@ -80,20 +80,48 @@ main{max-width:1380px;margin:auto}
  </article>
 </section>
 
-<section class="publish-panel" id="publish">
- <h2>Gør dine godkendte ændringer live</h2>
- <p><strong>Dette er sidste trin.</strong> Jeg samler hele dit aktuelle arbejde — AI's ændringer, dine egne rettelser, godkendt viden, hjemmesideindhold, billeder, billedoplysninger, relationer, fotoopgaver og stilindstillinger. Du får én samlet mappe, som du uploader til GitHub. Cloudflare opdaterer derefter hjemmesiden automatisk.</p>
- <div class="ca-coach">
-<div class="ca-coach-icon">4</div><div><strong>Det er dette, der kommer med</strong><p>Alt autosavet og godkendt arbejde i platformen — ikke kun AI's ændringer. Klik på knappen nedenfor, vælg en tom mappe, og upload derefter alle filerne til GitHub.</p></div>
-</div>
-<div class="publish-grid">
-  <div><span>Viden</span><strong id="publishKnowledgeStatus">–</strong></div>
-  <div><span>Hjemmeside</span><strong id="publishWebsiteStatus">–</strong></div>
-  <div><span>Billeder</span><strong id="publishAssetStatus">–</strong></div>
-  <div><span>Seneste autosave</span><strong id="publishLastSaved">–</strong></div>
+<section class="rc-center" id="publish">
+ <h2>Udgivelsescenter</h2>
+ <p class="rc-intro">Her følger du én udgivelse fra klargjorte filer til en bekræftet live-version. Platformen nulstiller først opgaven, når den forventede indholdsversion faktisk er live.</p>
+
+ <div class="rc-receipt">
+  <article class="rc-manifest">
+   <h3>Udgivelseskvittering</h3>
+   <div class="rc-facts">
+    <div class="rc-fact"><span>Udgivelse</span><strong id="rcReleaseId">Ikke startet</strong></div>
+    <div class="rc-fact"><span>Lavet med platform</span><strong id="rcPlatform">v2026.07.24.72</strong></div>
+    <div class="rc-fact"><span>Indholdsversion</span><strong id="rcContentVersion">–</strong></div>
+    <div class="rc-fact"><span>Antal filer</span><strong id="rcFileCount">–</strong></div>
+    <div class="rc-fact"><span>GitHub før upload</span><strong id="rcBaselineCommit">–</strong></div>
+    <div class="rc-fact"><span>Seneste GitHub commit</span><strong id="rcCurrentCommit">–</strong></div>
+   </div>
+   <div class="rc-versions">
+    <span class="rc-version">Platform <strong>v2026.07.24.72</strong></span>
+    <span class="rc-version">Worker <strong>12.2-release-center</strong></span>
+    <span class="rc-version">Live-match <strong id="rcVersionMatch">Kontrolleres</strong></span>
+   </div>
+   <ul class="rc-file-list" id="rcFileList"></ul>
+  </article>
+
+  <article class="rc-state">
+   <h3>Hvor langt er udgivelsen?</h3>
+   <div class="rc-progress">
+    <div class="rc-progress-row" data-rc-state="prepared"><i>1</i><div><strong>Filer samlet</strong><small>Platformen har lavet en komplet pakke.</small></div><em id="rcPreparedTime">Venter</em></div>
+    <div class="rc-progress-row" data-rc-state="github"><i>2</i><div><strong>GitHub opdateret</strong><small>Et nyt commit er registreret efter pakken blev lavet.</small></div><em id="rcGithubTime">Venter</em></div>
+    <div class="rc-progress-row" data-rc-state="deploying"><i>3</i><div><strong>Cloudflare opdaterer</strong><small>Platformen venter på den nye live-indholdsversion.</small></div><em id="rcDeployTime">Venter</em></div>
+    <div class="rc-progress-row" data-rc-state="live"><i>4</i><div><strong>Live bekræftet</strong><small>Den forventede indholdsversion er offentlig.</small></div><em id="rcLiveTime">Venter</em></div>
+   </div>
+   <div id="rcMessage" class="rc-message">Du har ikke startet en udgivelse endnu. Når dit arbejde er godkendt, klikker du på knappen nedenfor.</div>
+   <div class="rc-actions">
+    <button class="primary" id="publishEverything">Saml filer til GitHub</button>
+    <button id="rcCheckNow">Kontrollér status nu</button>
+    <button id="rcWaitMore" hidden>Jeg er i gang – vent videre</button>
+    <button id="rcDoLater" hidden>Jeg gør det senere</button>
+    <button id="rcPrepareAgain" hidden>Saml pakken igen</button>
+   </div>
+  </article>
  </div>
- <div class="mc-buttons"><button class="primary" id="publishEverything">Saml filer til GitHub</button></div>
- <div id="publishMessage"></div><div id="publishLog" class="operation-log" hidden></div>
+ <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
 <script src="/platform-shell.js"></script>
@@ -169,8 +197,8 @@ async function buildPublishFiles(){
  map["photo-missions.json"]=localJson("casaPhotoMissions",map["photo-missions.json"]);
  const now=new Date(),seq=String(now.getHours()).padStart(2,"0")+String(now.getMinutes()).padStart(2,"0");
  const contentVersion=`content-${now.toISOString().slice(0,10).replaceAll("-",".")}-${seq}`;
- map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.71",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
- map["workspace-release.json"]={platform_version:"v2026.07.24.71",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
+ map["content-release.json"]={content_version:contentVersion,status:"prepared",published_at:now.toISOString(),source:"Mission Control",platform_version:"v2026.07.24.72",note:"Bliver live efter upload til GitHub og Cloudflare deployment."};
+ map["workspace-release.json"]={platform_version:"v2026.07.24.72",content_version:contentVersion,created_at:now.toISOString(),counts:{knowledge:cards.length,knowledge_changes:changes.length,assets:(map["asset-library.json"].assets||[]).length}};
  return Object.entries(map).map(([name,data])=>({name,text:JSON.stringify(data,null,2)}));
 }
 async function writeFiles(items){
@@ -180,11 +208,159 @@ async function writeFiles(items){
 q("#publishEverything").onclick=async()=>{
  const btn=q("#publishEverything"),log=q("#publishLog");btn.disabled=true;btn.textContent="AI samler og kvalitetssikrer…";log.hidden=false;log.innerHTML="";
  const add=x=>log.insertAdjacentHTML("beforeend",`<div>${x}</div>`);
- try{add("Samler autosavede ændringer…");const items=await buildPublishFiles();add(`Klargør ${items.length} filer med stabile filnavne…`);btn.textContent="Vælg mappe til GitHub-filer";await writeFiles(items);localStorage.setItem("casaLastPublished",new Date().toISOString());localStorage.setItem("casaPreparedContentVersion",JSON.parse(items.find(x=>x.name==="content-release.json").text).content_version);
-  q("#publishMessage").innerHTML='<div class="success"><strong>Udgivelsespakken er klar.</strong><br>Du skal nu åbne GitHub og uploade alle filerne fra den valgte mappe til repositoryets rod. Commit ændringerne. Vent derefter på den grønne Cloudflare-deployment. Gå tilbage til Mission Control bagefter; den nye indholdsversion skal stå som live. Dit arbejde bevares som sikkerhed, indtil live-versionen er bekræftet.</div>';add("✓ Pakken er klargjort. Workspace er bevaret som sikkerhed.");
+ try{add("Samler autosavede ændringer…");const items=await buildPublishFiles();add(`Klargør ${items.length} filer med stabile filnavne…`);const session=await window.CasaReleaseCenter.createReleaseSession(items);add(`Udgivelse ${session.release_id} oprettet · ${items.length} filer · platform ${session.platform_version}.`);btn.textContent="Vælg mappe til GitHub-filer";await writeFiles(items);localStorage.setItem("casaLastPublished",new Date().toISOString());localStorage.setItem("casaPreparedContentVersion",JSON.parse(items.find(x=>x.name==="content-release.json").text).content_version);
+  q("#publishMessage").innerHTML=`<div class="success"><strong>Udgivelsespakken er klar.</strong><br>Du har downloadet <strong>${items.length} filer</strong>. Kontrollér, at mappen indeholder det samme antal, og upload derefter præcis ${items.length} filer til GitHub. Mission Control holder øje med commit og live-version.</div>`;add("✓ Pakken er klargjort. Workspace bevares, indtil live-versionen er bekræftet.");window.CasaReleaseCenter.renderReleaseCenter();window.CasaReleaseCenter.checkReleaseStatus(false);
  }catch(e){q("#publishMessage").innerHTML=`<div class="notice">Udgivelsen blev ikke færdig: ${e.message}. Intet arbejde er tabt.</div>`}finally{btn.disabled=false;btn.textContent="Saml filer til GitHub";refreshPublishStatus()}
 };
 q("#showAlternatives").onclick=()=>q("#taskList").scrollIntoView({behavior:"smooth"});
 loadMission();
+</script>
+
+<script>
+(()=>{
+const RELEASE_KEY="casaReleaseSessionV2";
+const WORKSPACE_KEYS=[
+ "casaKnowledgeChanges","casaKnowledgeWorkspaceChanges","casaWebsiteContentDraft",
+ "casaBrandProfile","casaAssetLibrary","casaRelationRegistry","casaPhotoMissions"
+];
+let rcTimer=null;
+
+function rcQ(s){return document.querySelector(s)}
+function rcLocalJson(key,fallback=null){try{return JSON.parse(localStorage.getItem(key)||"null")??fallback}catch{return fallback}}
+function rcSession(){return rcLocalJson(RELEASE_KEY,null)}
+function rcSave(session){localStorage.setItem(RELEASE_KEY,JSON.stringify(session));renderReleaseCenter()}
+function rcDate(value){return value?new Date(value).toLocaleString("da-DK"):"Venter"}
+function rcSetMessage(text,type=""){const el=rcQ("#rcMessage");if(!el)return;el.className=`rc-message ${type}`.trim();el.innerHTML=text}
+function rcWorkspaceCount(){
+ const changes=rcLocalJson("casaKnowledgeChanges",[]);
+ return changes.length+WORKSPACE_KEYS.slice(1).filter(k=>localStorage.getItem(k)).length;
+}
+async function rcFetchJson(path,fallback={}){
+ try{const r=await fetch(path,{cache:"no-store"});return r.ok?await r.json():fallback}catch{return fallback}
+}
+async function rcObserver(){return rcFetchJson("/api/release-observer",{})}
+function rcSetProgress(state){
+ const order=["prepared","github","deploying","live"],index=order.indexOf(state);
+ document.querySelectorAll("[data-rc-state]").forEach((row,i)=>{
+  row.classList.toggle("done",i<index||(state==="live"&&i===index));
+  row.classList.toggle("active",i===index&&state!=="live");
+ });
+}
+function rcFileNames(session){return session?.files||[]}
+function renderReleaseCenter(){
+ const s=rcSession();
+ rcQ("#rcReleaseId").textContent=s?.release_id||"Ikke startet";
+ rcQ("#rcContentVersion").textContent=s?.content_version||"–";
+ rcQ("#rcFileCount").textContent=s?.file_count?`${s.file_count} filer`:"–";
+ rcQ("#rcBaselineCommit").textContent=s?.baseline_commit_short||"–";
+ rcQ("#rcCurrentCommit").textContent=s?.current_commit_short||"–";
+ rcQ("#rcPreparedTime").textContent=rcDate(s?.prepared_at);
+ rcQ("#rcGithubTime").textContent=rcDate(s?.github_detected_at);
+ rcQ("#rcDeployTime").textContent=rcDate(s?.deploying_at);
+ rcQ("#rcLiveTime").textContent=rcDate(s?.live_at);
+ rcQ("#rcFileList").innerHTML=rcFileNames(s).map(x=>`<li>${x}</li>`).join("");
+ rcQ("#rcVersionMatch").textContent=s?.live_at?"Ja":s?.state==="github"||s?.state==="deploying"?"Afventer":"Ikke kontrolleret";
+ rcQ("#rcVersionMatch").className=s?.live_at?"rc-sync ok":"rc-sync warn";
+ rcSetProgress(s?.state||"none");
+ const wait=rcQ("#rcWaitMore"),later=rcQ("#rcDoLater"),again=rcQ("#rcPrepareAgain");
+ [wait,later,again].forEach(x=>x.hidden=true);
+ if(!s){
+  rcSetMessage(`<strong>Start først, når dine ændringer er godkendt.</strong><br>Jeg samler hele dit aktuelle workspace — både AI's arbejde og dine egne rettelser.`);
+ }else if(s.state==="prepared"){
+  const mins=Math.floor((Date.now()-new Date(s.prepared_at).getTime())/60000);
+  if(s.deferred){
+   rcSetMessage(`<strong>Udgivelsen er sat på pause.</strong><br>${s.file_count} filer er klar. Du kan uploade dem senere eller samle en ny pakke, som også tager eventuelle nyere ændringer med.`,"warn");
+   again.hidden=false;
+  }else if((s.reminder_count||0)>=2){
+   rcSetMessage(`<strong>Jeg har endnu ikke fundet et nyt GitHub-commit.</strong><br>Jeg går derfor ud fra, at du ikke uploader lige nu. Pakken er stadig tilgængelig, og du kan samle den igen senere sammen med nye ændringer.`,"warn");
+   again.hidden=false;
+  }else if(mins>=2){
+   rcSetMessage(`<strong>GitHub er ikke opdateret endnu.</strong><br>Du skulle uploade præcis <strong>${s.file_count} filer</strong>. Er du stadig i gang, kan jeg vente videre. Du kan også gøre det senere uden at miste dit arbejde.`,"warn");
+   wait.hidden=false;later.hidden=false;
+  }else{
+   rcSetMessage(`<strong>Upload nu præcis ${s.file_count} filer til GitHub.</strong><br>Commit ændringerne. Jeg kontrollerer automatisk hvert 15. sekund de første minutter.`, "");
+  }
+ }else if(s.state==="github"||s.state==="deploying"){
+  rcSetMessage(`<strong>Jeg har fundet et nyt GitHub-commit ${s.current_commit_short||""}.</strong><br>Nu venter jeg på, at Cloudflare gør indholdsversion <strong>${s.content_version}</strong> live. Det tager normalt omkring ét minut.`);
+ }else if(s.state==="live"){
+  rcSetMessage(`<strong>Udgivelse ${s.release_id} er nu live.</strong><br>${s.file_count} filer blev klargjort med platform ${s.platform_version}. Dit lokale workspace er nulstillet, fordi den forventede indholdsversion er bekræftet live.`,"success");
+ }
+}
+function clearWorkspaceAfterLive(){
+ WORKSPACE_KEYS.forEach(k=>localStorage.removeItem(k));
+ localStorage.removeItem("casaWebsiteApprovedAt");
+ localStorage.removeItem("casaKnowledgeApprovedAt");
+ localStorage.setItem("casaWorkspaceLastSaved",new Date().toISOString());
+}
+async function checkReleaseStatus(manual=false){
+ const s=rcSession();if(!s)return;
+ const observed=await rcObserver();
+ const commit=observed.github?.commit;
+ const live=observed.live_release;
+ let changed=false;
+ if(commit?.sha){
+  s.current_commit_sha=commit.sha;s.current_commit_short=commit.short_sha;s.current_commit_at=commit.committed_at;
+  if(s.baseline_commit_sha&&commit.sha!==s.baseline_commit_sha&&s.state==="prepared"){
+   s.state="github";s.github_detected_at=new Date().toISOString();s.deploying_at=s.github_detected_at;changed=true;
+  }
+ }
+ if(live?.content_version===s.content_version){
+  if(s.state!=="live"){
+   s.state="live";s.live_at=new Date().toISOString();s.live_release=live;clearWorkspaceAfterLive();changed=true;
+  }
+ }
+ s.last_checked_at=new Date().toISOString();
+ if(manual&&!changed)s.manual_checks=(s.manual_checks||0)+1;
+ rcSave(s);
+ scheduleChecks();
+}
+function scheduleChecks(){
+ if(rcTimer)clearTimeout(rcTimer);
+ const s=rcSession();if(!s||s.state==="live"||s.deferred)return;
+ const age=Date.now()-new Date(s.prepared_at).getTime();
+ let delay=15000;
+ if(age>120000)delay=60000;
+ if(age>600000)return;
+ rcTimer=setTimeout(()=>checkReleaseStatus(false),delay);
+}
+async function createReleaseSession(items){
+ const observed=await rcObserver();
+ const now=new Date();
+ const id=`CA-${now.toISOString().slice(0,10).replaceAll("-","")}-${String(now.getHours()).padStart(2,"0")}${String(now.getMinutes()).padStart(2,"0")}`;
+ const releaseItem=items.find(x=>x.name==="content-release.json");
+ const releaseData=releaseItem?JSON.parse(releaseItem.text):{};
+ const session={
+  release_id:id,
+  platform_version:"v2026.07.24.72",
+  worker_version:"12.2-release-center",
+  content_version:releaseData.content_version,
+  prepared_at:now.toISOString(),
+  state:"prepared",
+  file_count:items.length,
+  files:items.map(x=>x.name),
+  baseline_commit_sha:observed.github?.commit?.sha||null,
+  baseline_commit_short:observed.github?.commit?.short_sha||null,
+  reminder_count:0,
+  deferred:false,
+  workspace_count_at_prepare:rcWorkspaceCount()
+ };
+ localStorage.setItem(RELEASE_KEY,JSON.stringify(session));
+ return session;
+}
+window.CasaReleaseCenter={createReleaseSession,checkReleaseStatus,renderReleaseCenter};
+
+rcQ("#rcCheckNow")?.addEventListener("click",()=>checkReleaseStatus(true));
+rcQ("#rcWaitMore")?.addEventListener("click",()=>{
+ const s=rcSession();if(!s)return;s.reminder_count=(s.reminder_count||0)+1;s.prepared_at=new Date().toISOString();rcSave(s);scheduleChecks();
+});
+rcQ("#rcDoLater")?.addEventListener("click",()=>{
+ const s=rcSession();if(!s)return;s.deferred=true;s.reminder_count=(s.reminder_count||0)+1;rcSave(s);
+});
+rcQ("#rcPrepareAgain")?.addEventListener("click",()=>rcQ("#publishEverything")?.click());
+
+renderReleaseCenter();
+checkReleaseStatus(false);
+setInterval(()=>{const s=rcSession();if(s&&s.state!=="live")checkReleaseStatus(false)},3600000);
+})();
 </script>
 </body></html>

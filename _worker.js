@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "12.1-guided-workflow",
+      version: "12.2-release-center",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -1343,6 +1343,52 @@ async function handleGithubAssetUpload(request, env) {
     commit_sha: result?.commit?.sha || null,
     replaced: Boolean(existingSha),
     uploaded_at: new Date().toISOString()
+  });
+}
+
+
+async function handleReleaseObserver(request, env) {
+  const settings = await assetJson(env, request, "/asset-sync-settings.json");
+  const github = settings.github || {};
+  const owner = github.owner;
+  const repository = github.repository;
+  const branch = github.branch || "main";
+
+  let commit = null;
+  try {
+    const endpoint = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}/commits/${encodeURIComponent(branch)}`;
+    const response = await fetch(endpoint, { headers: githubHeaders(env) });
+    const result = await response.json();
+    if (response.ok) {
+      commit = {
+        sha: result.sha || null,
+        short_sha: result.sha ? result.sha.slice(0, 7) : null,
+        message: result.commit?.message || null,
+        committed_at: result.commit?.committer?.date || result.commit?.author?.date || null,
+        html_url: result.html_url || null
+      };
+    }
+  } catch {}
+
+  let liveRelease = null;
+  try {
+    liveRelease = await assetJson(env, request, "/content-release.json");
+  } catch {}
+
+  return json({
+    ok: true,
+    checked_at: new Date().toISOString(),
+    github: {
+      repository: `${owner}/${repository}`,
+      branch,
+      token_configured: Boolean(env.GITHUB_TOKEN),
+      commit
+    },
+    live_release: liveRelease,
+    platform: {
+      version: "v2026.07.24.72",
+      worker: "12.2-release-center"
+    }
   });
 }
 
@@ -2749,7 +2795,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "12.1-guided-workflow",
+          worker: "12.2-release-center",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2757,13 +2803,21 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "12.1-guided-workflow",
+          worker: "12.2-release-center",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
       }
     }
 
+
+    if (request.method === "GET" && url.pathname === "/api/release-observer") {
+      try {
+        return await handleReleaseObserver(request, env);
+      } catch (error) {
+        return json({ error: "Udgivelsesstatus kunne ikke kontrolleres.", detail: String(error?.message || error) }, 500);
+      }
+    }
 
     if (request.method === "GET" && url.pathname === "/api/github-upload-status") {
       try {
