@@ -1,7 +1,7 @@
 {
-  "platform_version": "v2026.07.24.76",
-  "build": "2026-07-26 16:00",
-  "worker_version": "12.6-safe-auto-refresh",
-  "release_name": "Safe Automatic Refresh",
-  "generated_at": "2026-07-26T16:00:00Z"
+  "platform_version": "v2026.07.24.77",
+  "build": "2026-07-26 16:30",
+  "worker_version": "12.7-idle-aware-refresh",
+  "release_name": "Idle-aware Safe Refresh",
+  "generated_at": "2026-07-26T16:30:00Z"
 }

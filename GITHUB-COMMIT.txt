@@ -1,11 +1,12 @@
-fix(platform): restore full Mission Control and make auto-refresh route-safe
+fix(platform): remove redirect loop and add idle-aware version checks
 
-- Rolled back to the last known-good full Mission Control UI.
-- Reimplemented automatic platform refresh without ambiguous extensionless reloads.
-- Added explicit redirects from platform routes to their .html files.
-- Automatic reload now always targets the explicit HTML asset.
-- Preserved 30-second version checks, focus checks and visibility checks.
-- Added no-cache rules and a dedicated regression test.
+- Removed _redirects and all URL rewriting.
+- Automatic updates now use plain location.reload().
+- Version polling runs only while the platform is visible and active.
+- Polling pauses after 15 minutes of inactivity.
+- Added “Fortsæt arbejdet” pause screen.
+- Returning to the tab performs one immediate version check.
+- Public website polling also stops when hidden or inactive.
 
-Release: v2026.07.24.76
-Worker: 12.6-safe-auto-refresh
+Release: v2026.07.24.77
+Worker: 12.7-idle-aware-refresh

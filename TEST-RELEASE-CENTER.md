@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.76
-Worker: 12.6-safe-auto-refresh
+Release: v2026.07.24.77
+Worker: 12.7-idle-aware-refresh
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

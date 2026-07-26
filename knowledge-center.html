@@ -373,7 +373,7 @@ async function createReleaseSession(items){
  const session={
   release_id:id,
   platform_version:(window.CASA_PLATFORM_MANIFEST?.platform_version||"unknown"),
-  worker_version:"12.6-safe-auto-refresh",
+  worker_version:"12.7-idle-aware-refresh",
   content_version:releaseData.content_version,
   prepared_at:now.toISOString(),
   state:"prepared",

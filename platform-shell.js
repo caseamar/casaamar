@@ -2,9 +2,11 @@
 (()=>{
 
 
+
 const CASA_VERSION_SEEN_KEY="casaPlatformVersionSeen";
-let casaVersionTimer=null;
-let casaReloading=false;
+const CASA_IDLE_LIMIT_MS=15*60*1000;
+const CASA_VERSION_INTERVAL_MS=30*1000;
+let casaVersionTimer=null,casaReloading=false,casaPaused=false,casaLastActivity=Date.now();
 
 function applyPlatformManifest(manifest){
  const version=manifest?.platform_version||"Ukendt";
@@ -16,90 +18,68 @@ function applyPlatformManifest(manifest){
  document.documentElement.dataset.platformVersion=version;
  window.CASA_PLATFORM_MANIFEST=manifest;
 }
-
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?_=${Date.now()}`,{
-  cache:"no-store",
-  headers:{"cache-control":"no-cache"}
- });
- if(!response.ok)throw new Error(`HTTP ${response.status}`);
- return response.json();
+ const r=await fetch(`/platform-manifest.json?_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ if(!r.ok)throw new Error(`HTTP ${r.status}`); return r.json();
 }
-
-function explicitHtmlUrl(){
- const url=new URL(location.href);
- const routeMap={
-  "/knowledge-center":"/knowledge-center.html",
-  "/knowledge-studio":"/knowledge-studio.html",
-  "/knowledge-review":"/knowledge-review.html",
-  "/knowledge-architect":"/knowledge-architect.html",
-  "/knowledge-debug":"/knowledge-debug.html",
-  "/brand-studio":"/brand-studio.html",
-  "/page-studio":"/page-studio.html",
-  "/page-preview":"/page-preview.html",
-  "/asset-studio":"/asset-studio.html",
-  "/asset-brief":"/asset-brief.html",
-  "/photo-missions":"/photo-missions.html",
-  "/ai-test-runner":"/ai-test-runner.html"
- };
- if(routeMap[url.pathname])url.pathname=routeMap[url.pathname];
- url.searchParams.set("_platform_refresh",Date.now());
- return url.toString();
-}
-
-function showUpdateNotice(version){
- let notice=document.querySelector("#caPlatformUpdateNotice");
- if(!notice){
-  notice=document.createElement("div");
-  notice.id="caPlatformUpdateNotice";
-  notice.style.cssText="position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:1000;max-width:min(620px,calc(100vw - 28px));padding:12px 14px;border-radius:14px;background:#17352b;color:white;box-shadow:0 18px 45px rgba(20,35,30,.28);font:700 .78rem/1.45 Inter,system-ui,sans-serif;text-align:center";
-  document.body.appendChild(notice);
+function ensurePauseNotice(){
+ let n=document.querySelector("#caIdlePauseNotice");
+ if(!n){
+  n=document.createElement("div");n.id="caIdlePauseNotice";
+  n.style.cssText="position:fixed;inset:0;z-index:1400;background:rgba(20,35,30,.28);backdrop-filter:blur(5px);display:grid;place-items:center;padding:20px";
+  n.innerHTML=`<section style="max-width:480px;background:white;border-radius:20px;padding:24px;box-shadow:0 24px 65px rgba(20,35,30,.28);font-family:Inter,system-ui,sans-serif">
+   <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#e66542;font-weight:850">Platformen er sat på pause</div>
+   <h2 style="margin:8px 0;color:#14231e">Dit arbejde er gemt</h2>
+   <p style="margin:0;color:#66736e;line-height:1.55">Jeg har stoppet de automatiske kontroller efter 15 minutters inaktivitet.</p>
+   <button id="caResumeWork" style="margin-top:16px;padding:11px 14px;border:0;border-radius:11px;background:#e66542;color:white;font-weight:850;cursor:pointer">Fortsæt arbejdet</button>
+  </section>`;
+  document.body.appendChild(n);n.querySelector("#caResumeWork").onclick=resumePlatformWork;
  }
- notice.innerHTML=`En ny platformversion <strong>${version}</strong> er klar. Platformen opdateres automatisk.`;
 }
-
-function reloadPlatform(version){
- if(casaReloading)return;
- casaReloading=true;
- showUpdateNotice(version);
- setTimeout(()=>location.replace(explicitHtmlUrl()),1500);
+function showUpdateNotice(v){
+ let n=document.querySelector("#caPlatformUpdateNotice");
+ if(!n){n=document.createElement("div");n.id="caPlatformUpdateNotice";
+  n.style.cssText="position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:1500;padding:12px 14px;border-radius:14px;background:#17352b;color:white;font:700 .78rem/1.45 Inter,system-ui,sans-serif";
+  document.body.appendChild(n);}
+ n.innerHTML=`En ny platformversion <strong>${v}</strong> er klar. Platformen opdateres automatisk.`;
 }
-
+function reloadPlatform(v){if(casaReloading)return;casaReloading=true;showUpdateNotice(v);setTimeout(()=>location.reload(),1500)}
 async function loadPlatformManifest({checkForUpgrade=false}={}){
  try{
-  const previous=document.documentElement.dataset.platformVersion||
-    window.CASA_PLATFORM_MANIFEST?.platform_version||
-    sessionStorage.getItem(CASA_VERSION_SEEN_KEY)||
-    null;
-  const manifest=await fetchPlatformManifest();
-  applyPlatformManifest(manifest);
+  const previous=document.documentElement.dataset.platformVersion||window.CASA_PLATFORM_MANIFEST?.platform_version||sessionStorage.getItem(CASA_VERSION_SEEN_KEY)||null;
+  const manifest=await fetchPlatformManifest();applyPlatformManifest(manifest);
   sessionStorage.setItem(CASA_VERSION_SEEN_KEY,manifest.platform_version||"");
-  if(checkForUpgrade && previous && manifest.platform_version && previous!==manifest.platform_version){
-   reloadPlatform(manifest.platform_version);
-  }
+  if(checkForUpgrade&&previous&&manifest.platform_version&&previous!==manifest.platform_version)reloadPlatform(manifest.platform_version);
   return manifest;
- }catch(error){
-  console.error("Platformmanifest kunne ikke indlæses",error);
-  return null;
- }
+ }catch(e){console.error("Platformmanifest kunne ikke indlæses",e);return null}
 }
-
+function stopVersionWatch(){if(casaVersionTimer)clearInterval(casaVersionTimer);casaVersionTimer=null}
 function beginVersionWatch(){
- if(casaVersionTimer)clearInterval(casaVersionTimer);
- casaVersionTimer=setInterval(()=>loadPlatformManifest({checkForUpgrade:true}),30000);
+ stopVersionWatch();if(casaPaused||document.visibilityState!=="visible")return;
+ casaVersionTimer=setInterval(()=>{
+  if(Date.now()-casaLastActivity>=CASA_IDLE_LIMIT_MS){pausePlatformWork();return}
+  loadPlatformManifest({checkForUpgrade:true});
+ },CASA_VERSION_INTERVAL_MS);
 }
-
+function pausePlatformWork(){if(casaPaused)return;casaPaused=true;stopVersionWatch();ensurePauseNotice();document.documentElement.dataset.platformPaused="true"}
+async function resumePlatformWork(){
+ casaPaused=false;casaLastActivity=Date.now();document.querySelector("#caIdlePauseNotice")?.remove();
+ document.documentElement.dataset.platformPaused="false";await loadPlatformManifest({checkForUpgrade:true});beginVersionWatch();
+}
+function registerPlatformActivity(){casaLastActivity=Date.now();if(!casaPaused&&!casaVersionTimer&&document.visibilityState==="visible")beginVersionWatch()}
+["pointerdown","keydown","input","change","wheel","touchstart"].forEach(n=>document.addEventListener(n,registerPlatformActivity,{passive:true,capture:true}));
 window.CasaPlatformManifestPromise=new Promise(resolve=>{
  const initial=()=>loadPlatformManifest({checkForUpgrade:false}).then(resolve);
- if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});
- else initial();
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial();
 });
-window.addEventListener("pageshow",()=>loadPlatformManifest({checkForUpgrade:true}));
+window.addEventListener("pageshow",()=>{if(!casaPaused)loadPlatformManifest({checkForUpgrade:true})});
 document.addEventListener("visibilitychange",()=>{
- if(document.visibilityState==="visible")loadPlatformManifest({checkForUpgrade:true});
+ if(document.visibilityState==="hidden")stopVersionWatch();
+ else if(!casaPaused){casaLastActivity=Date.now();loadPlatformManifest({checkForUpgrade:true});beginVersionWatch()}
 });
-window.addEventListener("focus",()=>loadPlatformManifest({checkForUpgrade:true}));
+window.addEventListener("focus",()=>{if(!casaPaused){casaLastActivity=Date.now();loadPlatformManifest({checkForUpgrade:true});beginVersionWatch()}});
 beginVersionWatch();
+
 
 
 const PAGES={
