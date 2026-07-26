@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.83
-Worker: 13.4-runtime-state-single-source
+Release: v2026.07.24.84
+Worker: 13.5-stable-status-recovery
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

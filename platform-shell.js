@@ -1,8 +1,32 @@
 
 (()=>{
 
-function casaFormatDateTime(value){return window.CasaRuntimeState?.formatDateTime(value)||String(value||"Ikke registreret")}
-async function fetchPlatformManifest(){await window.CasaRuntimeState.refresh();return window.CasaRuntimeState.getPlatform()}
+function casaFormatDateTime(value){
+ if(!value)return "Ikke registreret";
+ const date=new Date(value);
+ if(Number.isNaN(date.getTime()))return String(value);
+ return new Intl.DateTimeFormat("da-DK",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Copenhagen"}).format(date).replace(" kl. "," · kl. ");
+}
+function casaLatestLiveAt(){
+ try{const s=JSON.parse(localStorage.getItem("casaReleaseSessionV2")||"null");if(s?.state==="live"&&s?.live_at)return s.live_at}catch{}
+ return localStorage.getItem("casaLastConfirmedLiveAt");
+}
+
+
+const CASA_SUPERVISOR_INTERVAL_MS=60*1000;
+const CASA_SUPERVISOR_IDLE_MS=15*60*1000;
+let casaSupervisorTimer=null,casaSupervisorLastActivity=Date.now(),casaSupervisorPaused=false,casaInstalledVersion=null;
+function applyPlatformManifest(manifest){
+ const version=manifest?.platform_version||"Ukendt",build=manifest?.build||"Ukendt",worker=manifest?.worker_version||"Ukendt";
+ document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
+ document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=casaFormatDateTime(build));
+ document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
+ document.documentElement.dataset.platformVersion=version;window.CASA_PLATFORM_MANIFEST=manifest;
+}
+async function fetchPlatformManifest(){
+ const response=await fetch(`/platform-manifest.json?_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
+}
 function removeSupervisorBanner(){document.querySelector("#caSupervisorBanner")?.remove()}
 function showUpdateAvailable(manifest){
  let banner=document.querySelector("#caSupervisorBanner");
@@ -25,7 +49,91 @@ function startSupervisor(){stopSupervisor();if(casaSupervisorPaused||document.vi
 async function resumeSupervisor(){casaSupervisorPaused=false;casaSupervisorLastActivity=Date.now();document.querySelector("#caSupervisorPause")?.remove();await checkForPlatformUpdate();startSupervisor()}
 function registerSupervisorActivity(){casaSupervisorLastActivity=Date.now()}
 ["pointerdown","keydown","input","change","wheel","touchstart"].forEach(n=>document.addEventListener(n,registerSupervisorActivity,{passive:true,capture:true}));
-async function loadPlatformManifest(){await window.CasaRuntimeReady;window.CasaRuntimeState?.applyToDom();return window.CasaRuntimeState?.getPlatform()||null};
+async function loadPlatformManifest(){try{const manifest=await fetchPlatformManifest();casaInstalledVersion=manifest.platform_version||null;applyPlatformManifest(manifest);return manifest}catch(error){console.error("Platformmanifest kunne ikke indlæses",error);return null}}
+window.CasaPlatformManifestPromise=new Promise(resolve=>{const initial=()=>loadPlatformManifest().then(result=>{startSupervisor();resolve(result)});if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial()});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")stopSupervisor();else if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
+window.addEventListener("focus",()=>{if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
+
+
+const PAGES={
+ "/knowledge-center.html":{
+  title:"Mission Control",
+  eyebrow:"Din AI-arbejdsplan",
+  description:"Her får du én prioriteret plan, tydelig status og den sikreste vej fra idé til en opdateret hjemmeside.",
+  cta:"Se min vigtigste opgave",href:"#next-best-action",
+  next:"AI analyserer viden, billeder, hjemmeside og udgivelsesstatus."
+ },
+ "/knowledge-studio.html":{
+  title:"Viden",
+  eyebrow:"Indhold og fakta",
+  description:"Tilføj idéer og oplysninger med almindelige ord. AI foreslår, hvilke eksisterende emner der skal opdateres, eller om der skal oprettes noget nyt.",
+  cta:"Tilføj ny viden",href:"#",
+  next:"Skriv først. AI hjælper med struktur, dubletter og kvalitet bagefter."
+ },
+ "/knowledge-review.html":{
+  title:"Godkend AI-forslag",
+  eyebrow:"Kun det der kræver dig",
+  description:"Her ser du forslag, hvor AI har brug for din vurdering. Start øverst; de vigtigste vises først.",
+  cta:"Start første review",href:"#",
+  next:"Godkend, ret eller afvis. AI gemmer resultatet og foreslår næste opgave."
+ },
+ "/knowledge-architect.html":{
+  title:"Struktur og oprydning",
+  eyebrow:"Hold viden enkel",
+  description:"AI finder dubletter, brede emner og uklar struktur. Du tager kun stilling til de anbefalede ændringer.",
+  cta:"Se vigtigste forslag",href:"#",
+  next:"Tekniske objektnavne vises kun som ekstra information."
+ },
+ "/brand-studio.html":{
+  title:"Stil og tone",
+  eyebrow:"Sådan skal Casa Amar lyde",
+  description:"Her lærer AI den ønskede stemme, så tekster til hjemmeside og chatbot bliver ensartede uden at lyde generiske.",
+  cta:"Gennemgå AI's forståelse",href:"#",
+  next:"Ret kun det, AI har misforstået. Resten gemmes automatisk."
+ },
+ "/page-studio.html":{
+  title:"Hjemmesiden",
+  eyebrow:"Forbedr gæstens oplevelse",
+  description:"Arbejd med budskaber, billeder og sektioner. AI udfylder forslag og forklarer, hvad der mangler, og hvorfor det er vigtigt.",
+  cta:"Se vigtigste forbedring",href:"#",
+  next:"Fokus er opmærksomhed, tryghed og flere relevante henvendelser."
+ },
+ "/asset-studio.html":{
+  title:"Billeder",
+  eyebrow:"Dit visuelle bibliotek",
+  description:"Tilføj billeder, få AI-beskrivelser, find dubletter og se, hvilke motiver der bedst kan forbedre hjemmesiden.",
+  cta:"Tilføj billeder",href:"#uploadDropzone",
+  next:"AI gør standardarbejdet. Du kan altid rette beskrivelse, sæson og valg."
+ },
+ "/photo-missions.html":{
+  title:"Fotoopgaver",
+  eyebrow:"Hvad skal du fotografere næste gang?",
+  description:"AI omsætter hjemmesidens mangler til konkrete fotoopgaver med formål, motiv, tidspunkt og praktisk vejledning.",
+  cta:"Start vigtigste fotoopgave",href:"#missions",
+  next:"Tag flere varianter. Upload dem bagefter under Billeder; AI vælger de bedste."
+ },
+ "/asset-brief.html":{
+  title:"Billedplan",
+  eyebrow:"Visuel dækning",
+  description:"Se hvilke dele af hjemmesiden der allerede har gode billeder, og hvor nye billeder vil gøre størst forskel.",
+  cta:"Se største billedmangel",href:"#",
+  next:"Billedplanen styrer Fotoopgaver og AI's anbefalinger."
+ },
+ "/ai-test-runner.html":{
+  title:"Kvalitetstjek",
+  eyebrow:"Test kun det relevante",
+  description:"Kør ændrede og fejlede tests først. Beståede tests genbruges, medmindre den relevante funktion er ændret.",
+  cta:"Kør relevante tests",href:"#",
+  next:"Målet er at finde nye problemer — ikke at gentage de samme test manuelt."
+ },
+ "/knowledge-debug.html":{
+  title:"Teknisk hjælp",
+  eyebrow:"Kun når noget fejler",
+  description:"Her findes tekniske detaljer og fejlsøgning. Normalt sender Mission Control dig kun her, når det er nødvendigt.",
+  cta:"Se aktuelle fejl",href:"#",
+  next:"Almindeligt arbejde foregår i de øvrige arbejdsområder."
+ }
+};
 const path=location.pathname.endsWith("/")?"/knowledge-center.html":location.pathname;
 const cfg=PAGES[path]||PAGES["/knowledge-center.html"];
 const main=document.querySelector("main");
@@ -177,9 +285,9 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-window.CasaRuntimeReady.then(()=>{
- const runtime=window.CasaRuntimeState;
- document.querySelector("#caContentVersion").textContent=runtime?.getContent()?.content_version||"Ukendt";
- const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=runtime?.formatDateTime(runtime?.getLiveAt());
-});
+fetch(`/content-release.json?_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+ document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
+ const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
+ const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);
+}).catch(()=>{document.querySelector("#caContentVersion").textContent="Kunne ikke læses";const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(casaLatestLiveAt())});
 })();

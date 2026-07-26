@@ -1,7 +1,7 @@
 # Test intelligent startposition
 
-Release: v2026.07.24.83
-Worker: 13.4-runtime-state-single-source
+Release: v2026.07.24.84
+Worker: 13.5-stable-status-recovery
 
 1. Åbn `/knowledge-center.html` uden aktiv udgivelse.
    - Siden skal starte helt i toppen.

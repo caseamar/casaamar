@@ -1,7 +1,7 @@
 # Test stabil recovery og Platform Supervisor
 
-Release: v2026.07.24.83
-Worker: 13.4-runtime-state-single-source
+Release: v2026.07.24.84
+Worker: 13.5-stable-status-recovery
 
 1. Upload og overskriv alle filer, inklusive `_redirects`.
 2. Vent på grøn Cloudflare-deployment.

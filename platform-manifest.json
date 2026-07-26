@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.83",
-  "build": "2026-07-26T20:15:00+02:00",
-  "worker_version": "13.4-runtime-state-single-source",
-  "release_name": "Runtime State Single Source",
-  "generated_at": "2026-07-26T20:15:00+02:00",
+  "platform_version": "v2026.07.24.84",
+  "build": "2026-07-26T20:45:00+02:00",
+  "worker_version": "13.5-stable-status-recovery",
+  "release_name": "Stable Status Recovery",
+  "generated_at": "2026-07-26T20:45:00+02:00",
   "build_timezone": "Europe/Copenhagen"
 }

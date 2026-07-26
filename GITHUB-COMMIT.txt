@@ -1,3 +1,11 @@
-refactor(platform): one runtime state for all metadata
-Release: v2026.07.24.83
-Worker: 13.4-runtime-state-single-source
+fix(recovery): restore full website and keep status handling conservative
+
+- Restored from the last known-good full website release.
+- Removed the experimental runtime-state architecture.
+- Kept one manifest as the visible version/build source.
+- Fixed the public badge to show a Danish formatted timestamp.
+- Clarified public verification states in the Release Center.
+- Added live-confirmed timestamp to the release receipt.
+
+Release: v2026.07.24.84
+Worker: 13.5-stable-status-recovery
