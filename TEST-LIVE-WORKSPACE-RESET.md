@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.75
-Worker: 12.5-auto-platform-refresh
+Release: v2026.07.24.76
+Worker: 12.6-safe-auto-refresh
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.

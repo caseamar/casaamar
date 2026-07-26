@@ -1,12 +1,11 @@
-feat(platform): automatically refresh when a new platform version is deployed
+fix(platform): restore full Mission Control and make auto-refresh route-safe
 
-- Checks platform-manifest.json every 30 seconds while a page is open.
-- Checks immediately when the tab becomes visible, window gains focus, or page is restored.
-- Shows a brief Danish update notice before automatic reload.
-- Reloads with a cache-busting URL parameter.
-- Works across Mission Control, all platform areas and the public website.
-- F5 is no longer required to receive a deployed platform update.
-- Strengthened no-store/no-cache headers for manifest, shell and HTML.
+- Rolled back to the last known-good full Mission Control UI.
+- Reimplemented automatic platform refresh without ambiguous extensionless reloads.
+- Added explicit redirects from platform routes to their .html files.
+- Automatic reload now always targets the explicit HTML asset.
+- Preserved 30-second version checks, focus checks and visibility checks.
+- Added no-cache rules and a dedicated regression test.
 
-Release: v2026.07.24.75
-Worker: 12.5-auto-platform-refresh
+Release: v2026.07.24.76
+Worker: 12.6-safe-auto-refresh

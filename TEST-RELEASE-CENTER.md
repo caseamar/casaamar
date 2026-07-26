@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.75
-Worker: 12.5-auto-platform-refresh
+Release: v2026.07.24.76
+Worker: 12.6-safe-auto-refresh
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.
