@@ -1,5 +1,5 @@
 {
-  "version": "2.6",
+  "version": "3.0",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -85,5 +85,18 @@
     "hidden_tab": "checks stop immediately",
     "routing": "no custom redirects and no URL rewriting",
     "public_website": "manifest loaded once; no polling"
+  },
+  "verified_publish": {
+    "user_facing_count": "Counts workspace changes, not generated files.",
+    "technical_file_count": "Shown separately for upload reconciliation.",
+    "live_gate": [
+      "new GitHub commit detected",
+      "minimum deployment delay elapsed",
+      "public content-release.json matches release_id",
+      "public content-release.json matches content_version",
+      "public content-release.json matches platform_version",
+      "two consecutive public matches"
+    ],
+    "workspace_reset": "Only after the full live gate passes."
   }
 }

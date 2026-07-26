@@ -1,7 +1,7 @@
 {
-  "platform_version": "v2026.07.24.78",
-  "build": "2026-07-26 17:15",
-  "worker_version": "12.8-stable-platform-supervisor",
-  "release_name": "Stable Platform Supervisor",
-  "generated_at": "2026-07-26T17:15:00Z"
+  "platform_version": "v2026.07.24.79",
+  "build": "2026-07-26 18:00",
+  "worker_version": "13.0-verified-publish",
+  "release_name": "Verified Publish",
+  "generated_at": "2026-07-26T18:00:00Z"
 }

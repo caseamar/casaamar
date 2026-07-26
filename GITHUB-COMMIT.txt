@@ -1,12 +1,15 @@
-fix(platform): restore stable UI and introduce a conservative Platform Supervisor
+feat(release): verified publish with user-change receipt
 
-- Restored from the last known-good full Mission Control baseline.
-- Neutralized the previously deployed _redirects file.
-- Removed automatic reloads and all URL rewriting.
-- Added a visible “Opdater platformen” button when a newer version is detected.
-- Checks at most once per minute while visible and active.
-- Stops checks after 15 minutes of inactivity and in background tabs.
-- Public website does not poll.
+- Shows user changes as the primary release count.
+- Lists the actual changes included in the release.
+- Keeps technical file count separate for upload reconciliation.
+- Adds a five-stage publish flow with public website verification.
+- Generates collision-proof release IDs and content versions with seconds and nonce.
+- Never confirms live before a newer GitHub commit is detected.
+- Requires a minimum deployment delay and two consecutive public manifest matches.
+- Verifies release ID, content version and platform version.
+- Clears workspace only after verified public delivery.
+- Final receipt explains exactly which changes are live.
 
-Release: v2026.07.24.78
-Worker: 12.8-stable-platform-supervisor
+Release: v2026.07.24.79
+Worker: 13.0-verified-publish

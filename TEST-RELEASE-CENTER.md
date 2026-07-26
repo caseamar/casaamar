@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.78
-Worker: 12.8-stable-platform-supervisor
+Release: v2026.07.24.79
+Worker: 13.0-verified-publish
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.
