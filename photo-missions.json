@@ -1,5 +1,468 @@
 {
-  "version": "1.0",
-  "updated": "2026-07-24",
-  "missions": []
+  "version": "1.1",
+  "updated": "2026-07-24T14:27:01.496Z",
+  "missions": [
+    {
+      "id": "mission-01-hero-landscape",
+      "title": "Tag billede: hero landscape",
+      "purpose": "Mangler til sektionen “hero”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "hero landscape",
+      "targets": [
+        "page:hero",
+        "asset-role:hero-landscape"
+      ],
+      "confidence_trigger": 88,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.462Z"
+    },
+    {
+      "id": "mission-02-morning-lifestyle",
+      "title": "Tag billede: morning lifestyle",
+      "purpose": "Mangler til sektionen “life”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "morning lifestyle",
+      "targets": [
+        "page:life",
+        "asset-role:morning-lifestyle"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.464Z"
+    },
+    {
+      "id": "mission-03-terrace-life",
+      "title": "Tag billede: terrace life",
+      "purpose": "Mangler til sektionen “life”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "terrace life",
+      "targets": [
+        "page:life",
+        "asset-role:terrace-life"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.466Z"
+    },
+    {
+      "id": "mission-04-evening-atmosphere",
+      "title": "Tag billede: evening atmosphere",
+      "purpose": "Mangler til sektionen “life”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Solnedgang / blue hour",
+      "focus": "evening atmosphere",
+      "targets": [
+        "page:life",
+        "asset-role:evening-atmosphere"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.467Z"
+    },
+    {
+      "id": "mission-05-living-room",
+      "title": "Tag billede: living room",
+      "purpose": "Mangler til sektionen “house”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "living room",
+      "targets": [
+        "page:house",
+        "asset-role:living-room"
+      ],
+      "confidence_trigger": 95,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.469Z"
+    },
+    {
+      "id": "mission-06-bedrooms",
+      "title": "Tag billede: bedrooms",
+      "purpose": "Mangler til sektionen “house”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 3 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "bedrooms",
+      "targets": [
+        "page:house",
+        "asset-role:bedrooms"
+      ],
+      "confidence_trigger": 95,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.471Z"
+    },
+    {
+      "id": "mission-07-bathrooms",
+      "title": "Tag billede: bathrooms",
+      "purpose": "Mangler til sektionen “house”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "bathrooms",
+      "targets": [
+        "page:house",
+        "asset-role:bathrooms"
+      ],
+      "confidence_trigger": 95,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.473Z"
+    },
+    {
+      "id": "mission-08-roof-day",
+      "title": "Tag billede: roof day",
+      "purpose": "Mangler til sektionen “roof-terrace”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "roof day",
+      "targets": [
+        "page:roof-terrace",
+        "asset-role:roof-day"
+      ],
+      "confidence_trigger": 82,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.475Z"
+    },
+    {
+      "id": "mission-09-roof-sunset",
+      "title": "Tag billede: roof sunset",
+      "purpose": "Mangler til sektionen “roof-terrace”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Solnedgang / blue hour",
+      "focus": "roof sunset",
+      "targets": [
+        "page:roof-terrace",
+        "asset-role:roof-sunset"
+      ],
+      "confidence_trigger": 82,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.477Z"
+    },
+    {
+      "id": "mission-10-roof-projector",
+      "title": "Tag billede: roof projector",
+      "purpose": "Mangler til sektionen “roof-terrace”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "roof projector",
+      "targets": [
+        "page:roof-terrace",
+        "asset-role:roof-projector"
+      ],
+      "confidence_trigger": 82,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.479Z"
+    },
+    {
+      "id": "mission-11-cerros-context",
+      "title": "Tag billede: cerros context",
+      "purpose": "Mangler til sektionen “location”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "cerros context",
+      "targets": [
+        "page:location",
+        "asset-role:cerros-context"
+      ],
+      "confidence_trigger": 88,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.480Z"
+    },
+    {
+      "id": "mission-12-local-life",
+      "title": "Tag billede: local life",
+      "purpose": "Mangler til sektionen “location”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "local life",
+      "targets": [
+        "page:location",
+        "asset-role:local-life"
+      ],
+      "confidence_trigger": 88,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.483Z"
+    },
+    {
+      "id": "mission-13-beach",
+      "title": "Tag billede: beach",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "beach",
+      "targets": [
+        "page:experiences",
+        "asset-role:beach"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.484Z"
+    },
+    {
+      "id": "mission-14-malaga",
+      "title": "Tag billede: malaga",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "malaga",
+      "targets": [
+        "page:experiences",
+        "asset-role:malaga"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.486Z"
+    },
+    {
+      "id": "mission-15-mijas-pueblo",
+      "title": "Tag billede: mijas pueblo",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "mijas pueblo",
+      "targets": [
+        "page:experiences",
+        "asset-role:mijas-pueblo"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.487Z"
+    },
+    {
+      "id": "mission-16-food-market",
+      "title": "Tag billede: food market",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "food market",
+      "targets": [
+        "page:experiences",
+        "asset-role:food-market"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.488Z"
+    },
+    {
+      "id": "mission-17-mountains",
+      "title": "Tag billede: mountains",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "mountains",
+      "targets": [
+        "page:experiences",
+        "asset-role:mountains"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.490Z"
+    },
+    {
+      "id": "mission-18-golf-padel",
+      "title": "Tag billede: golf padel",
+      "purpose": "Mangler til sektionen “experiences”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "golf padel",
+      "targets": [
+        "page:experiences",
+        "asset-role:golf-padel"
+      ],
+      "confidence_trigger": 90,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.491Z"
+    },
+    {
+      "id": "mission-19-guest-scenarios",
+      "title": "Tag billede: guest scenarios",
+      "purpose": "Mangler til sektionen “fit”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 4 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "guest scenarios",
+      "targets": [
+        "page:fit",
+        "asset-role:guest-scenarios"
+      ],
+      "confidence_trigger": 92,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.493Z"
+    },
+    {
+      "id": "mission-20-arrival-practical",
+      "title": "Tag billede: arrival practical",
+      "purpose": "Mangler til sektionen “practical”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Mellem",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "arrival practical",
+      "targets": [
+        "page:practical",
+        "asset-role:arrival-practical"
+      ],
+      "confidence_trigger": 80,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.494Z"
+    },
+    {
+      "id": "mission-21-closing-emotion",
+      "title": "Tag billede: closing emotion",
+      "purpose": "Mangler til sektionen “final-cta”. Billedet skal understøtte sektionens budskab og løfte den visuelle confidence.",
+      "priority": "Høj",
+      "shot_list": [
+        "Tag mindst 2 varianter fra forskellige vinkler.",
+        "Tag både en rolig bred komposition og en tæt detalje.",
+        "Fjern rod, kabler, personlige papirer og tilfældige genstande.",
+        "Tag en vandret version med luft til tekst og en lodret version til mobil/social."
+      ],
+      "format": "Vandret 16:9 + lodret 4:5",
+      "light": "Blødt dagslys, helst morgen eller sen eftermiddag",
+      "focus": "closing emotion",
+      "targets": [
+        "page:final-cta",
+        "asset-role:closing-emotion"
+      ],
+      "confidence_trigger": 94,
+      "status": "open",
+      "created_at": "2026-07-24T14:27:01.496Z"
+    }
+  ]
 }

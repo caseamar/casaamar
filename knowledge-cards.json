@@ -7097,7 +7097,7 @@
     },
     {
       "id": "adresse-til-casa-amar",
-      "title": "Adresse til Casa Amar",
+      "title": "Sådan finder du Casa Amar",
       "category": "Casa Amar",
       "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
       "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
@@ -7106,9 +7106,9 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "archived",
+      "status": "active",
       "dynamic": false,
-      "updated": "2026-07-22",
+      "updated": "2026-07-24",
       "owner": "Michael",
       "language": "da",
       "channels": {
@@ -7117,7 +7117,7 @@
         "guest_guide": true,
         "owner_guide": true
       },
-      "maturity": "draft",
+      "maturity": "verified",
       "tests": [
         "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
         "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
@@ -7130,9 +7130,11 @@
         "last_result": null
       },
       "editorial": {
-        "review_state": "needs_review",
+        "review_state": "approved",
         "website_candidate": false,
-        "notes": "Created by Knowledge Manager"
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:36.078Z"
       },
       "quality": {
         "completeness": 70,
@@ -7145,9 +7147,7 @@
           "parking-pueblo-aguila"
         ],
         "supersedes": [],
-        "superseded_by": [
-          "casa-amar-samlet-information-32681"
-        ]
+        "superseded_by": []
       },
       "translations": {
         "da": "source",
@@ -7163,43 +7163,10 @@
       },
       "lifecycle": {
         "live_status": "live",
-        "has_draft": true
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:36.078Z"
       },
-      "draft_version": {
-        "title": "Casa Amars officielle adresse",
-        "category": "Casa Amar",
-        "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "visibility": "internal",
-        "channels": {
-          "ai": true,
-          "website": false,
-          "guest_guide": true,
-          "owner_guide": true
-        },
-        "maturity": "draft",
-        "status": "draft",
-        "created_at": "2026-07-24T14:35:36.720Z",
-        "updated_at": "2026-07-24T14:35:39.627Z",
-        "created_by": "Michael",
-        "tests": [
-          "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
-          "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
-          "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
-        ],
-        "assets": [],
-        "relations": {
-          "related": [
-            "parking-pueblo-aguila"
-          ],
-          "supersedes": [],
-          "superseded_by": [
-            "casa-amar-samlet-information-32681"
-          ]
-        }
-      }
+      "assets": []
     },
     {
       "id": "oplevelser-oplevelser-malaga-68388",
@@ -7991,6 +7958,81 @@
     },
     {
       "id": "adresse-til-casa-amar",
+      "title": "Casa Amars officielle adresse",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:39.613Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:39.613Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "adresse-til-casa-amar",
       "title": "Adresse til Casa Amar",
       "category": "Casa Amar",
       "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
@@ -8000,7 +8042,7 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "updated": "2026-07-22",
       "owner": "Michael",
@@ -8039,7 +8081,9 @@
           "parking-pueblo-aguila"
         ],
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [
+          "casa-amar-samlet-information-32681"
+        ]
       },
       "translations": {
         "da": "source",
@@ -8052,73 +8096,45 @@
         "label": "Michael / Casa Amar",
         "url": null,
         "checked": "2026-07-22"
-      }
-    },
-    {
-      "id": "adresse-til-casa-amar",
-      "title": "Adresse til Casa Amar",
-      "category": "Casa Amar",
-      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "keywords": [],
-      "visibility": "internal",
-      "trust": 100,
-      "status": "active",
-      "dynamic": false,
-      "updated": "2026-07-22",
-      "owner": "Michael",
-      "language": "da",
-      "channels": {
-        "ai": true,
-        "website": false,
-        "guest_guide": true,
-        "owner_guide": true
       },
-      "maturity": "draft",
-      "tests": [
-        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
-        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
-        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
-      ],
-      "test_state": {
-        "status": "needs_test",
-        "last_tested_at": null,
-        "last_changed_at": "2026-07-22T14:42:27.374Z",
-        "last_result": null
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": true
       },
-      "editorial": {
-        "review_state": "needs_review",
-        "website_candidate": false,
-        "notes": "Created by Knowledge Manager"
-      },
-      "quality": {
-        "completeness": 70,
-        "test_coverage": false,
-        "requires_refresh": false,
-        "conflict_status": "none"
-      },
-      "relations": {
-        "related": [
-          "restaurant-cerros-aguila",
-          "pool-restaurant-takeaway",
-          "parking-pueblo-aguila"
+      "draft_version": {
+        "title": "Casa Amars officielle adresse",
+        "category": "Casa Amar",
+        "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "visibility": "internal",
+        "channels": {
+          "ai": true,
+          "website": false,
+          "guest_guide": true,
+          "owner_guide": true
+        },
+        "maturity": "draft",
+        "status": "draft",
+        "created_at": "2026-07-24T14:35:36.720Z",
+        "updated_at": "2026-07-24T14:35:39.627Z",
+        "created_by": "Michael",
+        "tests": [
+          "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+          "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+          "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
         ],
-        "supersedes": [],
-        "superseded_by": []
-      },
-      "translations": {
-        "da": "source",
-        "en": "pending",
-        "es": "pending"
-      },
-      "source": {
-        "id": "michael-owner",
-        "type": "owner_core",
-        "label": "Michael / Casa Amar",
-        "url": null,
-        "checked": "2026-07-22"
+        "assets": [],
+        "relations": {
+          "related": [
+            "parking-pueblo-aguila"
+          ],
+          "supersedes": [],
+          "superseded_by": [
+            "casa-amar-samlet-information-32681"
+          ]
+        }
       }
     },
     {
@@ -8925,10 +8941,562 @@
         "last_published_at": "2026-07-24T14:17:30.603Z"
       },
       "assets": []
+    },
+    {
+      "id": "el-morabito-ronda",
+      "slug": "el-morabito-ronda",
+      "title": "Ronda - restauranter",
+      "category": "Restauranter",
+      "content_type": "place",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "keywords": [
+        "El Morabito",
+        "Ronda"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:16.633Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:16.633Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "malaga-city",
+      "slug": "malaga-city",
+      "title": "Oplevelser: Málaga",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "answer": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "body": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "content": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "keywords": [
+        "Málaga",
+        "museer",
+        "flamenco",
+        "strandpromenade"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T13:09:15.211Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T13:09:15.211Z"
+      }
+    },
+    {
+      "id": "ronda",
+      "slug": "ronda",
+      "title": "Oplevelser: Ronda",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "answer": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "body": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "content": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "keywords": [
+        "Ronda",
+        "bro",
+        "kløft",
+        "tyrefægterarena"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:10.429Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:10.429Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "ronda",
+      "slug": "ronda",
+      "title": "Oplevelser: Ronda",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "answer": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "body": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "content": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "keywords": [
+        "Ronda",
+        "bro",
+        "kløft",
+        "tyrefægterarena"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:46.267Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:46.267Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "el-morabito-ronda",
+      "slug": "el-morabito-ronda",
+      "title": "Ronda - restauranter",
+      "category": "Restauranter",
+      "content_type": "place",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "keywords": [
+        "El Morabito",
+        "Ronda"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:48.442Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:48.442Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "cordoba",
+      "slug": "cordoba",
+      "title": "Oplevelser: Córdoba",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "answer": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "body": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "content": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "keywords": [
+        "Córdoba",
+        "Mezquita",
+        "jødiske kvarter",
+        "tog"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:28.860Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:28.860Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "sevilla",
+      "slug": "sevilla",
+      "title": "Oplevelser: Sevilla",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "answer": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "body": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "content": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "keywords": [
+        "Sevilla",
+        "storbytur"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:30.603Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:30.603Z"
+      },
+      "assets": []
     }
   ],
   "version": "2.1",
-  "updated": "2026-07-25T06:47:47.496Z",
+  "updated": "2026-07-26T12:44:51.896Z",
   "entries": [
     {
       "id": "parking-pueblo-aguila",
@@ -16027,7 +16595,7 @@
     },
     {
       "id": "adresse-til-casa-amar",
-      "title": "Adresse til Casa Amar",
+      "title": "Sådan finder du Casa Amar",
       "category": "Casa Amar",
       "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
       "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
@@ -16036,9 +16604,9 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "archived",
+      "status": "active",
       "dynamic": false,
-      "updated": "2026-07-22",
+      "updated": "2026-07-24",
       "owner": "Michael",
       "language": "da",
       "channels": {
@@ -16047,7 +16615,7 @@
         "guest_guide": true,
         "owner_guide": true
       },
-      "maturity": "draft",
+      "maturity": "verified",
       "tests": [
         "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
         "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
@@ -16060,9 +16628,11 @@
         "last_result": null
       },
       "editorial": {
-        "review_state": "needs_review",
+        "review_state": "approved",
         "website_candidate": false,
-        "notes": "Created by Knowledge Manager"
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:36.078Z"
       },
       "quality": {
         "completeness": 70,
@@ -16075,9 +16645,7 @@
           "parking-pueblo-aguila"
         ],
         "supersedes": [],
-        "superseded_by": [
-          "casa-amar-samlet-information-32681"
-        ]
+        "superseded_by": []
       },
       "translations": {
         "da": "source",
@@ -16093,43 +16661,10 @@
       },
       "lifecycle": {
         "live_status": "live",
-        "has_draft": true
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:36.078Z"
       },
-      "draft_version": {
-        "title": "Casa Amars officielle adresse",
-        "category": "Casa Amar",
-        "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
-        "visibility": "internal",
-        "channels": {
-          "ai": true,
-          "website": false,
-          "guest_guide": true,
-          "owner_guide": true
-        },
-        "maturity": "draft",
-        "status": "draft",
-        "created_at": "2026-07-24T14:35:36.720Z",
-        "updated_at": "2026-07-24T14:35:39.627Z",
-        "created_by": "Michael",
-        "tests": [
-          "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
-          "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
-          "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
-        ],
-        "assets": [],
-        "relations": {
-          "related": [
-            "parking-pueblo-aguila"
-          ],
-          "supersedes": [],
-          "superseded_by": [
-            "casa-amar-samlet-information-32681"
-          ]
-        }
-      }
+      "assets": []
     },
     {
       "id": "oplevelser-oplevelser-malaga-68388",
@@ -16921,6 +17456,81 @@
     },
     {
       "id": "adresse-til-casa-amar",
+      "title": "Casa Amars officielle adresse",
+      "category": "Casa Amar",
+      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
+      "keywords": [],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "maturity": "verified",
+      "tests": [
+        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
+        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
+        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22T14:42:27.374Z",
+        "last_result": null
+      },
+      "editorial": {
+        "review_state": "approved",
+        "website_candidate": false,
+        "notes": "Created by Knowledge Manager",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:39.613Z"
+      },
+      "quality": {
+        "completeness": 70,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "relations": {
+        "related": [
+          "restaurant-cerros-aguila",
+          "pool-restaurant-takeaway",
+          "parking-pueblo-aguila"
+        ],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:39.613Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "adresse-til-casa-amar",
       "title": "Adresse til Casa Amar",
       "category": "Casa Amar",
       "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
@@ -16930,7 +17540,7 @@
       "keywords": [],
       "visibility": "internal",
       "trust": 100,
-      "status": "active",
+      "status": "archived",
       "dynamic": false,
       "updated": "2026-07-22",
       "owner": "Michael",
@@ -16969,7 +17579,9 @@
           "parking-pueblo-aguila"
         ],
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [
+          "casa-amar-samlet-information-32681"
+        ]
       },
       "translations": {
         "da": "source",
@@ -16982,73 +17594,45 @@
         "label": "Michael / Casa Amar",
         "url": null,
         "checked": "2026-07-22"
-      }
-    },
-    {
-      "id": "adresse-til-casa-amar",
-      "title": "Adresse til Casa Amar",
-      "category": "Casa Amar",
-      "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Bemærk: De fleste gæster bruger en lille sti mellem rækkehusene fra Calle Buitre (ca. 50 meter fra rundkørslen). Gå helt ned til bunden af stien og frem til huset nr. 527. Denne sti er også den nemmeste vej til Restaurant Cerros del Águila og poolområdet, og anbefales især hvis man har tung bagage eller ønsker at undgå trapper.",
-      "keywords": [],
-      "visibility": "internal",
-      "trust": 100,
-      "status": "active",
-      "dynamic": false,
-      "updated": "2026-07-22",
-      "owner": "Michael",
-      "language": "da",
-      "channels": {
-        "ai": true,
-        "website": false,
-        "guest_guide": true,
-        "owner_guide": true
       },
-      "maturity": "draft",
-      "tests": [
-        "T08 - Bekræft placeringen af Calle Buitre og afstanden til rundkørslen",
-        "T20 - Verificer at stien mellem rækkehusene fører til Casa 527",
-        "T21 - Bekræft at stien også fører til Restaurant Cerros del Águila og poolområdet"
-      ],
-      "test_state": {
-        "status": "needs_test",
-        "last_tested_at": null,
-        "last_changed_at": "2026-07-22T14:42:27.374Z",
-        "last_result": null
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": true
       },
-      "editorial": {
-        "review_state": "needs_review",
-        "website_candidate": false,
-        "notes": "Created by Knowledge Manager"
-      },
-      "quality": {
-        "completeness": 70,
-        "test_coverage": false,
-        "requires_refresh": false,
-        "conflict_status": "none"
-      },
-      "relations": {
-        "related": [
-          "restaurant-cerros-aguila",
-          "pool-restaurant-takeaway",
-          "parking-pueblo-aguila"
+      "draft_version": {
+        "title": "Casa Amars officielle adresse",
+        "category": "Casa Amar",
+        "summary": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "answer": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "body": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "content": "Casa Amar ligger på Calle Zopilote 3, Casa 527, Pueblo Águila, urb. Cerros del Águila, 29650 Mijas Costa, Málaga. Dette er den officielle adresse og den placering, GPS normalt fører til. Ved ankomst skal man gå op ad en trappe, som ligger lige til venstre for porten på Calle Zopilote, og som fører op til rækkehusene. Gå langs rækkehusene ligeud; det næstsidste hus er Casa Amar. Vær opmærksom på, at man IKKE skal gå ind ad porten på Calle Zopilote (nogle tror fejlagtigt det er indgangen) — trappen til rækkehusene er til venstre for porten.",
+        "visibility": "internal",
+        "channels": {
+          "ai": true,
+          "website": false,
+          "guest_guide": true,
+          "owner_guide": true
+        },
+        "maturity": "draft",
+        "status": "draft",
+        "created_at": "2026-07-24T14:35:36.720Z",
+        "updated_at": "2026-07-24T14:35:39.627Z",
+        "created_by": "Michael",
+        "tests": [
+          "Bekræft at trappen ligger til venstre for porten på Calle Zopilote og fører op til rækkehusene (lokal visuel bekræftelse eller foto).",
+          "Bekræft at Casa Amar er det næstsidste hus på rækken (lokal bekræftelse).",
+          "Bekræft at gæster med GPS reelt bliver ledt til Calle Zopilote 3 / Casa 527."
         ],
-        "supersedes": [],
-        "superseded_by": []
-      },
-      "translations": {
-        "da": "source",
-        "en": "pending",
-        "es": "pending"
-      },
-      "source": {
-        "id": "michael-owner",
-        "type": "owner_core",
-        "label": "Michael / Casa Amar",
-        "url": null,
-        "checked": "2026-07-22"
+        "assets": [],
+        "relations": {
+          "related": [
+            "parking-pueblo-aguila"
+          ],
+          "supersedes": [],
+          "superseded_by": [
+            "casa-amar-samlet-information-32681"
+          ]
+        }
       }
     },
     {
@@ -17301,6 +17885,558 @@
           "adresse-til-casa-amar"
         ],
         "superseded_by": []
+      },
+      "assets": []
+    },
+    {
+      "id": "el-morabito-ronda",
+      "slug": "el-morabito-ronda",
+      "title": "Ronda - restauranter",
+      "category": "Restauranter",
+      "content_type": "place",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "keywords": [
+        "El Morabito",
+        "Ronda"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:16.633Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:16.633Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "malaga-city",
+      "slug": "malaga-city",
+      "title": "Oplevelser: Málaga",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "answer": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "body": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "content": "Málaga er den nærmeste storby med arkitektur, museer, strandpromenade, madoplevelser og flamenco, cirka 30 minutters kørsel fra huset.",
+      "keywords": [
+        "Málaga",
+        "museer",
+        "flamenco",
+        "strandpromenade"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T13:09:15.211Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T13:09:15.211Z"
+      }
+    },
+    {
+      "id": "ronda",
+      "slug": "ronda",
+      "title": "Oplevelser: Ronda",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "answer": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "body": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "content": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "keywords": [
+        "Ronda",
+        "bro",
+        "kløft",
+        "tyrefægterarena"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-23",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-23T14:47:10.429Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-23T14:47:10.429Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "ronda",
+      "slug": "ronda",
+      "title": "Oplevelser: Ronda",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "answer": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "body": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "content": "Ronda er kendt for sin historiske tyrefægterarena og den høje bro over kløften, som deler byen i to.",
+      "keywords": [
+        "Ronda",
+        "bro",
+        "kløft",
+        "tyrefægterarena"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:46.267Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:46.267Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "el-morabito-ronda",
+      "slug": "el-morabito-ronda",
+      "title": "Ronda - restauranter",
+      "category": "Restauranter",
+      "content_type": "place",
+      "summary": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "answer": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "body": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "content": "El Morabito er nævnt som restaurantmulighed i Rondas gamle bydel.\nArrabal er nævnt som restaurantmulighed med udsigt i Rondas gamle bydel.",
+      "keywords": [
+        "El Morabito",
+        "Ronda"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": true,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:48.442Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": true,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T33"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-23T13:02:01.938Z",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:48.442Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "cordoba",
+      "slug": "cordoba",
+      "title": "Oplevelser: Córdoba",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "answer": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "body": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "content": "Córdoba er kendt for Mezquita-katedralen, det jødiske kvarter og historiske gader. Turen tager omkring to timer i bil, og der er togforbindelser via Málaga.",
+      "keywords": [
+        "Córdoba",
+        "Mezquita",
+        "jødiske kvarter",
+        "tog"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:28.860Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T28",
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:28.860Z"
+      },
+      "assets": []
+    },
+    {
+      "id": "sevilla",
+      "slug": "sevilla",
+      "title": "Oplevelser: Sevilla",
+      "category": "Oplevelser",
+      "content_type": "place",
+      "summary": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "answer": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "body": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "content": "Sevilla er velegnet til en større bytur og ligger omkring to timers kørsel væk.",
+      "keywords": [
+        "Sevilla",
+        "storbytur"
+      ],
+      "visibility": "internal",
+      "trust": 100,
+      "status": "active",
+      "dynamic": false,
+      "valid_until": null,
+      "source": {
+        "id": "michael-owner",
+        "type": "owner_core",
+        "label": "Michael / Casa Amar",
+        "url": null,
+        "checked": "2026-07-22"
+      },
+      "updated": "2026-07-24",
+      "owner": "Michael",
+      "language": "da",
+      "links": [],
+      "card_version": 1,
+      "channels": {
+        "ai": true,
+        "website": false,
+        "guest_guide": true,
+        "owner_guide": true
+      },
+      "relations": {
+        "related": [],
+        "supersedes": [],
+        "superseded_by": []
+      },
+      "editorial": {
+        "review_state": "approved",
+        "reviewed_by": "Michael",
+        "reviewed_at": "2026-07-24T14:17:30.603Z",
+        "website_candidate": false,
+        "notes": "Imported from welcome guide updated April 2026. Maturity: imported."
+      },
+      "quality": {
+        "completeness": 75,
+        "test_coverage": false,
+        "requires_refresh": false,
+        "conflict_status": "none"
+      },
+      "translations": {
+        "da": "source",
+        "en": "pending",
+        "es": "pending"
+      },
+      "maturity": "verified",
+      "tests": [
+        "T32",
+        "T36"
+      ],
+      "test_state": {
+        "status": "needs_test",
+        "last_tested_at": null,
+        "last_changed_at": "2026-07-22",
+        "last_result": null
+      },
+      "lifecycle": {
+        "live_status": "live",
+        "has_draft": false,
+        "last_published_at": "2026-07-24T14:17:30.603Z"
       },
       "assets": []
     },
