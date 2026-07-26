@@ -1,10 +1,3 @@
-fix(navigation): intelligent Mission Control start position
-
-- Mission Control now starts at the top during normal use.
-- Browser scroll restoration is disabled for this page.
-- Explicit “Gå til udgivelse” navigation still opens the Release Center.
-- Active publish sessions reopen directly at the Release Center.
-- Completed releases return to the top while retaining the receipt below.
-
-Release: v2026.07.24.82
-Worker: 13.3-intelligent-start-position
+refactor(platform): one runtime state for all metadata
+Release: v2026.07.24.83
+Worker: 13.4-runtime-state-single-source

@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.82
-Worker: 13.3-intelligent-start-position
+Release: v2026.07.24.83
+Worker: 13.4-runtime-state-single-source
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

@@ -1,5 +1,5 @@
 {
-  "version": "3.3",
+  "version": "3.4",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -120,5 +120,13 @@
     "active_release": "release center while a publish session is prepared, in GitHub, deploying or verifying",
     "completed_release": "returns to top; release receipt remains accessible below",
     "browser_scroll_restoration": "manual"
+  },
+  "runtime_state_single_source": {
+    "module": "platform-runtime.js",
+    "platform_source": "platform-manifest.json",
+    "content_source": "content-release.json",
+    "release_source": "casaReleaseSessionV2",
+    "formatting": "centralised da-DK Europe/Copenhagen",
+    "rule": "No page independently owns platform metadata."
   }
 }

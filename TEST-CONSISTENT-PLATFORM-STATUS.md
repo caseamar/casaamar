@@ -1,10 +1,10 @@
 # Test konsistent Platformstatus
 
-Release: v2026.07.24.82
-Worker: 13.3-intelligent-start-position
+Release: v2026.07.24.83
+Worker: 13.4-runtime-state-single-source
 
 1. Offentlig hjemmeside:
-   - DEV-badge viser `v2026.07.24.82`
+   - DEV-badge viser `v2026.07.24.83`
    - dato vises på dansk, ikke som rå ISO-streng
 2. Mission Control:
    - Platform viser version, Bygget og Live siden
