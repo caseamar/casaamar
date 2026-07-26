@@ -1,12 +1,12 @@
-fix(release): reconcile Mission Control immediately after live confirmation
+feat(platform): automatically refresh when a new platform version is deployed
 
-- Mission Control now refreshes immediately when a release becomes live.
-- The completed publish task disappears without requiring a page reload.
-- Release sessions capture an exact snapshot of workspace values.
-- Only values included in the confirmed release are cleared.
-- Newer edits made during deployment are preserved for the next release.
-- Existing live sessions are repaired once for backward compatibility.
-- Live confirmation explains whether newer unpublished work remains.
+- Checks platform-manifest.json every 30 seconds while a page is open.
+- Checks immediately when the tab becomes visible, window gains focus, or page is restored.
+- Shows a brief Danish update notice before automatic reload.
+- Reloads with a cache-busting URL parameter.
+- Works across Mission Control, all platform areas and the public website.
+- F5 is no longer required to receive a deployed platform update.
+- Strengthened no-store/no-cache headers for manifest, shell and HTML.
 
-Release: v2026.07.24.74
-Worker: 12.4-live-workspace-reconciliation
+Release: v2026.07.24.75
+Worker: 12.5-auto-platform-refresh

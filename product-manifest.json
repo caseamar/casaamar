@@ -1,5 +1,5 @@
 {
-  "version": "2.2",
+  "version": "2.3",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -76,5 +76,18 @@
     "newer_edits": "Preserved if their current value differs from the release snapshot.",
     "mission_control": "Recomputed immediately after live confirmation.",
     "legacy_sessions": "Reconciled once for compatibility."
+  },
+  "automatic_platform_refresh": {
+    "check_interval": "30 seconds while page is open",
+    "triggers": [
+      "initial load",
+      "pageshow",
+      "tab becomes visible",
+      "window focus",
+      "interval"
+    ],
+    "behavior": "If a newer platform version is detected, show a brief notice and reload automatically.",
+    "cache_busting": "Reload URL receives a unique _platform_refresh timestamp.",
+    "manual_refresh_required": false
   }
 }

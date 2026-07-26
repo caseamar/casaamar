@@ -1,27 +1,92 @@
 
 (()=>{
 
-async function loadPlatformManifest(){
+
+const CASA_VERSION_STORAGE_KEY="casaPlatformVersionSeen";
+let casaVersionCheckTimer=null;
+let casaReloadScheduled=false;
+
+function applyPlatformManifest(manifest){
+ const version=manifest?.platform_version||"Ukendt";
+ const build=manifest?.build||"Ukendt";
+ const worker=manifest?.worker_version||"Ukendt";
+ document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
+ document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=build);
+ document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
+ document.documentElement.dataset.platformVersion=version;
+ window.CASA_PLATFORM_MANIFEST=manifest;
+}
+
+async function fetchPlatformManifest(){
+ const response=await fetch(`/platform-manifest.json?ts=${Date.now()}`,{
+  cache:"no-store",
+  headers:{"cache-control":"no-cache"}
+ });
+ if(!response.ok)throw new Error(`HTTP ${response.status}`);
+ return response.json();
+}
+
+function showPlatformUpdateNotice(newVersion){
+ let notice=document.querySelector("#caPlatformUpdateNotice");
+ if(!notice){
+  notice=document.createElement("div");
+  notice.id="caPlatformUpdateNotice";
+  notice.style.cssText="position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:1000;max-width:min(620px,calc(100vw - 28px));padding:12px 14px;border-radius:14px;background:#17352b;color:white;box-shadow:0 18px 45px rgba(20,35,30,.28);font:700 .78rem/1.45 Inter,system-ui,sans-serif;text-align:center";
+  document.body.appendChild(notice);
+ }
+ notice.innerHTML=`En ny platformversion <strong>${newVersion}</strong> er klar. Siden opdateres automatisk om et øjeblik.`;
+}
+
+function schedulePlatformReload(newVersion){
+ if(casaReloadScheduled)return;
+ casaReloadScheduled=true;
+ showPlatformUpdateNotice(newVersion);
+ setTimeout(()=>{
+  const url=new URL(location.href);
+  url.searchParams.set("_platform_refresh",Date.now());
+  location.replace(url.toString());
+ },1800);
+}
+
+async function loadPlatformManifest({allowReload=false}={}){
  try{
-  const response=await fetch(`/platform-manifest.json?ts=${Date.now()}`,{cache:"no-store"});
-  if(!response.ok)throw new Error(`HTTP ${response.status}`);
-  const manifest=await response.json();
-  const version=manifest.platform_version||"Ukendt";
-  const build=manifest.build||"Ukendt";
-  const worker=manifest.worker_version||"Ukendt";
-  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
-  document.querySelectorAll("[data-platform-build]").forEach(el=>el.textContent=build);
-  document.querySelectorAll("[data-worker-version]").forEach(el=>el.textContent=worker);
-  document.documentElement.dataset.platformVersion=version;
-  window.CASA_PLATFORM_MANIFEST=manifest;
+  const manifest=await fetchPlatformManifest();
+  const current=document.documentElement.dataset.platformVersion||window.CASA_PLATFORM_MANIFEST?.platform_version||null;
+  const seen=sessionStorage.getItem(CASA_VERSION_STORAGE_KEY);
+  applyPlatformManifest(manifest);
+  sessionStorage.setItem(CASA_VERSION_STORAGE_KEY,manifest.platform_version||"");
+  if(allowReload && current && manifest.platform_version && current!==manifest.platform_version){
+   schedulePlatformReload(manifest.platform_version);
+  }else if(allowReload && seen && manifest.platform_version && seen!==manifest.platform_version){
+   schedulePlatformReload(manifest.platform_version);
+  }
   return manifest;
  }catch(error){
-  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent="Kunne ikke læses");
+  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>{
+   if(!el.textContent||el.textContent==="Indlæser…")el.textContent="Kunne ikke læses";
+  });
   console.error("Platformmanifest kunne ikke indlæses",error);
   return null;
  }
 }
-window.CasaPlatformManifestPromise=loadPlatformManifest();
+
+function startPlatformVersionWatch(){
+ if(casaVersionCheckTimer)clearInterval(casaVersionCheckTimer);
+ casaVersionCheckTimer=setInterval(()=>loadPlatformManifest({allowReload:true}),30000);
+}
+
+window.CasaPlatformManifestPromise=new Promise(resolve=>{
+ const run=()=>loadPlatformManifest({allowReload:false}).then(resolve);
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run,{once:true});
+ else run();
+});
+window.addEventListener("pageshow",()=>loadPlatformManifest({allowReload:true}));
+document.addEventListener("visibilitychange",()=>{
+ if(document.visibilityState==="visible")loadPlatformManifest({allowReload:true});
+});
+window.addEventListener("focus",()=>loadPlatformManifest({allowReload:true}));
+startPlatformVersionWatch();
+
 
 const PAGES={
  "/knowledge-center.html":{

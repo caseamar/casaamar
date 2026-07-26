@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "12.4-live-workspace-reconciliation",
+      version: "12.5-auto-platform-refresh",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "12.4-live-workspace-reconciliation",
+          worker: "12.5-auto-platform-refresh",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "12.4-live-workspace-reconciliation",
+          worker: "12.5-auto-platform-refresh",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);

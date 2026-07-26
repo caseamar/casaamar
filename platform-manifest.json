@@ -1,7 +1,7 @@
 {
-  "platform_version": "v2026.07.24.74",
-  "build": "2026-07-26 15:00",
-  "worker_version": "12.4-live-workspace-reconciliation",
-  "release_name": "Live Workspace Reconciliation",
-  "generated_at": "2026-07-26T15:00:00Z"
+  "platform_version": "v2026.07.24.75",
+  "build": "2026-07-26 15:30",
+  "worker_version": "12.5-auto-platform-refresh",
+  "release_name": "Automatic Platform Refresh",
+  "generated_at": "2026-07-26T15:30:00Z"
 }

@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.74
-Worker: 12.4-live-workspace-reconciliation
+Release: v2026.07.24.75
+Worker: 12.5-auto-platform-refresh
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.
