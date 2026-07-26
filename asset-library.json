@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "updated": "2026-07-24",
+  "updated": "2026-07-26T13:15:05.088Z",
   "assets": [
     {
       "id": "asset-casa-amar-koekken-ovn",
@@ -9,7 +9,8 @@
         "original_path": "images/casa-amar-koekken-ovn.webp",
         "filename": "casa-amar-koekken-ovn.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-koekken-ovn.webp",
       "manual_metadata": {
@@ -48,19 +49,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -69,7 +251,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-koekken-ovn.webp",
@@ -85,7 +272,8 @@
         "original_path": "images/casa-amar-v2-entre.webp",
         "filename": "casa-amar-v2-entre.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-entre.webp",
       "manual_metadata": {
@@ -124,19 +312,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -145,7 +514,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-entre.webp",
@@ -161,7 +535,8 @@
         "original_path": "images/casa-amar-v2-hero-patio.webp",
         "filename": "casa-amar-v2-hero-patio.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-hero-patio.webp",
       "manual_metadata": {
@@ -200,19 +575,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 36,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -221,7 +777,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-hero-patio.webp",
@@ -237,7 +798,8 @@
         "original_path": "images/casa-amar-v2-kaffe.webp",
         "filename": "casa-amar-v2-kaffe.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-kaffe.webp",
       "manual_metadata": {
@@ -276,19 +838,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -297,7 +1040,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-kaffe.webp",
@@ -313,7 +1061,8 @@
         "original_path": "images/casa-amar-v2-koekken.webp",
         "filename": "casa-amar-v2-koekken.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-koekken.webp",
       "manual_metadata": {
@@ -352,19 +1101,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -373,7 +1303,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-koekken.webp",
@@ -389,7 +1324,8 @@
         "original_path": "images/casa-amar-v2-master-bedroom.webp",
         "filename": "casa-amar-v2-master-bedroom.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-master-bedroom.webp",
       "manual_metadata": {
@@ -428,19 +1364,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 45,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -449,7 +1566,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-master-bedroom.webp",
@@ -465,7 +1587,8 @@
         "original_path": "images/casa-amar-v2-patio-detalje.webp",
         "filename": "casa-amar-v2-patio-detalje.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-patio-detalje.webp",
       "manual_metadata": {
@@ -504,19 +1627,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 36,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -525,7 +1829,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-patio-detalje.webp",
@@ -541,7 +1850,8 @@
         "original_path": "images/casa-amar-v2-patio-spiseplads.webp",
         "filename": "casa-amar-v2-patio-spiseplads.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-patio-spiseplads.webp",
       "manual_metadata": {
@@ -580,19 +1890,210 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 36,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "outdoor",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 27,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -601,7 +2102,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-patio-spiseplads.webp",
@@ -617,7 +2123,8 @@
         "original_path": "images/casa-amar-v2-pool.webp",
         "filename": "casa-amar-v2-pool.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-pool.webp",
       "manual_metadata": {
@@ -656,19 +2163,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -677,7 +2365,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-pool.webp",
@@ -693,7 +2386,8 @@
         "original_path": "images/casa-amar-v2-projektor.webp",
         "filename": "casa-amar-v2-projektor.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-projektor.webp",
       "manual_metadata": {
@@ -732,19 +2426,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 40,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -753,7 +2628,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-projektor.webp",
@@ -769,7 +2649,8 @@
         "original_path": "images/casa-amar-v2-solnedgang.webp",
         "filename": "casa-amar-v2-solnedgang.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-solnedgang.webp",
       "manual_metadata": {
@@ -808,19 +2689,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -829,7 +2891,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-solnedgang.webp",
@@ -845,7 +2912,8 @@
         "original_path": "images/casa-amar-v2-sovevaerelse-2.webp",
         "filename": "casa-amar-v2-sovevaerelse-2.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-sovevaerelse-2.webp",
       "manual_metadata": {
@@ -884,19 +2952,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -905,7 +3154,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-sovevaerelse-2.webp",
@@ -921,7 +3175,8 @@
         "original_path": "images/casa-amar-v2-sovevaerelse-3.webp",
         "filename": "casa-amar-v2-sovevaerelse-3.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-sovevaerelse-3.webp",
       "manual_metadata": {
@@ -960,19 +3215,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -981,7 +3417,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-sovevaerelse-3.webp",
@@ -997,7 +3438,8 @@
         "original_path": "images/casa-amar-v2-stue.webp",
         "filename": "casa-amar-v2-stue.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-stue.webp",
       "manual_metadata": {
@@ -1036,19 +3478,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 40,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 40,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -1057,7 +3680,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-stue.webp",
@@ -1073,7 +3701,8 @@
         "original_path": "images/casa-amar-v2-tagterrasse.webp",
         "filename": "casa-amar-v2-tagterrasse.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-tagterrasse.webp",
       "manual_metadata": {
@@ -1112,19 +3741,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 40,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -1133,7 +3943,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-tagterrasse.webp",
@@ -1149,7 +3964,8 @@
         "original_path": "images/casa-amar-v2-udsigt.webp",
         "filename": "casa-amar-v2-udsigt.webp",
         "checksum": null,
-        "uploaded_at": null
+        "uploaded_at": null,
+        "source_state": "present"
       },
       "preview_url": "/images/casa-amar-v2-udsigt.webp",
       "manual_metadata": {
@@ -1188,19 +4004,200 @@
       },
       "analysis_queue": {
         "visual_status": "pending",
-        "relation_status": "pending",
+        "relation_status": "current",
         "visual_analysis_version": "",
-        "relation_scan_version": "",
+        "relation_scan_version": "relation-baseline-1",
         "visual_reason": "Imported from current website manifest.",
-        "relation_reason": "New asset requires matching.",
+        "relation_reason": "",
         "last_visual_analysis": null,
-        "last_relation_scan": null,
+        "last_relation_scan": "2026-07-26T13:15:05.083Z",
         "retry_count": 0,
         "last_error": null
       },
       "relations": {
         "manual_links": [],
-        "ai_matches": [],
+        "ai_matches": [
+          {
+            "target_type": "knowledge_object",
+            "target_id": "house-overview",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-no-car",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "wifi",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "parking-pueblo-aguila",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "airconditioning-use",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "indk-b-af-dagligvarer-ved-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-10811",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-togforbindelser-fra-malaga-regionalt-højhastighed-16746",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "aktiviteter-sport-tennisbane-ved-casa-amar-46772",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "transport-taxi-uber-og-bolt-ved-casa-amar-taxi-mijas-kontakt-54954",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "adresse-til-casa-amar",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "praktisk-samlet-information-35803",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "casa-amar-samlet-information-32681",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          },
+          {
+            "target_type": "knowledge_object",
+            "target_id": "rincon-official-booking-link",
+            "relation_type": "ai_suggestion",
+            "score": 30,
+            "reason": "Dynamisk match mellem asset-profil og Knowledge Object.",
+            "model_version": "relation-baseline-1",
+            "created_at": "2026-07-26T13:15:04.808Z",
+            "last_evaluated_at": "2026-07-26T13:15:04.808Z"
+          }
+        ],
         "current_usage": [],
         "locked_placements": []
       },
@@ -1209,7 +4206,12 @@
         "valid_from": null,
         "valid_to": null,
         "supersedes": [],
-        "superseded_by": []
+        "superseded_by": [],
+        "deletion_review": {
+          "status": "none",
+          "reason": "",
+          "reviewed_at": null
+        }
       },
       "variants": {
         "original": "/images/casa-amar-v2-udsigt.webp",

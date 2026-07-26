@@ -1,10 +1,10 @@
 {
-  "platform_version": "v2026.07.24.73",
-  "content_version": "content-2026.07.26-1444",
-  "created_at": "2026-07-26T12:44:51.899Z",
+  "platform_version": "v2026.07.24.78",
+  "content_version": "content-2026.07.26-1849",
+  "created_at": "2026-07-26T16:49:20.744Z",
   "counts": {
     "knowledge": 131,
-    "knowledge_changes": 176,
-    "assets": 57
+    "knowledge_changes": 0,
+    "assets": 16
   }
 }
