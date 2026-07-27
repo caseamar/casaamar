@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.5.0",
-  "generated_at": "2026-07-27T22:37:27+02:00",
+  "generated_at": "2026-07-27T22:49:30+02:00",
   "source": "release-package",
   "file_count": 91,
   "policies": {
@@ -596,7 +596,19 @@
       "critical": true,
       "description": "Experience Engine runtime or registry",
       "category": "platform-intelligence"
+    },
+    {
+      "path": "core/casa-workspace.js",
+      "type": "platform",
+      "critical": true
+    },
+    {
+      "path": "registry/workspace.json",
+      "type": "platform",
+      "critical": true
     }
   ],
-  "updated_at": "2026-07-27T22:37:27+02:00"
+  "updated_at": "2026-07-27T22:37:27+02:00",
+  "release": null,
+  "platform_version": null
 }

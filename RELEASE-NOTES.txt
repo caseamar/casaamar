@@ -1,5 +1,3 @@
-Casa Amar Platform v2026.07.24.127
+AI Workspace Foundation
 
-Build Timestamp Consistency Hotfix
-
-Corrects the package build timestamp across the public website, Control Center, manifest and Worker. Adds a release quality gate that rejects future or inconsistent active build timestamps.
+Unified workspace status, six operational modules, data-driven insights and quick actions.

@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-27T22:49:30+02:00",
+  "modules": [
+    {
+      "id": "website",
+      "display_name": "Website",
+      "description": "Arbejd med sider, preview og publicering.",
+      "href": "/page-studio.html",
+      "status_source": "content-intelligence",
+      "icon": "🌍"
+    },
+    {
+      "id": "assets",
+      "display_name": "Assets",
+      "description": "Find, vurder og klargør billeder og varianter.",
+      "href": "/asset-studio.html",
+      "status_source": "asset-intelligence",
+      "icon": "📸"
+    },
+    {
+      "id": "knowledge",
+      "display_name": "Knowledge",
+      "description": "Vedligehold viden, relationer og kvalitet.",
+      "href": "/knowledge-center.html",
+      "status_source": "ai-knowledge-graph",
+      "icon": "🧠"
+    },
+    {
+      "id": "experience",
+      "display_name": "Experience",
+      "description": "Se og forbedr gæsterejsen.",
+      "href": "#platform-intelligence",
+      "status_source": "experience-engine",
+      "icon": "🏡",
+      "subsystem_id": "experience-engine"
+    },
+    {
+      "id": "missions",
+      "display_name": "Missions",
+      "description": "Planlæg og gennemfør fotoopgaver.",
+      "href": "/photo-missions.html",
+      "status_source": "content-intelligence",
+      "icon": "📋"
+    },
+    {
+      "id": "ai-insights",
+      "display_name": "AI Insights",
+      "description": "Se prioriterede forslag fra platformens data.",
+      "href": "#ai-workspace-insights",
+      "status_source": "ai-workspace",
+      "icon": "🤖"
+    }
+  ],
+  "quick_actions": [
+    {
+      "id": "new-page",
+      "label": "Opret side",
+      "href": "/page-studio.html",
+      "module": "website"
+    },
+    {
+      "id": "new-photo-mission",
+      "label": "Opret fotoopgave",
+      "href": "/photo-missions.html",
+      "module": "missions"
+    },
+    {
+      "id": "upload-assets",
+      "label": "Tilføj billeder",
+      "href": "/asset-studio.html",
+      "module": "assets"
+    },
+    {
+      "id": "improve-copy",
+      "label": "Forbedr tekst",
+      "href": "/knowledge-studio.html",
+      "module": "knowledge"
+    },
+    {
+      "id": "quality-check",
+      "label": "Kør kvalitetstjek",
+      "href": "#platform-doctor",
+      "module": "ai-insights"
+    },
+    {
+      "id": "publish",
+      "label": "Gå til udgivelse",
+      "href": "#publish",
+      "module": "website"
+    }
+  ],
+  "quality_rules": [
+    "unique_module_ids",
+    "valid_action_targets",
+    "registered_status_sources",
+    "accessible_navigation"
+  ]
+}

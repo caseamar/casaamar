@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.127",
-        build: "2026-07-27T22:37:27+02:00",
-        worker_version: "15.16-platform-intelligence-dashboard",
+        platform_version: "v2026.07.24.128",
+        build: "2026-07-27T22:49:30+02:00",
+        worker_version: "15.17-ai-workspace-foundation",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"

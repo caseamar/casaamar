@@ -1,12 +1,28 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.127",
-  "platform_version": "v2026.07.24.127",
-  "generated_at": "2026-07-27T22:37:27+02:00",
+  "release": "v2026.07.24.128",
+  "platform_version": "v2026.07.24.128",
+  "generated_at": "2026-07-27T22:49:30+02:00",
   "status": "passed",
-  "release_name": "Release Identity Quality Gate Hotfix",
-  "summary": "Aligns Worker and manifest identity, adds readiness retries, and introduces an executable release quality gate that blocks inconsistent packages.",
+  "release_name": "AI Workspace Foundation",
+  "summary": "Adds a unified operational workspace with cross-subsystem status, insights and quick actions.",
   "checks": [
+    {
+      "id": "release-quality-gate",
+      "status": "passed"
+    },
+    {
+      "id": "ai-workspace-registry",
+      "status": "passed"
+    },
+    {
+      "id": "workspace-navigation",
+      "status": "passed"
+    },
+    {
+      "id": "workspace-action-contracts",
+      "status": "passed"
+    },
     {
       "id": "manifest-worker-identity",
       "status": "passed"
@@ -16,35 +32,15 @@
       "status": "passed"
     },
     {
-      "id": "registry-version-alignment",
-      "status": "passed"
-    },
-    {
       "id": "cache-key-consistency",
       "status": "passed"
     },
     {
-      "id": "stale-release-token-scan",
-      "status": "passed"
-    },
-    {
-      "id": "json-parse",
-      "status": "passed"
-    },
-    {
-      "id": "javascript-syntax",
-      "status": "passed"
-    },
-    {
-      "id": "canonical-control-url",
-      "status": "passed"
-    },
-    {
-      "id": "replacement-package",
+      "id": "timestamp-consistency",
       "status": "passed"
     }
   ],
-  "checks_passed": 698,
+  "checks_passed": 799,
   "checks_failed": 0,
   "zip_integrity": "passed",
   "quality_gate": "tools/release-quality-gate.mjs"

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.1.0",
-  "updated_at": "2026-07-27T22:37:27+02:00",
+  "version": "2.2.0",
+  "updated_at": "2026-07-27T22:49:30+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -19,14 +19,15 @@
       "knowledge-graph": "ai-knowledge-graph",
       "graph": "ai-knowledge-graph",
       "assets": "asset-intelligence",
-      "asset-intelligence": "asset-intelligence"
+      "asset-intelligence": "asset-intelligence",
+      "workspace": "ai-workspace"
     }
   },
   "subsystems": [
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.127",
+      "version": "v2026.07.24.128",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -50,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "2.7.0",
+      "version": "2.8.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -98,7 +99,7 @@
     {
       "id": "diagnostics",
       "display_name": "Diagnostics Framework",
-      "version": "1.14.0",
+      "version": "1.15.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "diagnostics_framework",
@@ -146,7 +147,7 @@
     {
       "id": "platform-contracts",
       "display_name": "Platform Contracts",
-      "version": "1.12.0",
+      "version": "1.13.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "platform_contracts",
@@ -158,7 +159,7 @@
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
@@ -182,7 +183,7 @@
     {
       "id": "repository-intelligence",
       "display_name": "Repository Intelligence",
-      "version": "1.6.0",
+      "version": "1.7.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "repository_intelligence",
@@ -238,6 +239,18 @@
       "visible": true,
       "dashboard": true,
       "dashboard_entry": "/control/#platform-intelligence"
+    },
+    {
+      "id": "ai-workspace",
+      "display_name": "AI Workspace",
+      "version": "1.0.0",
+      "owner": "AI Workspace",
+      "status_source": "module",
+      "manifest_key": "ai_workspace",
+      "entry": "/core/casa-workspace.js",
+      "description": "Unified operational workspace for website, assets, knowledge, experience, missions and AI insights.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#ai-workspace"
     }
   ]
 }
