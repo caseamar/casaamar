@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  function result(id,passed,detail,evidence=[]){return {id,passed:Boolean(passed),status:passed?"passed":"failed",detail,evidence};}
  function releaseIdentity(manifest={},worker={}){
   const expectedPlatform=manifest.platform_version||null;
@@ -27,13 +27,21 @@
   const expected=manifest.platform_doctor?.version||null;
   return result("platform-doctor.version.manifest-driven",!displayed||displayed===expected,displayed?`Displayed ${displayed}; manifest ${expected}`:"Version label not mounted on this route.",[{displayed,expected}]);
  }
- function runAll(){
-  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression()];
+ async function runSubsystemRegistryRegression(){
+  try{
+   await window.CasaSubsystemRegistry?.load?.();
+   const report=window.CasaSubsystemRegistry?.validateManifest?.(window.CASA_PLATFORM_MANIFEST||{});
+   return result("subsystem-registry.metadata.consistent",Boolean(report?.consistent),report?.consistent?"All subsystem names and versions resolve from the central registry.":"Subsystem Registry and manifest metadata differ.",report?.results||[]);
+  }catch(error){return result("subsystem-registry.metadata.consistent",false,error.message);}
+ }
+ async function runAll(){
+  const registryResult=await runSubsystemRegistryRegression();
+  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression(),registryResult];
   const report={schema_version:"1.0",version:VERSION,status:results.every(x=>x.passed)?"passed":"failed",results,generated_at:new Date().toISOString()};
   window.CasaAudit?.record?.("platform.contracts.completed","contracts",report);
   window.CasaEvents?.publish?.("platform:contracts-completed",report);
   return report;
  }
- window.CasaContracts={version:VERSION,releaseIdentity,runReleaseIdentityRegression,runAll,ready:true};
+ window.CasaContracts={version:VERSION,releaseIdentity,runReleaseIdentityRegression,runSubsystemRegistryRegression,runAll,ready:true};
  window.CasaCore?.modules?.register?.({id:"contracts",version:VERSION,capabilities:["contracts.release-identity","contracts.regression-tests"]});
 })();

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.114",
+  "current_release": "v2026.07.24.115",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
   "current_subsystem": "Decision Audit and Event Contracts",

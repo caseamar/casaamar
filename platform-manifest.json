@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.114",
-  "build": "2026-07-27T23:10:00+02:00",
-  "worker_version": "15.10.0-decision-audit-event-contracts",
-  "release_name": "Decision Audit and Event Contracts",
-  "generated_at": "2026-07-27T23:10:00+02:00",
+  "platform_version": "v2026.07.24.115",
+  "build": "2026-07-27T23:55:00+02:00",
+  "worker_version": "15.11.0-subsystem-registry-consistency",
+  "release_name": "Subsystem Registry Consistency Hotfix",
+  "generated_at": "2026-07-27T23:55:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -114,7 +114,8 @@
       "project_brain",
       "runtime_readiness",
       "platform_modules",
-      "project_brain_consistency"
+      "project_brain_consistency",
+      "subsystem_registry_consistency"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -173,7 +174,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.2.0",
+    "version": "1.3.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -181,7 +182,7 @@
     "contract_regression_tests": true
   },
   "project_brain": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "entry": "/core/casa-brain.js",
     "manifest": "/platform/brain/manifest.json",
     "machine_readable": true,
@@ -226,9 +227,18 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
+  },
+  "subsystem_registry": {
+    "version": "1.0.0",
+    "entry": "/core/casa-subsystem-registry.js",
+    "registry": "/registry/subsystems.json",
+    "source_of_truth": true,
+    "enforces_names": true,
+    "enforces_versions": true,
+    "aliases_supported": true
   }
 }

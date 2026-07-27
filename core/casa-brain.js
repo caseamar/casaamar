@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.0.1";
  const BASE="/platform/brain/";
  const FILES=["manifest","roadmap","architecture","backlog","decisions","release-history","principles","capabilities"];
  let cache=null;

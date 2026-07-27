@@ -1,16 +1,17 @@
 {
-  "release": "v2026.07.24.114",
-  "version": "v2026.07.24.114",
-  "title": "Decision Audit and Event Contracts",
-  "name": "Decision Audit and Event Contracts",
-  "generated_at": "2026-07-27T23:10:00+02:00",
-  "summary": "Adds durable decision explanations, registered event contracts, an Audit Engine foundation, and permanent regression tests that protect platform release identity and manifest-driven versioning.",
+  "release": "v2026.07.24.115",
+  "version": "v2026.07.24.115",
+  "title": "Subsystem Registry Consistency Hotfix",
+  "name": "Subsystem Registry Consistency Hotfix",
+  "generated_at": "2026-07-27T23:55:00+02:00",
+  "summary": "Standardizes subsystem naming and version metadata through a central Subsystem Registry and adds permanent consistency checks to prevent UI, manifest and runtime labels from drifting apart.",
   "changes": [
-    "Decision Engine v1.2.0 now stores structured, explainable outcomes and emits audited decision records.",
-    "Event Engine v1.2.0 validates registered event payload contracts and records event activity.",
-    "Audit Engine v1.0.0 provides a reusable local audit history for decisions, events and platform contracts.",
-    "Platform Contracts v1.0.0 permanently tests that timestamps cannot cause false synchronization warnings.",
-    "Diagnostics Framework v1.2.0 verifies release identity, event contracts and Audit Engine health."
+    "Added Subsystem Registry v1.0.0 as the single source of truth for subsystem display names, IDs, versions, owners and descriptions.",
+    "Standardized the official name Project Brain across Platform Intelligence and removed UI-owned subsystem metadata.",
+    "Platform Intelligence version cards are now rendered from the central registry.",
+    "Diagnostics Framework v1.3.0 verifies registry and manifest consistency.",
+    "Platform Contracts v1.1.0 adds a permanent subsystem metadata regression check.",
+    "Project Brain v1.0.1 records the naming and metadata contract."
   ],
   "deployment": {
     "strategy": "complete_replace_except_images",
@@ -20,12 +21,13 @@
     ]
   },
   "test_focus": [
-    "Platform v2026.07.24.114",
+    "Platform v2026.07.24.115",
     "Platform Doctor v2.1.1",
-    "Decision Engine v1.2.0",
-    "Event Engine v1.2.0",
-    "Diagnostics v1.2.0",
-    "Audit Engine v1.0.0",
+    "Project Brain v1.0.1",
+    "Diagnostics Framework v1.3.0",
+    "Subsystem Registry v1.0.0",
+    "Platform Contracts v1.1.0",
+    "Project Brain name appears consistently",
     "No synchronization warning",
     "Public website remains available"
   ]

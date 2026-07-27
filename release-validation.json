@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.114",
-  "platform_version": "v2026.07.24.114",
-  "generated_at": "2026-07-27T23:10:00+02:00",
+  "release": "v2026.07.24.115",
+  "platform_version": "v2026.07.24.115",
+  "generated_at": "2026-07-27T23:55:00+02:00",
   "status": "passed",
-  "summary": "Introduces durable decision and event audit contracts plus regression protection for release identity.",
+  "summary": "Centralizes subsystem metadata and protects naming and version consistency with registry-driven rendering and regression validation.",
   "checks": [
     {
       "id": "json",
@@ -17,24 +17,24 @@
       "detail": "All core JavaScript files pass syntax validation."
     },
     {
-      "id": "release-identity-regression",
+      "id": "subsystem-registry",
       "status": "passed",
-      "detail": "Equal platform and Worker identities remain consistent despite different timestamps; identity mismatches are rejected."
+      "detail": "Every registered subsystem has a unique ID, display name, version, owner and manifest mapping."
     },
     {
-      "id": "manifest-driven-versioning",
+      "id": "registry-manifest-consistency",
       "status": "passed",
-      "detail": "Platform Doctor remains manifest-driven."
+      "detail": "Subsystem Registry versions match platform-manifest.json."
     },
     {
-      "id": "event-contract-registry",
+      "id": "registry-driven-ui",
       "status": "passed",
-      "detail": "Event contracts and schema are included."
+      "detail": "Platform Intelligence cards resolve names and versions from the central registry."
     },
     {
-      "id": "decision-audit",
+      "id": "project-brain-naming",
       "status": "passed",
-      "detail": "Decision Engine emits structured explanations and audit entries."
+      "detail": "The official user-facing name is Project Brain."
     },
     {
       "id": "replacement-package",
