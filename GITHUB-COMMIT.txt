@@ -1,12 +1,11 @@
-fix(routing): replace legacy Mission Control pages with static redirects
+fix(routing): remove self-matching control redirect loop
 
-- Added control.html as the permanent real static administration page.
-- Overwrites mission-control-v70 through v95 with redirect stubs.
-- Added Cloudflare _redirects rules as a second redirect layer.
-- No longer depends on Worker routing to replace an already-served old static page.
-- Platform update button and internal links use /control.html.
-- Current idle-state logic remains in the real control page.
+- Removed the /control rule from Cloudflare _redirects.
+- /control.html is now served directly and never redirected.
+- /control redirects once to /control.html through the Worker.
+- Legacy versioned pages still redirect to /control.html.
+- Updated all internal links and platform update navigation.
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
-Build: 2026-07-27T11:43:23+02:00
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
+Build: 2026-07-27T11:56:59+02:00

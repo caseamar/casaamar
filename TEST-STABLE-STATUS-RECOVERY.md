@@ -1,7 +1,7 @@
 # Test stabil recovery
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
 
 1. Upload og overskriv alle filer.
 2. Åbn den offentlige hjemmeside.

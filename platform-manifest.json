@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.96",
-  "build": "2026-07-27T11:43:23+02:00",
-  "worker_version": "14.7-static-control-entry",
-  "release_name": "Static Control Entry",
-  "generated_at": "2026-07-27T11:43:23+02:00",
+  "platform_version": "v2026.07.24.97",
+  "build": "2026-07-27T11:56:59+02:00",
+  "worker_version": "14.8-no-redirect-loop",
+  "release_name": "No Redirect Loop",
+  "generated_at": "2026-07-27T11:56:59+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -32,8 +32,9 @@
   "canonical_mission_control_path": "/control.html",
   "routing_policy": {
     "stable_user_url": "/control.html",
-    "legacy_pages": "Overwritten with static redirect stubs",
-    "worker_independent": true
+    "control_alias_removed": true,
+    "legacy_pages": "Static redirect stubs only",
+    "worker_behavior": "Serve /control.html directly; never redirect /control.html."
   },
   "canonical_mission_control_asset": "control.html"
 }

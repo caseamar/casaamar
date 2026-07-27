@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

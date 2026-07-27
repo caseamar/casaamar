@@ -1,7 +1,7 @@
 # Test static control entry
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
 Stable URL: /control.html
 
 1. Upload and overwrite every file, including all mission-control-v70..v95 redirect stubs.

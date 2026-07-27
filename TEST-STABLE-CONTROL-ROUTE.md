@@ -1,7 +1,7 @@
 # Test stable control route
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
 Stable URL: /control
 
 1. Open `/mission-control-v89.html?_canonical_release=20260724.89#publish`.

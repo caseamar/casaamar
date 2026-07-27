@@ -1,5 +1,5 @@
 {
-  "version": "4.6",
+  "version": "4.7",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -241,5 +241,11 @@
     "legacy_redirect_stubs": "mission-control-v70.html through mission-control-v95.html",
     "cloudflare_redirects": "_redirects",
     "reason": "Works even when old static assets are served before Worker routing."
+  },
+  "redirect_loop_fix": {
+    "cause": "A redirect rule for /control could also match /control.html and redirect it to itself.",
+    "fix": "Removed the /control rule from _redirects. /control.html is now the only stable static entry.",
+    "worker": "Only /control redirects once; /control.html is served directly.",
+    "legacy": "Old versioned pages still redirect to /control.html."
   }
 }

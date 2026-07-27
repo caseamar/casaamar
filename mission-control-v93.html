@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="cache-control" content="no-store,no-cache,must-revalidate,max-age=0">
-<meta http-equiv="refresh" content="0;url=/control.html">
 <title>Åbner kontrolcenter</title>
 <script>
 (function(){
-  var target="/control.html"+(location.hash||"");
-  location.replace(target);
+  if(location.pathname!=="/control.html") {
+    location.replace("/control.html"+(location.hash||""));
+  }
 })();
 </script>
 </head>

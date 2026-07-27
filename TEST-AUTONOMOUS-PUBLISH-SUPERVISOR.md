@@ -1,7 +1,7 @@
 # Test Autonomous Publish Supervisor
 
-Release: v2026.07.24.96
-Worker: 14.7-static-control-entry
+Release: v2026.07.24.97
+Worker: 14.8-no-redirect-loop
 Build: 2026-07-27T10:58:48+02:00
 
 1. Build a compatible release package.
