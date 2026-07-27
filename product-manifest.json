@@ -1,5 +1,5 @@
 {
-  "version": "4.3",
+  "version": "4.4",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -220,5 +220,13 @@
     "legacy_session_migration": "Preserved as historical receipt and deactivated.",
     "idle_ui": "Shows clear status and one recommended CTA; hides progress, polling and compatibility panels.",
     "completion": "Live releases become inactive immediately after verified completion."
+  },
+  "canonical_url_and_idle_state": {
+    "canonical_path": "/mission-control-v94.html",
+    "legacy_url_matching": "/mission-control-v<number>.html",
+    "worker_behavior": "Every historical Mission Control URL serves the current canonical asset.",
+    "browser_behavior": "Address bar is replaced with the current canonical path.",
+    "update_button": "Navigates to the new canonical page rather than reloading the old URL.",
+    "idle_behavior": "Historical content releases never activate progress or monitoring."
   }
 }

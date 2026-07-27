@@ -22,7 +22,7 @@
 - Privacy-safe analytics and conversion insights.
 
 
-## Strategic backlog added in v2026.07.24.93
+## Strategic backlog added in v2026.07.24.94
 
 - Product naming: define a distinct name for the administration product, separate from Casa Amar.
 - Multi-user foundation: login, invitations, roles and permissions.
@@ -31,7 +31,7 @@
 - Keep the present experience single-user until authentication is intentionally implemented.
 
 
-## Timestamp principle confirmed in v2026.07.24.93
+## Timestamp principle confirmed in v2026.07.24.94
 
 - Primary user timestamps always represent a confirmed completed state.
 - Platform: first successful consistency confirmation for the current version.
@@ -39,9 +39,16 @@
 - Build/start/upload timestamps remain available only in activity logs or technical details.
 
 
-## Release lifecycle clarification implemented in v2026.07.24.93
+## Release lifecycle clarification implemented in v2026.07.24.94
 
 - Platform updates and content releases are separate lifecycles.
 - Content monitoring starts only after an explicit user content-package action.
 - Old sessions are retained as historical receipts and cannot restart monitoring.
 - Idle state shows status and one next-step CTA.
+
+
+## Canonical route correction implemented in v2026.07.24.94
+
+- Every historical mission-control-vXX URL resolves to the current canonical Mission Control.
+- Browser URL is normalized to the current versioned route.
+- “Opdater platformen” navigates to the new canonical route instead of reloading the old page.

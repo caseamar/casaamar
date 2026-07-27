@@ -1,8 +1,8 @@
 # Test aktiv indholdsudgivelse
 
-Release: v2026.07.24.93
-Worker: 14.4-active-content-release-lifecycle
-Build: 2026-07-27T10:41:26+02:00
+Release: v2026.07.24.94
+Worker: 14.5-canonical-url-and-idle-state
+Build: 2026-07-27T10:58:48+02:00
 
 1. Deploy a platform update without creating a content package.
 2. Mission Control must show:

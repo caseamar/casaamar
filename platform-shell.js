@@ -30,7 +30,7 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-confirmed-at]").forEach(el=>el.textContent=casaFormatDateTime(confirmedAt));
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.93&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.94&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 
@@ -57,7 +57,19 @@ function showUpdateAvailable(manifest){
  let banner=document.querySelector("#caSupervisorBanner");
  if(!banner){banner=document.createElement("aside");banner.id="caSupervisorBanner";banner.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:1500;width:min(640px,calc(100vw - 28px));background:#17352b;color:white;border-radius:16px;padding:14px 16px;box-shadow:0 20px 55px rgba(20,35,30,.28);font-family:Inter,system-ui,sans-serif";document.body.appendChild(banner)}
  banner.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;gap:14px"><div><strong style="display:block;font-size:.85rem">En ny platformversion er klar</strong><span style="display:block;margin-top:3px;color:rgba(255,255,255,.72);font-size:.72rem">Version ${manifest.platform_version}. Dit autosavede arbejde bevares.</span></div><button id="caSupervisorUpdateButton" style="border:0;border-radius:11px;padding:10px 13px;background:#e66542;color:white;font-weight:850;white-space:nowrap;cursor:pointer">Opdater platformen</button></div>`;
- banner.querySelector("#caSupervisorUpdateButton").onclick=()=>{banner.querySelector("#caSupervisorUpdateButton").textContent="Opdaterer…";location.reload()};
+ banner.querySelector("#caSupervisorUpdateButton").onclick=()=>{
+  const button=banner.querySelector("#caSupervisorUpdateButton");
+  button.textContent="Opdaterer…";
+  button.disabled=true;
+  const target=manifest.canonical_mission_control_path||"/mission-control-v94.html";
+  if(/^\/mission-control-v\d+\.html$/.test(location.pathname)||["/knowledge-center","/knowledge-center.html"].includes(location.pathname)){
+   location.assign(target+location.hash);
+  }else{
+   const url=new URL(location.href);
+   url.searchParams.set("_platform_release","20260724.94");
+   location.assign(url.toString());
+  }
+ };
 }
 function showPausedSupervisor(){
  if(document.querySelector("#caSupervisorPause"))return;
@@ -78,7 +90,7 @@ async function loadPlatformManifest(){
  try{
   const [manifest,metaResponse]=await Promise.all([
    fetchPlatformManifest(),
-   fetch(`/api/platform-meta?v=20260724.93&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+   fetch(`/api/platform-meta?v=20260724.94&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
   ]);
   const meta=metaResponse.ok?await metaResponse.json():null;
   const consistent=Boolean(
@@ -98,6 +110,10 @@ async function loadPlatformManifest(){
    localStorage.setItem(confirmationKey,new Date().toISOString());
   }
   applyPlatformManifest(manifest);
+  const canonical=manifest.canonical_mission_control_path||"/mission-control-v94.html";
+  if(/^\/mission-control-v\d+\.html$/.test(location.pathname)&&location.pathname!==canonical){
+   history.replaceState(null,"",canonical+location.hash);
+  }
   return manifest;
  }catch(error){
   console.error("Platformstatus kunne ikke synkroniseres",error);
@@ -339,7 +355,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.93&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.94&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

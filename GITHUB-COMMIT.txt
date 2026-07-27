@@ -1,13 +1,12 @@
-fix(release): separate platform updates from active content publishing
+fix(navigation): canonicalize all Mission Control URLs and preserve idle state
 
-- Content monitoring starts only after an explicit user content release action.
-- Added an active content-release lifecycle marker.
-- Migrates old pending sessions to historical receipts without monitoring them.
-- Platform updates never start or resume GitHub/live checks.
-- Hides progress, polling and compatibility UI when no content release is active.
-- Shows a calm idle status with one recommended next action.
-- Deactivates the release immediately after verified completion.
+- Routes every historical mission-control-vXX URL to the current canonical asset.
+- Rewrites the visible browser address to the current canonical route.
+- Platform update button navigates to the new canonical page instead of reloading an old URL.
+- Normalizes legacy release sessions before rendering or scheduling.
+- Historical releases cannot show active progress or restart monitoring.
+- Keeps a clear idle status and CTA after platform-only updates.
 
-Release: v2026.07.24.93
-Worker: 14.4-active-content-release-lifecycle
-Build: 2026-07-27T10:41:26+02:00
+Release: v2026.07.24.94
+Worker: 14.5-canonical-url-and-idle-state
+Build: 2026-07-27T10:58:48+02:00

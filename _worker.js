@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "14.4-active-content-release-lifecycle",
+      version: "14.5-canonical-url-and-idle-state",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "14.4-active-content-release-lifecycle",
+          worker: "14.5-canonical-url-and-idle-state",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "14.4-active-content-release-lifecycle",
+          worker: "14.5-canonical-url-and-idle-state",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.93",
-        build: "2026-07-27T10:41:26+02:00",
-        worker_version: "14.4-active-content-release-lifecycle",
+        platform_version: "v2026.07.24.94",
+        build: "2026-07-27T10:58:48+02:00",
+        worker_version: "14.5-canonical-url-and-idle-state",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"
@@ -2822,20 +2822,21 @@ export default {
     }
 
 
-    const canonicalMissionControlPaths = new Set([
-      "/knowledge-center",
-      "/knowledge-center.html",
-      "/mission-control-v93.html"
-    ]);
-    if (request.method === "GET" && canonicalMissionControlPaths.has(url.pathname)) {
+    const isMissionControlRoute =
+      url.pathname === "/knowledge-center" ||
+      url.pathname === "/knowledge-center.html" ||
+      /^\/mission-control-v\d+\.html$/.test(url.pathname);
+
+    if (request.method === "GET" && isMissionControlRoute) {
       const target = new URL(request.url);
-      target.pathname = "/mission-control-v93.html";
-      target.searchParams.set("_canonical_release", "20260724.93");
+      target.pathname = "/mission-control-v94.html";
+      target.searchParams.set("_canonical_release", "20260724.94");
       const assetResponse = await env.ASSETS.fetch(new Request(target.toString(), request));
       const headers = new Headers(assetResponse.headers);
       headers.set("cache-control", "no-store, no-cache, must-revalidate, max-age=0");
-      headers.set("x-casa-platform-version", "v2026.07.24.93");
-      headers.set("x-casa-canonical-ui", "mission-control-v93.html");
+      headers.set("x-casa-platform-version", "v2026.07.24.94");
+      headers.set("x-casa-canonical-ui", "mission-control-v94.html");
+      headers.set("x-casa-requested-path", url.pathname);
       return new Response(assetResponse.body, {
         status: assetResponse.status,
         statusText: assetResponse.statusText,

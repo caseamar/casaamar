@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.93
-Worker: 14.4-active-content-release-lifecycle
+Release: v2026.07.24.94
+Worker: 14.5-canonical-url-and-idle-state
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

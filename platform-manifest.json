@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.93",
-  "build": "2026-07-27T10:41:26+02:00",
-  "worker_version": "14.4-active-content-release-lifecycle",
-  "release_name": "Active Content Release Lifecycle",
-  "generated_at": "2026-07-27T10:41:26+02:00",
+  "platform_version": "v2026.07.24.94",
+  "build": "2026-07-27T10:58:48+02:00",
+  "worker_version": "14.5-canonical-url-and-idle-state",
+  "release_name": "Canonical URL and Idle State",
+  "generated_at": "2026-07-27T10:58:48+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -28,5 +28,11 @@
     "platform_update": "Never starts content monitoring.",
     "content_release": "Monitoring starts only after the user creates a content release package.",
     "historical_release": "Visible as a receipt but never monitored."
+  },
+  "canonical_mission_control_path": "/mission-control-v94.html",
+  "routing_policy": {
+    "all_versioned_mission_control_urls": "/mission-control-v94.html",
+    "knowledge_center_aliases": "/mission-control-v94.html",
+    "browser_url_is_canonicalized": true
   }
 }
