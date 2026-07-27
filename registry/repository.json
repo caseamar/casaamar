@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.9.0",
-  "generated_at": "2026-07-27T23:18:46+02:00",
+  "version": "1.10.0",
+  "generated_at": "2026-07-27T23:38:51+02:00",
   "source": "release-package",
   "file_count": 98,
   "policies": {
@@ -627,9 +627,21 @@
       "critical": true,
       "description": "Operational Experience Engine dashboard",
       "category": "ai-workspace"
+    },
+    {
+      "path": "content-studio.html",
+      "critical": true
+    },
+    {
+      "path": "core/casa-content-studio.js",
+      "critical": true
+    },
+    {
+      "path": "registry/content-pages.json",
+      "critical": true
     }
   ],
-  "updated_at": "2026-07-27T23:18:46+02:00",
-  "release": "v2026.07.24.130",
-  "platform_version": "v2026.07.24.130"
+  "updated_at": "2026-07-27T23:38:51+02:00",
+  "release": "v2026.07.24.131",
+  "platform_version": "v2026.07.24.131"
 }

@@ -1,493 +1,414 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.130",
-  "generated_at": "2026-07-27T23:18:46+02:00",
+  "release": "v2026.07.24.131",
+  "generated_at": "2026-07-27T23:38:51+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [
     ".git/",
     "images/"
   ],
-  "file_count": 96,
+  "file_count": 100,
   "files": [
     {
       "path": "RELEASE-NOTES.txt",
-      "size": 179,
-      "sha256": "4ee45eaa9a550d02dbd16f5156a242540026bafa0f85d2a7eb7b78179deb46c9"
+      "size": 105
     },
     {
       "path": "_headers",
-      "size": 934,
-      "sha256": "2a7c6a2835b2ab032d0635cea9c0e9f8a4a6142f1e5171d3ad6a316d848c3bf1"
+      "size": 934
     },
     {
       "path": "_worker.js",
-      "size": 104538,
-      "sha256": "ac3a879368885e1cf4f0915ea17c41ac51c85ab98c00531cd119f3cfc7c7c678"
+      "size": 104532
     },
     {
       "path": "asset-brief.html",
-      "size": 3026,
-      "sha256": "3938a9b3b54a23aa39e59e2193e14162973819a8f235ed96d9c7a672e41fea4c"
+      "size": 3026
     },
     {
       "path": "asset-intelligence.html",
-      "size": 4585,
-      "sha256": "61d7844ea4ab8b16f46f2eec24a42322ef5f53e8000d274a230554df14812c11"
+      "size": 4585
     },
     {
       "path": "asset-library.json",
-      "size": 33229,
-      "sha256": "794b03a51aa7d079d0aace6c893a39629e13d03cb5c1605ed25a405bbaa2b320"
+      "size": 33229
     },
     {
       "path": "asset-manifest.json",
-      "size": 2305,
-      "sha256": "6cb68e74d9a92db11e3918aa410425f2b04ac9d995d8dae32cebdc0158105029"
+      "size": 2305
     },
     {
       "path": "asset-model.json",
-      "size": 5127,
-      "sha256": "641474015903701e3c76e42c66295936b930b6ffb7fabdedc39b4491822bf531"
+      "size": 5127
     },
     {
       "path": "asset-plan.json",
-      "size": 3444,
-      "sha256": "1f2ad505cd7120abcf3a24da8a20d379336b33709eb43049fb2b93bce02497a1"
+      "size": 3444
     },
     {
       "path": "asset-studio.html",
-      "size": 59297,
-      "sha256": "d1278472a8a885922febef2338f7942055ebd4b32ac514df4611d7e5d348bb5f"
+      "size": 59297
     },
     {
       "path": "asset-sync-settings.json",
-      "size": 1714,
-      "sha256": "324a7bdb89eb1a4399c5b5ea3cf7dd858cba35372c31175121143812b1a73daa"
+      "size": 1714
     },
     {
       "path": "brand-profile.json",
-      "size": 3043,
-      "sha256": "b26a2e2475ef9306c314892faf0a76fcfa8d821b469af56b4a3e603539077f57"
+      "size": 3043
     },
     {
       "path": "brand-studio.html",
-      "size": 7755,
-      "sha256": "8e707fa3a2667284b7f71a7f5f792337eb48efa57583c03f04ed687a579ead83"
+      "size": 7755
     },
     {
       "path": "campaign-profiles.json",
-      "size": 1116,
-      "sha256": "162f8cb9e3c881f1b085c39dae4bde85c6ee64b7364926017abca84ab97a9671"
+      "size": 1116
     },
     {
       "path": "component-library.json",
-      "size": 7092,
-      "sha256": "3d87c098c9b17180929902c69c2dbc3adc123a70842e62d4821e5556303bd5f1"
+      "size": 7092
     },
     {
       "path": "config/access-control.json",
-      "size": 664,
-      "sha256": "cda30a499a7f36aceb193959f0641b2059a4c05bfc2730b157f74a4553f6762c"
+      "size": 664
     },
     {
       "path": "config/commerce.json",
-      "size": 368,
-      "sha256": "5ebb3b4b2f016c5eb3f68db20b2f1f81e202b45e905cd4c0206c609ff8635b41"
+      "size": 368
     },
     {
       "path": "config/compliance.json",
-      "size": 444,
-      "sha256": "fe1e9ccfae4c91b6925a6f491e474d5a2231bdc1347e5090b20fb22adaf5c08c"
+      "size": 444
     },
     {
       "path": "config/configuration-manifest.json",
-      "size": 1045,
-      "sha256": "5eb659b9a27c994ff0502b8cfd63a3d404e6affe7103c3523af95bb457daf7cc"
+      "size": 1045
     },
     {
       "path": "config/design-system.json",
-      "size": 281,
-      "sha256": "ef66d056a8b83c74a56aa9c90a0770996a97841b15f332989a2febffd632c6dd"
+      "size": 281
     },
     {
       "path": "config/features.json",
-      "size": 450,
-      "sha256": "b418026b9729b2228ecae892794908b2ba75256c17ab427beb4ad8a73494a4a5"
+      "size": 450
     },
     {
       "path": "config/hospitality-intelligence.json",
-      "size": 315,
-      "sha256": "19dc21b3ed373eed9579be7b58031481c99bb684fd5c6babcdb10535bc0067ec"
+      "size": 315
     },
     {
       "path": "config/security.json",
-      "size": 401,
-      "sha256": "c081a83e26cb550ecbba1a3337e3bf1dbc605a0e291b835e53c2488f8a35a991"
+      "size": 401
     },
     {
       "path": "config/seo.json",
-      "size": 529,
-      "sha256": "3ed80fbf5e59c9580272ba86014591c0b290855bfc357617ed2a85219c05b13c"
+      "size": 529
     },
     {
       "path": "content-model.json",
-      "size": 1262,
-      "sha256": "dc1853f27dbd90e07db53dad1fdfe69660e21f530fda95ad5d9115cb045af185"
+      "size": 1262
     },
     {
       "path": "content-release.json",
-      "size": 195,
-      "sha256": "cf330bfc546de452ad7e58fbe2d9edeff98dab9b459b273586aa767c89d84eda"
+      "size": 195
+    },
+    {
+      "path": "content-studio.html",
+      "size": 6291
     },
     {
       "path": "control/index.html",
-      "size": 90747,
-      "sha256": "2c7135e4e5d8c9bafc2080ccc9e669e36181fba7b64f0477e7f7c58c7990bbf5"
+      "size": 90815
     },
     {
       "path": "core/casa-assets.js",
-      "size": 7659,
-      "sha256": "49904099d7923ab4262ed698cf667014ab296708f4a252d8733d1953c0e956b4"
+      "size": 7659
     },
     {
       "path": "core/casa-audit.js",
-      "size": 1738,
-      "sha256": "10cfdb1a808aa554a16998b1d510a6d4f41b75795f6e59117a66ed1f184bbd37"
+      "size": 1738
     },
     {
       "path": "core/casa-brain.js",
-      "size": 2267,
-      "sha256": "57a4348edcbcab7c6ea110bae077fd48d1620977d55a83d9c97120faa5a1bc6f"
+      "size": 2267
     },
     {
       "path": "core/casa-config.js",
-      "size": 4529,
-      "sha256": "5cca4b17c9349620926aec508f0c58a989f25f272dfc7ce3e1fe7429de46c799"
+      "size": 4529
+    },
+    {
+      "path": "core/casa-content-studio.js",
+      "size": 3878
     },
     {
       "path": "core/casa-content.js",
-      "size": 2720,
-      "sha256": "d1207bad79a3e7841ddd4556ea64ab701f750d36585673e62ad7635c0e73c02a"
+      "size": 2720
     },
     {
       "path": "core/casa-contracts.js",
-      "size": 4668,
-      "sha256": "fef11b63286fa23fe8c71820086cd482e9b4f1280b34d5f1210200820904c871"
+      "size": 4668
     },
     {
       "path": "core/casa-core.js",
-      "size": 9453,
-      "sha256": "f398422425b86384ed9d0f79321f66fe3df88411b7491e0b6e9e07ca0aa303c8"
+      "size": 9453
     },
     {
       "path": "core/casa-decision.js",
-      "size": 5272,
-      "sha256": "814c7ce3a2a31a563d9bda3e49d4dfa0cf092a02480973ddb23cc7bdb231537d"
+      "size": 5272
     },
     {
       "path": "core/casa-diagnostics.js",
-      "size": 5771,
-      "sha256": "cefcaf57fa03392583a0c973fd34f3e53747193cb026428a637ff93ca6d098b8"
+      "size": 5771
     },
     {
       "path": "core/casa-events.js",
-      "size": 3380,
-      "sha256": "1b9a8fa477653af7c4da671cb63498e867876fd91ce04538418144f715a065b8"
+      "size": 3380
     },
     {
       "path": "core/casa-experience.js",
-      "size": 2594,
-      "sha256": "27b96b945a429cc3f7b122def37246dd599c08ec39868b302ee2443ff750a2c4"
+      "size": 2594
     },
     {
       "path": "core/casa-governance.js",
-      "size": 3048,
-      "sha256": "f800df53dfed2c6c20a6861636733810517596317bea32d7300d0bec51aa2689"
+      "size": 3048
     },
     {
       "path": "core/casa-knowledge-graph.js",
-      "size": 4860,
-      "sha256": "1c2862efbddd13f8269d8ef39e550fee4a00772000cd9d5a1ad78596ce994e8d"
+      "size": 4860
     },
     {
       "path": "core/casa-repository.js",
-      "size": 2288,
-      "sha256": "b67ba92fa163e20fd297c9342739f38ff675acae98bb003dc0aa206dfb6b6d62"
+      "size": 2289
     },
     {
       "path": "core/casa-subsystem-registry.js",
-      "size": 3069,
-      "sha256": "39d47ef14ee6cc9c4f87e205ae2b001f1dc4b395d5dd11cfaa60d5f4483a4f42"
+      "size": 3069
     },
     {
       "path": "core/casa-workspace.js",
-      "size": 5363,
-      "sha256": "c53ad36fe692932fa1a420bb22cf996350d87252a9664624edf1f223ec7e119a"
+      "size": 5363
+    },
+    {
+      "path": "deployment-manifest.json",
+      "size": 7543
     },
     {
       "path": "experience-engine.html",
-      "size": 4156,
-      "sha256": "fc879282eb3fecc276f8e60c2ec29e2268a14416bbe8540ee2e88931e35cc9ec"
+      "size": 4156
     },
     {
       "path": "index.html",
-      "size": 97440,
-      "sha256": "41d139d4ae4fee5a2dfc79d5aaee64f7d9d4b92c27fc9d3c1a1a5b654621525b"
+      "size": 97440
     },
     {
       "path": "knowledge-architect.html",
-      "size": 21394,
-      "sha256": "32b36a269bed552eea1a46ccb2b64596ce4107a7dadafc10cfc3d05aeb0dfdc3"
+      "size": 21394
     },
     {
       "path": "knowledge-center.html",
-      "size": 712,
-      "sha256": "b01df609044bab1070014168cb95a1bd1352ca8e6e9c1e30f80e7d2fa56ec0cf"
+      "size": 712
     },
     {
       "path": "knowledge-graph.html",
-      "size": 4154,
-      "sha256": "1dd91f6ba2f8417bec858615db678d961b814fdd23cafe5c9f0c8829fade5a22"
+      "size": 4154
     },
     {
       "path": "knowledge-review.html",
-      "size": 16778,
-      "sha256": "8192b06b3518902713534d5b17c8d9121dae4216116d6e670c1fbd2a55872f13"
+      "size": 16778
     },
     {
       "path": "knowledge-studio.html",
-      "size": 46019,
-      "sha256": "4a0a5d4b0f457226aa847566078650efe19ef692a7d830ea92e51ed27db3b318"
+      "size": 46019
     },
     {
       "path": "package.json",
-      "size": 240,
-      "sha256": "d5ff6aeeb14df91ad3e810b7aefc1e6010361b63e4d7ba3cbfeb34af519f8b48"
+      "size": 240
     },
     {
       "path": "page-blueprint.json",
-      "size": 7649,
-      "sha256": "792f036bc0225fbffefb913805b0d66b34413460438ec57efde006315b700762"
+      "size": 7649
     },
     {
       "path": "page-preview.html",
-      "size": 2402,
-      "sha256": "5638828ff32ac41e63061e3a038fe8e496f3852ceb259a3c7e9e70e66e469579"
+      "size": 2402
     },
     {
       "path": "page-studio.html",
-      "size": 31044,
-      "sha256": "467fd4810650e4d2d28937dc008de9a83651899a4bcd061a912dc4587ffb86f6"
+      "size": 31044
     },
     {
       "path": "photo-missions.html",
-      "size": 6980,
-      "sha256": "7388c577d8ccfddb7ecc7f94a94798b5358a7d9efe2188330b3c0870993bcd46"
+      "size": 6980
     },
     {
       "path": "photo-missions.json",
-      "size": 67,
-      "sha256": "636a3daa7af0b0f7538880511a24ce2711848c1b7adfb57d993263fca278c83a"
+      "size": 67
     },
     {
       "path": "platform/brain/adr/ADR-0001-release-identity-contract.json",
-      "size": 529,
-      "sha256": "6ef57cf78d218daae8122fb722a56cd66b30596ea72b1a35b31dd86cd6fbbd57"
+      "size": 529
     },
     {
       "path": "platform/brain/architecture.json",
-      "size": 1692,
-      "sha256": "926129dc7f82e8c416e11fc0adf29127148032618de1f33b8ca893f59c06e398"
+      "size": 1692
     },
     {
       "path": "platform/brain/backlog.json",
-      "size": 2209,
-      "sha256": "906d47e89152569dca752846f73d6908b10221e0eb04cd35a1fbc761669ffa40"
+      "size": 2209
     },
     {
       "path": "platform/brain/capabilities.json",
-      "size": 819,
-      "sha256": "a176b3f49ca4db3c438a03fbd618220f080874b1253e41a5082907487e97ac4c"
+      "size": 819
     },
     {
       "path": "platform/brain/decisions.json",
-      "size": 1379,
-      "sha256": "962e1ddbb2396bd9a968a10da51f6cfac46b1931b56cb0e90cfd8c657e73e1d0"
+      "size": 1379
     },
     {
       "path": "platform/brain/manifest.json",
-      "size": 495,
-      "sha256": "48edac54b3691487070a8e8bfac2b40faf403c08762fa64e8ceeaa2bbc01f0a7"
+      "size": 495
     },
     {
       "path": "platform/brain/principles.json",
-      "size": 887,
-      "sha256": "3f2380c522cb8b4c784a9bc0804d74f0de0d36e4021c3b15bb60a475d3207db0"
+      "size": 887
     },
     {
       "path": "platform/brain/release-history.json",
-      "size": 5658,
-      "sha256": "32734b0be33aa87ce0bbd609246db8e78e6ad4325a2a2c1873028a48b2fd4734"
+      "size": 5918
     },
     {
       "path": "platform/brain/roadmap.json",
-      "size": 1283,
-      "sha256": "05aedada51d28d0b1687a333f7ffd6ac7e1c6688c71ea91ec935915eb368ffaf"
+      "size": 1283
     },
     {
       "path": "platform/brain/version-contract.json",
-      "size": 532,
-      "sha256": "acfc0fdef9e433b5f5737adccaa653b2b942dedc431a5b01ba569e3ad636dbb3"
+      "size": 532
     },
     {
       "path": "platform-manifest.json",
-      "size": 11754,
-      "sha256": "08c48dd7e325e90685453812570dade0bf60e4a9c1d17133e80a207a8dabbc98"
+      "size": 12350
     },
     {
       "path": "platform-shell.js",
-      "size": 26913,
-      "sha256": "6260a1703cfd6f5c17e185ef60481ef2e4d36bd49b5ba7fb03b1936a897bbbee"
+      "size": 26913
     },
     {
       "path": "platform-ui.css",
-      "size": 27473,
-      "sha256": "926d5eb8c02d229ff5422b051231a937f4a7e6ad842c88af6aa6d2c7224d5a4a"
+      "size": 27473
     },
     {
       "path": "product-manifest.json",
-      "size": 13380,
-      "sha256": "0b6ef975fdec61c591330cc781816f8e7949a27a4bf035fefe25376690367069"
+      "size": 13380
     },
     {
       "path": "registry/asset-variants.json",
-      "size": 19818,
-      "sha256": "12c6efcc39883af463112b3065f221463a230e7fd09ab3d96500d4b276776ee6"
+      "size": 19818
     },
     {
       "path": "registry/assets.json",
-      "size": 13962,
-      "sha256": "b6f8d03775788488b0a3decf1dfb792672f2fa42f953693597c8daee02e49080"
+      "size": 13962
     },
     {
       "path": "registry/capabilities.json",
-      "size": 1716,
-      "sha256": "a55d44ae1d0a00e5dfe485bb8bdfa86ddc4ddb7bd3c77bf9084453cb84875a88"
+      "size": 1716
+    },
+    {
+      "path": "registry/content-pages.json",
+      "size": 5120
     },
     {
       "path": "registry/content.json",
-      "size": 2242,
-      "sha256": "fd94d6b5646b1d515526f592bbb5f634499dad2dac06a0113b4c414618a1ae3b"
+      "size": 2242
     },
     {
       "path": "registry/decisions.json",
-      "size": 1505,
-      "sha256": "57b26e90bada61d30d36105c35ece60ec1167c9a7ef35d339c9b4d53f45cc542"
+      "size": 1505
     },
     {
       "path": "registry/design.json",
-      "size": 1055,
-      "sha256": "f42cd735aed3c8f3efd77322610033a7ac42e6bfcab9ad149671ddbd425c67db"
+      "size": 1055
     },
     {
       "path": "registry/event-contracts.json",
-      "size": 1128,
-      "sha256": "5db2cfda911111e0fa87f264b553ba790afad42b451bc1b75a0ef87833f7c014"
+      "size": 1128
     },
     {
       "path": "registry/experiences.json",
-      "size": 3355,
-      "sha256": "ad2e1a81e3c88d2baa65fd2d4b72ea7020313ad8471d1a460219f301d8fbfb75"
+      "size": 3355
     },
     {
       "path": "registry/features.json",
-      "size": 772,
-      "sha256": "cc29be095de76ed9ae2d10745258c38b2c7e837eed155cdc84d0e7df9bbcaa1a"
+      "size": 772
     },
     {
       "path": "registry/knowledge-graph.json",
-      "size": 6425,
-      "sha256": "bd50dc3df44ad4562d1349a97319cbc6c03fcc3518d758982a491bf21af41bc5"
+      "size": 6425
     },
     {
       "path": "registry/policies.json",
-      "size": 1020,
-      "sha256": "76d19e848aa2a777878785b529fee712f6d74398608df707a9fa397c1a7cf127"
+      "size": 1020
     },
     {
       "path": "registry/repository.json",
-      "size": 13722,
-      "sha256": "2913bb3d8dcd5e220b5b98e95e0bcc8826ff4047a70daffafc917343405f79f1"
+      "size": 13958
     },
     {
       "path": "registry/subsystems.json",
-      "size": 9673,
-      "sha256": "f1f66b85990b05decf3cf25a3f935f22be3e291c6d4d8b270066083605158039"
+      "size": 10058
     },
     {
       "path": "registry/tenants.json",
-      "size": 288,
-      "sha256": "3c868bd704168b0bcb73c150ad9c21c4daf991ec1698ef246cd1ecd5232fc11c"
+      "size": 288
     },
     {
       "path": "registry/workspace.json",
-      "size": 2918,
-      "sha256": "3fe569a5631d7ba24ab0ac24a9b48e7dd56fe1e15f029d122406385ddcc1f31e"
+      "size": 3119
     },
     {
       "path": "relation-registry.json",
-      "size": 167,
-      "sha256": "64bed3b24dd5cfd7a7c614a5bd26fb86f68635a5565ec6fc9292fdb0659fab3c"
+      "size": 167
     },
     {
       "path": "release-notes.json",
-      "size": 742,
-      "sha256": "5ec6fcfbbc5f8ba814ecd420d3abec674d5cc476367fa89f387ad3c9021d6ee8"
+      "size": 450
     },
     {
       "path": "release-quality-gate.json",
-      "size": 267,
-      "sha256": "86ef84ddde8fc8e2ab1c61c3e013a9812d755fe110c2e8a12344a689205e20bc"
+      "size": 268
     },
     {
       "path": "release-validation.json",
-      "size": 1280,
-      "sha256": "d08f81095f9c528ffe2445ba8ba05027c4162745a7ce8f413ad78b8e0f1422e6"
+      "size": 1283
     },
     {
       "path": "schemas/commerce-order.schema.json",
-      "size": 597,
-      "sha256": "46986ef6d8b379f244625ead4110688cd1b044d4848067ff4f9a534e8b7551a8"
+      "size": 597
     },
     {
       "path": "schemas/content-task.schema.json",
-      "size": 671,
-      "sha256": "66f36bbc74b96aca4f85329fd0ee96961ac24b2d4d818d9911b2170ea11c6f10"
+      "size": 671
     },
     {
       "path": "schemas/event-contract.schema.json",
-      "size": 575,
-      "sha256": "7fe453aa6bd089359787f4603fa47c8dcf495de92ebed625d40e03155956d9df"
+      "size": 575
     },
     {
       "path": "schemas/module.schema.json",
-      "size": 633,
-      "sha256": "314bcb3acc48afd8e4459dba862c243a37bddc0cb33a5940923ce39c33ed0061"
+      "size": 633
     },
     {
       "path": "schemas/user-role.schema.json",
-      "size": 327,
-      "sha256": "36f1fafd7f0416df5cfb832c05a279ffc82345cbbb9aaa930fc47758c4cfe55b"
+      "size": 327
     },
     {
       "path": "tenant/casa-amar.json",
-      "size": 332,
-      "sha256": "12120b6e1e1dc66d46d1d4118376b47f296e4cab5873dd593aefff421393dc08"
+      "size": 332
     },
     {
       "path": "website-content.json",
-      "size": 6720,
-      "sha256": "fcb65d98443209ed909772a9c0aa5f67982211acecd1debe541fff80a87941f4"
+      "size": 6720
     }
-  ]
+  ],
+  "platform_version": "v2026.07.24.131"
 }

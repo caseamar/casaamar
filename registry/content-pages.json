@@ -1,0 +1,252 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-27T23:38:51+02:00",
+  "statuses": [
+    "draft",
+    "review",
+    "ready",
+    "published",
+    "archived"
+  ],
+  "languages": [
+    "da",
+    "en",
+    "es"
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "display_name": "Forside",
+      "route": "/",
+      "status": "published",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": "asset-hero-rooftop",
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 8,
+      "faq_count": 0,
+      "experience_stages": [
+        "inspiration",
+        "booking"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "practical",
+      "display_name": "Praktisk information",
+      "route": "/practical",
+      "status": "review",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": true,
+        "description": false
+      },
+      "sections": 6,
+      "faq_count": 5,
+      "experience_stages": [
+        "before-arrival",
+        "stay"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "gallery",
+      "display_name": "Galleri",
+      "route": "/gallery",
+      "status": "ready",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": "asset-gallery-cover",
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 3,
+      "faq_count": 0,
+      "experience_stages": [
+        "inspiration"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "concierge",
+      "display_name": "Digital Concierge",
+      "route": "/concierge",
+      "status": "review",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 7,
+      "faq_count": 9,
+      "experience_stages": [
+        "arrival",
+        "stay"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "arrival",
+      "display_name": "Ankomst",
+      "route": "/arrival",
+      "status": "ready",
+      "languages": [
+        "da",
+        "en"
+      ],
+      "hero_asset": "asset-arrival",
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 5,
+      "faq_count": 4,
+      "experience_stages": [
+        "before-arrival",
+        "arrival"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "departure",
+      "display_name": "Afrejse",
+      "route": "/departure",
+      "status": "ready",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 4,
+      "faq_count": 3,
+      "experience_stages": [
+        "departure"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "experiences",
+      "display_name": "Oplevelser",
+      "route": "/experiences",
+      "status": "draft",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": "asset-experiences",
+      "seo": {
+        "title": false,
+        "description": false
+      },
+      "sections": 4,
+      "faq_count": 0,
+      "experience_stages": [
+        "local-experiences",
+        "stay"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "restaurants",
+      "display_name": "Restauranter",
+      "route": "/restaurants",
+      "status": "draft",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": false,
+        "description": false
+      },
+      "sections": 2,
+      "faq_count": 0,
+      "experience_stages": [
+        "local-experiences"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "faq",
+      "display_name": "FAQ",
+      "route": "/faq",
+      "status": "review",
+      "languages": [
+        "da"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 2,
+      "faq_count": 12,
+      "experience_stages": [
+        "before-arrival",
+        "arrival",
+        "stay",
+        "departure"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    },
+    {
+      "id": "contact",
+      "display_name": "Kontakt",
+      "route": "/contact",
+      "status": "ready",
+      "languages": [
+        "da",
+        "en",
+        "es"
+      ],
+      "hero_asset": null,
+      "seo": {
+        "title": true,
+        "description": true
+      },
+      "sections": 2,
+      "faq_count": 0,
+      "experience_stages": [
+        "booking"
+      ],
+      "updated_at": "2026-07-27T23:38:51+02:00"
+    }
+  ],
+  "health_rules": {
+    "hero_required_for": [
+      "home",
+      "gallery",
+      "experiences"
+    ],
+    "required_languages": [
+      "da",
+      "en",
+      "es"
+    ],
+    "seo_title_required": true,
+    "seo_description_required": true,
+    "minimum_sections": 3,
+    "faq_recommended_for": [
+      "practical",
+      "concierge",
+      "arrival",
+      "departure",
+      "faq"
+    ]
+  }
+}

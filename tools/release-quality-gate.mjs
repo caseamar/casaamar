@@ -13,9 +13,9 @@ const workerPlatform=worker.match(/platform_version:\s*"([^"]+)"/)?.[1];
 const workerVersion=worker.match(/worker_version:\s*"([^"]+)"/)?.[1];
 check(workerPlatform===manifest.platform_version,`Worker platform identity = ${manifest.platform_version}`);
 check(workerVersion===manifest.worker_version,`Worker version identity = ${manifest.worker_version}`);
-const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace'};
+const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio'};
 for(const item of registry.subsystems){const key=mapping[item.id]; const mv=key==='platform_version'?manifest[key]:manifest[key]?.version; check(Boolean(key)&&item.version===mv,`${item.display_name} registry version matches manifest (${item.version})`)}
-const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace'};
+const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio'};
 for(const [file,id] of Object.entries(moduleFiles)){const v=read(file).match(/const VERSION="([^"]+)"/)?.[1]; const rv=registry.subsystems.find(x=>x.id===id)?.version; check(v===rv,`${file} version matches registry (${v})`)}
 const current=manifest.platform_version.match(/^v(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/); check(Boolean(current),'Platform version format is valid'); const cache=current?`${current[1]}${current[2]}${current[3]}.${current[4]}`:'';
 const deployExt=new Set(['.html','.js']);
@@ -155,6 +155,34 @@ const workerBuild = worker.match(/build:\s*"([^"]+)"/)?.[1];
 check(workerBuild === manifest.build, 'Worker build timestamp matches canonical build timestamp');
 check(read('control/index.html').includes(`data-expected-build="${manifest.build}"`), 'Control Center expected build matches canonical build timestamp');
 check(read('index.html').includes(`content="${manifest.build}" name="casa-amar-build"`), 'Public website build metadata matches canonical build timestamp');
+
+
+
+// Content Studio and Workspace Completeness quality gates
+const contentPages=json('registry/content-pages.json');
+const contentPageIds=new Set(), contentPageRoutes=new Set();
+check((contentPages.pages||[]).length>0,'Content Studio page registry is non-empty');
+for(const page of contentPages.pages||[]){
+ check(Boolean(page.id&&page.display_name&&page.route&&page.status&&Array.isArray(page.languages)),`Content Studio page is complete (${page.id||'unknown'})`);
+ check(!contentPageIds.has(page.id),`Content Studio page id is unique (${page.id})`);contentPageIds.add(page.id);
+ check(!contentPageRoutes.has(page.route),`Content Studio route is unique (${page.route})`);contentPageRoutes.add(page.route);
+ check((contentPages.statuses||[]).includes(page.status),`Content Studio status is registered (${page.id}:${page.status})`);
+ check((page.languages||[]).every(x=>(contentPages.languages||[]).includes(x)),`Content Studio languages are registered (${page.id})`);
+ check(Number.isInteger(page.sections)&&page.sections>=0,`Content Studio section count is valid (${page.id})`);
+ check(Number.isInteger(page.faq_count)&&page.faq_count>=0,`Content Studio FAQ count is valid (${page.id})`);
+}
+check(fs.existsSync(path.join(root,'content-studio.html')),'Content Studio dashboard exists');
+const contentStudioHtml=read('content-studio.html');
+check(contentStudioHtml.includes('/control/#ai-workspace'),'Content Studio returns to AI Workspace');
+check(contentStudioHtml.includes('id="pages"'),'Content Studio renders a page list');
+check(contentStudioHtml.includes('id="details"'),'Content Studio provides page details');
+check(contentStudioHtml.includes('AI Suggestions'),'Content Studio displays AI Suggestions');
+check(contentStudioHtml.includes('Side Health'),'Content Studio displays Side Health');
+check(workspaceRegistry.modules.find(x=>x.id==='website')?.href==='/content-studio.html','AI Workspace Website module opens Content Studio');
+check(workspaceRegistry.modules.find(x=>x.id==='website')?.status_source==='content-studio','AI Workspace Website module uses Content Studio health');
+check(workspaceRegistry.quick_actions.find(x=>x.id==='new-page')?.href==='/content-studio.html','New page quick action opens Content Studio');
+for(const module of workspaceRegistry.modules||[])check(resolveWorkspaceTarget(module.href),`Workspace completeness: module destination resolves (${module.id})`);
+for(const action of workspaceRegistry.quick_actions||[])check(resolveWorkspaceTarget(action.href),`Workspace completeness: action destination resolves (${action.id})`);
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

@@ -1,2 +1,2 @@
-v2026.07.24.130 — Workspace Dashboard Routing
-Dedicated operational dashboards for Assets, Knowledge and Experience. Platform Intelligence remains the technical subsystem view.
+Casa Amar v131 - Content Studio Foundation
+Adds unified page management, page health and AI suggestions.

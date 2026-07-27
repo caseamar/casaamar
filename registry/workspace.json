@@ -1,15 +1,16 @@
 {
-  "schema_version": "1.1",
-  "version": "1.2.0",
-  "updated_at": "2026-07-27T23:18:46+02:00",
+  "schema_version": "1.2",
+  "version": "1.3.0",
+  "updated_at": "2026-07-27T23:38:51+02:00",
   "modules": [
     {
       "id": "website",
-      "display_name": "Website",
-      "description": "Arbejd med sider, preview og publicering.",
-      "href": "/page-studio.html",
-      "status_source": "content-intelligence",
-      "icon": "🌍"
+      "display_name": "Content Studio",
+      "description": "Administrér sider, side health og AI-forslag.",
+      "href": "/content-studio.html",
+      "status_source": "content-studio",
+      "icon": "🌍",
+      "subsystem_id": "content-studio"
     },
     {
       "id": "assets",
@@ -59,7 +60,7 @@
     {
       "id": "new-page",
       "label": "Opret side",
-      "href": "/page-studio.html",
+      "href": "/content-studio.html",
       "module": "website"
     },
     {
@@ -103,6 +104,10 @@
     "actionable_insight_contract",
     "operational_dashboard_separation",
     "insight_target_matches_subsystem",
-    "workspace_dashboard_smoke_test"
+    "workspace_dashboard_smoke_test",
+    "content_page_registry_integrity",
+    "content_studio_non_empty",
+    "content_studio_detail_navigation",
+    "content_studio_health_contract"
   ]
 }

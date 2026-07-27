@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.130",
+  "current_release": "v2026.07.24.131",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
   "current_subsystem": "Asset Variant Pipeline",
-  "next_release": "v2026.07.24.130",
+  "next_release": "v2026.07.24.131",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -44,6 +44,6 @@
     "Experience Engine foundation",
     "Content Studio readiness"
   ],
-  "updated_at": "2026-07-27T23:18:46+02:00",
+  "updated_at": "2026-07-27T23:38:51+02:00",
   "current_focus": "Asset Intelligence"
 }

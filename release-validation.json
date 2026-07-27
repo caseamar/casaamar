@@ -1,8 +1,8 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.130",
-  "platform_version": "v2026.07.24.130",
-  "generated_at": "2026-07-27T23:18:46+02:00",
+  "release": "v2026.07.24.131",
+  "platform_version": "v2026.07.24.131",
+  "generated_at": "2026-07-27T23:38:51+02:00",
   "status": "passed",
   "release_name": "Workspace Dashboard Routing",
   "summary": "Separates technical Platform Intelligence from dedicated operational dashboards for Assets, Knowledge and Experience.",

@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "15.19-workspace-dashboard-routing",
+          worker: "15.20-content-studio-foundation",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "15.19-workspace-dashboard-routing",
+          worker: "15.20-content-studio-foundation",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.130",
-        build: "2026-07-27T23:18:46+02:00",
-        worker_version: "15.19-workspace-dashboard-routing",
+        platform_version: "v2026.07.24.131",
+        build: "2026-07-27T23:38:51+02:00",
+        worker_version: "15.20-content-studio-foundation",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"
