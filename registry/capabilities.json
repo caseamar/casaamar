@@ -80,6 +80,11 @@
       "id": "hospitality.concierge",
       "domain": "hospitality",
       "status": "planned"
+    },
+    {
+      "id": "decision.evaluate",
+      "domain": "governance",
+      "status": "active"
     }
   ]
 }

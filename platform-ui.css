@@ -319,3 +319,33 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
  .configuration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:480px){.configuration-grid{grid-template-columns:1fr}}
+
+.decision-section{
+ margin:18px 0;
+ padding:20px;
+ border:1px solid var(--ca-line);
+ border-radius:18px;
+ background:var(--ca-surface);
+}
+.decision-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.decision-heading h2{margin:4px 0 6px;font-size:1.12rem}
+.decision-heading p{margin:0;max-width:760px;color:var(--ca-muted);font-size:.74rem;line-height:1.5}
+.decision-badge{padding:6px 9px;border-radius:999px;border:1px solid var(--ca-line);font-size:.6rem;font-weight:800;background:var(--ca-surface-2);white-space:nowrap}
+.decision-badge[data-state="ok"]{background:#edf8f1}
+.decision-test{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:14px;padding:13px;border:1px solid var(--ca-line);border-radius:12px;background:white}
+.decision-test span{display:block;font-size:.6rem;color:var(--ca-muted)}
+.decision-test strong{display:block;margin-top:3px;font-size:.76rem}
+.decision-result{display:flex;align-items:center;gap:10px;margin-top:10px;padding:12px;border:1px solid var(--ca-line);border-radius:11px}
+.decision-result[data-state="allowed"]{background:#edf8f1}
+.decision-result[data-state="blocked"]{background:#fff8e7}
+.decision-result-icon{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:white;border:1px solid var(--ca-line);font-weight:900}
+.decision-result strong{display:block;font-size:.74rem}
+.decision-result span{display:block;margin-top:2px;font-size:.62rem;color:var(--ca-muted)}
+.decision-details{margin-top:10px}
+.decision-details summary{cursor:pointer;font-size:.65rem;font-weight:780;color:var(--ca-muted)}
+.decision-details pre{white-space:pre-wrap;word-break:break-word;font-size:.58rem;line-height:1.45;max-height:300px;overflow:auto;padding:10px;background:#111;color:#eee;border-radius:10px}
+@media(max-width:680px){
+ .decision-heading,.decision-test{display:block}
+ .decision-badge{display:inline-block;margin-top:10px}
+ .decision-test button{margin-top:10px}
+}

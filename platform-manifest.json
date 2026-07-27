@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.106",
-  "build": "2026-07-27T16:50:18+02:00",
-  "worker_version": "15.6-configuration-service",
-  "release_name": "Configuration Service",
-  "generated_at": "2026-07-27T16:50:18+02:00",
+  "platform_version": "v2026.07.24.107",
+  "build": "2026-07-27T17:22:36+02:00",
+  "worker_version": "15.7-decision-engine",
+  "release_name": "Decision Engine",
+  "generated_at": "2026-07-27T17:22:36+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -128,5 +128,14 @@
     "single_entry_point": true,
     "tenant_overrides": true,
     "validation": true
+  },
+  "decision_engine": {
+    "version": "1.0.0",
+    "entry": "/core/casa-decision.js",
+    "registry": "/registry/decisions.json",
+    "history_key": "casaDecisionHistoryV1",
+    "explainable": true,
+    "policy_aware": true,
+    "capability_aware": true
   }
 }

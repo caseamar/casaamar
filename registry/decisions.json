@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "decisions": [
+    {
+      "id": "content.publish",
+      "label": "Udgiv indhold",
+      "category": "release",
+      "requires_capabilities": [
+        "content.publish"
+      ],
+      "policies": [
+        "release.requires_health"
+      ],
+      "experience": {
+        "allowed": "Indholdet er klar til udgivelse.",
+        "blocked": "Indholdet kan ikke udgives endnu."
+      }
+    },
+    {
+      "id": "ai.publish",
+      "label": "AI publicerer",
+      "category": "ai",
+      "requires_capabilities": [],
+      "policies": [
+        "ai.requires_human_approval"
+      ],
+      "experience": {
+        "allowed": "AI-forslaget er godkendt og kan publiceres.",
+        "blocked": "AI må ikke publicere uden menneskelig godkendelse."
+      }
+    },
+    {
+      "id": "cookies.enable_nonessential",
+      "label": "Aktivér ikke-nødvendige cookies",
+      "category": "compliance",
+      "requires_capabilities": [
+        "compliance.cookies"
+      ],
+      "policies": [
+        "cookies.require_consent"
+      ],
+      "experience": {
+        "allowed": "Ikke-nødvendige cookies kan aktiveres.",
+        "blocked": "Samtykke mangler."
+      }
+    },
+    {
+      "id": "asset.delete",
+      "label": "Slet billede",
+      "category": "assets",
+      "requires_capabilities": [
+        "assets.write"
+      ],
+      "policies": [],
+      "experience": {
+        "allowed": "Billedet kan slettes.",
+        "blocked": "Billedet kan ikke slettes."
+      }
+    }
+  ]
+}

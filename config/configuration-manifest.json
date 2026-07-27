@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "platform_version": "v2026.07.24.106",
+  "platform_version": "v2026.07.24.107",
   "default_tenant": "casa-amar",
   "sources": {
     "platform": "/platform-manifest.json",
@@ -16,7 +16,8 @@
     "access_control": "/config/access-control.json",
     "commerce": "/config/commerce.json",
     "hospitality_intelligence": "/config/hospitality-intelligence.json",
-    "design_system": "/config/design-system.json"
+    "design_system": "/config/design-system.json",
+    "decisions": "/registry/decisions.json"
   },
   "rules": {
     "single_entry_point": "/core/casa-config.js",
