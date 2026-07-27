@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.100",
-  "build": "2026-07-27T12:51:58+02:00",
-  "worker_version": "15.0-clean-scalable-foundation",
-  "release_name": "Clean Scalable Foundation",
-  "generated_at": "2026-07-27T12:51:58+02:00",
+  "platform_version": "v2026.07.24.101",
+  "build": "2026-07-27T14:33:47+02:00",
+  "worker_version": "15.1-canonical-workspace-state",
+  "release_name": "Canonical Workspace State",
+  "generated_at": "2026-07-27T14:33:47+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -53,5 +53,17 @@
     "commerce_ready": true,
     "design_system_ready": true,
     "hospitality_intelligence_ready": true
+  },
+  "workspace_state": {
+    "schema_version": "1.0",
+    "key": "casaWorkspaceStateV1",
+    "statuses": [
+      "idle",
+      "draft",
+      "releasing",
+      "live"
+    ],
+    "legacy_migration": "Archive once and exclude from active counters",
+    "recovery_key": "casaLegacyWorkspaceBackupV101"
   }
 }

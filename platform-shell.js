@@ -16,6 +16,82 @@ function casaLatestLiveAt(){
 const CASA_SUPERVISOR_INTERVAL_MS=60*1000;
 const CASA_SUPERVISOR_IDLE_MS=15*60*1000;
 let casaSupervisorTimer=null,casaSupervisorLastActivity=Date.now(),casaSupervisorPaused=false,casaInstalledVersion=null;
+
+/* Canonical workspace state v1 */
+const CASA_WORKSPACE_STATE_KEY="casaWorkspaceStateV1";
+const CASA_WORKSPACE_BACKUP_KEY="casaLegacyWorkspaceBackupV101";
+const CASA_WORKSPACE_MIGRATION_KEY="casaWorkspaceMigrationV101";
+const CASA_WORKSPACE_KEYS=[
+ "casaKnowledgeChanges","casaKnowledgeWorkspaceChanges","casaWebsiteContentDraft",
+ "casaBrandProfile","casaAssetLibrary","casaRelationRegistry","casaPhotoMissions"
+];
+const casaNativeSetItem=Storage.prototype.setItem;
+const casaNativeRemoveItem=Storage.prototype.removeItem;
+function casaSafeJson(value,fallback=null){try{return JSON.parse(value)??fallback}catch{return fallback}}
+function casaWorkspaceRawCount(){
+ const a=casaSafeJson(localStorage.getItem("casaKnowledgeChanges"),[]);
+ const b=casaSafeJson(localStorage.getItem("casaKnowledgeWorkspaceChanges"),[]);
+ return (Array.isArray(a)?a.length:0)+(Array.isArray(b)?b.length:0)+
+  CASA_WORKSPACE_KEYS.slice(2).filter(key=>localStorage.getItem(key)!==null).length;
+}
+function casaReleaseState(){return casaSafeJson(localStorage.getItem("casaReleaseSessionV2"),null)}
+function casaDeriveWorkspaceState(){
+ const release=casaReleaseState(),count=casaWorkspaceRawCount();
+ let status="idle";
+ if(release?.active===true)status="releasing";
+ else if(count>0)status="draft";
+ else if(release?.state==="live")status="live";
+ const previous=casaSafeJson(localStorage.getItem(CASA_WORKSPACE_STATE_KEY),{});
+ const state={schema_version:"1.0",status,count,updated_at:new Date().toISOString(),
+  last_live_at:release?.live_at||previous.last_live_at||localStorage.getItem("casaLastConfirmedLiveAt")||null,
+  active_release_id:release?.active===true?release.release_id||null:null};
+ casaNativeSetItem.call(localStorage,CASA_WORKSPACE_STATE_KEY,JSON.stringify(state));
+ window.dispatchEvent(new CustomEvent("casa:workspace-state",{detail:state}));
+ return state;
+}
+function casaMigrateLegacyWorkspace(){
+ if(localStorage.getItem(CASA_WORKSPACE_MIGRATION_KEY))return;
+ const release=casaReleaseState();
+ if(release?.active===true){
+  casaNativeSetItem.call(localStorage,CASA_WORKSPACE_MIGRATION_KEY,JSON.stringify({migrated_at:new Date().toISOString(),action:"deferred_active_release"}));
+  casaDeriveWorkspaceState();return;
+ }
+ const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.101",items:{}};
+ CASA_WORKSPACE_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)backup.items[key]=value});
+ if(Object.keys(backup.items).length){
+  casaNativeSetItem.call(localStorage,CASA_WORKSPACE_BACKUP_KEY,JSON.stringify(backup));
+  CASA_WORKSPACE_KEYS.forEach(key=>casaNativeRemoveItem.call(localStorage,key));
+ }
+ casaNativeSetItem.call(localStorage,CASA_WORKSPACE_MIGRATION_KEY,JSON.stringify({
+  migrated_at:new Date().toISOString(),
+  action:Object.keys(backup.items).length?"legacy_state_archived":"nothing_to_archive",
+  archived_keys:Object.keys(backup.items)
+ }));
+ casaDeriveWorkspaceState();
+}
+Storage.prototype.setItem=function(key,value){
+ casaNativeSetItem.call(this,key,value);
+ if(this===localStorage&&(CASA_WORKSPACE_KEYS.includes(key)||key==="casaReleaseSessionV2"))queueMicrotask(casaDeriveWorkspaceState);
+};
+Storage.prototype.removeItem=function(key){
+ casaNativeRemoveItem.call(this,key);
+ if(this===localStorage&&(CASA_WORKSPACE_KEYS.includes(key)||key==="casaReleaseSessionV2"))queueMicrotask(casaDeriveWorkspaceState);
+};
+window.CasaWorkspace={
+ getState(){return casaSafeJson(localStorage.getItem(CASA_WORKSPACE_STATE_KEY),null)||casaDeriveWorkspaceState()},
+ getCount(){return this.getState().count||0},
+ refresh:casaDeriveWorkspaceState,
+ hasArchivedLegacyState(){return localStorage.getItem(CASA_WORKSPACE_BACKUP_KEY)!==null},
+ restoreArchivedLegacyState(){
+  const backup=casaSafeJson(localStorage.getItem(CASA_WORKSPACE_BACKUP_KEY),null);
+  if(!backup?.items)return false;
+  Object.entries(backup.items).forEach(([key,value])=>casaNativeSetItem.call(localStorage,key,value));
+  casaNativeRemoveItem.call(localStorage,CASA_WORKSPACE_BACKUP_KEY);
+  casaDeriveWorkspaceState();return true;
+ }
+};
+casaMigrateLegacyWorkspace();
+
 function applyPlatformManifest(manifest){
  const version=manifest?.platform_version||"Ukendt",build=manifest?.build||"Ukendt",worker=manifest?.worker_version||"Ukendt";
  document.querySelectorAll("[data-platform-version],#caPlatformVersion").forEach(el=>el.textContent=version);
@@ -30,7 +106,7 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-confirmed-at]").forEach(el=>el.textContent=casaFormatDateTime(confirmedAt));
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.100&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.101&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 
@@ -65,7 +141,7 @@ function showUpdateAvailable(manifest){
    location.assign("/control/"+location.hash);
   }else{
    const url=new URL(location.href);
-   url.searchParams.set("_platform_release","20260724.100");
+   url.searchParams.set("_platform_release","20260724.101");
    location.assign(url.toString());
   }
  };
@@ -89,7 +165,7 @@ async function loadPlatformManifest(){
  try{
   const [manifest,metaResponse]=await Promise.all([
    fetchPlatformManifest(),
-   fetch(`/api/platform-meta?v=20260724.100&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+   fetch(`/api/platform-meta?v=20260724.101&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
   ]);
   const meta=metaResponse.ok?await metaResponse.json():null;
   const consistent=Boolean(
@@ -354,7 +430,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.100&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.101&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

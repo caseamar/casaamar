@@ -41,7 +41,7 @@ main{max-width:1380px;margin:auto}
 })();
 </script>
 </head>
-<body data-expected-platform="v2026.07.24.100" data-expected-build="2026-07-27T10:58:48+02:00" id="top" data-canonical-mission-control="v2026.07.24.100">
+<body data-expected-platform="v2026.07.24.101" data-expected-build="2026-07-27T10:58:48+02:00" id="top" data-canonical-mission-control="v2026.07.24.101">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -71,7 +71,8 @@ main{max-width:1380px;margin:auto}
    <div><span>Senest live</span><strong id="liveContent">Indlæser…</strong></div>
    <div><span>Ikke udgivet</span><strong id="unpublishedCount">Kontrollerer…</strong></div>
   </div>
-  <div id="releaseExplanation" class="notice" style="margin-top:11px">Jeg kontrollerer, om der ligger ændringer i dit workspace.</div>
+  <p id="workflowStateLabel" class="mc-workflow-state">Kontrollerer status…</p>
+ <div id="releaseExplanation" class="notice" style="margin-top:11px">Jeg kontrollerer, om der ligger ændringer i dit workspace.</div>
  </article>
  <article class="mc-card">
   <h2>Hvad er sket siden sidst?</h2>
@@ -89,9 +90,9 @@ main{max-width:1380px;margin:auto}
 </section>
 
 <section class="rc-canonical-banner" aria-label="Aktuel Mission Control-version">
- <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.100</strong></div>
+ <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.101</strong></div>
  <div><span>Bygget</span><strong data-platform-build>Indlæser…</strong></div>
- <div><span>Worker</span><strong data-worker-version>15.0-clean-scalable-foundation</strong></div>
+ <div><span>Worker</span><strong data-worker-version>15.1-canonical-workspace-state</strong></div>
  <p>Historiske versionsnumre længere nede tilhører tidligere udgivelser og er ikke den platform, du bruger nu.</p>
 </section>
 <section class="rc-center" id="publish">
@@ -223,7 +224,7 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.100"></script>
+<script src="/platform-shell.js?v=20260724.101"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -277,8 +278,8 @@ function preflightReleaseData(data){
 
 async function fetchJson(path,fallback={}){try{const r=await fetch(path,{cache:"no-store"});return r.ok?await r.json():fallback}catch{return fallback}}
 function countWorkspace(){
- const changes=localJson("casaKnowledgeChanges",[]);
- return {changes, count:changes.length+["casaWebsiteContentDraft","casaBrandProfile","casaAssetLibrary","casaRelationRegistry","casaPhotoMissions"].filter(k=>localStorage.getItem(k)).length};
+ const state=window.CasaWorkspace?.getState?.()||{count:0,status:"idle"};
+ return {changes:[],count:state.count||0,status:state.status||"idle"};
 }
 function taskHtml(rank,title,text,href,label){
  return `<div class="mc-task"><div class="mc-rank">${rank}</div><div><strong>${title}</strong><small>${text}</small></div><a href="${href}">${label} →</a></div>`;
@@ -315,6 +316,8 @@ async function loadMission(){
  const mcLive=localStorage.getItem("casaLastConfirmedLiveAt")||releaseData.verified_live_at||releaseData.live_at||releaseData.published_at;
  const mcLiveEl=q("#mcPlatformLiveAt");if(mcLiveEl)mcLiveEl.textContent=typeof casaFormatDateTime==="function"?casaFormatDateTime(mcLive):new Date(mcLive).toLocaleString("da-DK");
  q("#unpublishedCount").textContent=workspace.count?`${workspace.count} ændringer`:"0 ændringer";
+ const stateLabel=q("#workflowStateLabel");
+ if(stateLabel)stateLabel.textContent=workspace.status==="releasing"?"Udgivelse i gang":workspace.count?"Kladdearbejde gemt":"Ingen aktiv indholdsudgivelse";
  q("#releaseExplanation").className=workspace.count?"notice":"success";
  q("#releaseExplanation").textContent=workspace.count?"Dit arbejde er gemt sikkert i browseren, men er ikke live endnu. Brug udgivelsesområdet nederst.":"Alt registreret arbejde er udgivet. Der er ingen lokale ændringer.";
  const events=[];
@@ -385,8 +388,8 @@ async function buildPublishFiles(){
   release_id:releaseId,
   release_schema:RELEASE_SCHEMA_CURRENT,
   builder_version:RELEASE_ENGINE_VERSION,
-  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.100",
-  worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.0-clean-scalable-foundation",
+  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.101",
+  worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.1-canonical-workspace-state",
   content_version:contentVersion,
   change_count:changeDescriptions.length,
   changes:changeDescriptions,
@@ -486,7 +489,8 @@ function rcSave(session){
  localStorage.setItem(RELEASE_KEY,JSON.stringify(session));
  renderReleaseCenter();
  // The recommendation card and task list must reflect the reconciled workspace immediately.
- if(typeof loadMission==="function")loadMission();
+ if(typeof loadMission==="function")window.addEventListener("casa:workspace-state",()=>{loadMission();renderReleaseCenter();});
+loadMission();
 }
 function rcDate(value){return value?new Date(value).toLocaleString("da-DK"):"Venter"}
 function rcSetMessage(text,type=""){const el=rcQ("#rcMessage");if(!el)return;el.className=`rc-message ${type}`.trim();el.innerHTML=text}
@@ -560,8 +564,7 @@ function rcStartCountdown(){
 }
 
 function rcWorkspaceCount(){
- const changes=rcLocalJson("casaKnowledgeChanges",[]);
- return changes.length+WORKSPACE_KEYS.slice(1).filter(k=>localStorage.getItem(k)).length;
+ return window.CasaWorkspace?.getCount?.()||0;
 }
 async function rcFetchJson(path,fallback={}){
  try{const r=await fetch(path,{cache:"no-store"});return r.ok?await r.json():fallback}catch{return fallback}

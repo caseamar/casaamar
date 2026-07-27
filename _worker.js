@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "15.0-clean-scalable-foundation",
+      version: "15.1-canonical-workspace-state",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "15.0-clean-scalable-foundation",
+          worker: "15.1-canonical-workspace-state",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "15.0-clean-scalable-foundation",
+          worker: "15.1-canonical-workspace-state",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.100",
-        build: "2026-07-27T12:51:58+02:00",
-        worker_version: "15.0-clean-scalable-foundation",
+        platform_version: "v2026.07.24.101",
+        build: "2026-07-27T14:33:47+02:00",
+        worker_version: "15.1-canonical-workspace-state",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"

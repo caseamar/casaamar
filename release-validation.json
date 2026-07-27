@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "release": "v2026.07.24.101",
+  "built_at": "2026-07-27T14:33:47+02:00",
+  "checks": [
+    {
+      "id": "single-workspace-state",
+      "status": "passed"
+    },
+    {
+      "id": "legacy-state-backed-up",
+      "status": "passed"
+    },
+    {
+      "id": "legacy-state-not-counted",
+      "status": "passed"
+    },
+    {
+      "id": "active-release-preserved",
+      "status": "passed"
+    }
+  ]
+}
