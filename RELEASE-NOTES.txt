@@ -1,6 +1,4 @@
-Casa Amar Platform v2026.07.24.125
-Experience Engine Foundation
+Casa Amar Platform v2026.07.24.126
+Platform Intelligence Dashboard
 
-Adds a typed guest journey model, cross-subsystem experience references and automated experience integrity checks.
-
-Deployment: keep .git and images; replace everything else.
+Subsystem cards in Mission Control are now interactive. AI Knowledge Graph, Asset Intelligence and Experience Engine expose real metrics and Experience Engine shows the complete guest journey. All registered subsystems provide a consistent detail view sourced from the canonical Subsystem Registry.

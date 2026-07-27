@@ -1,7 +1,7 @@
 {
-  "platform_version": "v2026.07.24.125",
-  "build": "2026-07-28T03:30:00+02:00",
-  "worker_version": "15.21.0-experience-engine-foundation",
+  "platform_version": "v2026.07.24.126",
+  "build": "2026-07-28T04:30:00+02:00",
+  "worker_version": "15.16-platform-intelligence-dashboard",
   "release_name": "Experience Engine Foundation",
   "generated_at": "2026-07-28T03:30:00+02:00",
   "build_timezone": "Europe/Copenhagen",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.6.0",
+    "version": "2.7.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -180,7 +180,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.13.0",
+    "version": "1.14.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -240,13 +240,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.11.0",
+    "version": "1.12.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -278,7 +278,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -302,7 +302,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.125",
+    "asset_cache_key": "20260724.126",
     "stale_release_token_validation": true
   },
   "content_intelligence": {

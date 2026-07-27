@@ -1,6 +1,12 @@
 {
-  "release": "v2026.07.24.125",
-  "name": "Experience Engine Foundation",
-  "summary": "Adds a typed guest journey model, cross-subsystem experience references and automated experience integrity checks.",
-  "deployment": "complete_replace_except_git_and_images"
+  "release": "v2026.07.24.126",
+  "title": "Platform Intelligence Dashboard",
+  "summary": "Makes registered subsystems visible and inspectable through interactive dashboards in Mission Control.",
+  "changes": [
+    "Clickable subsystem cards",
+    "Detailed dashboards for AI Knowledge Graph, Asset Intelligence and Experience Engine",
+    "Generic status and capability view for all registered subsystems",
+    "Accessible keyboard and dialog navigation"
+  ],
+  "github_summary": "Add interactive dashboards for platform intelligence subsystems"
 }

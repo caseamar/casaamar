@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.0.0",
-  "updated_at": "2026-07-28T03:30:00+02:00",
+  "version": "2.1.0",
+  "updated_at": "2026-07-28T04:30:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -26,12 +26,14 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.125",
+      "version": "v2026.07.24.126",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
       "entry": "/platform-manifest.json",
-      "description": "Casa Amar platform release identity and shared runtime."
+      "description": "Casa Amar platform release identity and shared runtime.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "core",
@@ -41,17 +43,21 @@
       "status_source": "module",
       "manifest_key": "core",
       "entry": "/core/casa-core.js",
-      "description": "Shared platform state, readiness, module lifecycle and common runtime services."
+      "description": "Shared platform state, readiness, module lifecycle and common runtime services.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "2.6.0",
+      "version": "2.7.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
       "entry": "/control/#platform-doctor",
-      "description": "Automated readiness, health and release consistency diagnostics."
+      "description": "Automated readiness, health and release consistency diagnostics.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "project-brain",
@@ -61,7 +67,9 @@
       "status_source": "diagnostics",
       "manifest_key": "project_brain",
       "entry": "/core/casa-brain.js",
-      "description": "Machine-readable project memory for roadmap, architecture, backlog and release history."
+      "description": "Machine-readable project memory for roadmap, architecture, backlog and release history.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "decision-engine",
@@ -71,7 +79,9 @@
       "status_source": "module",
       "manifest_key": "decision_engine",
       "entry": "/core/casa-decision.js",
-      "description": "Reusable explainable decision evaluation and history."
+      "description": "Reusable explainable decision evaluation and history.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "event-engine",
@@ -81,17 +91,21 @@
       "status_source": "module",
       "manifest_key": "event_engine",
       "entry": "/core/casa-events.js",
-      "description": "Validated platform event publication, subscription and history."
+      "description": "Validated platform event publication, subscription and history.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "diagnostics",
       "display_name": "Diagnostics Framework",
-      "version": "1.13.0",
+      "version": "1.14.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "diagnostics_framework",
       "entry": "/core/casa-diagnostics.js",
-      "description": "Standard diagnostic contracts and consistency checks."
+      "description": "Standard diagnostic contracts and consistency checks.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "configuration",
@@ -101,7 +115,9 @@
       "status_source": "module",
       "manifest_key": "configuration_service",
       "entry": "/core/casa-config.js",
-      "description": "Validated platform and tenant configuration."
+      "description": "Validated platform and tenant configuration.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "governance",
@@ -111,7 +127,9 @@
       "status_source": "module",
       "manifest_key": "governance",
       "entry": "/core/casa-governance.js",
-      "description": "Policies, capabilities and governance decisions."
+      "description": "Policies, capabilities and governance decisions.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "audit-engine",
@@ -121,27 +139,33 @@
       "status_source": "module",
       "manifest_key": "audit_engine",
       "entry": "/core/casa-audit.js",
-      "description": "Reusable audit history for platform events and decisions."
+      "description": "Reusable audit history for platform events and decisions.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "platform-contracts",
       "display_name": "Platform Contracts",
-      "version": "1.11.0",
+      "version": "1.12.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "platform_contracts",
       "entry": "/core/casa-contracts.js",
-      "description": "Regression contracts for release identity and subsystem metadata consistency."
+      "description": "Regression contracts for release identity and subsystem metadata consistency.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
       "entry": "/core/casa-subsystem-registry.js",
-      "description": "Canonical source of subsystem names, versions, ownership and metadata."
+      "description": "Canonical source of subsystem names, versions, ownership and metadata.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "public-website-runtime",
@@ -151,17 +175,21 @@
       "status_source": "runtime",
       "manifest_key": "public_website_runtime",
       "entry": "/",
-      "description": "Isolated runtime for the public Casa Amar website."
+      "description": "Isolated runtime for the public Casa Amar website.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "repository-intelligence",
       "display_name": "Repository Intelligence",
-      "version": "1.5.0",
+      "version": "1.6.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "repository_intelligence",
       "entry": "/core/casa-repository.js",
-      "description": "Canonical inventory and integrity view of the deployable platform repository."
+      "description": "Canonical inventory and integrity view of the deployable platform repository.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "content-intelligence",
@@ -171,7 +199,9 @@
       "status_source": "diagnostics",
       "manifest_key": "content_intelligence",
       "entry": "/core/casa-content.js",
-      "description": "Canonical inventory, status model, relationships and validation for platform content."
+      "description": "Canonical inventory, status model, relationships and validation for platform content.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "ai-knowledge-graph",
@@ -181,7 +211,9 @@
       "status_source": "diagnostics",
       "manifest_key": "ai_knowledge_graph",
       "entry": "/core/casa-knowledge-graph.js",
-      "description": "Typed semantic entities and relationships connecting content, places, facilities, audiences, languages and experiences."
+      "description": "Typed semantic entities and relationships connecting content, places, facilities, audiences, languages and experiences.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "asset-intelligence",
@@ -191,7 +223,9 @@
       "status_source": "module",
       "manifest_key": "asset_intelligence",
       "entry": "/core/casa-assets.js",
-      "description": "Canonical asset inventory, semantic relationships, quality readiness, non-destructive responsive variant planning and publication impact."
+      "description": "Canonical asset inventory, semantic relationships, quality readiness, non-destructive responsive variant planning and publication impact.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     },
     {
       "id": "experience-engine",
@@ -201,7 +235,9 @@
       "owner": "Platform Intelligence",
       "status": "healthy",
       "description": "Models the guest journey and validates cross-platform experience coverage.",
-      "visible": true
+      "visible": true,
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     }
   ]
 }

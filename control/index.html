@@ -31,6 +31,8 @@ main{max-width:1380px;margin:auto}
 .operation-log{background:var(--ca-surface-2);border-radius:12px;padding:10px;margin-top:10px;font-size:.72rem;max-height:190px;overflow:auto}.operation-log div{padding:4px 0;border-bottom:1px solid var(--ca-line)}
 .notice{background:var(--ca-amber-soft);color:#74500f;padding:10px;border-radius:11px}.success{background:var(--ca-green-soft);color:var(--ca-green);padding:10px;border-radius:11px}
 @media(max-width:900px){.mc-hero,.mc-grid{grid-template-columns:1fr}.publish-grid,.mc-release{grid-template-columns:1fr 1fr}}
+
+.platform-versions-grid article{cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}.platform-versions-grid article:hover,.platform-versions-grid article:focus-visible{transform:translateY(-2px);box-shadow:0 10px 26px rgba(29,70,57,.12);border-color:#c96d4d;outline:none}.platform-versions-grid article::after{content:"Se detaljer";display:block;margin-top:8px;font-size:.72rem;font-weight:700;color:#a84e32}.subsystem-dialog{width:min(920px,calc(100% - 32px));max-height:88vh;border:0;border-radius:22px;padding:0;background:#fbfaf7;color:#17372e;box-shadow:0 30px 90px rgba(0,0,0,.28)}.subsystem-dialog::backdrop{background:rgba(15,37,31,.58);backdrop-filter:blur(3px)}.subsystem-dialog-shell{padding:28px;overflow:auto;max-height:88vh}.subsystem-dialog-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;border-bottom:1px solid #e8dfd3;padding-bottom:20px}.subsystem-dialog-header h2{margin:5px 0 8px;font-size:clamp(1.8rem,4vw,2.8rem)}.subsystem-dialog-header p{margin:0;max-width:680px;color:#586a64;line-height:1.55}.subsystem-dialog-close{border:1px solid #ddd3c7;background:white;border-radius:999px;width:42px;height:42px;font-size:1.8rem;line-height:1;cursor:pointer}.subsystem-dialog-status{display:flex;gap:12px;align-items:center;margin:20px 0;padding:14px 16px;border-radius:14px;background:#edf6f1}.subsystem-dialog-status strong{font-size:1.05rem}.subsystem-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0 24px}.subsystem-metric{background:white;border:1px solid #e8dfd3;border-radius:14px;padding:16px}.subsystem-metric span{display:block;color:#6a7772;font-size:.8rem;margin-bottom:6px}.subsystem-metric strong{font-size:1.35rem}.subsystem-detail-section{margin-top:22px}.subsystem-detail-section h3{margin:0 0 12px}.subsystem-tags{display:flex;flex-wrap:wrap;gap:8px}.subsystem-tag{padding:8px 11px;border-radius:999px;background:#f1ece5;font-size:.82rem}.experience-journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.journey-stage{background:white;border:1px solid #e8dfd3;border-radius:14px;padding:14px}.journey-stage span{display:block;font-size:.75rem;color:#b25539;text-transform:uppercase;font-weight:800}.journey-stage strong{display:block;margin-top:5px}.journey-stage small{display:block;color:#6a7772;margin-top:5px}.subsystem-detail-section pre{white-space:pre-wrap;word-break:break-word;background:#17372e;color:#eef8f3;border-radius:14px;padding:16px;max-height:240px;overflow:auto;font-size:.78rem}@media(max-width:650px){.subsystem-dialog-shell{padding:20px}.subsystem-dialog-header{gap:12px}.subsystem-metrics{grid-template-columns:1fr 1fr}}
 </style>
 <script>
 (()=>{
@@ -41,7 +43,7 @@ main{max-width:1380px;margin:auto}
 })();
 </script>
 </head>
-<body data-expected-platform="v2026.07.24.125" data-expected-build="2026-07-27T23:58:00+02:00" id="top" data-canonical-mission-control="v2026.07.24.125">
+<body data-expected-platform="v2026.07.24.126" data-expected-build="2026-07-27T23:58:00+02:00" id="top" data-canonical-mission-control="v2026.07.24.126">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -122,6 +124,20 @@ main{max-width:1380px;margin:auto}
   <div class="platform-versions-heading"><span>Platform Intelligence</span><strong>Subsystem versions</strong></div>
   <div class="platform-versions-grid" id="platformVersionsGrid"><span>Indlæser versionsoversigt…</span></div>
  </div>
+
+ <dialog class="subsystem-dialog" id="subsystemDialog" aria-labelledby="subsystemDialogTitle">
+  <div class="subsystem-dialog-shell">
+   <header class="subsystem-dialog-header">
+    <div><span class="rc-section-kicker" id="subsystemDialogOwner">Platform Intelligence</span><h2 id="subsystemDialogTitle">Subsystem</h2><p id="subsystemDialogDescription"></p></div>
+    <button class="subsystem-dialog-close" id="subsystemDialogClose" type="button" aria-label="Luk">×</button>
+   </header>
+   <div class="subsystem-dialog-status" id="subsystemDialogStatus"></div>
+   <div class="subsystem-metrics" id="subsystemMetrics"></div>
+   <section class="subsystem-detail-section"><h3>Hvad subsystemet gør</h3><div id="subsystemCapabilities" class="subsystem-tags"></div></section>
+   <section class="subsystem-detail-section" id="subsystemJourneySection" hidden><h3>Gæsterejsen</h3><div id="subsystemJourney" class="experience-journey"></div></section>
+   <section class="subsystem-detail-section"><h3>Tekniske oplysninger</h3><pre id="subsystemTechnical"></pre></section>
+  </div>
+ </dialog>
 
  <div class="doctor-next">
   <span>Anbefalet næste handling</span>
@@ -209,7 +225,7 @@ main{max-width:1380px;margin:auto}
 </section>
 
 <section class="rc-canonical-banner" aria-label="Aktuel Mission Control-version">
- <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.125</strong></div>
+ <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.126</strong></div>
  <div><span>Bygget</span><strong data-platform-build>Indlæser…</strong></div>
  <div><span>Worker</span><strong data-worker-version>15.7-decision-engine</strong></div>
  <p>Historiske versionsnumre længere nede tilhører tidligere udgivelser og er ikke den platform, du bruger nu.</p>
@@ -345,22 +361,22 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.125"></script>
-<script src="/core/casa-core.js?v=20260724.125"></script>
-<script src="/core/casa-audit.js?v=20260724.125"></script>
-<script src="/core/casa-events.js?v=20260724.125"></script>
-<script src="/core/casa-contracts.js?v=20260724.125"></script>
-<script src="/core/casa-diagnostics.js?v=20260724.125"></script>
-<script src="/core/casa-subsystem-registry.js?v=20260724.125"></script>
-<script src="/core/casa-repository.js?v=20260724.125"></script>
-<script src="/core/casa-content.js?v=20260724.125"></script>
-<script src="/core/casa-knowledge-graph.js?v=20260724.125"></script>
-<script src="/core/casa-assets.js?v=20260724.125"></script>
-<script src="/core/casa-experience.js?v=20260724.125"></script>
-<script src="/core/casa-brain.js?v=20260724.125"></script>
-<script src="/core/casa-config.js?v=20260724.125"></script>
-<script src="/core/casa-governance.js?v=20260724.125"></script>
-<script src="/core/casa-decision.js?v=20260724.125"></script>
+<script src="/platform-shell.js?v=20260724.126"></script>
+<script src="/core/casa-core.js?v=20260724.126"></script>
+<script src="/core/casa-audit.js?v=20260724.126"></script>
+<script src="/core/casa-events.js?v=20260724.126"></script>
+<script src="/core/casa-contracts.js?v=20260724.126"></script>
+<script src="/core/casa-diagnostics.js?v=20260724.126"></script>
+<script src="/core/casa-subsystem-registry.js?v=20260724.126"></script>
+<script src="/core/casa-repository.js?v=20260724.126"></script>
+<script src="/core/casa-content.js?v=20260724.126"></script>
+<script src="/core/casa-knowledge-graph.js?v=20260724.126"></script>
+<script src="/core/casa-assets.js?v=20260724.126"></script>
+<script src="/core/casa-experience.js?v=20260724.126"></script>
+<script src="/core/casa-brain.js?v=20260724.126"></script>
+<script src="/core/casa-config.js?v=20260724.126"></script>
+<script src="/core/casa-governance.js?v=20260724.126"></script>
+<script src="/core/casa-decision.js?v=20260724.126"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -524,7 +540,7 @@ async function buildPublishFiles(){
   release_id:releaseId,
   release_schema:RELEASE_SCHEMA_CURRENT,
   builder_version:RELEASE_ENGINE_VERSION,
-  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.125",
+  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.126",
   worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.7-decision-engine",
   content_version:contentVersion,
   change_count:changeDescriptions.length,
@@ -1232,13 +1248,63 @@ async function renderPlatformVersions(){
   const doctorVersion=document.querySelector("#platformDoctorVersion");
   if(doctorVersion)doctorVersion.textContent=`v${doctor?.version||manifest.platform_doctor?.version||"unknown"}`;
   const modules=window.CasaSubsystemRegistry?.list?.()||[];
-  grid.innerHTML=modules.map(item=>`<article data-subsystem-id="${item.id}" title="${item.description||""}"><span>${item.display_name}</span><strong>${item.id==="platform"?item.version:`v${item.version}`}</strong></article>`).join("");
+  grid.innerHTML=modules.map(item=>`<article tabindex="0" role="button" aria-label="Åbn ${item.display_name}" data-subsystem-id="${item.id}" title="${item.description||""}"><span>${item.display_name}</span><strong>${item.id==="platform"?item.version:`v${item.version}`}</strong></article>`).join("");
   const titleBindings={"governanceTitle":"governance","configurationTitle":"configuration","decisionTitle":"decision-engine"};
   Object.entries(titleBindings).forEach(([elementId,subsystemId])=>{const element=document.getElementById(elementId);const subsystem=window.CasaSubsystemRegistry?.get?.(subsystemId);if(element&&subsystem)element.textContent=subsystem.display_name;});
  }catch(error){grid.innerHTML=`<span>Versionsoversigten kunne ikke indlæses: ${error.message}</span>`;}
 }
 window.addEventListener("load",renderPlatformVersions);
 window.addEventListener("casa:subsystem-registry:ready",renderPlatformVersions);
+
+
+const subsystemCapabilityLabels={
+ "platform":["Release identity","Shared runtime","Deployment contract"],
+ "core":["Module lifecycle","Platform readiness","Shared state"],
+ "platform-doctor":["Health checks","Release consistency","Readiness diagnostics"],
+ "project-brain":["Roadmap","Architecture memory","Release history"],
+ "decision-engine":["Rule evaluation","Decision history","Explainability"],
+ "event-engine":["Event contracts","Publish and subscribe","Loose coupling"],
+ "diagnostics":["Integrity checks","Issue classification","Recommendations"],
+ "configuration":["Central configuration","Feature settings","Tenant settings"],
+ "governance":["Policies","Capabilities","Access rules"],
+ "audit-engine":["Audit trail","Change history","Traceability"],
+ "platform-contracts":["Data contracts","Version contracts","Compatibility rules"],
+ "subsystem-registry":["Canonical names","Canonical versions","Subsystem discovery"],
+ "public-website-runtime":["Public website isolation","Guest experience","Runtime safety"],
+ "repository-intelligence":["Repository inventory","Critical file checks","Impact awareness"],
+ "content-intelligence":["Content inventory","Lifecycle status","Content relationships"],
+ "ai-knowledge-graph":["Semantic entities","Typed relationships","Graph search"],
+ "asset-intelligence":["Asset inventory","Readiness scoring","Responsive variants"],
+ "experience-engine":["Guest journey","Touchpoints","Experience coverage"]
+};
+function metric(label,value){return `<div class="subsystem-metric"><span>${label}</span><strong>${value??"–"}</strong></div>`}
+async function subsystemDashboardData(item){
+ const base={metrics:[metric("Version",item.id==="platform"?item.version:`v${item.version}`),metric("Ejer",item.owner||"Platform"),metric("Status","Sund")],technical:{registry:item}};
+ if(item.id==="ai-knowledge-graph"&&window.CasaKnowledgeGraph){await window.CasaKnowledgeGraph.load();const s=window.CasaKnowledgeGraph.snapshot();base.metrics.push(metric("Entities",s.entity_count),metric("Relationer",s.relation_count),metric("Entity-typer",s.entity_types.length));base.technical.snapshot=s;}
+ if(item.id==="asset-intelligence"&&window.CasaAssetIntelligence){await window.CasaAssetIntelligence.load();const s=window.CasaAssetIntelligence.snapshot();base.metrics.push(metric("Assets",s.asset_count),metric("Klar",s.ready_count),metric("Til gennemgang",s.review_count),metric("Blokeret",s.blocked_count),metric("Planlagte varianter",s.pending_variant_count));base.technical.snapshot=s;}
+ if(item.id==="experience-engine"&&window.CasaExperience){await window.CasaExperience.load();const s=window.CasaExperience.snapshot();base.metrics.push(metric("Rejsefaser",s.stages),metric("Touchpoints",s.touchpoints),metric("Validering",s.valid?"Bestået":"Kræver handling"));base.journey=window.CasaExperience.journey();base.technical.snapshot=s;}
+ if(item.id==="content-intelligence"&&window.CasaContentIntelligence){await window.CasaContentIntelligence.load?.();const s=window.CasaContentIntelligence.snapshot?.();if(s){Object.entries(s).filter(([k,v])=>typeof v==="number").slice(0,4).forEach(([k,v])=>base.metrics.push(metric(k.replaceAll("_"," "),v)));base.technical.snapshot=s;}}
+ if(item.id==="repository-intelligence"&&window.CasaRepository){await window.CasaRepository.load?.();const s=window.CasaRepository.snapshot?.();if(s){Object.entries(s).filter(([k,v])=>typeof v==="number").slice(0,4).forEach(([k,v])=>base.metrics.push(metric(k.replaceAll("_"," "),v)));base.technical.snapshot=s;}}
+ return base;
+}
+async function openSubsystemDashboard(id){
+ const dialog=document.querySelector("#subsystemDialog"),item=window.CasaSubsystemRegistry?.get?.(id);if(!dialog||!item)return;
+ document.querySelector("#subsystemDialogTitle").textContent=item.display_name;
+ document.querySelector("#subsystemDialogOwner").textContent=item.owner||"Platform Intelligence";
+ document.querySelector("#subsystemDialogDescription").textContent=item.description||"Registreret platformsubsystem.";
+ document.querySelector("#subsystemDialogStatus").innerHTML=`<span class="doctor-confirmation-mark">✓</span><div><strong>Subsystemet er registreret og indlæst</strong><div>Data og version hentes fra platformens centrale registry.</div></div>`;
+ document.querySelector("#subsystemMetrics").innerHTML=metric("Status","Indlæser…");
+ document.querySelector("#subsystemCapabilities").innerHTML=(subsystemCapabilityLabels[item.id]||["Registered subsystem"]).map(x=>`<span class="subsystem-tag">${x}</span>`).join("");
+ document.querySelector("#subsystemTechnical").textContent="Indlæser…";
+ document.querySelector("#subsystemJourneySection").hidden=true;
+ dialog.showModal();
+ try{const data=await subsystemDashboardData(item);document.querySelector("#subsystemMetrics").innerHTML=data.metrics.join("");document.querySelector("#subsystemTechnical").textContent=JSON.stringify(data.technical,null,2);if(data.journey){const section=document.querySelector("#subsystemJourneySection"),journey=document.querySelector("#subsystemJourney");section.hidden=false;journey.innerHTML=data.journey.map(stage=>`<div class="journey-stage"><span>Fase ${stage.order}</span><strong>${stage.display_name}</strong><small>${stage.touchpoints.length} touchpoint${stage.touchpoints.length===1?"":"s"}</small></div>`).join("");}}
+ catch(error){document.querySelector("#subsystemDialogStatus").innerHTML=`<div><strong>Kunne ikke indlæse subsystemdata</strong><div>${error.message}</div></div>`;}
+}
+document.querySelector("#platformVersionsGrid")?.addEventListener("click",event=>{const card=event.target.closest("[data-subsystem-id]");if(card)openSubsystemDashboard(card.dataset.subsystemId)});
+document.querySelector("#platformVersionsGrid")?.addEventListener("keydown",event=>{const card=event.target.closest("[data-subsystem-id]");if(card&&(event.key==="Enter"||event.key===" ")){event.preventDefault();openSubsystemDashboard(card.dataset.subsystemId)}});
+document.querySelector("#subsystemDialogClose")?.addEventListener("click",()=>document.querySelector("#subsystemDialog")?.close());
+document.querySelector("#subsystemDialog")?.addEventListener("click",event=>{if(event.target===event.currentTarget)event.currentTarget.close()});
 
 
 async function renderGovernance(){
