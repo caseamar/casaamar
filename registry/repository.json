@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.5.0",
-  "generated_at": "2026-07-27T22:49:30+02:00",
+  "generated_at": "2026-07-27T23:07:46+02:00",
   "source": "release-package",
   "file_count": 91,
   "policies": {
@@ -609,6 +609,6 @@
     }
   ],
   "updated_at": "2026-07-27T22:37:27+02:00",
-  "release": null,
-  "platform_version": null
+  "release": "v2026.07.24.129",
+  "platform_version": "v2026.07.24.129"
 }

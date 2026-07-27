@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-27T22:49:30+02:00",
+  "schema_version": "1.1",
+  "version": "1.1.0",
+  "updated_at": "2026-07-27T23:07:46+02:00",
   "modules": [
     {
       "id": "website",
@@ -17,15 +17,17 @@
       "description": "Find, vurder og klargør billeder og varianter.",
       "href": "/asset-studio.html",
       "status_source": "asset-intelligence",
-      "icon": "📸"
+      "icon": "📸",
+      "subsystem_id": "asset-intelligence"
     },
     {
       "id": "knowledge",
       "display_name": "Knowledge",
-      "description": "Vedligehold viden, relationer og kvalitet.",
-      "href": "/knowledge-center.html",
+      "description": "Udforsk viden, relationer og datakvalitet i Knowledge Graph.",
+      "href": "#platform-intelligence",
       "status_source": "ai-knowledge-graph",
-      "icon": "🧠"
+      "icon": "🧠",
+      "subsystem_id": "ai-knowledge-graph"
     },
     {
       "id": "experience",
@@ -95,6 +97,9 @@
     "unique_module_ids",
     "valid_action_targets",
     "registered_status_sources",
-    "accessible_navigation"
+    "accessible_navigation",
+    "no_legacy_redirect_targets",
+    "dashboard_target_resolution",
+    "actionable_insight_contract"
   ]
 }

@@ -1,13 +1,13 @@
 {
-  "release": "v2026.07.24.128",
-  "title": "AI Workspace Foundation",
-  "summary": "Adds a unified operational workspace that connects website, assets, knowledge, experience, missions and AI insights in Mission Control.",
+  "release": "v2026.07.24.129",
+  "title": "AI Workspace Reliability",
+  "summary": "Makes every AI Workspace module actionable, fixes Knowledge navigation, and turns AI Insights into explained, prioritised actions with stronger release controls.",
   "changes": [
-    "Operational workspace status overview",
-    "Six connected work modules",
-    "Data-driven AI insights",
-    "Quick actions for common workflows",
-    "AI Workspace subsystem registration and diagnostics"
+    "Knowledge opens the AI Knowledge Graph dashboard instead of a legacy redirect",
+    "AI Insights explain causes, impact and next action",
+    "Workspace modules and quick actions are validated against real destinations",
+    "Release gate blocks legacy redirects, broken links and unresolved subsystem dashboards",
+    "Workspace navigation remains keyboard accessible"
   ],
-  "github_summary": "Add AI Workspace with operational status, insights and quick actions"
+  "github_summary": "Fix AI Workspace navigation and add actionable insight quality gates"
 }

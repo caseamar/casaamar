@@ -101,6 +101,32 @@ const workspaceModuleIds=new Set();
 for(const module of workspaceRegistry.modules||[]){check(Boolean(module.id&&module.display_name&&module.href&&module.status_source),`AI Workspace module is complete (${module.id||'unknown'})`);check(!workspaceModuleIds.has(module.id),`AI Workspace module id is unique (${module.id})`);workspaceModuleIds.add(module.id);check(Boolean(registry.subsystems.find(x=>x.id===module.status_source)),`AI Workspace status source is registered (${module.id} -> ${module.status_source})`)}
 const workspaceActionIds=new Set();for(const action of workspaceRegistry.quick_actions||[]){check(Boolean(action.id&&action.label&&action.href&&action.module),`AI Workspace action is complete (${action.id||'unknown'})`);check(!workspaceActionIds.has(action.id),`AI Workspace action id is unique (${action.id})`);workspaceActionIds.add(action.id);check(workspaceModuleIds.has(action.module),`AI Workspace action module resolves (${action.id} -> ${action.module})`)}
 check(read('control/index.html').includes('id="ai-workspace"'),'AI Workspace is visible in Mission Control');
+const legacyWorkspaceTargets=new Set(['/knowledge-center','/knowledge-center.html']);
+const registeredSubsystemIds=new Set((registry.subsystems||[]).map(x=>x.id));
+const resolveWorkspaceTarget=href=>{
+ if(String(href||'').startsWith('#'))return true;
+ if(!String(href||'').startsWith('/'))return false;
+ const relative=String(href).slice(1).split(/[?#]/)[0];
+ return Boolean(relative)&&fs.existsSync(path.join(root,relative));
+};
+for(const module of workspaceRegistry.modules||[]){
+ check(!legacyWorkspaceTargets.has(module.href),`AI Workspace module avoids legacy redirect (${module.id})`);
+ check(resolveWorkspaceTarget(module.href),`AI Workspace module target exists (${module.id} -> ${module.href})`);
+ if(module.subsystem_id){
+  check(registeredSubsystemIds.has(module.subsystem_id),`AI Workspace dashboard subsystem resolves (${module.id} -> ${module.subsystem_id})`);
+  check(Boolean(registry.subsystems.find(x=>x.id===module.subsystem_id)?.dashboard),`AI Workspace dashboard subsystem is enabled (${module.subsystem_id})`);
+ }
+}
+for(const action of workspaceRegistry.quick_actions||[]){
+ check(!legacyWorkspaceTargets.has(action.href),`AI Workspace action avoids legacy redirect (${action.id})`);
+ check(resolveWorkspaceTarget(action.href),`AI Workspace action target exists (${action.id} -> ${action.href})`);
+}
+check(workspaceRegistry.modules.find(x=>x.id==='knowledge')?.subsystem_id==='ai-knowledge-graph','Knowledge module opens the AI Knowledge Graph dashboard');
+const workspaceSource=read('core/casa-workspace.js');
+check(workspaceSource.includes('action_label'),'AI Insights expose an explicit action label');
+check(workspaceSource.includes('Årsager:'),'AI Insights explain causes for blocked assets');
+check(workspaceSource.includes('Påvirkning:'),'AI Insights explain impact for blocked assets');
+check(read('control/index.html').includes('data-open-subsystem'),'Mission Control supports dashboard navigation');
 
 // Active build timestamp contract
 const activeBuild = new Date(manifest.build);

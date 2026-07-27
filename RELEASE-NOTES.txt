@@ -1,3 +1,2 @@
-AI Workspace Foundation
-
-Unified workspace status, six operational modules, data-driven insights and quick actions.
+v2026.07.24.129 — AI Workspace Reliability
+Fixes Knowledge navigation, adds actionable AI Insights, and blocks broken workspace destinations before release.
