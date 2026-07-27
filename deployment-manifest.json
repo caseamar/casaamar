@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.118",
+  "release": "v2026.07.24.119",
   "generated_at": "2026-07-27T22:10:00+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [

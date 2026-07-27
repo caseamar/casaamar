@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.118",
+  "current_release": "v2026.07.24.119",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
   "current_subsystem": "Repository Intelligence Foundation",
-  "next_release": "v2026.07.24.118",
+  "next_release": "v2026.07.24.119",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -44,5 +44,6 @@
     "Project Brain integrity UI",
     "Release automation quality gates"
   ],
-  "updated_at": "2026-07-27T22:10:00+02:00"
+  "updated_at": "2026-07-27T22:10:00+02:00",
+  "current_focus": "Content Intelligence"
 }

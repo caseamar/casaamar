@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-27T23:10:00+02:00",
+  "source_of_truth": true,
+  "status_model": [
+    "draft",
+    "review",
+    "ready",
+    "published",
+    "archived"
+  ],
+  "content_types": [
+    "website",
+    "knowledge",
+    "brand",
+    "asset-metadata",
+    "campaign",
+    "photo-mission"
+  ],
+  "items": [
+    {
+      "id": "public-website",
+      "display_name": "Public Website Content",
+      "type": "website",
+      "source": "/website-content.json",
+      "status": "published",
+      "owner": "Experience Platform",
+      "relations": [
+        "asset-library",
+        "brand-profile"
+      ]
+    },
+    {
+      "id": "knowledge-base",
+      "display_name": "Knowledge Base",
+      "type": "knowledge",
+      "source": "/knowledge-cards.json",
+      "status": "ready",
+      "owner": "Content Operations",
+      "relations": [
+        "public-website"
+      ]
+    },
+    {
+      "id": "brand-profile",
+      "display_name": "Brand Profile",
+      "type": "brand",
+      "source": "/brand-profile.json",
+      "status": "ready",
+      "owner": "Experience Platform",
+      "relations": [
+        "public-website",
+        "asset-library"
+      ]
+    },
+    {
+      "id": "asset-library",
+      "display_name": "Asset Library Metadata",
+      "type": "asset-metadata",
+      "source": "/asset-library.json",
+      "status": "ready",
+      "owner": "Asset Intelligence",
+      "relations": [
+        "public-website",
+        "brand-profile"
+      ]
+    },
+    {
+      "id": "campaign-profiles",
+      "display_name": "Campaign Profiles",
+      "type": "campaign",
+      "source": "/campaign-profiles.json",
+      "status": "draft",
+      "owner": "Content Operations",
+      "relations": [
+        "brand-profile"
+      ]
+    },
+    {
+      "id": "photo-missions",
+      "display_name": "Photo Missions",
+      "type": "photo-mission",
+      "source": "/photo-missions.json",
+      "status": "ready",
+      "owner": "Asset Intelligence",
+      "relations": [
+        "asset-library"
+      ]
+    }
+  ],
+  "policies": {
+    "unique_ids": true,
+    "known_status_required": true,
+    "known_type_required": true,
+    "source_required": true,
+    "relations_must_resolve": true
+  }
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.118",
-  "platform_version": "v2026.07.24.118",
-  "generated_at": "2026-07-27T22:10:00+02:00",
+  "release": "v2026.07.24.119",
+  "platform_version": "v2026.07.24.119",
+  "generated_at": "2026-07-27T23:10:00+02:00",
   "status": "passed",
   "summary": "Fixes stale release URLs and cached subsystem metadata by enforcing canonical routes, current asset cache keys and repository-wide release-token consistency.",
   "checks": [
@@ -29,7 +29,7 @@
     {
       "id": "asset-cache-keys",
       "status": "passed",
-      "detail": "All deployable HTML and JavaScript references use cache key 20260724.118."
+      "detail": "All deployable HTML and JavaScript references use cache key 20260724.119."
     },
     {
       "id": "stale-release-tokens",
@@ -46,5 +46,14 @@
       "status": "passed",
       "detail": "Complete replacement package; preserve only .git and images."
     }
+  ],
+  "release_name": "Content Intelligence Foundation",
+  "content_intelligence_checks": [
+    "registry exists",
+    "unique content ids",
+    "known lifecycle statuses",
+    "known content types",
+    "all relations resolve",
+    "manifest and subsystem registry versions match"
   ]
 }

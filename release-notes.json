@@ -1,29 +1,12 @@
 {
-  "release": "v2026.07.24.118",
-  "version": "v2026.07.24.118",
-  "name": "Repository Intelligence Foundation",
-  "generated_at": "2026-07-27T21:30:00+02:00",
-  "summary": "Introduces Repository Intelligence as a canonical, searchable inventory of the deployable platform package with critical-file integrity validation and full subsystem registry integration.",
-  "changes": [
-    "Added Repository Intelligence runtime service and canonical repository registry.",
-    "Added automatic validation of required critical platform files and duplicate repository paths.",
-    "Added Repository Intelligence to Platform Doctor diagnostics and the Platform Intelligence subsystem inventory.",
-    "Updated Project Brain roadmap and backlog to record the completed Repository Intelligence foundation.",
-    "Strengthened subsystem and platform contracts for repository metadata consistency."
-  ],
+  "platform_version": "v2026.07.24.119",
+  "release_name": "Content Intelligence Foundation",
+  "summary": "Introduces Content Intelligence with a canonical content registry, lifecycle status model, content relationships and consistency validation.",
   "test_focus": [
-    "Platform v2026.07.24.118",
-    "Platform Doctor v2.2.0",
-    "Repository Intelligence v1.0.0",
-    "Subsystem Registry v1.2.0",
-    "Diagnostics Framework v1.5.0",
-    "Platform Contracts v1.3.0"
-  ],
-  "deployment": {
-    "strategy": "complete_replace_except_images",
-    "preserve": [
-      ".git/",
-      "images/"
-    ]
-  }
+    "Platform v2026.07.24.119",
+    "Platform Doctor v2.3.0",
+    "Content Intelligence v1.0.0",
+    "Subsystem Registry v1.4.0",
+    "Diagnostics Framework v1.7.0"
+  ]
 }

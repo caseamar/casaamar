@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "generated_at": "2026-07-27T21:30:00+02:00",
   "source": "release-package",
   "file_count": 80,
@@ -22,7 +22,9 @@
       "index.html",
       "registry/subsystems.json",
       "registry/repository.json",
-      "core/casa-repository.js"
+      "core/casa-repository.js",
+      "core/casa-content.js",
+      "registry/content.json"
     ]
   },
   "files": [
@@ -505,6 +507,19 @@
       "kind": "json",
       "area": "root",
       "critical": false
+    },
+    {
+      "path": "core/casa-content.js",
+      "kind": "javascript",
+      "area": "platform-intelligence",
+      "critical": true
+    },
+    {
+      "path": "registry/content.json",
+      "kind": "registry",
+      "area": "platform-intelligence",
+      "critical": true
     }
-  ]
+  ],
+  "updated_at": "2026-07-27T23:10:00+02:00"
 }
