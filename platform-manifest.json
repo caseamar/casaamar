@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.105",
-  "build": "2026-07-27T16:31:02+02:00",
-  "worker_version": "15.5-governance-engine",
-  "release_name": "Governance Engine",
-  "generated_at": "2026-07-27T16:31:02+02:00",
+  "platform_version": "v2026.07.24.106",
+  "build": "2026-07-27T16:50:18+02:00",
+  "worker_version": "15.6-configuration-service",
+  "release_name": "Configuration Service",
+  "generated_at": "2026-07-27T16:50:18+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -119,5 +119,14 @@
     ],
     "tenant": "casa-amar",
     "decision_engine": true
+  },
+  "configuration_service": {
+    "version": "1.0.0",
+    "entry": "/core/casa-config.js",
+    "manifest": "/config/configuration-manifest.json",
+    "default_tenant": "casa-amar",
+    "single_entry_point": true,
+    "tenant_overrides": true,
+    "validation": true
   }
 }

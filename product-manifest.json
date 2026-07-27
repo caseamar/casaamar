@@ -1,5 +1,5 @@
 {
-  "version": "5.5",
+  "version": "5.6",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -304,5 +304,13 @@
     "policy_registry": true,
     "design_registry": true,
     "decision_engine": true
+  },
+  "configuration_service": {
+    "version": "1.0.0",
+    "central_read_api": true,
+    "tenant_resolution": true,
+    "feature_resolution": true,
+    "source_explanation": true,
+    "validation": true
   }
 }

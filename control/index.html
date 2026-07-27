@@ -41,7 +41,7 @@ main{max-width:1380px;margin:auto}
 })();
 </script>
 </head>
-<body data-expected-platform="v2026.07.24.105" data-expected-build="2026-07-27T10:58:48+02:00" id="top" data-canonical-mission-control="v2026.07.24.105">
+<body data-expected-platform="v2026.07.24.106" data-expected-build="2026-07-27T10:58:48+02:00" id="top" data-canonical-mission-control="v2026.07.24.106">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -146,10 +146,33 @@ main{max-width:1380px;margin:auto}
  </details>
 </section>
 
+
+<section class="configuration-section" id="configuration-service">
+ <div class="configuration-heading">
+  <div>
+   <div class="rc-section-kicker">SaaS Foundation</div>
+   <h2>Configuration Service</h2>
+   <p>Alle platform- og tenantindstillinger læses nu gennem én fælles service. Det giver en ensartet og udskiftelig konfiguration uden tekniske særregler på de enkelte sider.</p>
+  </div>
+  <span class="configuration-badge" id="configurationBadge">Kontrollerer…</span>
+ </div>
+ <div class="configuration-grid">
+  <div><span>Service</span><strong id="configurationVersion">Indlæser…</strong></div>
+  <div><span>Tenant</span><strong id="configurationTenant">Indlæser…</strong></div>
+  <div><span>Konfigurationskilder</span><strong id="configurationSources">Indlæser…</strong></div>
+  <div><span>Aktive features</span><strong id="configurationFeatures">Indlæser…</strong></div>
+ </div>
+ <p class="configuration-message" id="configurationMessage">Konfigurationen valideres automatisk.</p>
+ <details class="configuration-details">
+  <summary>Vis konfigurationsdetaljer</summary>
+  <pre id="configurationTechnical">Indlæser…</pre>
+ </details>
+</section>
+
 <section class="rc-canonical-banner" aria-label="Aktuel Mission Control-version">
- <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.105</strong></div>
+ <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.106</strong></div>
  <div><span>Bygget</span><strong data-platform-build>Indlæser…</strong></div>
- <div><span>Worker</span><strong data-worker-version>15.5-governance-engine</strong></div>
+ <div><span>Worker</span><strong data-worker-version>15.6-configuration-service</strong></div>
  <p>Historiske versionsnumre længere nede tilhører tidligere udgivelser og er ikke den platform, du bruger nu.</p>
 </section>
 <section class="rc-center" id="publish">
@@ -283,9 +306,10 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.105"></script>
-<script src="/core/casa-core.js?v=20260724.105"></script>
-<script src="/core/casa-governance.js?v=20260724.105"></script>
+<script src="/platform-shell.js?v=20260724.106"></script>
+<script src="/core/casa-core.js?v=20260724.106"></script>
+<script src="/core/casa-config.js?v=20260724.106"></script>
+<script src="/core/casa-governance.js?v=20260724.106"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -449,8 +473,8 @@ async function buildPublishFiles(){
   release_id:releaseId,
   release_schema:RELEASE_SCHEMA_CURRENT,
   builder_version:RELEASE_ENGINE_VERSION,
-  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.105",
-  worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.5-governance-engine",
+  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.106",
+  worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.6-configuration-service",
   content_version:contentVersion,
   change_count:changeDescriptions.length,
   changes:changeDescriptions,
@@ -1162,6 +1186,36 @@ async function renderGovernance(){
 }
 window.addEventListener("load",renderGovernance);
 window.addEventListener("casa:governance:ready",renderGovernance);
+
+
+
+async function renderConfigurationService(){
+ if(!window.CasaConfig)return;
+ const badge=document.querySelector("#configurationBadge");
+ const message=document.querySelector("#configurationMessage");
+ try{
+  await window.CasaConfig.load();
+  const snapshot=window.CasaConfig.snapshot();
+  const validation=await window.CasaConfig.validate();
+  document.querySelector("#configurationVersion").textContent=`v${snapshot.version}`;
+  document.querySelector("#configurationTenant").textContent=snapshot.tenant;
+  document.querySelector("#configurationSources").textContent=String(snapshot.source_count);
+  document.querySelector("#configurationFeatures").textContent=String(snapshot.enabled_features.length);
+  if(badge){
+   badge.textContent=validation.valid?"Valideret":"Kræver opmærksomhed";
+   badge.dataset.state=validation.valid?"ok":"warning";
+  }
+  if(message)message.textContent=validation.valid
+   ?`Konfigurationen blev valideret ${new Intl.DateTimeFormat("da-DK",{dateStyle:"medium",timeStyle:"medium"}).format(new Date(validation.checked_at))}.`
+   :validation.issues[0]||"Konfigurationen kræver opmærksomhed.";
+  document.querySelector("#configurationTechnical").textContent=JSON.stringify({snapshot,validation},null,2);
+ }catch(error){
+  if(badge){badge.textContent="Fejl";badge.dataset.state="error"}
+  if(message)message.textContent=error?.message||"Konfigurationen kunne ikke indlæses.";
+ }
+}
+window.addEventListener("load",renderConfigurationService);
+window.addEventListener("casa:config:ready",renderConfigurationService);
 
 </script>
 

@@ -42,7 +42,8 @@
  function hasCapability(id){
   return Boolean(cache?.capabilities?.capabilities?.some(item=>item.id===id&&item.status!=="planned"));
  }
- function isFeatureEnabled(id,tenantId="casa-amar"){
+ async function isFeatureEnabled(id,tenantId="casa-amar"){
+  if(window.CasaConfig?.feature&&tenantId==="casa-amar")return window.CasaConfig.feature(id);
   const globalFeature=cache?.features?.features?.find(item=>item.id===id);
   if(!globalFeature?.enabled)return false;
   const tenant=cache?.tenants?.tenants?.find(item=>item.id===tenantId);

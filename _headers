@@ -21,3 +21,6 @@
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /tenant/*
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+/config/configuration-manifest.json
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0

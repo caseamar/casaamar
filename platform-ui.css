@@ -290,3 +290,32 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 .governance-details pre{white-space:pre-wrap;word-break:break-word;font-size:.58rem;line-height:1.45;max-height:280px;overflow:auto;padding:10px;background:#111;color:#eee;border-radius:10px}
 @media(max-width:850px){.governance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.governance-grid{grid-template-columns:1fr}}
+
+.configuration-section{
+ margin:18px 0;
+ padding:20px;
+ border:1px solid var(--ca-line);
+ border-radius:18px;
+ background:var(--ca-surface);
+}
+.configuration-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.configuration-heading h2{margin:4px 0 6px;font-size:1.12rem}
+.configuration-heading p{margin:0;max-width:760px;color:var(--ca-muted);font-size:.74rem;line-height:1.5}
+.configuration-badge{padding:6px 9px;border-radius:999px;border:1px solid var(--ca-line);font-size:.6rem;font-weight:800;white-space:nowrap;background:var(--ca-surface-2)}
+.configuration-badge[data-state="ok"]{background:#edf8f1}
+.configuration-badge[data-state="warning"]{background:#fff8e7}
+.configuration-badge[data-state="error"]{background:#fff0f0}
+.configuration-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}
+.configuration-grid>div{padding:12px;border:1px solid var(--ca-line);border-radius:11px;background:white}
+.configuration-grid span{display:block;font-size:.6rem;color:var(--ca-muted)}
+.configuration-grid strong{display:block;margin-top:4px;font-size:.86rem}
+.configuration-message{margin:10px 0 0;font-size:.66rem;color:var(--ca-muted)}
+.configuration-details{margin-top:10px}
+.configuration-details summary{cursor:pointer;font-size:.65rem;font-weight:780;color:var(--ca-muted)}
+.configuration-details pre{white-space:pre-wrap;word-break:break-word;font-size:.58rem;line-height:1.45;max-height:280px;overflow:auto;padding:10px;background:#111;color:#eee;border-radius:10px}
+@media(max-width:760px){
+ .configuration-heading{display:block}
+ .configuration-badge{display:inline-block;margin-top:10px}
+ .configuration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:480px){.configuration-grid{grid-template-columns:1fr}}
