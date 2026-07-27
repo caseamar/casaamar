@@ -41,7 +41,7 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.116",
+      "version": "v2026.07.24.117",
       "name": "Platform Doctor Version Contract Hotfix",
       "date": "2026-07-27",
       "epic": "Platform Intelligence",
@@ -49,7 +49,7 @@
       "summary": "Made the Platform Doctor version display manifest-driven and aligned Project Brain subsystem metadata with the active platform manifest."
     },
     {
-      "version": "v2026.07.24.116",
+      "version": "v2026.07.24.117",
       "name": "Decision Audit and Event Contracts",
       "date": "2026-07-27",
       "epic": "Platform Intelligence",
@@ -57,17 +57,24 @@
       "summary": "Added durable decision explanations, event contracts, audit history and permanent regression tests for release identity."
     },
     {
-      "version": "v2026.07.24.116",
+      "version": "v2026.07.24.117",
       "name": "Subsystem Registry Consistency Hotfix",
       "date": "2026-07-27",
       "summary": "Introduced a central Subsystem Registry as the sole source of truth for subsystem names and versions, with permanent consistency checks."
     },
     {
-      "version": "v2026.07.24.116",
+      "version": "v2026.07.24.117",
       "name": "Platform Metadata Consistency Hotfix",
       "epic": "Platform Intelligence",
       "summary": "Completed the registry-driven subsystem inventory and introduced automated manifest coverage and UI visibility consistency checks.",
       "status": "stable"
+    },
+    {
+      "version": "v2026.07.24.117",
+      "name": "Repository Intelligence Foundation",
+      "epic": "Platform Intelligence",
+      "summary": "Introduced a canonical repository inventory, runtime repository service, critical-file integrity checks and registry-driven subsystem visibility.",
+      "released_at": "2026-07-27T21:30:00+02:00"
     }
   ],
   "updated_at": "2026-07-27T20:45:00+02:00"

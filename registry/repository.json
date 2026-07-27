@@ -1,0 +1,496 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "generated_at": "2026-07-27T21:30:00+02:00",
+  "source": "release-package",
+  "file_count": 78,
+  "policies": {
+    "complete_replace_except": [
+      ".git/",
+      "images/"
+    ],
+    "forbidden_deploy_patterns": [
+      "*.md",
+      "*.test.html",
+      "*-backup.*"
+    ],
+    "critical_files_must_exist": [
+      "_worker.js",
+      "platform-manifest.json",
+      "platform-shell.js",
+      "control/index.html",
+      "index.html",
+      "registry/subsystems.json"
+    ]
+  },
+  "files": [
+    {
+      "path": "/_headers",
+      "kind": "other",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/_worker.js",
+      "kind": "javascript",
+      "area": "root",
+      "critical": true
+    },
+    {
+      "path": "/asset-brief.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-library.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-manifest.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-model.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-plan.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-studio.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-sync-settings.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/brand-profile.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/brand-studio.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/campaign-profiles.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/component-library.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/config/access-control.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/commerce.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/compliance.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/configuration-manifest.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/design-system.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/features.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/hospitality-intelligence.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/security.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/config/seo.json",
+      "kind": "json",
+      "area": "config",
+      "critical": false
+    },
+    {
+      "path": "/content-model.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/content-release.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/control/index.html",
+      "kind": "html",
+      "area": "control",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-audit.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-brain.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-config.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-contracts.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-core.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-decision.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-diagnostics.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-events.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-governance.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/core/casa-subsystem-registry.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/deployment-manifest.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/index.html",
+      "kind": "html",
+      "area": "root",
+      "critical": true
+    },
+    {
+      "path": "/knowledge-architect.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/knowledge-center.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/knowledge-review.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/knowledge-studio.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/page-blueprint.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/page-preview.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/page-studio.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/photo-missions.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/photo-missions.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/adr/ADR-0001-release-identity-contract.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/architecture.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/backlog.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/capabilities.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/decisions.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/manifest.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/principles.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/release-history.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/roadmap.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform/brain/version-contract.json",
+      "kind": "json",
+      "area": "platform",
+      "critical": false
+    },
+    {
+      "path": "/platform-manifest.json",
+      "kind": "json",
+      "area": "root",
+      "critical": true
+    },
+    {
+      "path": "/platform-shell.js",
+      "kind": "javascript",
+      "area": "root",
+      "critical": true
+    },
+    {
+      "path": "/platform-ui.css",
+      "kind": "css",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/product-manifest.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/registry/capabilities.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/decisions.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/design.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/event-contracts.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/features.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/policies.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/subsystems.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
+    },
+    {
+      "path": "/registry/tenants.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/relation-registry.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/release-notes.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/release-validation.json",
+      "kind": "json",
+      "area": "root",
+      "critical": true
+    },
+    {
+      "path": "/schemas/commerce-order.schema.json",
+      "kind": "json",
+      "area": "schemas",
+      "critical": false
+    },
+    {
+      "path": "/schemas/content-task.schema.json",
+      "kind": "json",
+      "area": "schemas",
+      "critical": false
+    },
+    {
+      "path": "/schemas/event-contract.schema.json",
+      "kind": "json",
+      "area": "schemas",
+      "critical": false
+    },
+    {
+      "path": "/schemas/module.schema.json",
+      "kind": "json",
+      "area": "schemas",
+      "critical": false
+    },
+    {
+      "path": "/schemas/user-role.schema.json",
+      "kind": "json",
+      "area": "schemas",
+      "critical": false
+    },
+    {
+      "path": "/tenant/casa-amar.json",
+      "kind": "json",
+      "area": "tenant",
+      "critical": false
+    },
+    {
+      "path": "/website-content.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    }
+  ]
+}

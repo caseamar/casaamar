@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.116",
-  "generated_at": "2026-07-27T20:45:00+02:00",
+  "release": "v2026.07.24.117",
+  "generated_at": "2026-07-27T21:30:00+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [
     ".git/",
@@ -395,5 +395,5 @@
       "sha256": "fcb65d98443209ed909772a9c0aa5f67982211acecd1debe541fff80a87941f4"
     }
   ],
-  "release_name": "Subsystem Registry Consistency Hotfix"
+  "release_name": "Repository Intelligence Foundation"
 }
