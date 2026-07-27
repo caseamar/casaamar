@@ -1,3 +1,2 @@
-Casa Amar v2026.07.24.119 — Content Intelligence Foundation
-
-Introduces Content Intelligence with a canonical content registry, lifecycle status model, content relationships and consistency validation.
+Casa Amar v2026.07.24.120 — Release Identity Quality Gate Hotfix
+Fixes Worker/manifest identity drift and adds an executable release quality gate.

@@ -56,7 +56,7 @@ function casaMigrateLegacyWorkspace(){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_MIGRATION_KEY,JSON.stringify({migrated_at:new Date().toISOString(),action:"deferred_active_release"}));
   casaDeriveWorkspaceState();return;
  }
- const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.119",items:{}};
+ const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.120",items:{}};
  CASA_WORKSPACE_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)backup.items[key]=value});
  if(Object.keys(backup.items).length){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_BACKUP_KEY,JSON.stringify(backup));
@@ -106,7 +106,7 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-confirmed-at]").forEach(el=>el.textContent=casaFormatDateTime(confirmedAt));
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.119&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.120&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 
@@ -168,34 +168,39 @@ function canonicalizeReleaseUrl(manifest){
  if(changed)history.replaceState(history.state,"",url.pathname+(url.search?url.search:"")+url.hash);
 }
 
+async function fetchPlatformIdentityPair(){
+ const [manifest,metaResponse]=await Promise.all([
+  fetchPlatformManifest(),
+  fetch(`/api/platform-meta?v=20260724.120&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+ ]);
+ const meta=metaResponse.ok?await metaResponse.json():null;
+ return {manifest,meta,consistent:Boolean(meta&&manifest.platform_version===meta.platform_version&&manifest.worker_version===meta.worker_version)};
+}
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
 async function loadPlatformManifest(){
+ const retryDelays=[0,800,1600,3200];
+ let latest=null;
  try{
-  const [manifest,metaResponse]=await Promise.all([
-   fetchPlatformManifest(),
-   fetch(`/api/platform-meta?v=20260724.119&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
-  ]);
-  const meta=metaResponse.ok?await metaResponse.json():null;
-  const consistent=Boolean(
-   meta &&
-   manifest.platform_version===meta.platform_version &&
-   manifest.worker_version===meta.worker_version
-  );
+  // URL cleanup is independent of release identity and must never be blocked by a transient mismatch.
+  canonicalizeReleaseUrl({canonical_mission_control_path:"/control/"});
+  for(const delay of retryDelays){
+   if(delay)await wait(delay);
+   latest=await fetchPlatformIdentityPair();
+   if(latest.consistent)break;
+  }
+  const {manifest,meta,consistent}=latest||{};
   if(!consistent){
    showPlatformConsistencyWarning(manifest,meta);
-   throw new Error("Platformfilerne er ikke synkroniserede.");
+   throw new Error("Platformfilerne er ikke synkroniserede efter readiness retries.");
   }
   removePlatformConsistencyWarning();
   casaInstalledVersion=manifest.platform_version||null;
   const confirmationKey=`casaPlatformConfirmedAt:${manifest.platform_version}`;
-  if(!localStorage.getItem(confirmationKey)){
-   localStorage.setItem(confirmationKey,new Date().toISOString());
-  }
+  if(!localStorage.getItem(confirmationKey))localStorage.setItem(confirmationKey,new Date().toISOString());
   applyPlatformManifest(manifest);
   canonicalizeReleaseUrl(manifest);
   const canonical=manifest.canonical_mission_control_path||"/control/";
-  if((/^\/mission-control-v\d+\.html$/.test(location.pathname)||["/knowledge-center","/knowledge-center.html"].includes(location.pathname))&&location.pathname!==canonical){
-   location.replace(canonical+location.hash);
-  }
+  if((/^\/mission-control-v\d+\.html$/.test(location.pathname)||["/knowledge-center","/knowledge-center.html"].includes(location.pathname))&&location.pathname!==canonical)location.replace(canonical+location.hash);
   return manifest;
  }catch(error){
   console.error("Platformstatus kunne ikke synkroniseres",error);
@@ -437,7 +442,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.119&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.120&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "release": "v2026.07.24.120",
+  "status": "passed",
+  "passed_checks": 56,
+  "failed_checks": 0,
+  "executed_at": "2026-07-27T23:45:00+02:00",
+  "command": "npm run validate:release"
+}

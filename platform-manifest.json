@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.119",
-  "build": "2026-07-27T23:10:00+02:00",
-  "worker_version": "15.15.0-content-intelligence-foundation",
-  "release_name": "Content Intelligence Foundation",
-  "generated_at": "2026-07-27T23:10:00+02:00",
+  "platform_version": "v2026.07.24.120",
+  "build": "2026-07-27T23:45:00+02:00",
+  "worker_version": "15.16.0-release-quality-gate-hotfix",
+  "release_name": "Release Identity Quality Gate Hotfix",
+  "generated_at": "2026-07-27T23:45:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.3.0",
+    "version": "2.3.1",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -177,7 +177,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.7.0",
+    "version": "1.8.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -207,7 +207,7 @@
     "purpose": "Prevent control-center bootstrap logic from affecting the public website."
   },
   "consistency_contract": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "identity_fields": [
       "platform_version",
       "worker_version"
@@ -216,7 +216,14 @@
       "build",
       "generated_at"
     ],
-    "rule": "Build timestamps are diagnostic metadata and must not trigger a synchronization warning."
+    "rule": "Build timestamps are diagnostic metadata and must not trigger a synchronization warning.",
+    "retry_delays_ms": [
+      0,
+      800,
+      1600,
+      3200
+    ],
+    "warning_policy": "Show a blocking synchronization warning only after all identity retries fail."
   },
   "audit_engine": {
     "version": "1.0.0",
@@ -230,13 +237,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "1.4.0",
+    "version": "1.5.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -265,7 +272,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -289,7 +296,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.119",
+    "asset_cache_key": "20260724.120",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -306,6 +313,20 @@
       "relations",
       "validate",
       "snapshot"
+    ]
+  },
+  "release_quality_gate": {
+    "version": "1.0.0",
+    "entry": "/tools/release-quality-gate.mjs",
+    "required": true,
+    "checks": [
+      "manifest-worker-identity",
+      "module-version-alignment",
+      "registry-version-alignment",
+      "cache-key-consistency",
+      "stale-release-token-scan",
+      "json-parse",
+      "javascript-syntax"
     ]
   }
 }

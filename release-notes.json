@@ -1,12 +1,6 @@
 {
-  "platform_version": "v2026.07.24.119",
-  "release_name": "Content Intelligence Foundation",
-  "summary": "Introduces Content Intelligence with a canonical content registry, lifecycle status model, content relationships and consistency validation.",
-  "test_focus": [
-    "Platform v2026.07.24.119",
-    "Platform Doctor v2.3.0",
-    "Content Intelligence v1.0.0",
-    "Subsystem Registry v1.4.0",
-    "Diagnostics Framework v1.7.0"
-  ]
+  "release": "v2026.07.24.120",
+  "name": "Release Identity Quality Gate Hotfix",
+  "summary": "Fixes Worker/manifest identity drift and adds an executable quality gate for future releases.",
+  "generated_at": "2026-07-27T23:45:00+02:00"
 }

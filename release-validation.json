@@ -1,59 +1,47 @@
 {
-  "schema_version": "2.0",
-  "release": "v2026.07.24.119",
-  "platform_version": "v2026.07.24.119",
-  "generated_at": "2026-07-27T23:10:00+02:00",
+  "schema_version": "2.1",
+  "release": "v2026.07.24.120",
+  "platform_version": "v2026.07.24.120",
+  "generated_at": "2026-07-27T23:45:00+02:00",
   "status": "passed",
-  "summary": "Fixes stale release URLs and cached subsystem metadata by enforcing canonical routes, current asset cache keys and repository-wide release-token consistency.",
+  "release_name": "Release Identity Quality Gate Hotfix",
+  "summary": "Aligns Worker and manifest identity, adds readiness retries, and introduces an executable release quality gate that blocks inconsistent packages.",
   "checks": [
     {
-      "id": "json",
-      "status": "passed",
-      "detail": "All JSON files parse."
+      "id": "manifest-worker-identity",
+      "status": "passed"
+    },
+    {
+      "id": "module-version-alignment",
+      "status": "passed"
+    },
+    {
+      "id": "registry-version-alignment",
+      "status": "passed"
+    },
+    {
+      "id": "cache-key-consistency",
+      "status": "passed"
+    },
+    {
+      "id": "stale-release-token-scan",
+      "status": "passed"
+    },
+    {
+      "id": "json-parse",
+      "status": "passed"
     },
     {
       "id": "javascript-syntax",
-      "status": "passed",
-      "detail": "All core JavaScript files pass syntax validation."
+      "status": "passed"
     },
     {
       "id": "canonical-control-url",
-      "status": "passed",
-      "detail": "Control Center removes v, _platform_release and temporary _refresh parameters after startup."
-    },
-    {
-      "id": "update-navigation",
-      "status": "passed",
-      "detail": "The update action reloads the canonical route with an ephemeral cache-buster and never persists a release number in the URL."
-    },
-    {
-      "id": "asset-cache-keys",
-      "status": "passed",
-      "detail": "All deployable HTML and JavaScript references use cache key 20260724.119."
-    },
-    {
-      "id": "stale-release-tokens",
-      "status": "passed",
-      "detail": "No deployable file contains a release cache key older than the current package."
-    },
-    {
-      "id": "subsystem-versions",
-      "status": "passed",
-      "detail": "Manifest, Subsystem Registry and runtime module versions are aligned."
+      "status": "passed"
     },
     {
       "id": "replacement-package",
-      "status": "passed",
-      "detail": "Complete replacement package; preserve only .git and images."
+      "status": "passed"
     }
-  ],
-  "release_name": "Content Intelligence Foundation",
-  "content_intelligence_checks": [
-    "registry exists",
-    "unique content ids",
-    "known lifecycle statuses",
-    "known content types",
-    "all relations resolve",
-    "manifest and subsystem registry versions match"
   ]
 }
