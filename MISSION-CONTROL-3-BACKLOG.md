@@ -20,3 +20,12 @@
 - Maintenance planning.
 - Smart-home status.
 - Privacy-safe analytics and conversion insights.
+
+
+## Strategic backlog added in v2026.07.24.91
+
+- Product naming: define a distinct name for the administration product, separate from Casa Amar.
+- Multi-user foundation: login, invitations, roles and permissions.
+- Suggested initial roles: Owner/Publisher, Content Creator and Reviewer.
+- Audit history: attribute changes and approvals to users.
+- Keep the present experience single-user until authentication is intentionally implemented.

@@ -1,7 +1,7 @@
 # Test intelligent startposition
 
-Release: v2026.07.24.90
-Worker: 14.1-release-compatibility-engine
+Release: v2026.07.24.91
+Worker: 14.2-autonomous-publish-supervisor
 
 1. Åbn `/knowledge-center.html` uden aktiv udgivelse.
    - Siden skal starte helt i toppen.

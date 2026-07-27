@@ -1,13 +1,22 @@
 {
-  "platform_version": "v2026.07.24.90",
-  "build": "2026-07-27T00:23:36+02:00",
-  "worker_version": "14.1-release-compatibility-engine",
-  "release_name": "Release Compatibility Engine",
-  "generated_at": "2026-07-27T00:23:36+02:00",
+  "platform_version": "v2026.07.24.91",
+  "build": "2026-07-27T09:16:13+02:00",
+  "worker_version": "14.2-autonomous-publish-supervisor",
+  "release_name": "Autonomous Publish Supervisor",
+  "generated_at": "2026-07-27T09:16:13+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
   "release_schemas_supported": [
     "2.0"
-  ]
+  ],
+  "publish_supervisor": {
+    "initial_quiet_period_seconds": 30,
+    "expected_window_seconds": [
+      30,
+      120
+    ],
+    "critical_ux_window_seconds": 300,
+    "automatic": true
+  }
 }

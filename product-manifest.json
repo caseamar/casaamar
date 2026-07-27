@@ -1,5 +1,5 @@
 {
-  "version": "4.0",
+  "version": "4.1",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -188,5 +188,19 @@
       "release-contract.json"
     ],
     "integrity": "SHA-256 checksum for every generated file."
+  },
+  "autonomous_publish_supervisor": {
+    "quiet_period_seconds": 30,
+    "polling": {
+      "30_to_120_seconds": 10,
+      "2_to_5_minutes": 25,
+      "5_to_15_minutes": 60,
+      "after_15_minutes": 300
+    },
+    "manual_action": "Tjek nu",
+    "countdown": "Neutral second-by-second countdown to next automatic check.",
+    "activity_log": true,
+    "resume": "When the tab becomes visible again, an overdue check runs immediately.",
+    "limitation": "Browser JavaScript cannot continue while the browser is fully closed; monitoring resumes on return."
   }
 }

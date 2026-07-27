@@ -1,15 +1,15 @@
-feat(release): add schema-based compatibility and immutable release contracts
+feat(publish): autonomous monitoring with a neutral countdown
 
-- Every release package now has release_schema and builder_version.
-- Added release-contract.json with required fields and SHA-256 checksums.
-- Pending packages are revalidated when Mission Control opens.
-- Pre-flight runs before building and before accepting a GitHub commit.
-- Legacy/incompatible packages are paused instead of silently processed.
-- Old packages remain immutable and are preserved as superseded history.
-- User can rebuild a compatible package from the current approved workspace.
-- Platform updates only invalidate packages when release criteria/schema change.
+- First 30 seconds are a deliberate quiet period for manual GitHub upload.
+- Checks every 10 seconds from 30–120 seconds.
+- Checks every 25 seconds through the five-minute critical UX window.
+- Becomes less frequent after five minutes.
+- Shows last check and a subtle “Tjekker igen om” countdown.
+- Keeps “Tjek nu” as an optional secondary action.
+- Adds a readable activity log.
+- Resumes overdue monitoring when the tab becomes visible.
+- Preserves the schema-based compatibility and two-match live verification.
 
-Release: v2026.07.24.90
-Worker: 14.1-release-compatibility-engine
-Schema: 2.0
-Build: 2026-07-27T00:23:36+02:00
+Release: v2026.07.24.91
+Worker: 14.2-autonomous-publish-supervisor
+Build: 2026-07-27T09:16:13+02:00
