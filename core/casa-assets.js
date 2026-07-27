@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.2.0";
+ const VERSION="1.2.1";
  const ASSET_URL="/registry/assets.json";
  const VARIANT_URL="/registry/asset-variants.json";
  let cache=null,variantCache=null;

@@ -110,12 +110,12 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.124",
-      "name": "Asset Variant Pipeline and Publication Readiness",
+      "version": "v2026.07.24.125",
+      "name": "Experience Engine Foundation",
       "epic": "Platform Intelligence",
       "summary": "Added non-destructive responsive variant plans, publication readiness evaluation and variant quality gates.",
       "status": "release-candidate"
     }
   ],
-  "updated_at": "2026-07-28T02:30:00+02:00"
+  "updated_at": "2026-07-28T03:30:00+02:00"
 }

@@ -1,0 +1,175 @@
+{
+  "version": "1.0.0",
+  "source_of_truth": true,
+  "journey_stages": [
+    {
+      "id": "inspiration",
+      "display_name": "Inspiration",
+      "order": 10
+    },
+    {
+      "id": "booking",
+      "display_name": "Booking",
+      "order": 20
+    },
+    {
+      "id": "before-arrival",
+      "display_name": "Before Arrival",
+      "order": 30
+    },
+    {
+      "id": "arrival",
+      "display_name": "Arrival",
+      "order": 40
+    },
+    {
+      "id": "stay",
+      "display_name": "Stay",
+      "order": 50
+    },
+    {
+      "id": "local-experiences",
+      "display_name": "Local Experiences",
+      "order": 60
+    },
+    {
+      "id": "departure",
+      "display_name": "Departure",
+      "order": 70
+    },
+    {
+      "id": "return-guest",
+      "display_name": "Return Guest",
+      "order": 80
+    }
+  ],
+  "audiences": [
+    "couples",
+    "families",
+    "friends",
+    "seniors",
+    "workcation",
+    "multi-generation"
+  ],
+  "touchpoints": [
+    {
+      "id": "discover-casa-amar",
+      "stage": "inspiration",
+      "content_refs": [
+        "public-website"
+      ],
+      "asset_refs": [
+        "asset-casa-amar-v2-stue"
+      ],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": true
+    },
+    {
+      "id": "plan-arrival",
+      "stage": "before-arrival",
+      "content_refs": [
+        "knowledge-base"
+      ],
+      "asset_refs": [],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": true
+    },
+    {
+      "id": "settle-in",
+      "stage": "arrival",
+      "content_refs": [
+        "knowledge-base"
+      ],
+      "asset_refs": [],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": true
+    },
+    {
+      "id": "enjoy-stay",
+      "stage": "stay",
+      "content_refs": [
+        "public-website"
+      ],
+      "asset_refs": [
+        "asset-casa-amar-v2-stue"
+      ],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": true
+    },
+    {
+      "id": "explore-area",
+      "stage": "local-experiences",
+      "content_refs": [
+        "public-website"
+      ],
+      "asset_refs": [],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": false
+    },
+    {
+      "id": "prepare-departure",
+      "stage": "departure",
+      "content_refs": [
+        "knowledge-base"
+      ],
+      "asset_refs": [],
+      "audiences": [
+        "couples",
+        "families",
+        "friends",
+        "seniors",
+        "workcation",
+        "multi-generation"
+      ],
+      "required": true
+    }
+  ],
+  "quality_rules": {
+    "unique_ids": true,
+    "registered_stages_only": true,
+    "content_references_must_resolve": true,
+    "asset_references_must_resolve": true,
+    "required_stage_coverage": [
+      "inspiration",
+      "before-arrival",
+      "arrival",
+      "stay",
+      "departure"
+    ]
+  }
+}

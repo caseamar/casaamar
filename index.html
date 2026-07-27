@@ -2393,7 +2393,7 @@ let SITE_BUILD = 'Indlæser…';
 
 async function loadPublicPlatformVersion(){
  try{
-  const response=await fetch(`/platform-manifest.json?v=20260724.124&ts=${Date.now()}`,{cache:"no-store"});
+  const response=await fetch(`/platform-manifest.json?v=20260724.125&ts=${Date.now()}`,{cache:"no-store"});
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   const manifest=await response.json();
   SITE_VERSION=manifest.platform_version||"Ukendt";

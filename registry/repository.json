@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.4.0",
-  "generated_at": "2026-07-28T02:30:00+02:00",
+  "version": "1.5.0",
+  "generated_at": "2026-07-28T03:30:00+02:00",
   "source": "release-package",
   "file_count": 91,
   "policies": {
@@ -576,7 +576,27 @@
       "kind": "json",
       "area": "registry",
       "critical": true
+    },
+    {
+      "kind": "text",
+      "area": "root",
+      "id": "core-casa-experience-js",
+      "path": "core/casa-experience.js",
+      "type": "javascript",
+      "critical": true,
+      "description": "Experience Engine runtime or registry",
+      "category": "platform-intelligence"
+    },
+    {
+      "kind": "text",
+      "area": "root",
+      "id": "registry-experiences-json",
+      "path": "registry/experiences.json",
+      "type": "registry",
+      "critical": true,
+      "description": "Experience Engine runtime or registry",
+      "category": "platform-intelligence"
     }
   ],
-  "updated_at": "2026-07-28T02:30:00+02:00"
+  "updated_at": "2026-07-28T03:30:00+02:00"
 }

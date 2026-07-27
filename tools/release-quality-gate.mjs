@@ -13,9 +13,9 @@ const workerPlatform=worker.match(/platform_version:\s*"([^"]+)"/)?.[1];
 const workerVersion=worker.match(/worker_version:\s*"([^"]+)"/)?.[1];
 check(workerPlatform===manifest.platform_version,`Worker platform identity = ${manifest.platform_version}`);
 check(workerVersion===manifest.worker_version,`Worker version identity = ${manifest.worker_version}`);
-const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence'};
+const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine'};
 for(const item of registry.subsystems){const key=mapping[item.id]; const mv=key==='platform_version'?manifest[key]:manifest[key]?.version; check(Boolean(key)&&item.version===mv,`${item.display_name} registry version matches manifest (${item.version})`)}
-const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence'};
+const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine'};
 for(const [file,id] of Object.entries(moduleFiles)){const v=read(file).match(/const VERSION="([^"]+)"/)?.[1]; const rv=registry.subsystems.find(x=>x.id===id)?.version; check(v===rv,`${file} version matches registry (${v})`)}
 const current=manifest.platform_version.match(/^v(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/); check(Boolean(current),'Platform version format is valid'); const cache=current?`${current[1]}${current[2]}${current[3]}.${current[4]}`:'';
 const deployExt=new Set(['.html','.js']);
@@ -82,6 +82,16 @@ for(const plan of variantRegistry.plans||[]){
  if((assetRegistry.items||[]).find(x=>x.id===plan.asset_id)?.type==='image')for(const id of requiredProfiles)check(ids.has(id),`Asset variant profile is complete (${plan.asset_id}:${id})`);
 }
 for(const id of assetIds)check(variantPlanIds.has(id),`Asset variant plan covers canonical asset (${id})`);
+
+
+
+const experience=json('registry/experiences.json');
+const stageIds=new Set(); const touchpointIds=new Set();
+for(const stage of experience.journey_stages||[]){check(Boolean(stage.id&&stage.display_name&&Number.isFinite(stage.order)),`Experience stage is complete (${stage.id||'unknown'})`);check(!stageIds.has(stage.id),`Experience stage id is unique (${stage.id})`);stageIds.add(stage.id)}
+const experienceContentIds=new Set((json('registry/content.json').items||[]).map(x=>x.id));
+const experienceAssetIds=new Set((json('registry/assets.json').items||[]).map(x=>x.id));
+for(const point of experience.touchpoints||[]){check(Boolean(point.id&&point.stage),`Experience touchpoint is complete (${point.id||'unknown'})`);check(!touchpointIds.has(point.id),`Experience touchpoint id is unique (${point.id})`);touchpointIds.add(point.id);check(stageIds.has(point.stage),`Experience touchpoint stage resolves (${point.id} -> ${point.stage})`);for(const ref of point.content_refs||[])check(experienceContentIds.has(ref),`Experience content reference resolves (${point.id} -> ${ref})`);for(const ref of point.asset_refs||[])check(experienceAssetIds.has(ref),`Experience asset reference resolves (${point.id} -> ${ref})`)}
+for(const required of experience.quality_rules?.required_stage_coverage||[])check((experience.touchpoints||[]).some(x=>x.stage===required),`Experience required stage is covered (${required})`);
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

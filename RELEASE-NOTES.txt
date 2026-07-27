@@ -1,4 +1,6 @@
-Casa Amar Platform v2026.07.24.124
-Asset Variant Pipeline and Publication Readiness
+Casa Amar Platform v2026.07.24.125
+Experience Engine Foundation
 
-Non-destructive responsive asset variant planning, publication readiness and integrity validation.
+Adds a typed guest journey model, cross-subsystem experience references and automated experience integrity checks.
+
+Deployment: keep .git and images; replace everything else.

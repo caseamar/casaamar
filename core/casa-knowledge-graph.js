@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  const URL="/registry/knowledge-graph.json";
  let cache=null;
  const clone=value=>JSON.parse(JSON.stringify(value));

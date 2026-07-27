@@ -1,8 +1,6 @@
 {
-  "release": "v2026.07.24.124",
-  "name": "Asset Variant Pipeline and Publication Readiness",
-  "epic": "Platform Intelligence",
-  "summary": "Adds a non-destructive responsive asset variant pipeline, publication readiness contracts and release-gated variant integrity checks.",
-  "released_at": "2026-07-28T02:30:00+02:00",
-  "status": "release-candidate"
+  "release": "v2026.07.24.125",
+  "name": "Experience Engine Foundation",
+  "summary": "Adds a typed guest journey model, cross-subsystem experience references and automated experience integrity checks.",
+  "deployment": "complete_replace_except_git_and_images"
 }
