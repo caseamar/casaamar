@@ -1,38 +1,26 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.103",
-  "built_at": "2026-07-27T15:29:05+02:00",
+  "release": "v2026.07.24.104",
+  "built_at": "2026-07-27T15:51:06+02:00",
   "checks": [
     {
-      "id": "doctor-ui-present",
+      "id": "doctor-started-state",
       "status": "passed"
     },
     {
-      "id": "automatic-health-check",
+      "id": "doctor-completed-confirmation",
       "status": "passed"
     },
     {
-      "id": "manual-recheck",
+      "id": "doctor-completion-timestamp",
       "status": "passed"
     },
     {
-      "id": "manifest-check",
+      "id": "doctor-check-count",
       "status": "passed"
     },
     {
-      "id": "content-release-check",
-      "status": "passed"
-    },
-    {
-      "id": "asset-library-check",
-      "status": "passed"
-    },
-    {
-      "id": "component-library-check",
-      "status": "passed"
-    },
-    {
-      "id": "security-compliance-seo-foundation-checks",
+      "id": "doctor-last-completion-persistence",
       "status": "passed"
     }
   ]

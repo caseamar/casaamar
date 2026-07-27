@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.103",
-  "build": "2026-07-27T15:29:05+02:00",
-  "worker_version": "15.3-platform-doctor",
-  "release_name": "Platform Doctor",
-  "generated_at": "2026-07-27T15:29:05+02:00",
+  "platform_version": "v2026.07.24.104",
+  "build": "2026-07-27T15:51:06+02:00",
+  "worker_version": "15.4-doctor-completion-confirmation",
+  "release_name": "Doctor Completion Confirmation",
+  "generated_at": "2026-07-27T15:51:06+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -101,6 +101,10 @@
       "security_foundation",
       "compliance_foundation",
       "seo_foundation"
-    ]
+    ],
+    "completion_confirmation": true,
+    "completion_timestamp": true,
+    "completed_check_count": true,
+    "last_completion_persisted": true
   }
 }

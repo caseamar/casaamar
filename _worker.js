@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "15.3-platform-doctor",
+      version: "15.4-doctor-completion-confirmation",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "15.3-platform-doctor",
+          worker: "15.4-doctor-completion-confirmation",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "15.3-platform-doctor",
+          worker: "15.4-doctor-completion-confirmation",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.103",
-        build: "2026-07-27T15:29:05+02:00",
-        worker_version: "15.3-platform-doctor",
+        platform_version: "v2026.07.24.104",
+        build: "2026-07-27T15:51:06+02:00",
+        worker_version: "15.4-doctor-completion-confirmation",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"

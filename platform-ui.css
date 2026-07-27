@@ -234,3 +234,40 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
  .doctor-button{margin-top:12px}
  .doctor-grid{grid-template-columns:1fr}
 }
+
+.doctor-confirmation{
+ margin-top:10px;
+ padding:11px 12px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ border:1px solid var(--ca-line);
+ border-radius:11px;
+ background:#edf8f1;
+}
+.doctor-confirmation-mark{
+ width:26px;
+ height:26px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ background:white;
+ border:1px solid var(--ca-line);
+ font-weight:900;
+}
+.doctor-confirmation strong{display:block;font-size:.72rem}
+.doctor-confirmation span:last-child{display:block;margin-top:2px;font-size:.62rem;color:var(--ca-muted)}
+.doctor-confirmation[data-state="attention"],
+.doctor-confirmation[data-state="warning"]{background:#fff8e7}
+.doctor-confirmation[data-state="error"]{background:#fff0f0}
+.doctor-summary[data-state="loading"] .doctor-status-icon{
+ animation:doctorPulse 1s ease-in-out infinite;
+}
+.doctor-button[aria-busy="true"]{cursor:wait;opacity:.78}
+@keyframes doctorPulse{
+ 0%,100%{transform:scale(1);opacity:.55}
+ 50%{transform:scale(1.08);opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+ .doctor-summary[data-state="loading"] .doctor-status-icon{animation:none}
+}

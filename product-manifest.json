@@ -1,5 +1,5 @@
 {
-  "version": "5.3",
+  "version": "5.4",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -288,5 +288,12 @@
       "warning",
       "error"
     ]
+  },
+  "platform_doctor_completion": {
+    "started_state": true,
+    "completed_state": true,
+    "timestamp": true,
+    "check_count": true,
+    "persistent_last_completion": "casaDoctorLastCompletedV1"
   }
 }
