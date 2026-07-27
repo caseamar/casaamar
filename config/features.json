@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "modules": {
+    "core_content": {
+      "enabled": true,
+      "status": "active"
+    },
+    "design_system": {
+      "enabled": true,
+      "status": "foundation"
+    },
+    "multi_user": {
+      "enabled": false,
+      "status": "planned"
+    },
+    "commerce": {
+      "enabled": false,
+      "status": "planned"
+    },
+    "hospitality_intelligence": {
+      "enabled": false,
+      "status": "planned"
+    }
+  }
+}

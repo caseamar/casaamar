@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commerce order",
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "items",
+    "total"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "submitted",
+        "paid",
+        "ordered",
+        "delivered",
+        "cancelled"
+      ]
+    },
+    "items": {
+      "type": "array"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "stay_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

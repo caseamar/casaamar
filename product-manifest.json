@@ -1,5 +1,5 @@
 {
-  "version": "4.7",
+  "version": "5.0",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -247,5 +247,21 @@
     "fix": "Removed the /control rule from _redirects. /control.html is now the only stable static entry.",
     "worker": "Only /control redirects once; /control.html is served directly.",
     "legacy": "Old versioned pages still redirect to /control.html."
+  },
+  "directory_control_entry": {
+    "stable_url": "/control/",
+    "asset": "control/index.html",
+    "why": "Cloudflare can normalize .html URLs to extensionless URLs. A directory index avoids that collision.",
+    "redirect_file": "Removed",
+    "worker": "Does not intercept /control/; static index is served directly."
+  },
+  "foundation": {
+    "runtime": "Clean production-only package",
+    "deployment": "Replace repository contents with this package",
+    "control_center": "/control/",
+    "historical_ui_files": false,
+    "module_registry": "/config/features.json",
+    "access_control": "/config/access-control.json",
+    "schemas": "/schemas/"
   }
 }

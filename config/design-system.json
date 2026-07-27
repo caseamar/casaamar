@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "enabled": true,
+  "ai_first": true,
+  "human_finetune": true,
+  "component_source": "/component-library.json",
+  "allowed_adjustments": [
+    "component_order",
+    "image_count",
+    "section_presence",
+    "copy_length",
+    "layout_variant"
+  ]
+}

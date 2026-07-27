@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content task",
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "source",
+    "recommendation"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "suggested",
+        "in_progress",
+        "review",
+        "approved",
+        "published"
+      ]
+    },
+    "source": {
+      "enum": [
+        "ai",
+        "human",
+        "industry_baseline",
+        "guest_feedback"
+      ]
+    },
+    "recommendation": {
+      "type": "string"
+    },
+    "assignee": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

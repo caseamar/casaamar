@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.97",
-  "build": "2026-07-27T11:56:59+02:00",
-  "worker_version": "14.8-no-redirect-loop",
-  "release_name": "No Redirect Loop",
-  "generated_at": "2026-07-27T11:56:59+02:00",
+  "platform_version": "v2026.07.24.100",
+  "build": "2026-07-27T12:51:58+02:00",
+  "worker_version": "15.0-clean-scalable-foundation",
+  "release_name": "Clean Scalable Foundation",
+  "generated_at": "2026-07-27T12:51:58+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -29,12 +29,29 @@
     "content_release": "Monitoring starts only after the user creates a content release package.",
     "historical_release": "Visible as a receipt but never monitored."
   },
-  "canonical_mission_control_path": "/control.html",
+  "canonical_mission_control_path": "/control/",
   "routing_policy": {
-    "stable_user_url": "/control.html",
-    "control_alias_removed": true,
-    "legacy_pages": "Static redirect stubs only",
-    "worker_behavior": "Serve /control.html directly; never redirect /control.html."
+    "stable_user_url": "/control/",
+    "uses_directory_index": true,
+    "cloudflare_pretty_url_safe": true,
+    "redirect_rules_removed": true
   },
-  "canonical_mission_control_asset": "control.html"
+  "canonical_mission_control_asset": "control/index.html",
+  "architecture_version": "1.0",
+  "deployment_model": "complete_replace",
+  "runtime_policy": {
+    "one_control_center": true,
+    "no_versioned_ui_files": true,
+    "no_test_or_markdown_files_in_deploy": true,
+    "stable_routes": [
+      "/",
+      "/control/"
+    ]
+  },
+  "future_foundation": {
+    "multi_user_ready": true,
+    "commerce_ready": true,
+    "design_system_ready": true,
+    "hospitality_intelligence_ready": true
+  }
 }

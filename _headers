@@ -2,12 +2,12 @@
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /platform-shell.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/control.html
+/control/*
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/mission-control-v*.html
+/config/*
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowledge-center.html
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/schemas/*
+  Cache-Control: public, max-age=3600
 /*.html
   Cache-Control: no-cache, must-revalidate, max-age=0
 /*
