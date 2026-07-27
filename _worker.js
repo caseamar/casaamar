@@ -633,7 +633,7 @@ async function handleStatus(request, env) {
     return json({
       ok: bundle.loadErrors.length === 0,
       service: "Casa Amar Knowledge Platform",
-      version: "14.6-stable-control-route",
+      version: "14.7-static-control-entry",
       loadedAt: bundle.loadedAt,
       registryVersion: bundle.registry?.version || "unknown",
       datasets: (bundle.registry?.datasets || []).map((item) => ({
@@ -2792,7 +2792,7 @@ export default {
         const componentLibrary = await assetJson(env, request, "/component-library.json");
         return json({
           ok: true,
-          worker: "14.6-stable-control-route",
+          worker: "14.7-static-control-entry",
           endpoint: "page-generator",
           openai_configured: Boolean(env.OPENAI_API_KEY),
           component_contracts: Object.keys(componentLibrary?.components || {}).length
@@ -2800,7 +2800,7 @@ export default {
       } catch (error) {
         return json({
           ok: false,
-          worker: "14.6-stable-control-route",
+          worker: "14.7-static-control-entry",
           error: "Page Generator dependency check failed.",
           detail: String(error?.message || error)
         }, 500);
@@ -2812,9 +2812,9 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.95",
-        build: "2026-07-27T11:24:59+02:00",
-        worker_version: "14.6-stable-control-route",
+        platform_version: "v2026.07.24.96",
+        build: "2026-07-27T11:43:23+02:00",
+        worker_version: "14.7-static-control-entry",
         source: "worker-runtime"
       }, 200, {
         "cache-control": "no-store, no-cache, must-revalidate, max-age=0"
@@ -2829,20 +2829,20 @@ export default {
 
     if (request.method === "GET" && isLegacyMissionControlRoute) {
       const redirectUrl = new URL(request.url);
-      redirectUrl.pathname = "/control";
+      redirectUrl.pathname = "/control.html";
       redirectUrl.search = "";
       return Response.redirect(redirectUrl.toString(), 302);
     }
 
-    if (request.method === "GET" && url.pathname === "/control") {
+    if (request.method === "GET" && url.pathname === "/control" || url.pathname === "/control.html") {
       const target = new URL(request.url);
-      target.pathname = "/mission-control-v95.html";
-      target.searchParams.set("_release", "20260724.95");
+      target.pathname = "/control.html";
+      target.searchParams.set("_release", "20260724.96");
       const assetResponse = await env.ASSETS.fetch(new Request(target.toString(), request));
       const headers = new Headers(assetResponse.headers);
       headers.set("cache-control", "no-store, no-cache, must-revalidate, max-age=0");
-      headers.set("x-casa-platform-version", "v2026.07.24.95");
-      headers.set("x-casa-control-asset", "mission-control-v95.html");
+      headers.set("x-casa-platform-version", "v2026.07.24.96");
+      headers.set("x-casa-control-asset", "control.html");
       return new Response(assetResponse.body, {
         status: assetResponse.status,
         statusText: assetResponse.statusText,

@@ -30,7 +30,7 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-confirmed-at]").forEach(el=>el.textContent=casaFormatDateTime(confirmedAt));
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.95&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.96&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 
@@ -62,10 +62,10 @@ function showUpdateAvailable(manifest){
   button.textContent="Opdaterer…";
   button.disabled=true;
   if(/^\/mission-control-v\d+\.html$/.test(location.pathname)||["/knowledge-center","/knowledge-center.html","/control"].includes(location.pathname)){
-   location.assign("/control"+location.hash);
+   location.assign("/control.html"+location.hash);
   }else{
    const url=new URL(location.href);
-   url.searchParams.set("_platform_release","20260724.95");
+   url.searchParams.set("_platform_release","20260724.96");
    location.assign(url.toString());
   }
  };
@@ -89,7 +89,7 @@ async function loadPlatformManifest(){
  try{
   const [manifest,metaResponse]=await Promise.all([
    fetchPlatformManifest(),
-   fetch(`/api/platform-meta?v=20260724.95&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+   fetch(`/api/platform-meta?v=20260724.96&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
   ]);
   const meta=metaResponse.ok?await metaResponse.json():null;
   const consistent=Boolean(
@@ -109,7 +109,7 @@ async function loadPlatformManifest(){
    localStorage.setItem(confirmationKey,new Date().toISOString());
   }
   applyPlatformManifest(manifest);
-  const canonical=manifest.canonical_mission_control_path||"/control";
+  const canonical=manifest.canonical_mission_control_path||"/control.html";
   if((/^\/mission-control-v\d+\.html$/.test(location.pathname)||["/knowledge-center","/knowledge-center.html"].includes(location.pathname))&&location.pathname!==canonical){
    location.replace(canonical+location.hash);
   }
@@ -354,7 +354,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.95&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.96&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.

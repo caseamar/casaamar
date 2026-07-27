@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.

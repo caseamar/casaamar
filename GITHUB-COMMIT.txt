@@ -1,12 +1,12 @@
-fix(routing): use one stable /control URL
+fix(routing): replace legacy Mission Control pages with static redirects
 
-- Added /control as the permanent administration URL.
-- Old versioned Mission Control URLs now HTTP redirect before rendering.
-- Knowledge Center aliases redirect to /control.
-- Platform update button always navigates to /control.
-- Versioned Mission Control files are internal assets only.
-- Historical releases stay idle until a new content release is explicitly started.
+- Added control.html as the permanent real static administration page.
+- Overwrites mission-control-v70 through v95 with redirect stubs.
+- Added Cloudflare _redirects rules as a second redirect layer.
+- No longer depends on Worker routing to replace an already-served old static page.
+- Platform update button and internal links use /control.html.
+- Current idle-state logic remains in the real control page.
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
-Build: 2026-07-27T11:24:59+02:00
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
+Build: 2026-07-27T11:43:23+02:00

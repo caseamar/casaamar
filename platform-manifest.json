@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.95",
-  "build": "2026-07-27T11:24:59+02:00",
-  "worker_version": "14.6-stable-control-route",
-  "release_name": "Stable Control Route",
-  "generated_at": "2026-07-27T11:24:59+02:00",
+  "platform_version": "v2026.07.24.96",
+  "build": "2026-07-27T11:43:23+02:00",
+  "worker_version": "14.7-static-control-entry",
+  "release_name": "Static Control Entry",
+  "generated_at": "2026-07-27T11:43:23+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -29,11 +29,11 @@
     "content_release": "Monitoring starts only after the user creates a content release package.",
     "historical_release": "Visible as a receipt but never monitored."
   },
-  "canonical_mission_control_path": "/control",
+  "canonical_mission_control_path": "/control.html",
   "routing_policy": {
-    "all_versioned_mission_control_urls": "/mission-control-v94.html",
-    "knowledge_center_aliases": "/mission-control-v94.html",
-    "browser_url_is_canonicalized": true
+    "stable_user_url": "/control.html",
+    "legacy_pages": "Overwritten with static redirect stubs",
+    "worker_independent": true
   },
-  "canonical_mission_control_asset": "mission-control-v95.html"
+  "canonical_mission_control_asset": "control.html"
 }

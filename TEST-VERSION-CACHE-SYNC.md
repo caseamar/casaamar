@@ -1,7 +1,7 @@
 # Test versionssynkronisering
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 Bygget: 26. juli 2026 kl. 22.15 dansk tid
 
 1. Upload og overskriv alle filer.
@@ -9,8 +9,8 @@ Bygget: 26. juli 2026 kl. 22.15 dansk tid
 3. Åbn den offentlige hjemmeside.
 4. Åbn Knowledge Center i en anden fane.
 5. Begge skal straks vise:
-   - `v2026.07.24.95`
+   - `v2026.07.24.96`
    - `26. jul. 2026 · kl. 22.15`
 6. Knowledge Center må ikke vise en tidligere version.
-7. Kontrollér sidens kildekode: `platform-shell.js?v=20260724.95`.
+7. Kontrollér sidens kildekode: `platform-shell.js?v=20260724.96`.
 8. Åbn `/platform-manifest.json` direkte og kontrollér samme version og build-tid.

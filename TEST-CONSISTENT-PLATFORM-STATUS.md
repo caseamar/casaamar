@@ -1,10 +1,10 @@
 # Test konsistent Platformstatus
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 
 1. Offentlig hjemmeside:
-   - DEV-badge viser `v2026.07.24.95`
+   - DEV-badge viser `v2026.07.24.96`
    - dato vises på dansk, ikke som rå ISO-streng
 2. Mission Control:
    - Platform viser version, Bygget og Live siden

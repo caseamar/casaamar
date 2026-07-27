@@ -1,5 +1,5 @@
 {
-  "version": "4.5",
+  "version": "4.6",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -234,5 +234,12 @@
     "asset": "mission-control-v95.html",
     "legacy_behavior": "HTTP 302 redirect before old page render",
     "reason": "The administration URL no longer changes per release."
+  },
+  "static_control_entry": {
+    "stable_url": "/control.html",
+    "real_static_asset": "control.html",
+    "legacy_redirect_stubs": "mission-control-v70.html through mission-control-v95.html",
+    "cloudflare_redirects": "_redirects",
+    "reason": "Works even when old static assets are served before Worker routing."
   }
 }

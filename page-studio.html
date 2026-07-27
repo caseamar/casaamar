@@ -26,7 +26,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 
 </style><link rel="stylesheet" href="/platform-ui.css">
 </head><body><main><nav class="platform-nav">
-<a href="/control?v=20260724.95">Oversigt</a>
+<a href="/control?v=20260724.96">Oversigt</a>
 <a href="/knowledge-studio.html">Viden</a>
 <a href="/knowledge-review.html">Godkend forslag</a>
 <a href="/knowledge-architect.html">Struktur og oprydning</a>
@@ -39,7 +39,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
 <a href="/knowledge-debug.html">Teknisk hjælp</a>
 <a href="/">Se hjemmesiden</a>
 </nav>
-<p class="meta">Release v2026.07.24.95 · Page model 1.0 · Worker 14.6-stable-control-route</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
+<p class="meta">Release v2026.07.24.96 · Page model 1.0 · Worker 14.7-static-control-entry</p><div class="autosave-banner" id="autosaveBanner"><span class="autosave-dot"></span><span>Ændringer gemmes automatisk i denne browsers workspace. Udgiv samlet fra Dashboard.</span></div>
 <h1>Hjemmesiden</h1>
 <p class="lead">Viden ejer fakta. Stil og tone ejer stemmen. Hjemmesiden ejer historien og konverteringsformålet. AI skriver hele siden som én sammenhængende fortælling og følger samtidig længde-, CTA- og billedregler for hver komponent.</p>
 <div id="story" class="story"></div>
@@ -77,7 +77,7 @@ button,a{border:1px solid #d6cec3;border-radius:10px;padding:9px 11px;background
  <h3>Du er færdig med hjemmesiden</h3>
  <p>Jeg har gemt både AI's forslag og de rettelser, du selv har lavet. Ændringerne er endnu ikke synlige på hjemmesiden. Du skal nu gå til udgivelse.</p>
  <div class="ca-review-actions">
-  <a class="publish" href="/control?v=20260724.95#publish">Gå til udgivelse</a>
+  <a class="publish" href="/control?v=20260724.96#publish">Gå til udgivelse</a>
   <a href="/page-preview.html" target="_blank">Se hjemmesiden først</a>
  </div>
 </section>
@@ -381,7 +381,7 @@ function approvePageWork(){
  window.CasaWorkflow?.coach({
   title:"Gør ændringerne synlige på hjemmesiden",
   text:"Du er færdig på denne side. Klik på “Gå til udgivelse”. Udgivelsespakken indeholder AI's ændringer, dine rettelser og alle andre autosavede ændringer i platformen.",
-  href:"/control?v=20260724.95#publish",label:"Gå til udgivelse",id:"pageApprovedCoach"
+  href:"/control?v=20260724.96#publish",label:"Gå til udgivelse",id:"pageApprovedCoach"
  });
  q('#pageApprovedFooter').scrollIntoView({behavior:'smooth',block:'center'});
 }
@@ -413,7 +413,7 @@ async function generateCompletePage(mode='complete'){
  const originalText=activeButton.textContent;
  activeButton.textContent=isFill?'AI udfylder mangler…':(isImprove?'AI forbedrer nuværende indhold…':'AI skriver ny forside…');
  status.innerHTML=pageProcessHtml(mode);startPageHeartbeat(mode);window.CasaWorkflow?.set(1,'Jeg arbejder på hjemmesiden','Du skal ikke gøre noget endnu. Jeg viser løbende aktivitet og fortæller tydeligt, når det er din tur.');
- if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 14.6-stable-control-route…';
+ if(technical)technical.textContent='Sender forespørgsel til Page Generator · Worker 14.7-static-control-entry…';
 
  try{
    const result=await requestCompletePage(mode);
@@ -534,5 +534,5 @@ function bindPageStudioActions(){
 document.addEventListener('DOMContentLoaded',()=>{
  bindPageStudioActions();
 });
-</script></main><script src="/platform-shell.js?v=20260724.95"></script>
+</script></main><script src="/platform-shell.js?v=20260724.96"></script>
 </body></html>

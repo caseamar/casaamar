@@ -1,7 +1,7 @@
 # Test canonical URL and idle state
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 Canonical: /mission-control-v94.html
 Build: 2026-07-27T10:58:48+02:00
 

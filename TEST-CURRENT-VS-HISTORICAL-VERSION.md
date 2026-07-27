@@ -1,12 +1,12 @@
 # Test aktuelle og historiske versionsnumre
 
-Release: v2026.07.24.95
-Worker: 14.6-stable-control-route
+Release: v2026.07.24.96
+Worker: 14.7-static-control-entry
 
 1. Åbn Knowledge Center og gå til Udgivelsescenteret.
 2. Øverst i kvitteringen skal stå:
    - “Platformen du bruger nu”
-   - `v2026.07.24.95`
+   - `v2026.07.24.96`
    - aktuelt build-tidspunkt
 3. Den gamle udgivelse skal fortsat vise sit historiske stempel under:
    - “Denne udgivelse blev lavet med”
