@@ -26,9 +26,9 @@ fetch('/asset-plan.json',{cache:'no-store'}).then(r=>r.json()).then(plan=>{
  const groups={};plan.requirements.forEach(x=>(groups[x.section_id]??=[]).push(x));
  document.querySelector('#content').innerHTML=Object.entries(groups).map(([section,items])=>`<section class="panel"><h2>${section}</h2><div class="grid">${items.map(x=>`<div class="item ${x.priority}"><strong>${x.role}</strong><div class="meta">${x.count} billede(r) · prioritet: ${x.priority} · status: ${x.status}</div></div>`).join('')}</div></section>`).join('');
 });
-</script></main><script src="/platform-shell.js?v=20260724.120"></script>
-<script src="/core/casa-core.js?v=20260724.120"></script>
-<script src="/core/casa-config.js?v=20260724.120"></script>
-<script src="/core/casa-governance.js?v=20260724.120"></script>
-<script src="/core/casa-decision.js?v=20260724.120"></script>
+</script></main><script src="/platform-shell.js?v=20260724.121"></script>
+<script src="/core/casa-core.js?v=20260724.121"></script>
+<script src="/core/casa-config.js?v=20260724.121"></script>
+<script src="/core/casa-governance.js?v=20260724.121"></script>
+<script src="/core/casa-decision.js?v=20260724.121"></script>
 </body></html>

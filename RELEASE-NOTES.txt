@@ -1,2 +1,17 @@
-Casa Amar v2026.07.24.120 — Release Identity Quality Gate Hotfix
-Fixes Worker/manifest identity drift and adds an executable release quality gate.
+Casa Amar Platform v2026.07.24.121
+AI Knowledge Graph Foundation
+
+GitHub Summary
+Add a typed AI Knowledge Graph with semantic relationships, integrity diagnostics and scalable graph query services.
+
+Deployment
+Keep .git/ and images/. Replace all other files with this release.
+
+Test focus
+- Platform v2026.07.24.121
+- Platform Doctor v2.4.0
+- AI Knowledge Graph v1.0.0
+- Diagnostics Framework v1.9.0
+- Subsystem Registry v1.6.0
+- Repository Intelligence v1.1.0
+- Confirm Platform Doctor completes green and the public website remains available.

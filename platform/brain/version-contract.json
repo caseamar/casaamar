@@ -7,7 +7,7 @@
     "UI templates must not hard-code subsystem versions.",
     "Project Brain architecture metadata must match platform-manifest.json."
   ],
-  "validated_release": "v2026.07.24.120",
+  "validated_release": "v2026.07.24.121",
   "regression_suite": "/core/casa-contracts.js",
   "updated_at": "2026-07-27T21:30:00+02:00"
 }

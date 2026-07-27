@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-27T23:58:00+02:00",
+  "source_of_truth": true,
+  "entity_types": [
+    "content",
+    "place",
+    "facility",
+    "audience",
+    "language",
+    "season",
+    "topic",
+    "asset-collection",
+    "experience"
+  ],
+  "relation_types": [
+    "uses",
+    "describes",
+    "located-in",
+    "suitable-for",
+    "available-in",
+    "relevant-during",
+    "related-to",
+    "requires",
+    "supports",
+    "represented-by"
+  ],
+  "policies": {
+    "unique_entity_ids": true,
+    "unique_relation_ids": true,
+    "relations_must_resolve": true,
+    "known_entity_type_required": true,
+    "known_relation_type_required": true,
+    "self_relations_forbidden": true,
+    "duplicate_edges_forbidden": true,
+    "cycles_allowed_only_for": [
+      "related-to"
+    ]
+  },
+  "entities": [
+    {
+      "id": "content-public-website",
+      "display_name": "Public Website Content",
+      "type": "content",
+      "source_ref": "public-website",
+      "standalone": false
+    },
+    {
+      "id": "content-knowledge-base",
+      "display_name": "Knowledge Base",
+      "type": "content",
+      "source_ref": "knowledge-base",
+      "standalone": false
+    },
+    {
+      "id": "content-asset-library",
+      "display_name": "Asset Library",
+      "type": "content",
+      "source_ref": "asset-library",
+      "standalone": false
+    },
+    {
+      "id": "place-casa-amar",
+      "display_name": "Casa Amar",
+      "type": "place",
+      "standalone": true
+    },
+    {
+      "id": "place-cerros-del-aguila",
+      "display_name": "Cerros del Águila",
+      "type": "place",
+      "standalone": true
+    },
+    {
+      "id": "facility-rooftop",
+      "display_name": "Roof Terrace",
+      "type": "facility",
+      "standalone": true
+    },
+    {
+      "id": "facility-pool",
+      "display_name": "Pool",
+      "type": "facility",
+      "standalone": true
+    },
+    {
+      "id": "facility-tennis",
+      "display_name": "Tennis Court",
+      "type": "facility",
+      "standalone": true
+    },
+    {
+      "id": "audience-family",
+      "display_name": "Families",
+      "type": "audience",
+      "standalone": true
+    },
+    {
+      "id": "audience-couple",
+      "display_name": "Couples",
+      "type": "audience",
+      "standalone": true
+    },
+    {
+      "id": "audience-workcation",
+      "display_name": "Workcation Guests",
+      "type": "audience",
+      "standalone": true
+    },
+    {
+      "id": "language-da",
+      "display_name": "Danish",
+      "type": "language",
+      "standalone": true
+    },
+    {
+      "id": "language-en",
+      "display_name": "English",
+      "type": "language",
+      "standalone": true
+    },
+    {
+      "id": "language-es",
+      "display_name": "Spanish",
+      "type": "language",
+      "standalone": true
+    },
+    {
+      "id": "season-spring",
+      "display_name": "Spring",
+      "type": "season",
+      "standalone": true
+    },
+    {
+      "id": "season-summer",
+      "display_name": "Summer",
+      "type": "season",
+      "standalone": true
+    },
+    {
+      "id": "season-autumn",
+      "display_name": "Autumn",
+      "type": "season",
+      "standalone": true
+    },
+    {
+      "id": "season-winter",
+      "display_name": "Winter",
+      "type": "season",
+      "standalone": true
+    },
+    {
+      "id": "topic-arrival",
+      "display_name": "Arrival",
+      "type": "topic",
+      "standalone": true
+    },
+    {
+      "id": "topic-stay",
+      "display_name": "Stay",
+      "type": "topic",
+      "standalone": true
+    },
+    {
+      "id": "topic-departure",
+      "display_name": "Departure",
+      "type": "topic",
+      "standalone": true
+    },
+    {
+      "id": "experience-local-living",
+      "display_name": "Local Living",
+      "type": "experience",
+      "standalone": true
+    }
+  ],
+  "relations": [
+    {
+      "id": "r001",
+      "from": "content-public-website",
+      "type": "describes",
+      "to": "place-casa-amar"
+    },
+    {
+      "id": "r002",
+      "from": "place-casa-amar",
+      "type": "located-in",
+      "to": "place-cerros-del-aguila"
+    },
+    {
+      "id": "r003",
+      "from": "content-public-website",
+      "type": "describes",
+      "to": "facility-rooftop"
+    },
+    {
+      "id": "r004",
+      "from": "content-public-website",
+      "type": "describes",
+      "to": "facility-pool"
+    },
+    {
+      "id": "r005",
+      "from": "content-public-website",
+      "type": "describes",
+      "to": "facility-tennis"
+    },
+    {
+      "id": "r006",
+      "from": "place-casa-amar",
+      "type": "suitable-for",
+      "to": "audience-family"
+    },
+    {
+      "id": "r007",
+      "from": "place-casa-amar",
+      "type": "suitable-for",
+      "to": "audience-couple"
+    },
+    {
+      "id": "r008",
+      "from": "place-casa-amar",
+      "type": "suitable-for",
+      "to": "audience-workcation"
+    },
+    {
+      "id": "r009",
+      "from": "content-public-website",
+      "type": "available-in",
+      "to": "language-da"
+    },
+    {
+      "id": "r010",
+      "from": "content-public-website",
+      "type": "supports",
+      "to": "language-en"
+    },
+    {
+      "id": "r011",
+      "from": "content-public-website",
+      "type": "supports",
+      "to": "language-es"
+    },
+    {
+      "id": "r012",
+      "from": "place-casa-amar",
+      "type": "relevant-during",
+      "to": "season-spring"
+    },
+    {
+      "id": "r013",
+      "from": "place-casa-amar",
+      "type": "relevant-during",
+      "to": "season-summer"
+    },
+    {
+      "id": "r014",
+      "from": "place-casa-amar",
+      "type": "relevant-during",
+      "to": "season-autumn"
+    },
+    {
+      "id": "r015",
+      "from": "place-casa-amar",
+      "type": "relevant-during",
+      "to": "season-winter"
+    },
+    {
+      "id": "r016",
+      "from": "content-knowledge-base",
+      "type": "related-to",
+      "to": "topic-arrival"
+    },
+    {
+      "id": "r017",
+      "from": "content-knowledge-base",
+      "type": "related-to",
+      "to": "topic-stay"
+    },
+    {
+      "id": "r018",
+      "from": "content-knowledge-base",
+      "type": "related-to",
+      "to": "topic-departure"
+    },
+    {
+      "id": "r019",
+      "from": "content-public-website",
+      "type": "uses",
+      "to": "content-asset-library"
+    },
+    {
+      "id": "r020",
+      "from": "place-casa-amar",
+      "type": "supports",
+      "to": "experience-local-living"
+    }
+  ]
+}

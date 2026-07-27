@@ -1,7 +1,7 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.120",
-  "generated_at": "2026-07-27T23:45:00+02:00",
+  "release": "v2026.07.24.121",
+  "generated_at": "2026-07-27T23:58:00+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [
     ".git/",

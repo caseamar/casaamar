@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "version": "1.1.0",
-  "generated_at": "2026-07-27T21:30:00+02:00",
+  "version": "1.2.0",
+  "generated_at": "2026-07-27T23:58:00+02:00",
   "source": "release-package",
-  "file_count": 80,
+  "file_count": 88,
   "policies": {
     "complete_replace_except": [
       ".git/",
@@ -24,10 +24,18 @@
       "registry/repository.json",
       "core/casa-repository.js",
       "core/casa-content.js",
-      "registry/content.json"
+      "registry/content.json",
+      "core/casa-knowledge-graph.js",
+      "registry/knowledge-graph.json"
     ]
   },
   "files": [
+    {
+      "path": "/RELEASE-NOTES.txt",
+      "kind": "text",
+      "area": "root",
+      "critical": false
+    },
     {
       "path": "/_headers",
       "kind": "other",
@@ -182,16 +190,22 @@
       "path": "/core/casa-audit.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-brain.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-config.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
+    },
+    {
+      "path": "/core/casa-content.js",
       "kind": "javascript",
       "area": "core",
       "critical": true
@@ -200,34 +214,40 @@
       "path": "/core/casa-contracts.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-core.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-decision.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-diagnostics.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-events.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-governance.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
+    },
+    {
+      "path": "/core/casa-knowledge-graph.js",
       "kind": "javascript",
       "area": "core",
       "critical": true
@@ -242,7 +262,7 @@
       "path": "/core/casa-subsystem-registry.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/deployment-manifest.json",
@@ -277,6 +297,12 @@
     {
       "path": "/knowledge-studio.html",
       "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/package.json",
+      "kind": "json",
       "area": "root",
       "critical": false
     },
@@ -384,7 +410,7 @@
     },
     {
       "path": "/platform-ui.css",
-      "kind": "css",
+      "kind": "other",
       "area": "root",
       "critical": false
     },
@@ -399,6 +425,12 @@
       "kind": "json",
       "area": "registry",
       "critical": false
+    },
+    {
+      "path": "/registry/content.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
     },
     {
       "path": "/registry/decisions.json",
@@ -423,6 +455,12 @@
       "kind": "json",
       "area": "registry",
       "critical": false
+    },
+    {
+      "path": "/registry/knowledge-graph.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
     },
     {
       "path": "/registry/policies.json",
@@ -461,10 +499,16 @@
       "critical": false
     },
     {
+      "path": "/release-quality-gate.json",
+      "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
       "path": "/release-validation.json",
       "kind": "json",
       "area": "root",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/schemas/commerce-order.schema.json",
@@ -503,22 +547,16 @@
       "critical": false
     },
     {
+      "path": "/tools/release-quality-gate.mjs",
+      "kind": "javascript",
+      "area": "tools",
+      "critical": false
+    },
+    {
       "path": "/website-content.json",
       "kind": "json",
       "area": "root",
       "critical": false
-    },
-    {
-      "path": "core/casa-content.js",
-      "kind": "javascript",
-      "area": "platform-intelligence",
-      "critical": true
-    },
-    {
-      "path": "registry/content.json",
-      "kind": "registry",
-      "area": "platform-intelligence",
-      "critical": true
     }
   ],
   "updated_at": "2026-07-27T23:10:00+02:00"

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.120",
-  "build": "2026-07-27T23:45:00+02:00",
-  "worker_version": "15.16.0-release-quality-gate-hotfix",
-  "release_name": "Release Identity Quality Gate Hotfix",
-  "generated_at": "2026-07-27T23:45:00+02:00",
+  "platform_version": "v2026.07.24.121",
+  "build": "2026-07-27T23:58:00+02:00",
+  "worker_version": "15.17.0-ai-knowledge-graph-foundation",
+  "release_name": "AI Knowledge Graph Foundation",
+  "generated_at": "2026-07-27T23:58:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.3.1",
+    "version": "2.4.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -118,7 +118,8 @@
       "subsystem_registry_consistency",
       "repository_intelligence",
       "release_navigation_consistency",
-      "content_intelligence"
+      "content_intelligence",
+      "ai_knowledge_graph"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -177,7 +178,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.8.0",
+    "version": "1.9.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -237,13 +238,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.6.0",
+    "version": "1.7.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -268,11 +269,12 @@
       "subsystem_registry",
       "public_website_runtime",
       "repository_intelligence",
-      "content_intelligence"
+      "content_intelligence",
+      "ai_knowledge_graph"
     ]
   },
   "repository_intelligence": {
-    "version": "1.0.2",
+    "version": "1.1.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -296,7 +298,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.120",
+    "asset_cache_key": "20260724.121",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -316,7 +318,7 @@
     ]
   },
   "release_quality_gate": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/tools/release-quality-gate.mjs",
     "required": true,
     "checks": [
@@ -326,7 +328,30 @@
       "cache-key-consistency",
       "stale-release-token-scan",
       "json-parse",
-      "javascript-syntax"
+      "javascript-syntax",
+      "knowledge-graph-integrity",
+      "knowledge-graph-source-references",
+      "orphan-entity-check",
+      "duplicate-edge-check"
+    ]
+  },
+  "ai_knowledge_graph": {
+    "version": "1.0.0",
+    "entry": "/core/casa-knowledge-graph.js",
+    "registry": "/registry/knowledge-graph.json",
+    "registry_driven": true,
+    "semantic_entities": true,
+    "typed_relations": true,
+    "orphan_detection": true,
+    "path_queries": true,
+    "capabilities": [
+      "entities",
+      "relations",
+      "neighbours",
+      "search",
+      "path",
+      "validate",
+      "snapshot"
     ]
   }
 }

@@ -1,6 +1,9 @@
 {
-  "release": "v2026.07.24.120",
+  "release": "v2026.07.24.121",
   "name": "Release Identity Quality Gate Hotfix",
   "summary": "Fixes Worker/manifest identity drift and adds an executable quality gate for future releases.",
-  "generated_at": "2026-07-27T23:45:00+02:00"
+  "generated_at": "2026-07-27T23:58:00+02:00",
+  "platform_version": "v2026.07.24.121",
+  "release_name": "AI Knowledge Graph Foundation",
+  "github_summary": "Add a typed AI Knowledge Graph with semantic relationships, integrity diagnostics and scalable graph query services."
 }

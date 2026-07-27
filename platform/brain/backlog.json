@@ -6,55 +6,55 @@
       "id": "PI-111-01",
       "title": "Project Brain runtime service",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-111-02",
       "title": "Subsystem version registry in Mission Control",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-111-03",
       "title": "Decision Engine generic rule evaluation",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-112-01",
       "title": "Decision explanation and durable audit model",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-112-02",
       "title": "Event contract registry and event audit history",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-113-01",
       "title": "Repository Intelligence foundation",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-114-01",
       "title": "Release identity regression contract",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-117-01",
       "title": "Repository inventory and integrity service",
       "status": "done",
-      "release": "v2026.07.24.120"
+      "release": "v2026.07.24.121"
     },
     {
       "id": "PI-118-01",
       "title": "Repository dependency mapping and change intelligence",
       "status": "next",
-      "target_release": "v2026.07.24.120"
+      "target_release": "v2026.07.24.121"
     }
   ]
 }
