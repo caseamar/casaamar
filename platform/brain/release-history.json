@@ -39,6 +39,15 @@
       "summary": "Added a runtime Project Brain service, visible subsystem versions, stronger diagnostics, event waiting contracts and generic decision rule evaluation.",
       "released_at": "2026-07-27T21:30:00+02:00",
       "status": "release-candidate"
+    },
+    {
+      "version": "v2026.07.24.112",
+      "name": "Platform Consistency Contract Hotfix",
+      "date": "2026-07-27",
+      "epic": "Platform Intelligence",
+      "type": "hotfix",
+      "summary": "Removed build timestamps from the runtime release identity check and restored Control Center startup."
     }
-  ]
+  ],
+  "updated_at": "2026-07-27T22:05:00+02:00"
 }

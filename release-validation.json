@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.111",
-  "generated_at": "2026-07-27T21:30:00+02:00",
+  "release": "v2026.07.24.112",
+  "generated_at": "2026-07-27T22:05:00+02:00",
   "status": "passed",
   "checks": [
     {
@@ -28,7 +28,9 @@
       "id": "replacement-package",
       "status": "passed",
       "detail": "Complete replacement package; preserve only .git and images."
-    }
+    },
+    "Manifest and Worker identity is based on platform_version and worker_version, not timestamps."
   ],
-  "platform_version": "v2026.07.24.111"
+  "platform_version": "v2026.07.24.112",
+  "summary": "Corrects the release consistency contract so matching platform and Worker versions are not rejected because of different build timestamps."
 }

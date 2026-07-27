@@ -1,22 +1,26 @@
 {
-  "release": "v2026.07.24.111",
-  "name": "Project Brain v1 and Platform Intelligence Registry",
-  "epic": "Platform Intelligence",
-  "summary": "Adds a runtime Project Brain service and a visible subsystem version registry, while strengthening Decision Engine rules, Event Engine contracts and platform diagnostics.",
+  "release": "v2026.07.24.112",
+  "name": "Platform Consistency Contract Hotfix",
+  "generated_at": "2026-07-27T22:05:00+02:00",
+  "summary": "Fixes the false synchronization warning in Control Center by using stable release identity fields instead of comparing build timestamps.",
   "changes": [
-    "Added Project Brain runtime service with machine-readable roadmap, architecture, backlog, decisions, principles, capabilities and release history.",
-    "Added subsystem version overview to Mission Control.",
-    "Added generic rule evaluation and version metadata to Decision Engine results.",
-    "Added once and waitFor contracts to Event Engine.",
-    "Added module and Project Brain consistency diagnostics.",
-    "Fixed duplicate Platform Doctor startup declaration."
+    "Platform and Worker synchronization now compares platform_version and worker_version.",
+    "Build and generated timestamps remain visible as diagnostic metadata but no longer block startup.",
+    "Platform Doctor updated to v2.1.1.",
+    "Public website behavior remains unchanged."
   ],
-  "test_focus": {
-    "platform_version": "v2026.07.24.111",
-    "platform_doctor": "v2.1.0",
-    "project_brain": "v1.0.0",
-    "decision_engine": "v1.1.0",
-    "event_engine": "v1.1.0",
-    "diagnostics": "v1.1.0"
-  }
+  "deployment": {
+    "strategy": "complete_replace_except_images",
+    "preserve": [
+      ".git/",
+      "images/"
+    ]
+  },
+  "test_focus": [
+    "Platform Version v2026.07.24.112",
+    "Platform Doctor v2.1.1",
+    "Worker 15.9.1-project-brain-consistency-hotfix",
+    "Control Center opens without a synchronization warning",
+    "Public website opens normally"
+  ]
 }

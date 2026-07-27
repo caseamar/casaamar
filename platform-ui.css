@@ -351,5 +351,5 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 }
 
 
-/* v2026.07.24.111 — Platform Intelligence subsystem registry */
+/* v2026.07.24.112 — Platform Intelligence subsystem registry */
 .platform-versions{margin:18px 0;padding:18px;border:1px solid #ddd8cf;border-radius:16px;background:#fbfaf7}.platform-versions-heading{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:12px}.platform-versions-heading span{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:#b8553d;font-weight:800}.platform-versions-heading strong{font-size:.95rem}.platform-versions-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.platform-versions-grid article{padding:12px;border-radius:12px;background:#fff;border:1px solid #ebe6dd}.platform-versions-grid span{display:block;font-size:.75rem;color:#6a706d}.platform-versions-grid strong{display:block;margin-top:4px;font-size:.92rem;color:#173d32}@media(max-width:850px){.platform-versions-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.platform-versions-grid{grid-template-columns:1fr}}

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.111",
-  "build": "2026-07-27T21:30:00+02:00",
-  "worker_version": "15.9-project-brain-v1",
-  "release_name": "Project Brain v1 and Platform Intelligence Registry",
-  "generated_at": "2026-07-27T21:30:00+02:00",
+  "platform_version": "v2026.07.24.112",
+  "build": "2026-07-27T22:05:00+02:00",
+  "worker_version": "15.9.1-project-brain-consistency-hotfix",
+  "release_name": "Platform Consistency Contract Hotfix",
+  "generated_at": "2026-07-27T22:05:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.1.0",
+    "version": "2.1.1",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -194,5 +194,17 @@
     "isolated_from_admin_shell": true,
     "loads_platform_shell": false,
     "purpose": "Prevent control-center bootstrap logic from affecting the public website."
+  },
+  "consistency_contract": {
+    "version": "1.1.0",
+    "identity_fields": [
+      "platform_version",
+      "worker_version"
+    ],
+    "informational_fields": [
+      "build",
+      "generated_at"
+    ],
+    "rule": "Build timestamps are diagnostic metadata and must not trigger a synchronization warning."
   }
 }
