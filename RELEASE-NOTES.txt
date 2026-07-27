@@ -1,5 +1,5 @@
 Casa Amar Platform
-Release: v2026.07.24.122
-Name: Asset Intelligence Foundation
+Release: v2026.07.24.123
+Name: Asset Intelligence Readiness and Relations
 
-Adds a canonical asset inventory, issue detection, impact analysis and scalable asset intelligence services.
+Adds deterministic asset readiness scoring, semantic content relationships, responsive variant coverage and actionable recommendations.

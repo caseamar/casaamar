@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.122",
+  "current_release": "v2026.07.24.123",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
   "current_subsystem": "Asset Intelligence Foundation",
@@ -40,10 +40,10 @@
     }
   ],
   "next_focus": [
-    "Asset usage relationship enrichment",
-    "Asset quality scoring and variant readiness",
-    "Knowledge Explorer foundation"
+    "Asset quality scoring refinement",
+    "Asset variant generation pipeline",
+    "Experience Engine foundation"
   ],
-  "updated_at": "2026-07-28T00:30:00+02:00",
+  "updated_at": "2026-07-28T01:15:00+02:00",
   "current_focus": "Asset Intelligence"
 }

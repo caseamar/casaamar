@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-28T00:30:00+02:00",
+  "schema_version": "1.1",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28T01:15:00+02:00",
   "source": "/asset-library.json",
   "policies": {
     "identity": "Asset id and canonical path are stable identities.",
@@ -29,9 +29,25 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 2,
+      "standalone": false,
+      "topics": [
+        "koekken"
+      ],
+      "related_content": [
+        "public-website",
+        "asset-library"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 2
+      }
     },
     {
       "id": "asset-casa-amar-v2-entre",
@@ -46,9 +62,24 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 1,
+      "standalone": false,
+      "topics": [
+        "entre"
+      ],
+      "related_content": [
+        "public-website"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 1
+      }
     },
     {
       "id": "asset-casa-amar-v2-hero-patio",
@@ -65,7 +96,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-kaffe",
@@ -82,7 +124,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-koekken",
@@ -97,9 +150,25 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 2,
+      "standalone": false,
+      "topics": [
+        "koekken"
+      ],
+      "related_content": [
+        "public-website",
+        "asset-library"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 2
+      }
     },
     {
       "id": "asset-casa-amar-v2-master-bedroom",
@@ -116,7 +185,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-patio-detalje",
@@ -133,7 +213,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-patio-spiseplads",
@@ -150,7 +241,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-pool",
@@ -165,9 +267,25 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 2,
+      "standalone": false,
+      "topics": [
+        "pool"
+      ],
+      "related_content": [
+        "public-website",
+        "photo-missions"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 2
+      }
     },
     {
       "id": "asset-casa-amar-v2-projektor",
@@ -184,7 +302,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-solnedgang",
@@ -201,7 +330,18 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     },
     {
       "id": "asset-casa-amar-v2-sovevaerelse-2",
@@ -216,9 +356,24 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 1,
+      "standalone": false,
+      "topics": [
+        "sove"
+      ],
+      "related_content": [
+        "public-website"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 1
+      }
     },
     {
       "id": "asset-casa-amar-v2-sovevaerelse-3",
@@ -233,9 +388,24 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 1,
+      "standalone": false,
+      "topics": [
+        "sove"
+      ],
+      "related_content": [
+        "public-website"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 1
+      }
     },
     {
       "id": "asset-casa-amar-v2-stue",
@@ -250,9 +420,25 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 2,
+      "standalone": false,
+      "topics": [
+        "stue"
+      ],
+      "related_content": [
+        "public-website",
+        "asset-library"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 2
+      }
     },
     {
       "id": "asset-casa-amar-v2-tagterrasse",
@@ -267,9 +453,25 @@
       "height": 0,
       "quality_score": 0,
       "alt_text": "",
-      "usage_count": 0,
-      "relation_count": 0,
-      "standalone": true
+      "usage_count": 1,
+      "relation_count": 2,
+      "standalone": false,
+      "topics": [
+        "terrasse"
+      ],
+      "related_content": [
+        "public-website",
+        "photo-missions"
+      ],
+      "readiness": {
+        "score": 42,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 2
+      }
     },
     {
       "id": "asset-casa-amar-v2-udsigt",
@@ -286,7 +488,39 @@
       "alt_text": "",
       "usage_count": 0,
       "relation_count": 0,
-      "standalone": true
+      "standalone": true,
+      "topics": [],
+      "related_content": [],
+      "readiness": {
+        "score": 32,
+        "level": "blocked",
+        "metadata": true,
+        "accessibility": false,
+        "dimensions": false,
+        "variant_count": 1,
+        "relationship_count": 0
+      }
     }
+  ],
+  "readiness_model": {
+    "weights": {
+      "metadata": 25,
+      "accessibility": 25,
+      "dimensions": 20,
+      "variants": 20,
+      "relationships": 10
+    },
+    "levels": {
+      "ready": 80,
+      "review": 50,
+      "blocked": 0
+    },
+    "rule": "Readiness is derived from canonical metadata and never stored as an independent source of truth."
+  },
+  "relationship_types": [
+    "used-by",
+    "candidate-for",
+    "depicts",
+    "supports-experience"
   ]
 }

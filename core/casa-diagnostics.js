@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.10.0";const registry=new Map();
+ const VERSION="1.11.0";const registry=new Map();
  function register(def){if(!def?.id||typeof def.run!=="function")throw new Error("Diagnostic id and run function are required");registry.set(def.id,{...def});return def.id;}
  async function run(id,context={}){const def=registry.get(id);if(!def)throw new Error(`Unknown diagnostic: ${id}`);const started=performance.now();try{const result=await def.run(context);return {id,label:def.label||id,status:result?.status||"ok",detail:result?.detail||"Completed",recommendation:result?.recommendation||null,duration_ms:Math.round(performance.now()-started),checked_at:new Date().toISOString(),evidence:result?.evidence||[]};}catch(error){return {id,label:def.label||id,status:"error",detail:error?.message||"Diagnostic failed",recommendation:"Review the technical details and retry.",duration_ms:Math.round(performance.now()-started),checked_at:new Date().toISOString(),evidence:[]};}}
  async function runAll(context={}){const results=[];for(const id of registry.keys())results.push(await run(id,context));const overall=results.some(r=>r.status==="error")?"error":results.some(r=>r.status==="warning")?"warning":results.some(r=>r.status==="attention")?"attention":"ok";const report={schema_version:"1.0",overall,results,generated_at:new Date().toISOString()};window.CasaEvents?.publish?.("diagnostics:completed",report);return report;}

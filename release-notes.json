@@ -1,16 +1,22 @@
 {
-  "release": "v2026.07.24.122",
-  "name": "Asset Intelligence Foundation",
+  "release": "v2026.07.24.123",
+  "name": "Asset Intelligence Readiness and Relations",
+  "epic": "Platform Intelligence",
   "type": "feature",
-  "summary": "Adds a canonical asset inventory, issue detection and impact analysis as a reusable Platform Intelligence subsystem.",
-  "github_summary": "Add Asset Intelligence with canonical inventory and impact diagnostics",
-  "test_focus": {
-    "platform": "v2026.07.24.122",
-    "platform_doctor": "2.5.0",
-    "asset_intelligence": "1.0.0",
-    "subsystem_registry": "1.7.0",
-    "diagnostics_framework": "1.10.0",
-    "platform_contracts": "1.8.0",
-    "repository_intelligence": "1.2.0"
-  }
+  "summary": "Adds deterministic asset readiness scoring, semantic content relationships, responsive variant coverage and actionable asset recommendations.",
+  "versions": {
+    "platform": "v2026.07.24.123",
+    "platform_doctor": "2.5.1",
+    "asset_intelligence": "1.1.0",
+    "diagnostics_framework": "1.11.0",
+    "platform_contracts": "1.9.0",
+    "subsystem_registry": "1.8.0",
+    "repository_intelligence": "1.3.0"
+  },
+  "test_focus": [
+    "Asset Intelligence v1.1.0 is visible in Platform Intelligence.",
+    "Platform Doctor completes healthy.",
+    "Public website and /control/ load normally.",
+    "No synchronization warning appears."
+  ]
 }

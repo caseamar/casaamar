@@ -26,7 +26,8 @@ for(const f of walk(root).filter(f=>f.endsWith('.js'))){try{execFileSync(process
 
 
 const activeIdentityFiles=['platform-shell.js','control/index.html','config/configuration-manifest.json','release-notes.json','platform/brain/version-contract.json'];
-for(const file of activeIdentityFiles){const text=read(file);check(!text.includes('v2026.07.24.121'),`${file} contains no stale previous platform identity`);check(!text.includes('20260724.121'),`${file} contains no stale previous cache identity`);}
+const activeReleaseNumber=Number(current?.[4]||0);
+for(const file of activeIdentityFiles){const text=read(file);const stale=[...text.matchAll(/v2026\.07\.24\.(\d+)/g)].map(m=>Number(m[1])).filter(n=>n!==activeReleaseNumber);check(stale.length===0,`${file} contains only current platform identity`);}
 check(read('control/index.html').includes(manifest.platform_version),`Control Center embeds current platform identity (${manifest.platform_version})`);
 check(json('config/configuration-manifest.json').platform_version===manifest.platform_version,`Configuration manifest matches platform identity (${manifest.platform_version})`);
 check(json('release-notes.json').release===manifest.platform_version,`Release notes match platform identity (${manifest.platform_version})`);
@@ -51,6 +52,18 @@ for(const asset of assetRegistry.items||[]){
 const sourceAssets=json('asset-library.json').assets||[];
 check(sourceAssets.length===(assetRegistry.items||[]).length,`Asset Intelligence inventory covers asset library (${sourceAssets.length})`);
 for(const source of sourceAssets){check(assetIds.has(source.id),`Asset Intelligence resolves source asset (${source.id})`)}
+
+
+const contentRegistry=json('registry/content.json');
+const validContentIds=new Set((contentRegistry.items||[]).map(x=>x.id));
+const readinessLevels=new Set(['ready','review','blocked']);
+for(const asset of assetRegistry.items||[]){
+ check(Boolean(asset.readiness&&Number.isFinite(asset.readiness.score)&&readinessLevels.has(asset.readiness.level)),`Asset readiness contract is valid (${asset.id})`);
+ check(asset.readiness.score>=0&&asset.readiness.score<=100,`Asset readiness score is bounded (${asset.id})`);
+ check((asset.related_content||[]).length===(asset.relation_count||0),`Asset relation count matches canonical relations (${asset.id})`);
+ for(const target of asset.related_content||[])check(validContentIds.has(target),`Asset content relation resolves (${asset.id} -> ${target})`);
+ check((asset.readiness.variant_count||0)>=0&&(asset.readiness.variant_count||0)<=3,`Asset variant readiness is bounded (${asset.id})`);
+}
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
