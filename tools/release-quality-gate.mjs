@@ -93,6 +93,28 @@ const experienceAssetIds=new Set((json('registry/assets.json').items||[]).map(x=
 for(const point of experience.touchpoints||[]){check(Boolean(point.id&&point.stage),`Experience touchpoint is complete (${point.id||'unknown'})`);check(!touchpointIds.has(point.id),`Experience touchpoint id is unique (${point.id})`);touchpointIds.add(point.id);check(stageIds.has(point.stage),`Experience touchpoint stage resolves (${point.id} -> ${point.stage})`);for(const ref of point.content_refs||[])check(experienceContentIds.has(ref),`Experience content reference resolves (${point.id} -> ${ref})`);for(const ref of point.asset_refs||[])check(experienceAssetIds.has(ref),`Experience asset reference resolves (${point.id} -> ${ref})`)}
 for(const required of experience.quality_rules?.required_stage_coverage||[])check((experience.touchpoints||[]).some(x=>x.stage===required),`Experience required stage is covered (${required})`);
 
+
+
+// Active build timestamp contract
+const activeBuild = new Date(manifest.build);
+check(!Number.isNaN(activeBuild.getTime()), `Platform build timestamp is valid (${manifest.build})`);
+check(manifest.build_timezone === 'Europe/Copenhagen', 'Platform build timezone is Europe/Copenhagen');
+const now = Date.now();
+check(activeBuild.getTime() <= now + 5 * 60 * 1000, 'Platform build timestamp is not in the future');
+check(manifest.generated_at === manifest.build, 'Manifest generated_at matches canonical build timestamp');
+const deploymentManifest = json('deployment-manifest.json');
+const releaseValidation = json('release-validation.json');
+const repositoryRegistry = json('registry/repository.json');
+const subsystemRegistry = json('registry/subsystems.json');
+check(deploymentManifest.generated_at === manifest.build, 'Deployment manifest timestamp matches canonical build timestamp');
+check(releaseValidation.generated_at === manifest.build, 'Release validation timestamp matches canonical build timestamp');
+check(repositoryRegistry.generated_at === manifest.build, 'Repository registry timestamp matches canonical build timestamp');
+check(subsystemRegistry.updated_at === manifest.build, 'Subsystem registry timestamp matches canonical build timestamp');
+const workerBuild = worker.match(/build:\s*"([^"]+)"/)?.[1];
+check(workerBuild === manifest.build, 'Worker build timestamp matches canonical build timestamp');
+check(read('control/index.html').includes(`data-expected-build="${manifest.build}"`), 'Control Center expected build matches canonical build timestamp');
+check(read('index.html').includes(`content="${manifest.build}" name="casa-amar-build"`), 'Public website build metadata matches canonical build timestamp');
+
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 if(fail.length)process.exit(1);

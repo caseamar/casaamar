@@ -1,4 +1,5 @@
-Casa Amar Platform v2026.07.24.126
-Platform Intelligence Dashboard
+Casa Amar Platform v2026.07.24.127
 
-Subsystem cards in Mission Control are now interactive. AI Knowledge Graph, Asset Intelligence and Experience Engine expose real metrics and Experience Engine shows the complete guest journey. All registered subsystems provide a consistent detail view sourced from the canonical Subsystem Registry.
+Build Timestamp Consistency Hotfix
+
+Corrects the package build timestamp across the public website, Control Center, manifest and Worker. Adds a release quality gate that rejects future or inconsistent active build timestamps.

@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.126",
-  "title": "Platform Intelligence Dashboard",
-  "summary": "Makes registered subsystems visible and inspectable through interactive dashboards in Mission Control.",
+  "release": "v2026.07.24.127",
+  "title": "Build Timestamp Consistency Hotfix",
+  "summary": "Corrects the package build timestamp and adds release-time validation so public and control surfaces show the same real Europe/Copenhagen build time.",
   "changes": [
     "Clickable subsystem cards",
     "Detailed dashboards for AI Knowledge Graph, Asset Intelligence and Experience Engine",

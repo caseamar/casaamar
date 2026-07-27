@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.5.0",
-  "generated_at": "2026-07-28T03:30:00+02:00",
+  "generated_at": "2026-07-27T22:37:27+02:00",
   "source": "release-package",
   "file_count": 91,
   "policies": {
@@ -598,5 +598,5 @@
       "category": "platform-intelligence"
     }
   ],
-  "updated_at": "2026-07-28T03:30:00+02:00"
+  "updated_at": "2026-07-27T22:37:27+02:00"
 }

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.126",
-  "build": "2026-07-28T04:30:00+02:00",
+  "platform_version": "v2026.07.24.127",
+  "build": "2026-07-27T22:37:27+02:00",
   "worker_version": "15.16-platform-intelligence-dashboard",
   "release_name": "Experience Engine Foundation",
-  "generated_at": "2026-07-28T03:30:00+02:00",
+  "generated_at": "2026-07-27T22:37:27+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -302,7 +302,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.126",
+    "asset_cache_key": "20260724.127",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
