@@ -1,28 +1,18 @@
 {
-  "schema_version": "1.0",
-  "release": "v2026.07.24.109",
-  "name": "Platform Intelligence Foundation",
-  "epic": "Platform Intelligence",
-  "highlights": [
-    "Platform Doctor 2.0 waits for readiness and retries transient startup states",
-    "Event Engine foundation with publish, subscribe and bounded history",
-    "Diagnostics Framework with reusable registry and standard result model",
-    "Project Brain stores roadmap, architecture, backlog, decisions, principles and release history in the repository"
-  ],
-  "deployment": {
-    "strategy": "complete_replace_except_images",
-    "preserve": [
-      ".git",
-      "images/"
-    ]
-  },
-  "platform_version": "v2026.07.24.109",
-  "release_name": "Platform Consistency Hotfix",
-  "summary": "Fixes the false synchronisation warning by aligning manifest and Worker release metadata, and removes stale v107 references from deployed assets.",
+  "release": "v2026.07.24.110",
+  "name": "Public Website Runtime Isolation Hotfix",
+  "summary": "Restores the public website by isolating it from the control-center platform bootstrap and makes the Platform Doctor version visible in Mission Control.",
   "changes": [
-    "Aligned platform manifest and Worker build metadata",
-    "Removed stale v107 cache-busting and expected-version references",
-    "Kept Platform Doctor automatic startup checks and Platform Intelligence foundation",
-    "Added validation for manifest and Worker consistency"
+    "Removed control-center platform bootstrap scripts from the public website.",
+    "Kept public version display through the lightweight manifest request already built into the website.",
+    "Added a visible Platform Doctor v2.0.1 label in Mission Control.",
+    "Preserved the v109 platform consistency fix and all existing platform services."
+  ],
+  "test_focus": [
+    "Public website renders normally at /.",
+    "Mission Control renders at /control/.",
+    "Platform version is v2026.07.24.110.",
+    "Platform Doctor displays v2.0.1.",
+    "No false synchronization warning is shown."
   ]
 }

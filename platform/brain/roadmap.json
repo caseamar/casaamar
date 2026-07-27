@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "target_version": "v150",
   "current_epic": "platform-intelligence",
-  "current_release": "v2026.07.24.109",
+  "current_release": "v2026.07.24.110",
   "principles": [
     "Build complete epics and subsystems",
     "70 percent platform and infrastructure, 30 percent user features through v150",

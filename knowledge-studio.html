@@ -109,7 +109,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </head>
 <body><main>
 <nav class="platform-nav">
-<a href="/control?v=20260724.109">Oversigt</a>
+<a href="/control?v=20260724.110">Oversigt</a>
 <a href="/knowledge-studio.html">Viden</a>
 <a href="/knowledge-review.html">Godkend forslag</a>
 <a href="/knowledge-architect.html">Struktur og oprydning</a>
@@ -123,7 +123,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <a href="/">Se hjemmesiden</a>
 </nav>
 <section class="release-panel">
-<div><span>Release</span><strong>v2026.07.24.109</strong></div>
+<div><span>Release</span><strong>v2026.07.24.110</strong></div>
 <div><span>Build</span><strong>2026-07-27T10:58:48+02:00</strong></div>
 <div><span>Worker</span><strong>15.7-decision-engine</strong></div>
 <div><span>KB-objekter</span><strong data-release-objects>–</strong></div>
@@ -154,7 +154,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 <button class="secondary" id="runSelectedTests">Test valgte objekter</button>
 
 <button class="secondary" id="exportChanges">Download ændringslog</button>
-<a class="button secondary" href="/control?v=20260724.109">Knowledge Center</a>
+<a class="button secondary" href="/control?v=20260724.110">Knowledge Center</a>
 <a class="button secondary" href="/ai-test-runner.html">Fuld test</a>
 </div>
 <div class="layout">
@@ -209,7 +209,7 @@ details.change-details summary{cursor:pointer;font-weight:750;color:var(--muted)
 </div>
 </section>
 </div>
-<section class="ca-coach"><div class="ca-coach-icon">→</div><div><strong>Når du er færdig med at tilføje viden</strong><p>AI gemmer både dine input og de godkendte forslag. Gennemgå eventuelle forslag, og gå derefter til udgivelse.</p></div><a href="/control?v=20260724.109#publish">Gå til udgivelse</a></section></main>
+<section class="ca-coach"><div class="ca-coach-icon">→</div><div><strong>Når du er færdig med at tilføje viden</strong><p>AI gemmer både dine input og de godkendte forslag. Gennemgå eventuelle forslag, og gå derefter til udgivelse.</p></div><a href="/control?v=20260724.110#publish">Gå til udgivelse</a></section></main>
 <script>
 let data={cards:[]},tests={tests:[]},selected=new Set(),activeId=null,pendingNew=null,pendingOperation=null,pendingBatch=[],lastResult=null;
 const changes=JSON.parse(localStorage.getItem('casaKnowledgeChanges')||'[]');
@@ -854,9 +854,9 @@ q('#exportChanges').addEventListener('click',()=>download('knowledge-changes.jso
  document.querySelectorAll('[data-release-changes]').forEach(el=>el.textContent=changes);
 })();
 </script>
-<script src="/platform-shell.js?v=20260724.109"></script>
-<script src="/core/casa-core.js?v=20260724.109"></script>
-<script src="/core/casa-config.js?v=20260724.109"></script>
-<script src="/core/casa-governance.js?v=20260724.109"></script>
-<script src="/core/casa-decision.js?v=20260724.109"></script>
+<script src="/platform-shell.js?v=20260724.110"></script>
+<script src="/core/casa-core.js?v=20260724.110"></script>
+<script src="/core/casa-config.js?v=20260724.110"></script>
+<script src="/core/casa-governance.js?v=20260724.110"></script>
+<script src="/core/casa-decision.js?v=20260724.110"></script>
 </body></html>

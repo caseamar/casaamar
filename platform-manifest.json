@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.109",
-  "build": "2026-07-27T19:45:00+02:00",
+  "platform_version": "v2026.07.24.110",
+  "build": "2026-07-27T20:25:00+02:00",
   "worker_version": "15.8-platform-intelligence-foundation",
-  "release_name": "Platform Consistency Hotfix",
-  "generated_at": "2026-07-27T19:45:00+02:00",
+  "release_name": "Public Website Runtime Isolation Hotfix",
+  "generated_at": "2026-07-27T20:25:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -179,5 +179,11 @@
       "release-history",
       "principles"
     ]
+  },
+  "public_website_runtime": {
+    "version": "1.0.0",
+    "isolated_from_admin_shell": true,
+    "loads_platform_shell": false,
+    "purpose": "Prevent control-center bootstrap logic from affecting the public website."
   }
 }

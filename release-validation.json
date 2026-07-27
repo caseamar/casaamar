@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.109",
+  "release": "v2026.07.24.110",
   "built_at": "2026-07-27T19:15:00+02:00",
   "checks": [
     {
@@ -46,9 +46,20 @@
     {
       "id": "decision-engine-regression",
       "status": "passed"
+    },
+    {
+      "id": "public-runtime-isolation",
+      "status": "passed",
+      "detail": "index.html does not load platform-shell.js or control-center core bootstrap scripts."
+    },
+    {
+      "id": "doctor-version-visible",
+      "status": "passed",
+      "detail": "Mission Control visibly labels Platform Doctor v2.0.1."
     }
   ],
-  "platform_version": "v2026.07.24.109",
+  "platform_version": "v2026.07.24.110",
   "release_name": "Platform Consistency Hotfix",
-  "status": "validated"
+  "status": "validated",
+  "validation_summary": "Public website runtime isolated from control-center shell; Platform Doctor version made visible."
 }
