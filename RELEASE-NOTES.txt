@@ -1,0 +1,3 @@
+Casa Amar v2026.07.24.118 – Release Navigation Consistency Hotfix
+
+Canonicalizes the Control Center URL, removes stale release parameters, refreshes all asset cache keys and aligns subsystem versions across the manifest, registry and runtime modules.

@@ -1,14 +1,19 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.117",
-  "generated_at": "2026-07-27T21:30:00+02:00",
+  "release": "v2026.07.24.118",
+  "generated_at": "2026-07-27T22:10:00+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [
     ".git/",
     "images/"
   ],
-  "file_count": 77,
+  "file_count": 80,
   "files": [
+    {
+      "path": "RELEASE-NOTES.txt",
+      "size": 253,
+      "sha256": "5b0f7e82502174c0c4b81343d0a33b98e40d8c9abfdc8111471b9fb486d4050b"
+    },
     {
       "path": "_headers",
       "size": 934,
@@ -16,13 +21,13 @@
     },
     {
       "path": "_worker.js",
-      "size": 104542,
-      "sha256": "3a3bb31136f36e5d29b37b58178b08aae698c133ededa579ffb88c145c731214"
+      "size": 104574,
+      "sha256": "3e7e0250eeb12e603b6bbcd2be6c897c7f42e02a3d2e89b74399beba11f1d45e"
     },
     {
       "path": "asset-brief.html",
-      "size": 3040,
-      "sha256": "20a3e0b3a002a7a44078f6c276e79298853585c8da1b61bab1dcc365897d0eed"
+      "size": 3026,
+      "sha256": "627f909da01fa2e1f0866bd97c86271cb07aaabce2f8a391218cec3145f9363d"
     },
     {
       "path": "asset-library.json",
@@ -46,8 +51,8 @@
     },
     {
       "path": "asset-studio.html",
-      "size": 59325,
-      "sha256": "7219e77aa304e52285b6d6679e1d20aaf9d66aac6441a0db9b88238a71f451aa"
+      "size": 59297,
+      "sha256": "b40fd7de849536e61a992c591a8c0f91673d871b6bc54ff70c9ba6272d803b8b"
     },
     {
       "path": "asset-sync-settings.json",
@@ -61,8 +66,8 @@
     },
     {
       "path": "brand-studio.html",
-      "size": 7797,
-      "sha256": "5a751cd19de41e46b5a6c3aa671d2acb8804ab552c2c0f612d1db2efda1c766b"
+      "size": 7755,
+      "sha256": "f11ba2c75146f10e61a50cc975b3b99e76fb3817110d372359330c2833dc2318"
     },
     {
       "path": "campaign-profiles.json",
@@ -92,7 +97,7 @@
     {
       "path": "config/configuration-manifest.json",
       "size": 1000,
-      "sha256": "02ead3e8c04a3e728f59fb8263084eb1d5396013b9d3a0180a9db91a7d62c366"
+      "sha256": "83cdba1904eb54eff3dff0d3550174ee6623d3f880b4f186fd2ae4727220035d"
     },
     {
       "path": "config/design-system.json",
@@ -131,8 +136,8 @@
     },
     {
       "path": "control/index.html",
-      "size": 74161,
-      "sha256": "5a5d6e45624ead4f6fa4d0d7f039e81326b66ff0be0683a2ca302f3a79ffcb70"
+      "size": 74225,
+      "sha256": "88eed55e71008c7bde01dce342ec70efe322bb1dd3f047b76c0d57c4c207969d"
     },
     {
       "path": "core/casa-audit.js",
@@ -151,8 +156,8 @@
     },
     {
       "path": "core/casa-contracts.js",
-      "size": 4214,
-      "sha256": "3ef23dec99859f66eb6f679fa11bec214426bd2f66cd769a71864b0c2e63b319"
+      "size": 4667,
+      "sha256": "92b887d1e9669615e018a68c6d2a4fdd95faa44fc76d21cf2cda8e2b339e6ab3"
     },
     {
       "path": "core/casa-core.js",
@@ -166,8 +171,8 @@
     },
     {
       "path": "core/casa-diagnostics.js",
-      "size": 4824,
-      "sha256": "954cf76a529ec851057fe6b46409da21f930ecf4b69b9d21da2dbbcc4b0411e3"
+      "size": 5304,
+      "sha256": "80400ff974d758a2840d82346ad0f5ba41f5a458baa2ca6bded7af9210645816"
     },
     {
       "path": "core/casa-events.js",
@@ -180,34 +185,39 @@
       "sha256": "f800df53dfed2c6c20a6861636733810517596317bea32d7300d0bec51aa2689"
     },
     {
+      "path": "core/casa-repository.js",
+      "size": 2288,
+      "sha256": "78a5c8a7574d4a154e83c89345a846f87cae9993168d348cff90d8f879702b36"
+    },
+    {
       "path": "core/casa-subsystem-registry.js",
       "size": 3069,
-      "sha256": "f9985d39d0f5092d3bf4838b9b01f89f5522bed57d21fb027b25096913369458"
+      "sha256": "0479ea98147c2d9de92176e0e6575c61fa866ceb504074436d21916109f22444"
     },
     {
       "path": "index.html",
       "size": 97440,
-      "sha256": "1e851a5d2dde292b4515a3f47efd793cc628ba57422c6a66bd7689eef9857c6d"
+      "sha256": "0712196a49ac88a12d324cb7e1573b80f60d069cba4f15be252a351f4c926eac"
     },
     {
       "path": "knowledge-architect.html",
-      "size": 21408,
-      "sha256": "4c500c4425d81b3423c60afa24ab99cadcf557ccacb0a45d23c4246ccee0e328"
+      "size": 21394,
+      "sha256": "e9b8408764816793dfe9e37ba1cb70287f2344e600426b7961034d482f584206"
     },
     {
       "path": "knowledge-center.html",
       "size": 712,
-      "sha256": "398afd9999e6527b44fa9eeb0fe400075d358fe18780c0eedd8292248f9effb0"
+      "sha256": "4a74e54f579c0d528f1dd7379d1e1a65281428c0e60baa0bd3b793750b5ac6f0"
     },
     {
       "path": "knowledge-review.html",
-      "size": 16792,
-      "sha256": "25586e3ff8192f586b1aed59561030b8b6e207e003f0ed7b1bfb224fd0cbc4b2"
+      "size": 16778,
+      "sha256": "11ac63b266983eaa785f59b89ad13a613f1c9807c8a6889c77de69ee6ea47f8e"
     },
     {
       "path": "knowledge-studio.html",
-      "size": 46061,
-      "sha256": "c51c10ca9597d0b53ebd25e2c6111c99f0e6ac4be666d7931ad72d8f366fa581"
+      "size": 46019,
+      "sha256": "7d8675503c297e7ee871b9b05e27661fad48db6091e28787af9a23bb75e10971"
     },
     {
       "path": "page-blueprint.json",
@@ -217,17 +227,17 @@
     {
       "path": "page-preview.html",
       "size": 2402,
-      "sha256": "3d7ea1941194811472b8fa489f9cf0b932de31cb2fa9cc01e2ce5d287b4298e8"
+      "sha256": "d379c5e16d051948847c692d0f20870946ebe1e9a1ba1b9e6ab9ba270b93f8c9"
     },
     {
       "path": "page-studio.html",
-      "size": 31086,
-      "sha256": "626e65719e32f8db9fb5ddfa309a114a0c71517203c5bd46500aa8d92e65d606"
+      "size": 31044,
+      "sha256": "fcf71169c287fce3760314ee5c3fb26643e3b9e8f33a075f830001e1f5015330"
     },
     {
       "path": "photo-missions.html",
-      "size": 6994,
-      "sha256": "4e8cc164d818faa515dfd67fc388b1859123549d447f6bd2767c81e5e3308769"
+      "size": 6980,
+      "sha256": "cf794497c61d4adf9564deef73c35c7555e591b871080d38e3d2bff8a1d6f4df"
     },
     {
       "path": "photo-missions.json",
@@ -246,8 +256,8 @@
     },
     {
       "path": "platform/brain/backlog.json",
-      "size": 1185,
-      "sha256": "1c42beabc4b7e3f786ced6dcdc53eb9833663ca56353a5ab118d29d96b5e7a45"
+      "size": 1512,
+      "sha256": "21817c46351475b534d94ea5da90132c3b10ee43d758f8f8a022c99f3640d740"
     },
     {
       "path": "platform/brain/capabilities.json",
@@ -262,7 +272,7 @@
     {
       "path": "platform/brain/manifest.json",
       "size": 495,
-      "sha256": "70fc41ec766af423ddf192e23bdaf2de1d4b3fed543e43b06124e86da6cd7f4f"
+      "sha256": "7c6c01462a3ff4ddc754bd50859f03d40d872786bf9de8cd6932f5c8ec4fa111"
     },
     {
       "path": "platform/brain/principles.json",
@@ -271,28 +281,28 @@
     },
     {
       "path": "platform/brain/release-history.json",
-      "size": 2638,
-      "sha256": "152e7cc2c40dcdcc677eea3890438438ca2b2b56015a45cbf42191157e688abc"
+      "size": 2993,
+      "sha256": "5769b7bb0a0ce8676539ae53af8bd66040245e705a8f53c633772b941bca84c0"
     },
     {
       "path": "platform/brain/roadmap.json",
-      "size": 1262,
-      "sha256": "b13357abcbfc94e0095c7ec872ceeeb6c77f0f6f8fb702a697693f69ddc5a701"
+      "size": 1284,
+      "sha256": "2503246f07480bdbea5bc8dd818e9743050dbd81c05c93588e3371b0b02a4b45"
     },
     {
       "path": "platform/brain/version-contract.json",
-      "size": 446,
-      "sha256": "def5900023c0cfe6de04be928efffdb29533c0d85e24ce3b59029781f12f5684"
+      "size": 491,
+      "sha256": "ed9c79afe0482f8c628d4791b030f370ce812dc8e4cae359d462d0f2d7b4fd36"
     },
     {
       "path": "platform-manifest.json",
-      "size": 7159,
-      "sha256": "987894f1911028f48a70d1d0d143afcf33c2e32374626e78cec8db4db28abd38"
+      "size": 8024,
+      "sha256": "17db44bcd96b9108dcca3a5ef6675b1f9d8dae583bb3de6f72c2c1a3797e0cb2"
     },
     {
       "path": "platform-shell.js",
-      "size": 25632,
-      "sha256": "a12fa4a8920fef6049d880ac4eb1575eb995fe536120c2dcd6a6a534560f2235"
+      "size": 26371,
+      "sha256": "1b1d369ee3a25ea1ba331bb35fa5ce960cc0947a5b099c79a21d923e35117c17"
     },
     {
       "path": "platform-ui.css",
@@ -335,9 +345,14 @@
       "sha256": "76d19e848aa2a777878785b529fee712f6d74398608df707a9fa397c1a7cf127"
     },
     {
+      "path": "registry/repository.json",
+      "size": 10617,
+      "sha256": "cb21125c9790086f4ac19e48d04932deaf5bd95c661c0f801f2bf59e5484dc79"
+    },
+    {
       "path": "registry/subsystems.json",
-      "size": 5241,
-      "sha256": "7e0b709a1ee8dd1bb4685d7292fd229b3c3913144542a16941a6dace42af02d2"
+      "size": 5686,
+      "sha256": "95b5dc581e92189d410bb2099169d3c8a863430d2276f8dc3e4a49e3f09a6b59"
     },
     {
       "path": "registry/tenants.json",
@@ -351,13 +366,13 @@
     },
     {
       "path": "release-notes.json",
-      "size": 1330,
-      "sha256": "92268b47c31dde4cbf36f3ca3cd207fada5e49be14f1aa1146ed570a6eb6f946"
+      "size": 1245,
+      "sha256": "0b32f390e0c2dd37355adcea4d20fcc92cd06303ca28b6d973478630c98cd144"
     },
     {
       "path": "release-validation.json",
-      "size": 1647,
-      "sha256": "882bd27fffd178d675ef82ea4aa425abfb7452ce6f3e49c7efb7ce410909acc3"
+      "size": 1655,
+      "sha256": "4541940ac5944cbed12d1b582b8bf6ed314a8cc8c6c84a303c069537bd2265b5"
     },
     {
       "path": "schemas/commerce-order.schema.json",
@@ -394,6 +409,5 @@
       "size": 6720,
       "sha256": "fcb65d98443209ed909772a9c0aa5f67982211acecd1debe541fff80a87941f4"
     }
-  ],
-  "release_name": "Repository Intelligence Foundation"
+  ]
 }

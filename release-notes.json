@@ -1,6 +1,6 @@
 {
-  "release": "v2026.07.24.117",
-  "version": "v2026.07.24.117",
+  "release": "v2026.07.24.118",
+  "version": "v2026.07.24.118",
   "name": "Repository Intelligence Foundation",
   "generated_at": "2026-07-27T21:30:00+02:00",
   "summary": "Introduces Repository Intelligence as a canonical, searchable inventory of the deployable platform package with critical-file integrity validation and full subsystem registry integration.",
@@ -12,7 +12,7 @@
     "Strengthened subsystem and platform contracts for repository metadata consistency."
   ],
   "test_focus": [
-    "Platform v2026.07.24.117",
+    "Platform v2026.07.24.118",
     "Platform Doctor v2.2.0",
     "Repository Intelligence v1.0.0",
     "Subsystem Registry v1.2.0",

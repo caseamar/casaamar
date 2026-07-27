@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.117",
-  "platform_version": "v2026.07.24.117",
-  "generated_at": "2026-07-27T21:30:00+02:00",
+  "release": "v2026.07.24.118",
+  "platform_version": "v2026.07.24.118",
+  "generated_at": "2026-07-27T22:10:00+02:00",
   "status": "passed",
-  "summary": "Adds a canonical repository inventory and validates critical deployable platform files, subsystem metadata and Project Brain alignment.",
+  "summary": "Fixes stale release URLs and cached subsystem metadata by enforcing canonical routes, current asset cache keys and repository-wide release-token consistency.",
   "checks": [
     {
       "id": "json",
@@ -17,24 +17,29 @@
       "detail": "All core JavaScript files pass syntax validation."
     },
     {
-      "id": "repository-registry",
+      "id": "canonical-control-url",
       "status": "passed",
-      "detail": "Repository registry contains 78 unique deployable file records."
+      "detail": "Control Center removes v, _platform_release and temporary _refresh parameters after startup."
     },
     {
-      "id": "critical-files",
+      "id": "update-navigation",
       "status": "passed",
-      "detail": "All required critical platform files are represented in Repository Intelligence."
+      "detail": "The update action reloads the canonical route with an ephemeral cache-buster and never persists a release number in the URL."
     },
     {
-      "id": "subsystem-registry",
+      "id": "asset-cache-keys",
       "status": "passed",
-      "detail": "Repository Intelligence is registered and version-aligned with the platform manifest."
+      "detail": "All deployable HTML and JavaScript references use cache key 20260724.118."
     },
     {
-      "id": "project-brain",
+      "id": "stale-release-tokens",
       "status": "passed",
-      "detail": "Roadmap, backlog and release history identify v117 as the current release."
+      "detail": "No deployable file contains a release cache key older than the current package."
+    },
+    {
+      "id": "subsystem-versions",
+      "status": "passed",
+      "detail": "Manifest, Subsystem Registry and runtime module versions are aligned."
     },
     {
       "id": "replacement-package",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "generated_at": "2026-07-27T21:30:00+02:00",
   "source": "release-package",
-  "file_count": 78,
+  "file_count": 80,
   "policies": {
     "complete_replace_except": [
       ".git/",
@@ -20,7 +20,9 @@
       "platform-shell.js",
       "control/index.html",
       "index.html",
-      "registry/subsystems.json"
+      "registry/subsystems.json",
+      "registry/repository.json",
+      "core/casa-repository.js"
     ]
   },
   "files": [
@@ -229,6 +231,12 @@
       "critical": true
     },
     {
+      "path": "/core/casa-repository.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
       "path": "/core/casa-subsystem-registry.js",
       "kind": "javascript",
       "area": "core",
@@ -419,6 +427,12 @@
       "kind": "json",
       "area": "registry",
       "critical": false
+    },
+    {
+      "path": "/registry/repository.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
     },
     {
       "path": "/registry/subsystems.json",

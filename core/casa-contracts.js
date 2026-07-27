@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.3.0";
+ const VERSION="1.4.0";
  function result(id,passed,detail,evidence=[]){return {id,passed:Boolean(passed),status:passed?"passed":"failed",detail,evidence};}
  function releaseIdentity(manifest={},worker={}){
   const expectedPlatform=manifest.platform_version||null;
@@ -20,6 +20,13 @@
    result("release.identity.ignores-timestamps",a.consistent,"Equal identity remains consistent when timestamps differ.",[a]),
    result("release.identity.detects-version-mismatch",!b.consistent,"A platform or Worker identity mismatch is rejected.",[b])
   ];
+ }
+
+ function runReleaseNavigationRegression(){
+  const forbidden=["v","_platform_release"];
+  const url=new URL(location.href);
+  const present=forbidden.filter(key=>url.searchParams.has(key));
+  return result("release.navigation.canonical-url",present.length===0,present.length?`Stale release parameters remain: ${present.join(", ")}`:"Visible URL uses the stable canonical route.",[{pathname:url.pathname,present}]);
  }
  function runVersionSourceRegression(){
   const manifest=window.CASA_PLATFORM_MANIFEST||{};
@@ -41,7 +48,7 @@
   const inventoryResult=result("subsystem-registry.inventory.visible",!document.querySelector("#platformVersionsGrid")||inventory.length===registered.length,`Visible ${inventory.length}; registered ${registered.length}`,[{visible:inventory.length,registered:registered.length}]);
   const coverage=window.CasaSubsystemRegistry?.validateCoverage?.(window.CASA_PLATFORM_MANIFEST||{});
   const coverageResult=result("subsystem-registry.manifest.coverage",Boolean(coverage?.consistent),coverage?.consistent?"Every versioned manifest subsystem is registered.":`Missing registry entries: ${(coverage?.missing||[]).join(", ")}`,[coverage]);
-  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression(),registryResult,coverageResult,inventoryResult];
+  const results=[...runReleaseIdentityRegression(),runReleaseNavigationRegression(),runVersionSourceRegression(),registryResult,coverageResult,inventoryResult];
   const report={schema_version:"1.0",version:VERSION,status:results.every(x=>x.passed)?"passed":"failed",results,generated_at:new Date().toISOString()};
   window.CasaAudit?.record?.("platform.contracts.completed","contracts",report);
   window.CasaEvents?.publish?.("platform:contracts-completed",report);

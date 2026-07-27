@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.117",
+  "current_release": "v2026.07.24.118",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
   "current_subsystem": "Repository Intelligence Foundation",
@@ -44,5 +44,5 @@
     "Project Brain integrity UI",
     "Release automation quality gates"
   ],
-  "updated_at": "2026-07-27T21:30:00+02:00"
+  "updated_at": "2026-07-27T22:10:00+02:00"
 }
