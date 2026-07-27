@@ -1,0 +1,13 @@
+{
+  "id": "ADR-0001",
+  "title": "Release identity uses stable version fields",
+  "status": "accepted",
+  "date": "2026-07-27",
+  "context": "Build and generated timestamps differ naturally across manifest and Worker artifacts.",
+  "decision": "Only platform_version and worker_version determine deployment consistency. Timestamps are informational metadata.",
+  "consequences": [
+    "False synchronization warnings are prevented.",
+    "Regression tests protect the contract.",
+    "UI versions must be manifest-driven."
+  ]
+}

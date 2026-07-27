@@ -41,13 +41,21 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.113",
+      "version": "v2026.07.24.114",
       "name": "Platform Doctor Version Contract Hotfix",
       "date": "2026-07-27",
       "epic": "Platform Intelligence",
       "type": "hotfix",
       "summary": "Made the Platform Doctor version display manifest-driven and aligned Project Brain subsystem metadata with the active platform manifest."
+    },
+    {
+      "version": "v2026.07.24.114",
+      "name": "Decision Audit and Event Contracts",
+      "date": "2026-07-27",
+      "epic": "Platform Intelligence",
+      "type": "feature",
+      "summary": "Added durable decision explanations, event contracts, audit history and permanent regression tests for release identity."
     }
   ],
-  "updated_at": "2026-07-27T22:20:00+02:00"
+  "updated_at": "2026-07-27T23:10:00+02:00"
 }

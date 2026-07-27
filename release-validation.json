@@ -1,8 +1,10 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.113",
-  "generated_at": "2026-07-27T22:05:00+02:00",
+  "release": "v2026.07.24.114",
+  "platform_version": "v2026.07.24.114",
+  "generated_at": "2026-07-27T23:10:00+02:00",
   "status": "passed",
+  "summary": "Introduces durable decision and event audit contracts plus regression protection for release identity.",
   "checks": [
     {
       "id": "json",
@@ -10,36 +12,34 @@
       "detail": "All JSON files parse."
     },
     {
-      "id": "runtime-files",
+      "id": "javascript-syntax",
       "status": "passed",
-      "detail": "Project Brain runtime and all declared files are included."
+      "detail": "All core JavaScript files pass syntax validation."
     },
     {
-      "id": "version-registry",
+      "id": "release-identity-regression",
       "status": "passed",
-      "detail": "Mission Control displays subsystem versions."
+      "detail": "Equal platform and Worker identities remain consistent despite different timestamps; identity mismatches are rejected."
     },
     {
-      "id": "public-runtime",
+      "id": "manifest-driven-versioning",
       "status": "passed",
-      "detail": "Public website remains isolated from the administrative shell."
+      "detail": "Platform Doctor remains manifest-driven."
+    },
+    {
+      "id": "event-contract-registry",
+      "status": "passed",
+      "detail": "Event contracts and schema are included."
+    },
+    {
+      "id": "decision-audit",
+      "status": "passed",
+      "detail": "Decision Engine emits structured explanations and audit entries."
     },
     {
       "id": "replacement-package",
       "status": "passed",
       "detail": "Complete replacement package; preserve only .git and images."
-    },
-    {
-      "id": "platform-doctor-version-source",
-      "status": "passed",
-      "detail": "Platform Doctor heading reads version from platform-manifest.json rather than a hard-coded UI string."
-    },
-    {
-      "id": "project-brain-version-alignment",
-      "status": "passed",
-      "detail": "Project Brain architecture registry reports Platform Doctor v2.1.1, matching platform-manifest.json."
     }
-  ],
-  "platform_version": "v2026.07.24.113",
-  "summary": "Makes the Platform Doctor version manifest-driven and aligns all subsystem version metadata to prevent future display drift."
+  ]
 }

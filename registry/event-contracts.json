@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "contracts": [
+    {
+      "type": "platform:events-ready",
+      "owner": "event-engine",
+      "required_payload": [
+        "version"
+      ],
+      "audited": true
+    },
+    {
+      "type": "platform:diagnostics-ready",
+      "owner": "diagnostics-framework",
+      "required_payload": [
+        "version"
+      ],
+      "audited": true
+    },
+    {
+      "type": "diagnostics:completed",
+      "owner": "diagnostics-framework",
+      "required_payload": [
+        "overall",
+        "results",
+        "generated_at"
+      ],
+      "audited": true
+    },
+    {
+      "type": "decision:evaluated",
+      "owner": "decision-engine",
+      "required_payload": [
+        "id",
+        "status",
+        "evaluated_at",
+        "explanation"
+      ],
+      "audited": true
+    },
+    {
+      "type": "platform:ready",
+      "owner": "core",
+      "required_payload": [],
+      "audited": true
+    },
+    {
+      "type": "release:identity-checked",
+      "owner": "platform-doctor",
+      "required_payload": [
+        "consistent"
+      ],
+      "audited": true
+    }
+  ]
+}

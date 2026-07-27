@@ -1,13 +1,16 @@
 {
-  "release": "v2026.07.24.113",
-  "name": "Platform Consistency Contract Hotfix",
-  "generated_at": "2026-07-27T22:05:00+02:00",
-  "summary": "Removes the hard-coded Platform Doctor version from Control Center and renders it from the platform manifest, ensuring the displayed subsystem version always matches the active release contract.",
+  "release": "v2026.07.24.114",
+  "version": "v2026.07.24.114",
+  "title": "Decision Audit and Event Contracts",
+  "name": "Decision Audit and Event Contracts",
+  "generated_at": "2026-07-27T23:10:00+02:00",
+  "summary": "Adds durable decision explanations, registered event contracts, an Audit Engine foundation, and permanent regression tests that protect platform release identity and manifest-driven versioning.",
   "changes": [
-    "Platform Doctor heading now reads its version from platform-manifest.json.",
-    "Project Brain architecture registry aligned with Platform Doctor v2.1.1.",
-    "Added a durable single-source-of-truth contract for subsystem version display.",
-    "Platform and Worker release identities updated to v2026.07.24.113."
+    "Decision Engine v1.2.0 now stores structured, explainable outcomes and emits audited decision records.",
+    "Event Engine v1.2.0 validates registered event payload contracts and records event activity.",
+    "Audit Engine v1.0.0 provides a reusable local audit history for decisions, events and platform contracts.",
+    "Platform Contracts v1.0.0 permanently tests that timestamps cannot cause false synchronization warnings.",
+    "Diagnostics Framework v1.2.0 verifies release identity, event contracts and Audit Engine health."
   ],
   "deployment": {
     "strategy": "complete_replace_except_images",
@@ -17,11 +20,13 @@
     ]
   },
   "test_focus": [
-    "Platform v2026.07.24.113",
+    "Platform v2026.07.24.114",
     "Platform Doctor v2.1.1",
-    "No synchronization warning in Control Center",
+    "Decision Engine v1.2.0",
+    "Event Engine v1.2.0",
+    "Diagnostics v1.2.0",
+    "Audit Engine v1.0.0",
+    "No synchronization warning",
     "Public website remains available"
-  ],
-  "version": "v2026.07.24.113",
-  "title": "Platform Doctor Version Contract Hotfix"
+  ]
 }

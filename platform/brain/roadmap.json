@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.113",
+  "current_release": "v2026.07.24.114",
   "target_release": "v2026.07.24.150",
   "current_epic": "Platform Intelligence",
-  "current_subsystem": "Project Brain v1",
-  "next_release": "v2026.07.24.113",
+  "current_subsystem": "Decision Audit and Event Contracts",
+  "next_release": "v2026.07.24.115",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -40,9 +40,9 @@
     }
   ],
   "next_focus": [
-    "Decision History and explanation",
-    "Event contracts and audit trail",
-    "Project Brain UI and integrity checks"
+    "Repository Intelligence foundation",
+    "Project Brain integrity UI",
+    "Release automation quality gates"
   ],
-  "updated_at": "2026-07-27T22:05:00+02:00"
+  "updated_at": "2026-07-27T23:10:00+02:00"
 }

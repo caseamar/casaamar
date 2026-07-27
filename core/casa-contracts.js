@@ -1,0 +1,39 @@
+(function(){
+ "use strict";
+ const VERSION="1.0.0";
+ function result(id,passed,detail,evidence=[]){return {id,passed:Boolean(passed),status:passed?"passed":"failed",detail,evidence};}
+ function releaseIdentity(manifest={},worker={}){
+  const expectedPlatform=manifest.platform_version||null;
+  const actualPlatform=worker.platform_version||null;
+  const expectedWorker=manifest.worker_version||null;
+  const actualWorker=worker.worker_version||null;
+  const consistent=Boolean(expectedPlatform&&expectedWorker&&expectedPlatform===actualPlatform&&expectedWorker===actualWorker);
+  return {consistent,expected:{platform_version:expectedPlatform,worker_version:expectedWorker},actual:{platform_version:actualPlatform,worker_version:actualWorker}};
+ }
+ function runReleaseIdentityRegression(){
+  const manifest={platform_version:"v-test",worker_version:"worker-test",build:"2026-01-01T00:00:00Z",generated_at:"2026-01-01T00:00:01Z"};
+  const sameIdentityDifferentTimestamps={platform_version:"v-test",worker_version:"worker-test",build:"2026-01-02T00:00:00Z",generated_at:"2026-01-03T00:00:00Z"};
+  const mismatch={platform_version:"v-other",worker_version:"worker-test"};
+  const a=releaseIdentity(manifest,sameIdentityDifferentTimestamps);
+  const b=releaseIdentity(manifest,mismatch);
+  return [
+   result("release.identity.ignores-timestamps",a.consistent,"Equal identity remains consistent when timestamps differ.",[a]),
+   result("release.identity.detects-version-mismatch",!b.consistent,"A platform or Worker identity mismatch is rejected.",[b])
+  ];
+ }
+ function runVersionSourceRegression(){
+  const manifest=window.CASA_PLATFORM_MANIFEST||{};
+  const displayed=document.querySelector("[data-platform-doctor-version]")?.textContent?.trim().replace(/^v/i,"")||null;
+  const expected=manifest.platform_doctor?.version||null;
+  return result("platform-doctor.version.manifest-driven",!displayed||displayed===expected,displayed?`Displayed ${displayed}; manifest ${expected}`:"Version label not mounted on this route.",[{displayed,expected}]);
+ }
+ function runAll(){
+  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression()];
+  const report={schema_version:"1.0",version:VERSION,status:results.every(x=>x.passed)?"passed":"failed",results,generated_at:new Date().toISOString()};
+  window.CasaAudit?.record?.("platform.contracts.completed","contracts",report);
+  window.CasaEvents?.publish?.("platform:contracts-completed",report);
+  return report;
+ }
+ window.CasaContracts={version:VERSION,releaseIdentity,runReleaseIdentityRegression,runAll,ready:true};
+ window.CasaCore?.modules?.register?.({id:"contracts",version:VERSION,capabilities:["contracts.release-identity","contracts.regression-tests"]});
+})();

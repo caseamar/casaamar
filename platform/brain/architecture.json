@@ -32,15 +32,15 @@
     },
     {
       "id": "decision-engine",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "event-engine",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "diagnostics",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "project-brain",
@@ -49,6 +49,19 @@
     {
       "id": "platform-doctor",
       "version": "2.1.1"
+    },
+    {
+      "id": "audit-engine",
+      "name": "Audit Engine",
+      "version": "1.0.0",
+      "status": "foundation"
+    },
+    {
+      "id": "platform-contracts",
+      "name": "Platform Contracts",
+      "version": "1.0.0",
+      "status": "active"
     }
-  ]
+  ],
+  "updated_at": "2026-07-27T23:10:00+02:00"
 }
