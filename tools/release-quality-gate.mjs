@@ -65,6 +65,24 @@ for(const asset of assetRegistry.items||[]){
  check((asset.readiness.variant_count||0)>=0&&(asset.readiness.variant_count||0)<=3,`Asset variant readiness is bounded (${asset.id})`);
 }
 
+
+
+const variantRegistry=json('registry/asset-variants.json');
+const requiredProfiles=new Set((variantRegistry.policy?.required_profiles||[]).map(x=>x.id));
+const variantPlanIds=new Set();
+check(variantRegistry.policy?.originals_are_immutable===true,'Asset variant originals are immutable');
+check(variantRegistry.policy?.generation_requires_explicit_execution===true,'Asset variant generation requires explicit execution');
+check(variantRegistry.policy?.release_package_does_not_modify_images===true,'Release package preserves the images directory');
+for(const plan of variantRegistry.plans||[]){
+ check(assetIds.has(plan.asset_id),`Asset variant plan resolves (${plan.asset_id})`);
+ check(!variantPlanIds.has(plan.asset_id),`Asset variant plan is unique (${plan.asset_id})`); variantPlanIds.add(plan.asset_id);
+ check(plan.source_immutable===true&&plan.generation_mode==='non-destructive',`Asset variant plan is non-destructive (${plan.asset_id})`);
+ const ids=new Set();
+ for(const variant of plan.variants||[]){check(!ids.has(variant.id),`Asset variant id is unique (${plan.asset_id}:${variant.id})`);ids.add(variant.id);check(Number.isInteger(variant.width)&&variant.width>0,`Asset variant width is valid (${plan.asset_id}:${variant.id})`);check(String(variant.target_path||'').startsWith('generated/'),`Asset variant output is isolated (${plan.asset_id}:${variant.id})`);}
+ if((assetRegistry.items||[]).find(x=>x.id===plan.asset_id)?.type==='image')for(const id of requiredProfiles)check(ids.has(id),`Asset variant profile is complete (${plan.asset_id}:${id})`);
+}
+for(const id of assetIds)check(variantPlanIds.has(id),`Asset variant plan covers canonical asset (${id})`);
+
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 if(fail.length)process.exit(1);

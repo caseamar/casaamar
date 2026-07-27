@@ -1,22 +1,8 @@
 {
-  "release": "v2026.07.24.123",
-  "name": "Asset Intelligence Readiness and Relations",
+  "release": "v2026.07.24.124",
+  "name": "Asset Variant Pipeline and Publication Readiness",
   "epic": "Platform Intelligence",
-  "type": "feature",
-  "summary": "Adds deterministic asset readiness scoring, semantic content relationships, responsive variant coverage and actionable asset recommendations.",
-  "versions": {
-    "platform": "v2026.07.24.123",
-    "platform_doctor": "2.5.1",
-    "asset_intelligence": "1.1.0",
-    "diagnostics_framework": "1.11.0",
-    "platform_contracts": "1.9.0",
-    "subsystem_registry": "1.8.0",
-    "repository_intelligence": "1.3.0"
-  },
-  "test_focus": [
-    "Asset Intelligence v1.1.0 is visible in Platform Intelligence.",
-    "Platform Doctor completes healthy.",
-    "Public website and /control/ load normally.",
-    "No synchronization warning appears."
-  ]
+  "summary": "Adds a non-destructive responsive asset variant pipeline, publication readiness contracts and release-gated variant integrity checks.",
+  "released_at": "2026-07-28T02:30:00+02:00",
+  "status": "release-candidate"
 }

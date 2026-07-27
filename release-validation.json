@@ -1,8 +1,8 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.123",
+  "release": "v2026.07.24.124",
   "platform_version": "v2026.07.24.123",
-  "generated_at": "2026-07-28T01:15:00+02:00",
+  "generated_at": "2026-07-28T02:30:00+02:00",
   "status": "passed",
   "release_name": "Release Identity Quality Gate Hotfix",
   "summary": "Aligns Worker and manifest identity, adds readiness retries, and introduces an executable release quality gate that blocks inconsistent packages.",
@@ -44,7 +44,8 @@
       "status": "passed"
     }
   ],
-  "checks_passed": 439,
+  "checks_passed": 698,
   "checks_failed": 0,
-  "zip_integrity": "passed"
+  "zip_integrity": "passed",
+  "quality_gate": "tools/release-quality-gate.mjs"
 }

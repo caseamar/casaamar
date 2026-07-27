@@ -1,0 +1,750 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T02:30:00+02:00",
+  "policy": {
+    "originals_are_immutable": true,
+    "output_root": "generated/",
+    "generation_requires_explicit_execution": true,
+    "release_package_does_not_modify_images": true,
+    "required_profiles": [
+      {
+        "id": "web",
+        "width": 1600,
+        "format": "webp"
+      },
+      {
+        "id": "mobile",
+        "width": 900,
+        "format": "webp"
+      },
+      {
+        "id": "thumbnail",
+        "width": 480,
+        "format": "webp"
+      }
+    ]
+  },
+  "plans": [
+    {
+      "asset_id": "asset-casa-amar-koekken-ovn",
+      "source_path": "images/casa-amar-koekken-ovn.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-koekken-ovn-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-koekken-ovn-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-koekken-ovn-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-entre",
+      "source_path": "images/casa-amar-v2-entre.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-entre-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-entre-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-entre-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-hero-patio",
+      "source_path": "images/casa-amar-v2-hero-patio.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-hero-patio-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-hero-patio-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-hero-patio-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-kaffe",
+      "source_path": "images/casa-amar-v2-kaffe.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-kaffe-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-kaffe-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-kaffe-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-koekken",
+      "source_path": "images/casa-amar-v2-koekken.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-koekken-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-koekken-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-koekken-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-master-bedroom",
+      "source_path": "images/casa-amar-v2-master-bedroom.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-master-bedroom-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-master-bedroom-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-master-bedroom-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-patio-detalje",
+      "source_path": "images/casa-amar-v2-patio-detalje.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-detalje-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-detalje-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-detalje-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-patio-spiseplads",
+      "source_path": "images/casa-amar-v2-patio-spiseplads.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-spiseplads-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-spiseplads-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-patio-spiseplads-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-pool",
+      "source_path": "images/casa-amar-v2-pool.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-pool-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-pool-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-pool-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-projektor",
+      "source_path": "images/casa-amar-v2-projektor.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-projektor-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-projektor-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-projektor-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-solnedgang",
+      "source_path": "images/casa-amar-v2-solnedgang.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-solnedgang-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-solnedgang-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-solnedgang-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-sovevaerelse-2",
+      "source_path": "images/casa-amar-v2-sovevaerelse-2.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-2-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-2-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-2-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-sovevaerelse-3",
+      "source_path": "images/casa-amar-v2-sovevaerelse-3.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-3-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-3-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-sovevaerelse-3-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-stue",
+      "source_path": "images/casa-amar-v2-stue.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-stue-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-stue-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-stue-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-tagterrasse",
+      "source_path": "images/casa-amar-v2-tagterrasse.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-tagterrasse-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-tagterrasse-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-tagterrasse-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    },
+    {
+      "asset_id": "asset-casa-amar-v2-udsigt",
+      "source_path": "images/casa-amar-v2-udsigt.webp",
+      "source_immutable": true,
+      "generation_mode": "non-destructive",
+      "variants": [
+        {
+          "id": "web",
+          "width": 1600,
+          "quality": 82,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-udsigt-1600.webp",
+          "status": "planned"
+        },
+        {
+          "id": "mobile",
+          "width": 900,
+          "quality": 80,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-udsigt-900.webp",
+          "status": "planned"
+        },
+        {
+          "id": "thumbnail",
+          "width": 480,
+          "quality": 76,
+          "format": "webp",
+          "target_path": "generated/casa-amar-v2-udsigt-480.webp",
+          "status": "planned"
+        }
+      ],
+      "publication": {
+        "required_variant_ids": [
+          "web",
+          "mobile",
+          "thumbnail"
+        ],
+        "ready": false,
+        "blockers": [
+          "missing-alt-text",
+          "missing-dimensions",
+          "responsive-variants-not-generated"
+        ]
+      }
+    }
+  ]
+}

@@ -1,5 +1,4 @@
-Casa Amar Platform
-Release: v2026.07.24.123
-Name: Asset Intelligence Readiness and Relations
+Casa Amar Platform v2026.07.24.124
+Asset Variant Pipeline and Publication Readiness
 
-Adds deterministic asset readiness scoring, semantic content relationships, responsive variant coverage and actionable recommendations.
+Non-destructive responsive asset variant planning, publication readiness and integrity validation.
