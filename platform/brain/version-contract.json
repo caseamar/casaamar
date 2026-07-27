@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "contract": "subsystem-version-display",
+  "source_of_truth": "/platform-manifest.json",
+  "rules": [
+    "Visible subsystem versions must be rendered from platform-manifest.json.",
+    "UI templates must not hard-code subsystem versions.",
+    "Project Brain architecture metadata must match platform-manifest.json."
+  ],
+  "validated_release": "v2026.07.24.113"
+}

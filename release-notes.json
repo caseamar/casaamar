@@ -1,13 +1,13 @@
 {
-  "release": "v2026.07.24.112",
+  "release": "v2026.07.24.113",
   "name": "Platform Consistency Contract Hotfix",
   "generated_at": "2026-07-27T22:05:00+02:00",
-  "summary": "Fixes the false synchronization warning in Control Center by using stable release identity fields instead of comparing build timestamps.",
+  "summary": "Removes the hard-coded Platform Doctor version from Control Center and renders it from the platform manifest, ensuring the displayed subsystem version always matches the active release contract.",
   "changes": [
-    "Platform and Worker synchronization now compares platform_version and worker_version.",
-    "Build and generated timestamps remain visible as diagnostic metadata but no longer block startup.",
-    "Platform Doctor updated to v2.1.1.",
-    "Public website behavior remains unchanged."
+    "Platform Doctor heading now reads its version from platform-manifest.json.",
+    "Project Brain architecture registry aligned with Platform Doctor v2.1.1.",
+    "Added a durable single-source-of-truth contract for subsystem version display.",
+    "Platform and Worker release identities updated to v2026.07.24.113."
   ],
   "deployment": {
     "strategy": "complete_replace_except_images",
@@ -17,10 +17,11 @@
     ]
   },
   "test_focus": [
-    "Platform Version v2026.07.24.112",
+    "Platform v2026.07.24.113",
     "Platform Doctor v2.1.1",
-    "Worker 15.9.1-project-brain-consistency-hotfix",
-    "Control Center opens without a synchronization warning",
-    "Public website opens normally"
-  ]
+    "No synchronization warning in Control Center",
+    "Public website remains available"
+  ],
+  "version": "v2026.07.24.113",
+  "title": "Platform Doctor Version Contract Hotfix"
 }

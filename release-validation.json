@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.112",
+  "release": "v2026.07.24.113",
   "generated_at": "2026-07-27T22:05:00+02:00",
   "status": "passed",
   "checks": [
@@ -29,8 +29,17 @@
       "status": "passed",
       "detail": "Complete replacement package; preserve only .git and images."
     },
-    "Manifest and Worker identity is based on platform_version and worker_version, not timestamps."
+    {
+      "id": "platform-doctor-version-source",
+      "status": "passed",
+      "detail": "Platform Doctor heading reads version from platform-manifest.json rather than a hard-coded UI string."
+    },
+    {
+      "id": "project-brain-version-alignment",
+      "status": "passed",
+      "detail": "Project Brain architecture registry reports Platform Doctor v2.1.1, matching platform-manifest.json."
+    }
   ],
-  "platform_version": "v2026.07.24.112",
-  "summary": "Corrects the release consistency contract so matching platform and Worker versions are not rejected because of different build timestamps."
+  "platform_version": "v2026.07.24.113",
+  "summary": "Makes the Platform Doctor version manifest-driven and aligns all subsystem version metadata to prevent future display drift."
 }

@@ -6,31 +6,31 @@
       "id": "PI-111-01",
       "title": "Project Brain runtime service",
       "status": "done",
-      "release": "v2026.07.24.112"
+      "release": "v2026.07.24.113"
     },
     {
       "id": "PI-111-02",
       "title": "Subsystem version registry in Mission Control",
       "status": "done",
-      "release": "v2026.07.24.112"
+      "release": "v2026.07.24.113"
     },
     {
       "id": "PI-111-03",
       "title": "Decision Engine generic rule evaluation",
       "status": "done",
-      "release": "v2026.07.24.112"
+      "release": "v2026.07.24.113"
     },
     {
       "id": "PI-112-01",
       "title": "Decision explanation and durable audit model",
       "status": "next",
-      "target_release": "v2026.07.24.112"
+      "target_release": "v2026.07.24.113"
     },
     {
       "id": "PI-112-02",
       "title": "Event contract registry and event audit history",
       "status": "next",
-      "target_release": "v2026.07.24.112"
+      "target_release": "v2026.07.24.113"
     },
     {
       "id": "PI-113-01",
