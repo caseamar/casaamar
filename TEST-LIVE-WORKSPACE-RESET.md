@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.89
-Worker: 14.0-canonical-mission-control
+Release: v2026.07.24.90
+Worker: 14.1-release-compatibility-engine
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.

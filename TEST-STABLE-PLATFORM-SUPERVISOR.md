@@ -1,7 +1,7 @@
 # Test stabil recovery og Platform Supervisor
 
-Release: v2026.07.24.89
-Worker: 14.0-canonical-mission-control
+Release: v2026.07.24.90
+Worker: 14.1-release-compatibility-engine
 
 1. Upload og overskriv alle filer, inklusive `_redirects`.
 2. Vent på grøn Cloudflare-deployment.

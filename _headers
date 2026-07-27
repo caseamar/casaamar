@@ -1,8 +1,12 @@
 /platform-manifest.json
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/content-release.json
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/release-contract.json
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /platform-shell.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/mission-control-v89.html
+/mission-control-v90.html
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /knowledge-center
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0

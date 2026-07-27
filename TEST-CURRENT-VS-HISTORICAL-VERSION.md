@@ -1,12 +1,12 @@
 # Test aktuelle og historiske versionsnumre
 
-Release: v2026.07.24.89
-Worker: 14.0-canonical-mission-control
+Release: v2026.07.24.90
+Worker: 14.1-release-compatibility-engine
 
 1. Åbn Knowledge Center og gå til Udgivelsescenteret.
 2. Øverst i kvitteringen skal stå:
    - “Platformen du bruger nu”
-   - `v2026.07.24.89`
+   - `v2026.07.24.90`
    - aktuelt build-tidspunkt
 3. Den gamle udgivelse skal fortsat vise sit historiske stempel under:
    - “Denne udgivelse blev lavet med”

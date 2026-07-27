@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.89
-Worker: 14.0-canonical-mission-control
+Release: v2026.07.24.90
+Worker: 14.1-release-compatibility-engine
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

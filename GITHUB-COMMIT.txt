@@ -1,13 +1,15 @@
-fix(mission-control): introduce a canonical versioned UI asset
+feat(release): add schema-based compatibility and immutable release contracts
 
-- Added mission-control-v89.html as the only canonical Mission Control HTML.
-- Worker serves both old Knowledge Center URLs from the canonical asset without redirects.
-- Old knowledge-center.html is now only a compatibility forwarder.
-- Updated all admin navigation links to the canonical page.
-- Added an unmistakable current-platform header.
-- Preserved historical release metadata only inside the historical receipt.
-- Build timestamp now uses the actual package creation time.
+- Every release package now has release_schema and builder_version.
+- Added release-contract.json with required fields and SHA-256 checksums.
+- Pending packages are revalidated when Mission Control opens.
+- Pre-flight runs before building and before accepting a GitHub commit.
+- Legacy/incompatible packages are paused instead of silently processed.
+- Old packages remain immutable and are preserved as superseded history.
+- User can rebuild a compatible package from the current approved workspace.
+- Platform updates only invalidate packages when release criteria/schema change.
 
-Release: v2026.07.24.89
-Worker: 14.0-canonical-mission-control
-Build: 2026-07-26T23:35:42+02:00
+Release: v2026.07.24.90
+Worker: 14.1-release-compatibility-engine
+Schema: 2.0
+Build: 2026-07-27T00:23:36+02:00
