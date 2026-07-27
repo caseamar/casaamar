@@ -1,9 +1,9 @@
 # Test Release Compatibility Engine
 
-Release: v2026.07.24.91
-Worker: 14.2-autonomous-publish-supervisor
+Release: v2026.07.24.92
+Worker: 14.3-confirmed-completion-timestamps
 Schema: 2.0
-Build: 2026-07-27T09:16:13+02:00
+Build: 2026-07-27T10:06:13+02:00
 
 1. Open Mission Control with an old pending package that has no release_schema.
 2. It must be marked “Skal genbygges”; GitHub/live checks must stop.

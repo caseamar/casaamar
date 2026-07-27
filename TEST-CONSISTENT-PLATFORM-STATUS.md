@@ -1,10 +1,10 @@
 # Test konsistent Platformstatus
 
-Release: v2026.07.24.91
-Worker: 14.2-autonomous-publish-supervisor
+Release: v2026.07.24.92
+Worker: 14.3-confirmed-completion-timestamps
 
 1. Offentlig hjemmeside:
-   - DEV-badge viser `v2026.07.24.91`
+   - DEV-badge viser `v2026.07.24.92`
    - dato vises på dansk, ikke som rå ISO-streng
 2. Mission Control:
    - Platform viser version, Bygget og Live siden

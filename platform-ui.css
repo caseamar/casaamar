@@ -172,3 +172,12 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 .rc-ai-log time{color:var(--ca-muted);font-variant-numeric:tabular-nums}
 .rc-actions .secondary{background:transparent;color:var(--ca-text);border:1px solid var(--ca-line)}
 @media(max-width:700px){.rc-auto-timing{grid-template-columns:1fr}}
+
+.rc-human-status{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}
+.rc-human-status>div{padding:11px;border-radius:11px;background:white;border:1px solid var(--ca-line)}
+.rc-human-status span{display:block;font-size:.61rem;color:var(--ca-muted)}
+.rc-human-status strong{display:block;margin-top:4px;font-size:.8rem;color:var(--ca-text);word-break:break-word}
+.rc-technical-details{margin-top:12px}
+.rc-technical-details>summary{cursor:pointer;font-size:.66rem;font-weight:780;color:var(--ca-muted)}
+.rc-technical-details[open]>summary{margin-bottom:10px}
+@media(max-width:700px){.rc-human-status{grid-template-columns:1fr}}

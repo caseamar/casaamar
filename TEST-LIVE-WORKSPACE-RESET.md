@@ -1,7 +1,7 @@
 # Test: live udgivelse fjerner den afsluttede opgave
 
-Release: v2026.07.24.91
-Worker: 14.2-autonomous-publish-supervisor
+Release: v2026.07.24.92
+Worker: 14.3-confirmed-completion-timestamps
 
 ## Test A – normal udgivelse
 1. Lav lokale ændringer og kontrollér, at Mission Control viser “Udgiv dit færdige arbejde”.

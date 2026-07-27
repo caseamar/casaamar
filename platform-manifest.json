@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.91",
-  "build": "2026-07-27T09:16:13+02:00",
-  "worker_version": "14.2-autonomous-publish-supervisor",
-  "release_name": "Autonomous Publish Supervisor",
-  "generated_at": "2026-07-27T09:16:13+02:00",
+  "platform_version": "v2026.07.24.92",
+  "build": "2026-07-27T10:06:13+02:00",
+  "worker_version": "14.3-confirmed-completion-timestamps",
+  "release_name": "Confirmed Completion Timestamps",
+  "generated_at": "2026-07-27T10:06:13+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -18,5 +18,10 @@
     ],
     "critical_ux_window_seconds": 300,
     "automatic": true
+  },
+  "timestamp_semantics": {
+    "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
+    "content_live_at": "Time of the second successful public release match.",
+    "build": "Technical package creation time; advanced details only."
   }
 }

@@ -22,10 +22,18 @@
 - Privacy-safe analytics and conversion insights.
 
 
-## Strategic backlog added in v2026.07.24.91
+## Strategic backlog added in v2026.07.24.92
 
 - Product naming: define a distinct name for the administration product, separate from Casa Amar.
 - Multi-user foundation: login, invitations, roles and permissions.
 - Suggested initial roles: Owner/Publisher, Content Creator and Reviewer.
 - Audit history: attribute changes and approvals to users.
 - Keep the present experience single-user until authentication is intentionally implemented.
+
+
+## Timestamp principle confirmed in v2026.07.24.92
+
+- Primary user timestamps always represent a confirmed completed state.
+- Platform: first successful consistency confirmation for the current version.
+- Content: second successful public live match.
+- Build/start/upload timestamps remain available only in activity logs or technical details.

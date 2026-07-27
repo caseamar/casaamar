@@ -1,15 +1,12 @@
-feat(publish): autonomous monitoring with a neutral countdown
+fix(status): make primary timestamps mean confirmed completion
 
-- First 30 seconds are a deliberate quiet period for manual GitHub upload.
-- Checks every 10 seconds from 30–120 seconds.
-- Checks every 25 seconds through the five-minute critical UX window.
-- Becomes less frequent after five minutes.
-- Shows last check and a subtle “Tjekker igen om” countdown.
-- Keeps “Tjek nu” as an optional secondary action.
-- Adds a readable activity log.
-- Resumes overdue monitoring when the tab becomes visible.
-- Preserves the schema-based compatibility and two-match live verification.
+- Platform primary timestamp now means the current version was successfully verified across manifest and Worker.
+- Confirmation time is stored once per platform version and survives refresh.
+- Content primary timestamp remains the verified live time after two public matches.
+- Build and preparation times moved behind technical details.
+- Primary status always shows completion time plus version number.
+- Added an honest distinction between package build time and confirmed availability.
 
-Release: v2026.07.24.91
-Worker: 14.2-autonomous-publish-supervisor
-Build: 2026-07-27T09:16:13+02:00
+Release: v2026.07.24.92
+Worker: 14.3-confirmed-completion-timestamps
+Build: 2026-07-27T10:06:13+02:00

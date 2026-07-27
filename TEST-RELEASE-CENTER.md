@@ -1,7 +1,7 @@
 # Test Release Center
 
-Release: v2026.07.24.91
-Worker: 14.2-autonomous-publish-supervisor
+Release: v2026.07.24.92
+Worker: 14.3-confirmed-completion-timestamps
 
 ## 1. Klargør udgivelse
 1. Lav mindst én lokal ændring.
