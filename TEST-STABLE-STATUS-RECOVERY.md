@@ -1,7 +1,7 @@
 # Test stabil recovery
 
-Release: v2026.07.24.94
-Worker: 14.5-canonical-url-and-idle-state
+Release: v2026.07.24.95
+Worker: 14.6-stable-control-route
 
 1. Upload og overskriv alle filer.
 2. Åbn den offentlige hjemmeside.

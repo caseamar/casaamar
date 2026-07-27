@@ -1,11 +1,11 @@
 # Test versionsadskillelse i Udgivelsescenteret
 
-Release: v2026.07.24.94
-Worker: 14.5-canonical-url-and-idle-state
+Release: v2026.07.24.95
+Worker: 14.6-stable-control-route
 
 1. Åbn Udgivelsescenteret.
 2. Øverste blå kort skal hedde “Platformen du bruger nu”.
-3. Det skal vise `v2026.07.24.94`, aktuelt build, worker og seneste live indhold.
+3. Det skal vise `v2026.07.24.95`, aktuelt build, worker og seneste live indhold.
 4. Næste kort skal hedde “Seneste udgivelse” og være markeret som “Historisk kvittering”.
 5. En gammel udgivelse må fortsat vise fx v83 og worker 13.4 som historik.
 6. Historiske værdier må ikke have generelle labels som “Platform” eller “Worker” uden ordet historisk eller forklaring.

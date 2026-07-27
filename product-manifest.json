@@ -1,5 +1,5 @@
 {
-  "version": "4.4",
+  "version": "4.5",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -228,5 +228,11 @@
     "browser_behavior": "Address bar is replaced with the current canonical path.",
     "update_button": "Navigates to the new canonical page rather than reloading the old URL.",
     "idle_behavior": "Historical content releases never activate progress or monitoring."
+  },
+  "stable_control_route": {
+    "user_url": "/control",
+    "asset": "mission-control-v95.html",
+    "legacy_behavior": "HTTP 302 redirect before old page render",
+    "reason": "The administration URL no longer changes per release."
   }
 }

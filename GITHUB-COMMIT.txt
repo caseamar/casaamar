@@ -1,12 +1,12 @@
-fix(navigation): canonicalize all Mission Control URLs and preserve idle state
+fix(routing): use one stable /control URL
 
-- Routes every historical mission-control-vXX URL to the current canonical asset.
-- Rewrites the visible browser address to the current canonical route.
-- Platform update button navigates to the new canonical page instead of reloading an old URL.
-- Normalizes legacy release sessions before rendering or scheduling.
-- Historical releases cannot show active progress or restart monitoring.
-- Keeps a clear idle status and CTA after platform-only updates.
+- Added /control as the permanent administration URL.
+- Old versioned Mission Control URLs now HTTP redirect before rendering.
+- Knowledge Center aliases redirect to /control.
+- Platform update button always navigates to /control.
+- Versioned Mission Control files are internal assets only.
+- Historical releases stay idle until a new content release is explicitly started.
 
-Release: v2026.07.24.94
-Worker: 14.5-canonical-url-and-idle-state
-Build: 2026-07-27T10:58:48+02:00
+Release: v2026.07.24.95
+Worker: 14.6-stable-control-route
+Build: 2026-07-27T11:24:59+02:00
