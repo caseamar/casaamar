@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "policies": [
+    {
+      "id": "release.requires_health",
+      "description": "En udgivelse kræver en sund platform eller en eksplicit menneskelig overstyring.",
+      "effect": "require",
+      "applies_to": "content.publish",
+      "status": "active"
+    },
+    {
+      "id": "ai.requires_human_approval",
+      "description": "AI må foreslå og klargøre, men ikke publicere uden menneskelig godkendelse.",
+      "effect": "require",
+      "applies_to": "ai.publish",
+      "status": "active"
+    },
+    {
+      "id": "cookies.require_consent",
+      "description": "Ikke-nødvendige cookies må først aktiveres efter samtykke.",
+      "effect": "deny_until",
+      "applies_to": "compliance.cookies",
+      "status": "foundation"
+    },
+    {
+      "id": "security.least_privilege",
+      "description": "Brugere får kun de rettigheder, som er nødvendige for deres rolle.",
+      "effect": "require",
+      "applies_to": "security.auth",
+      "status": "foundation"
+    }
+  ]
+}

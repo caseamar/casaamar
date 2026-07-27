@@ -1,26 +1,38 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.104",
-  "built_at": "2026-07-27T15:51:06+02:00",
+  "release": "v2026.07.24.105",
+  "built_at": "2026-07-27T16:31:02+02:00",
   "checks": [
     {
-      "id": "doctor-started-state",
+      "id": "governance-js-syntax",
       "status": "passed"
     },
     {
-      "id": "doctor-completed-confirmation",
+      "id": "capability-registry",
       "status": "passed"
     },
     {
-      "id": "doctor-completion-timestamp",
+      "id": "feature-registry",
       "status": "passed"
     },
     {
-      "id": "doctor-check-count",
+      "id": "tenant-registry",
       "status": "passed"
     },
     {
-      "id": "doctor-last-completion-persistence",
+      "id": "policy-registry",
+      "status": "passed"
+    },
+    {
+      "id": "design-registry",
+      "status": "passed"
+    },
+    {
+      "id": "decision-engine",
+      "status": "passed"
+    },
+    {
+      "id": "control-center-governance-ui",
       "status": "passed"
     }
   ]

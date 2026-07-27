@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.104",
-  "build": "2026-07-27T15:51:06+02:00",
-  "worker_version": "15.4-doctor-completion-confirmation",
-  "release_name": "Doctor Completion Confirmation",
-  "generated_at": "2026-07-27T15:51:06+02:00",
+  "platform_version": "v2026.07.24.105",
+  "build": "2026-07-27T16:31:02+02:00",
+  "worker_version": "15.5-governance-engine",
+  "release_name": "Governance Engine",
+  "generated_at": "2026-07-27T16:31:02+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -106,5 +106,18 @@
     "completion_timestamp": true,
     "completed_check_count": true,
     "last_completion_persisted": true
+  },
+  "governance": {
+    "version": "1.0.0",
+    "entry": "/core/casa-governance.js",
+    "registries": [
+      "/registry/capabilities.json",
+      "/registry/features.json",
+      "/registry/tenants.json",
+      "/registry/policies.json",
+      "/registry/design.json"
+    ],
+    "tenant": "casa-amar",
+    "decision_engine": true
   }
 }

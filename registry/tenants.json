@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "tenants": [
+    {
+      "id": "casa-amar",
+      "name": "Casa Amar",
+      "status": "active",
+      "default_language": "da",
+      "languages": [
+        "da",
+        "en",
+        "es"
+      ],
+      "config_path": "/tenant/casa-amar.json"
+    }
+  ]
+}

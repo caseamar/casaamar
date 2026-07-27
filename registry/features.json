@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "features": [
+    {
+      "id": "platform_doctor",
+      "enabled": true,
+      "scope": "platform"
+    },
+    {
+      "id": "content_studio",
+      "enabled": true,
+      "scope": "tenant"
+    },
+    {
+      "id": "asset_studio",
+      "enabled": true,
+      "scope": "tenant"
+    },
+    {
+      "id": "design_system",
+      "enabled": true,
+      "scope": "platform"
+    },
+    {
+      "id": "multi_user",
+      "enabled": false,
+      "scope": "platform"
+    },
+    {
+      "id": "commerce",
+      "enabled": false,
+      "scope": "tenant"
+    },
+    {
+      "id": "hospitality_intelligence",
+      "enabled": false,
+      "scope": "tenant"
+    },
+    {
+      "id": "analytics",
+      "enabled": false,
+      "scope": "tenant"
+    }
+  ]
+}

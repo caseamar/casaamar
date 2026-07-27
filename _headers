@@ -16,3 +16,8 @@
 
 /core/*
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+/registry/*
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/tenant/*
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0

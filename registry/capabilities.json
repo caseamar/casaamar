@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "capabilities": [
+    {
+      "id": "content.read",
+      "domain": "content",
+      "status": "active"
+    },
+    {
+      "id": "content.write",
+      "domain": "content",
+      "status": "active"
+    },
+    {
+      "id": "content.review",
+      "domain": "content",
+      "status": "foundation"
+    },
+    {
+      "id": "content.publish",
+      "domain": "release",
+      "status": "active"
+    },
+    {
+      "id": "assets.read",
+      "domain": "assets",
+      "status": "active"
+    },
+    {
+      "id": "assets.write",
+      "domain": "assets",
+      "status": "active"
+    },
+    {
+      "id": "deployment.status",
+      "domain": "deployment",
+      "status": "active"
+    },
+    {
+      "id": "deployment.validate",
+      "domain": "deployment",
+      "status": "foundation"
+    },
+    {
+      "id": "security.auth",
+      "domain": "security",
+      "status": "planned"
+    },
+    {
+      "id": "security.audit",
+      "domain": "security",
+      "status": "planned"
+    },
+    {
+      "id": "compliance.cookies",
+      "domain": "compliance",
+      "status": "planned"
+    },
+    {
+      "id": "compliance.retention",
+      "domain": "compliance",
+      "status": "planned"
+    },
+    {
+      "id": "seo.metadata",
+      "domain": "seo",
+      "status": "foundation"
+    },
+    {
+      "id": "seo.sitemap",
+      "domain": "seo",
+      "status": "planned"
+    },
+    {
+      "id": "commerce.catalog",
+      "domain": "commerce",
+      "status": "planned"
+    },
+    {
+      "id": "hospitality.concierge",
+      "domain": "hospitality",
+      "status": "planned"
+    }
+  ]
+}

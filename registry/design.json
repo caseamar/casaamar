@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "components": [
+    {
+      "id": "hero",
+      "status": "active",
+      "variants": [
+        "image",
+        "split",
+        "minimal"
+      ]
+    },
+    {
+      "id": "gallery",
+      "status": "active",
+      "variants": [
+        "grid",
+        "masonry",
+        "carousel"
+      ]
+    },
+    {
+      "id": "cards",
+      "status": "active",
+      "variants": [
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "faq",
+      "status": "active",
+      "variants": [
+        "accordion"
+      ]
+    },
+    {
+      "id": "timeline",
+      "status": "active",
+      "variants": [
+        "vertical",
+        "horizontal"
+      ]
+    },
+    {
+      "id": "cta",
+      "status": "active",
+      "variants": [
+        "primary",
+        "quiet"
+      ]
+    },
+    {
+      "id": "map",
+      "status": "foundation",
+      "variants": [
+        "local_area"
+      ]
+    },
+    {
+      "id": "shop",
+      "status": "planned",
+      "variants": [
+        "catalog",
+        "restock"
+      ]
+    }
+  ]
+}

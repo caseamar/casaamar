@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "casa-amar",
+  "brand": "Casa Amar",
+  "domain": "casaamar.es",
+  "platform_role": "first_tenant",
+  "features": {
+    "platform_doctor": true,
+    "content_studio": true,
+    "asset_studio": true,
+    "commerce": false,
+    "hospitality_intelligence": false,
+    "analytics": false
+  }
+}
