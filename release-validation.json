@@ -1,34 +1,50 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.107",
-  "built_at": "2026-07-27T17:22:36+02:00",
+  "release": "v2026.07.24.108",
+  "built_at": "2026-07-27T19:15:00+02:00",
   "checks": [
     {
-      "id": "decision-engine-syntax",
+      "id": "platform-doctor-readiness",
       "status": "passed"
     },
     {
-      "id": "decision-registry",
+      "id": "platform-doctor-retry",
       "status": "passed"
     },
     {
-      "id": "policy-integration",
+      "id": "event-engine-syntax",
       "status": "passed"
     },
     {
-      "id": "capability-integration",
+      "id": "event-engine-contract",
       "status": "passed"
     },
     {
-      "id": "decision-history",
+      "id": "diagnostics-framework-syntax",
       "status": "passed"
     },
     {
-      "id": "decision-explanations",
+      "id": "diagnostics-result-model",
       "status": "passed"
     },
     {
-      "id": "control-center-ux",
+      "id": "project-brain-manifest",
+      "status": "passed"
+    },
+    {
+      "id": "project-brain-roadmap",
+      "status": "passed"
+    },
+    {
+      "id": "project-brain-decisions",
+      "status": "passed"
+    },
+    {
+      "id": "complete-replacement-package",
+      "status": "passed"
+    },
+    {
+      "id": "decision-engine-regression",
       "status": "passed"
     }
   ]

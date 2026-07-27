@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "quality_rule": "Every major new component must be reusable by at least three other platform areas.",
+  "release_process": {
+    "strategy": "complete_replace_except_images",
+    "preserve": [
+      ".git",
+      "images/"
+    ],
+    "delivery": "single complete ZIP placed in the GitHub-watched folder"
+  },
+  "product": "Casa Amar is the first installation of a reusable hospitality platform, not a standalone website."
+}

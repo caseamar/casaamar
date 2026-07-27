@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "release": "v2026.07.24.108",
+  "name": "Platform Intelligence Foundation",
+  "epic": "Platform Intelligence",
+  "highlights": [
+    "Platform Doctor 2.0 waits for readiness and retries transient startup states",
+    "Event Engine foundation with publish, subscribe and bounded history",
+    "Diagnostics Framework with reusable registry and standard result model",
+    "Project Brain stores roadmap, architecture, backlog, decisions, principles and release history in the repository"
+  ],
+  "deployment": {
+    "strategy": "complete_replace_except_images",
+    "preserve": [
+      ".git",
+      "images/"
+    ]
+  }
+}

@@ -339,11 +339,13 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.107"></script>
-<script src="/core/casa-core.js?v=20260724.107"></script>
-<script src="/core/casa-config.js?v=20260724.107"></script>
-<script src="/core/casa-governance.js?v=20260724.107"></script>
-<script src="/core/casa-decision.js?v=20260724.107"></script>
+<script src="/platform-shell.js?v=20260724.108"></script>
+<script src="/core/casa-core.js?v=20260724.108"></script>
+<script src="/core/casa-events.js?v=20260724.108"></script>
+<script src="/core/casa-diagnostics.js?v=20260724.108"></script>
+<script src="/core/casa-config.js?v=20260724.108"></script>
+<script src="/core/casa-governance.js?v=20260724.108"></script>
+<script src="/core/casa-decision.js?v=20260724.108"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -1139,7 +1141,7 @@ async function runPlatformDoctor(){
  const startedAt=new Date();
  if(confirmation)confirmation.hidden=true;
  if(summary)summary.dataset.state="loading";
- if(headline)headline.textContent="Kontrollen er i gang";
+ if(headline)headline.textContent="Platformen starter og kontrolleres automatisk";
  if(timestamp)timestamp.textContent=`Startet ${doctorDate(startedAt.toISOString())}`;
  if(button){
   button.disabled=true;
@@ -1148,9 +1150,11 @@ async function runPlatformDoctor(){
  }
 
  try{
-  const snapshot=await window.CasaCore.health.snapshot();
+  window.CasaEvents?.publish?.("platform:health-check-started",{source:"platform-doctor",automatic:button?.dataset?.automatic==="true"});
+  const snapshot=await window.CasaCore.health.snapshot({readiness:{attempts:4,delays:[0,800,1600,3200]}});
   window.CASA_HEALTH_SNAPSHOT=snapshot;
   renderDoctor(snapshot);
+  window.CasaEvents?.publish?.("platform:health-check-completed",{overall:snapshot.overall,check_count:snapshot.checks?.length||0});
 
   const checkCount=Array.isArray(snapshot.checks)?snapshot.checks.length:0;
   const completedAt=snapshot.generated_at||new Date().toISOString();
@@ -1197,7 +1201,9 @@ window.addEventListener("load",()=>{
    confirmation.hidden=false;
   }
  }
- runPlatformDoctor();
+ const button=document.querySelector("#runDoctor");
+ if(button)button.dataset.automatic="true";
+ runPlatformDoctor().finally(()=>{if(button)delete button.dataset.automatic});
 });
 
 

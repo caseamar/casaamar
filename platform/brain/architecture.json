@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "architecture_version": "1.1",
+  "style": "event-first modular platform services",
+  "rules": [
+    {
+      "id": "shared-services",
+      "rule": "Shared state and reusable logic belong in core services, not UI."
+    },
+    {
+      "id": "event-first",
+      "rule": "Subsystems communicate through named platform events where practical."
+    },
+    {
+      "id": "explainability",
+      "rule": "Automated decisions must expose reasons, evidence and policy context."
+    },
+    {
+      "id": "complete-release",
+      "rule": "Every release is a complete replacement package except preserved .git and images."
+    }
+  ],
+  "core_services": [
+    "casa-core",
+    "casa-events",
+    "casa-diagnostics",
+    "casa-config",
+    "casa-governance",
+    "casa-decision"
+  ]
+}

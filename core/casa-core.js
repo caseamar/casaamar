@@ -2,7 +2,7 @@
 (function(){
  "use strict";
 
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  const listeners=new Map();
  const stores=new Map();
 
@@ -88,6 +88,19 @@
   get release(){return readLocal("casaReleaseSessionV2",null)}
  };
 
+ const readiness={
+  async wait(options={}){
+   const attempts=Number(options.attempts||4); const delays=options.delays||[0,750,1500,3000];
+   for(let attempt=0;attempt<attempts;attempt++){
+    if(delays[attempt])await new Promise(resolve=>setTimeout(resolve,delays[attempt]));
+    const ready=Boolean(window.CasaCore?.ready&&window.CASA_PLATFORM_MANIFEST?.platform_version);
+    emit("platform:readiness-check",{attempt:attempt+1,attempts,ready,at:new Date().toISOString()});
+    if(ready)return {ready:true,attempt:attempt+1};
+   }
+   return {ready:false,attempt:attempts};
+  }
+ };
+
  const health={
   async checkUrl(id,label,url,options={}){
    const started=performance.now();
@@ -111,7 +124,8 @@
     return {id,label,status:"error",detail:error?.message||"Kunne ikke forbindes",duration_ms:Math.round(performance.now()-started),url};
    }
   },
-  async snapshot(){
+  async snapshot(options={}){
+   const readinessResult=options.skipReadiness?{ready:true,attempt:0}:await readiness.wait(options.readiness||{});
    const manifest=window.CASA_PLATFORM_MANIFEST||{};
    const workspace=state.workspace;
    const release=state.release;
@@ -143,10 +157,15 @@
     this.checkUrl("seo-config","SEO-grundlag","/config/seo.json",{
      json:true,
      describe:data=>data.enabled?"Aktiveret":"Fundament klar"
+    }),
+    this.checkUrl("project-brain","Project Brain","/platform/brain/manifest.json",{
+     json:true,
+     describe:data=>`${(data.files||[]).length} vidensfiler · ${data.current_release||"ukendt"}`
     })
    ]);
 
    const runtimeChecks=[
+    {id:"readiness",label:"Platform readiness",status:readinessResult.ready?"ok":"warning",detail:readinessResult.ready?`Klar efter forsøg ${readinessResult.attempt}`:"Initialisering ikke afsluttet"},
     {id:"core",label:"Casa Amar Core",status:"ok",detail:`v${VERSION}`},
     {id:"platform",label:"Platform",status:manifest.platform_version?"ok":"warning",detail:manifest.platform_version||"Ukendt"},
     {id:"worker",label:"Worker",status:manifest.worker_version?"ok":"warning",detail:manifest.worker_version||"Ukendt"},
@@ -205,6 +224,7 @@
   modules,
   state,
   health,
+  readiness,
   safeJson,
   ready:true
  };

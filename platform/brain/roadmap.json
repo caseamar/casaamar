@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "target_version": "v150",
+  "current_epic": "platform-intelligence",
+  "current_release": "v2026.07.24.108",
+  "principles": [
+    "Build complete epics and subsystems",
+    "70 percent platform and infrastructure, 30 percent user features through v150",
+    "Every major component must be reusable by at least three platform areas",
+    "Only stop for genuine strategic decisions"
+  ],
+  "epics": [
+    {
+      "id": "platform-intelligence",
+      "status": "active",
+      "subsystems": [
+        "decision-engine",
+        "event-engine",
+        "audit-engine",
+        "repository-intelligence",
+        "asset-intelligence",
+        "content-intelligence",
+        "ai-service-layer",
+        "experience-engine"
+      ]
+    },
+    {
+      "id": "governance",
+      "status": "foundation-complete"
+    },
+    {
+      "id": "configuration",
+      "status": "foundation-complete"
+    }
+  ]
+}

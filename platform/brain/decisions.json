@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "decisions": [
+    {
+      "id": "ADR-001",
+      "title": "Complete replacement release package",
+      "status": "accepted",
+      "decision": "Preserve only .git and images; replace every other deployed file.",
+      "reason": "Prevents stale files and keeps non-technical deployment predictable."
+    },
+    {
+      "id": "ADR-002",
+      "title": "Epic and subsystem delivery model",
+      "status": "accepted",
+      "decision": "Design releases as slices of complete epics and subsystems.",
+      "reason": "Avoids local features that later require architectural rebuilds."
+    },
+    {
+      "id": "ADR-003",
+      "title": "Project Brain in repository",
+      "status": "accepted",
+      "decision": "Store roadmap, architecture, backlog, decisions and release history as machine-readable project files.",
+      "reason": "Makes the project resumable without relying on chat memory."
+    },
+    {
+      "id": "ADR-004",
+      "title": "Readiness-aware diagnostics",
+      "status": "accepted",
+      "decision": "Health checks wait for runtime readiness and retry transient unknown states before warning.",
+      "reason": "Avoids false warnings immediately after deployment or page load."
+    }
+  ]
+}

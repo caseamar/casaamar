@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "releases": [
+    {
+      "version": "v2026.07.24.106",
+      "name": "Configuration Service",
+      "epic": "platform-foundation"
+    },
+    {
+      "version": "v2026.07.24.107",
+      "name": "Decision Engine",
+      "epic": "platform-intelligence"
+    },
+    {
+      "version": "v2026.07.24.108",
+      "name": "Platform Intelligence Foundation",
+      "epic": "platform-intelligence",
+      "changes": [
+        "Project Brain",
+        "Event Engine foundation",
+        "Diagnostics Framework",
+        "Platform Doctor readiness and retry"
+      ]
+    }
+  ]
+}

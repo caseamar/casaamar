@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.107",
-  "build": "2026-07-27T17:22:36+02:00",
-  "worker_version": "15.7-decision-engine",
-  "release_name": "Decision Engine",
-  "generated_at": "2026-07-27T17:22:36+02:00",
+  "platform_version": "v2026.07.24.108",
+  "build": "2026-07-27T19:15:00+02:00",
+  "worker_version": "15.8-platform-intelligence-foundation",
+  "release_name": "Platform Intelligence Foundation",
+  "generated_at": "2026-07-27T19:15:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -37,7 +37,7 @@
     "redirect_rules_removed": true
   },
   "canonical_mission_control_asset": "control/index.html",
-  "architecture_version": "1.0",
+  "architecture_version": "1.1",
   "deployment_model": "complete_replace",
   "runtime_policy": {
     "one_control_center": true,
@@ -67,13 +67,14 @@
     "recovery_key": "casaLegacyWorkspaceBackupV101"
   },
   "core": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-core.js",
     "capabilities": [
       "events",
       "storage",
       "state",
       "health",
+      "readiness",
       "modules"
     ],
     "architecture_rule": "Shared platform state and reusable services belong in Core."
@@ -84,10 +85,19 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
+    "readiness_wait": true,
+    "retry_delays_ms": [
+      0,
+      800,
+      1600,
+      3200
+    ],
+    "neutral_loading_state": true,
+    "event_driven": true,
     "checks": [
       "core",
       "platform",
@@ -100,7 +110,9 @@
       "component_library",
       "security_foundation",
       "compliance_foundation",
-      "seo_foundation"
+      "seo_foundation",
+      "project_brain",
+      "runtime_readiness"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -137,5 +149,35 @@
     "explainable": true,
     "policy_aware": true,
     "capability_aware": true
+  },
+  "event_engine": {
+    "version": "1.0.0",
+    "entry": "/core/casa-events.js",
+    "history_limit": 200,
+    "capabilities": [
+      "publish",
+      "subscribe",
+      "history"
+    ]
+  },
+  "diagnostics_framework": {
+    "version": "1.0.0",
+    "entry": "/core/casa-diagnostics.js",
+    "registry": true,
+    "standard_result_model": true,
+    "event_integration": true
+  },
+  "project_brain": {
+    "version": "1.0.0",
+    "manifest": "/platform/brain/manifest.json",
+    "machine_readable": true,
+    "areas": [
+      "roadmap",
+      "architecture",
+      "backlog",
+      "decisions",
+      "release-history",
+      "principles"
+    ]
   }
 }

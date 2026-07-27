@@ -1867,11 +1867,13 @@ footer a{text-decoration:none;font-weight:700}
   }
 }
 </style>
-<script src="/platform-shell.js?v=20260724.107"></script>
-<script src="/core/casa-core.js?v=20260724.107"></script>
-<script src="/core/casa-config.js?v=20260724.107"></script>
-<script src="/core/casa-governance.js?v=20260724.107"></script>
-<script src="/core/casa-decision.js?v=20260724.107"></script>
+<script src="/platform-shell.js?v=20260724.108"></script>
+<script src="/core/casa-core.js?v=20260724.108"></script>
+<script src="/core/casa-events.js?v=20260724.108"></script>
+<script src="/core/casa-diagnostics.js?v=20260724.108"></script>
+<script src="/core/casa-config.js?v=20260724.108"></script>
+<script src="/core/casa-governance.js?v=20260724.108"></script>
+<script src="/core/casa-decision.js?v=20260724.108"></script>
 </head>
 <body>
 <header class="site-header" data-header="">
@@ -2397,7 +2399,7 @@ let SITE_BUILD = 'Indlæser…';
 
 async function loadPublicPlatformVersion(){
  try{
-  const response=await fetch(`/platform-manifest.json?v=20260724.107&ts=${Date.now()}`,{cache:"no-store"});
+  const response=await fetch(`/platform-manifest.json?v=20260724.108&ts=${Date.now()}`,{cache:"no-store"});
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   const manifest=await response.json();
   SITE_VERSION=manifest.platform_version||"Ukendt";
