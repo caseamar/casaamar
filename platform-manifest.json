@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.102",
-  "build": "2026-07-27T15:07:44+02:00",
-  "worker_version": "15.2-casa-amar-core",
-  "release_name": "Casa Amar Core",
-  "generated_at": "2026-07-27T15:07:44+02:00",
+  "platform_version": "v2026.07.24.103",
+  "build": "2026-07-27T15:29:05+02:00",
+  "worker_version": "15.3-platform-doctor",
+  "release_name": "Platform Doctor",
+  "generated_at": "2026-07-27T15:29:05+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -82,5 +82,25 @@
     "security": "/config/security.json",
     "compliance": "/config/compliance.json",
     "seo": "/config/seo.json"
+  },
+  "platform_doctor": {
+    "version": "1.0.0",
+    "entry": "/control/#platform-doctor",
+    "automatic_on_load": true,
+    "manual_recheck": true,
+    "checks": [
+      "core",
+      "platform",
+      "worker",
+      "workspace",
+      "active_release",
+      "platform_manifest",
+      "content_release",
+      "asset_library",
+      "component_library",
+      "security_foundation",
+      "compliance_foundation",
+      "seo_foundation"
+    ]
   }
 }

@@ -89,19 +89,93 @@
  };
 
  const health={
+  async checkUrl(id,label,url,options={}){
+   const started=performance.now();
+   try{
+    const response=await fetch(`${url}${url.includes("?")?"&":"?"}_doctor=${Date.now()}`,{cache:"no-store"});
+    const duration_ms=Math.round(performance.now()-started);
+    if(!response.ok){
+     return {id,label,status:"error",detail:`HTTP ${response.status}`,duration_ms,url};
+    }
+    let detail=options.detail||"Tilgængelig";
+    if(options.json){
+     try{
+      const data=await response.clone().json();
+      detail=options.describe?options.describe(data):detail;
+     }catch{
+      return {id,label,status:"warning",detail:"Svar kunne ikke læses som JSON",duration_ms,url};
+     }
+    }
+    return {id,label,status:"ok",detail,duration_ms,url};
+   }catch(error){
+    return {id,label,status:"error",detail:error?.message||"Kunne ikke forbindes",duration_ms:Math.round(performance.now()-started),url};
+   }
+  },
   async snapshot(){
    const manifest=window.CASA_PLATFORM_MANIFEST||{};
    const workspace=state.workspace;
    const release=state.release;
-   const checks=[
+   const staticChecks=await Promise.all([
+    this.checkUrl("platform-manifest","Platformmanifest","/platform-manifest.json",{
+     json:true,
+     describe:data=>data.platform_version===manifest.platform_version?data.platform_version:`Uoverensstemmelse: ${data.platform_version||"ukendt"}`
+    }),
+    this.checkUrl("content-release","Live indhold","/content-release.json",{
+     json:true,
+     describe:data=>data.content_version||"Ingen indholdsversion"
+    }),
+    this.checkUrl("asset-library","Billedregister","/asset-library.json",{
+     json:true,
+     describe:data=>`${(data.assets||[]).length} registrerede billeder`
+    }),
+    this.checkUrl("component-library","Designkomponenter","/component-library.json",{
+     json:true,
+     describe:data=>`${(data.components||data.items||[]).length} komponenter`
+    }),
+    this.checkUrl("security-config","Sikkerhedsgrundlag","/config/security.json",{
+     json:true,
+     describe:data=>data.enabled?"Aktiveret":"Fundament klar"
+    }),
+    this.checkUrl("compliance-config","Compliancegrundlag","/config/compliance.json",{
+     json:true,
+     describe:data=>data.enabled?"Aktiveret":"Fundament klar"
+    }),
+    this.checkUrl("seo-config","SEO-grundlag","/config/seo.json",{
+     json:true,
+     describe:data=>data.enabled?"Aktiveret":"Fundament klar"
+    })
+   ]);
+
+   const runtimeChecks=[
     {id:"core",label:"Casa Amar Core",status:"ok",detail:`v${VERSION}`},
     {id:"platform",label:"Platform",status:manifest.platform_version?"ok":"warning",detail:manifest.platform_version||"Ukendt"},
     {id:"worker",label:"Worker",status:manifest.worker_version?"ok":"warning",detail:manifest.worker_version||"Ukendt"},
     {id:"workspace",label:"Arbejdsstatus",status:workspace.status==="idle"?"ok":"attention",detail:workspace.status||"idle"},
-    {id:"release",label:"Aktiv udgivelse",status:release?.active===true?"attention":"ok",detail:release?.active===true?"I gang":"Ingen"},
+    {id:"release",label:"Aktiv indholdsudgivelse",status:release?.active===true?"attention":"ok",detail:release?.active===true?"I gang":"Ingen"},
     {id:"storage",label:"Central storage",status:"ok",detail:`${storage.list().length} stores`}
    ];
-   return {generated_at:new Date().toISOString(),overall:checks.some(c=>c.status==="warning")?"warning":checks.some(c=>c.status==="attention")?"attention":"ok",checks};
+
+   const checks=[...runtimeChecks,...staticChecks];
+   const overall=checks.some(c=>c.status==="error")?"error":
+    checks.some(c=>c.status==="warning")?"warning":
+    checks.some(c=>c.status==="attention")?"attention":"ok";
+
+   const recommendations=[];
+   if(checks.some(c=>c.status==="error"))recommendations.push("Ret de røde kontroller før næste udgivelse.");
+   if(workspace.count>0)recommendations.push(`Gennemgå ${workspace.count} ikke-udgivne ændringer.`);
+   if(release?.active===true)recommendations.push("Lad den aktive udgivelse blive færdig, før du starter en ny.");
+   if(!recommendations.length)recommendations.push("Ingen handling nødvendig. Platformen er klar til videre arbejde.");
+
+   const snapshot={
+    schema_version:"1.0",
+    generated_at:new Date().toISOString(),
+    overall,
+    checks,
+    recommendations
+   };
+   writeLocal("casaPlatformHealthV1",snapshot);
+   emit("health:updated",snapshot);
+   return snapshot;
   }
  };
 

@@ -1,5 +1,5 @@
 {
-  "version": "5.2",
+  "version": "5.3",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -276,5 +276,17 @@
     "storage_api": true,
     "module_registry": true,
     "health_snapshot": true
+  },
+  "platform_doctor": {
+    "version": "1.0.0",
+    "visible": true,
+    "automatic": true,
+    "stores_last_snapshot": "casaPlatformHealthV1",
+    "states": [
+      "ok",
+      "attention",
+      "warning",
+      "error"
+    ]
   }
 }

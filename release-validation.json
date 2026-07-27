@@ -1,38 +1,38 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.102",
-  "built_at": "2026-07-27T15:07:44+02:00",
+  "release": "v2026.07.24.103",
+  "built_at": "2026-07-27T15:29:05+02:00",
   "checks": [
     {
-      "id": "core-js-syntax",
+      "id": "doctor-ui-present",
       "status": "passed"
     },
     {
-      "id": "core-loaded-on-html-pages",
+      "id": "automatic-health-check",
       "status": "passed"
     },
     {
-      "id": "module-registry",
+      "id": "manual-recheck",
       "status": "passed"
     },
     {
-      "id": "central-storage-api",
+      "id": "manifest-check",
       "status": "passed"
     },
     {
-      "id": "health-snapshot",
+      "id": "content-release-check",
       "status": "passed"
     },
     {
-      "id": "security-foundation",
+      "id": "asset-library-check",
       "status": "passed"
     },
     {
-      "id": "compliance-foundation",
+      "id": "component-library-check",
       "status": "passed"
     },
     {
-      "id": "seo-foundation",
+      "id": "security-compliance-seo-foundation-checks",
       "status": "passed"
     }
   ]
