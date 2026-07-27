@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-const VERSION="1.1.0";
+const VERSION="1.2.0";
 const REGISTRY="/registry/workspace.json";
 let state={loaded:false,registry:null,insights:[],status:{}};
 const fetchJson=async path=>{const r=await fetch(`${path}?_=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`Workspace registry kunne ikke indlæses (${r.status})`);return r.json()};
@@ -22,12 +22,12 @@ function buildInsights(){
   const issues=window.CasaAssetIntelligence?.issues?.()||[];
   if(count(asset.blocked_count)>0){
    const reasons=issueBreakdown(issues.filter(x=>x.severity!=="info"||x.code!=="standalone-asset"));
-   insights.push({priority:"high",title:`${asset.blocked_count} assets kræver handling`,detail:reasons.length?`Årsager: ${reasons.join(" · ")}. Påvirkning: de er ikke klar til publicering.`:"De mangler metadata eller responsive varianter og er ikke klar til publicering.",action_label:"Gennemgå assets",href:"#platform-intelligence",subsystem_id:"asset-intelligence",evidence:{blocked:asset.blocked_count,issues:asset.issue_count}});
+   insights.push({priority:"high",title:`${asset.blocked_count} assets kræver handling`,detail:reasons.length?`Årsager: ${reasons.join(" · ")}. Påvirkning: de er ikke klar til publicering.`:"De mangler metadata eller responsive varianter og er ikke klar til publicering.",action_label:"Gennemgå assets",href:"/asset-intelligence.html",subsystem_id:"asset-intelligence",evidence:{blocked:asset.blocked_count,issues:asset.issue_count}});
   }
-  if(count(asset.review_count)>0)insights.push({priority:"medium",title:`${asset.review_count} assets bør gennemgås`,detail:`${asset.pending_variant_count||0} responsive varianter er planlagt. En gennemgang kan forbedre tilgængelighed og publiceringsklarhed.`,action_label:"Se readiness",href:"#platform-intelligence",subsystem_id:"asset-intelligence",evidence:{review:asset.review_count,pending_variants:asset.pending_variant_count}});
+  if(count(asset.review_count)>0)insights.push({priority:"medium",title:`${asset.review_count} assets bør gennemgås`,detail:`${asset.pending_variant_count||0} responsive varianter er planlagt. En gennemgang kan forbedre tilgængelighed og publiceringsklarhed.`,action_label:"Se readiness",href:"/asset-intelligence.html",subsystem_id:"asset-intelligence",evidence:{review:asset.review_count,pending_variants:asset.pending_variant_count}});
  }
- if(graph&&count(graph.orphan_count)>0)insights.push({priority:"medium",title:`${graph.orphan_count} videnselementer mangler relationer`,detail:"De er ikke forbundet til sider, billeder eller gæsteoplevelser og kan derfor ikke bruges fuldt ud af AI.",action_label:"Åbn Knowledge Graph",href:"#platform-intelligence",subsystem_id:"ai-knowledge-graph",evidence:{orphans:graph.orphan_count}});
- if(exp&&exp.valid===false)insights.push({priority:"high",title:"Gæsterejsen kræver handling",detail:"Mindst én rejsefase mangler gyldig dækning af indhold, assets eller touchpoints.",action_label:"Gennemgå gæsterejsen",href:"#platform-intelligence",subsystem_id:"experience-engine"});
+ if(graph&&count(graph.orphan_count)>0)insights.push({priority:"medium",title:`${graph.orphan_count} videnselementer mangler relationer`,detail:"De er ikke forbundet til sider, billeder eller gæsteoplevelser og kan derfor ikke bruges fuldt ud af AI.",action_label:"Åbn Knowledge Graph",href:"/knowledge-graph.html",subsystem_id:"ai-knowledge-graph",evidence:{orphans:graph.orphan_count}});
+ if(exp&&exp.valid===false)insights.push({priority:"high",title:"Gæsterejsen kræver handling",detail:"Mindst én rejsefase mangler gyldig dækning af indhold, assets eller touchpoints.",action_label:"Gennemgå gæsterejsen",href:"/experience-engine.html",subsystem_id:"experience-engine"});
  if(content&&count(content.review_count)>0)insights.push({priority:"medium",title:`${content.review_count} indholdselementer er til review`,detail:"De skal godkendes eller forbedres, før platformen kan betragte indholdet som publiceringsklart.",action_label:"Åbn Knowledge Studio",href:"/knowledge-studio.html",evidence:{review:content.review_count}});
  if(!insights.length)insights.push({priority:"low",title:"Workspace er klar",detail:"Der er ingen kritiske forslag. Fortsæt med den næste prioriterede opgave.",action_label:"Se næste opgave",href:"#next-best-action"});
  return insights.slice(0,6);

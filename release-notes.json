@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.129",
-  "title": "AI Workspace Reliability",
-  "summary": "Makes every AI Workspace module actionable, fixes Knowledge navigation, and turns AI Insights into explained, prioritised actions with stronger release controls.",
+  "release": "v2026.07.24.130",
+  "title": "Workspace Dashboard Routing",
+  "summary": "Dedicated operational dashboards for Assets, Knowledge and Experience, while Platform Intelligence remains the technical system view.",
   "changes": [
     "Knowledge opens the AI Knowledge Graph dashboard instead of a legacy redirect",
     "AI Insights explain causes, impact and next action",
@@ -9,5 +9,6 @@
     "Release gate blocks legacy redirects, broken links and unresolved subsystem dashboards",
     "Workspace navigation remains keyboard accessible"
   ],
-  "github_summary": "Fix AI Workspace navigation and add actionable insight quality gates"
+  "github_summary": "Fix AI Workspace navigation and add actionable insight quality gates",
+  "generated_at": "2026-07-27T23:18:46+02:00"
 }

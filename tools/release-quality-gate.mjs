@@ -122,7 +122,15 @@ for(const action of workspaceRegistry.quick_actions||[]){
  check(resolveWorkspaceTarget(action.href),`AI Workspace action target exists (${action.id} -> ${action.href})`);
 }
 check(workspaceRegistry.modules.find(x=>x.id==='knowledge')?.subsystem_id==='ai-knowledge-graph','Knowledge module opens the AI Knowledge Graph dashboard');
+
 const workspaceSource=read('core/casa-workspace.js');
+const operationalRoutes={assets:'/asset-intelligence.html',knowledge:'/knowledge-graph.html',experience:'/experience-engine.html'};
+for(const [id,href] of Object.entries(operationalRoutes)){const module=workspaceRegistry.modules.find(x=>x.id===id);check(module?.href===href,`AI Workspace ${id} uses dedicated operational dashboard (${href})`);check(fs.existsSync(path.join(root,href.slice(1))),`Operational dashboard exists (${href})`);}
+check(workspaceSource.includes('href:"/asset-intelligence.html"'),'Asset insight opens Asset Intelligence Dashboard');
+check(workspaceSource.includes('href:"/knowledge-graph.html"'),'Knowledge insight opens Knowledge Graph Dashboard');
+check(workspaceSource.includes('href:"/experience-engine.html"'),'Experience insight opens Experience Engine Dashboard');
+for(const page of Object.values(operationalRoutes)){const html=read(page.slice(1));check(html.includes('/control/#ai-workspace'),`Operational dashboard returns to AI Workspace (${page})`);check(html.includes('casa-amar-build'),`Operational dashboard carries build metadata (${page})`);}
+
 check(workspaceSource.includes('action_label'),'AI Insights expose an explicit action label');
 check(workspaceSource.includes('Årsager:'),'AI Insights explain causes for blocked assets');
 check(workspaceSource.includes('Påvirkning:'),'AI Insights explain impact for blocked assets');

@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "version": "1.5.0",
-  "generated_at": "2026-07-27T23:07:46+02:00",
+  "version": "1.9.0",
+  "generated_at": "2026-07-27T23:18:46+02:00",
   "source": "release-package",
-  "file_count": 91,
+  "file_count": 98,
   "policies": {
     "complete_replace_except": [
       ".git/",
@@ -606,9 +606,30 @@
       "path": "registry/workspace.json",
       "type": "platform",
       "critical": true
+    },
+    {
+      "path": "asset-intelligence.html",
+      "type": "html",
+      "critical": true,
+      "description": "Operational Asset Intelligence dashboard",
+      "category": "ai-workspace"
+    },
+    {
+      "path": "knowledge-graph.html",
+      "type": "html",
+      "critical": true,
+      "description": "Operational AI Knowledge Graph dashboard",
+      "category": "ai-workspace"
+    },
+    {
+      "path": "experience-engine.html",
+      "type": "html",
+      "critical": true,
+      "description": "Operational Experience Engine dashboard",
+      "category": "ai-workspace"
     }
   ],
-  "updated_at": "2026-07-27T22:37:27+02:00",
-  "release": "v2026.07.24.129",
-  "platform_version": "v2026.07.24.129"
+  "updated_at": "2026-07-27T23:18:46+02:00",
+  "release": "v2026.07.24.130",
+  "platform_version": "v2026.07.24.130"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
-  "version": "1.1.0",
-  "updated_at": "2026-07-27T23:07:46+02:00",
+  "version": "1.2.0",
+  "updated_at": "2026-07-27T23:18:46+02:00",
   "modules": [
     {
       "id": "website",
@@ -15,7 +15,7 @@
       "id": "assets",
       "display_name": "Assets",
       "description": "Find, vurder og klargør billeder og varianter.",
-      "href": "/asset-studio.html",
+      "href": "/asset-intelligence.html",
       "status_source": "asset-intelligence",
       "icon": "📸",
       "subsystem_id": "asset-intelligence"
@@ -24,7 +24,7 @@
       "id": "knowledge",
       "display_name": "Knowledge",
       "description": "Udforsk viden, relationer og datakvalitet i Knowledge Graph.",
-      "href": "#platform-intelligence",
+      "href": "/knowledge-graph.html",
       "status_source": "ai-knowledge-graph",
       "icon": "🧠",
       "subsystem_id": "ai-knowledge-graph"
@@ -33,7 +33,7 @@
       "id": "experience",
       "display_name": "Experience",
       "description": "Se og forbedr gæsterejsen.",
-      "href": "#platform-intelligence",
+      "href": "/experience-engine.html",
       "status_source": "experience-engine",
       "icon": "🏡",
       "subsystem_id": "experience-engine"
@@ -100,6 +100,9 @@
     "accessible_navigation",
     "no_legacy_redirect_targets",
     "dashboard_target_resolution",
-    "actionable_insight_contract"
+    "actionable_insight_contract",
+    "operational_dashboard_separation",
+    "insight_target_matches_subsystem",
+    "workspace_dashboard_smoke_test"
   ]
 }

@@ -63,5 +63,10 @@
       "status": "active"
     }
   ],
-  "updated_at": "2026-07-27T23:07:46+02:00"
+  "updated_at": "2026-07-27T23:18:46+02:00",
+  "workspace_separation": {
+    "technical": "Platform Intelligence",
+    "operational": "AI Workspace",
+    "rule": "Operational actions open dedicated user dashboards, not technical subsystem dialogs."
+  }
 }

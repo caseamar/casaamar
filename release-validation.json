@@ -1,11 +1,11 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.129",
-  "platform_version": "v2026.07.24.129",
-  "generated_at": "2026-07-27T23:07:46+02:00",
+  "release": "v2026.07.24.130",
+  "platform_version": "v2026.07.24.130",
+  "generated_at": "2026-07-27T23:18:46+02:00",
   "status": "passed",
-  "release_name": "AI Workspace Reliability",
-  "summary": "Fixes Knowledge navigation, makes AI Insights actionable, and blocks broken workspace destinations before release.",
+  "release_name": "Workspace Dashboard Routing",
+  "summary": "Separates technical Platform Intelligence from dedicated operational dashboards for Assets, Knowledge and Experience.",
   "checks": [
     {
       "id": "release-quality-gate",
@@ -48,7 +48,7 @@
       "status": "passed"
     }
   ],
-  "checks_passed": 834,
+  "checks_passed": 852,
   "checks_failed": 0,
   "zip_integrity": "passed",
   "quality_gate": "tools/release-quality-gate.mjs"
