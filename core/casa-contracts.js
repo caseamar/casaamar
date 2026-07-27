@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.1.0";
+ const VERSION="1.2.0";
  function result(id,passed,detail,evidence=[]){return {id,passed:Boolean(passed),status:passed?"passed":"failed",detail,evidence};}
  function releaseIdentity(manifest={},worker={}){
   const expectedPlatform=manifest.platform_version||null;
@@ -36,7 +36,12 @@
  }
  async function runAll(){
   const registryResult=await runSubsystemRegistryRegression();
-  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression(),registryResult];
+  const inventory=document.querySelectorAll("#platformVersionsGrid [data-subsystem-id]");
+  const registered=window.CasaSubsystemRegistry?.list?.()||[];
+  const inventoryResult=result("subsystem-registry.inventory.visible",!document.querySelector("#platformVersionsGrid")||inventory.length===registered.length,`Visible ${inventory.length}; registered ${registered.length}`,[{visible:inventory.length,registered:registered.length}]);
+  const coverage=window.CasaSubsystemRegistry?.validateCoverage?.(window.CASA_PLATFORM_MANIFEST||{});
+  const coverageResult=result("subsystem-registry.manifest.coverage",Boolean(coverage?.consistent),coverage?.consistent?"Every versioned manifest subsystem is registered.":`Missing registry entries: ${(coverage?.missing||[]).join(", ")}`,[coverage]);
+  const results=[...runReleaseIdentityRegression(),runVersionSourceRegression(),registryResult,coverageResult,inventoryResult];
   const report={schema_version:"1.0",version:VERSION,status:results.every(x=>x.passed)?"passed":"failed",results,generated_at:new Date().toISOString()};
   window.CasaAudit?.record?.("platform.contracts.completed","contracts",report);
   window.CasaEvents?.publish?.("platform:contracts-completed",report);

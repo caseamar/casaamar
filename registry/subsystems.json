@@ -1,22 +1,26 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-27T23:55:00+02:00",
+  "version": "1.1.0",
+  "updated_at": "2026-07-27T20:45:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
-    "rule": "All user-facing subsystem names and versions must be resolved from this registry.",
+    "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
     "aliases": {
       "brain": "project-brain",
       "doctor": "platform-doctor",
       "events": "event-engine",
-      "diagnostics-framework": "diagnostics"
+      "diagnostics-framework": "diagnostics",
+      "project brain": "project-brain",
+      "configuration-service": "configuration",
+      "governance-service": "governance",
+      "registry": "subsystem-registry"
     }
   },
   "subsystems": [
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.115",
+      "version": "v2026.07.24.116",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -24,9 +28,19 @@
       "description": "Casa Amar platform release identity and shared runtime."
     },
     {
+      "id": "core",
+      "display_name": "Casa Amar Core",
+      "version": "1.1.0",
+      "owner": "Platform Core",
+      "status_source": "module",
+      "manifest_key": "core",
+      "entry": "/core/casa-core.js",
+      "description": "Shared platform state, readiness, module lifecycle and common runtime services."
+    },
+    {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "2.1.1",
+      "version": "2.1.2",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -66,7 +80,7 @@
     {
       "id": "diagnostics",
       "display_name": "Diagnostics Framework",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "diagnostics_framework",
@@ -85,7 +99,7 @@
     },
     {
       "id": "governance",
-      "display_name": "Governance",
+      "display_name": "Governance Service",
       "version": "1.0.0",
       "owner": "Platform Core",
       "status_source": "module",
@@ -106,12 +120,32 @@
     {
       "id": "platform-contracts",
       "display_name": "Platform Contracts",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "platform_contracts",
       "entry": "/core/casa-contracts.js",
       "description": "Regression contracts for release identity and subsystem metadata consistency."
+    },
+    {
+      "id": "subsystem-registry",
+      "display_name": "Subsystem Registry",
+      "version": "1.1.0",
+      "owner": "Platform Intelligence",
+      "status_source": "module",
+      "manifest_key": "subsystem_registry",
+      "entry": "/core/casa-subsystem-registry.js",
+      "description": "Canonical source of subsystem names, versions, ownership and metadata."
+    },
+    {
+      "id": "public-website-runtime",
+      "display_name": "Public Website Runtime",
+      "version": "1.0.0",
+      "owner": "Experience Platform",
+      "status_source": "runtime",
+      "manifest_key": "public_website_runtime",
+      "entry": "/",
+      "description": "Isolated runtime for the public Casa Amar website."
     }
   ]
 }

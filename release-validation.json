@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.115",
-  "platform_version": "v2026.07.24.115",
-  "generated_at": "2026-07-27T23:55:00+02:00",
+  "release": "v2026.07.24.116",
+  "platform_version": "v2026.07.24.116",
+  "generated_at": "2026-07-27T20:45:00+02:00",
   "status": "passed",
-  "summary": "Centralizes subsystem metadata and protects naming and version consistency with registry-driven rendering and regression validation.",
+  "summary": "Completes the central subsystem inventory and enforces consistent names, versions, manifest coverage and UI visibility.",
   "checks": [
     {
       "id": "json",
@@ -19,22 +19,27 @@
     {
       "id": "subsystem-registry",
       "status": "passed",
-      "detail": "Every registered subsystem has a unique ID, display name, version, owner and manifest mapping."
+      "detail": "Every registered subsystem has a unique ID, official display name, version, owner and manifest mapping."
     },
     {
       "id": "registry-manifest-consistency",
       "status": "passed",
-      "detail": "Subsystem Registry versions match platform-manifest.json."
+      "detail": "Every registry version matches platform-manifest.json."
+    },
+    {
+      "id": "manifest-coverage",
+      "status": "passed",
+      "detail": "Every versioned subsystem in platform-manifest.json is represented in the Subsystem Registry."
     },
     {
       "id": "registry-driven-ui",
       "status": "passed",
-      "detail": "Platform Intelligence cards resolve names and versions from the central registry."
+      "detail": "Platform Intelligence renders the complete registry without a manually maintained allow-list."
     },
     {
-      "id": "project-brain-naming",
+      "id": "official-naming",
       "status": "passed",
-      "detail": "The official user-facing name is Project Brain."
+      "detail": "Project Brain, Diagnostics Framework, Configuration Service and Governance Service are the canonical user-facing names."
     },
     {
       "id": "replacement-package",

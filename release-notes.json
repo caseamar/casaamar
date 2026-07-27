@@ -1,17 +1,22 @@
 {
-  "release": "v2026.07.24.115",
-  "version": "v2026.07.24.115",
-  "title": "Subsystem Registry Consistency Hotfix",
-  "name": "Subsystem Registry Consistency Hotfix",
-  "generated_at": "2026-07-27T23:55:00+02:00",
-  "summary": "Standardizes subsystem naming and version metadata through a central Subsystem Registry and adds permanent consistency checks to prevent UI, manifest and runtime labels from drifting apart.",
+  "release": "v2026.07.24.116",
+  "version": "v2026.07.24.116",
+  "name": "Platform Metadata Consistency Hotfix",
+  "generated_at": "2026-07-27T20:45:00+02:00",
+  "summary": "Makes the central Subsystem Registry complete and visible, standardizes official subsystem names, and adds automated checks for registry, manifest and UI consistency.",
   "changes": [
-    "Added Subsystem Registry v1.0.0 as the single source of truth for subsystem display names, IDs, versions, owners and descriptions.",
-    "Standardized the official name Project Brain across Platform Intelligence and removed UI-owned subsystem metadata.",
-    "Platform Intelligence version cards are now rendered from the central registry.",
-    "Diagnostics Framework v1.3.0 verifies registry and manifest consistency.",
-    "Platform Contracts v1.1.0 adds a permanent subsystem metadata regression check.",
-    "Project Brain v1.0.1 records the naming and metadata contract."
+    "Platform Intelligence now renders every registered versioned subsystem, including Subsystem Registry, Audit Engine, Platform Contracts, Casa Amar Core and Public Website Runtime.",
+    "Standardized the official name Governance Service and retained Project Brain, Diagnostics Framework and Configuration Service as canonical names.",
+    "Added manifest coverage validation so every versioned subsystem must exist in the central registry.",
+    "Added UI inventory regression validation so every registered subsystem must be visible in Platform Intelligence.",
+    "Removed the manually maintained subsystem display list from Mission Control."
+  ],
+  "test_focus": [
+    "Platform v2026.07.24.116",
+    "Platform Doctor v2.1.2",
+    "Subsystem Registry v1.1.0",
+    "Diagnostics Framework v1.4.0",
+    "Platform Contracts v1.2.0"
   ],
   "deployment": {
     "strategy": "complete_replace_except_images",
@@ -19,16 +24,5 @@
       ".git/",
       "images/"
     ]
-  },
-  "test_focus": [
-    "Platform v2026.07.24.115",
-    "Platform Doctor v2.1.1",
-    "Project Brain v1.0.1",
-    "Diagnostics Framework v1.3.0",
-    "Subsystem Registry v1.0.0",
-    "Platform Contracts v1.1.0",
-    "Project Brain name appears consistently",
-    "No synchronization warning",
-    "Public website remains available"
-  ]
+  }
 }
