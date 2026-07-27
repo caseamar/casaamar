@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.108",
+  "release": "v2026.07.24.109",
   "name": "Platform Intelligence Foundation",
   "epic": "Platform Intelligence",
   "highlights": [
@@ -15,5 +15,14 @@
       ".git",
       "images/"
     ]
-  }
+  },
+  "platform_version": "v2026.07.24.109",
+  "release_name": "Platform Consistency Hotfix",
+  "summary": "Fixes the false synchronisation warning by aligning manifest and Worker release metadata, and removes stale v107 references from deployed assets.",
+  "changes": [
+    "Aligned platform manifest and Worker build metadata",
+    "Removed stale v107 cache-busting and expected-version references",
+    "Kept Platform Doctor automatic startup checks and Platform Intelligence foundation",
+    "Added validation for manifest and Worker consistency"
+  ]
 }

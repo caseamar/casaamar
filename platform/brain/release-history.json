@@ -21,6 +21,16 @@
         "Diagnostics Framework",
         "Platform Doctor readiness and retry"
       ]
+    },
+    {
+      "version": "v2026.07.24.109",
+      "name": "Platform Consistency Hotfix",
+      "epic": "platform-intelligence",
+      "changes": [
+        "Manifest/Worker metadata alignment",
+        "Stale release reference cleanup",
+        "Consistency validation hotfix"
+      ]
     }
   ]
 }

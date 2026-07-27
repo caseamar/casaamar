@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.108",
+  "release": "v2026.07.24.109",
   "built_at": "2026-07-27T19:15:00+02:00",
   "checks": [
     {
@@ -47,5 +47,8 @@
       "id": "decision-engine-regression",
       "status": "passed"
     }
-  ]
+  ],
+  "platform_version": "v2026.07.24.109",
+  "release_name": "Platform Consistency Hotfix",
+  "status": "validated"
 }

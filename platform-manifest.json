@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.108",
-  "build": "2026-07-27T19:15:00+02:00",
+  "platform_version": "v2026.07.24.109",
+  "build": "2026-07-27T19:45:00+02:00",
   "worker_version": "15.8-platform-intelligence-foundation",
-  "release_name": "Platform Intelligence Foundation",
-  "generated_at": "2026-07-27T19:15:00+02:00",
+  "release_name": "Platform Consistency Hotfix",
+  "generated_at": "2026-07-27T19:45:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
