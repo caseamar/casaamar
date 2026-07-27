@@ -1,8 +1,8 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.121",
-  "platform_version": "v2026.07.24.121",
-  "generated_at": "2026-07-27T23:58:00+02:00",
+  "release": "v2026.07.24.122",
+  "platform_version": "v2026.07.24.122",
+  "generated_at": "2026-07-28T00:30:00+02:00",
   "status": "passed",
   "release_name": "Release Identity Quality Gate Hotfix",
   "summary": "Aligns Worker and manifest identity, adds readiness retries, and introduces an executable release quality gate that blocks inconsistent packages.",

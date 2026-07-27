@@ -1,9 +1,16 @@
 {
-  "release": "v2026.07.24.121",
-  "name": "Release Identity Quality Gate Hotfix",
-  "summary": "Fixes Worker/manifest identity drift and adds an executable quality gate for future releases.",
-  "generated_at": "2026-07-27T23:58:00+02:00",
-  "platform_version": "v2026.07.24.121",
-  "release_name": "AI Knowledge Graph Foundation",
-  "github_summary": "Add a typed AI Knowledge Graph with semantic relationships, integrity diagnostics and scalable graph query services."
+  "release": "v2026.07.24.122",
+  "name": "Asset Intelligence Foundation",
+  "type": "feature",
+  "summary": "Adds a canonical asset inventory, issue detection and impact analysis as a reusable Platform Intelligence subsystem.",
+  "github_summary": "Add Asset Intelligence with canonical inventory and impact diagnostics",
+  "test_focus": {
+    "platform": "v2026.07.24.122",
+    "platform_doctor": "2.5.0",
+    "asset_intelligence": "1.0.0",
+    "subsystem_registry": "1.7.0",
+    "diagnostics_framework": "1.10.0",
+    "platform_contracts": "1.8.0",
+    "repository_intelligence": "1.2.0"
+  }
 }

@@ -1,9 +1,10 @@
 {
   "name": "casa-amar-platform",
   "private": true,
-  "version": "2026.7.24-121",
+  "version": "2026.7.24-122",
   "type": "module",
   "scripts": {
-    "validate:release": "node tools/release-quality-gate.mjs"
+    "validate:release": "node tools/release-quality-gate.mjs",
+    "quality": "node tools/release-quality-gate.mjs"
   }
 }

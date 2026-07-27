@@ -557,7 +557,19 @@
       "kind": "json",
       "area": "root",
       "critical": false
+    },
+    {
+      "path": "core/casa-assets.js",
+      "role": "runtime-service",
+      "critical": true,
+      "owner": "Asset Intelligence"
+    },
+    {
+      "path": "registry/assets.json",
+      "role": "registry",
+      "critical": true,
+      "owner": "Asset Intelligence"
     }
   ],
-  "updated_at": "2026-07-27T23:10:00+02:00"
+  "updated_at": "2026-07-28T00:30:00+02:00"
 }
