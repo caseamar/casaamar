@@ -1,31 +1,54 @@
 {
-  "schema_version": "1.0",
-  "architecture_version": "1.1",
-  "style": "event-first modular platform services",
-  "rules": [
-    {
-      "id": "shared-services",
-      "rule": "Shared state and reusable logic belong in core services, not UI."
-    },
-    {
-      "id": "event-first",
-      "rule": "Subsystems communicate through named platform events where practical."
-    },
-    {
-      "id": "explainability",
-      "rule": "Automated decisions must expose reasons, evidence and policy context."
-    },
-    {
-      "id": "complete-release",
-      "rule": "Every release is a complete replacement package except preserved .git and images."
-    }
+  "schema_version": "1.1",
+  "version": "1.2",
+  "style": "modular event-driven platform",
+  "layers": [
+    "Experience",
+    "Application Services",
+    "Platform Intelligence",
+    "Core Services",
+    "Governance and Configuration",
+    "Storage and Registries"
   ],
-  "core_services": [
-    "casa-core",
-    "casa-events",
-    "casa-diagnostics",
-    "casa-config",
-    "casa-governance",
-    "casa-decision"
+  "rules": [
+    "UI must not own business rules.",
+    "Services communicate through stable contracts and platform events.",
+    "Shared components must support at least three platform areas.",
+    "The public website runtime remains isolated from the administrative shell.",
+    "Project knowledge is stored in machine-readable Project Brain files."
+  ],
+  "subsystems": [
+    {
+      "id": "core",
+      "version": "1.1.0"
+    },
+    {
+      "id": "governance",
+      "version": "1.0.0"
+    },
+    {
+      "id": "configuration",
+      "version": "1.0.0"
+    },
+    {
+      "id": "decision-engine",
+      "version": "1.1.0"
+    },
+    {
+      "id": "event-engine",
+      "version": "1.1.0"
+    },
+    {
+      "id": "diagnostics",
+      "version": "1.1.0"
+    },
+    {
+      "id": "project-brain",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform-doctor",
+      "version": "2.1.0"
+    }
   ]
 }

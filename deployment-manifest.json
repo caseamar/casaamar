@@ -1,6 +1,6 @@
 {
   "schema_version": "1.8",
-  "release": "v2026.07.24.110",
+  "release": "v2026.07.24.111",
   "built_at": "2026-07-27T20:25:00+02:00",
   "strategy": "complete_replace_except_images",
   "preserve": [
@@ -345,5 +345,7 @@
       "size_bytes": 6720,
       "sha256": "fcb65d98443209ed909772a9c0aa5f67982211acecd1debe541fff80a87941f4"
     }
-  ]
+  ],
+  "generated_at": "2026-07-27T21:30:00+02:00",
+  "release_name": "Project Brain v1 and Platform Intelligence Registry"
 }

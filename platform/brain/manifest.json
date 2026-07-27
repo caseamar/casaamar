@@ -1,14 +1,18 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "version": "1.0.0",
+  "service": "/core/casa-brain.js",
   "files": [
     "roadmap.json",
     "architecture.json",
     "backlog.json",
     "decisions.json",
     "release-history.json",
-    "principles.json"
+    "principles.json",
+    "capabilities.json"
   ],
-  "current_release": "v2026.07.24.110",
-  "machine_readable": true
+  "current_release": "v2026.07.24.111",
+  "machine_readable": true,
+  "searchable": true,
+  "updated_at": "2026-07-27T21:30:00+02:00"
 }

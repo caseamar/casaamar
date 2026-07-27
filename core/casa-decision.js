@@ -1,7 +1,7 @@
 
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  let registry=null;
  const HISTORY_KEY="casaDecisionHistoryV1";
 
@@ -14,6 +14,16 @@
  function clone(value){
   return value===undefined?undefined:JSON.parse(JSON.stringify(value));
  }
+
+ function resolvePath(source,path){return String(path||"").split(".").reduce((value,key)=>value?.[key],source);}
+ function evaluateRule(rule,context){
+  const actual=resolvePath(context,rule.path);
+  const expected=rule.value;
+  const operators={equals:()=>actual===expected,not_equals:()=>actual!==expected,exists:()=>actual!==undefined&&actual!==null,truthy:()=>Boolean(actual),includes:()=>Array.isArray(actual)&&actual.includes(expected)};
+  const passed=(operators[rule.operator||"equals"]||(()=>false))();
+  return {type:"rule",id:rule.id||rule.path,path:rule.path,operator:rule.operator||"equals",expected,actual,passed,message:rule.message||null};
+ }
+
  function history(){
   try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]")}catch{return []}
  }
@@ -84,6 +94,12 @@
    evidence.push({type:"consent",passed:false});
   }
 
+  for(const rule of definition.rules||[]){
+   const evaluated=evaluateRule(rule,context);
+   evidence.push(evaluated);
+   if(!evaluated.passed){allowed=false;reasons.push(evaluated.message||`Regel ikke opfyldt: ${evaluated.id}`);}
+  }
+
   const result={
    id,
    label:definition.label,
@@ -98,6 +114,8 @@
    evidence,
    policies:definition.policies||[],
    context:clone(context),
+   engine_version:VERSION,
+   registry_version:registry?.version||"1.0",
    started_at:startedAt,
    evaluated_at:new Date().toISOString()
   };

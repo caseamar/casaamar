@@ -1,44 +1,40 @@
 {
-  "schema_version": "1.0",
-  "updated_at": "2026-07-27T19:00:00+02:00",
+  "schema_version": "1.1",
+  "updated_at": "2026-07-27T21:30:00+02:00",
   "items": [
     {
-      "id": "PI-001",
-      "title": "Platform Doctor readiness and retry",
-      "status": "delivered",
-      "release": "v2026.07.24.110"
+      "id": "PI-111-01",
+      "title": "Project Brain runtime service",
+      "status": "done",
+      "release": "v2026.07.24.111"
     },
     {
-      "id": "PI-002",
-      "title": "Event Engine foundation",
-      "status": "delivered",
-      "release": "v2026.07.24.110"
+      "id": "PI-111-02",
+      "title": "Subsystem version registry in Mission Control",
+      "status": "done",
+      "release": "v2026.07.24.111"
     },
     {
-      "id": "PI-003",
-      "title": "Diagnostics Framework foundation",
-      "status": "delivered",
-      "release": "v2026.07.24.110"
+      "id": "PI-111-03",
+      "title": "Decision Engine generic rule evaluation",
+      "status": "done",
+      "release": "v2026.07.24.111"
     },
     {
-      "id": "PI-004",
-      "title": "Project Brain foundation",
-      "status": "delivered",
-      "release": "v2026.07.24.110"
+      "id": "PI-112-01",
+      "title": "Decision explanation and durable audit model",
+      "status": "next",
+      "target_release": "v2026.07.24.112"
     },
     {
-      "id": "PI-005",
-      "title": "Decision rule evaluator pipeline",
-      "status": "next"
+      "id": "PI-112-02",
+      "title": "Event contract registry and event audit history",
+      "status": "next",
+      "target_release": "v2026.07.24.112"
     },
     {
-      "id": "PI-006",
-      "title": "Decision explanation templates and history query API",
-      "status": "planned"
-    },
-    {
-      "id": "PI-007",
-      "title": "Audit Engine foundation",
+      "id": "PI-113-01",
+      "title": "Repository Intelligence foundation",
       "status": "planned"
     }
   ]

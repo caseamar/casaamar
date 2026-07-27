@@ -1,36 +1,47 @@
 {
-  "schema_version": "1.0",
-  "target_version": "v150",
-  "current_epic": "platform-intelligence",
-  "current_release": "v2026.07.24.110",
-  "principles": [
-    "Build complete epics and subsystems",
-    "70 percent platform and infrastructure, 30 percent user features through v150",
-    "Every major component must be reusable by at least three platform areas",
-    "Only stop for genuine strategic decisions"
-  ],
+  "schema_version": "1.1",
+  "current_release": "v2026.07.24.111",
+  "target_release": "v2026.07.24.150",
+  "current_epic": "Platform Intelligence",
+  "current_subsystem": "Project Brain v1",
+  "next_release": "v2026.07.24.112",
+  "strategy": {
+    "visible_features_percent": 30,
+    "platform_infrastructure_percent": 70,
+    "reuse_rule": "Every material component must support at least three platform areas."
+  },
   "epics": [
     {
       "id": "platform-intelligence",
       "status": "active",
       "subsystems": [
-        "decision-engine",
-        "event-engine",
-        "audit-engine",
-        "repository-intelligence",
-        "asset-intelligence",
-        "content-intelligence",
-        "ai-service-layer",
-        "experience-engine"
+        "Decision Engine",
+        "Event Engine",
+        "Audit Engine",
+        "Repository Intelligence",
+        "Asset Intelligence",
+        "Content Intelligence",
+        "AI Service Layer",
+        "Experience Engine",
+        "Project Brain"
       ]
     },
     {
-      "id": "governance",
-      "status": "foundation-complete"
-    },
-    {
-      "id": "configuration",
-      "status": "foundation-complete"
+      "id": "release-automation",
+      "status": "planned",
+      "subsystems": [
+        "main/develop flow",
+        "quality tests",
+        "automatic build",
+        "release package",
+        "changelog",
+        "rollback information"
+      ]
     }
+  ],
+  "next_focus": [
+    "Decision History and explanation",
+    "Event contracts and audit trail",
+    "Project Brain UI and integrity checks"
   ]
 }

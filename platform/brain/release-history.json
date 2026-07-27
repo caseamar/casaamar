@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "releases": [
     {
       "version": "v2026.07.24.106",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "version": "v2026.07.24.110",
+      "version": "v2026.07.24.111",
       "name": "Platform Consistency Hotfix",
       "epic": "platform-intelligence",
       "changes": [
@@ -31,6 +31,14 @@
         "Stale release reference cleanup",
         "Consistency validation hotfix"
       ]
+    },
+    {
+      "version": "v2026.07.24.111",
+      "name": "Project Brain v1 and Platform Intelligence Registry",
+      "epic": "Platform Intelligence",
+      "summary": "Added a runtime Project Brain service, visible subsystem versions, stronger diagnostics, event waiting contracts and generic decision rule evaluation.",
+      "released_at": "2026-07-27T21:30:00+02:00",
+      "status": "release-candidate"
     }
   ]
 }

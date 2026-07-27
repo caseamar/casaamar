@@ -1,65 +1,34 @@
 {
-  "schema_version": "1.0",
-  "release": "v2026.07.24.110",
-  "built_at": "2026-07-27T19:15:00+02:00",
+  "schema_version": "2.0",
+  "release": "v2026.07.24.111",
+  "generated_at": "2026-07-27T21:30:00+02:00",
+  "status": "passed",
   "checks": [
     {
-      "id": "platform-doctor-readiness",
-      "status": "passed"
-    },
-    {
-      "id": "platform-doctor-retry",
-      "status": "passed"
-    },
-    {
-      "id": "event-engine-syntax",
-      "status": "passed"
-    },
-    {
-      "id": "event-engine-contract",
-      "status": "passed"
-    },
-    {
-      "id": "diagnostics-framework-syntax",
-      "status": "passed"
-    },
-    {
-      "id": "diagnostics-result-model",
-      "status": "passed"
-    },
-    {
-      "id": "project-brain-manifest",
-      "status": "passed"
-    },
-    {
-      "id": "project-brain-roadmap",
-      "status": "passed"
-    },
-    {
-      "id": "project-brain-decisions",
-      "status": "passed"
-    },
-    {
-      "id": "complete-replacement-package",
-      "status": "passed"
-    },
-    {
-      "id": "decision-engine-regression",
-      "status": "passed"
-    },
-    {
-      "id": "public-runtime-isolation",
+      "id": "json",
       "status": "passed",
-      "detail": "index.html does not load platform-shell.js or control-center core bootstrap scripts."
+      "detail": "All JSON files parse."
     },
     {
-      "id": "doctor-version-visible",
+      "id": "runtime-files",
       "status": "passed",
-      "detail": "Mission Control visibly labels Platform Doctor v2.0.1."
+      "detail": "Project Brain runtime and all declared files are included."
+    },
+    {
+      "id": "version-registry",
+      "status": "passed",
+      "detail": "Mission Control displays subsystem versions."
+    },
+    {
+      "id": "public-runtime",
+      "status": "passed",
+      "detail": "Public website remains isolated from the administrative shell."
+    },
+    {
+      "id": "replacement-package",
+      "status": "passed",
+      "detail": "Complete replacement package; preserve only .git and images."
     }
   ],
-  "platform_version": "v2026.07.24.110",
-  "release_name": "Platform Consistency Hotfix",
-  "status": "validated",
-  "validation_summary": "Public website runtime isolated from control-center shell; Platform Doctor version made visible."
+  "platform_version": "v2026.07.24.111"
 }

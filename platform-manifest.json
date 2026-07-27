@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.110",
-  "build": "2026-07-27T20:25:00+02:00",
-  "worker_version": "15.8-platform-intelligence-foundation",
-  "release_name": "Public Website Runtime Isolation Hotfix",
-  "generated_at": "2026-07-27T20:25:00+02:00",
+  "platform_version": "v2026.07.24.111",
+  "build": "2026-07-27T21:30:00+02:00",
+  "worker_version": "15.9-project-brain-v1",
+  "release_name": "Project Brain v1 and Platform Intelligence Registry",
+  "generated_at": "2026-07-27T21:30:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -112,7 +112,9 @@
       "compliance_foundation",
       "seo_foundation",
       "project_brain",
-      "runtime_readiness"
+      "runtime_readiness",
+      "platform_modules",
+      "project_brain_consistency"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -142,26 +144,30 @@
     "validation": true
   },
   "decision_engine": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-decision.js",
     "registry": "/registry/decisions.json",
     "history_key": "casaDecisionHistoryV1",
     "explainable": true,
     "policy_aware": true,
-    "capability_aware": true
+    "capability_aware": true,
+    "rule_evaluator": true,
+    "history_metadata": true
   },
   "event_engine": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-events.js",
     "history_limit": 200,
     "capabilities": [
       "publish",
       "subscribe",
+      "once",
+      "wait",
       "history"
     ]
   },
   "diagnostics_framework": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -169,15 +175,18 @@
   },
   "project_brain": {
     "version": "1.0.0",
+    "entry": "/core/casa-brain.js",
     "manifest": "/platform/brain/manifest.json",
     "machine_readable": true,
+    "searchable": true,
     "areas": [
       "roadmap",
       "architecture",
       "backlog",
       "decisions",
       "release-history",
-      "principles"
+      "principles",
+      "capabilities"
     ]
   },
   "public_website_runtime": {

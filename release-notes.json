@@ -1,18 +1,22 @@
 {
-  "release": "v2026.07.24.110",
-  "name": "Public Website Runtime Isolation Hotfix",
-  "summary": "Restores the public website by isolating it from the control-center platform bootstrap and makes the Platform Doctor version visible in Mission Control.",
+  "release": "v2026.07.24.111",
+  "name": "Project Brain v1 and Platform Intelligence Registry",
+  "epic": "Platform Intelligence",
+  "summary": "Adds a runtime Project Brain service and a visible subsystem version registry, while strengthening Decision Engine rules, Event Engine contracts and platform diagnostics.",
   "changes": [
-    "Removed control-center platform bootstrap scripts from the public website.",
-    "Kept public version display through the lightweight manifest request already built into the website.",
-    "Added a visible Platform Doctor v2.0.1 label in Mission Control.",
-    "Preserved the v109 platform consistency fix and all existing platform services."
+    "Added Project Brain runtime service with machine-readable roadmap, architecture, backlog, decisions, principles, capabilities and release history.",
+    "Added subsystem version overview to Mission Control.",
+    "Added generic rule evaluation and version metadata to Decision Engine results.",
+    "Added once and waitFor contracts to Event Engine.",
+    "Added module and Project Brain consistency diagnostics.",
+    "Fixed duplicate Platform Doctor startup declaration."
   ],
-  "test_focus": [
-    "Public website renders normally at /.",
-    "Mission Control renders at /control/.",
-    "Platform version is v2026.07.24.110.",
-    "Platform Doctor displays v2.0.1.",
-    "No false synchronization warning is shown."
-  ]
+  "test_focus": {
+    "platform_version": "v2026.07.24.111",
+    "platform_doctor": "v2.1.0",
+    "project_brain": "v1.0.0",
+    "decision_engine": "v1.1.0",
+    "event_engine": "v1.1.0",
+    "diagnostics": "v1.1.0"
+  }
 }

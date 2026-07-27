@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "capabilities": [
+    {
+      "id": "brain.load",
+      "consumers": [
+        "Platform Doctor",
+        "Mission Control",
+        "AI Service Layer"
+      ]
+    },
+    {
+      "id": "brain.snapshot",
+      "consumers": [
+        "Platform Doctor",
+        "Release Validation",
+        "Repository Intelligence"
+      ]
+    },
+    {
+      "id": "brain.search",
+      "consumers": [
+        "AI Service Layer",
+        "Architecture Review",
+        "Backlog Navigation"
+      ]
+    },
+    {
+      "id": "decision.evaluate",
+      "consumers": [
+        "Publishing",
+        "Governance",
+        "Experience Engine"
+      ]
+    },
+    {
+      "id": "events.wait",
+      "consumers": [
+        "Platform Doctor",
+        "Release Supervisor",
+        "Diagnostics"
+      ]
+    }
+  ]
+}
