@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.101",
-  "build": "2026-07-27T14:33:47+02:00",
-  "worker_version": "15.1-canonical-workspace-state",
-  "release_name": "Canonical Workspace State",
-  "generated_at": "2026-07-27T14:33:47+02:00",
+  "platform_version": "v2026.07.24.102",
+  "build": "2026-07-27T15:07:44+02:00",
+  "worker_version": "15.2-casa-amar-core",
+  "release_name": "Casa Amar Core",
+  "generated_at": "2026-07-27T15:07:44+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -65,5 +65,22 @@
     ],
     "legacy_migration": "Archive once and exclude from active counters",
     "recovery_key": "casaLegacyWorkspaceBackupV101"
+  },
+  "core": {
+    "version": "1.0.0",
+    "entry": "/core/casa-core.js",
+    "capabilities": [
+      "events",
+      "storage",
+      "state",
+      "health",
+      "modules"
+    ],
+    "architecture_rule": "Shared platform state and reusable services belong in Core."
+  },
+  "future_infrastructure": {
+    "security": "/config/security.json",
+    "compliance": "/config/compliance.json",
+    "seo": "/config/seo.json"
   }
 }

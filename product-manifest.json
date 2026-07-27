@@ -1,5 +1,5 @@
 {
-  "version": "5.1",
+  "version": "5.2",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -268,5 +268,13 @@
     "single_source": "casaWorkspaceStateV1",
     "legacy_state": "Backed up once and excluded from active counts",
     "recovery": "window.CasaWorkspace.restoreArchivedLegacyState()"
+  },
+  "core": {
+    "version": "1.0.0",
+    "entry": "/core/casa-core.js",
+    "event_bus": true,
+    "storage_api": true,
+    "module_registry": true,
+    "health_snapshot": true
   }
 }

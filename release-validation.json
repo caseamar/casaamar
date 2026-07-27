@@ -1,22 +1,38 @@
 {
   "schema_version": "1.0",
-  "release": "v2026.07.24.101",
-  "built_at": "2026-07-27T14:33:47+02:00",
+  "release": "v2026.07.24.102",
+  "built_at": "2026-07-27T15:07:44+02:00",
   "checks": [
     {
-      "id": "single-workspace-state",
+      "id": "core-js-syntax",
       "status": "passed"
     },
     {
-      "id": "legacy-state-backed-up",
+      "id": "core-loaded-on-html-pages",
       "status": "passed"
     },
     {
-      "id": "legacy-state-not-counted",
+      "id": "module-registry",
       "status": "passed"
     },
     {
-      "id": "active-release-preserved",
+      "id": "central-storage-api",
+      "status": "passed"
+    },
+    {
+      "id": "health-snapshot",
+      "status": "passed"
+    },
+    {
+      "id": "security-foundation",
+      "status": "passed"
+    },
+    {
+      "id": "compliance-foundation",
+      "status": "passed"
+    },
+    {
+      "id": "seo-foundation",
       "status": "passed"
     }
   ]

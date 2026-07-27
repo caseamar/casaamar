@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "enabled": false,
+  "status": "foundation",
+  "authentication": {
+    "provider": null,
+    "mfa_required": false
+  },
+  "authorization": {
+    "source": "/config/access-control.json"
+  },
+  "audit": {
+    "enabled": false,
+    "retention_days": null
+  },
+  "principles": [
+    "least_privilege",
+    "secure_by_default",
+    "explicit_consent",
+    "auditability"
+  ]
+}
