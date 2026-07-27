@@ -1,7 +1,7 @@
 # Test canonical Mission Control
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
 Created: 26.07.2026 kl. 23.35
 
 1. Upload and overwrite every file, including `mission-control-v89.html` and `_worker.js`.
@@ -11,8 +11,8 @@ Created: 26.07.2026 kl. 23.35
    - `/knowledge-center.html`
    - `/mission-control-v89.html`
 4. All three must show the same full Mission Control.
-5. The green header must show `v2026.07.24.92`.
-6. The current platform card must show `v2026.07.24.92` and `14.3-confirmed-completion-timestamps`.
+5. The green header must show `v2026.07.24.93`.
+6. The current platform card must show `v2026.07.24.93` and `14.4-active-content-release-lifecycle`.
 7. The historical receipt may still show v83/13.4 for the old release.
 8. The old one-card “Udgivelseskvittering” layout must not appear.
-9. The website build time must equal the actual package time: `2026-07-27T10:06:13+02:00`.
+9. The website build time must equal the actual package time: `2026-07-27T10:41:26+02:00`.

@@ -1,12 +1,13 @@
-fix(status): make primary timestamps mean confirmed completion
+fix(release): separate platform updates from active content publishing
 
-- Platform primary timestamp now means the current version was successfully verified across manifest and Worker.
-- Confirmation time is stored once per platform version and survives refresh.
-- Content primary timestamp remains the verified live time after two public matches.
-- Build and preparation times moved behind technical details.
-- Primary status always shows completion time plus version number.
-- Added an honest distinction between package build time and confirmed availability.
+- Content monitoring starts only after an explicit user content release action.
+- Added an active content-release lifecycle marker.
+- Migrates old pending sessions to historical receipts without monitoring them.
+- Platform updates never start or resume GitHub/live checks.
+- Hides progress, polling and compatibility UI when no content release is active.
+- Shows a calm idle status with one recommended next action.
+- Deactivates the release immediately after verified completion.
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
-Build: 2026-07-27T10:06:13+02:00
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
+Build: 2026-07-27T10:41:26+02:00

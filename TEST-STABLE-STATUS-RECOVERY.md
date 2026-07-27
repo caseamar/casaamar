@@ -1,7 +1,7 @@
 # Test stabil recovery
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
 
 1. Upload og overskriv alle filer.
 2. Åbn den offentlige hjemmeside.

@@ -1,5 +1,5 @@
 {
-  "version": "4.2",
+  "version": "4.3",
   "updated": "2026-07-24",
   "product_name": "Casa Amar AI",
   "promise": "AI arbejder. Du beslutter.",
@@ -209,5 +209,16 @@
     "technical_build_time": "Advanced details only.",
     "display_rule": "Primary status always pairs a completion timestamp with a version number.",
     "honesty_note": "The browser can prove the platform was complete at the confirmation time, but cannot know an earlier Cloudflare completion instant."
+  },
+  "active_content_release_lifecycle": {
+    "active_release_required_fields": {
+      "release_kind": "content",
+      "activated_by": "user_publish_action",
+      "active": true
+    },
+    "platform_update_behavior": "Never activates or resumes content publishing.",
+    "legacy_session_migration": "Preserved as historical receipt and deactivated.",
+    "idle_ui": "Shows clear status and one recommended CTA; hides progress, polling and compatibility panels.",
+    "completion": "Live releases become inactive immediately after verified completion."
   }
 }

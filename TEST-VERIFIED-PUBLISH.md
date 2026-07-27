@@ -1,7 +1,7 @@
 # Test Verified Publish
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
 
 1. Lav præcis to ændringer i platformen.
 2. Udgivelsescenteret skal vise **2 ændringer** som det primære tal.

@@ -1,8 +1,8 @@
 # Test Autonomous Publish Supervisor
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
-Build: 2026-07-27T10:06:13+02:00
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
+Build: 2026-07-27T10:41:26+02:00
 
 1. Build a compatible release package.
 2. During the first 30 seconds:

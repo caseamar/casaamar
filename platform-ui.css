@@ -181,3 +181,17 @@ h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans
 .rc-technical-details>summary{cursor:pointer;font-size:.66rem;font-weight:780;color:var(--ca-muted)}
 .rc-technical-details[open]>summary{margin-bottom:10px}
 @media(max-width:700px){.rc-human-status{grid-template-columns:1fr}}
+
+.rc-idle-state{
+ border:1px solid var(--ca-line);
+ border-radius:16px;
+ padding:18px;
+ background:var(--ca-surface-2);
+}
+.rc-idle-state h3{margin:0 0 7px;font-size:1rem}
+.rc-idle-state>p{margin:0;color:var(--ca-muted);font-size:.72rem;line-height:1.5}
+.rc-idle-next{margin:14px 0;padding:12px;border-radius:11px;background:white;border:1px solid var(--ca-line)}
+.rc-idle-next span{display:block;font-size:.61rem;color:var(--ca-muted)}
+.rc-idle-next strong{display:block;margin-top:4px;font-size:.78rem;color:var(--ca-text)}
+.rc-idle-cta{display:inline-flex;text-decoration:none;margin-top:0}
+[hidden]{display:none!important}

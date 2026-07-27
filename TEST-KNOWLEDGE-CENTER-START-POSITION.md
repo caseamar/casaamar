@@ -1,7 +1,7 @@
 # Test intelligent startposition
 
-Release: v2026.07.24.92
-Worker: 14.3-confirmed-completion-timestamps
+Release: v2026.07.24.93
+Worker: 14.4-active-content-release-lifecycle
 
 1. Åbn `/knowledge-center.html` uden aktiv udgivelse.
    - Siden skal starte helt i toppen.

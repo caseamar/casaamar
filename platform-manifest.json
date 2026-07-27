@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.92",
-  "build": "2026-07-27T10:06:13+02:00",
-  "worker_version": "14.3-confirmed-completion-timestamps",
-  "release_name": "Confirmed Completion Timestamps",
-  "generated_at": "2026-07-27T10:06:13+02:00",
+  "platform_version": "v2026.07.24.93",
+  "build": "2026-07-27T10:41:26+02:00",
+  "worker_version": "14.4-active-content-release-lifecycle",
+  "release_name": "Active Content Release Lifecycle",
+  "generated_at": "2026-07-27T10:41:26+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -23,5 +23,10 @@
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
     "build": "Technical package creation time; advanced details only."
+  },
+  "release_lifecycle": {
+    "platform_update": "Never starts content monitoring.",
+    "content_release": "Monitoring starts only after the user creates a content release package.",
+    "historical_release": "Visible as a receipt but never monitored."
   }
 }
