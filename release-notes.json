@@ -1,10 +1,19 @@
 {
-  "release": "v2026.07.24.153",
-  "name": "Engineering Governance Foundation",
-  "summary": "Versioned canonical contracts make platform data API-friendly, traceable and transport-neutral.",
-  "generated_at": "2026-07-28T14:00:00+02:00",
-  "title": "Platform Constitution Engine",
-  "build": "2026-07-28T14:00:00+02:00",
-  "platform_version": "v2026.07.24.153",
-  "release_name": "Canonical Data Contracts Foundation"
+  "release": "v2026.07.24.154",
+  "name": "Capability Intelligence Foundation",
+  "platform_version": "v2026.07.24.154",
+  "build": "2026-07-28T14:10:00+02:00",
+  "summary": "Self-describing capability graph with explainable dependency and change-impact analysis.",
+  "changes": [
+    "Platform Knowledge Graph v1.0.0",
+    "Capability Intelligence v1.0.0",
+    "Platform Intelligence v1.2.0",
+    "Subsystem Registry v3.8.0"
+  ],
+  "manual_review": [
+    "Cloudflare deployment",
+    "Release-tjek Capability Intelligence card",
+    "Workspace return flow",
+    "Public website smoke test"
+  ]
 }

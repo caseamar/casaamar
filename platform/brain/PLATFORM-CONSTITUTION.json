@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.5.0",
-  "platform_version": "v2026.07.24.153",
+  "platform_version": "v2026.07.24.154",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -81,7 +81,7 @@
       "blocking": true
     }
   ],
-  "updated_at": "2026-07-28T14:00:00+02:00",
+  "updated_at": "2026-07-28T14:10:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

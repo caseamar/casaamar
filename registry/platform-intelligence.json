@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.1.0",
-  "platform_version": "v2026.07.24.153",
-  "generated_at": "2026-07-28T14:00:00+02:00",
+  "version": "1.2.0",
+  "platform_version": "v2026.07.24.154",
+  "generated_at": "2026-07-28T14:10:00+02:00",
   "policy": {
     "pass_requires_explanation": true,
     "evidence_required": true,
@@ -83,7 +83,8 @@
     "because": "Platformen er teknisk sund. Samlet status kræver kun opmærksomhed, fordi der findes forventet, ikke-udgivet indholdsarbejde.",
     "evidence": [
       "0 automatiske fejl",
-      "2 ikke-udgivne ændringer er arbejdsstatus, ikke teknisk fejl"
+      "2 ikke-udgivne ændringer er arbejdsstatus, ikke teknisk fejl",
+      "Platform Knowledge Graph: 101 nodes / 55 relationships"
     ],
     "next_action": {
       "label": "Gennemgå indholdsarbejde",
@@ -102,5 +103,16 @@
       "next_action"
     ],
     "rule": "A judgement without traceable evidence cannot be displayed as PASS."
+  },
+  "knowledge_graph": {
+    "version": "1.0.0",
+    "status": "healthy",
+    "nodes": 101,
+    "relationships": 55,
+    "capabilities": 37,
+    "unresolved_dependencies": 0,
+    "cycles": 0,
+    "orphan_nodes": 0,
+    "explainable_impact_analysis": true
   }
 }

@@ -1,0 +1,1092 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.154",
+  "generated_at": "2026-07-28T14:10:00+02:00",
+  "purpose": "Authoritative, explainable graph of platform capabilities, contracts, subsystems and dependencies.",
+  "nodes": [
+    {
+      "id": "content.read",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "content.write",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "content.review",
+      "type": "capability",
+      "layer": "experience",
+      "status": "foundation",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "content.publish",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "assets.read",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "assets.write",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "deployment.status",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "deployment.validate",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "foundation",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "security.auth",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "security.audit",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "compliance.cookies",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "compliance.retention",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "seo.metadata",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "foundation",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "seo.sitemap",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "commerce.catalog",
+      "type": "capability",
+      "layer": "experience",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "hospitality.concierge",
+      "type": "capability",
+      "layer": "experience",
+      "status": "planned",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "decision.evaluate",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "engineering-governance",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": null,
+      "owner": "Platform Quality",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform.explain",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform.learn",
+      "type": "capability",
+      "layer": "experience",
+      "status": "active",
+      "owner": "Learning Registry",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai-service-layer",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai.capability.request",
+      "type": "capability",
+      "layer": "experience",
+      "status": "foundation",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai.policy.resolve",
+      "type": "capability",
+      "layer": "experience",
+      "status": "foundation",
+      "owner": "Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform-integrity",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Quality",
+      "version": "1.0.0"
+    },
+    {
+      "id": "events.publish",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "events.subscribe",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "events.trace",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "events.privacy",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "events.idempotency",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data.contracts",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Data",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data.envelope",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Data",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data.compatibility",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Data",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data.provenance",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Data",
+      "version": "1.0.0"
+    },
+    {
+      "id": "experience.context.create",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "experience.context.read",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "experience.context.update",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "experience.context.clear",
+      "type": "capability",
+      "layer": "platform-core",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform",
+      "version": "v2026.07.24.154"
+    },
+    {
+      "id": "core",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.1.0"
+    },
+    {
+      "id": "platform-doctor",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "3.8.0"
+    },
+    {
+      "id": "project-brain",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.1"
+    },
+    {
+      "id": "decision-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.2.0"
+    },
+    {
+      "id": "event-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "2.0.0"
+    },
+    {
+      "id": "diagnostics",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.31.0"
+    },
+    {
+      "id": "configuration",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.2.0"
+    },
+    {
+      "id": "governance",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "audit-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform-contracts",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.27.0"
+    },
+    {
+      "id": "subsystem-registry",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "3.7.0"
+    },
+    {
+      "id": "public-website-runtime",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Experience Platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "repository-intelligence",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.19.0"
+    },
+    {
+      "id": "content-intelligence",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai-knowledge-graph",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.1.0"
+    },
+    {
+      "id": "asset-intelligence",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.2.1"
+    },
+    {
+      "id": "experience-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai-workspace",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "AI Workspace",
+      "version": "1.8.6"
+    },
+    {
+      "id": "content-studio",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "AI Workspace",
+      "version": "1.1.0"
+    },
+    {
+      "id": "content-operations",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "AI Workspace",
+      "version": "1.1.0"
+    },
+    {
+      "id": "website-configuration",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Configuration",
+      "version": "1.0.0"
+    },
+    {
+      "id": "recommendation-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "AI Workspace",
+      "version": "1.2.0"
+    },
+    {
+      "id": "release-governance",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Governance",
+      "version": "3.6.0"
+    },
+    {
+      "id": "behaviour-governance",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Quality",
+      "version": "1.0.0"
+    },
+    {
+      "id": "engineering-governance",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Quality",
+      "version": "1.2.0"
+    },
+    {
+      "id": "platform-intelligence",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.1.0"
+    },
+    {
+      "id": "learning-registry",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ai-service-layer",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform AI",
+      "version": "1.0.0"
+    },
+    {
+      "id": "constitution-engine",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Quality",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform-integrity",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Quality",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data-contracts",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Data",
+      "version": "1.0.0"
+    },
+    {
+      "id": "experience-context",
+      "type": "subsystem",
+      "status": "active",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "canonical.envelope",
+      "type": "data-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "canonical.interaction",
+      "type": "data-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "canonical.entity-reference",
+      "type": "data-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "canonical.page",
+      "type": "data-contract",
+      "status": "foundation",
+      "version": "1.0.0"
+    },
+    {
+      "id": "platform.events.ready",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "experience.started",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "interaction.created",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "action.requested",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "action.executed",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "recommendation.decided",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "knowledge.updated",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "release.approved",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "release.deployed",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "diagnostics.completed",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "decision.evaluated",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "workspace.ready",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "content.changed",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "handover.requested",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "conversion.recorded",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "experience.contextcreated",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "experience.contextupdated",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "experience.contextcleared",
+      "type": "event-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "workspace-return-navigation",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "recommendation-human-control",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "configuration-driven-language",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "release-identity-consistency",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "ai-capability-provider-neutral-foundation",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0"
+    },
+    {
+      "id": "event-platform-foundation",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data-contract-resolution",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "canonical-envelope-governance",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "shared-experience-context-foundation",
+      "type": "behaviour-contract",
+      "status": "active",
+      "version": "1.0.0"
+    }
+  ],
+  "edges": [
+    {
+      "from": "engineering-governance",
+      "to": "behaviour-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "engineering-governance",
+      "to": "release-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "engineering-governance",
+      "to": "subsystem-registry",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "engineering-governance",
+      "to": "repository-intelligence",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform.explain",
+      "to": "release-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform.explain",
+      "to": "behaviour-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform.explain",
+      "to": "engineering-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform.learn",
+      "to": "behaviour-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform.learn",
+      "to": "engineering-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "configuration",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "decision-engine",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "platform-integrity",
+      "to": "engineering-governance",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "events.subscribe",
+      "to": "events.publish",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "events.trace",
+      "to": "events.publish",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "events.privacy",
+      "to": "events.publish",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "events.idempotency",
+      "to": "events.publish",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "data.envelope",
+      "to": "data.contracts",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "data.compatibility",
+      "to": "data.contracts",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "data.provenance",
+      "to": "data.envelope",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "experience.context.create",
+      "to": "data.envelope",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "experience.context.read",
+      "to": "experience.context.create",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "experience.context.update",
+      "to": "experience.context.create",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "experience.context.clear",
+      "to": "experience.context.create",
+      "type": "depends_on",
+      "source": "capability-registry"
+    },
+    {
+      "from": "release-governance",
+      "to": "behaviour-governance",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "release-governance",
+      "to": "diagnostics",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "release-governance",
+      "to": "platform-contracts",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "configuration",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "content-studio",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "asset-intelligence",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "ai-knowledge-graph",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "experience-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "recommendation-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "content-studio",
+      "to": "content-operations",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "content-studio",
+      "to": "content-intelligence",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "content-studio",
+      "to": "asset-intelligence",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "content-studio",
+      "to": "ai-knowledge-graph",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "configuration",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "decision-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "audit-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "diagnostics",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "subsystem-registry",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "release-governance",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "release-governance",
+      "type": "explains",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "learning-registry",
+      "type": "learns-from",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "learning-registry",
+      "to": "behaviour-governance",
+      "type": "protects",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "configuration",
+      "type": "uses",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "governance",
+      "type": "governed-by",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "decision-engine",
+      "type": "policy-decisions",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "ai-service-layer",
+      "type": "future-consumer",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "event-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "release-governance",
+      "to": "event-engine",
+      "type": "depends_on",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "event-engine",
+      "type": "publishes_to",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "data-contracts",
+      "to": "platform-contracts",
+      "type": "uses",
+      "source": "dependency-graph"
+    },
+    {
+      "from": "event-engine",
+      "to": "data-contracts",
+      "type": "uses",
+      "source": "dependency-graph"
+    }
+  ],
+  "impact_policy": {
+    "direct_dependencies_weight": 3,
+    "transitive_dependencies_weight": 2,
+    "contract_change_weight": 5,
+    "risk_thresholds": {
+      "low": [
+        0,
+        9
+      ],
+      "medium": [
+        10,
+        24
+      ],
+      "high": [
+        25,
+        999
+      ]
+    },
+    "breaking_contracts_always_high": true,
+    "unknown_relationships_require_manual_review": true
+  },
+  "quality_rules": [
+    "Every active capability must have an owner, layer and behaviour contract requirement.",
+    "Every dependency target must resolve to a registered capability or subsystem.",
+    "Circular capability dependencies are forbidden.",
+    "Impact claims require traceable graph evidence.",
+    "Unknown relationships cannot be reported as PASS."
+  ],
+  "summary": {
+    "capabilities": 37,
+    "subsystems": 33,
+    "nodes": 101,
+    "relationships": 55,
+    "orphan_nodes": 0,
+    "unresolved_dependencies": 0,
+    "cycles": 0,
+    "status": "healthy"
+  }
+}

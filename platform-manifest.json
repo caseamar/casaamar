@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.153",
-  "build": "2026-07-28T14:00:00+02:00",
-  "worker_version": "15.40-experience-context-foundation",
-  "release_name": "Experience Context Engine Foundation",
-  "generated_at": "2026-07-28T14:00:00+02:00",
+  "platform_version": "v2026.07.24.154",
+  "build": "2026-07-28T14:10:00+02:00",
+  "worker_version": "15.41-capability-intelligence-foundation",
+  "release_name": "Capability Intelligence Foundation",
+  "generated_at": "2026-07-28T14:10:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T14:00:00+02:00"
+    "build": "2026-07-28T14:10:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -256,7 +256,7 @@
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.7.0",
+    "version": "3.8.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -293,7 +293,8 @@
       "platform_integrity",
       "event_platform",
       "data_contracts",
-      "experience_context"
+      "experience_context",
+      "capability_intelligence"
     ]
   },
   "repository_intelligence": {
@@ -321,7 +322,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.153",
+    "asset_cache_key": "20260724.154",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -555,7 +556,7 @@
     "release_blocking": true
   },
   "platform_intelligence": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "entry": "/core/casa-platform-intelligence.js",
     "registry": "/registry/platform-intelligence.json",
     "learning_registry": "/registry/learning-registry.json",
@@ -632,5 +633,13 @@
     "merge_policy": "explicit-whitelist",
     "persistent_identity": false,
     "principle": "Channels and touchpoints share a governed, minimal and purpose-bound experience context without creating hidden identity profiles."
+  },
+  "capability_intelligence": {
+    "version": "1.0.0",
+    "entry": "/core/casa-capability-intelligence.js",
+    "registry": "/registry/platform-knowledge-graph.json",
+    "status": "active",
+    "impact_analysis": "explainable",
+    "architecture_graph": "active"
   }
 }

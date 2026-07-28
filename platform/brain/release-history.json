@@ -110,41 +110,41 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Experience Engine Foundation",
       "epic": "Platform Intelligence",
       "summary": "Added non-destructive responsive variant plans, publication readiness evaluation and variant quality gates.",
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "title": "Platform Intelligence Dashboard",
       "epic": "Platform Intelligence",
       "summary": "Interactive subsystem dashboards and real metrics for AI Knowledge Graph, Asset Intelligence and Experience Engine."
     },
     {
-      "release": "v2026.07.24.153",
+      "release": "v2026.07.24.154",
       "name": "AI Workspace Foundation",
       "completed_at": "2026-07-28T10:12:40+02:00",
       "epic": "AI Workspace",
       "summary": "Adds a unified operational workspace with status, work modules, AI insights and quick actions."
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Workspace Dashboard Routing",
       "epic": "AI Workspace",
       "summary": "Fixed Knowledge navigation and added actionable insight and destination quality gates.",
       "completed_at": "2026-07-28T10:12:40+02:00"
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Content Studio Foundation",
       "completed_at": "2026-07-28T10:12:40+02:00",
       "epic": "AI Workspace",
       "summary": "Operational page management with health scoring and AI suggestions."
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Behaviour Governance Foundation",
       "epic": "Release Quality",
       "summary": "Introduced declarative behaviour contracts with expected and forbidden scenarios, dependency resolution, impact suites and full-platform validation.",
@@ -152,30 +152,30 @@
       "status": "stable"
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Engineering Governance Foundation",
       "built_at": "2026-07-28T12:30:00+02:00",
       "summary": "Introduced capability architecture, dependency graph, Platform Constitution, ADRs and five-dimensional engineering assessment."
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Platform Intelligence and Learning Registry",
       "date": "2026-07-28",
       "summary": "Introduced explainable platform judgements and a durable learning registry."
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "AI Service Layer Foundation",
       "status": "released",
       "summary": "Provider-neutral AI capability boundary and policy foundation."
     },
     {
-      "version": "v2026.07.24.153",
+      "version": "v2026.07.24.154",
       "name": "Canonical Data Contracts Foundation",
-      "released_at": "2026-07-28T14:00:00+02:00",
+      "released_at": "2026-07-28T14:10:00+02:00",
       "status": "built"
     }
   ],
-  "updated_at": "2026-07-28T14:00:00+02:00",
-  "platform_version": "v2026.07.24.153"
+  "updated_at": "2026-07-28T14:10:00+02:00",
+  "platform_version": "v2026.07.24.154"
 }

@@ -409,8 +409,29 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "platform.capability-intelligence",
+      "domain": "platform-intelligence",
+      "status": "active",
+      "owner": "Platform Intelligence",
+      "version": "1.0.0",
+      "dependencies": [
+        "platform.registry",
+        "platform.dependency-graph"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core",
+      "contracts": [
+        "platform-knowledge-graph/1.0"
+      ],
+      "provides": [
+        "impact-analysis",
+        "dependency-traversal",
+        "architecture-explanation"
+      ]
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.153"
+  "platform_version": "v2026.07.24.154"
 }

@@ -1,8 +1,8 @@
-RELEASE v2026.07.24.153
-Canonical Data Contracts Foundation
+RELEASE v2026.07.24.154
+Capability Intelligence Foundation
 
-- Adds Schema Registry and versioned canonical data contracts.
-- Adds privacy, provenance and trace metadata to the shared data envelope.
-- Adds contract compatibility and stable identifier policies.
-- Prepares REST, GraphQL, Webhooks, MCP/tools and event streaming without activating public endpoints.
-- Adds Epic #14 Data Contracts & API Platform and Epic #15 Message Abstraction Layer to backlog.
+- Adds authoritative Platform Knowledge Graph.
+- Makes capabilities, subsystems, contracts and dependencies self-describing.
+- Adds explainable impact analysis and dependency traversal.
+- Detects unresolved dependencies, cycles and orphan registrations.
+- Unknown relationships require manual review and cannot be reported as PASS.
