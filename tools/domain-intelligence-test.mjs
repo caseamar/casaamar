@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 const read=p=>fs.readFileSync(p,'utf8'); const ok=(x,m)=>{if(!x)throw new Error(m)};
 const model=JSON.parse(read('registry/domain-model.json')),packs=JSON.parse(read('registry/domain-packs.json')),core=read('core/casa-domain-intelligence.js'),page=read('domain-intelligence.html'),quality=read('core/casa-ai-output-quality.js');
-ok(model.version==='2.0.0','Domain model version');
+ok(model.version==='3.0.0','Domain model version');
 ok(model.domainPack==='vacation-rental','Casa Amar skal bruge vacation-rental pack');
 ok(packs.packs.some(x=>x.id==='commerce'),'Commerce Domain Pack mangler');
 ok(packs.packs.some(x=>x.id==='professional-services'),'Professional Services Domain Pack mangler');

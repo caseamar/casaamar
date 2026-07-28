@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.175",
+  "statuses": [
+    "verified",
+    "derived",
+    "observed",
+    "proposed"
+  ],
+  "types": [
+    {
+      "id": "contains",
+      "label": "indeholder",
+      "direction": "hierarchical",
+      "inverse": "part_of",
+      "allowed_subject_types": [
+        "property",
+        "area",
+        "room",
+        "category",
+        "shop",
+        "company"
+      ],
+      "allowed_object_types": [
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "plant",
+        "product",
+        "service",
+        "feature"
+      ]
+    },
+    {
+      "id": "shows",
+      "label": "viser",
+      "direction": "evidence",
+      "inverse": "shown_in",
+      "allowed_subject_types": [
+        "asset"
+      ],
+      "allowed_object_types": [
+        "property",
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "plant",
+        "product",
+        "service",
+        "feature"
+      ]
+    },
+    {
+      "id": "used_for",
+      "label": "bruges til",
+      "direction": "semantic",
+      "inverse": "enabled_by",
+      "allowed_subject_types": [
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "product",
+        "service"
+      ],
+      "allowed_object_types": [
+        "experience",
+        "activity",
+        "use_case"
+      ]
+    },
+    {
+      "id": "supports_experience",
+      "label": "understøtter oplevelse",
+      "direction": "semantic",
+      "inverse": "supported_by",
+      "allowed_subject_types": [
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "feature",
+        "service"
+      ],
+      "allowed_object_types": [
+        "experience"
+      ]
+    },
+    {
+      "id": "contributes_to",
+      "label": "bidrager til",
+      "direction": "semantic",
+      "inverse": "influenced_by",
+      "allowed_subject_types": [
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "plant",
+        "feature"
+      ],
+      "allowed_object_types": [
+        "atmosphere",
+        "experience",
+        "outcome"
+      ]
+    },
+    {
+      "id": "featured_on",
+      "label": "fremhæves på",
+      "direction": "content",
+      "inverse": "features",
+      "allowed_subject_types": [
+        "property",
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "plant",
+        "product",
+        "service",
+        "feature"
+      ],
+      "allowed_object_types": [
+        "page",
+        "channel"
+      ]
+    },
+    {
+      "id": "relevant_to",
+      "label": "relevant for",
+      "direction": "operational",
+      "inverse": "uses_context",
+      "allowed_subject_types": [
+        "property",
+        "area",
+        "room",
+        "furniture",
+        "amenity",
+        "plant",
+        "product",
+        "service",
+        "feature"
+      ],
+      "allowed_object_types": [
+        "capability",
+        "workflow",
+        "audience"
+      ]
+    }
+  ]
+}

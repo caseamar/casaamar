@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+const read=p=>fs.readFileSync(p,'utf8');const json=p=>JSON.parse(read(p));const ok=(x,m)=>{if(!x)throw new Error(m)};
+const registry=json('registry/relationship-types.json'),model=json('registry/domain-model.json'),core=read('core/casa-domain-relationships.js'),page=read('domain-intelligence.html'),release=read('release-governance.html'),constitution=json('registry/constitution-rules.json');
+ok(registry.version==='1.0.0','Relationship Registry version');
+for(const id of ['contains','shows','used_for','supports_experience','contributes_to','relevant_to'])ok(registry.types.some(x=>x.id===id),`Relationship type mangler: ${id}`);
+const ids=new Set(model.objects.map(x=>x.id));
+const types=new Map(registry.types.map(x=>[x.id,x]));
+const relationships=model.facts.filter(x=>types.has(x.predicate));
+ok(relationships.length>=28,'Relationship graph skal have mindst 28 relationer');
+for(const r of relationships){ok(ids.has(r.subject),`Relationship subject findes: ${r.subject}`);ok(ids.has(r.object),`Relationship object findes: ${r.object}`);if(r.status==='derived')ok(Number(r.confidence)>=.7,`Derived relationship confidence: ${r.subject}/${r.predicate}`)}
+ok(relationships.some(x=>x.subject==='area.patio'&&x.predicate==='used_for'&&x.object==='experience.relaxation'),'Patio relaxation relation');
+ok(relationships.some(x=>x.subject==='amenity.patio-grill'&&x.predicate==='supports_experience'&&x.object==='experience.outdoor-cooking'),'Grill experience relation');
+ok(relationships.some(x=>x.subject==='plant.patio-bougainvillea'&&x.predicate==='contributes_to'&&x.object==='atmosphere.mediterranean'),'Bougainvillea atmosphere relation');
+for(const token of ['function validate','relationsFor','function traverse','function explain','orphanObjects','Dubletrelation'])ok(core.includes(token),`Relationship runtime mangler ${token}`);
+ok(page.includes('4. Relationer og betydning'),'Domain Intelligence viser relationship section');
+ok(page.includes('casa-domain-relationships.js'),'Domain Intelligence loader Relationship Engine');
+ok(page.includes('id="relationships"'),'Relationship UI container');
+ok(release.includes('id="domain-relationships"'),'Release Governance relationship panel');
+ok(release.includes('VERIFIED TYPED DOMAIN RELATIONSHIPS'),'Relationship verified status');
+ok(constitution.principles.some(x=>x.principle_id==='ARTICLE-27'&&x.automated_tests.includes('tools/domain-relationship-engine-test.mjs')),'Article 27 executable test coverage');
+console.log('18 Domain Relationship Engine-kontroller bestået');

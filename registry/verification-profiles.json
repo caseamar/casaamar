@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T19:30:00+02:00",
-  "platform_version": "v2026.07.24.174",
+  "updated_at": "2026-07-28T20:15:00+02:00",
+  "platform_version": "v2026.07.24.175",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,

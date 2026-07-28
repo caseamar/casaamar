@@ -1,11 +1,11 @@
 {
   "name": "casa-amar-platform",
   "private": true,
-  "version": "2026.7.24-173",
+  "version": "2026.7.24-175",
   "type": "module",
   "scripts": {
     "validate:release": "node tools/release-quality-gate.mjs",
-    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs && node tools/operations-center-test.mjs && node tools/observation-platform-test.mjs && node tools/content-intelligence-test.mjs && node tools/startup-governance-test.mjs && node tools/asset-intelligence-workspace-test.mjs && node tools/ai-decision-ux-test.mjs && node tools/constitution-engine-test.mjs && node tools/closed-loop-ux-test.mjs && node tools/asset-decision-runtime-test.mjs && node tools/ai-output-quality-test.mjs && node tools/domain-intelligence-test.mjs && node tools/domain-verification-queue-test.mjs && node tools/domain-verification-queue-runtime-test.mjs && node tools/domain-discovery-engine-test.mjs",
+    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs && node tools/operations-center-test.mjs && node tools/observation-platform-test.mjs && node tools/content-intelligence-test.mjs && node tools/startup-governance-test.mjs && node tools/asset-intelligence-workspace-test.mjs && node tools/ai-decision-ux-test.mjs && node tools/constitution-engine-test.mjs && node tools/closed-loop-ux-test.mjs && node tools/asset-decision-runtime-test.mjs && node tools/ai-output-quality-test.mjs && node tools/domain-intelligence-test.mjs && node tools/domain-verification-queue-test.mjs && node tools/domain-verification-queue-runtime-test.mjs && node tools/domain-discovery-engine-test.mjs && node tools/domain-relationship-engine-test.mjs",
     "test:workspace-state": "node tools/workspace-state-behaviour-test.mjs",
     "test:behaviour": "node tools/behaviour-governance-test.mjs",
     "test:engineering": "node tools/engineering-governance-test.mjs",
@@ -31,6 +31,7 @@
     "test:ai-output-quality": "node tools/ai-output-quality-test.mjs",
     "test:domain-intelligence": "node tools/domain-intelligence-test.mjs",
     "test:domain-verification": "node tools/domain-verification-queue-test.mjs && node tools/domain-verification-queue-runtime-test.mjs",
-    "test:domain-discovery": "node tools/domain-discovery-engine-test.mjs"
+    "test:domain-discovery": "node tools/domain-discovery-engine-test.mjs",
+    "test:domain-relationships": "node tools/domain-relationship-engine-test.mjs"
   }
 }

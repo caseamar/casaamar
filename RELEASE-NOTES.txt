@@ -1,7 +1,7 @@
-Casa Amar v2026.07.24.174 — Discovery Coverage Consistency Fix
+Casa Amar v2026.07.24.175 — Domain Relationship Engine Foundation
 
-- Fixes the inconsistency where domain coverage could be below 100% while the discovery queue showed no questions.
-- Automatically repairs stale resolved questions that have no verified fact and no active follow-up.
-- Manual discovery now reports both newly created and reopened questions.
-- Adds a governed consistency state so missing facts can never be hidden behind an empty queue.
-- Adds executable regression coverage for persisted stale workspace data.
+- Adds a typed, domain-neutral Relationship Registry and runtime.
+- Connects Casa Amar objects to experiences, atmosphere and consuming capabilities.
+- Separates verified and confidence-qualified derived relationships.
+- Adds relationship exploration to Domain Intelligence.
+- Adds Article 27 and release-blocking relationship integrity tests.

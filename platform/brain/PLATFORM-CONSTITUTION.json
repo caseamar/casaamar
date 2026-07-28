@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.5.0",
-  "platform_version": "v2026.07.24.174",
+  "version": "2.6.0",
+  "platform_version": "v2026.07.24.175",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -152,6 +152,11 @@
       "principle": "Domain Intelligence must continuously derive relevant uncertainties from current tasks and verified knowledge. A zero-question state is valid only when sufficient context is documented for the active work.",
       "enforcement": "release-blocking",
       "automated_test": "tools/domain-discovery-engine-test.mjs"
+    },
+    {
+      "id": "ARTICLE-27",
+      "title": "Typed Relationships before Inference",
+      "rule": "Domain relationships must be typed, reference valid objects and carry an explicit evidence status before AI may use them for interpretation or generation. Derived relationships require confidence and must never be presented as human-verified facts."
     }
   ],
   "updated_at": "2026-07-28T18:30:00+02:00",

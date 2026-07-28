@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "id": "domain.casa-amar",
   "domainPack": "vacation-rental",
   "name": "Casa Amar",
@@ -94,6 +94,54 @@
       "id": "plant.patio-bougainvillea",
       "type": "plant",
       "name": "Bougainvillea",
+      "status": "verified"
+    },
+    {
+      "id": "experience.relaxation",
+      "type": "experience",
+      "name": "Afslapning",
+      "status": "derived"
+    },
+    {
+      "id": "experience.outdoor-dining",
+      "type": "experience",
+      "name": "Udendørs måltider",
+      "status": "derived"
+    },
+    {
+      "id": "experience.outdoor-cooking",
+      "type": "experience",
+      "name": "Madlavning udendørs",
+      "status": "derived"
+    },
+    {
+      "id": "atmosphere.mediterranean",
+      "type": "atmosphere",
+      "name": "Middelhavsstemning",
+      "status": "derived"
+    },
+    {
+      "id": "capability.asset-intelligence",
+      "type": "capability",
+      "name": "Asset Intelligence",
+      "status": "derived"
+    },
+    {
+      "id": "capability.content-intelligence",
+      "type": "capability",
+      "name": "Content Intelligence",
+      "status": "derived"
+    },
+    {
+      "id": "capability.digital-concierge",
+      "type": "capability",
+      "name": "Digital Concierge",
+      "status": "derived"
+    },
+    {
+      "id": "asset-casa-amar-v2-hero-patio",
+      "type": "asset",
+      "name": "Patio hero-billede",
       "status": "verified"
     }
   ],
@@ -229,6 +277,78 @@
       "predicate": "shows",
       "object": "plant.patio-bougainvillea",
       "status": "verified"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "used_for",
+      "object": "experience.relaxation",
+      "status": "derived",
+      "confidence": 0.94,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "used_for",
+      "object": "experience.outdoor-dining",
+      "status": "derived",
+      "confidence": 0.92,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "furniture.patio-sun-loungers",
+      "predicate": "used_for",
+      "object": "experience.relaxation",
+      "status": "derived",
+      "confidence": 0.98,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "furniture.patio-table",
+      "predicate": "supports_experience",
+      "object": "experience.outdoor-dining",
+      "status": "derived",
+      "confidence": 0.96,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "amenity.patio-grill",
+      "predicate": "supports_experience",
+      "object": "experience.outdoor-cooking",
+      "status": "derived",
+      "confidence": 0.95,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "plant.patio-bougainvillea",
+      "predicate": "contributes_to",
+      "object": "atmosphere.mediterranean",
+      "status": "derived",
+      "confidence": 0.93,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "relevant_to",
+      "object": "capability.asset-intelligence",
+      "status": "derived",
+      "confidence": 0.99,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "relevant_to",
+      "object": "capability.content-intelligence",
+      "status": "derived",
+      "confidence": 0.99,
+      "source": "relationship-engine-baseline"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "relevant_to",
+      "object": "capability.digital-concierge",
+      "status": "derived",
+      "confidence": 0.99,
+      "source": "relationship-engine-baseline"
     }
   ],
   "clarifications": [],
