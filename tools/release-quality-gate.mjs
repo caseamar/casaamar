@@ -314,6 +314,13 @@ const workspaceContract=testContracts.components.find(x=>x.id==='workspace-state
 check(Boolean(workspaceContract),'Workspace State Manager has a declarative test contract');
 check(workspaceContract?.required_tests?.includes('destination-cannot-overwrite-origin'),'Workspace State contract protects the origin transaction');
 
+// v141 authoritative workspace return-state gates
+check(workspaceStateSource.includes("const state=tx;"),'Workspace restoration uses the immutable transaction snapshot');
+check(workspaceStateSource.includes("reason==='scroll' && shouldRestore()"),'Initial return-page scroll events cannot overwrite the origin snapshot');
+check(manifest.workspace_state_manager?.version==='1.3.0','Workspace State Manager manifest version is current');
+check(workspaceStateSource.includes("const VERSION='1.3.0'"),'Workspace State Manager runtime version matches manifest');
+
+
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 if(fail.length)process.exit(1);

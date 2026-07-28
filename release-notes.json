@@ -1,8 +1,8 @@
 {
-  "release": "v2026.07.24.140",
-  "name": "Workspace State Transaction Hotfix",
+  "release": "v2026.07.24.141",
+  "name": "Workspace State Authoritative Return Hotfix",
   "title": "Workspace State Transaction Hotfix",
-  "build": "2026-07-28T10:31:00+02:00",
+  "build": "2026-07-28T10:38:49+02:00",
   "summary": "Fix workspace return-state restoration with a transactional state model and executable behaviour tests.",
   "changes": [
     "Preserves the original workspace page and scroll position across navigation",
@@ -12,5 +12,6 @@
   ],
   "manual_review": [
     "Verify return position in the deployed browser environment using both in-page back links and the browser back button."
-  ]
+  ],
+  "generated_at": "2026-07-28T10:38:49+02:00"
 }

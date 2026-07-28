@@ -1,6 +1,6 @@
 (()=>{
 'use strict';
-const VERSION='1.2.0';
+const VERSION='1.3.0';
 const PREFIX='casa:workspace-state:';
 const TRANSACTION_KEY=PREFIX+'return-transaction';
 const MAX_AGE_MS=30*60*1000;
@@ -16,6 +16,8 @@ const readTransaction=()=>{
   return tx;
 };
 const savePageState=(reason='navigation',activeElement=document.activeElement)=>{
+  // Initial browser scroll events during a return must never overwrite the authoritative origin snapshot.
+  if(window.__casaWorkspaceRestorePending || reason==='scroll' && shouldRestore())return false;
   const active=activeElement?.closest?.('a,button,[tabindex]');
   return writeJson(pageKey(location.pathname),{
     pathname:location.pathname,
@@ -55,9 +57,12 @@ const shouldRestore=()=>{
 const restore=()=>{
   if(!shouldRestore())return false;
   const tx=readTransaction();if(!tx)return false;
-  const state=readJson(pageKey(location.pathname))||tx;
+  // The transaction is the immutable snapshot captured before navigation.
+  // A page-state record may already have been rewritten to scrollY=0 during return-page startup.
+  const state=tx;
   let attempts=0;
   window.__casaWorkspaceRestorePending=true;
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
   const apply=()=>{
     attempts++;
     const maxY=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);

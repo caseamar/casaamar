@@ -1,18 +1,18 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.140",
-  "platform_version": "v2026.07.24.140",
-  "generated_at": "2026-07-28T10:31:00+02:00",
+  "release": "v2026.07.24.141",
+  "platform_version": "v2026.07.24.141",
+  "generated_at": "2026-07-28T10:38:49+02:00",
   "strategy": "complete_replace",
   "preserve": [
     ".git/",
     "images/"
   ],
-  "file_count": 103,
+  "file_count": 111,
   "files": [
     {
       "path": "RELEASE-NOTES.txt",
-      "size": 42
+      "size": 49
     },
     {
       "path": "_headers",
@@ -20,15 +20,15 @@
     },
     {
       "path": "_worker.js",
-      "size": 104543
+      "size": 104550
     },
     {
       "path": "asset-brief.html",
-      "size": 3026
+      "size": 3094
     },
     {
       "path": "asset-intelligence.html",
-      "size": 4585
+      "size": 4653
     },
     {
       "path": "asset-library.json",
@@ -48,7 +48,7 @@
     },
     {
       "path": "asset-studio.html",
-      "size": 59297
+      "size": 59365
     },
     {
       "path": "asset-sync-settings.json",
@@ -60,7 +60,7 @@
     },
     {
       "path": "brand-studio.html",
-      "size": 7755
+      "size": 7823
     },
     {
       "path": "campaign-profiles.json",
@@ -84,7 +84,7 @@
     },
     {
       "path": "config/configuration-manifest.json",
-      "size": 1045
+      "size": 1084
     },
     {
       "path": "config/design-system.json",
@@ -107,6 +107,10 @@
       "size": 529
     },
     {
+      "path": "config/website.json",
+      "size": 713
+    },
+    {
       "path": "content-model.json",
       "size": 1262
     },
@@ -116,11 +120,11 @@
     },
     {
       "path": "content-studio.html",
-      "size": 8721
+      "size": 8789
     },
     {
       "path": "control/index.html",
-      "size": 93681
+      "size": 96044
     },
     {
       "path": "core/casa-assets.js",
@@ -183,6 +187,14 @@
       "size": 4860
     },
     {
+      "path": "core/casa-recommendations.js",
+      "size": 979
+    },
+    {
+      "path": "core/casa-release-governance.js",
+      "size": 439
+    },
+    {
       "path": "core/casa-repository.js",
       "size": 2289
     },
@@ -191,40 +203,44 @@
       "size": 3069
     },
     {
+      "path": "core/casa-workspace-state.js",
+      "size": 5234
+    },
+    {
       "path": "core/casa-workspace.js",
       "size": 5363
     },
     {
       "path": "experience-engine.html",
-      "size": 4156
+      "size": 4224
     },
     {
       "path": "index.html",
-      "size": 97440
+      "size": 97508
     },
     {
       "path": "knowledge-architect.html",
-      "size": 21394
+      "size": 21462
     },
     {
       "path": "knowledge-center.html",
-      "size": 712
+      "size": 780
     },
     {
       "path": "knowledge-graph.html",
-      "size": 4154
+      "size": 4222
     },
     {
       "path": "knowledge-review.html",
-      "size": 16778
+      "size": 16846
     },
     {
       "path": "knowledge-studio.html",
-      "size": 46019
+      "size": 46087
     },
     {
       "path": "package.json",
-      "size": 240
+      "size": 366
     },
     {
       "path": "page-blueprint.json",
@@ -232,15 +248,15 @@
     },
     {
       "path": "page-preview.html",
-      "size": 2402
+      "size": 2470
     },
     {
       "path": "page-studio.html",
-      "size": 31044
+      "size": 31112
     },
     {
       "path": "photo-missions.html",
-      "size": 6980
+      "size": 7048
     },
     {
       "path": "photo-missions.json",
@@ -268,7 +284,7 @@
     },
     {
       "path": "platform/brain/manifest.json",
-      "size": 495
+      "size": 494
     },
     {
       "path": "platform/brain/principles.json",
@@ -280,15 +296,15 @@
     },
     {
       "path": "platform/brain/roadmap.json",
-      "size": 1283
+      "size": 1282
     },
     {
       "path": "platform/brain/version-contract.json",
-      "size": 532
+      "size": 531
     },
     {
       "path": "platform-manifest.json",
-      "size": 12719
+      "size": 13857
     },
     {
       "path": "platform-shell.js",
@@ -301,6 +317,10 @@
     {
       "path": "product-manifest.json",
       "size": 13380
+    },
+    {
+      "path": "recommendation-engine.html",
+      "size": 4223
     },
     {
       "path": "registry/asset-variants.json",
@@ -316,7 +336,7 @@
     },
     {
       "path": "registry/content-operations.json",
-      "size": 12895
+      "size": 8222
     },
     {
       "path": "registry/content-pages.json",
@@ -355,36 +375,56 @@
       "size": 1020
     },
     {
+      "path": "registry/recommendations.json",
+      "size": 2828
+    },
+    {
       "path": "registry/repository.json",
-      "size": 13332
+      "size": 14353
+    },
+    {
+      "path": "registry/semantic-navigation.json",
+      "size": 1593
     },
     {
       "path": "registry/subsystems.json",
-      "size": 10606
+      "size": 12133
     },
     {
       "path": "registry/tenants.json",
       "size": 288
     },
     {
+      "path": "registry/test-contracts.json",
+      "size": 2250
+    },
+    {
       "path": "registry/workspace.json",
-      "size": 3318
+      "size": 6734
     },
     {
       "path": "relation-registry.json",
       "size": 167
     },
     {
+      "path": "release-governance.html",
+      "size": 2524
+    },
+    {
+      "path": "release-governance.json",
+      "size": 6904
+    },
+    {
       "path": "release-notes.json",
-      "size": 606
+      "size": 757
     },
     {
       "path": "release-quality-gate.json",
-      "size": 269
+      "size": 603
     },
     {
       "path": "release-validation.json",
-      "size": 1272
+      "size": 1271
     },
     {
       "path": "schemas/commerce-order.schema.json",
@@ -409,10 +449,6 @@
     {
       "path": "tenant/casa-amar.json",
       "size": 332
-    },
-    {
-      "path": "tools/release-quality-gate.mjs",
-      "size": 23950
     },
     {
       "path": "website-content.json",

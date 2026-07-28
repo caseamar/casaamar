@@ -1,3 +1,1 @@
-Casa Amar v2026.07.24.140 — Workspace State Return Flow Hotfix
-
-Fixes return-position restoration for both browser Back and page return links. Operational pages now load the shared Workspace State Manager, and normal return navigation is recognised through the originating page referrer.
+v141 Workspace State Authoritative Return Hotfix

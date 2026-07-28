@@ -6,7 +6,7 @@ const listeners={window:{},document:{}};const storage=new Storage();let pathname
 const active={id:'workspace-recommendations',getAttribute:n=>n==='href'?'/recommendation-engine.html':null,closest(){return this}};
 const makeContext=()=>{
  const context={console,URL,Date,JSON,Math,setTimeout:(fn)=>{fn();return 1},clearTimeout(){},requestAnimationFrame:fn=>fn(),CustomEvent:class{constructor(type,opts){this.type=type;this.detail=opts?.detail}},CSS:{escape:s=>s},sessionStorage:storage,performance:{getEntriesByType:()=>[{type:navType}]}};
- context.location={get pathname(){return pathname},hash:'',href:'https://example.test'+pathname,origin:'https://example.test'};
+ context.location={get pathname(){return pathname},hash:'',href:'https://example.test'+pathname,origin:'https://example.test'};context.history={scrollRestoration:'auto'};
  context.document={referrer:'',activeElement:active,documentElement:{scrollHeight:4000},getElementById:()=>active,querySelector:()=>active,addEventListener:(t,f)=>(listeners.document[t]??=[]).push(f)};
  context.window=context;context.innerHeight=900;context.scrollX=0;Object.defineProperty(context,'scrollY',{get:()=>scrollY});context.scrollTo=({top})=>{scrollY=top};context.addEventListener=(t,f)=>(listeners.window[t]??=[]).push(f);context.dispatchEvent=()=>{};context.CasaCore=null;
  return vm.createContext(context);
@@ -21,6 +21,8 @@ click('/control/');
 tx=ctx.CasaWorkspaceState.readTransaction();
 if(tx.origin!=='/control/'||tx.destination!=='/recommendation-engine.html'||tx.status!=='returning')throw new Error('return click overwrote origin transaction');
 pathname='/control/';ctx.location.href='https://example.test'+pathname;navType='navigate';scrollY=0;
+// Real browsers may emit an initial scroll event at the top before restoration.
+for(const f of listeners.window.scroll||[])f();
 if(!ctx.CasaWorkspaceState.restore())throw new Error('explicit return was not eligible for restoration');
 if(Math.abs(scrollY-1420)>1)throw new Error(`scroll restoration failed: ${scrollY}`);
 if(ctx.CasaWorkspaceState.readTransaction()!==null)throw new Error('transaction was not cleared after restoration');
@@ -36,6 +38,6 @@ if(!ctx.CasaWorkspaceState.restore()||Math.abs(scrollY-980)>1)throw new Error('r
 
 for(const page of ['recommendation-engine.html','release-governance.html','asset-intelligence.html','knowledge-graph.html','experience-engine.html','content-studio.html']){
  const html=fs.readFileSync(new URL('../'+page,import.meta.url),'utf8');
- if(!html.includes('/core/casa-workspace-state.js?v=20260724.140'))throw new Error(page+' does not load workspace state manager');
+ if(!html.includes('/core/casa-workspace-state.js?v=20260724.141'))throw new Error(page+' does not load workspace state manager');
 }
 console.log('Workspace state behaviour test: 15 passed, 0 failed');
