@@ -2,7 +2,7 @@
   "schema_version": "2.0",
   "version": "2.4.0",
   "generated_at": "2026-07-28T10:12:40+02:00",
-  "platform_version": "v2026.07.24.142",
+  "platform_version": "v2026.07.24.143",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,7 +43,7 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
       "evidence": [
-        "v2026.07.24.142",
+        "v2026.07.24.143",
         "15.26-workspace-title-governance",
         "2026-07-28T10:12:40+02:00"
       ]
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.142"
+        "v2026.07.24.143"
       ]
     },
     {

@@ -1,14 +1,13 @@
 {
-  "release": "v2026.07.24.142",
+  "release": "v2026.07.24.143",
   "name": "Workspace State Authoritative Return Hotfix",
-  "title": "Workspace State Layout Stabilization Hotfix",
+  "title": "Cloudflare Asset Size Guard Hotfix",
   "build": "2026-07-28T10:38:49+02:00",
-  "summary": "Wait for dynamic layout stabilization before restoring workspace scroll position.",
+  "summary": "Prevent Cloudflare deployments from uploading unsupported oversized source assets.",
   "changes": [
-    "Preserves the original workspace page and scroll position across navigation",
-    "Prevents return links from overwriting the stored origin",
-    "Coordinates workspace restoration with Mission Control start-position logic",
-    "Adds an executable state-machine behaviour regression test"
+    "Added a root .assetsignore for non-web source media, archives and the Worker entrypoint.",
+    "Added a Cloudflare 25 MiB asset preflight checker for release validation.",
+    "Preserved web-ready image formats and the existing public website runtime."
   ],
   "manual_review": [
     "Verify return position in the deployed browser environment using both in-page back links and the browser back button."

@@ -1,0 +1,46 @@
+# Cloudflare Workers static-assets deployment guard.
+# Hidden source/control folders and non-web source media are not deployable assets.
+.git/
+.github/
+node_modules/
+
+# Worker entrypoint is uploaded as code, not as a static asset.
+_worker.js
+
+# Release archives and development artefacts.
+**/*.zip
+**/*.7z
+**/*.rar
+**/*.tar
+**/*.tar.gz
+**/*.bak
+**/*.tmp
+
+# High-resolution/source media that Cloudflare cannot serve as a single static asset.
+# Web-ready JPG/PNG/WebP files remain included.
+**/*.heic
+**/*.heif
+**/*.tif
+**/*.tiff
+**/*.psd
+**/*.raw
+**/*.dng
+**/*.cr2
+**/*.cr3
+**/*.nef
+**/*.arw
+**/*.orf
+**/*.rw2
+**/*.raf
+**/*.mov
+**/*.mp4
+**/*.m4v
+
+# Conventional source/original folders. Optimised derivatives should be used by the site.
+images/**/original/
+images/**/originals/
+images/**/raw/
+images/**/source/
+images/**/sources/
+images/**/master/
+images/**/masters/
