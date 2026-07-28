@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "enabled": false,
+  "default_role": "owner",
+  "roles": {
+    "owner": {
+      "capabilities": [
+        "content.create",
+        "content.review",
+        "content.approve",
+        "release.publish",
+        "settings.manage"
+      ]
+    },
+    "content_creator": {
+      "capabilities": [
+        "content.create",
+        "content.edit",
+        "assets.upload"
+      ]
+    },
+    "reviewer": {
+      "capabilities": [
+        "content.review",
+        "content.comment",
+        "content.approve"
+      ]
+    },
+    "publisher": {
+      "capabilities": [
+        "release.prepare",
+        "release.publish"
+      ]
+    }
+  }
+}

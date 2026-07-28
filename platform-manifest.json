@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.149",
-  "build": "2026-07-28T12:45:00+02:00",
-  "worker_version": "15.36-ai-service-layer-foundation",
-  "release_name": "AI Service Layer Foundation",
-  "generated_at": "2026-07-28T12:45:00+02:00",
+  "platform_version": "v2026.07.24.150",
+  "build": "2026-07-28T13:10:00+02:00",
+  "worker_version": "15.37-platform-constitution-engine",
+  "release_name": "Platform Constitution Engine",
+  "generated_at": "2026-07-28T13:10:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T12:45:00+02:00"
+    "build": "2026-07-28T13:10:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.6.0",
+    "version": "3.7.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -132,7 +132,8 @@
       "engineering_governance",
       "platform_intelligence",
       "learning_registry_consistency",
-      "ai_service_layer"
+      "ai_service_layer",
+      "platform_integrity"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -191,7 +192,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.29.0",
+    "version": "1.30.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -251,13 +252,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.26.0",
+    "version": "1.27.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.4.0",
+    "version": "3.5.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -289,11 +290,13 @@
       "content_studio",
       "platform_intelligence",
       "learning_registry",
-      "ai_service_layer"
+      "ai_service_layer",
+      "constitution_engine",
+      "platform_integrity"
     ]
   },
   "repository_intelligence": {
-    "version": "1.18.0",
+    "version": "1.19.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -317,7 +320,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.149",
+    "asset_cache_key": "20260724.150",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -578,5 +581,21 @@
     "provider_adapters": 0,
     "direct_provider_calls_allowed": false,
     "principle": "Features request AI capabilities rather than named models or providers."
+  },
+  "constitution_engine": {
+    "version": "1.0.0",
+    "entry": "/core/casa-constitution.js",
+    "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
+    "integrity_registry": "/registry/platform-integrity.json",
+    "executable": true,
+    "block_on_failure": true,
+    "explainable": true
+  },
+  "platform_integrity": {
+    "version": "1.0.0",
+    "registry": "/registry/platform-integrity.json",
+    "three_layer_rule": true,
+    "domain_isolation": true,
+    "architecture_budget": true
   }
 }

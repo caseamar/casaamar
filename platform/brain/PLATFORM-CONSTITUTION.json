@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.149",
+  "version": "2.0.0",
+  "platform_version": "v2026.07.24.150",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -53,6 +53,34 @@
       "id": "ARTICLE-10",
       "title": "No Vendor Lock-in",
       "rule": "Features request capabilities and must not depend directly on a specific AI provider."
+    },
+    {
+      "id": "ARTICLE-11",
+      "title": "Shared Experience Context",
+      "rule": "Channels and touchpoints share one governed experience context rather than isolated silos."
+    },
+    {
+      "id": "ARTICLE-12",
+      "title": "Industry-neutral Core",
+      "rule": "Platform Core must remain independent of any specific industry, tenant, customer or experience."
+    },
+    {
+      "id": "ARTICLE-13",
+      "title": "Domain Isolation",
+      "rule": "Industry-specific logic belongs in domain packs above Platform Core."
     }
-  ]
+  ],
+  "updated_at": "2026-07-28T13:10:00+02:00",
+  "executable": true,
+  "enforcement": {
+    "engine": "constitution-engine",
+    "registry": "/registry/platform-integrity.json",
+    "block_release_on_failure": true,
+    "verdicts": [
+      "pass",
+      "fail",
+      "manual_review"
+    ],
+    "explainable": true
+  }
 }

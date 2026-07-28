@@ -4,87 +4,155 @@
     {
       "id": "content.read",
       "domain": "content",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "content.write",
       "domain": "content",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "content.review",
       "domain": "content",
-      "status": "foundation"
+      "status": "foundation",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "content.publish",
       "domain": "release",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "assets.read",
       "domain": "assets",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "assets.write",
       "domain": "assets",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "deployment.status",
       "domain": "deployment",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     },
     {
       "id": "deployment.validate",
       "domain": "deployment",
-      "status": "foundation"
+      "status": "foundation",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     },
     {
       "id": "security.auth",
       "domain": "security",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "security.audit",
       "domain": "security",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "compliance.cookies",
       "domain": "compliance",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "compliance.retention",
       "domain": "compliance",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "seo.metadata",
       "domain": "seo",
-      "status": "foundation"
+      "status": "foundation",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     },
     {
       "id": "seo.sitemap",
       "domain": "seo",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "commerce.catalog",
       "domain": "commerce",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "experience"
     },
     {
       "id": "hospitality.concierge",
       "domain": "hospitality",
-      "status": "planned"
+      "status": "planned",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": false,
+      "layer": "experience"
     },
     {
       "id": "decision.evaluate",
       "domain": "governance",
-      "status": "active"
+      "status": "active",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     },
     {
       "id": "engineering-governance",
@@ -108,7 +176,9 @@
         "explainable-evidence",
         "dependency-impact",
         "technical-debt-registration"
-      ]
+      ],
+      "behaviour_contract_required": false,
+      "layer": "platform-core"
     },
     {
       "id": "platform.explain",
@@ -120,7 +190,9 @@
         "behaviour-governance",
         "engineering-governance"
       ],
-      "description": "Explain platform status with evidence, impact and next action."
+      "description": "Explain platform status with evidence, impact and next action.",
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "platform.learn",
@@ -131,7 +203,9 @@
         "behaviour-governance",
         "engineering-governance"
       ],
-      "description": "Convert defects and decisions into durable prevention and regression evidence."
+      "description": "Convert defects and decisions into durable prevention and regression evidence.",
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "ai-service-layer",
@@ -147,19 +221,44 @@
         "recommendation-engine",
         "content-studio",
         "future-digital-assistant"
-      ]
+      ],
+      "owner": "Platform",
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     },
     {
       "id": "ai.capability.request",
       "domain": "platform-ai",
-      "status": "foundation"
+      "status": "foundation",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
     },
     {
       "id": "ai.policy.resolve",
       "domain": "platform-ai",
-      "status": "foundation"
+      "status": "foundation",
+      "owner": "Platform",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "experience"
+    },
+    {
+      "id": "platform-integrity",
+      "name": "Platform Integrity",
+      "version": "1.0.0",
+      "owner": "Platform Quality",
+      "domain": "governance",
+      "status": "active",
+      "dependencies": [
+        "engineering-governance"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core",
+      "purpose": "Enforce the executable Platform Constitution and preserve layer boundaries."
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.149"
+  "platform_version": "v2026.07.24.150"
 }

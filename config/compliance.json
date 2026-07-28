@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "enabled": false,
+  "status": "foundation",
+  "privacy": {
+    "policy_url": null,
+    "controller": null
+  },
+  "cookies": {
+    "mode": "essential_only",
+    "consent_manager": null
+  },
+  "data_retention": {
+    "default_days": null,
+    "rules": []
+  },
+  "data_inventory": [],
+  "future_checks": [
+    "gdpr",
+    "cookie_consent",
+    "retention",
+    "data_subject_requests",
+    "processor_register"
+  ]
+}

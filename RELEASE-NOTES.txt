@@ -1,8 +1,8 @@
-Casa Amar Platform v2026.07.24.149
-AI Service Layer Foundation
+Casa Amar Platform v2026.07.24.150
+Platform Constitution Engine
 
-- Provider-neutral AI capability gateway
-- Capability and policy registries
-- Explicit blocked/unavailable states
-- No active provider, credentials or model binding
-- Automated provider-neutrality and behaviour tests
+- Platform Constitution is now executable.
+- Platform Integrity blocks releases that violate registered architecture rules.
+- Capability contracts include owner, dependencies, layer and behaviour requirements.
+- Three-layer placement and industry-neutral Platform Core are automatically validated.
+- Architecture budget is visible in Release-tjek.

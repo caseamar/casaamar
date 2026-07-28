@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "3.2.0",
-  "generated_at": "2026-07-28T12:45:00+02:00",
-  "platform_version": "v2026.07.24.149",
+  "version": "3.4.0",
+  "generated_at": "2026-07-28T13:10:00+02:00",
+  "platform_version": "v2026.07.24.150",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 14,
-    "automated_passed": 14,
+    "automated_checks": 15,
+    "automated_passed": 15,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -41,11 +41,11 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
+      "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.149",
-        "15.27-workspace-return-session-guard",
-        "2026-07-28T12:45:00+02:00"
+        "v2026.07.24.150",
+        "15.37-platform-constitution-engine",
+        "2026-07-28T13:10:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.149"
+        "v2026.07.24.150"
       ]
     },
     {
@@ -213,6 +213,20 @@
         "No direct provider endpoint is present",
         "Unknown capability and unavailable-provider states are explicit"
       ]
+    },
+    {
+      "id": "platform_integrity",
+      "label": "Platform Constitution & Integrity",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Platform Constitution is executable and all registered integrity rules pass before packaging.",
+      "evidence": [
+        "13 constitutional articles",
+        "7 executable integrity rules",
+        "Three-layer placement enforced",
+        "Architecture budget within threshold"
+      ]
     }
   ],
   "manual_review": [
@@ -269,7 +283,7 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.149",
+  "release": "v2026.07.24.150",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

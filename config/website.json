@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T10:12:40+02:00",
+  "tenant": "casa-amar",
+  "default_language": "da",
+  "enabled_languages": [
+    "da"
+  ],
+  "available_languages": [
+    {
+      "code": "da",
+      "name": "Dansk"
+    },
+    {
+      "code": "en",
+      "name": "English"
+    },
+    {
+      "code": "es",
+      "name": "Español"
+    }
+  ],
+  "translation_policy": {
+    "validate_only_enabled_languages": true,
+    "page_overrides": {},
+    "ai_may_propose_languages": true,
+    "ai_may_enable_languages": false,
+    "human_approval_required": true
+  },
+  "publication": {
+    "default_route": "/",
+    "public_by_default": true,
+    "ai_may_publish": false
+  }
+}

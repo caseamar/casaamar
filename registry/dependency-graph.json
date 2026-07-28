@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.149",
+  "platform_version": "v2026.07.24.150",
   "nodes": [
     {
       "id": "platform",
       "type": "subsystem",
-      "version": "v2026.07.24.149",
+      "version": "v2026.07.24.150",
       "owner": "Platform"
     },
     {

@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T13:10:00+02:00",
+  "platform_version": "v2026.07.24.150",
+  "status": "pass",
+  "score": 100,
+  "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
+  "rules": [
+    {
+      "id": "PI-001",
+      "article": "ARTICLE-05",
+      "label": "Explainable verdicts",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Automated governance verdicts require reason and evidence.",
+      "evidence": [
+        "release-governance.json categories include because and evidence"
+      ]
+    },
+    {
+      "id": "PI-002",
+      "article": "ARTICLE-06",
+      "label": "Registered capabilities",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Every capability has an id, owner, dependencies and layer.",
+      "evidence": [
+        "registry/capabilities.json"
+      ]
+    },
+    {
+      "id": "PI-003",
+      "article": "ARTICLE-07",
+      "label": "Behaviour contracts required",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Active and foundation capabilities explicitly declare whether behaviour contracts are required.",
+      "evidence": [
+        "behaviour_contract_required field"
+      ]
+    },
+    {
+      "id": "PI-004",
+      "article": "ARTICLE-10",
+      "label": "Provider-neutral AI boundary",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Feature code is not allowed to call named AI providers directly.",
+      "evidence": [
+        "tools/ai-service-layer-test.mjs"
+      ]
+    },
+    {
+      "id": "PI-005",
+      "article": "ARTICLE-12",
+      "label": "Industry-neutral Platform Core",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Core runtime files are scanned for forbidden industry and experience identifiers.",
+      "evidence": [
+        "tools/platform-integrity-test.mjs domain-isolation scan"
+      ]
+    },
+    {
+      "id": "PI-006",
+      "article": "ARTICLE-13",
+      "label": "Three-layer placement",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Capabilities declare a platform-core, domain-pack or experience layer.",
+      "evidence": [
+        "registry/capabilities.json layer field"
+      ]
+    },
+    {
+      "id": "PI-007",
+      "article": "ARTICLE-08",
+      "label": "Release identity consistency",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Manifest, Worker, registry and release records share the current platform identity.",
+      "evidence": [
+        "v2026.07.24.150",
+        "20260724.150"
+      ]
+    }
+  ],
+  "architecture_budget": {
+    "complexity_delta_percent": 0,
+    "dependency_delta": 1,
+    "reuse_delta_percent": 4,
+    "test_coverage_delta_percent": 3,
+    "status": "within_budget",
+    "review_thresholds": {
+      "complexity_delta_percent": 5,
+      "dependency_delta": 5
+    }
+  },
+  "summary": {
+    "rules_total": 7,
+    "rules_passed": 7,
+    "rules_failed": 0,
+    "manual_review": 0,
+    "release_blocked": false
+  }
+}
