@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.6.0",
-  "platform_version": "v2026.07.24.176",
+  "version": "2.9.0",
+  "platform_version": "v2026.07.24.177",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -164,9 +164,15 @@
       "rule": "Verified domain changes must be analysed against typed relationships before actions are proposed. Every proposed action must identify affected objects, supporting evidence, risk and required human approval. No content may be published automatically from an impact analysis.",
       "blocking": true,
       "automated_rule": "domain-impact-integrity"
+    },
+    {
+      "id": "ARTICLE-29",
+      "title": "Every Recommendation Must Be Actionable",
+      "rule": "Every user-facing recommendation must provide an executable path, explicit defer and reject outcomes, context transfer to a valid target workspace, completion evidence and closed-loop state updates.",
+      "blocking": true
     }
   ],
-  "updated_at": "2026-07-28T21:15:00+02:00",
+  "updated_at": "2026-07-28T22:15:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

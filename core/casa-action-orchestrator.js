@@ -1,0 +1,19 @@
+(()=>{
+ const VERSION='1.0.0', KEY='casa.action-orchestrator.v1'; let config=null;
+ const clone=x=>JSON.parse(JSON.stringify(x));
+ const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{"actions":[],"history":[]}')}catch{return {actions:[],history:[]}}};
+ const write=s=>{localStorage.setItem(KEY,JSON.stringify(s));return s};
+ async function load(){if(config)return snapshot();const r=await fetch('/registry/action-orchestrator.json');if(!r.ok)throw new Error('Action Orchestrator Registry kunne ikke indlæses');config=await r.json();return snapshot()}
+ function normalize(a){if(!a?.key||!a?.title||!a?.targetWorkspace)throw new Error('Action mangler key, title eller targetWorkspace');const route=config?.workspace_routes?.[a.targetWorkspace];if(!route)throw new Error(`Ukendt target workspace: ${a.targetWorkspace}`);return {id:a.id||`action.${a.key}`,key:a.key,title:a.title,reason:a.reason||'',priority:a.priority||'medium',status:a.status||'ready',targetWorkspace:a.targetWorkspace,targetId:a.targetId||a.target||'',route,expectedOutcome:a.expectedOutcome||'Forbedringen er gennemført og verificeret.',estimatedEffort:a.estimatedEffort||'2 min.',risk:a.risk||'low',evidence:a.evidence||[],source:a.source||'domain-impact',createdAt:a.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()}}
+ function registerMany(actions=[]){const s=read();for(const raw of actions){const a=normalize(raw),i=s.actions.findIndex(x=>x.id===a.id);if(i>=0){if(!['completed','rejected'].includes(s.actions[i].status))s.actions[i]={...s.actions[i],...a}}else s.actions.push(a)}write(s);return list()}
+ const list=()=>clone(read().actions);
+ function get(id){return clone(read().actions.find(x=>x.id===id)||null)}
+ function update(id,status,extra={}){const s=read(),i=s.actions.findIndex(x=>x.id===id);if(i<0)throw new Error('Action findes ikke');s.actions[i]={...s.actions[i],...extra,status,updatedAt:new Date().toISOString()};s.history.unshift({actionId:id,status,at:new Date().toISOString(),...extra});write(s);return clone(s.actions[i])}
+ function execute(id,{returnTo='/domain-intelligence.html#impact'}={}){const a=get(id);if(!a)throw new Error('Action findes ikke');update(id,'in_progress',{returnTo});localStorage.setItem('casa.active-action',JSON.stringify({...a,status:'in_progress',returnTo,startedAt:new Date().toISOString()}));const q=new URLSearchParams({action:a.id,asset:a.targetId,returnTo,autostart:'1'});location.href=`${a.route}?${q.toString()}`}
+ function defer(id){return update(id,'deferred')}
+ function reject(id,reason='Ikke relevant'){return update(id,'rejected',{rejectionReason:reason})}
+ function complete(id,evidence={}){localStorage.removeItem('casa.active-action');return update(id,'completed',{completionEvidence:evidence,completedAt:new Date().toISOString()})}
+ function consumeCompletion(){try{const c=JSON.parse(localStorage.getItem('casa.action-completion')||'null');if(!c)return null;localStorage.removeItem('casa.action-completion');if(c.actionId){try{complete(c.actionId,c)}catch{}}return c}catch{return null}}
+ function snapshot(){const a=read().actions;return {version:VERSION,status:config?'verified':'not_loaded',total:a.length,ready:a.filter(x=>x.status==='ready').length,inProgress:a.filter(x=>x.status==='in_progress').length,deferred:a.filter(x=>x.status==='deferred').length,completed:a.filter(x=>x.status==='completed').length,rejected:a.filter(x=>x.status==='rejected').length}}
+ window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,snapshot};
+})();

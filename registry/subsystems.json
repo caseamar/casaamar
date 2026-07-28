@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.176",
+      "version": "v2026.07.24.177",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",

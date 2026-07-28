@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "statuses": ["ready", "in_progress", "deferred", "rejected", "completed", "failed"],
+  "outcomes": ["approved", "edited", "postponed", "rejected", "verified"],
+  "governance": {
+    "recommendation_must_be_actionable": true,
+    "target_workspace_must_exist": true,
+    "context_transfer_required": true,
+    "completion_evidence_required": true,
+    "silent_failure_forbidden": true
+  },
+  "workspace_routes": {
+    "asset-intelligence": "/asset-intelligence.html",
+    "content-intelligence": "/content-studio.html",
+    "domain-intelligence": "/domain-intelligence.html",
+    "digital-concierge": "/control/#concierge"
+  }
+}

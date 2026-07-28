@@ -1,5 +1,5 @@
 {
-  "platform_version": "v2026.07.24.176",
+  "platform_version": "v2026.07.24.177",
   "build": "2026-07-28T21:15:00+02:00",
   "worker_version": "15.49-domain-impact-engine",
   "release_name": "Domain Impact Engine Foundation",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.176",
+    "asset_cache_key": "20260724.177",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
