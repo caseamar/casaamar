@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "2.0.0",
   "statuses": [
     "ready",
     "in_progress",
@@ -25,12 +25,16 @@
     "visible_primary_cta_required_for_ready_actions": true,
     "plain_language_required": true,
     "internal_terms_hidden_by_default": true,
-    "batch_guidance_required": true
+    "batch_guidance_required": true,
+    "guided_work_required": true,
+    "direct_work_item_required": true,
+    "batch_progress_required": true
   },
   "workspace_routes": {
     "asset-intelligence": "/asset-intelligence.html",
     "content-intelligence": "/content-studio.html",
     "domain-intelligence": "/domain-intelligence.html",
-    "digital-concierge": "/control/#concierge"
+    "digital-concierge": "/control/#concierge",
+    "guided-work": "/guided-work.html"
   }
 }

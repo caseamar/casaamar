@@ -1,5 +1,5 @@
 (()=>{
- const VERSION='1.1.0', KEY='casa.action-orchestrator.v1'; let config=null;
+ const VERSION='2.0.0', KEY='casa.action-orchestrator.v1'; let config=null;
  const clone=x=>JSON.parse(JSON.stringify(x));
  const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{"actions":[],"history":[]}')}catch{return {actions:[],history:[]}}};
  const write=s=>{localStorage.setItem(KEY,JSON.stringify(s));return s};
@@ -9,7 +9,7 @@
  const list=()=>clone(read().actions);
  function get(id){return clone(read().actions.find(x=>x.id===id)||null)}
  function update(id,status,extra={}){const s=read(),i=s.actions.findIndex(x=>x.id===id);if(i<0)throw new Error('Action findes ikke');s.actions[i]={...s.actions[i],...extra,status,updatedAt:new Date().toISOString()};s.history.unshift({actionId:id,status,at:new Date().toISOString(),...extra});write(s);return clone(s.actions[i])}
- function execute(id,{returnTo='/domain-intelligence.html#impact'}={}){const a=get(id);if(!a)throw new Error('Action findes ikke');update(id,'in_progress',{returnTo});localStorage.setItem('casa.active-action',JSON.stringify({...a,status:'in_progress',returnTo,startedAt:new Date().toISOString()}));const q=new URLSearchParams({action:a.id,asset:a.targetId,returnTo,autostart:'1'});location.href=`${a.route}?${q.toString()}`}
+ function execute(id,{returnTo='/domain-intelligence.html#impact'}={}){const a=get(id);if(!a)throw new Error('Action findes ikke');update(id,'in_progress',{returnTo});localStorage.setItem('casa.active-action',JSON.stringify({...a,status:'in_progress',returnTo,startedAt:new Date().toISOString()}));sessionStorage.setItem('casa.action-return-scroll',String(window.scrollY||0));const q=new URLSearchParams({action:a.id,target:a.targetId,returnTo,autostart:'1',batch:getBatch()?'1':'0'});location.href=`${a.route}?${q.toString()}`}
  function defer(id){return update(id,'deferred')}
  function reject(id,reason='Ikke relevant'){return update(id,'rejected',{rejectionReason:reason})}
  function complete(id,evidence={}){localStorage.removeItem('casa.active-action');return update(id,'completed',{completionEvidence:evidence,completedAt:new Date().toISOString()})}
@@ -17,7 +17,8 @@
  function getBatch(){try{return JSON.parse(localStorage.getItem('casa.action-batch')||'null')}catch{return null}}
  function startBatch(ids=[],{returnTo='/domain-intelligence.html#impact'}={}){const pending=[...new Set(ids)].filter(id=>{const a=get(id);return a&&['ready','deferred'].includes(a.status)});if(!pending.length)throw new Error('Der er ingen åbne forbedringer at starte');localStorage.setItem('casa.action-batch',JSON.stringify({pending,completed:[],startedAt:new Date().toISOString(),returnTo}));return execute(pending[0],{returnTo})}
  function continueBatch(){const b=getBatch();if(!b||!b.pending?.length)return null;return execute(b.pending[0],{returnTo:b.returnTo||'/domain-intelligence.html#impact'})}
- function cancelBatch(){localStorage.removeItem('casa.action-batch')} 
+ function cancelBatch(){localStorage.removeItem('casa.action-batch')}
+ function batchProgress(){const b=getBatch();if(!b)return null;const total=(b.pending?.length||0)+(b.completed?.length||0);return {total,completed:b.completed?.length||0,remaining:b.pending?.length||0,current:b.pending?.[0]||null}} 
  function snapshot(){const a=read().actions;return {version:VERSION,status:config?'verified':'not_loaded',total:a.length,ready:a.filter(x=>x.status==='ready').length,inProgress:a.filter(x=>x.status==='in_progress').length,deferred:a.filter(x=>x.status==='deferred').length,completed:a.filter(x=>x.status==='completed').length,rejected:a.filter(x=>x.status==='rejected').length}}
- window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,getBatch,startBatch,continueBatch,cancelBatch,snapshot};
+ window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,getBatch,startBatch,continueBatch,cancelBatch,batchProgress,snapshot};
 })();
