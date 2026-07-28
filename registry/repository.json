@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "version": "1.12.0",
-  "release": "v2026.07.24.178",
-  "platform_version": "v2026.07.24.178",
+  "release": "v2026.07.24.179",
+  "platform_version": "v2026.07.24.179",
   "generated_at": "2026-07-28T21:15:00+02:00",
   "updated_at": "2026-07-28T21:15:00+02:00",
   "source": "deployment-manifest.json",

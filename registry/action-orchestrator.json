@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.1.0",
   "statuses": [
     "ready",
     "in_progress",
@@ -22,7 +22,10 @@
     "completion_evidence_required": true,
     "silent_failure_forbidden": true,
     "impact_suggestions_must_normalize_to_ready": true,
-    "visible_primary_cta_required_for_ready_actions": true
+    "visible_primary_cta_required_for_ready_actions": true,
+    "plain_language_required": true,
+    "internal_terms_hidden_by_default": true,
+    "batch_guidance_required": true
   },
   "workspace_routes": {
     "asset-intelligence": "/asset-intelligence.html",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.9.0",
-  "platform_version": "v2026.07.24.178",
+  "platform_version": "v2026.07.24.179",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -169,6 +169,12 @@
       "id": "ARTICLE-29",
       "title": "Every Recommendation Must Be Actionable",
       "rule": "Every user-facing recommendation must provide an executable path, explicit defer and reject outcomes, context transfer to a valid target workspace, completion evidence and closed-loop state updates.",
+      "blocking": true
+    },
+    {
+      "id": "ARTICLE-30",
+      "title": "Plain-Language Actions",
+      "rule": "User-facing actions must explain the outcome in ordinary language, hide internal architecture terms by default, present one clear primary action, and offer a guided multi-action flow when several improvements are available.",
       "blocking": true
     }
   ],

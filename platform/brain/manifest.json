@@ -12,11 +12,11 @@
     "capabilities.json",
     "adr/ADR-0001-release-identity-contract.json"
   ],
-  "current_release": "v2026.07.24.178",
+  "current_release": "v2026.07.24.179",
   "machine_readable": true,
   "searchable": true,
   "updated_at": "2026-07-28T21:15:00+02:00",
-  "platform_release": "v2026.07.24.178",
+  "platform_release": "v2026.07.24.179",
   "capabilities": [
     "observation-platform"
   ]

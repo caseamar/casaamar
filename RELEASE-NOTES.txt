@@ -1,3 +1,3 @@
-v178 – Action Orchestrator CTA Runtime Fix
+v179 – Plain-Language Action Experience
 
-Fixes impact-generated actions being stored as "suggested" and therefore rendered without Udfør nu / Senere / Afvis controls. Suggested impact actions now normalize to READY, including persisted stale actions. Adds executable regression tests proving that Impact Engine output reaches a visible actionable CTA state before release.
+Rewrites technical impact recommendations into clear user outcomes, adds Start all improvements as a guided workflow, and hides internal architecture terms behind optional technical details. Adds release-blocking plain-language UX tests.

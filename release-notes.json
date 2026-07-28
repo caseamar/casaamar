@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.178",
+  "release": "v2026.07.24.179",
   "name": "Domain Impact Engine Foundation",
-  "platform_version": "v2026.07.24.178",
+  "platform_version": "v2026.07.24.179",
   "build": "2026-07-28T21:15:00+02:00",
   "summary": "Adds explainable impact analysis from verified domain changes to affected assets, experiences and AI capabilities, with governed next actions and human approval.",
   "changes": [
