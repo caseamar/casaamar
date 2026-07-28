@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.152",
+  "updated_at": "2026-07-28T13:40:00+02:00",
+  "compatibility_policy": {
+    "default": "backward",
+    "breaking_changes_require_new_major": true,
+    "additive_optional_fields_allowed": true,
+    "field_meaning_changes_forbidden": true,
+    "deprecation_requires_replacement_and_sunset": true
+  },
+  "identifier_policy": {
+    "technical_keys": "stable_opaque_ids",
+    "display_names_as_keys": false,
+    "case_sensitive": true
+  },
+  "contracts": [
+    {
+      "id": "canonical.envelope",
+      "version": "1.0.0",
+      "owner": "Platform Data",
+      "layer": "platform-core",
+      "status": "active",
+      "schema": "/schemas/canonical-envelope.schema.json",
+      "compatibility": "backward",
+      "privacy_metadata_required": true,
+      "provenance_required": true,
+      "description": "Shared envelope for versioned, traceable and privacy-aware platform data."
+    },
+    {
+      "id": "canonical.interaction",
+      "version": "1.0.0",
+      "owner": "Platform Data",
+      "layer": "platform-core",
+      "status": "active",
+      "schema": "/schemas/canonical-interaction.schema.json",
+      "compatibility": "backward",
+      "privacy_metadata_required": true,
+      "provenance_required": true,
+      "description": "Channel-neutral interaction contract for web, AI, human and future touchpoints."
+    },
+    {
+      "id": "canonical.entity-reference",
+      "version": "1.0.0",
+      "owner": "Platform Data",
+      "layer": "platform-core",
+      "status": "active",
+      "schema": "/schemas/canonical-entity-reference.schema.json",
+      "compatibility": "backward",
+      "privacy_metadata_required": false,
+      "provenance_required": false,
+      "description": "Stable reference to an entity without using a display name as a key."
+    },
+    {
+      "id": "canonical.page",
+      "version": "1.0.0",
+      "owner": "Platform Data",
+      "layer": "platform-core",
+      "status": "foundation",
+      "schema": "/schemas/canonical-page.schema.json",
+      "compatibility": "backward",
+      "privacy_metadata_required": false,
+      "provenance_required": true,
+      "description": "Generic content page contract independent of domain and delivery channel."
+    }
+  ],
+  "api_readiness": {
+    "rest": true,
+    "graphql": true,
+    "webhooks": true,
+    "mcp_tools": true,
+    "event_streaming": true,
+    "public_endpoints_active": false
+  },
+  "transport_neutral": true
+}

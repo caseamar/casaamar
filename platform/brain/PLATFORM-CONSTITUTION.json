@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.151",
+  "platform_version": "v2026.07.24.152",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -68,9 +68,14 @@
       "id": "ARTICLE-13",
       "title": "Domain Isolation",
       "rule": "Industry-specific logic belongs in domain packs above Platform Core."
+    },
+    {
+      "id": "ARTICLE-14",
+      "title": "Contract-first Data",
+      "rule": "Important platform data must use versioned, traceable, privacy-aware and transport-neutral canonical contracts."
     }
   ],
-  "updated_at": "2026-07-28T13:25:00+02:00",
+  "updated_at": "2026-07-28T13:40:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

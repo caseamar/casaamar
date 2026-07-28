@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "updated_at": "2026-07-28T13:25:00+02:00",
+  "updated_at": "2026-07-28T13:40:00+02:00",
   "items": [
     {
       "id": "PI-111-01",
@@ -72,20 +72,51 @@
       "id": "PI-124-01",
       "title": "Asset variant generation pipeline and publication readiness",
       "status": "done",
-      "release": "v2026.07.24.151"
+      "release": "v2026.07.24.152"
     },
     {
       "id": "PI-125-01",
       "title": "Experience Engine foundation and guest-journey contracts",
       "status": "next",
-      "target_release": "v2026.07.24.151"
+      "target_release": "v2026.07.24.152"
     },
     {
       "id": "BG-146-01",
       "title": "Behaviour Governance registry and executable contract validation",
       "status": "done",
-      "release": "v2026.07.24.151"
+      "release": "v2026.07.24.152"
+    },
+    {
+      "id": "EPIC-14",
+      "title": "Data Contracts & API Platform",
+      "status": "foundation",
+      "release": "v2026.07.24.152",
+      "scope": [
+        "Canonical Data Model",
+        "Schema Registry",
+        "API Gateway",
+        "REST and GraphQL adapters",
+        "Webhooks",
+        "MCP and tool adapters",
+        "Pagination filtering and sorting",
+        "Authentication scopes and rate limits",
+        "Deprecation and migrations",
+        "Generated API documentation"
+      ]
+    },
+    {
+      "id": "EPIC-15",
+      "title": "Message Abstraction Layer",
+      "status": "backlog",
+      "scope": [
+        "Provider-neutral publish and subscribe API",
+        "Kafka adapter",
+        "RabbitMQ adapter",
+        "Cloud event bus adapters",
+        "Replay and delivery guarantees",
+        "Dead-letter handling"
+      ]
     }
   ],
-  "platform_version": "v2026.07.24.151"
+  "platform_version": "v2026.07.24.152"
 }

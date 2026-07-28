@@ -1,12 +1,8 @@
-Casa Amar Platform v2026.07.24.151
-Event Platform Foundation
+RELEASE v2026.07.24.152
+Canonical Data Contracts Foundation
 
-- Event Platform v2.0.0
-- 15 registered channel-neutral event contracts
-- Correlation and causation IDs
-- Privacy classification and retention metadata
-- Idempotency protection
-- Event governance and executable tests
-- No analytics collection or durable personal-data storage enabled
-
-Build: 2026-07-28T13:25:00+02:00
+- Adds Schema Registry and versioned canonical data contracts.
+- Adds privacy, provenance and trace metadata to the shared data envelope.
+- Adds contract compatibility and stable identifier policies.
+- Prepares REST, GraphQL, Webhooks, MCP/tools and event streaming without activating public endpoints.
+- Adds Epic #14 Data Contracts & API Platform and Epic #15 Message Abstraction Layer to backlog.

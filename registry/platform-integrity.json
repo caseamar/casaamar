@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T13:25:00+02:00",
-  "platform_version": "v2026.07.24.151",
+  "updated_at": "2026-07-28T13:40:00+02:00",
+  "platform_version": "v2026.07.24.152",
   "status": "pass",
   "score": 100,
   "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
@@ -88,8 +88,21 @@
       "status": "pass",
       "because": "Manifest, Worker, registry and release records share the current platform identity.",
       "evidence": [
-        "v2026.07.24.151",
-        "20260724.151"
+        "v2026.07.24.152",
+        "20260724.152"
+      ]
+    },
+    {
+      "id": "PI-008",
+      "article": "ARTICLE-14",
+      "label": "Contract-first canonical data",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "Canonical contracts are registered, versioned, schema-backed and validated before use.",
+      "evidence": [
+        "registry/schema-registry.json",
+        "tools/data-contracts-test.mjs"
       ]
     }
   ],
@@ -105,8 +118,8 @@
     }
   },
   "summary": {
-    "rules_total": 7,
-    "rules_passed": 7,
+    "rules_total": 8,
+    "rules_passed": 8,
     "rules_failed": 0,
     "manual_review": 0,
     "release_blocked": false

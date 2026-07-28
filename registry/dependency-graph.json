@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "platform_version": "v2026.07.24.151",
+  "platform_version": "v2026.07.24.152",
   "nodes": [
     {
       "id": "platform",
       "type": "subsystem",
-      "version": "v2026.07.24.151",
+      "version": "v2026.07.24.152",
       "owner": "Platform"
     },
     {
@@ -165,6 +165,12 @@
       "id": "ai-service-layer",
       "version": "1.0.0",
       "type": "platform-capability"
+    },
+    {
+      "id": "data-contracts",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Data"
     }
   ],
   "edges": [
@@ -312,6 +318,16 @@
       "from": "ai-service-layer",
       "to": "event-engine",
       "type": "publishes_to"
+    },
+    {
+      "from": "data-contracts",
+      "to": "platform-contracts",
+      "type": "uses"
+    },
+    {
+      "from": "event-engine",
+      "to": "data-contracts",
+      "type": "uses"
     }
   ]
 }

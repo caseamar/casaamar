@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.1.0",
-  "updated_at": "2026-07-28T13:25:00+02:00",
+  "updated_at": "2026-07-28T13:40:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -337,7 +337,104 @@
         "tools/event-platform-test.mjs",
         "tools/release-quality-gate.mjs"
       ]
+    },
+    {
+      "id": "data-contract-resolution",
+      "version": "1.0.0",
+      "capability": "data.contracts",
+      "owner": "Platform Data",
+      "entrypoints": [
+        "/core/casa-data-contracts.js",
+        "/registry/schema-registry.json"
+      ],
+      "dependencies": [
+        "core/casa-data-contracts.js",
+        "registry/schema-registry.json"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "registered-contract-resolves",
+          "given": "A consumer requests a registered canonical contract",
+          "when": "The Schema Registry resolves id and version",
+          "then": "The exact versioned contract is returned with owner, layer and compatibility policy"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "unknown-contract-rejected",
+          "given": "A consumer requests an unknown contract or version",
+          "when": "The request is validated",
+          "then": "The request is rejected and no implicit schema is invented"
+        },
+        {
+          "id": "display-name-not-key",
+          "given": "An entity has a human-readable display name",
+          "when": "A technical reference is created",
+          "then": "A stable identifier is used instead of the display name"
+        }
+      ],
+      "impact_areas": [
+        "events",
+        "api-adapters",
+        "ai-service",
+        "content",
+        "integrations"
+      ],
+      "automated_evidence": [
+        "tools/data-contracts-test.mjs",
+        "tools/release-quality-gate.mjs"
+      ],
+      "manual_review": []
+    },
+    {
+      "id": "canonical-envelope-governance",
+      "version": "1.0.0",
+      "capability": "data.envelope",
+      "owner": "Platform Data",
+      "entrypoints": [
+        "/core/casa-data-contracts.js",
+        "/schemas/canonical-envelope.schema.json"
+      ],
+      "dependencies": [
+        "core/casa-data-contracts.js",
+        "schemas/canonical-envelope.schema.json",
+        "registry/schema-registry.json"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "governed-envelope",
+          "given": "Canonical platform data is created",
+          "when": "The Data Contracts service creates an envelope",
+          "then": "Schema version, provenance, privacy purpose, retention and trace metadata are present"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-unversioned-canonical-data",
+          "given": "A data object is shared across capabilities",
+          "when": "It is represented as canonical platform data",
+          "then": "It must not be accepted without a registered contract and schema version"
+        },
+        {
+          "id": "no-purpose-free-personal-data",
+          "given": "Data is classified as personal or sensitive",
+          "when": "The envelope is created",
+          "then": "A retention policy and explicit processing purpose are required"
+        }
+      ],
+      "impact_areas": [
+        "privacy",
+        "audit",
+        "reporting",
+        "api",
+        "event-platform"
+      ],
+      "automated_evidence": [
+        "tools/data-contracts-test.mjs",
+        "tools/release-quality-gate.mjs"
+      ],
+      "manual_review": []
     }
   ],
-  "platform_version": "v2026.07.24.151"
+  "platform_version": "v2026.07.24.152"
 }

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://platform.local/schemas/canonical-interaction.schema.json",
+  "title": "Canonical Interaction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "interactionType",
+    "direction",
+    "channel",
+    "language",
+    "content"
+  ],
+  "properties": {
+    "interactionType": {
+      "enum": [
+        "message",
+        "question",
+        "answer",
+        "action",
+        "handover",
+        "notification"
+      ]
+    },
+    "direction": {
+      "enum": [
+        "inbound",
+        "outbound",
+        "internal"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+    },
+    "content": {
+      "type": "object",
+      "required": [
+        "format",
+        "value"
+      ],
+      "properties": {
+        "format": {
+          "enum": [
+            "text",
+            "structured",
+            "reference"
+          ]
+        },
+        "value": {}
+      },
+      "additionalProperties": false
+    },
+    "intent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "created",
+        "processed",
+        "failed",
+        "archived"
+      ]
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "$ref": "canonical-entity-reference.schema.json"
+      }
+    }
+  }
+}

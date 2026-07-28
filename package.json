@@ -1,16 +1,17 @@
 {
   "name": "casa-amar-platform",
   "private": true,
-  "version": "2026.7.24-151",
+  "version": "2026.7.24-152",
   "type": "module",
   "scripts": {
     "validate:release": "node tools/release-quality-gate.mjs",
-    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs",
+    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs",
     "test:workspace-state": "node tools/workspace-state-behaviour-test.mjs",
     "test:behaviour": "node tools/behaviour-governance-test.mjs",
     "test:engineering": "node tools/engineering-governance-test.mjs",
     "test:ai-service": "node tools/ai-service-layer-test.mjs",
     "test:integrity": "node tools/platform-integrity-test.mjs",
-    "test:events": "node tools/event-platform-test.mjs"
+    "test:events": "node tools/event-platform-test.mjs",
+    "test:data-contracts": "node tools/data-contracts-test.mjs"
   }
 }

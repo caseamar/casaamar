@@ -315,8 +315,54 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "data.contracts",
+      "display_name": "Resolve canonical data contracts",
+      "domain": "data",
+      "status": "active",
+      "owner": "Platform Data",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "data.envelope",
+      "display_name": "Create governed data envelopes",
+      "domain": "data",
+      "status": "active",
+      "owner": "Platform Data",
+      "dependencies": [
+        "data.contracts"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "data.compatibility",
+      "display_name": "Enforce contract compatibility",
+      "domain": "data",
+      "status": "active",
+      "owner": "Platform Data",
+      "dependencies": [
+        "data.contracts"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "data.provenance",
+      "display_name": "Carry provenance and privacy metadata",
+      "domain": "data",
+      "status": "active",
+      "owner": "Platform Data",
+      "dependencies": [
+        "data.envelope"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.151"
+  "platform_version": "v2026.07.24.152"
 }

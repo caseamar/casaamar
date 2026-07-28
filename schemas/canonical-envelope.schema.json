@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://platform.local/schemas/canonical-envelope.schema.json",
+  "title": "Canonical Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "contract",
+    "schemaVersion",
+    "createdAt",
+    "source",
+    "privacy",
+    "data"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{7,}$"
+    },
+    "contract": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9-]+)+$"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "version",
+        "generatedBy"
+      ],
+      "properties": {
+        "system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generatedBy": {
+          "enum": [
+            "human",
+            "ai",
+            "system",
+            "integration"
+          ]
+        },
+        "actorId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "experienceId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domainId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tenantId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "journeyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conversationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "channel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "retentionPolicy",
+        "purpose"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "public",
+            "operational",
+            "personal",
+            "sensitive"
+          ]
+        },
+        "retentionPolicy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "consentReference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "correlationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "causationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "data": {
+      "type": "object"
+    }
+  }
+}
