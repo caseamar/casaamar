@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
   "version": "2.4.0",
-  "generated_at": "2026-07-28T10:12:40+02:00",
-  "platform_version": "v2026.07.24.143",
+  "generated_at": "2026-07-28T11:14:00+02:00",
+  "platform_version": "v2026.07.24.144",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,7 +43,7 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
       "evidence": [
-        "v2026.07.24.143",
+        "v2026.07.24.144",
         "15.26-workspace-title-governance",
         "2026-07-28T10:12:40+02:00"
       ]
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.143"
+        "v2026.07.24.144"
       ]
     },
     {
@@ -172,6 +172,13 @@
       "why_manual": "A browser smoke test can verify routing, but not whether the workflow feels intuitive.",
       "success_criteria": "You can return to AI Workspace and understand the next action without explanation.",
       "test_instruction": "Open Recommendations and Release Governance, then return to AI Workspace."
+    },
+    {
+      "id": "workspace-return-browser",
+      "label": "Returposition i rigtig browser",
+      "why_manual": "Den faktiske scroll-position afhænger af browserens navigation og dynamiske rendering.",
+      "success_criteria": "Browserens tilbageknap gendanner positionen, og det eksplicitte tilbage-link lander ved den gemte position eller AI Workspace.",
+      "test_instruction": "Scroll til AI Workspace, åbn et kort, gå tilbage med både browserknap og sidens link."
     }
   ],
   "self_assessment": {
@@ -192,5 +199,6 @@
     "full_platform_consistency_on_every_release": true,
     "changed_capability_targeted_tests": true,
     "manual_review_for_unverifiable": true
-  }
+  },
+  "release": "v2026.07.24.144"
 }

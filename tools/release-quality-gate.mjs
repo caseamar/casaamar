@@ -303,23 +303,21 @@ check(controlHtml.includes('hyphens:none'),'Workspace titles disable automatic w
 check(controlHtml.includes("workspace-title-fit"),'Runtime UI self-test detects workspace title fit failures');
 
 
-// v139 transactional workspace-state regression gates
+// v144 simplified workspace return regression gates
 const workspaceStateSource=read('core/casa-workspace-state.js');
-check(workspaceStateSource.includes("const TRANSACTION_KEY=PREFIX+'return-transaction'"),'Workspace state uses a transactional return model');
-check(workspaceStateSource.includes("destinationPath===existing.origin"),'Return navigation preserves the original origin state');
-check(workspaceStateSource.includes("tx.status==='returning'||navigationType()==='back_forward'"),'Restoration requires an explicit return or browser back navigation');
-check(controlHtml.includes("CasaWorkspaceState?.shouldRestore?.()"),'Mission Control start-position logic yields to workspace restoration');
-check(fs.existsSync(path.join(root,'tools/workspace-state-behaviour-test.mjs')),'Executable workspace-state behaviour regression test is packaged');
+check(workspaceStateSource.includes("history.scrollRestoration='auto'"),'Workspace state keeps native browser Back/Forward restoration enabled');
+check(workspaceStateSource.includes("const KEY='casa:workspace-return:v2'"),'Workspace state uses the simplified return-state schema');
+check(workspaceStateSource.includes('saveOrigin'),'Control navigation records the actual origin scroll position');
+check(workspaceStateSource.includes('requestReturn'),'Operational return links explicitly request restoration');
+check(workspaceStateSource.includes("location.hash==='#ai-workspace'"),'Workspace anchor is recognised as a return destination');
+check(workspaceStateSource.includes("document.querySelector('#ai-workspace')?.scrollIntoView"),'Workspace section fallback prevents return-to-top');
+check(controlHtml.includes('navType==="back_forward"'),'Mission Control yields to native browser restoration on Back/Forward');
+check(controlHtml.includes('location.hash==="#ai-workspace"'),'Mission Control does not force the top for workspace return links');
+check(fs.existsSync(path.join(root,'tools/workspace-state-behaviour-test.mjs')),'Executable workspace return integration test is packaged');
 const workspaceContract=testContracts.components.find(x=>x.id==='workspace-state-manager');
 check(Boolean(workspaceContract),'Workspace State Manager has a declarative test contract');
-check(workspaceContract?.required_tests?.includes('destination-cannot-overwrite-origin'),'Workspace State contract protects the origin transaction');
-
-// v141 authoritative workspace return-state gates
-check(workspaceStateSource.includes("const state=tx;"),'Workspace restoration uses the immutable transaction snapshot');
-check(workspaceStateSource.includes("reason==='scroll' && shouldRestore()"),'Initial return-page scroll events cannot overwrite the origin snapshot');
-check(manifest.workspace_state_manager?.version==='1.3.0','Workspace State Manager manifest version is current');
-check(workspaceStateSource.includes("const VERSION='1.3.0'"),'Workspace State Manager runtime version matches manifest');
-
+check(manifest.workspace_state_manager?.version==='1.5.0','Workspace State Manager manifest version is current');
+check(workspaceStateSource.includes("const VERSION='1.5.0'"),'Workspace State Manager runtime version matches manifest');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

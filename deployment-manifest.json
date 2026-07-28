@@ -1,18 +1,22 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.143",
-  "platform_version": "v2026.07.24.143",
-  "generated_at": "2026-07-28T10:38:49+02:00",
+  "release": "v2026.07.24.144",
+  "platform_version": "v2026.07.24.144",
+  "generated_at": "2026-07-28T11:14:00+02:00",
   "strategy": "complete_replace",
   "preserve": [
     ".git/",
     "images/"
   ],
-  "file_count": 111,
+  "file_count": 116,
   "files": [
     {
+      "path": ".assetsignore",
+      "size": 866
+    },
+    {
       "path": "RELEASE-NOTES.txt",
-      "size": 49
+      "size": 55
     },
     {
       "path": "_headers",
@@ -20,7 +24,7 @@
     },
     {
       "path": "_worker.js",
-      "size": 104550
+      "size": 104556
     },
     {
       "path": "asset-brief.html",
@@ -32,19 +36,19 @@
     },
     {
       "path": "asset-library.json",
-      "size": 33229
+      "size": 33230
     },
     {
       "path": "asset-manifest.json",
-      "size": 2305
+      "size": 2306
     },
     {
       "path": "asset-model.json",
-      "size": 5127
+      "size": 5128
     },
     {
       "path": "asset-plan.json",
-      "size": 3444
+      "size": 3445
     },
     {
       "path": "asset-studio.html",
@@ -52,11 +56,11 @@
     },
     {
       "path": "asset-sync-settings.json",
-      "size": 1714
+      "size": 1715
     },
     {
       "path": "brand-profile.json",
-      "size": 3043
+      "size": 3044
     },
     {
       "path": "brand-studio.html",
@@ -64,23 +68,23 @@
     },
     {
       "path": "campaign-profiles.json",
-      "size": 1116
+      "size": 1117
     },
     {
       "path": "component-library.json",
-      "size": 7092
+      "size": 7093
     },
     {
       "path": "config/access-control.json",
-      "size": 664
+      "size": 665
     },
     {
       "path": "config/commerce.json",
-      "size": 368
+      "size": 369
     },
     {
       "path": "config/compliance.json",
-      "size": 444
+      "size": 445
     },
     {
       "path": "config/configuration-manifest.json",
@@ -88,23 +92,23 @@
     },
     {
       "path": "config/design-system.json",
-      "size": 281
+      "size": 282
     },
     {
       "path": "config/features.json",
-      "size": 450
+      "size": 451
     },
     {
       "path": "config/hospitality-intelligence.json",
-      "size": 315
+      "size": 316
     },
     {
       "path": "config/security.json",
-      "size": 401
+      "size": 402
     },
     {
       "path": "config/seo.json",
-      "size": 529
+      "size": 530
     },
     {
       "path": "config/website.json",
@@ -112,7 +116,7 @@
     },
     {
       "path": "content-model.json",
-      "size": 1262
+      "size": 1263
     },
     {
       "path": "content-release.json",
@@ -124,7 +128,7 @@
     },
     {
       "path": "control/index.html",
-      "size": 96044
+      "size": 96187
     },
     {
       "path": "core/casa-assets.js",
@@ -204,7 +208,7 @@
     },
     {
       "path": "core/casa-workspace-state.js",
-      "size": 5234
+      "size": 4259
     },
     {
       "path": "core/casa-workspace.js",
@@ -244,7 +248,7 @@
     },
     {
       "path": "page-blueprint.json",
-      "size": 7649
+      "size": 7650
     },
     {
       "path": "page-preview.html",
@@ -260,7 +264,7 @@
     },
     {
       "path": "photo-missions.json",
-      "size": 67
+      "size": 68
     },
     {
       "path": "platform/brain/adr/ADR-0001-release-identity-contract.json",
@@ -284,7 +288,7 @@
     },
     {
       "path": "platform/brain/manifest.json",
-      "size": 494
+      "size": 495
     },
     {
       "path": "platform/brain/principles.json",
@@ -296,15 +300,15 @@
     },
     {
       "path": "platform/brain/roadmap.json",
-      "size": 1282
+      "size": 1283
     },
     {
       "path": "platform/brain/version-contract.json",
-      "size": 531
+      "size": 532
     },
     {
       "path": "platform-manifest.json",
-      "size": 13857
+      "size": 13840
     },
     {
       "path": "platform-shell.js",
@@ -332,7 +336,7 @@
     },
     {
       "path": "registry/capabilities.json",
-      "size": 1716
+      "size": 1717
     },
     {
       "path": "registry/content-operations.json",
@@ -348,11 +352,11 @@
     },
     {
       "path": "registry/decisions.json",
-      "size": 1505
+      "size": 1506
     },
     {
       "path": "registry/design.json",
-      "size": 1055
+      "size": 1056
     },
     {
       "path": "registry/event-contracts.json",
@@ -364,7 +368,7 @@
     },
     {
       "path": "registry/features.json",
-      "size": 772
+      "size": 773
     },
     {
       "path": "registry/knowledge-graph.json",
@@ -372,7 +376,7 @@
     },
     {
       "path": "registry/policies.json",
-      "size": 1020
+      "size": 1021
     },
     {
       "path": "registry/recommendations.json",
@@ -384,27 +388,27 @@
     },
     {
       "path": "registry/semantic-navigation.json",
-      "size": 1593
+      "size": 1594
     },
     {
       "path": "registry/subsystems.json",
-      "size": 12133
+      "size": 12134
     },
     {
       "path": "registry/tenants.json",
-      "size": 288
+      "size": 289
     },
     {
       "path": "registry/test-contracts.json",
-      "size": 2250
+      "size": 2251
     },
     {
       "path": "registry/workspace.json",
-      "size": 6734
+      "size": 6735
     },
     {
       "path": "relation-registry.json",
-      "size": 167
+      "size": 168
     },
     {
       "path": "release-governance.html",
@@ -412,11 +416,11 @@
     },
     {
       "path": "release-governance.json",
-      "size": 6904
+      "size": 7422
     },
     {
       "path": "release-notes.json",
-      "size": 757
+      "size": 278
     },
     {
       "path": "release-quality-gate.json",
@@ -428,11 +432,11 @@
     },
     {
       "path": "schemas/commerce-order.schema.json",
-      "size": 597
+      "size": 598
     },
     {
       "path": "schemas/content-task.schema.json",
-      "size": 671
+      "size": 672
     },
     {
       "path": "schemas/event-contract.schema.json",
@@ -440,19 +444,35 @@
     },
     {
       "path": "schemas/module.schema.json",
-      "size": 633
+      "size": 634
     },
     {
       "path": "schemas/user-role.schema.json",
-      "size": 327
+      "size": 328
     },
     {
       "path": "tenant/casa-amar.json",
-      "size": 332
+      "size": 333
+    },
+    {
+      "path": "tools/browser-ui-smoke-test.mjs",
+      "size": 1890
+    },
+    {
+      "path": "tools/cloudflare-asset-preflight.mjs",
+      "size": 1464
+    },
+    {
+      "path": "tools/release-quality-gate.mjs",
+      "size": 33782
+    },
+    {
+      "path": "tools/workspace-state-behaviour-test.mjs",
+      "size": 1575
     },
     {
       "path": "website-content.json",
-      "size": 6720
+      "size": 6721
     }
   ]
 }

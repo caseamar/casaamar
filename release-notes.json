@@ -1,16 +1,6 @@
 {
-  "release": "v2026.07.24.143",
-  "name": "Workspace State Authoritative Return Hotfix",
-  "title": "Cloudflare Asset Size Guard Hotfix",
-  "build": "2026-07-28T10:38:49+02:00",
-  "summary": "Prevent Cloudflare deployments from uploading unsupported oversized source assets.",
-  "changes": [
-    "Added a root .assetsignore for non-web source media, archives and the Worker entrypoint.",
-    "Added a Cloudflare 25 MiB asset preflight checker for release validation.",
-    "Preserved web-ready image formats and the existing public website runtime."
-  ],
-  "manual_review": [
-    "Verify return position in the deployed browser environment using both in-page back links and the browser back button."
-  ],
-  "generated_at": "2026-07-28T10:38:49+02:00"
+  "release": "v2026.07.24.144",
+  "name": "Workspace Return Navigation Simplification Hotfix",
+  "summary": "Uses native browser Back/Forward restoration and a minimal explicit return-state fallback for workspace links.",
+  "build_completed_at": "2026-07-28T11:14:00+02:00"
 }
