@@ -1,8 +1,4 @@
-RELEASE v2026.07.24.154
-Capability Intelligence Foundation
+Release v155
+Capability Intelligence Loader Hotfix
 
-- Adds authoritative Platform Knowledge Graph.
-- Makes capabilities, subsystems, contracts and dependencies self-describing.
-- Adds explainable impact analysis and dependency traversal.
-- Detects unresolved dependencies, cycles and orphan registrations.
-- Unknown relationships require manual review and cannot be reported as PASS.
+Fixes the Release Governance integration so Capability Intelligence loads, assesses the Platform Knowledge Graph and renders an explicit success or failure state. Adds regression tests for runtime inclusion, invocation and visible error handling.

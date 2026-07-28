@@ -1,8 +1,8 @@
 {
-  "release": "v2026.07.24.154",
-  "name": "Capability Intelligence Foundation",
-  "platform_version": "v2026.07.24.154",
-  "build": "2026-07-28T14:10:00+02:00",
+  "release": "v2026.07.24.155",
+  "name": "Capability Intelligence Loader Hotfix",
+  "platform_version": "v2026.07.24.155",
+  "build": "2026-07-28T14:23:15+02:00",
   "summary": "Self-describing capability graph with explainable dependency and change-impact analysis.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
