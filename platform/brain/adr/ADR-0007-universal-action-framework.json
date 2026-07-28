@@ -1,0 +1,12 @@
+{
+  "id": "ADR-0007",
+  "title": "Universal Action Framework",
+  "status": "accepted",
+  "date": "2026-07-28",
+  "decision": "All platform recommendations and executable improvements use one canonical action contract with risk-based approval and verification.",
+  "consequences": [
+    "Consistent UX and API model",
+    "AI actions remain governed",
+    "Actions are measurable and reusable across domains"
+  ]
+}

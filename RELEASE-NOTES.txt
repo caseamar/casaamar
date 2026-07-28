@@ -1,4 +1,4 @@
-v2026.07.24.158 - Improvement Engine Foundation
+v2026.07.24.159 - Improvement Engine Foundation
 
 Introduces a governed continuous improvement lifecycle with evidence, confidence, expected value, risk-based human approval, implementation, verification, before/after measurement and learning.
 

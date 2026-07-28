@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.1.0",
-  "updated_at": "2026-07-28T15:25:00+02:00",
+  "version": "2.2.0",
+  "updated_at": "2026-07-28T15:43:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -648,7 +648,67 @@
         "strategic-priority",
         "brand-and-ethical-judgement"
       ]
+    },
+    {
+      "id": "universal-action-framework",
+      "capability": "platform.action-engine",
+      "owner": "Improvement Platform",
+      "entrypoints": [
+        "/release-governance.html"
+      ],
+      "dependencies": [
+        "registry/action-registry.json",
+        "schemas/action-contract.schema.json",
+        "core/casa-action-engine.js"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "action-is-complete",
+          "given": "An action is registered",
+          "then": "Evidence, confidence, value, effort, risk, owner and verification are present"
+        },
+        {
+          "id": "risk-controls-execution",
+          "given": "An action has medium, high or critical risk",
+          "then": "Human approval is required before execution"
+        },
+        {
+          "id": "action-is-explainable",
+          "given": "An action is shown",
+          "then": "The user can see why it matters and the next governed step"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "unsupported-action-not-executable",
+          "given": "Evidence or verification is missing",
+          "then": "Action cannot be VERIFIED or executed"
+        },
+        {
+          "id": "lifecycle-cannot-skip",
+          "given": "An action changes status",
+          "then": "Required lifecycle stages cannot be skipped"
+        },
+        {
+          "id": "high-risk-not-autonomous",
+          "given": "An action is high or critical risk",
+          "then": "AI cannot execute without explicit human approval"
+        }
+      ],
+      "impact_areas": [
+        "improvement-engine",
+        "ai-service",
+        "workspace",
+        "release-governance"
+      ],
+      "automated_evidence": [
+        "tools/action-engine-test.mjs",
+        "tools/rendered-runtime-integration-test.mjs"
+      ],
+      "manual_review": [
+        "visual-action-card-clarity"
+      ]
     }
   ],
-  "platform_version": "v2026.07.24.158"
+  "platform_version": "v2026.07.24.159"
 }

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.158",
-  "build": "2026-07-28T15:25:00+02:00",
-  "worker_version": "15.45-improvement-engine-foundation",
-  "release_name": "Improvement Engine Foundation",
-  "generated_at": "2026-07-28T15:25:00+02:00",
+  "platform_version": "v2026.07.24.159",
+  "build": "2026-07-28T15:43:00+02:00",
+  "worker_version": "15.46-universal-action-framework",
+  "release_name": "Universal Action Framework Foundation",
+  "generated_at": "2026-07-28T15:43:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T15:25:00+02:00"
+    "build": "2026-07-28T15:43:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.158",
+    "asset_cache_key": "20260724.159",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -684,5 +684,15 @@
       "measure",
       "learn"
     ]
+  },
+  "action_engine": {
+    "version": "1.0.0",
+    "status": "foundation",
+    "entry": "/core/casa-action-engine.js",
+    "registry": "/registry/action-registry.json",
+    "contract": "/schemas/action-contract.schema.json",
+    "human_governed": true,
+    "api_ready": true,
+    "ai_ready": true
   }
 }

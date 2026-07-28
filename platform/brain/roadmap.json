@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.158",
-  "target_release": "v2026.07.24.158",
+  "current_release": "v2026.07.24.159",
+  "target_release": "v2026.07.24.159",
   "current_epic": "Event Platform",
   "current_subsystem": "Event Platform Foundation",
-  "next_release": "v2026.07.24.158",
+  "next_release": "v2026.07.24.159",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -77,6 +77,12 @@
       "id": "multi-domain",
       "status": "strategic-backlog",
       "description": "Domain packs for property, consulting and future industries"
+    },
+    {
+      "id": "EPIC-16",
+      "title": "Universal Action Framework",
+      "status": "foundation-delivered",
+      "release": "v2026.07.24.159"
     }
   ],
   "next_focus": [
@@ -84,7 +90,7 @@
     "Content Studio end-to-end workflow",
     "Beta hardening"
   ],
-  "updated_at": "2026-07-28T15:25:00+02:00",
+  "updated_at": "2026-07-28T15:43:00+02:00",
   "current_focus": "Channel-neutral experience events",
-  "platform_version": "v2026.07.24.158"
+  "platform_version": "v2026.07.24.159"
 }

@@ -12,10 +12,12 @@ class CustomEvent{constructor(type,init={}){this.type=type;this.detail=init.deta
 const scripts=[...html.matchAll(/<script(?: src="([^"]+)")?[^>]*>([\s\S]*?)<\/script>/g)].map(m=>({src:m[1],code:m[2]}));
 for(const s of scripts){let code=s.code;if(s.src){const file=path.join(root,s.src.split('?')[0].replace(/^\//,''));code=fs.readFileSync(file,'utf8')}try{vm.runInContext(code,context,{filename:s.src||'inline-script.js'})}catch(e){console.error('Script execution failed:',s.src||'inline',e);process.exit(1)}}
 await new Promise(r=>setTimeout(r,1500));
-const failures=[];for(const id of ['report','engineering-governance','platform-intelligence','capability-intelligence','learning-registry','ai-service-layer','event-platform','data-contracts','constitution-engine','workspace-operating-system','improvement-engine','verification-governance']){const e=elements.get(id);if(!e)failures.push(`${id}: missing`);else if(/Indlæser/.test(e.innerHTML||e.textContent))failures.push(`${id}: loading did not settle`)}
+const failures=[];for(const id of ['report','engineering-governance','platform-intelligence','capability-intelligence','learning-registry','ai-service-layer','event-platform','data-contracts','constitution-engine','workspace-operating-system','improvement-engine','action-engine','verification-governance']){const e=elements.get(id);if(!e)failures.push(`${id}: missing`);else if(/Indlæser/.test(e.innerHTML||e.textContent))failures.push(`${id}: loading did not settle`)}
 if(!elements.get('capability-intelligence')?.innerHTML.includes('Capability Intelligence: v1.0.0'))failures.push('capability result missing');
 if(!elements.get('improvement-engine')?.innerHTML.includes('Improvement Engine: v1.0.0'))failures.push('improvement result missing');
 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')failures.push('improvement state not success');
+if(!elements.get('action-engine')?.innerHTML.includes('Universal Action Framework: v1.0.0'))failures.push('action result missing');
+if(elements.get('action-engine')?.dataset.actionState!=='success')failures.push('action state not success');
 if(!elements.get('verification-governance')?.innerHTML.includes('Verification Governance: v1.0.0'))failures.push('verification result missing');
 if(elements.get('verification-governance')?.dataset.verificationState!=='verified')failures.push('verification state not verified');
-if(failures.length){for(const f of failures)console.error('FAIL:',f);process.exit(1)}console.log('Rendered runtime integration: 12 panels settled, 0 failed');
+if(failures.length){for(const f of failures)console.error('FAIL:',f);process.exit(1)}console.log('Rendered runtime integration: 13 panels settled, 0 failed');

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T15:25:00+02:00",
-  "platform_version": "v2026.07.24.158",
+  "updated_at": "2026-07-28T15:43:00+02:00",
+  "platform_version": "v2026.07.24.159",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,
@@ -139,6 +139,28 @@
       "id": "improvement-engine-runtime",
       "capability": "platform.improvement-engine",
       "runtime": "javascript",
+      "async": true,
+      "user_visible": true,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "browser",
+        "negative",
+        "platform-impact",
+        "rendered-runtime"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
+    },
+    {
+      "id": "action-engine-runtime",
+      "capability": "platform.action-engine",
+      "runtime": "browser",
       "async": true,
       "user_visible": true,
       "risk": "high",

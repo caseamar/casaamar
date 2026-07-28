@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.8.0",
-  "platform_version": "v2026.07.24.158",
+  "version": "1.9.0",
+  "platform_version": "v2026.07.24.159",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -95,9 +95,14 @@
       "id": "ARTICLE-18",
       "title": "Continuous Measured Improvement",
       "rule": "Improvements must progress from evidence through verification and measurement before the platform records learning or claims impact."
+    },
+    {
+      "id": "ARTICLE-19",
+      "title": "Governed Actions",
+      "rule": "Every platform action must use the canonical action contract, carry evidence and verification, and obey risk-based human approval before execution."
     }
   ],
-  "updated_at": "2026-07-28T15:25:00+02:00",
+  "updated_at": "2026-07-28T15:43:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

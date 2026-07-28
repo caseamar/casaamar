@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://platform.local/schemas/action-contract.schema.json",
+  "title": "Universal Action Contract",
+  "type": "object",
+  "required": [
+    "id",
+    "actionType",
+    "title",
+    "status",
+    "owner",
+    "evidence",
+    "confidence",
+    "expectedValue",
+    "estimatedEffort",
+    "risk",
+    "approvalPolicy",
+    "verification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "actionType": {
+      "type": "string",
+      "minLength": 3
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "suggested",
+        "accepted",
+        "scheduled",
+        "running",
+        "waiting",
+        "completed",
+        "verified",
+        "measured",
+        "learned",
+        "rejected",
+        "blocked"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 2
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "expectedValue": {
+      "type": "object",
+      "required": [
+        "dimension",
+        "direction",
+        "metric"
+      ],
+      "additionalProperties": true
+    },
+    "estimatedEffort": {
+      "type": "object",
+      "required": [
+        "value",
+        "unit"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "enum": [
+            "minutes",
+            "hours",
+            "days",
+            "points"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "affectedAreas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approvalPolicy": {
+      "type": "object",
+      "required": [
+        "mode",
+        "required"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "policy",
+            "human",
+            "two-step",
+            "human-only"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "executionPolicy": {
+      "type": "object",
+      "required": [
+        "aiExecutable"
+      ],
+      "properties": {
+        "aiExecutable": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "successCriteria",
+        "requiredSuites"
+      ],
+      "properties": {
+        "successCriteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "requiredSuites": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

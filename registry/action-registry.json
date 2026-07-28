@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.159",
+  "updated_at": "2026-07-28T15:43:00+02:00",
+  "purpose": "Canonical action model for recommendations, approvals, execution, verification, measurement and learning across all platform capabilities.",
+  "lifecycle": [
+    "suggested",
+    "accepted",
+    "scheduled",
+    "running",
+    "waiting",
+    "completed",
+    "verified",
+    "measured",
+    "learned"
+  ],
+  "terminal_states": [
+    "learned",
+    "rejected",
+    "blocked"
+  ],
+  "principles": {
+    "contract_first": true,
+    "domain_neutral": true,
+    "channel_neutral": true,
+    "evidence_required": true,
+    "confidence_required": true,
+    "verification_required": true,
+    "measurement_required_before_learning": true,
+    "human_governance_by_risk": true,
+    "single_shared_action_model": true
+  },
+  "approval_policy": {
+    "low": {
+      "mode": "policy",
+      "human_required": false
+    },
+    "medium": {
+      "mode": "human",
+      "human_required": true
+    },
+    "high": {
+      "mode": "two-step",
+      "human_required": true
+    },
+    "critical": {
+      "mode": "human-only",
+      "human_required": true
+    }
+  },
+  "action_types": [
+    {
+      "id": "CONTENT_IMPROVE",
+      "owner": "content-studio",
+      "aiExecutable": true
+    },
+    {
+      "id": "ASSET_OPTIMIZE",
+      "owner": "asset-studio",
+      "aiExecutable": true
+    },
+    {
+      "id": "KNOWLEDGE_UPDATE",
+      "owner": "knowledge-studio",
+      "aiExecutable": true
+    },
+    {
+      "id": "ACCESSIBILITY_FIX",
+      "owner": "experience",
+      "aiExecutable": true
+    },
+    {
+      "id": "SEO_IMPROVE",
+      "owner": "experience-intelligence",
+      "aiExecutable": true
+    },
+    {
+      "id": "RELEASE_VERIFY",
+      "owner": "verification-governance",
+      "aiExecutable": true
+    },
+    {
+      "id": "RELEASE_DEPLOY",
+      "owner": "release-governance",
+      "aiExecutable": false
+    },
+    {
+      "id": "ROLLBACK",
+      "owner": "release-governance",
+      "aiExecutable": false
+    }
+  ],
+  "sample": {
+    "id": "act_demo_dynamic_panels",
+    "actionType": "RELEASE_VERIFY",
+    "title": "Verificér alle dynamiske releasepaneler",
+    "description": "Kør rendered runtime integration og bevis, at alle paneler afslutter loading.",
+    "status": "suggested",
+    "owner": "verification-governance",
+    "evidence": [
+      "Rendered runtime integration suite",
+      "Capability Intelligence loader regression"
+    ],
+    "confidence": 0.96,
+    "expectedValue": {
+      "dimension": "release-quality",
+      "direction": "increase",
+      "metric": "dynamic panels reaching governed terminal state"
+    },
+    "estimatedEffort": {
+      "value": 2,
+      "unit": "minutes"
+    },
+    "risk": "low",
+    "affectedAreas": [
+      "release-governance",
+      "workspace"
+    ],
+    "approvalPolicy": {
+      "mode": "policy",
+      "required": false
+    },
+    "executionPolicy": {
+      "aiExecutable": true
+    },
+    "verification": {
+      "successCriteria": [
+        "All registered dynamic panels leave loading state",
+        "No panel reports an unhandled runtime error"
+      ],
+      "requiredSuites": [
+        "rendered-runtime",
+        "mutation"
+      ]
+    },
+    "measurement": {
+      "baseline": 12,
+      "target": 13,
+      "unit": "verified-panels"
+    }
+  }
+}

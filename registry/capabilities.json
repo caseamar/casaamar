@@ -481,9 +481,28 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "platform.action-engine",
+      "domain": "platform",
+      "status": "foundation",
+      "owner": "Improvement Platform",
+      "dependencies": [
+        "platform.improvement-engine",
+        "platform.event-platform",
+        "platform.data-contracts",
+        "platform.verification-governance"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core",
+      "contracts": [
+        "action-contract-v1"
+      ],
+      "api_ready": true,
+      "ai_ready": true
     }
   ],
   "version": "2.1.0",
-  "platform_version": "v2026.07.24.158",
-  "updated_at": "2026-07-28T15:25:00+02:00"
+  "platform_version": "v2026.07.24.159",
+  "updated_at": "2026-07-28T15:43:00+02:00"
 }

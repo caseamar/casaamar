@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.1.0",
-  "updated_at": "2026-07-28T15:25:00+02:00",
-  "platform_version": "v2026.07.24.158",
+  "version": "1.2.0",
+  "updated_at": "2026-07-28T15:43:00+02:00",
+  "platform_version": "v2026.07.24.159",
   "status": "pass",
   "score": 100,
   "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
@@ -88,8 +88,8 @@
       "status": "pass",
       "because": "Manifest, Worker, registry and release records share the current platform identity.",
       "evidence": [
-        "v2026.07.24.158",
-        "20260724.158"
+        "v2026.07.24.159",
+        "20260724.159"
       ]
     },
     {
@@ -118,6 +118,20 @@
         "tools/verification-governance-test.mjs",
         "tools/rendered-runtime-integration-test.mjs",
         "tools/mutation-resistance-test.mjs"
+      ]
+    },
+    {
+      "id": "PI-012",
+      "article": "ARTICLE-19",
+      "label": "Canonical governed actions",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "All executable improvements must use Action Contract v1 and risk-based approval policies.",
+      "evidence": [
+        "registry/action-registry.json",
+        "schemas/action-contract.schema.json",
+        "tools/action-engine-test.mjs"
       ]
     }
   ],
