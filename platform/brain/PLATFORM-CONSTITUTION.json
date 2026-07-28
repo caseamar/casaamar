@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.21.0",
-  "platform_version": "v2026.07.24.168",
+  "platform_version": "v2026.07.24.169",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -121,6 +121,11 @@
       "rule": "Every approved AI action must update platform state visibly in the same workflow, remove the completed task, calculate the next best action, and surface any pending publication work.",
       "blocking": true,
       "automated_rule": "closed-loop-ux-integrity"
+    },
+    {
+      "article": 23,
+      "title": "AI Output Quality",
+      "rule": "AI-genereret brugerindhold må kun vises, når det har bestået formålsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive præsenteret som publiceringsklart."
     }
   ],
   "updated_at": "2026-07-28T16:55:00+02:00",
