@@ -121,7 +121,7 @@ for(const action of workspaceRegistry.quick_actions||[]){
  check(!legacyWorkspaceTargets.has(action.href),`AI Workspace action avoids legacy redirect (${action.id})`);
  check(resolveWorkspaceTarget(action.href),`AI Workspace action target exists (${action.id} -> ${action.href})`);
 }
-check(workspaceRegistry.modules.find(x=>x.id==='knowledge')?.subsystem_id==='ai-knowledge-graph','Knowledge module opens the AI Knowledge Graph dashboard');
+check(workspaceRegistry.modules.find(x=>x.id==='knowledge')?.href==='/knowledge-graph.html','Knowledge module opens the AI Knowledge Graph operational dashboard');
 
 const workspaceSource=read('core/casa-workspace.js');
 const operationalRoutes={assets:'/asset-intelligence.html',knowledge:'/knowledge-graph.html',experience:'/experience-engine.html'};
@@ -253,6 +253,28 @@ check(governance.categories.every(x=>x.status==='pass'),'All Release Governance 
 check(fs.existsSync(path.join(root,'release-governance.html')),'Release Governance dashboard exists');
 check(read('control/index.html').includes('/recommendation-engine.html'),'AI Workspace links to Recommendation Engine');
 check(read('control/index.html').includes('/release-governance.html'),'AI Workspace links to Release Governance');
+
+
+// v136 semantic, operational-navigation and explainable UI gates
+const semanticNavigation=json('registry/semantic-navigation.json');
+const normalizeLabel=s=>String(s||'').toLocaleLowerCase('da').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+const tokenSet=s=>new Set(normalizeLabel(s).split(/\s+/).filter(Boolean));
+const similarity=(a,b)=>{const A=tokenSet(a),B=tokenSet(b);if(!A.size||!B.size)return 0;const inter=[...A].filter(x=>B.has(x)).length;return inter/Math.max(A.size,B.size)};
+const semanticEntries=semanticNavigation.entries||[];
+const seenSemantic=new Map();
+for(const entry of semanticEntries){const key=normalizeLabel(entry.label);if(seenSemantic.has(key))check(seenSemantic.get(key)===entry.destination,`Same semantic label resolves consistently (${entry.label})`);else seenSemantic.set(key,entry.destination)}
+for(let i=0;i<semanticEntries.length;i++)for(let j=i+1;j<semanticEntries.length;j++){const a=semanticEntries[i],b=semanticEntries[j],score=similarity(a.label,b.label);if(a.role==='operational'&&b.role==='operational'&&a.intent!==b.intent)check(score<0.8,`Operational labels are semantically distinct (${a.label} / ${b.label})`)}
+for(const module of workspaceRegistry.modules||[]){check(module.navigation_role==='operational',`Workspace module is operational (${module.id})`);check(!module.subsystem_id,`Workspace module does not intercept into technical metadata (${module.id})`)}
+check(workspaceRegistry.modules.find(x=>x.id==='recommendations')?.display_name==='AI-anbefalinger','Recommendation workspace label is user-facing and Danish');
+check(registry.subsystems.find(x=>x.id==='recommendation-engine')?.display_name==='AI Recommendation Service','Technical recommendation subsystem has a distinct technical name');
+check(!controlHtml.includes('data-open-subsystem="${item.subsystem_id}"'),'Workspace renderer does not generate technical subsystem interception');
+const recommendationHtml=read('recommendation-engine.html');
+for(const token of ['>Confidence<','Activation should','English is activated','Success means'])check(!recommendationHtml.includes(token),`Recommendation UI excludes mixed-language token (${token})`);
+check(recommendationHtml.includes('Datagrundlag'),'Recommendation UI exposes evidence');
+check(recommendationHtml.includes('Definition af succes'),'Recommendation UI uses clear Danish terminology');
+check(controlHtml.includes('data.uiSelfTest')||controlHtml.includes('uiSelfTest'),'Control Center includes runtime overflow self-test');
+check(recommendationHtml.includes('uiSelfTest'),'Recommendation UI includes runtime overflow and language self-test');
+check(fs.existsSync(path.join(root,'tools/browser-ui-smoke-test.mjs')),'Optional browser smoke-test runner is packaged for CI environments with Chromium support');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

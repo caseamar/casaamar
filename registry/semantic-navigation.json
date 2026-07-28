@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.136",
+  "principles": [
+    "Workspace opens operational surfaces",
+    "Technical metadata is secondary",
+    "Similar user-facing names must share intent",
+    "Different destinations require clearly different labels"
+  ],
+  "entries": [
+    {
+      "id": "workspace-recommendations",
+      "label": "AI-anbefalinger",
+      "role": "operational",
+      "destination": "/recommendation-engine.html",
+      "intent": "review_and_decide_recommendations"
+    },
+    {
+      "id": "technical-recommendation-service",
+      "label": "AI Recommendation Service",
+      "role": "technical",
+      "destination": "/control/#platform-intelligence",
+      "intent": "inspect_subsystem_metadata"
+    },
+    {
+      "id": "workspace-release-control",
+      "label": "Releasekontrol",
+      "role": "operational",
+      "destination": "/release-governance.html",
+      "intent": "review_release_readiness"
+    },
+    {
+      "id": "technical-release-governance",
+      "label": "Release Governance Service",
+      "role": "technical",
+      "destination": "/control/#platform-intelligence",
+      "intent": "inspect_subsystem_metadata"
+    }
+  ],
+  "blocking_rules": {
+    "same_normalized_label_different_destination": true,
+    "near_duplicate_operational_labels_different_intent": true,
+    "workspace_to_technical_surface": true,
+    "unexplained_technical_language_in_danish_ui": true
+  }
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "2.0.0",
-  "generated_at": "2026-07-28T08:46:07+02:00",
-  "platform_version": "v2026.07.24.135",
+  "version": "2.1.0",
+  "generated_at": "2026-07-28T09:17:17+02:00",
+  "platform_version": "v2026.07.24.136",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 7,
-    "automated_passed": 7,
+    "automated_checks": 9,
+    "automated_passed": 9,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
       "evidence": [
-        "v2026.07.24.135",
-        "15.24-explainable-release-governance",
-        "2026-07-28T08:46:07+02:00"
+        "v2026.07.24.136",
+        "15.25-semantic-ux-consistency",
+        "2026-07-28T09:17:17+02:00"
       ]
     },
     {
@@ -104,18 +104,45 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.135"
+        "v2026.07.24.136"
+      ]
+    },
+    {
+      "id": "semantic_consistency",
+      "label": "Semantisk konsistens",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "AI Workspace-navne er entydige, og arbejdsflader åbner operationelle destinationer frem for tekniske metadata.",
+      "evidence": [
+        "AI-anbefalinger → /recommendation-engine.html",
+        "AI Recommendation Service er kun teknisk metadata",
+        "Ingen workspace-kort bruger data-open-subsystem"
+      ]
+    },
+    {
+      "id": "ui_language",
+      "label": "UI-sprogkonsistens",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 0.98,
+      "because": "Danske brugerflader viser danske statusser, forklaringer og handlingsetiketter.",
+      "evidence": [
+        "Forslag",
+        "Sikkerhed",
+        "Definition af succes",
+        "Manuel vurdering kræves"
       ]
     }
   ],
   "manual_review": [
     {
       "id": "visual-layout",
-      "label": "Visual layout",
+      "label": "Visuelt layout og overflow",
       "status": "pending",
-      "why_manual": "Automated checks cannot reliably judge clipping, spacing or visual balance across browsers.",
-      "success_criteria": "Cards fit their containers and no text is clipped at desktop and mobile widths.",
-      "test_instruction": "Open Mission Control and AI Recommendations; inspect at desktop width and a narrow mobile width."
+      "why_manual": "Runtime-koden kan opdage overflow i browseren, men denne release blev ikke kørt i et fuldt browser-CI-miljø under pakningen.",
+      "success_criteria": "Ingen kort, tekster eller knapper går uden for deres containere på desktop eller mobil.",
+      "test_instruction": "Åbn Mission Control ved normal desktopbredde og smal mobilbredde. Runtime self-test markerer teknisk overflow, mens du bekræfter den visuelle balance."
     },
     {
       "id": "recommendation-clarity",
@@ -140,8 +167,9 @@
     "assumptions_introduced": false,
     "configuration_driven": true,
     "explainable_results": true,
-    "complexity_assessment": "No new runtime framework; governance extends existing JSON + static dashboard pattern.",
+    "complexity_assessment": "Semantic and visual gates reuse the existing registry, static HTML and Chromium smoke-test pattern; no new runtime framework.",
     "known_limitations": [
+      "Visual balance and wording naturalness still require the listed human review.",
       "No analytics source is connected, so language recommendation confidence remains hypothesis-based."
     ],
     "score": 100

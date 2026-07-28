@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.135",
-  "build": "2026-07-28T08:46:07+02:00",
-  "worker_version": "15.24-explainable-release-governance",
-  "release_name": "Explainable Release Governance and Configuration Compliance",
-  "generated_at": "2026-07-28T08:46:07+02:00",
+  "platform_version": "v2026.07.24.136",
+  "build": "2026-07-28T09:17:17+02:00",
+  "worker_version": "15.25-semantic-ux-consistency",
+  "release_name": "Semantic UX Consistency and Explainable UI Governance",
+  "generated_at": "2026-07-28T09:17:17+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -246,13 +246,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.19.0",
+    "version": "1.20.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "2.10.0",
+    "version": "3.0.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -309,7 +309,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.135",
+    "asset_cache_key": "20260724.136",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -424,7 +424,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.6.0",
+    "version": "1.7.0",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -478,14 +478,14 @@
     "configuration_driven_validation": true
   },
   "recommendation_engine": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "entry": "/core/casa-recommendations.js",
     "registry": "/registry/recommendations.json",
     "human_decision_required": true,
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,

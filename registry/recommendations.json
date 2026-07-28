@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "updated_at": "2026-07-28T08:46:07+02:00",
+  "updated_at": "2026-07-28T09:17:17+02:00",
   "statuses": [
     "proposed",
     "accepted",
@@ -26,7 +26,26 @@
       "reason": "Engelsk kan forbedre oplevelsen for gæster med engelsk browsersprog, når besøgsdata dokumenterer behovet.",
       "evidence": {
         "type": "insufficient-data",
-        "message": "Forslaget er strategisk og afventer faktiske browserdata."
+        "message": "Forslaget er strategisk og afventer faktiske browserdata.",
+        "message_da": "Forslaget er strategisk og afventer faktiske besøgsdata.",
+        "sources": [
+          {
+            "label_da": "Platformens flersprogsfunktion",
+            "available": true
+          },
+          {
+            "label_da": "Browserstatistik",
+            "available": false
+          },
+          {
+            "label_da": "Bookingoprindelse",
+            "available": false
+          },
+          {
+            "label_da": "Besøgsanalyse",
+            "available": false
+          }
+        ]
       },
       "expected_benefit": "Bedre tilgængelighed for engelsksprogede gæster.",
       "estimated_impact": {
@@ -49,6 +68,14 @@
         "English is activated only after human approval",
         "Translation tasks are created only for selected pages",
         "No existing Danish content is overwritten"
+      ],
+      "why_now_da": "Platformen understøtter flere sprog, men engelsk er bevidst deaktiveret i konfigurationen.",
+      "confidence_basis_da": "Strategisk hypotese; der er endnu ikke tilsluttet besøgsdata.",
+      "manual_review_reason_da": "Aktivering bør først overvejes, når browser- eller bookingdata dokumenterer behovet.",
+      "success_criteria_da": [
+        "Engelsk aktiveres kun efter menneskelig godkendelse",
+        "Oversættelsesopgaver oprettes kun for valgte sider",
+        "Eksisterende dansk indhold overskrives ikke"
       ]
     }
   ]

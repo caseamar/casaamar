@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.2",
-  "version": "1.5.0",
-  "updated_at": "2026-07-28T08:46:07+02:00",
+  "schema_version": "1.3",
+  "version": "1.7.0",
+  "updated_at": "2026-07-28T09:17:17+02:00",
   "modules": [
     {
       "id": "website",
@@ -10,7 +10,8 @@
       "href": "/content-studio.html",
       "status_source": "content-studio",
       "icon": "🌍",
-      "subsystem_id": "content-studio"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "content-studio"
     },
     {
       "id": "assets",
@@ -19,7 +20,8 @@
       "href": "/asset-intelligence.html",
       "status_source": "asset-intelligence",
       "icon": "📸",
-      "subsystem_id": "asset-intelligence"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "asset-intelligence"
     },
     {
       "id": "knowledge",
@@ -28,7 +30,8 @@
       "href": "/knowledge-graph.html",
       "status_source": "ai-knowledge-graph",
       "icon": "🧠",
-      "subsystem_id": "ai-knowledge-graph"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "ai-knowledge-graph"
     },
     {
       "id": "experience",
@@ -37,7 +40,8 @@
       "href": "/experience-engine.html",
       "status_source": "experience-engine",
       "icon": "🏡",
-      "subsystem_id": "experience-engine"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "experience-engine"
     },
     {
       "id": "missions",
@@ -45,7 +49,8 @@
       "description": "Planlæg og gennemfør fotoopgaver.",
       "href": "/photo-missions.html",
       "status_source": "content-intelligence",
-      "icon": "📋"
+      "icon": "📋",
+      "navigation_role": "operational"
     },
     {
       "id": "ai-insights",
@@ -53,25 +58,28 @@
       "description": "Se prioriterede forslag fra platformens data.",
       "href": "#ai-workspace-insights",
       "status_source": "ai-workspace",
-      "icon": "🤖"
+      "icon": "🤖",
+      "navigation_role": "operational"
     },
     {
       "id": "recommendations",
-      "display_name": "AI Recommendations",
-      "description": "Vurder, acceptér, pause eller afvis AI-forslag.",
+      "display_name": "AI-anbefalinger",
+      "description": "Vurder AI-forslag og vælg acceptér, pause, afvis eller gennemgå senere.",
       "href": "/recommendation-engine.html",
       "status_source": "recommendation-engine",
       "icon": "✨",
-      "subsystem_id": "recommendation-engine"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "recommendation-engine"
     },
     {
       "id": "release-governance",
-      "display_name": "Release Governance",
-      "description": "Se selvvurdering og release readiness.",
+      "display_name": "Releasekontrol",
+      "description": "Se automatisk validering og de punkter, der kræver manuel kontrol.",
       "href": "/release-governance.html",
       "status_source": "release-governance",
       "icon": "🛡️",
-      "subsystem_id": "release-governance"
+      "navigation_role": "operational",
+      "technical_subsystem_id": "release-governance"
     }
   ],
   "quick_actions": [
@@ -136,6 +144,11 @@
     "configuration_driven_validation",
     "recommendation_human_approval",
     "release_self_assessment",
-    "test_plan_implementation_parity"
+    "test_plan_implementation_parity",
+    "semantic_navigation_clarity",
+    "workspace_opens_operational_surface",
+    "similar_names_same_intent",
+    "mixed_ui_language_detection",
+    "card_overflow_browser_smoke_test"
   ]
 }

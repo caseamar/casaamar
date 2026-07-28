@@ -1,17 +1,16 @@
 {
-  "release": "v2026.07.24.135",
-  "title": "Explainable Release Governance and Configuration Compliance",
-  "summary": "Adds evidence-backed automated release checks, explicit manual-review routing, and configuration-compliant content queues.",
-  "build_completed_at": "2026-07-28T08:46:07+02:00",
-  "new_features": [
-    "Explainable PASS/FAIL/UNABLE TO VERIFY results",
-    "Manual review queue with success criteria",
-    "Configuration compliance across Content Operations",
-    "Robust Recommendation Engine empty/error states"
+  "release": "v2026.07.24.136",
+  "name": "Semantic UX Consistency and Explainable UI Governance",
+  "summary": "Makes AI Workspace navigation unambiguous, separates operational work from technical metadata, and adds semantic, language and browser-based overflow gates.",
+  "changes": [
+    "AI Workspace cards always open operational surfaces",
+    "Technical recommendation subsystem renamed AI Recommendation Service",
+    "Semantic consistency blocks confusing near-duplicate navigation",
+    "Browser smoke tests detect card overflow at desktop and mobile widths",
+    "Recommendation UI is consistently Danish and explains its evidence"
   ],
-  "quality": [
-    "Automated failures block release",
-    "Machine-unverifiable checks are explicit manual items",
-    "Disabled languages cannot create translation work"
+  "manual_review": [
+    "Confirm the wording feels natural",
+    "Confirm visual balance in your browser despite automated overflow checks"
   ]
 }
