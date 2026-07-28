@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "enabled": true,
+  "storage": "session-memory",
+  "default_ttl_minutes": 30,
+  "max_ttl_minutes": 120,
+  "allowed_context_fields": [
+    "experienceId",
+    "journeyId",
+    "conversationId",
+    "channel",
+    "domainId",
+    "solutionId",
+    "locale",
+    "activeCapability",
+    "activeRoute",
+    "consentState"
+  ],
+  "forbidden_fields": [
+    "email",
+    "phone",
+    "name",
+    "address",
+    "paymentData",
+    "freeTextTranscript"
+  ],
+  "merge_policy": "explicit-whitelist",
+  "cross_channel_identity_linking": "disabled",
+  "persistent_user_profile": "disabled",
+  "privacy": {
+    "classification": "operational",
+    "purpose": "experience-continuity",
+    "retention": "session-only"
+  }
+}

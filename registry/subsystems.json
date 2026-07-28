@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.2.0",
-  "updated_at": "2026-07-28T15:55:00+02:00",
+  "updated_at": "2026-07-28T16:05:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.160",
+      "version": "v2026.07.24.161",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -494,7 +494,7 @@
     {
       "id": "ai-operations-center",
       "display_name": "AI Operations Center",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "owner": "Experience Platform",
       "status_source": "registry",
       "manifest_key": "ai_operations_center",
@@ -502,6 +502,18 @@
       "description": "Daily AI briefing, prioritized opportunities and clear human/system actions.",
       "dashboard": true,
       "dashboard_entry": "/control/#operations-center"
+    },
+    {
+      "id": "observation-platform",
+      "display_name": "Observation Platform",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence",
+      "status_source": "registry",
+      "manifest_key": "observation_platform",
+      "entry": "/core/casa-observation-platform.js",
+      "description": "Canonical evidence layer that turns verified facts into traceable, confidence-scored observations for AI and improvement workflows.",
+      "dashboard": true,
+      "dashboard_entry": "/release-governance.html#observation-platform"
     }
   ]
 }

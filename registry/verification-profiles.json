@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T15:55:00+02:00",
-  "platform_version": "v2026.07.24.160",
+  "updated_at": "2026-07-28T16:05:00+02:00",
+  "platform_version": "v2026.07.24.161",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,
@@ -178,16 +178,38 @@
         "error",
         "timeout"
       ]
+    },
+    {
+      "id": "observation-platform-runtime",
+      "capability": "platform.observation-platform",
+      "runtime": "browser",
+      "async": true,
+      "user_visible": true,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "browser",
+        "negative",
+        "platform-impact",
+        "rendered-runtime"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
     }
   ],
   "summary": {
-    "profiles": 6,
-    "browser_required": 3,
+    "profiles": 8,
+    "browser_required": 6,
     "mutation_required": 2,
     "deployment_smoke_required": 1,
     "missing_required_suites": 0,
     "status": "verified",
-    "rendered_runtime_required": 3,
+    "rendered_runtime_required": 6,
     "browser_execution_status": "manual_deployed_verification"
   }
 }

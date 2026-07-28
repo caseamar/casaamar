@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.161",
+  "updated_at": "2026-07-28T16:05:00+02:00",
+  "principles": {
+    "facts_before_interpretation": true,
+    "verified_evidence_required": true,
+    "ai_is_interpreter_not_source": true,
+    "channel_neutral": true,
+    "domain_neutral": true,
+    "no_hidden_profiling": true
+  },
+  "lifecycle": [
+    "detected",
+    "validated",
+    "correlated",
+    "prioritized",
+    "resolved",
+    "verified",
+    "archived"
+  ],
+  "types": [
+    {
+      "type": "release.runtime-health",
+      "category": "release",
+      "owner": "Platform Quality",
+      "defaultSeverity": "info",
+      "requiredEvidenceKinds": [
+        "runtime",
+        "test"
+      ]
+    },
+    {
+      "type": "content.publication-readiness",
+      "category": "content",
+      "owner": "Content Platform",
+      "defaultSeverity": "medium",
+      "requiredEvidenceKinds": [
+        "contract",
+        "document"
+      ]
+    },
+    {
+      "type": "asset.metadata-completeness",
+      "category": "asset",
+      "owner": "Asset Platform",
+      "defaultSeverity": "low",
+      "requiredEvidenceKinds": [
+        "document"
+      ]
+    },
+    {
+      "type": "workspace.context-integrity",
+      "category": "workspace",
+      "owner": "Platform Core",
+      "defaultSeverity": "high",
+      "requiredEvidenceKinds": [
+        "runtime",
+        "test"
+      ]
+    },
+    {
+      "type": "experience.flow-signal",
+      "category": "experience",
+      "owner": "Experience Platform",
+      "defaultSeverity": "medium",
+      "requiredEvidenceKinds": [
+        "event",
+        "metric"
+      ]
+    },
+    {
+      "type": "performance.metric-signal",
+      "category": "performance",
+      "owner": "Performance Intelligence",
+      "defaultSeverity": "medium",
+      "requiredEvidenceKinds": [
+        "metric"
+      ]
+    },
+    {
+      "type": "accessibility.quality-signal",
+      "category": "accessibility",
+      "owner": "Experience Quality",
+      "defaultSeverity": "medium",
+      "requiredEvidenceKinds": [
+        "test",
+        "runtime"
+      ]
+    }
+  ],
+  "sample": {
+    "id": "obs_release_panels_verified",
+    "type": "release.runtime-health",
+    "schemaVersion": "1.0",
+    "source": {
+      "system": "verification-governance",
+      "method": "measured",
+      "version": "1.0.0"
+    },
+    "category": "release",
+    "observedAt": "2026-07-28T16:05:00+02:00",
+    "evidence": [
+      {
+        "kind": "runtime",
+        "reference": "/release-governance.html",
+        "summary": "Alle dynamiske paneler afsluttede loading i rendered runtime-testen.",
+        "verified": true
+      },
+      {
+        "kind": "test",
+        "reference": "/tools/rendered-runtime-integration-test.mjs",
+        "summary": "Den faktiske integrationskæde blev eksekveret.",
+        "verified": true
+      }
+    ],
+    "confidence": 1.0,
+    "severity": "info",
+    "status": "validated",
+    "relations": {
+      "capabilityIds": [
+        "platform.verification-governance",
+        "platform.observation-platform"
+      ],
+      "experienceIds": [],
+      "actionIds": [],
+      "improvementIds": [],
+      "workspaceId": "workspace-main"
+    },
+    "privacy": {
+      "classification": "operational",
+      "retention": "audit-standard"
+    }
+  },
+  "summary": {
+    "observation_types": 7,
+    "contract_version": "1.0",
+    "evidence_coverage": 100,
+    "confidence_coverage": 100,
+    "orphans": 0,
+    "status": "verified"
+  }
+}

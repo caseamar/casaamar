@@ -1,9 +1,9 @@
 {
-  "release": "v2026.07.24.160",
+  "release": "v2026.07.24.161",
   "name": "Verification Governance Foundation",
-  "platform_version": "v2026.07.24.160",
-  "build": "2026-07-28T15:55:00+02:00",
-  "summary": "Introduces a platform-wide verification architecture that derives required test levels, detects weakened integrations through mutation testing, and proves rendered runtime outcomes before release.",
+  "platform_version": "v2026.07.24.161",
+  "build": "2026-07-28T16:05:00+02:00",
+  "summary": "Adds the canonical verified evidence layer for AI interpretation and continuous improvement.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
     "Capability Intelligence v1.0.0",
@@ -24,5 +24,7 @@
     "Mutation resistance for critical integrations",
     "Fail-closed verdicts for incomplete evidence",
     "Platform Constitution Article 16 – Evidence before approval"
-  ]
+  ],
+  "release_name": "Observation Platform Foundation",
+  "updated_at": "2026-07-28T16:05:00+02:00"
 }

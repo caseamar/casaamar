@@ -1,7 +1,10 @@
-v2026.07.24.160 - AI Operations Center
+Casa Amar Platform v2026.07.24.161
+Observation Platform Foundation
 
-- Added a real daily AI briefing in Mission Control.
-- Added prioritized, evidence-backed opportunities with explicit human/system responsibility.
-- Added active missions and action clarity.
-- Fixed ambiguous Universal Action wording: automatic verification now says “Ingen handling kræves”.
-- Added runtime and governance tests for user-facing action semantics.
+- Canonical Observation Contract v1.0
+- Seven registered observation types
+- Verified evidence, confidence and provenance required
+- Orphan observations rejected
+- AI explicitly acts as interpreter, not primary source
+- Observation Platform panel integrated into Release Governance
+- Automated runtime, negative and rendered integration tests

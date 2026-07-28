@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.160",
-  "updated_at": "2026-07-28T15:55:00+02:00",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.161",
+  "updated_at": "2026-07-28T16:05:00+02:00",
   "principles": {
     "action_oriented": true,
     "clear_human_role": true,
@@ -10,13 +10,13 @@
   },
   "brief": {
     "headline": "Platformen fungerer normalt",
-    "summary": "Ingen kritiske problemer er fundet. Den største værdi lige nu er at færdiggøre indhold og billedkvalitet, før næste publicering.",
+    "summary": "Ingen kritiske problemer er fundet. Briefingen bygger på verificerede observationer; AI bruges til at fortolke og prioritere, ikke til at opfinde fakta.",
     "requiresHumanAction": false,
     "status": "healthy"
   },
   "scores": {
     "platformHealth": 96,
-    "observationQuality": 98,
+    "observationQuality": 100,
     "improvementPotential": 11,
     "openActions": 4,
     "criticalIssues": 0

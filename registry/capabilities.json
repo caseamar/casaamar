@@ -519,9 +519,32 @@
       ],
       "api_ready": true,
       "ai_ready": true
+    },
+    {
+      "id": "platform.observation-platform",
+      "name": "Observation Platform",
+      "version": "1.0.0",
+      "domain": "platform",
+      "status": "foundation",
+      "owner": "Platform Intelligence",
+      "dependencies": [
+        "platform.event-platform",
+        "platform.data-contracts",
+        "platform.verification-governance"
+      ],
+      "consumers": [
+        "platform.improvement-engine",
+        "platform.action-engine",
+        "ai-operations-center"
+      ],
+      "contracts": [
+        "observation-contract@1.0"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.1.0",
-  "platform_version": "v2026.07.24.160",
-  "updated_at": "2026-07-28T15:55:00+02:00"
+  "platform_version": "v2026.07.24.161",
+  "updated_at": "2026-07-28T16:05:00+02:00"
 }

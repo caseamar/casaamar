@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "version": "2.2.0",
-  "platform_version": "v2026.07.24.160",
+  "platform_version": "v2026.07.24.161",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -368,7 +368,68 @@
         "outcome"
       ],
       "audited": true
+    },
+    {
+      "type": "observation.detected",
+      "owner": "observation-platform",
+      "category": "observation",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "observation_id",
+        "type",
+        "confidence"
+      ],
+      "audited": true
+    },
+    {
+      "type": "observation.validated",
+      "owner": "observation-platform",
+      "category": "observation",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "observation_id",
+        "evidence_count"
+      ],
+      "audited": true
+    },
+    {
+      "type": "observation.correlated",
+      "owner": "observation-platform",
+      "category": "observation",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "observation_id",
+        "relation_count"
+      ],
+      "audited": true
+    },
+    {
+      "type": "observation.resolved",
+      "owner": "observation-platform",
+      "category": "observation",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "observation_id",
+        "resolution_ref"
+      ],
+      "audited": true
+    },
+    {
+      "type": "observation.verified",
+      "owner": "observation-platform",
+      "category": "observation",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "observation_id",
+        "verification_status"
+      ],
+      "audited": true
     }
   ],
-  "updated_at": "2026-07-28T15:55:00+02:00"
+  "updated_at": "2026-07-28T16:05:00+02:00"
 }

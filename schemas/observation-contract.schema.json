@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/observation-contract.schema.json",
+  "title": "Observation Contract",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schemaVersion",
+    "source",
+    "category",
+    "observedAt",
+    "evidence",
+    "confidence",
+    "severity",
+    "status",
+    "relations"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^obs_[a-zA-Z0-9_-]+$"
+    },
+    "type": {
+      "type": "string",
+      "minLength": 3
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "system",
+        "method"
+      ],
+      "properties": {
+        "system": {
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "measured",
+            "derived",
+            "human-reported",
+            "ai-interpreted"
+          ]
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "category": {
+      "enum": [
+        "experience",
+        "content",
+        "asset",
+        "knowledge",
+        "performance",
+        "accessibility",
+        "seo",
+        "conversation",
+        "release",
+        "security",
+        "compliance",
+        "workspace"
+      ]
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "reference",
+          "summary"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "event",
+              "metric",
+              "contract",
+              "test",
+              "document",
+              "runtime"
+            ]
+          },
+          "reference": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "status": {
+      "enum": [
+        "detected",
+        "validated",
+        "correlated",
+        "prioritized",
+        "resolved",
+        "verified",
+        "archived"
+      ]
+    },
+    "relations": {
+      "type": "object",
+      "required": [
+        "capabilityIds"
+      ],
+      "properties": {
+        "capabilityIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "experienceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "improvementIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "workspaceId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "classification",
+        "retention"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "public",
+            "operational",
+            "personal",
+            "sensitive"
+          ]
+        },
+        "retention": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.160",
-  "build": "2026-07-28T15:55:00+02:00",
-  "worker_version": "15.46-universal-action-framework",
-  "release_name": "Universal Action Framework Foundation",
-  "generated_at": "2026-07-28T15:55:00+02:00",
+  "platform_version": "v2026.07.24.161",
+  "build": "2026-07-28T16:05:00+02:00",
+  "worker_version": "15.47-observation-platform",
+  "release_name": "Observation Platform Foundation",
+  "generated_at": "2026-07-28T16:05:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T15:55:00+02:00"
+    "build": "2026-07-28T16:05:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.160",
+    "asset_cache_key": "20260724.161",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -696,8 +696,18 @@
     "ai_ready": true
   },
   "ai_operations_center": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "active",
     "entry": "/core/casa-operations-center.js"
+  },
+  "observation_platform": {
+    "version": "1.0.0",
+    "entry": "/core/casa-observation-platform.js",
+    "registry": "/registry/observation-registry.json",
+    "contract": "/schemas/observation-contract.schema.json",
+    "status": "foundation",
+    "ai_role": "interpreter-not-source",
+    "evidence_required": true,
+    "orphan_observations_allowed": false
   }
 }
