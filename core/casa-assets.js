@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.4.0";
+ const VERSION="1.4.1";
  const ASSET_URL="/registry/assets.json";
  const VARIANT_URL="/registry/asset-variants.json";
  let cache=null,variantCache=null;
@@ -14,7 +14,7 @@
   if(!Array.isArray(lib.assets))lib.assets=[];let asset=lib.assets.find(x=>x.id===id);if(!asset){asset={id,type:item.type,source:{original_path:item.path,filename:item.path.split('/').pop()},preview_url:item.preview_url,manual_metadata:{title:item.title||id,description:"",labels:[]}};lib.assets.push(asset)}
   asset.manual_metadata={...(asset.manual_metadata||{}),title:asset.manual_metadata?.title||item.title||id,alt_text:value};asset.updated_at=new Date().toISOString();lib.updated=new Date().toISOString();localStorage.setItem("casaAssetLibrary",JSON.stringify(lib));
   let ws;try{ws=JSON.parse(localStorage.getItem("casaWorkspaceStateV1")||"null")}catch(_){ws=null}ws=ws||{status:"draft",count:0,changes:[]};ws.changes=Array.isArray(ws.changes)?ws.changes:[];const key=`asset-alt:${id}`;const change={id:key,type:"asset-alt-text",asset_id:id,label:`Alt-tekst: ${item.title||id}`,updated_at:new Date().toISOString()};const ix=ws.changes.findIndex(x=>x.id===key);if(ix>=0)ws.changes[ix]=change;else ws.changes.push(change);ws.count=ws.changes.length;ws.status="draft";localStorage.setItem("casaWorkspaceStateV1",JSON.stringify(ws));localStorage.setItem("casaWorkspaceLastSaved",new Date().toISOString());
-  window.CasaEvents?.publish?.("asset.intelligence.ready",{asset_id:id,change:"alt-text-saved",pending_publication:true});return effective(item);}
+  try{window.CasaEvents?.publish?.("asset.intelligence.ready",{asset_id:id,change:"alt-text-saved",pending_publication:true})}catch(_eventError){}return effective(item);}
 
  async function fetchJson(url,key){const response=await fetch(`${url}?_${key}=${Date.now()}`,{cache:"no-store"});if(!response.ok)throw new Error(`${key} returned HTTP ${response.status}`);return response.json();}
  async function load(options={}){

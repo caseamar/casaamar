@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "platform_version": "v2026.07.24.167",
+  "platform_version": "v2026.07.24.168",
   "principles": [
     "Workspace opens operational surfaces",
     "Technical metadata is secondary",

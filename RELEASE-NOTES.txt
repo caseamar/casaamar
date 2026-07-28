@@ -1,8 +1,3 @@
-Casa Amar Platform v2026.07.24.167
+v168 – Asset Decision Runtime Hotfix
 
-Constitution Engine & AI Decision UX
-- Executable Constitution Registry with 100% rule-to-test coverage
-- Release-blocking validation for principles without automated evidence
-- AI Decision UX with clear Approve, Edit, Postpone and Reject outcomes
-- Direct approve-and-save workflow for asset alt-text proposals
-- No editor required for the standard approval path
+Fixes semantic alt-text generation and restores reliable Approve and Save behaviour with explicit saving and error states.

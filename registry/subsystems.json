@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.167",
+      "version": "v2026.07.24.168",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -223,7 +223,7 @@
     {
       "id": "asset-intelligence",
       "display_name": "Asset Intelligence",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "asset_intelligence",
