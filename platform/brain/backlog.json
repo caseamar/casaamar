@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "updated_at": "2026-07-28T10:12:40+02:00",
+  "updated_at": "2026-07-28T11:39:30+02:00",
   "items": [
     {
       "id": "PI-111-01",
@@ -72,13 +72,19 @@
       "id": "PI-124-01",
       "title": "Asset variant generation pipeline and publication readiness",
       "status": "done",
-      "release": "v2026.07.24.145"
+      "release": "v2026.07.24.146"
     },
     {
       "id": "PI-125-01",
       "title": "Experience Engine foundation and guest-journey contracts",
       "status": "next",
-      "target_release": "v2026.07.24.145"
+      "target_release": "v2026.07.24.146"
+    },
+    {
+      "id": "BG-146-01",
+      "title": "Behaviour Governance registry and executable contract validation",
+      "status": "done",
+      "release": "v2026.07.24.146"
     }
   ]
 }

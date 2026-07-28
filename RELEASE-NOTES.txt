@@ -1,1 +1,3 @@
-Casa Amar v145 - Workspace Return Session Guard Hotfix
+Casa Amar v146 – Behaviour Governance Foundation
+
+Introduces behaviour contracts as a platform standard. Each capability must declare expected behaviour, forbidden behaviour, dependencies, impact areas, automated evidence and manual review boundaries.

@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T11:39:30+02:00",
+  "policy": {
+    "all_capabilities_require_behaviour_contract": true,
+    "expected_and_forbidden_behaviour_required": true,
+    "dependencies_must_resolve": true,
+    "changed_flow_requires_impact_suite": true,
+    "full_platform_suite_on_release": true,
+    "unverified_browser_behaviour_is_manual_review": true,
+    "automatic_failure_blocks_release": true
+  },
+  "layers": [
+    "component",
+    "flow",
+    "impact",
+    "platform"
+  ],
+  "contracts": [
+    {
+      "id": "workspace-return-navigation",
+      "capability": "workspace.return",
+      "owner": "Workspace State Manager",
+      "entrypoints": [
+        "/control/",
+        "/recommendation-engine.html",
+        "/asset-intelligence.html",
+        "/knowledge-graph.html"
+      ],
+      "dependencies": [
+        "core/casa-workspace-state.js",
+        "control/index.html"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "explicit-return-restores",
+          "given": "User opens an operational page from AI Workspace",
+          "when": "User activates the explicit return link",
+          "then": "Mission Control restores the recorded workspace position once"
+        },
+        {
+          "id": "browser-back-restores",
+          "given": "User opens an operational page from AI Workspace",
+          "when": "User uses browser Back",
+          "then": "Browser or state manager restores the previous position"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "refresh-does-not-restore",
+          "given": "Mission Control is refreshed",
+          "then": "Page starts at top"
+        },
+        {
+          "id": "direct-open-does-not-restore",
+          "given": "Mission Control is opened directly or in a new tab",
+          "then": "Page starts at top"
+        },
+        {
+          "id": "release-change-does-not-restore",
+          "given": "Platform version changes",
+          "then": "Old state is rejected and page starts at top"
+        }
+      ],
+      "impact_areas": [
+        "navigation",
+        "session-state",
+        "dynamic-rendering",
+        "platform-update"
+      ],
+      "automated_evidence": [
+        "tools/workspace-state-behaviour-test.mjs"
+      ],
+      "manual_review": [
+        "deployed-browser-scroll-position"
+      ]
+    },
+    {
+      "id": "recommendation-human-control",
+      "capability": "recommendation.decide",
+      "owner": "AI Recommendation Service",
+      "entrypoints": [
+        "/recommendation-engine.html"
+      ],
+      "dependencies": [
+        "registry/recommendations.json",
+        "config/website.json",
+        "core/casa-recommendations.js"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "recommendation-explains",
+          "given": "A recommendation is displayed",
+          "then": "Reason, evidence, confidence, impact and success criteria are present"
+        },
+        {
+          "id": "human-decides",
+          "given": "A recommendation is displayed",
+          "then": "Accept, pause, reject and review-later actions are available"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-auto-config-change",
+          "given": "AI creates a recommendation",
+          "then": "No configuration is changed without explicit human approval"
+        }
+      ],
+      "impact_areas": [
+        "configuration",
+        "audit",
+        "content-operations",
+        "platform-doctor"
+      ],
+      "automated_evidence": [
+        "tools/release-quality-gate.mjs"
+      ],
+      "manual_review": [
+        "recommendation-language-quality"
+      ]
+    },
+    {
+      "id": "configuration-driven-language",
+      "capability": "website.languages",
+      "owner": "Configuration Service",
+      "entrypoints": [
+        "/config/website.json",
+        "/content-studio.html"
+      ],
+      "dependencies": [
+        "config/website.json",
+        "registry/content-operations.json"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "enabled-language-validated",
+          "given": "A language is enabled",
+          "then": "Required translation work may be created"
+        },
+        {
+          "id": "disabled-language-is-suggestion",
+          "given": "A language is disabled",
+          "then": "It may appear as an AI recommendation but not as an error or required task"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-hardcoded-language-task",
+          "given": "A language is disabled",
+          "then": "No translation task is generated for it"
+        }
+      ],
+      "impact_areas": [
+        "content-operations",
+        "platform-doctor",
+        "recommendations",
+        "public-website"
+      ],
+      "automated_evidence": [
+        "tools/release-quality-gate.mjs"
+      ],
+      "manual_review": []
+    },
+    {
+      "id": "release-identity-consistency",
+      "capability": "release.publish",
+      "owner": "Release Governance",
+      "entrypoints": [
+        "/platform-manifest.json",
+        "/_worker.js",
+        "/registry/subsystems.json"
+      ],
+      "dependencies": [
+        "platform-manifest.json",
+        "_worker.js",
+        "registry/subsystems.json",
+        "release-governance.json"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "single-release-identity",
+          "given": "A release is packaged",
+          "then": "Manifest, Worker, registry, cache keys and notes use the same release identity"
+        },
+        {
+          "id": "build-completion-time",
+          "given": "A release is packaged",
+          "then": "Visible timestamp represents completed build time"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-stale-release-token",
+          "given": "A release is packaged",
+          "then": "No active runtime file contains a stale release identity"
+        },
+        {
+          "id": "no-oversized-cloudflare-asset",
+          "given": "A release is packaged",
+          "then": "No deployable static asset exceeds Cloudflare limit"
+        }
+      ],
+      "impact_areas": [
+        "worker",
+        "cache",
+        "deployment",
+        "control-center",
+        "public-website"
+      ],
+      "automated_evidence": [
+        "tools/release-quality-gate.mjs",
+        "tools/cloudflare-asset-preflight.mjs"
+      ],
+      "manual_review": []
+    }
+  ]
+}

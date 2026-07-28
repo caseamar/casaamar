@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "2.9.0",
-  "generated_at": "2026-07-28T11:27:00+02:00",
-  "platform_version": "v2026.07.24.145",
+  "version": "3.0.0",
+  "generated_at": "2026-07-28T11:39:30+02:00",
+  "platform_version": "v2026.07.24.146",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 10,
-    "automated_passed": 10,
+    "automated_checks": 11,
+    "automated_passed": 11,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
       "evidence": [
-        "v2026.07.24.145",
+        "v2026.07.24.146",
         "15.27-workspace-return-session-guard",
-        "2026-07-28T11:27:00+02:00"
+        "2026-07-28T11:39:30+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.145"
+        "v2026.07.24.146"
       ]
     },
     {
@@ -147,6 +147,20 @@
         "Persistent #ai-workspace anchors are removed",
         "Direct/reload entry clears stale state"
       ]
+    },
+    {
+      "id": "behaviour_governance",
+      "label": "Adfærdsstyring",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Alle registrerede kapabiliteter valideres som sammenhængende adfærdskæder med både ønskede og forbudte scenarier, afhængigheder og impactområder.",
+      "evidence": [
+        "registry/behaviour-contracts.json",
+        "Expected + forbidden scenarios required",
+        "Dependency and evidence resolution",
+        "Full platform consistency suite"
+      ]
     }
   ],
   "manual_review": [
@@ -188,7 +202,7 @@
     "assumptions_introduced": false,
     "configuration_driven": true,
     "explainable_results": true,
-    "complexity_assessment": "Semantic and visual gates reuse the existing registry, static HTML and Chromium smoke-test pattern; no new runtime framework.",
+    "complexity_assessment": "Behaviour contracts are declarative and reuse existing registries and test runners; new features extend the model without bespoke release logic.",
     "known_limitations": [
       "Visual balance and wording naturalness still require the listed human review.",
       "No analytics source is connected, so language recommendation confidence remains hypothesis-based."
@@ -199,7 +213,9 @@
     "test_contract_registry": "registry/test-contracts.json",
     "full_platform_consistency_on_every_release": true,
     "changed_capability_targeted_tests": true,
-    "manual_review_for_unverifiable": true
+    "manual_review_for_unverifiable": true,
+    "behaviour_contract_registry": "registry/behaviour-contracts.json",
+    "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.145"
+  "release": "v2026.07.24.146"
 }

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Casa Amar Behaviour Contract Registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "version",
+    "policy",
+    "contracts"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "capability",
+          "dependencies",
+          "expected_behaviour",
+          "forbidden_behaviour",
+          "impact_areas",
+          "automated_evidence",
+          "manual_review"
+        ]
+      }
+    }
+  }
+}
