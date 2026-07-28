@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.5.0",
-  "platform_version": "v2026.07.24.172",
+  "platform_version": "v2026.07.24.173",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -145,6 +145,13 @@
         "Unknown and deferred answers must not be treated as verified facts",
         "Human answers become versioned verified domain facts"
       ]
+    },
+    {
+      "id": "ARTICLE-26",
+      "title": "Continuous Domain Discovery",
+      "principle": "Domain Intelligence must continuously derive relevant uncertainties from current tasks and verified knowledge. A zero-question state is valid only when sufficient context is documented for the active work.",
+      "enforcement": "release-blocking",
+      "automated_test": "tools/domain-discovery-engine-test.mjs"
     }
   ],
   "updated_at": "2026-07-28T18:30:00+02:00",

@@ -1,8 +1,8 @@
 {
-  "release": "v2026.07.24.172",
+  "release": "v2026.07.24.173",
   "name": "Verification Governance Foundation",
-  "platform_version": "v2026.07.24.172",
-  "build": "2026-07-28T16:55:00+02:00",
+  "platform_version": "v2026.07.24.173",
+  "build": "2026-07-28T19:30:00+02:00",
   "summary": "Adds an interactive, branching verification queue where AI asks one targeted question at a time and turns answers into verified domain facts.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
@@ -26,5 +26,5 @@
     "Platform Constitution Article 16 – Evidence before approval"
   ],
   "release_name": "Observation Platform Foundation",
-  "updated_at": "2026-07-28T16:55:00+02:00"
+  "updated_at": "2026-07-28T19:30:00+02:00"
 }

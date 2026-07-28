@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "2.0.0",
   "id": "domain.casa-amar",
   "domainPack": "vacation-rental",
   "name": "Casa Amar",
@@ -231,30 +231,12 @@
       "status": "verified"
     }
   ],
-  "clarifications": [
-    {
-      "id": "patio-floor",
-      "type": "yes_no",
-      "question": "Er patioen på stueplan?",
-      "why": "Oplysningen hjælper AI med at skelne patioen fra tagterrassen og placere billeder korrekt.",
-      "status": "open",
-      "priority": "low",
-      "subject": "area.patio",
-      "predicate": "located_on_floor",
-      "yesValue": "ground-floor",
-      "noFollowup": "patio-floor-location"
-    },
-    {
-      "id": "roof-private",
-      "type": "yes_no",
-      "question": "Er tagterrassen privat og kun til Casa Amar?",
-      "why": "Oplysningen bruges i gæsteinformation, bookingtekster og den digitale concierge.",
-      "status": "open",
-      "priority": "medium",
-      "subject": "area.roof-terrace",
-      "predicate": "access_scope",
-      "yesValue": "private",
-      "noFollowup": "roof-sharing"
-    }
-  ]
+  "clarifications": [],
+  "discovery": {
+    "version": "1.0.0",
+    "lastRunAt": null,
+    "rulesEvaluated": 0,
+    "created": 0,
+    "trigger": "not-run"
+  }
 }

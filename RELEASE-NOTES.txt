@@ -1,3 +1,9 @@
-v171 – Adaptive Domain Verification Queue
+Casa Amar v2026.07.24.173 — Continuous Domain Discovery Engine
 
-Interactive one-question-at-a-time verification, branching follow-up questions, verified fact persistence, and release-blocking governance.
+- Replaces the static verification queue with a continuous discovery loop.
+- Discovery derives questions from missing verified facts and active use cases.
+- Questions are prioritized by value; one is shown at a time.
+- Negative answers open immediate adaptive follow-ups.
+- Every answer recalculates coverage and the next relevant uncertainty.
+- Empty state now means sufficient context for current tasks, not that the domain is permanently complete.
+- Added Article 26 — Continuous Domain Discovery and release-blocking tests.
