@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.149",
+  "status": "foundation",
+  "entry": "/core/casa-ai-service.js",
+  "configuration": "/config/ai-service.json",
+  "capability_registry": "/registry/ai-capabilities.json",
+  "provider_adapters": [],
+  "provider_neutral": true,
+  "automatic_execution": false,
+  "behaviours": {
+    "expected": [
+      "validate-capability-request",
+      "resolve-policy",
+      "return-explainable-unavailable-until-provider-approved"
+    ],
+    "forbidden": [
+      "direct-provider-call",
+      "silent-fallback",
+      "automatic-high-risk-action",
+      "model-name-in-feature-code"
+    ]
+  }
+}

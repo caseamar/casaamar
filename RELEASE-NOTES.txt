@@ -1,7 +1,8 @@
-Casa Amar Platform v2026.07.24.148
-Platform Intelligence and Learning Registry
+Casa Amar Platform v2026.07.24.149
+AI Service Layer Foundation
 
-- Explainable status with cause, evidence, impact and next action.
-- Learning Registry records defects, root causes, prevention and test evidence.
-- Release Governance now validates explanation and durable learning contracts.
-- No AI model routing is introduced in this release.
+- Provider-neutral AI capability gateway
+- Capability and policy registries
+- Explicit blocked/unavailable states
+- No active provider, credentials or model binding
+- Automated provider-neutrality and behaviour tests

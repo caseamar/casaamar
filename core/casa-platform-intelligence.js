@@ -1,6 +1,6 @@
 (()=>{
 "use strict";
-const VERSION="1.0.0";
+const VERSION="1.1.0";
 const REGISTRY="/registry/platform-intelligence.json";
 const LEARNING="/registry/learning-registry.json";
 async function loadJson(url){const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}

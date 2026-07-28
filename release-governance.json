@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
   "version": "3.2.0",
-  "generated_at": "2026-07-28T12:35:00+02:00",
-  "platform_version": "v2026.07.24.148",
+  "generated_at": "2026-07-28T12:45:00+02:00",
+  "platform_version": "v2026.07.24.149",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
       "evidence": [
-        "v2026.07.24.148",
+        "v2026.07.24.149",
         "15.27-workspace-return-session-guard",
-        "2026-07-28T12:35:00+02:00"
+        "2026-07-28T12:45:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.148"
+        "v2026.07.24.149"
       ]
     },
     {
@@ -201,6 +201,18 @@
         "4 regressioner beskyttet",
         "0 åbne poster"
       ]
+    },
+    {
+      "id": "ai-service-layer",
+      "label": "AI Service Layer",
+      "mode": "automatic",
+      "status": "pass",
+      "because": "The AI boundary is provider-neutral, capability-driven and configured without active provider credentials.",
+      "evidence": [
+        "AI Service runtime and registries exist",
+        "No direct provider endpoint is present",
+        "Unknown capability and unavailable-provider states are explicit"
+      ]
     }
   ],
   "manual_review": [
@@ -257,7 +269,7 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.148",
+  "release": "v2026.07.24.149",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

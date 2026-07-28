@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
   "version": "1.12.0",
-  "release": "v2026.07.24.148",
-  "platform_version": "v2026.07.24.148",
-  "generated_at": "2026-07-28T12:35:00+02:00",
-  "updated_at": "2026-07-28T12:35:00+02:00",
+  "release": "v2026.07.24.149",
+  "platform_version": "v2026.07.24.149",
+  "generated_at": "2026-07-28T12:45:00+02:00",
+  "updated_at": "2026-07-28T12:45:00+02:00",
   "source": "deployment-manifest.json",
   "policies": {
     "complete_replace": true,
@@ -13,7 +13,7 @@
       "images/"
     ]
   },
-  "file_count": 103,
+  "file_count": 117,
   "files": [
     {
       "path": "/RELEASE-NOTES.txt",
@@ -679,6 +679,36 @@
       "type": "tool",
       "critical": true,
       "deployable": false
+    },
+    {
+      "path": "/core/casa-ai-service.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": true
+    },
+    {
+      "path": "/config/ai-service.json",
+      "kind": "json",
+      "area": "config",
+      "critical": true
+    },
+    {
+      "path": "/registry/ai-capabilities.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
+    },
+    {
+      "path": "/registry/ai-service.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
+    },
+    {
+      "path": "/tools/ai-service-layer-test.mjs",
+      "kind": "javascript",
+      "area": "tools",
+      "critical": false
     }
   ]
 }

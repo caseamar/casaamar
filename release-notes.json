@@ -1,7 +1,8 @@
 {
-  "release": "v2026.07.24.148",
+  "release": "v2026.07.24.149",
   "name": "Engineering Governance Foundation",
   "summary": "Add explainable platform judgements and durable learning records for defects, decisions and regression prevention.",
-  "generated_at": "2026-07-28T12:35:00+02:00",
-  "title": "Platform Intelligence and Learning Registry"
+  "generated_at": "2026-07-28T12:45:00+02:00",
+  "title": "AI Service Layer Foundation",
+  "build": "2026-07-28T12:45:00+02:00"
 }

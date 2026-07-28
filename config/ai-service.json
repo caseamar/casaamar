@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "mode": "foundation",
+  "default_policy": "human-controlled",
+  "provider_binding": "none",
+  "direct_provider_calls_allowed": false,
+  "principle": "Features request capabilities; the platform service selects an approved implementation later.",
+  "result_states": [
+    "ready",
+    "unavailable",
+    "manual_review",
+    "blocked"
+  ],
+  "policies": {
+    "guest-assistant": {
+      "latency_class": "interactive",
+      "quality_class": "balanced",
+      "human_review": "conditional",
+      "data_class": "guest-public"
+    },
+    "architecture-review": {
+      "latency_class": "deliberate",
+      "quality_class": "high",
+      "human_review": "required",
+      "data_class": "internal"
+    },
+    "translation": {
+      "latency_class": "standard",
+      "quality_class": "high",
+      "human_review": "required-before-publish",
+      "data_class": "content"
+    },
+    "classification": {
+      "latency_class": "batch",
+      "quality_class": "standard",
+      "human_review": "conditional",
+      "data_class": "content"
+    }
+  }
+}

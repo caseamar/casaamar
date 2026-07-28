@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.149",
+  "principle": "AI consumers depend on capability contracts, never provider or model names.",
+  "capabilities": [
+    {
+      "id": "guest-assistant",
+      "status": "foundation",
+      "inputs": [
+        "message",
+        "locale",
+        "context"
+      ],
+      "outputs": [
+        "answer",
+        "confidence",
+        "evidence"
+      ],
+      "risk": "medium"
+    },
+    {
+      "id": "architecture-review",
+      "status": "foundation",
+      "inputs": [
+        "change",
+        "contracts",
+        "dependencies"
+      ],
+      "outputs": [
+        "assessment",
+        "risks",
+        "recommendations"
+      ],
+      "risk": "high"
+    },
+    {
+      "id": "translation",
+      "status": "foundation",
+      "inputs": [
+        "source",
+        "source_locale",
+        "target_locale"
+      ],
+      "outputs": [
+        "translation",
+        "confidence",
+        "review_flags"
+      ],
+      "risk": "medium"
+    },
+    {
+      "id": "classification",
+      "status": "foundation",
+      "inputs": [
+        "content",
+        "taxonomy"
+      ],
+      "outputs": [
+        "labels",
+        "confidence"
+      ],
+      "risk": "low"
+    }
+  ]
+}

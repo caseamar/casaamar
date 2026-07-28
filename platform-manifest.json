@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.148",
-  "build": "2026-07-28T12:35:00+02:00",
-  "worker_version": "15.35-platform-intelligence-learning-registry",
-  "release_name": "Platform Intelligence and Learning Registry",
-  "generated_at": "2026-07-28T12:35:00+02:00",
+  "platform_version": "v2026.07.24.149",
+  "build": "2026-07-28T12:45:00+02:00",
+  "worker_version": "15.36-ai-service-layer-foundation",
+  "release_name": "AI Service Layer Foundation",
+  "generated_at": "2026-07-28T12:45:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T12:35:00+02:00"
+    "build": "2026-07-28T12:45:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.5.0",
+    "version": "3.6.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -131,7 +131,8 @@
       "behaviour_governance",
       "engineering_governance",
       "platform_intelligence",
-      "learning_registry_consistency"
+      "learning_registry_consistency",
+      "ai_service_layer"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -190,7 +191,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.28.0",
+    "version": "1.29.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -250,13 +251,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.25.0",
+    "version": "1.26.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.3.0",
+    "version": "3.4.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -287,11 +288,12 @@
       "experience_engine",
       "content_studio",
       "platform_intelligence",
-      "learning_registry"
+      "learning_registry",
+      "ai_service_layer"
     ]
   },
   "repository_intelligence": {
-    "version": "1.17.0",
+    "version": "1.18.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -315,7 +317,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.148",
+    "asset_cache_key": "20260724.149",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -501,7 +503,7 @@
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "3.2.0",
+    "version": "3.3.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,
@@ -533,7 +535,7 @@
     "release_blocking": true
   },
   "engineering_governance": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "entry": "/core/casa-engineering-governance.js",
     "registry": "/registry/engineering-governance.json",
     "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
@@ -549,7 +551,7 @@
     "release_blocking": true
   },
   "platform_intelligence": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-platform-intelligence.js",
     "registry": "/registry/platform-intelligence.json",
     "learning_registry": "/registry/learning-registry.json",
@@ -566,5 +568,15 @@
     "version": "1.0.0",
     "registry": "/registry/learning-registry.json",
     "principle": "Every material defect or architectural learning becomes durable evidence, prevention and regression protection."
+  },
+  "ai_service_layer": {
+    "version": "1.0.0",
+    "entry": "/core/casa-ai-service.js",
+    "configuration": "/config/ai-service.json",
+    "capability_registry": "/registry/ai-capabilities.json",
+    "provider_neutral": true,
+    "provider_adapters": 0,
+    "direct_provider_calls_allowed": false,
+    "principle": "Features request AI capabilities rather than named models or providers."
   }
 }

@@ -132,8 +132,34 @@
         "engineering-governance"
       ],
       "description": "Convert defects and decisions into durable prevention and regression evidence."
+    },
+    {
+      "id": "ai-service-layer",
+      "domain": "platform-ai",
+      "status": "active",
+      "version": "1.0.0",
+      "dependencies": [
+        "configuration",
+        "governance",
+        "decision-engine"
+      ],
+      "consumers": [
+        "recommendation-engine",
+        "content-studio",
+        "future-digital-assistant"
+      ]
+    },
+    {
+      "id": "ai.capability.request",
+      "domain": "platform-ai",
+      "status": "foundation"
+    },
+    {
+      "id": "ai.policy.resolve",
+      "domain": "platform-ai",
+      "status": "foundation"
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.148"
+  "platform_version": "v2026.07.24.149"
 }

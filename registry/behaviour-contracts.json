@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T12:35:00+02:00",
+  "updated_at": "2026-07-28T12:45:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -211,6 +211,66 @@
       "automated_evidence": [
         "tools/release-quality-gate.mjs",
         "tools/cloudflare-asset-preflight.mjs"
+      ],
+      "manual_review": []
+    },
+    {
+      "id": "ai-capability-provider-neutral-foundation",
+      "capability": "ai.service.request",
+      "owner": "AI Service Layer",
+      "entrypoints": [
+        "core/casa-ai-service.js",
+        "config/ai-service.json",
+        "registry/ai-capabilities.json"
+      ],
+      "dependencies": [
+        "core/casa-config.js",
+        "core/casa-governance.js",
+        "core/casa-decision.js"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "registered-capability-resolves",
+          "given": "A feature requests a registered AI capability",
+          "when": "AI Service inspects the request",
+          "then": "The capability contract and configured policy are returned"
+        },
+        {
+          "id": "no-provider-is-explicit",
+          "given": "No provider adapter is approved",
+          "when": "A registered capability is requested",
+          "then": "The service returns an explainable unavailable state without executing externally"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "unknown-capability-does-not-fallback",
+          "given": "A feature requests an unknown capability",
+          "when": "AI Service validates the request",
+          "then": "The request is blocked and no silent fallback occurs"
+        },
+        {
+          "id": "no-direct-provider-binding",
+          "given": "The foundation release is active",
+          "when": "AI functionality is inspected",
+          "then": "No feature or service is bound directly to a named provider or model"
+        },
+        {
+          "id": "no-automatic-high-risk-action",
+          "given": "A high-risk AI capability is requested",
+          "when": "No governed provider and approval policy are active",
+          "then": "No automatic external action is executed"
+        }
+      ],
+      "impact_areas": [
+        "recommendations",
+        "content",
+        "future-digital-assistant",
+        "configuration",
+        "governance"
+      ],
+      "automated_evidence": [
+        "tools/ai-service-layer-test.mjs"
       ],
       "manual_review": []
     }

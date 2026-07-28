@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.1.0",
-  "platform_version": "v2026.07.24.148",
-  "generated_at": "2026-07-28T12:35:00+02:00",
+  "version": "1.2.0",
+  "platform_version": "v2026.07.24.149",
+  "generated_at": "2026-07-28T12:45:00+02:00",
   "quality_dimensions": [
     {
       "id": "functional",
@@ -121,9 +121,10 @@
       "operations": 100,
       "ai": 93
     },
-    "because": "All registered capabilities resolve, dependencies are valid, platform judgements are explainable, and durable learning records protect known failure classes.",
+    "because": "AI Service Layer adds a reusable provider-neutral boundary without activating provider complexity.",
     "manual_review": [
       "Confirm that the architecture explanation is understandable to a non-developer."
-    ]
+    ],
+    "score": 98
   }
 }

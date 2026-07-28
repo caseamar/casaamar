@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.148",
+  "platform_version": "v2026.07.24.149",
   "nodes": [
     {
       "id": "platform",
       "type": "subsystem",
-      "version": "v2026.07.24.148",
+      "version": "v2026.07.24.149",
       "owner": "Platform"
     },
     {
@@ -72,7 +72,7 @@
     {
       "id": "subsystem-registry",
       "type": "subsystem",
-      "version": "3.1.0",
+      "version": "3.4.0",
       "owner": "Platform Intelligence"
     },
     {
@@ -160,6 +160,11 @@
     {
       "id": "learning-registry",
       "type": "registry"
+    },
+    {
+      "id": "ai-service-layer",
+      "version": "1.0.0",
+      "type": "platform-capability"
     }
   ],
   "edges": [
@@ -272,6 +277,26 @@
       "from": "learning-registry",
       "to": "behaviour-governance",
       "type": "protects"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "configuration",
+      "type": "uses"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "governance",
+      "type": "governed-by"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "decision-engine",
+      "type": "policy-decisions"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "ai-service-layer",
+      "type": "future-consumer"
     }
   ]
 }
