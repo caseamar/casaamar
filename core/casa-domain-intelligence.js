@@ -1,5 +1,5 @@
 (()=>{
- const VERSION='2.0.0',KEY='casa-domain-context-v1';
+ const VERSION='2.1.0',KEY='casa-domain-context-v1';
  const state={model:null,packs:null};
  const normal=s=>String(s||'').trim().replace(/\s+/g,' ');
  const clone=x=>JSON.parse(JSON.stringify(x));
@@ -41,23 +41,41 @@
  }
  function runDiscovery({force=false}={}){
   if(!state.model)throw new Error('Domain Intelligence er ikke indlæst');
-  const created=[];
+  const created=[],reopened=[];
+  const questions=state.model.clarifications||(state.model.clarifications=[]);
   for(const rule of [...DISCOVERY_RULES].sort((a,b)=>b.priority-a.priority)){
    if(fact(rule.subject,rule.predicate))continue;
    const existing=questionForRule(rule);
    if(existing){
-    if(force&&['unknown','deferred'].includes(existing.status)){existing.status='open';existing.reopenedAt=now()}
+    const children=questions.filter(q=>q.parentQuestionId===existing.id);
+    const activeChild=children.find(q=>['open','deferred','unknown'].includes(q.status));
+    if(activeChild){
+     if(force&&['unknown','deferred'].includes(activeChild.status)){
+      Object.assign(activeChild,{status:'open',reopenedAt:now()});reopened.push(activeChild);
+     }
+     continue;
+    }
+    if(['unknown','deferred'].includes(existing.status)&&force){
+     Object.assign(existing,{status:'open',reopenedAt:now()});reopened.push(existing);
+    }else if(existing.status==='resolved'){
+     // A resolved question without a verified fact or an active follow-up is stale.
+     // Reopen it so discovery coverage and the visible queue cannot disagree.
+     Object.assign(existing,{status:'open',answer:null,value:null,answeredAt:null,reopenedAt:now(),repairReason:'missing-verified-fact'});reopened.push(existing);
+    }
     continue;
    }
    created.push(addQuestion(rule));
   }
-  state.model.discovery={version:'1.0.0',lastRunAt:now(),rulesEvaluated:DISCOVERY_RULES.length,created:created.length,trigger:force?'manual':'automatic'};
-  persist(); return {created,status:discoveryStatus(),next:nextClarification()};
+  const status=discoveryStatus();
+  state.model.discovery={version:'1.1.0',lastRunAt:now(),rulesEvaluated:DISCOVERY_RULES.length,created:created.length,reopened:reopened.length,trigger:force?'manual':'automatic',consistent:status.open>0||status.coverage===100||status.sufficientForCurrentTasks};
+  persist(); return {created,reopened,status:discoveryStatus(),next:nextClarification()};
  }
  function discoveryStatus(){
   const required=DISCOVERY_RULES.filter(r=>!r.optional),covered=required.filter(r=>!!fact(r.subject,r.predicate)).length;
   const queue=verificationQueue();
-  return {lastRunAt:state.model?.discovery?.lastRunAt||null,rules:DISCOVERY_RULES.length,required:required.length,covered,coverage:Math.round(covered/required.length*100),open:queue.open.length,deferred:queue.deferred.length,unknown:queue.unknown.length,sufficientForCurrentTasks:required.filter(r=>r.priority>=80).every(r=>!!fact(r.subject,r.predicate)),next:queue.next};
+  const missingRequired=required.filter(r=>!fact(r.subject,r.predicate)).map(r=>r.id);
+  const sufficientForCurrentTasks=required.filter(r=>r.priority>=80).every(r=>!!fact(r.subject,r.predicate));
+  return {lastRunAt:state.model?.discovery?.lastRunAt||null,rules:DISCOVERY_RULES.length,required:required.length,covered,coverage:Math.round(covered/required.length*100),open:queue.open.length,deferred:queue.deferred.length,unknown:queue.unknown.length,missingRequired,sufficientForCurrentTasks,consistent:missingRequired.length===0||queue.open.length>0||queue.deferred.length>0||queue.unknown.length>0,next:queue.next};
  }
  async function load(){
   const [model,packs]=await Promise.all([
