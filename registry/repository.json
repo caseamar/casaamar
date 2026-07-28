@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
   "version": "1.12.0",
-  "release": "v2026.07.24.133",
-  "platform_version": "v2026.07.24.133",
-  "generated_at": "2026-07-28T07:44:53+02:00",
-  "updated_at": "2026-07-28T07:44:53+02:00",
+  "release": "v2026.07.24.134",
+  "platform_version": "v2026.07.24.134",
+  "generated_at": "2026-07-28T08:12:42+02:00",
+  "updated_at": "2026-07-28T08:12:42+02:00",
   "source": "deployment-manifest.json",
   "policies": {
     "complete_replace": true,
@@ -632,6 +632,41 @@
       "kind": "json",
       "area": "root",
       "critical": false
+    },
+    {
+      "path": "config/website.json",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "registry/recommendations.json",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "release-governance.json",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "core/casa-recommendations.js",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "core/casa-release-governance.js",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "recommendation-engine.html",
+      "critical": true,
+      "owner": "platform"
+    },
+    {
+      "path": "release-governance.html",
+      "critical": true,
+      "owner": "platform"
     }
   ]
 }

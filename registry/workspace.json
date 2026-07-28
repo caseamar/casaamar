@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
-  "version": "1.4.1",
-  "updated_at": "2026-07-28T07:44:53+02:00",
+  "version": "1.5.0",
+  "updated_at": "2026-07-28T08:12:42+02:00",
   "modules": [
     {
       "id": "website",
@@ -54,6 +54,24 @@
       "href": "#ai-workspace-insights",
       "status_source": "ai-workspace",
       "icon": "🤖"
+    },
+    {
+      "id": "recommendations",
+      "display_name": "AI Recommendations",
+      "description": "Vurder, acceptér, pause eller afvis AI-forslag.",
+      "href": "/recommendation-engine.html",
+      "status_source": "recommendation-engine",
+      "icon": "✨",
+      "subsystem_id": "recommendation-engine"
+    },
+    {
+      "id": "release-governance",
+      "display_name": "Release Governance",
+      "description": "Se selvvurdering og release readiness.",
+      "href": "/release-governance.html",
+      "status_source": "release-governance",
+      "icon": "🛡️",
+      "subsystem_id": "release-governance"
     }
   ],
   "quick_actions": [
@@ -114,6 +132,10 @@
     "review_queue_actionability",
     "publish_queue_readiness",
     "impact_analysis_contract",
-    "ai_action_contract"
+    "ai_action_contract",
+    "configuration_driven_validation",
+    "recommendation_human_approval",
+    "release_self_assessment",
+    "test_plan_implementation_parity"
   ]
 }

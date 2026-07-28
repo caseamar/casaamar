@@ -1,1 +1,3 @@
-v133 Content Operations Visibility Hotfix
+Casa Amar v134 – Configuration-driven Recommendations and Release Governance
+
+AI proposes; the user decides. Platform Doctor validates only configured rules. Release Governance requires a 100% self-assessment score.

@@ -45,7 +45,7 @@ main{max-width:1380px;margin:auto}
 })();
 </script>
 </head>
-<body data-expected-platform="v2026.07.24.133" data-expected-build="2026-07-28T07:44:53+02:00" id="top" data-canonical-mission-control="v2026.07.24.133">
+<body data-expected-platform="v2026.07.24.134" data-expected-build="2026-07-28T08:12:42+02:00" id="top" data-canonical-mission-control="v2026.07.24.134">
 <main>
 <section class="mc-hero" id="next-best-action">
  <article class="mc-focus">
@@ -103,7 +103,7 @@ main{max-width:1380px;margin:auto}
   <section class="workspace-panel" id="ai-workspace-insights"><h3>AI Insights</h3><div id="workspaceInsights">Analyserer platformen…</div></section>
   <section class="workspace-panel"><h3>Hurtige handlinger</h3><div class="workspace-actions" id="workspaceActions"></div></section>
  </div>
- <section class="workspace-queues" id="workspace-queues" aria-labelledby="workspaceQueuesTitle">
+ <div class="workspace-panel" style="margin-top:18px"><h3>Configuration-driven AI</h3><p>Platform Doctor validerer kun regler, der er aktiveret i konfigurationen. AI-forslag ændrer aldrig setup uden din godkendelse.</p><div class="workspace-actions"><a href="/recommendation-engine.html">Åbn AI Recommendations</a><a href="/release-governance.html">Se Release Readiness</a></div></div><section class="workspace-queues" id="workspace-queues" aria-labelledby="workspaceQueuesTitle">
   <header><div><div class="rc-section-kicker">Content Operations · <span id="contentOperationsVersion">indlæser…</span></div><h3 id="workspaceQueuesTitle">Arbejdskøer</h3></div><a href="/content-studio.html#operations">Åbn Content Studio</a></header>
   <div class="workspace-queue-grid" id="workspaceQueueGrid"><div class="workspace-queue-card"><small>Status</small><strong>Indlæser…</strong></div></div>
   <p class="workspace-queue-note">Kladder og review-opgaver er forventet arbejdsstatus og er ikke en teknisk platformfejl.</p>
@@ -243,7 +243,7 @@ main{max-width:1380px;margin:auto}
 </section>
 
 <section class="rc-canonical-banner" aria-label="Aktuel Mission Control-version">
- <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.133</strong></div>
+ <div><span>Aktuel Mission Control</span><strong data-platform-version>v2026.07.24.134</strong></div>
  <div><span>Bygget</span><strong data-platform-build>Indlæser…</strong></div>
  <div><span>Worker</span><strong data-worker-version>15.7-decision-engine</strong></div>
  <p>Historiske versionsnumre længere nede tilhører tidligere udgivelser og er ikke den platform, du bruger nu.</p>
@@ -379,24 +379,26 @@ main{max-width:1380px;margin:auto}
  <div id="publishLog" class="operation-log" hidden></div>
 </section>
 </main>
-<script src="/platform-shell.js?v=20260724.133"></script>
-<script src="/core/casa-core.js?v=20260724.133"></script>
-<script src="/core/casa-audit.js?v=20260724.133"></script>
-<script src="/core/casa-events.js?v=20260724.133"></script>
-<script src="/core/casa-contracts.js?v=20260724.133"></script>
-<script src="/core/casa-diagnostics.js?v=20260724.133"></script>
-<script src="/core/casa-subsystem-registry.js?v=20260724.133"></script>
-<script src="/core/casa-repository.js?v=20260724.133"></script>
-<script src="/core/casa-content.js?v=20260724.133"></script>
-<script src="/core/casa-knowledge-graph.js?v=20260724.133"></script>
-<script src="/core/casa-assets.js?v=20260724.133"></script>
-<script src="/core/casa-experience.js?v=20260724.133"></script>
-<script src="/core/casa-workspace.js?v=20260724.133"></script>
-<script src="/core/casa-content-studio.js?v=20260724.133"></script><script src="/core/casa-content-operations.js?v=20260724.133"></script>
-<script src="/core/casa-brain.js?v=20260724.133"></script>
-<script src="/core/casa-config.js?v=20260724.133"></script>
-<script src="/core/casa-governance.js?v=20260724.133"></script>
-<script src="/core/casa-decision.js?v=20260724.133"></script>
+<script src="/platform-shell.js?v=20260724.134"></script>
+<script src="/core/casa-core.js?v=20260724.134"></script>
+<script src="/core/casa-audit.js?v=20260724.134"></script>
+<script src="/core/casa-events.js?v=20260724.134"></script>
+<script src="/core/casa-contracts.js?v=20260724.134"></script>
+<script src="/core/casa-diagnostics.js?v=20260724.134"></script>
+<script src="/core/casa-subsystem-registry.js?v=20260724.134"></script>
+<script src="/core/casa-repository.js?v=20260724.134"></script>
+<script src="/core/casa-content.js?v=20260724.134"></script>
+<script src="/core/casa-knowledge-graph.js?v=20260724.134"></script>
+<script src="/core/casa-assets.js?v=20260724.134"></script>
+<script src="/core/casa-experience.js?v=20260724.134"></script>
+<script src="/core/casa-workspace.js?v=20260724.134"></script>
+<script src="/core/casa-content-studio.js?v=20260724.134"></script><script src="/core/casa-content-operations.js?v=20260724.134"></script>
+<script src="/core/casa-recommendations.js?v=20260724.134"></script>
+<script src="/core/casa-release-governance.js?v=20260724.134"></script>
+<script src="/core/casa-brain.js?v=20260724.134"></script>
+<script src="/core/casa-config.js?v=20260724.134"></script>
+<script src="/core/casa-governance.js?v=20260724.134"></script>
+<script src="/core/casa-decision.js?v=20260724.134"></script>
 <script>
 const q=s=>document.querySelector(s);
 const localJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
@@ -560,7 +562,7 @@ async function buildPublishFiles(){
   release_id:releaseId,
   release_schema:RELEASE_SCHEMA_CURRENT,
   builder_version:RELEASE_ENGINE_VERSION,
-  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.133",
+  platform_version:window.CASA_PLATFORM_MANIFEST?.platform_version||"v2026.07.24.134",
   worker_version:window.CASA_PLATFORM_MANIFEST?.worker_version||"15.7-decision-engine",
   content_version:contentVersion,
   change_count:changeDescriptions.length,

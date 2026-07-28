@@ -1,12 +1,13 @@
 {
-  "release": "v2026.07.24.133",
-  "name": "Content Operations Visibility Hotfix",
-  "build_completed_at": "2026-07-28T07:44:53+02:00",
-  "summary": "Makes Content Operations visible in Mission Control and clarifies that draft workspace state is expected content work, not a technical platform failure.",
-  "test_focus": [
-    "Verify Work Queues are visible in Mission Control",
-    "Open Content Studio directly at the Work Queues section",
-    "Verify draft workspace status includes an explanation and action link",
-    "Run Platform Doctor and confirm only expected content attention is shown"
-  ]
+  "platform_version": "v2026.07.24.134",
+  "release_name": "Configuration-driven Recommendations and Release Governance",
+  "generated_at": "2026-07-28T08:12:42+02:00",
+  "summary": "Adds configuration-driven language validation, human-controlled AI recommendations, and mandatory release self-assessment.",
+  "features": [
+    "Website Configuration",
+    "Recommendation Engine",
+    "Release Governance",
+    "100% release readiness gate"
+  ],
+  "release": "v2026.07.24.134"
 }

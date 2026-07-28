@@ -13,9 +13,9 @@ const workerPlatform=worker.match(/platform_version:\s*"([^"]+)"/)?.[1];
 const workerVersion=worker.match(/worker_version:\s*"([^"]+)"/)?.[1];
 check(workerPlatform===manifest.platform_version,`Worker platform identity = ${manifest.platform_version}`);
 check(workerVersion===manifest.worker_version,`Worker version identity = ${manifest.worker_version}`);
-const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio','content-operations':'content_operations'};
+const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio','content-operations':'content_operations','website-configuration':'website_configuration','recommendation-engine':'recommendation_engine','release-governance':'release_governance'};
 for(const item of registry.subsystems){const key=mapping[item.id]; const mv=key==='platform_version'?manifest[key]:manifest[key]?.version; check(Boolean(key)&&item.version===mv,`${item.display_name} registry version matches manifest (${item.version})`)}
-const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio','core/casa-content-operations.js':'content-operations'};
+const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio','core/casa-content-operations.js':'content-operations','core/casa-recommendations.js':'recommendation-engine','core/casa-release-governance.js':'release-governance'};
 for(const [file,id] of Object.entries(moduleFiles)){const v=read(file).match(/const VERSION="([^"]+)"/)?.[1]; const rv=registry.subsystems.find(x=>x.id===id)?.version; check(v===rv,`${file} version matches registry (${v})`)}
 const current=manifest.platform_version.match(/^v(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/); check(Boolean(current),'Platform version format is valid'); const cache=current?`${current[1]}${current[2]}${current[3]}.${current[4]}`:'';
 const deployExt=new Set(['.html','.js']);
@@ -228,6 +228,31 @@ check(controlHtml.includes('renderWorkspaceQueues'),'Mission Control loads Conte
 check(read('core/casa-core.js').includes('forventet arbejdsstatus'),'Draft workspace state is explained as expected work, not a technical failure');
 check(read('core/casa-core.js').includes('action_href:"/content-studio.html#operations"'),'Workspace attention check has an actionable destination');
 check(contentStudioHtml.includes('id="operations"'),'Content Studio work queues have a stable anchor');
+
+
+// v134 configuration-driven recommendations and release governance gates
+const websiteConfig=json('config/website.json');
+check(websiteConfig.default_language==='da','Website Configuration default language is Danish');
+check(Array.isArray(websiteConfig.enabled_languages)&&websiteConfig.enabled_languages.length===1&&websiteConfig.enabled_languages[0]==='da','Only configured languages are validated');
+check(websiteConfig.translation_policy.validate_only_enabled_languages===true,'Translation validation is configuration-driven');
+check(websiteConfig.translation_policy.ai_may_enable_languages===false,'AI cannot enable languages automatically');
+check(websiteConfig.translation_policy.human_approval_required===true,'Language activation requires human approval');
+const recommendations=json('registry/recommendations.json');
+for(const recommendation of recommendations.recommendations||[]){
+ check(Boolean(recommendation.id&&recommendation.title&&recommendation.reason&&recommendation.expected_benefit),'Recommendation is explainable and complete');
+ check(Array.isArray(recommendation.actions)&&['accept','pause','reject','review_later'].every(x=>recommendation.actions.includes(x)),'Recommendation exposes complete human decision lifecycle');
+ check(recommendation.automatic_execution===false,'Recommendation cannot execute automatically');
+}
+check(fs.existsSync(path.join(root,'recommendation-engine.html')),'Recommendation Engine dashboard exists');
+check(read('recommendation-engine.html').includes('AI foreslår. Du beslutter.'),'Recommendation dashboard communicates human control');
+const governance=json('release-governance.json');
+check(governance.self_assessment.score===100,'Release Governance self-assessment score is 100%');
+check(governance.approval_policy.block_on_failure===true,'Release Governance blocks failed releases');
+check(governance.approval_policy.human_review_required===true,'Release Governance requires human review');
+check(governance.categories.every(x=>x.status==='pass'),'All Release Governance categories pass');
+check(fs.existsSync(path.join(root,'release-governance.html')),'Release Governance dashboard exists');
+check(read('control/index.html').includes('/recommendation-engine.html'),'AI Workspace links to Recommendation Engine');
+check(read('control/index.html').includes('/release-governance.html'),'AI Workspace links to Release Governance');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

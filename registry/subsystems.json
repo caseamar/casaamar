@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.7.0",
-  "updated_at": "2026-07-28T07:44:53+02:00",
+  "version": "2.8.0",
+  "updated_at": "2026-07-28T08:12:42+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.133",
+      "version": "v2026.07.24.134",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -51,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "2.10.1",
+      "version": "3.0.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -99,7 +99,7 @@
     {
       "id": "diagnostics",
       "display_name": "Diagnostics Framework",
-      "version": "1.20.0",
+      "version": "1.21.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "diagnostics_framework",
@@ -111,7 +111,7 @@
     {
       "id": "configuration",
       "display_name": "Configuration Service",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "owner": "Platform Core",
       "status_source": "module",
       "manifest_key": "configuration_service",
@@ -147,7 +147,7 @@
     {
       "id": "platform-contracts",
       "display_name": "Platform Contracts",
-      "version": "1.18.0",
+      "version": "1.19.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "platform_contracts",
@@ -159,7 +159,7 @@
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "2.7.0",
+      "version": "2.8.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
@@ -183,7 +183,7 @@
     {
       "id": "repository-intelligence",
       "display_name": "Repository Intelligence",
-      "version": "1.12.0",
+      "version": "1.13.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "repository_intelligence",
@@ -246,7 +246,7 @@
     {
       "id": "ai-workspace",
       "display_name": "AI Workspace",
-      "version": "1.4.1",
+      "version": "1.5.0",
       "owner": "AI Workspace",
       "status_source": "module",
       "manifest_key": "ai_workspace",
@@ -278,6 +278,44 @@
       "dashboard": true,
       "dashboard_entry": "/content-studio.html#operations",
       "workspace_entry": "/content-studio.html#operations"
+    },
+    {
+      "id": "website-configuration",
+      "display_name": "Website Configuration",
+      "version": "1.0.0",
+      "owner": "Platform Configuration",
+      "status_source": "configuration",
+      "manifest_key": "website_configuration",
+      "entry": "/config/website.json",
+      "description": "Configuration-driven language, translation and publication policy.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
+    },
+    {
+      "id": "recommendation-engine",
+      "display_name": "Recommendation Engine",
+      "version": "1.0.0",
+      "owner": "AI Workspace",
+      "status_source": "module",
+      "manifest_key": "recommendation_engine",
+      "entry": "/core/casa-recommendations.js",
+      "description": "Explainable AI recommendations with human accept, pause, reject and later-review decisions.",
+      "dashboard": true,
+      "dashboard_entry": "/recommendation-engine.html",
+      "workspace_entry": "/recommendation-engine.html"
+    },
+    {
+      "id": "release-governance",
+      "display_name": "Release Governance",
+      "version": "1.0.0",
+      "owner": "Platform Governance",
+      "status_source": "module",
+      "manifest_key": "release_governance",
+      "entry": "/core/casa-release-governance.js",
+      "description": "Self-assessment, quality gates and release approval policy.",
+      "dashboard": true,
+      "dashboard_entry": "/release-governance.html",
+      "workspace_entry": "/release-governance.html"
     }
   ]
 }

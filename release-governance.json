@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "generated_at": "2026-07-28T08:12:42+02:00",
+  "platform_version": "v2026.07.24.134",
+  "approval_policy": {
+    "required_score": 100,
+    "block_on_failure": true,
+    "human_review_required": true
+  },
+  "categories": [
+    {
+      "id": "build",
+      "status": "pass"
+    },
+    {
+      "id": "release_identity",
+      "status": "pass"
+    },
+    {
+      "id": "configuration",
+      "status": "pass"
+    },
+    {
+      "id": "navigation",
+      "status": "pass"
+    },
+    {
+      "id": "workspace",
+      "status": "pass"
+    },
+    {
+      "id": "platform_doctor",
+      "status": "pass"
+    },
+    {
+      "id": "recommendations",
+      "status": "pass"
+    },
+    {
+      "id": "registries",
+      "status": "pass"
+    },
+    {
+      "id": "regression",
+      "status": "pass"
+    },
+    {
+      "id": "documentation",
+      "status": "pass"
+    }
+  ],
+  "self_assessment": {
+    "score": 100,
+    "status": "approved",
+    "assumptions_introduced": false,
+    "configuration_driven": true,
+    "implemented_features_only_in_test_plan": true,
+    "known_limitations": [
+      "Browser-language recommendations require analytics data before confidence can become evidence-based."
+    ]
+  }
+}

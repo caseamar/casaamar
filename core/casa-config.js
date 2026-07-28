@@ -1,7 +1,7 @@
 
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  const MANIFEST_URL="/config/configuration-manifest.json";
  let state=null;
  let loading=null;
