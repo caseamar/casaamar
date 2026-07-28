@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.155",
-  "build": "2026-07-28T14:23:15+02:00",
-  "worker_version": "15.42-capability-intelligence-loader-hotfix",
-  "release_name": "Capability Intelligence Loader Hotfix",
-  "generated_at": "2026-07-28T14:23:15+02:00",
+  "platform_version": "v2026.07.24.156",
+  "build": "2026-07-28T14:30:00+02:00",
+  "worker_version": "15.43-verification-governance-foundation",
+  "release_name": "Verification Governance Foundation",
+  "generated_at": "2026-07-28T14:30:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T14:23:15+02:00"
+    "build": "2026-07-28T14:30:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.8.0",
+    "version": "3.9.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -134,7 +134,8 @@
       "learning_registry_consistency",
       "ai_service_layer",
       "platform_integrity",
-      "event_platform"
+      "event_platform",
+      "verification_governance"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -256,7 +257,7 @@
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.8.0",
+    "version": "3.9.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -322,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.155",
+    "asset_cache_key": "20260724.156",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -641,5 +642,19 @@
     "status": "active",
     "impact_analysis": "explainable",
     "architecture_graph": "active"
+  },
+  "verification_governance": {
+    "version": "1.0.0",
+    "entry": "/core/casa-verification-governance.js",
+    "registry": "/registry/verification-profiles.json",
+    "verdicts": [
+      "verified",
+      "verified_manual_review",
+      "incomplete_evidence",
+      "failed"
+    ],
+    "mutation_testing": true,
+    "browser_runtime_testing": true,
+    "deployment_smoke_policy": true
   }
 }

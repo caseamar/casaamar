@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "3.8.0",
-  "updated_at": "2026-07-28T14:23:15+02:00",
+  "version": "3.9.0",
+  "updated_at": "2026-07-28T14:30:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.155",
+      "version": "v2026.07.24.156",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -51,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "3.8.0",
+      "version": "3.9.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -162,7 +162,7 @@
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "3.8.0",
+      "version": "3.9.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
@@ -439,6 +439,20 @@
       "description": "Self-describing capability graph, dependency traversal and explainable change-impact analysis.",
       "dashboard": true,
       "dashboard_entry": "/release-governance.html#capability-intelligence"
+    },
+    {
+      "id": "verification-governance",
+      "display_name": "Verification Governance",
+      "version": "1.0.0",
+      "owner": "Platform Quality",
+      "status": "healthy",
+      "entry": "/core/casa-verification-governance.js",
+      "registry": "/registry/verification-profiles.json",
+      "description": "Derives and enforces required verification levels for capabilities, user flows and runtime integrations.",
+      "status_source": "module",
+      "manifest_key": "verification_governance",
+      "dashboard": true,
+      "dashboard_entry": "/release-governance.html#verification-governance"
     }
   ]
 }

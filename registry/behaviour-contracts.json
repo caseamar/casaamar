@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.1.0",
-  "updated_at": "2026-07-28T14:23:15+02:00",
+  "updated_at": "2026-07-28T14:30:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -495,7 +495,89 @@
         "tools/experience-context-test.mjs"
       ],
       "manual_review": []
+    },
+    {
+      "id": "verification-governance-complete-evidence",
+      "capability": "platform.verification-governance",
+      "version": "1.0.0",
+      "description": "A release verdict must be based on observed behaviour and complete evidence, not only structural presence.",
+      "dependencies": [
+        "/registry/verification-profiles.json",
+        "/tools/verification-governance-test.mjs",
+        "/tools/rendered-runtime-integration-test.mjs",
+        "/tools/mutation-resistance-test.mjs"
+      ],
+      "impact_areas": [
+        "release-governance",
+        "platform-intelligence",
+        "all-user-visible-runtimes"
+      ],
+      "evidence": [
+        "tools/verification-governance-test.mjs",
+        "tools/mutation-resistance-test.mjs",
+        "tools/rendered-runtime-integration-test.mjs"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "derive-required-suites",
+          "given": "A capability declares runtime, risk and visibility metadata",
+          "when": "Verification Governance evaluates the capability",
+          "then": "All mandatory test levels are derived and required before release"
+        },
+        {
+          "id": "observe-user-visible-runtime",
+          "given": "A user-visible asynchronous capability is changed",
+          "when": "The release suite runs",
+          "then": "A real browser observes loading settle into success, empty, error or timeout"
+        },
+        {
+          "id": "detect-weakened-integration",
+          "given": "A critical integration dependency is removed or renamed",
+          "when": "Mutation resistance tests run",
+          "then": "At least one verification test fails and the mutation is rejected"
+        },
+        {
+          "id": "fail-closed-on-missing-evidence",
+          "given": "A required test cannot run or its evidence is absent",
+          "when": "A release verdict is calculated",
+          "then": "The verdict is incomplete_evidence and the release is not approved"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "loading-is-not-pass",
+          "given": "A user-visible component remains in loading state",
+          "then": "The release cannot be marked verified"
+        },
+        {
+          "id": "structure-alone-is-not-proof",
+          "given": "Files, functions and containers exist but runtime behaviour is not observed",
+          "then": "The capability cannot be marked verified"
+        },
+        {
+          "id": "unknown-is-not-pass",
+          "given": "Verification outcome is unknown or inconclusive",
+          "then": "The result is incomplete_evidence rather than pass"
+        },
+        {
+          "id": "manual-review-not-hidden",
+          "given": "A quality judgement requires human assessment",
+          "then": "It is explicitly classified as manual review and never reported as automated verification"
+        }
+      ],
+      "owner": "Platform Quality",
+      "entrypoints": [
+        "/release-governance.html"
+      ],
+      "automated_evidence": [
+        "tools/verification-governance-test.mjs",
+        "tools/mutation-resistance-test.mjs",
+        "tools/rendered-runtime-integration-test.mjs"
+      ],
+      "manual_review": [
+        "experience-quality-and-content-judgement"
+      ]
     }
   ],
-  "platform_version": "v2026.07.24.155"
+  "platform_version": "v2026.07.24.156"
 }

@@ -430,8 +430,34 @@
         "dependency-traversal",
         "architecture-explanation"
       ]
+    },
+    {
+      "id": "platform.verification-governance",
+      "display_name": "Verification Governance",
+      "owner": "Platform Quality",
+      "status": "active",
+      "version": "1.0.0",
+      "dependencies": [
+        "behaviour-governance",
+        "engineering-governance",
+        "release-governance",
+        "platform.capability-intelligence"
+      ],
+      "consumers": [
+        "platform-doctor",
+        "release-governance",
+        "platform-intelligence"
+      ],
+      "contracts": [
+        "verification-profile",
+        "runtime-state-contract",
+        "evidence-verdict"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.155"
+  "platform_version": "v2026.07.24.156",
+  "updated_at": "2026-07-28T14:30:00+02:00"
 }

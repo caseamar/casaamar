@@ -1,9 +1,9 @@
 {
-  "release": "v2026.07.24.155",
-  "name": "Capability Intelligence Loader Hotfix",
-  "platform_version": "v2026.07.24.155",
-  "build": "2026-07-28T14:23:15+02:00",
-  "summary": "Self-describing capability graph with explainable dependency and change-impact analysis.",
+  "release": "v2026.07.24.156",
+  "name": "Verification Governance Foundation",
+  "platform_version": "v2026.07.24.156",
+  "build": "2026-07-28T14:30:00+02:00",
+  "summary": "Introduces a platform-wide verification architecture that derives required test levels, detects weakened integrations through mutation testing, and proves rendered runtime outcomes before release.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
     "Capability Intelligence v1.0.0",
@@ -15,5 +15,14 @@
     "Release-tjek Capability Intelligence card",
     "Workspace return flow",
     "Public website smoke test"
+  ],
+  "title": "Verification Governance Foundation",
+  "highlights": [
+    "Verification Governance v1.0.0",
+    "Capability-based verification profiles",
+    "Deterministic rendered runtime integration tests",
+    "Mutation resistance for critical integrations",
+    "Fail-closed verdicts for incomplete evidence",
+    "Platform Constitution Article 16 – Evidence before approval"
   ]
 }

@@ -1,4 +1,4 @@
 Release v155
-Capability Intelligence Loader Hotfix
+Verification Governance Foundation
 
 Fixes the Release Governance integration so Capability Intelligence loads, assesses the Platform Knowledge Graph and renders an explicit success or failure state. Adds regression tests for runtime inclusion, invocation and visible error handling.

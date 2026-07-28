@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-28T14:23:15+02:00",
-  "platform_version": "v2026.07.24.155",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28T14:30:00+02:00",
+  "platform_version": "v2026.07.24.156",
   "status": "pass",
   "score": 100,
   "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
@@ -88,8 +88,8 @@
       "status": "pass",
       "because": "Manifest, Worker, registry and release records share the current platform identity.",
       "evidence": [
-        "v2026.07.24.155",
-        "20260724.155"
+        "v2026.07.24.156",
+        "20260724.156"
       ]
     },
     {
@@ -103,6 +103,21 @@
       "evidence": [
         "registry/schema-registry.json",
         "tools/data-contracts-test.mjs"
+      ]
+    },
+    {
+      "id": "PI-009",
+      "article": "ARTICLE-16",
+      "label": "Complete verification evidence",
+      "mode": "automatic",
+      "severity": "blocker",
+      "status": "pass",
+      "because": "User-visible and critical runtime capabilities must declare and pass the verification suites derived from their profiles.",
+      "evidence": [
+        "registry/verification-profiles.json",
+        "tools/verification-governance-test.mjs",
+        "tools/rendered-runtime-integration-test.mjs",
+        "tools/mutation-resistance-test.mjs"
       ]
     }
   ],
@@ -118,8 +133,8 @@
     }
   },
   "summary": {
-    "rules_total": 8,
-    "rules_passed": 8,
+    "rules_total": 9,
+    "rules_passed": 9,
     "rules_failed": 0,
     "manual_review": 0,
     "release_blocked": false

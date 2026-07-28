@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.155",
-  "target_release": "v2026.07.24.155",
+  "current_release": "v2026.07.24.156",
+  "target_release": "v2026.07.24.156",
   "current_epic": "Event Platform",
   "current_subsystem": "Event Platform Foundation",
-  "next_release": "v2026.07.24.155",
+  "next_release": "v2026.07.24.156",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -84,7 +84,7 @@
     "Content Studio end-to-end workflow",
     "Beta hardening"
   ],
-  "updated_at": "2026-07-28T14:23:15+02:00",
+  "updated_at": "2026-07-28T14:30:00+02:00",
   "current_focus": "Channel-neutral experience events",
-  "platform_version": "v2026.07.24.155"
+  "platform_version": "v2026.07.24.156"
 }

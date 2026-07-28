@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T14:30:00+02:00",
+  "platform_version": "v2026.07.24.156",
+  "policy": {
+    "user_visible_runtime_requires_browser_test": true,
+    "async_runtime_requires_terminal_state_tests": true,
+    "changed_capability_requires_impact_suite": true,
+    "missing_evidence_blocks_release": true,
+    "mutation_resistance_required_for_critical_integrations": true,
+    "deployment_smoke_required_for_public_routes": true,
+    "allowed_verdicts": [
+      "verified",
+      "verified_manual_review",
+      "incomplete_evidence",
+      "failed"
+    ],
+    "browser_test_environment": "required_in_ci_or_deployed_smoke",
+    "deterministic_rendered_runtime_required": true
+  },
+  "state_contract": [
+    "idle",
+    "loading",
+    "success",
+    "empty",
+    "error",
+    "timeout"
+  ],
+  "profiles": [
+    {
+      "id": "release-governance-runtime",
+      "capability": "release-governance",
+      "runtime": "browser",
+      "async": true,
+      "user_visible": true,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "browser",
+        "negative",
+        "mutation",
+        "platform-impact",
+        "deployment-smoke",
+        "rendered-runtime"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
+    },
+    {
+      "id": "capability-intelligence-runtime",
+      "capability": "platform.capability-intelligence",
+      "runtime": "browser",
+      "async": true,
+      "user_visible": true,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "integration",
+        "browser",
+        "negative",
+        "mutation",
+        "platform-impact",
+        "rendered-runtime"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
+    },
+    {
+      "id": "event-platform-runtime",
+      "capability": "platform.event-platform",
+      "runtime": "javascript",
+      "async": true,
+      "user_visible": false,
+      "risk": "medium",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "negative",
+        "platform-impact"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
+    },
+    {
+      "id": "experience-context-runtime",
+      "capability": "platform.experience-context",
+      "runtime": "javascript",
+      "async": false,
+      "user_visible": false,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "component",
+        "negative",
+        "privacy",
+        "platform-impact"
+      ],
+      "terminal_states": [
+        "success",
+        "error"
+      ]
+    }
+  ],
+  "summary": {
+    "profiles": 4,
+    "browser_required": 2,
+    "mutation_required": 2,
+    "deployment_smoke_required": 1,
+    "missing_required_suites": 0,
+    "status": "verified",
+    "rendered_runtime_required": 2,
+    "browser_execution_status": "manual_deployed_verification"
+  }
+}

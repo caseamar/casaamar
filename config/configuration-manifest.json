@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "platform_version": "v2026.07.24.155",
+  "platform_version": "v2026.07.24.156",
   "default_tenant": "casa-amar",
   "sources": {
     "platform": "/platform-manifest.json",
@@ -18,7 +18,8 @@
     "hospitality_intelligence": "/config/hospitality-intelligence.json",
     "design_system": "/config/design-system.json",
     "decisions": "/registry/decisions.json",
-    "website": "/config/website.json"
+    "website": "/config/website.json",
+    "verification_profiles": "/registry/verification-profiles.json"
   },
   "rules": {
     "single_entry_point": "/core/casa-config.js",
@@ -26,5 +27,5 @@
     "tenant_overrides_platform": true,
     "unknown_keys_fail_closed": true
   },
-  "updated_at": "2026-07-28T14:23:15+02:00"
+  "updated_at": "2026-07-28T14:30:00+02:00"
 }
