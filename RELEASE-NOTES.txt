@@ -1,3 +1,6 @@
-v183 – Guided Work Automatic Completion
+Casa Amar v184 – Guided Work Completion State Recovery
 
-Guided improvement flows now end automatically when the final task is completed. The redundant Stop flow action is removed from the completed state, finished work is collapsed into a compact summary, and the platform presents the next relevant step: review and publish saved drafts.
+Fixes stale guided-flow state after all tasks are already completed.
+The guided progress bar is now shown only while at least one task remains.
+Persisted batches whose tasks are already completed are automatically reconciled, closed and converted into a completion receipt.
+Adds executable regression coverage for stale browser state and automatic completion.

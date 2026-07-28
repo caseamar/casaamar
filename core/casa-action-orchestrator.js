@@ -1,5 +1,5 @@
 (()=>{
- const VERSION='2.1.0', KEY='casa.action-orchestrator.v1', BATCH_COMPLETION_KEY='casa.action-batch-completion'; let config=null;
+ const VERSION='2.2.0', KEY='casa.action-orchestrator.v1', BATCH_COMPLETION_KEY='casa.action-batch-completion'; let config=null;
  const clone=x=>JSON.parse(JSON.stringify(x));
  const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{"actions":[],"history":[]}')}catch{return {actions:[],history:[]}}};
  const write=s=>{localStorage.setItem(KEY,JSON.stringify(s));return s};
@@ -19,7 +19,8 @@
  function startBatch(ids=[],{returnTo='/domain-intelligence.html#impact'}={}){const pending=[...new Set(ids)].filter(id=>{const a=get(id);return a&&['ready','deferred'].includes(a.status)});if(!pending.length)throw new Error('Der er ingen åbne forbedringer at starte');localStorage.setItem('casa.action-batch',JSON.stringify({pending,completed:[],startedAt:new Date().toISOString(),returnTo}));return execute(pending[0],{returnTo})}
  function continueBatch(){const b=getBatch();if(!b||!b.pending?.length)return null;return execute(b.pending[0],{returnTo:b.returnTo||'/domain-intelligence.html#impact'})}
  function cancelBatch(){localStorage.removeItem('casa.action-batch')}
- function batchProgress(){const b=getBatch();if(!b)return null;const total=(b.pending?.length||0)+(b.completed?.length||0);return {total,completed:b.completed?.length||0,remaining:b.pending?.length||0,current:b.pending?.[0]||null}} 
+ function reconcileBatch(){const b=getBatch();if(!b)return null;const actions=read().actions||[];const byId=new Map(actions.map(a=>[a.id,a]));const completed=[...new Set([...(b.completed||[]),...(b.pending||[]).filter(id=>byId.get(id)?.status==='completed')])];const pending=[...new Set((b.pending||[]).filter(id=>{const status=byId.get(id)?.status;return status&&['ready','deferred','in_progress'].includes(status)}))];const total=Math.max((b.pending?.length||0)+(b.completed?.length||0),pending.length+completed.length);if(!pending.length){localStorage.removeItem('casa.action-batch');if(total>0&&!localStorage.getItem(BATCH_COMPLETION_KEY)){localStorage.setItem(BATCH_COMPLETION_KEY,JSON.stringify({total,completed,startedAt:b.startedAt,finishedAt:new Date().toISOString(),returnTo:b.returnTo||'/domain-intelligence.html#impact'}))}return null}const next={...b,pending,completed};localStorage.setItem('casa.action-batch',JSON.stringify(next));return next}
+ function batchProgress(){const b=reconcileBatch();if(!b)return null;const total=(b.pending?.length||0)+(b.completed?.length||0);return {total,completed:b.completed?.length||0,remaining:b.pending?.length||0,current:b.pending?.[0]||null}} 
  function snapshot(){const a=read().actions;return {version:VERSION,status:config?'verified':'not_loaded',total:a.length,ready:a.filter(x=>x.status==='ready').length,inProgress:a.filter(x=>x.status==='in_progress').length,deferred:a.filter(x=>x.status==='deferred').length,completed:a.filter(x=>x.status==='completed').length,rejected:a.filter(x=>x.status==='rejected').length}}
- window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,consumeBatchCompletion,getBatch,startBatch,continueBatch,cancelBatch,batchProgress,snapshot};
+ window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,consumeBatchCompletion,getBatch,startBatch,continueBatch,cancelBatch,batchProgress,reconcileBatch,snapshot};
 })();

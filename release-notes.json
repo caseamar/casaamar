@@ -1,9 +1,9 @@
 {
-  "release": "v2026.07.24.183",
+  "release": "v2026.07.24.184",
   "name": "Guided Work Automatic Completion",
-  "platform_version": "v2026.07.24.183",
+  "platform_version": "v2026.07.24.184",
   "build": "2026-07-28T23:32:00+02:00",
-  "summary": "Guided work now closes automatically after the final task, summarizes completed improvements and presents the next relevant publishing step.",
+  "summary": "Automatically closes stale guided flows when all tasks are already completed and hides Stop flow when no work remains.",
   "changes": [
     "Automatic batch completion",
     "Compact completed-task summary",
@@ -17,7 +17,7 @@
     "Confirm completion summary and publishing CTA",
     "Public website smoke test"
   ],
-  "title": "Guided Work Automatic Completion",
+  "title": "Guided Work Completion State Recovery",
   "highlights": [
     "No redundant completion click",
     "Guided batch state closes automatically",

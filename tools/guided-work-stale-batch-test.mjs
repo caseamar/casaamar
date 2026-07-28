@@ -1,0 +1,15 @@
+import fs from 'node:fs';import vm from 'node:vm';
+const code=fs.readFileSync('core/casa-action-orchestrator.js','utf8');
+const store=new Map();
+const localStorage={getItem:k=>store.has(k)?store.get(k):null,setItem:(k,v)=>store.set(k,String(v)),removeItem:k=>store.delete(k)};
+const context={window:{},localStorage,sessionStorage:{setItem(){}},fetch:async()=>({ok:true,json:async()=>({workspace_routes:{'guided-work':'/guided-work.html'}})}),location:{},URLSearchParams,Date,JSON,Map,Set,console};context.window=context;
+vm.createContext(context);vm.runInContext(code,context);
+localStorage.setItem('casa.action-orchestrator.v1',JSON.stringify({actions:[{id:'a1',key:'k1',title:'T1',targetWorkspace:'guided-work',status:'completed'},{id:'a2',key:'k2',title:'T2',targetWorkspace:'guided-work',status:'completed'},{id:'a3',key:'k3',title:'T3',targetWorkspace:'guided-work',status:'completed'}],history:[]}));
+localStorage.setItem('casa.action-batch',JSON.stringify({pending:['a1','a2','a3'],completed:[],startedAt:'2026-01-01T00:00:00Z',returnTo:'/domain-intelligence.html#impact'}));
+const progress=context.CasaActionOrchestrator.batchProgress();
+if(progress!==null)throw new Error('Et fuldført stale batch må ikke vises som aktivt flow');
+if(localStorage.getItem('casa.action-batch')!==null)throw new Error('Fuldført stale batch skal fjernes automatisk');
+if(!localStorage.getItem('casa.action-batch-completion'))throw new Error('Automatisk afslutning skal oprette completion-kvittering');
+const html=fs.readFileSync('domain-intelligence.html','utf8');
+if(!/const active=!!\(p&&p\.remaining>0\)/.test(html))throw new Error('Guided bar skal kræve mindst én resterende opgave');
+console.log('Guided Work stale batch: 4 kontroller bestået.');
