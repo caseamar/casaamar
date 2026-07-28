@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
-  "version": "1.4.0",
-  "updated_at": "2026-07-28T00:04:37+02:00",
+  "version": "1.4.1",
+  "updated_at": "2026-07-28T07:44:53+02:00",
   "modules": [
     {
       "id": "website",

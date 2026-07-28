@@ -1,13 +1,12 @@
 {
-  "release": "v2026.07.24.132",
-  "name": "Content Operations Foundation",
-  "build_completed_at": "2026-07-28T00:04:37+02:00",
-  "summary": "Adds operational content, review and publication queues with impact analysis and AI-ready actions.",
+  "release": "v2026.07.24.133",
+  "name": "Content Operations Visibility Hotfix",
+  "build_completed_at": "2026-07-28T07:44:53+02:00",
+  "summary": "Makes Content Operations visible in Mission Control and clarifies that draft workspace state is expected content work, not a technical platform failure.",
   "test_focus": [
-    "Open Content Studio from AI Workspace",
-    "Verify Content, Review and Publish queues",
-    "Open a queue item and confirm the page detail opens",
-    "Verify Publish Queue shows blockers and impact",
-    "Run Platform Doctor and confirm healthy status"
+    "Verify Work Queues are visible in Mission Control",
+    "Open Content Studio directly at the Work Queues section",
+    "Verify draft workspace status includes an explanation and action link",
+    "Run Platform Doctor and confirm only expected content attention is shown"
   ]
 }

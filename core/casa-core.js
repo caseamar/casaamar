@@ -169,7 +169,7 @@
     {id:"core",label:"Casa Amar Core",status:"ok",detail:`v${VERSION}`},
     {id:"platform",label:"Platform",status:manifest.platform_version?"ok":"warning",detail:manifest.platform_version||"Ukendt"},
     {id:"worker",label:"Worker",status:manifest.worker_version?"ok":"warning",detail:manifest.worker_version||"Ukendt"},
-    {id:"workspace",label:"Arbejdsstatus",status:workspace.status==="idle"?"ok":"attention",detail:workspace.status||"idle"},
+    {id:"workspace",label:"Arbejdsstatus",status:workspace.status==="idle"?"ok":"attention",detail:workspace.status==="idle"?"Ingen kladder eller ikke-udgivne ændringer":`${workspace.count||0} ikke-udgivne ændringer · forventet arbejdsstatus`,action_href:"/content-studio.html#operations",action_label:"Gennemgå arbejde"},
     {id:"release",label:"Aktiv indholdsudgivelse",status:release?.active===true?"attention":"ok",detail:release?.active===true?"I gang":"Ingen"},
     {id:"storage",label:"Central storage",status:"ok",detail:`${storage.list().length} stores`}
    ];

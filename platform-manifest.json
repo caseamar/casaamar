@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.132",
-  "build": "2026-07-28T00:04:37+02:00",
-  "worker_version": "15.21-content-operations",
-  "release_name": "Content Operations Foundation",
-  "generated_at": "2026-07-28T00:04:37+02:00",
+  "platform_version": "v2026.07.24.133",
+  "build": "2026-07-28T07:44:53+02:00",
+  "worker_version": "15.22-content-operations-visibility-hotfix",
+  "release_name": "Content Operations Visibility Hotfix",
+  "generated_at": "2026-07-28T07:44:53+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.10.0",
+    "version": "2.10.1",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -183,7 +183,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.19.0",
+    "version": "1.20.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -243,13 +243,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.17.0",
+    "version": "1.18.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "2.6.0",
+    "version": "2.7.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -282,7 +282,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.11.0",
+    "version": "1.12.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -306,7 +306,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.132",
+    "asset_cache_key": "20260724.133",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -421,7 +421,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.4.0",
+    "version": "1.4.1",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -456,7 +456,7 @@
     ]
   },
   "content_operations": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "entry": "/core/casa-content-operations.js",
     "registry": "/registry/content-operations.json",
     "queues": [

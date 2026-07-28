@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.132",
-  "platform_version": "v2026.07.24.132",
-  "generated_at": "2026-07-28T00:04:37+02:00",
+  "release": "v2026.07.24.133",
+  "platform_version": "v2026.07.24.133",
+  "generated_at": "2026-07-28T07:44:53+02:00",
   "strategy": "complete_replace",
   "preserve": [
     ".git/",
@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "RELEASE-NOTES.txt",
-      "size": 49
+      "size": 42
     },
     {
       "path": "_headers",
@@ -20,7 +20,7 @@
     },
     {
       "path": "_worker.js",
-      "size": 104525
+      "size": 104543
     },
     {
       "path": "asset-brief.html",
@@ -116,11 +116,11 @@
     },
     {
       "path": "content-studio.html",
-      "size": 8571
+      "size": 8721
     },
     {
       "path": "control/index.html",
-      "size": 90886
+      "size": 93681
     },
     {
       "path": "core/casa-assets.js",
@@ -156,7 +156,7 @@
     },
     {
       "path": "core/casa-core.js",
-      "size": 9453
+      "size": 9654
     },
     {
       "path": "core/casa-decision.js",
@@ -193,10 +193,6 @@
     {
       "path": "core/casa-workspace.js",
       "size": 5363
-    },
-    {
-      "path": "deployment-manifest.json",
-      "size": 7542
     },
     {
       "path": "experience-engine.html",
@@ -292,7 +288,7 @@
     },
     {
       "path": "platform-manifest.json",
-      "size": 12694
+      "size": 12719
     },
     {
       "path": "platform-shell.js",
@@ -360,7 +356,7 @@
     },
     {
       "path": "registry/repository.json",
-      "size": 13958
+      "size": 13332
     },
     {
       "path": "registry/subsystems.json",
@@ -380,15 +376,15 @@
     },
     {
       "path": "release-notes.json",
-      "size": 529
+      "size": 606
     },
     {
       "path": "release-quality-gate.json",
-      "size": 268
+      "size": 269
     },
     {
       "path": "release-validation.json",
-      "size": 1340
+      "size": 1272
     },
     {
       "path": "schemas/commerce-order.schema.json",
@@ -416,7 +412,7 @@
     },
     {
       "path": "tools/release-quality-gate.mjs",
-      "size": 22978
+      "size": 23950
     },
     {
       "path": "website-content.json",

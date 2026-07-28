@@ -211,12 +211,23 @@ for(const queueName of ['content','review','publish']){
  }
 }
 check(contentStudioHtml.includes('id="operations"'),'Content Studio exposes Content Operations');
-check(contentStudioHtml.includes('Content Queue'),'Content Studio exposes Content Queue');
-check(contentStudioHtml.includes('Review Queue'),'Content Studio exposes Review Queue');
-check(contentStudioHtml.includes('Publish Queue'),'Content Studio exposes Publish Queue');
+check(contentStudioHtml.includes('data-queue="content"'),'Content Studio exposes Content Queue');
+check(contentStudioHtml.includes('data-queue="review"'),'Content Studio exposes Review Queue');
+check(contentStudioHtml.includes('data-queue="publish"'),'Content Studio exposes Publish Queue');
 check(contentStudioHtml.includes('casa-content-operations.js'),'Content Studio loads Content Operations service');
 check(read('core/casa-content-operations.js').includes('impact.analysis'),'Content Operations exposes impact analysis capability');
 check(read('core/casa-content-operations.js').includes('ai.actions'),'Content Operations exposes AI action capability');
+
+
+// Content Operations visibility and workspace-state clarity regression gates
+const controlHtml=read('control/index.html');
+check(controlHtml.includes('id="workspace-queues"'),'Mission Control visibly exposes work queues');
+check(controlHtml.includes('id="workspaceQueueGrid"'),'Mission Control renders work queue metrics');
+check(controlHtml.includes('/content-studio.html#operations'),'Mission Control links directly to Content Operations');
+check(controlHtml.includes('renderWorkspaceQueues'),'Mission Control loads Content Operations data');
+check(read('core/casa-core.js').includes('forventet arbejdsstatus'),'Draft workspace state is explained as expected work, not a technical failure');
+check(read('core/casa-core.js').includes('action_href:"/content-studio.html#operations"'),'Workspace attention check has an actionable destination');
+check(contentStudioHtml.includes('id="operations"'),'Content Studio work queues have a stable anchor');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
