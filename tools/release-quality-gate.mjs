@@ -129,7 +129,7 @@ for(const [id,href] of Object.entries(operationalRoutes)){const module=workspace
 check(workspaceSource.includes('href:"/asset-intelligence.html"'),'Asset insight opens Asset Intelligence Dashboard');
 check(workspaceSource.includes('href:"/knowledge-graph.html"'),'Knowledge insight opens Knowledge Graph Dashboard');
 check(workspaceSource.includes('href:"/experience-engine.html"'),'Experience insight opens Experience Engine Dashboard');
-for(const page of Object.values(operationalRoutes)){const html=read(page.slice(1));check(html.includes('/control/#ai-workspace'),`Operational dashboard returns to AI Workspace (${page})`);check(html.includes('casa-amar-build'),`Operational dashboard carries build metadata (${page})`);}
+for(const page of Object.values(operationalRoutes)){const html=read(page.slice(1));check(html.includes('href="/control/"'),`Operational dashboard returns to AI Workspace (${page})`);check(html.includes('casa-amar-build'),`Operational dashboard carries build metadata (${page})`);}
 
 check(workspaceSource.includes('action_label'),'AI Insights expose an explicit action label');
 check(workspaceSource.includes('Årsager:'),'AI Insights explain causes for blocked assets');
@@ -173,7 +173,7 @@ for(const page of contentPages.pages||[]){
 }
 check(fs.existsSync(path.join(root,'content-studio.html')),'Content Studio dashboard exists');
 const contentStudioHtml=read('content-studio.html');
-check(contentStudioHtml.includes('/control/#ai-workspace'),'Content Studio returns to AI Workspace');
+check(contentStudioHtml.includes('href="/control/"'),'Content Studio returns to AI Workspace');
 check(contentStudioHtml.includes('id="pages"'),'Content Studio renders a page list');
 check(contentStudioHtml.includes('id="details"'),'Content Studio provides page details');
 check(contentStudioHtml.includes('AI Suggestions'),'Content Studio displays AI Suggestions');
@@ -306,18 +306,18 @@ check(controlHtml.includes("workspace-title-fit"),'Runtime UI self-test detects 
 // v144 simplified workspace return regression gates
 const workspaceStateSource=read('core/casa-workspace-state.js');
 check(workspaceStateSource.includes("history.scrollRestoration='auto'"),'Workspace state keeps native browser Back/Forward restoration enabled');
-check(workspaceStateSource.includes("const KEY='casa:workspace-return:v2'"),'Workspace state uses the simplified return-state schema');
+check(workspaceStateSource.includes("const KEY='casa:workspace-return:v3'"),'Workspace state uses the simplified return-state schema');
 check(workspaceStateSource.includes('saveOrigin'),'Control navigation records the actual origin scroll position');
 check(workspaceStateSource.includes('requestReturn'),'Operational return links explicitly request restoration');
-check(workspaceStateSource.includes("location.hash==='#ai-workspace'"),'Workspace anchor is recognised as a return destination');
+check(workspaceStateSource.includes("state.returnRequested===true"),'Explicit return request is required for restoration');
 check(workspaceStateSource.includes("document.querySelector('#ai-workspace')?.scrollIntoView"),'Workspace section fallback prevents return-to-top');
 check(controlHtml.includes('navType==="back_forward"'),'Mission Control yields to native browser restoration on Back/Forward');
 check(controlHtml.includes('location.hash==="#ai-workspace"'),'Mission Control does not force the top for workspace return links');
 check(fs.existsSync(path.join(root,'tools/workspace-state-behaviour-test.mjs')),'Executable workspace return integration test is packaged');
 const workspaceContract=testContracts.components.find(x=>x.id==='workspace-state-manager');
 check(Boolean(workspaceContract),'Workspace State Manager has a declarative test contract');
-check(manifest.workspace_state_manager?.version==='1.5.0','Workspace State Manager manifest version is current');
-check(workspaceStateSource.includes("const VERSION='1.5.0'"),'Workspace State Manager runtime version matches manifest');
+check(manifest.workspace_state_manager?.version==='1.6.0','Workspace State Manager manifest version is current');
+check(workspaceStateSource.includes("const VERSION='1.6.0'"),'Workspace State Manager runtime version matches manifest');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

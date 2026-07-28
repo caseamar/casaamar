@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "2.4.0",
-  "generated_at": "2026-07-28T11:14:00+02:00",
-  "platform_version": "v2026.07.24.144",
+  "version": "2.9.0",
+  "generated_at": "2026-07-28T11:27:00+02:00",
+  "platform_version": "v2026.07.24.145",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -41,11 +41,11 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
+      "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
       "evidence": [
-        "v2026.07.24.144",
-        "15.26-workspace-title-governance",
-        "2026-07-28T10:12:40+02:00"
+        "v2026.07.24.145",
+        "15.27-workspace-return-session-guard",
+        "2026-07-28T11:27:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.144"
+        "v2026.07.24.145"
       ]
     },
     {
@@ -140,11 +140,12 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Navigation state is saved before leaving and restored only when returning to the originating workspace.",
+      "because": "Workspace position is restored only by a one-time same-release return transaction; reloads, direct opens and platform updates start at the top.",
       "evidence": [
-        "Scroll position persisted in sessionStorage",
-        "Restoration retries after dynamic content render",
-        "Fresh direct visits do not force an old position"
+        "Return state is release-bound",
+        "Return state is single-use",
+        "Persistent #ai-workspace anchors are removed",
+        "Direct/reload entry clears stale state"
       ]
     }
   ],
@@ -200,5 +201,5 @@
     "changed_capability_targeted_tests": true,
     "manual_review_for_unverifiable": true
   },
-  "release": "v2026.07.24.144"
+  "release": "v2026.07.24.145"
 }

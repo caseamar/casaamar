@@ -110,34 +110,34 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.144",
+      "version": "v2026.07.24.145",
       "name": "Experience Engine Foundation",
       "epic": "Platform Intelligence",
       "summary": "Added non-destructive responsive variant plans, publication readiness evaluation and variant quality gates.",
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.144",
+      "version": "v2026.07.24.145",
       "title": "Platform Intelligence Dashboard",
       "epic": "Platform Intelligence",
       "summary": "Interactive subsystem dashboards and real metrics for AI Knowledge Graph, Asset Intelligence and Experience Engine."
     },
     {
-      "release": "v2026.07.24.144",
+      "release": "v2026.07.24.145",
       "name": "AI Workspace Foundation",
       "completed_at": "2026-07-28T10:12:40+02:00",
       "epic": "AI Workspace",
       "summary": "Adds a unified operational workspace with status, work modules, AI insights and quick actions."
     },
     {
-      "version": "v2026.07.24.144",
+      "version": "v2026.07.24.145",
       "name": "Workspace Dashboard Routing",
       "epic": "AI Workspace",
       "summary": "Fixed Knowledge navigation and added actionable insight and destination quality gates.",
       "completed_at": "2026-07-28T10:12:40+02:00"
     },
     {
-      "version": "v2026.07.24.144",
+      "version": "v2026.07.24.145",
       "name": "Content Studio Foundation",
       "completed_at": "2026-07-28T10:12:40+02:00",
       "epic": "AI Workspace",

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.144",
-  "build": "2026-07-28T11:14:00+02:00",
-  "worker_version": "15.32-workspace-return-navigation-simplification-hotfix",
-  "release_name": "Workspace Return Navigation Simplification Hotfix",
-  "generated_at": "2026-07-28T11:14:00+02:00",
+  "platform_version": "v2026.07.24.145",
+  "build": "2026-07-28T11:27:00+02:00",
+  "worker_version": "15.32-workspace-return-session-guard-hotfix",
+  "release_name": "Workspace Return Session Guard Hotfix",
+  "generated_at": "2026-07-28T11:27:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T11:14:00+02:00"
+    "build": "2026-07-28T11:27:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.2.7",
+    "version": "3.2.8",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -309,7 +309,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.144",
+    "asset_cache_key": "20260724.145",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -329,7 +329,7 @@
     ]
   },
   "release_quality_gate": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/tools/release-quality-gate.mjs",
     "required": true,
     "checks": [
@@ -424,7 +424,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.8.5",
+    "version": "1.8.6",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -495,14 +495,14 @@
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "2.8.0",
+    "version": "2.9.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,
     "self_assessment": true
   },
   "workspace_state_manager": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/core/casa-workspace-state.js",
     "transaction_authoritative": true,
     "initial_scroll_write_protection": true,

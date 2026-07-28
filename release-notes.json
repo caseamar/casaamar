@@ -1,6 +1,6 @@
 {
-  "release": "v2026.07.24.144",
-  "name": "Workspace Return Navigation Simplification Hotfix",
-  "summary": "Uses native browser Back/Forward restoration and a minimal explicit return-state fallback for workspace links.",
-  "build_completed_at": "2026-07-28T11:14:00+02:00"
+  "release": "v2026.07.24.145",
+  "title": "Workspace Return Session Guard Hotfix",
+  "summary": "Restore workspace position only for a one-time same-release return and always start at the top after reload, direct opening or platform update.",
+  "manual_review": ["Verify explicit return restores position", "Verify reload and direct opening start at the top"]
 }

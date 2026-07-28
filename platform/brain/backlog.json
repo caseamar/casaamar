@@ -72,13 +72,13 @@
       "id": "PI-124-01",
       "title": "Asset variant generation pipeline and publication readiness",
       "status": "done",
-      "release": "v2026.07.24.144"
+      "release": "v2026.07.24.145"
     },
     {
       "id": "PI-125-01",
       "title": "Experience Engine foundation and guest-journey contracts",
       "status": "next",
-      "target_release": "v2026.07.24.144"
+      "target_release": "v2026.07.24.145"
     }
   ]
 }

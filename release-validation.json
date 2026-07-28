@@ -1,51 +1,478 @@
 {
-  "schema_version": "2.1",
-  "release": "v2026.07.24.144",
-  "platform_version": "v2026.07.24.144",
-  "generated_at": "2026-07-28T11:14:00+02:00",
-  "status": "passed",
-  "release_name": "Content Operations Visibility Hotfix",
-  "summary": "Makes Content Operations visible in Mission Control and clarifies that draft workspace state is expected content work, not a technical platform failure.",
-  "checks": [
-    {
-      "id": "release-quality-gate",
-      "status": "passed"
-    },
-    {
-      "id": "content-operations-visible-in-mission-control",
-      "status": "passed"
-    },
-    {
-      "id": "content-studio-operations-anchor",
-      "status": "passed"
-    },
-    {
-      "id": "workspace-draft-explanation",
-      "status": "passed"
-    },
-    {
-      "id": "workspace-attention-action",
-      "status": "passed"
-    },
-    {
-      "id": "manifest-worker-identity",
-      "status": "passed"
-    },
-    {
-      "id": "module-version-alignment",
-      "status": "passed"
-    },
-    {
-      "id": "cache-key-consistency",
-      "status": "passed"
-    },
-    {
-      "id": "timestamp-consistency",
-      "status": "passed"
-    }
+  "schema_version": "2.0",
+  "release": "v2026.07.24.145",
+  "platform_version": "v2026.07.24.145",
+  "generated_at": "2026-07-28T11:27:00+02:00",
+  "strategy": "complete_replace",
+  "preserve": [
+    ".git/",
+    "images/"
   ],
-  "checks_passed": 1242,
-  "checks_failed": 0,
-  "zip_integrity": "passed",
-  "quality_gate": "tools/release-quality-gate.mjs"
+  "file_count": 117,
+  "files": [
+    {
+      "path": ".assetsignore",
+      "size": 866
+    },
+    {
+      "path": "RELEASE-NOTES.txt",
+      "size": 55
+    },
+    {
+      "path": "_headers",
+      "size": 934
+    },
+    {
+      "path": "_worker.js",
+      "size": 104544
+    },
+    {
+      "path": "asset-brief.html",
+      "size": 3094
+    },
+    {
+      "path": "asset-intelligence.html",
+      "size": 4640
+    },
+    {
+      "path": "asset-library.json",
+      "size": 33230
+    },
+    {
+      "path": "asset-manifest.json",
+      "size": 2306
+    },
+    {
+      "path": "asset-model.json",
+      "size": 5128
+    },
+    {
+      "path": "asset-plan.json",
+      "size": 3445
+    },
+    {
+      "path": "asset-studio.html",
+      "size": 59365
+    },
+    {
+      "path": "asset-sync-settings.json",
+      "size": 1715
+    },
+    {
+      "path": "brand-profile.json",
+      "size": 3044
+    },
+    {
+      "path": "brand-studio.html",
+      "size": 7823
+    },
+    {
+      "path": "campaign-profiles.json",
+      "size": 1117
+    },
+    {
+      "path": "component-library.json",
+      "size": 7093
+    },
+    {
+      "path": "config/access-control.json",
+      "size": 665
+    },
+    {
+      "path": "config/commerce.json",
+      "size": 369
+    },
+    {
+      "path": "config/compliance.json",
+      "size": 445
+    },
+    {
+      "path": "config/configuration-manifest.json",
+      "size": 1084
+    },
+    {
+      "path": "config/design-system.json",
+      "size": 282
+    },
+    {
+      "path": "config/features.json",
+      "size": 451
+    },
+    {
+      "path": "config/hospitality-intelligence.json",
+      "size": 316
+    },
+    {
+      "path": "config/security.json",
+      "size": 402
+    },
+    {
+      "path": "config/seo.json",
+      "size": 530
+    },
+    {
+      "path": "config/website.json",
+      "size": 713
+    },
+    {
+      "path": "content-model.json",
+      "size": 1263
+    },
+    {
+      "path": "content-release.json",
+      "size": 195
+    },
+    {
+      "path": "content-studio.html",
+      "size": 8776
+    },
+    {
+      "path": "control/index.html",
+      "size": 96219
+    },
+    {
+      "path": "core/casa-assets.js",
+      "size": 7659
+    },
+    {
+      "path": "core/casa-audit.js",
+      "size": 1738
+    },
+    {
+      "path": "core/casa-brain.js",
+      "size": 2267
+    },
+    {
+      "path": "core/casa-config.js",
+      "size": 4529
+    },
+    {
+      "path": "core/casa-content-operations.js",
+      "size": 1691
+    },
+    {
+      "path": "core/casa-content-studio.js",
+      "size": 3878
+    },
+    {
+      "path": "core/casa-content.js",
+      "size": 2720
+    },
+    {
+      "path": "core/casa-contracts.js",
+      "size": 4668
+    },
+    {
+      "path": "core/casa-core.js",
+      "size": 9654
+    },
+    {
+      "path": "core/casa-decision.js",
+      "size": 5272
+    },
+    {
+      "path": "core/casa-diagnostics.js",
+      "size": 5771
+    },
+    {
+      "path": "core/casa-events.js",
+      "size": 3380
+    },
+    {
+      "path": "core/casa-experience.js",
+      "size": 2594
+    },
+    {
+      "path": "core/casa-governance.js",
+      "size": 3048
+    },
+    {
+      "path": "core/casa-knowledge-graph.js",
+      "size": 4860
+    },
+    {
+      "path": "core/casa-recommendations.js",
+      "size": 979
+    },
+    {
+      "path": "core/casa-release-governance.js",
+      "size": 439
+    },
+    {
+      "path": "core/casa-repository.js",
+      "size": 2289
+    },
+    {
+      "path": "core/casa-subsystem-registry.js",
+      "size": 3069
+    },
+    {
+      "path": "core/casa-workspace-state.js",
+      "size": 4429
+    },
+    {
+      "path": "core/casa-workspace.js",
+      "size": 5363
+    },
+    {
+      "path": "experience-engine.html",
+      "size": 4211
+    },
+    {
+      "path": "index.html",
+      "size": 97508
+    },
+    {
+      "path": "knowledge-architect.html",
+      "size": 21462
+    },
+    {
+      "path": "knowledge-center.html",
+      "size": 780
+    },
+    {
+      "path": "knowledge-graph.html",
+      "size": 4209
+    },
+    {
+      "path": "knowledge-review.html",
+      "size": 16846
+    },
+    {
+      "path": "knowledge-studio.html",
+      "size": 46087
+    },
+    {
+      "path": "package.json",
+      "size": 366
+    },
+    {
+      "path": "page-blueprint.json",
+      "size": 7650
+    },
+    {
+      "path": "page-preview.html",
+      "size": 2470
+    },
+    {
+      "path": "page-studio.html",
+      "size": 31112
+    },
+    {
+      "path": "photo-missions.html",
+      "size": 7048
+    },
+    {
+      "path": "photo-missions.json",
+      "size": 68
+    },
+    {
+      "path": "platform/brain/adr/ADR-0001-release-identity-contract.json",
+      "size": 529
+    },
+    {
+      "path": "platform/brain/architecture.json",
+      "size": 1692
+    },
+    {
+      "path": "platform/brain/backlog.json",
+      "size": 2209
+    },
+    {
+      "path": "platform/brain/capabilities.json",
+      "size": 819
+    },
+    {
+      "path": "platform/brain/decisions.json",
+      "size": 1379
+    },
+    {
+      "path": "platform/brain/manifest.json",
+      "size": 495
+    },
+    {
+      "path": "platform/brain/principles.json",
+      "size": 887
+    },
+    {
+      "path": "platform/brain/release-history.json",
+      "size": 5918
+    },
+    {
+      "path": "platform/brain/roadmap.json",
+      "size": 1283
+    },
+    {
+      "path": "platform/brain/version-contract.json",
+      "size": 532
+    },
+    {
+      "path": "platform-manifest.json",
+      "size": 13816
+    },
+    {
+      "path": "platform-shell.js",
+      "size": 26913
+    },
+    {
+      "path": "platform-ui.css",
+      "size": 27473
+    },
+    {
+      "path": "product-manifest.json",
+      "size": 13380
+    },
+    {
+      "path": "recommendation-engine.html",
+      "size": 4210
+    },
+    {
+      "path": "registry/asset-variants.json",
+      "size": 19818
+    },
+    {
+      "path": "registry/assets.json",
+      "size": 13962
+    },
+    {
+      "path": "registry/capabilities.json",
+      "size": 1717
+    },
+    {
+      "path": "registry/content-operations.json",
+      "size": 8222
+    },
+    {
+      "path": "registry/content-pages.json",
+      "size": 5120
+    },
+    {
+      "path": "registry/content.json",
+      "size": 2242
+    },
+    {
+      "path": "registry/decisions.json",
+      "size": 1506
+    },
+    {
+      "path": "registry/design.json",
+      "size": 1056
+    },
+    {
+      "path": "registry/event-contracts.json",
+      "size": 1128
+    },
+    {
+      "path": "registry/experiences.json",
+      "size": 3355
+    },
+    {
+      "path": "registry/features.json",
+      "size": 773
+    },
+    {
+      "path": "registry/knowledge-graph.json",
+      "size": 6425
+    },
+    {
+      "path": "registry/policies.json",
+      "size": 1021
+    },
+    {
+      "path": "registry/recommendations.json",
+      "size": 2828
+    },
+    {
+      "path": "registry/repository.json",
+      "size": 14353
+    },
+    {
+      "path": "registry/semantic-navigation.json",
+      "size": 1594
+    },
+    {
+      "path": "registry/subsystems.json",
+      "size": 12134
+    },
+    {
+      "path": "registry/tenants.json",
+      "size": 289
+    },
+    {
+      "path": "registry/test-contracts.json",
+      "size": 2251
+    },
+    {
+      "path": "registry/workspace.json",
+      "size": 6735
+    },
+    {
+      "path": "relation-registry.json",
+      "size": 168
+    },
+    {
+      "path": "release-governance.html",
+      "size": 2511
+    },
+    {
+      "path": "release-governance.json",
+      "size": 7482
+    },
+    {
+      "path": "release-notes.json",
+      "size": 365
+    },
+    {
+      "path": "release-quality-gate.json",
+      "size": 596
+    },
+    {
+      "path": "release-validation.json",
+      "size": 1271
+    },
+    {
+      "path": "schemas/commerce-order.schema.json",
+      "size": 598
+    },
+    {
+      "path": "schemas/content-task.schema.json",
+      "size": 672
+    },
+    {
+      "path": "schemas/event-contract.schema.json",
+      "size": 575
+    },
+    {
+      "path": "schemas/module.schema.json",
+      "size": 634
+    },
+    {
+      "path": "schemas/user-role.schema.json",
+      "size": 328
+    },
+    {
+      "path": "tenant/casa-amar.json",
+      "size": 333
+    },
+    {
+      "path": "tools/browser-ui-smoke-test.mjs",
+      "size": 1890
+    },
+    {
+      "path": "tools/cloudflare-asset-preflight.mjs",
+      "size": 1464
+    },
+    {
+      "path": "tools/release-quality-gate.mjs",
+      "size": 33764
+    },
+    {
+      "path": "tools/workspace-state-behaviour-test.mjs",
+      "size": 2740
+    },
+    {
+      "path": "website-content.json",
+      "size": 6721
+    }
+  ]
 }
