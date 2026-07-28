@@ -56,7 +56,7 @@ function casaMigrateLegacyWorkspace(){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_MIGRATION_KEY,JSON.stringify({migrated_at:new Date().toISOString(),action:"deferred_active_release"}));
   casaDeriveWorkspaceState();return;
  }
- const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.184",items:{}};
+ const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.185",items:{}};
  CASA_WORKSPACE_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)backup.items[key]=value});
  if(Object.keys(backup.items).length){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_BACKUP_KEY,JSON.stringify(backup));

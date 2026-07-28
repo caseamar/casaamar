@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.184",
+  "release": "v2026.07.24.185",
   "name": "Guided Work Automatic Completion",
-  "platform_version": "v2026.07.24.184",
+  "platform_version": "v2026.07.24.185",
   "build": "2026-07-28T23:32:00+02:00",
   "summary": "Automatically closes stale guided flows when all tasks are already completed and hides Stop flow when no work remains.",
   "changes": [

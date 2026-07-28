@@ -1,6 +1,3 @@
-Casa Amar v184 – Guided Work Completion State Recovery
+v185 – Improvement Completion View
 
-Fixes stale guided-flow state after all tasks are already completed.
-The guided progress bar is now shown only while at least one task remains.
-Persisted batches whose tasks are already completed are automatically reconciled, closed and converted into a completion receipt.
-Adds executable regression coverage for stale browser state and automatic completion.
+Completed analyses now switch to a clear completion state with no misleading active-task language.

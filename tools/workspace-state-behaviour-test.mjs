@@ -9,7 +9,7 @@ let pass=0;
 const check=(ok,msg)=>{if(!ok)throw new Error(msg);pass++};
 
 check(source.includes("const VERSION='1.6.0'"),'Workspace State Manager version must be current');
-check(source.includes("const RELEASE='v2026.07.24.184'"),'Return state must be bound to the current release');
+check(source.includes("const RELEASE='v2026.07.24.185'"),'Return state must be bound to the current release');
 check(source.includes("state.returnRequested===true"),'Restoration must require an explicit one-time return request');
 check(!source.includes("location.hash==='#ai-workspace'"),'A URL hash must not trigger restoration');
 check(source.includes("x.release!==RELEASE"),'State from another release must be rejected');
