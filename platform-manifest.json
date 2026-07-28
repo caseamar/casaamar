@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.131",
-  "build": "2026-07-27T23:38:51+02:00",
-  "worker_version": "15.20-content-studio-foundation",
-  "release_name": "Content Studio Foundation",
-  "generated_at": "2026-07-27T23:38:51+02:00",
+  "platform_version": "v2026.07.24.132",
+  "build": "2026-07-28T00:04:37+02:00",
+  "worker_version": "15.21-content-operations",
+  "release_name": "Content Operations Foundation",
+  "generated_at": "2026-07-28T00:04:37+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "2.9.0",
+    "version": "2.10.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -123,7 +123,8 @@
       "asset_intelligence",
       "experience_engine",
       "ai_workspace",
-      "content_studio"
+      "content_studio",
+      "content_operations"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -182,7 +183,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.18.0",
+    "version": "1.19.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -242,13 +243,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.16.0",
+    "version": "1.17.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "2.5.0",
+    "version": "2.6.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -281,7 +282,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.10.0",
+    "version": "1.11.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -305,7 +306,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.131",
+    "asset_cache_key": "20260724.132",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -420,7 +421,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.3.0",
+    "version": "1.4.0",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -439,7 +440,7 @@
     }
   },
   "content_studio": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-content-studio.js",
     "registry": "/registry/content-pages.json",
     "dashboard": "/content-studio.html",
@@ -453,5 +454,18 @@
       "validate",
       "snapshot"
     ]
+  },
+  "content_operations": {
+    "version": "1.0.0",
+    "entry": "/core/casa-content-operations.js",
+    "registry": "/registry/content-operations.json",
+    "queues": [
+      "content",
+      "review",
+      "publish"
+    ],
+    "impact_analysis": true,
+    "ai_actions": true,
+    "release_gate_integrated": true
   }
 }

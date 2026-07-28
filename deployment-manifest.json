@@ -1,17 +1,18 @@
 {
-  "schema_version": "2.1",
-  "release": "v2026.07.24.131",
-  "generated_at": "2026-07-27T23:38:51+02:00",
-  "strategy": "complete_replace_except_images",
+  "schema_version": "2.0",
+  "release": "v2026.07.24.132",
+  "platform_version": "v2026.07.24.132",
+  "generated_at": "2026-07-28T00:04:37+02:00",
+  "strategy": "complete_replace",
   "preserve": [
     ".git/",
     "images/"
   ],
-  "file_count": 100,
+  "file_count": 103,
   "files": [
     {
       "path": "RELEASE-NOTES.txt",
-      "size": 105
+      "size": 49
     },
     {
       "path": "_headers",
@@ -19,7 +20,7 @@
     },
     {
       "path": "_worker.js",
-      "size": 104532
+      "size": 104525
     },
     {
       "path": "asset-brief.html",
@@ -115,11 +116,11 @@
     },
     {
       "path": "content-studio.html",
-      "size": 6291
+      "size": 8571
     },
     {
       "path": "control/index.html",
-      "size": 90815
+      "size": 90886
     },
     {
       "path": "core/casa-assets.js",
@@ -136,6 +137,10 @@
     {
       "path": "core/casa-config.js",
       "size": 4529
+    },
+    {
+      "path": "core/casa-content-operations.js",
+      "size": 1691
     },
     {
       "path": "core/casa-content-studio.js",
@@ -191,7 +196,7 @@
     },
     {
       "path": "deployment-manifest.json",
-      "size": 7543
+      "size": 7542
     },
     {
       "path": "experience-engine.html",
@@ -287,7 +292,7 @@
     },
     {
       "path": "platform-manifest.json",
-      "size": 12350
+      "size": 12694
     },
     {
       "path": "platform-shell.js",
@@ -312,6 +317,10 @@
     {
       "path": "registry/capabilities.json",
       "size": 1716
+    },
+    {
+      "path": "registry/content-operations.json",
+      "size": 12895
     },
     {
       "path": "registry/content-pages.json",
@@ -355,7 +364,7 @@
     },
     {
       "path": "registry/subsystems.json",
-      "size": 10058
+      "size": 10606
     },
     {
       "path": "registry/tenants.json",
@@ -363,7 +372,7 @@
     },
     {
       "path": "registry/workspace.json",
-      "size": 3119
+      "size": 3318
     },
     {
       "path": "relation-registry.json",
@@ -371,7 +380,7 @@
     },
     {
       "path": "release-notes.json",
-      "size": 450
+      "size": 529
     },
     {
       "path": "release-quality-gate.json",
@@ -379,7 +388,7 @@
     },
     {
       "path": "release-validation.json",
-      "size": 1283
+      "size": 1340
     },
     {
       "path": "schemas/commerce-order.schema.json",
@@ -406,9 +415,12 @@
       "size": 332
     },
     {
+      "path": "tools/release-quality-gate.mjs",
+      "size": 22978
+    },
+    {
       "path": "website-content.json",
       "size": 6720
     }
-  ],
-  "platform_version": "v2026.07.24.131"
+  ]
 }

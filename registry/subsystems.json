@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.5.0",
-  "updated_at": "2026-07-27T23:38:51+02:00",
+  "version": "2.6.0",
+  "updated_at": "2026-07-28T00:04:37+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.131",
+      "version": "v2026.07.24.132",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -51,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "2.9.0",
+      "version": "2.10.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -99,7 +99,7 @@
     {
       "id": "diagnostics",
       "display_name": "Diagnostics Framework",
-      "version": "1.18.0",
+      "version": "1.19.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "diagnostics_framework",
@@ -147,7 +147,7 @@
     {
       "id": "platform-contracts",
       "display_name": "Platform Contracts",
-      "version": "1.16.0",
+      "version": "1.17.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "platform_contracts",
@@ -159,7 +159,7 @@
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "2.5.0",
+      "version": "2.6.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
@@ -183,7 +183,7 @@
     {
       "id": "repository-intelligence",
       "display_name": "Repository Intelligence",
-      "version": "1.10.0",
+      "version": "1.11.0",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "repository_intelligence",
@@ -246,7 +246,7 @@
     {
       "id": "ai-workspace",
       "display_name": "AI Workspace",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "owner": "AI Workspace",
       "status_source": "module",
       "manifest_key": "ai_workspace",
@@ -258,13 +258,26 @@
     {
       "id": "content-studio",
       "display_name": "Content Studio",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "manifest_key": "content_studio",
       "entry": "/core/casa-content-studio.js",
       "dashboard": "/content-studio.html",
       "owner": "AI Workspace",
       "status": "healthy",
       "description": "Operational page management, health scoring and AI suggestions."
+    },
+    {
+      "id": "content-operations",
+      "display_name": "Content Operations",
+      "version": "1.0.0",
+      "owner": "AI Workspace",
+      "status_source": "module",
+      "manifest_key": "content_operations",
+      "entry": "/core/casa-content-operations.js",
+      "description": "Operational queues for content review, publication readiness, impact analysis and AI-assisted actions.",
+      "dashboard": true,
+      "dashboard_entry": "/content-studio.html#operations",
+      "workspace_entry": "/content-studio.html#operations"
     }
   ]
 }

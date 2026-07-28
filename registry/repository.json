@@ -1,35 +1,19 @@
 {
-  "schema_version": "1.0",
-  "version": "1.10.0",
-  "generated_at": "2026-07-27T23:38:51+02:00",
-  "source": "release-package",
-  "file_count": 98,
+  "schema_version": "1.1",
+  "version": "1.11.0",
+  "release": "v2026.07.24.132",
+  "platform_version": "v2026.07.24.132",
+  "generated_at": "2026-07-28T00:04:37+02:00",
+  "updated_at": "2026-07-28T00:04:37+02:00",
+  "source": "deployment-manifest.json",
   "policies": {
-    "complete_replace_except": [
+    "complete_replace": true,
+    "preserve": [
       ".git/",
       "images/"
-    ],
-    "forbidden_deploy_patterns": [
-      "*.md",
-      "*.test.html",
-      "*-backup.*"
-    ],
-    "critical_files_must_exist": [
-      "_worker.js",
-      "platform-manifest.json",
-      "platform-shell.js",
-      "control/index.html",
-      "index.html",
-      "registry/subsystems.json",
-      "registry/repository.json",
-      "core/casa-repository.js",
-      "core/casa-content.js",
-      "registry/content.json",
-      "core/casa-knowledge-graph.js",
-      "registry/knowledge-graph.json",
-      "registry/asset-variants.json"
     ]
   },
+  "file_count": 103,
   "files": [
     {
       "path": "/RELEASE-NOTES.txt",
@@ -51,6 +35,12 @@
     },
     {
       "path": "/asset-brief.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/asset-intelligence.html",
       "kind": "html",
       "area": "root",
       "critical": false
@@ -182,10 +172,22 @@
       "critical": false
     },
     {
+      "path": "/content-studio.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
       "path": "/control/index.html",
       "kind": "html",
       "area": "control",
       "critical": true
+    },
+    {
+      "path": "/core/casa-assets.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
     },
     {
       "path": "/core/casa-audit.js",
@@ -206,10 +208,22 @@
       "critical": false
     },
     {
-      "path": "/core/casa-content.js",
+      "path": "/core/casa-content-operations.js",
       "kind": "javascript",
       "area": "core",
       "critical": true
+    },
+    {
+      "path": "/core/casa-content-studio.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
+    },
+    {
+      "path": "/core/casa-content.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
     },
     {
       "path": "/core/casa-contracts.js",
@@ -221,7 +235,7 @@
       "path": "/core/casa-core.js",
       "kind": "javascript",
       "area": "core",
-      "critical": false
+      "critical": true
     },
     {
       "path": "/core/casa-decision.js",
@@ -242,6 +256,12 @@
       "critical": false
     },
     {
+      "path": "/core/casa-experience.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
+    },
+    {
       "path": "/core/casa-governance.js",
       "kind": "javascript",
       "area": "core",
@@ -251,13 +271,13 @@
       "path": "/core/casa-knowledge-graph.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-repository.js",
       "kind": "javascript",
       "area": "core",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/core/casa-subsystem-registry.js",
@@ -266,8 +286,20 @@
       "critical": false
     },
     {
+      "path": "/core/casa-workspace.js",
+      "kind": "javascript",
+      "area": "core",
+      "critical": false
+    },
+    {
       "path": "/deployment-manifest.json",
       "kind": "json",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/experience-engine.html",
+      "kind": "html",
       "area": "root",
       "critical": false
     },
@@ -285,6 +317,12 @@
     },
     {
       "path": "/knowledge-center.html",
+      "kind": "html",
+      "area": "root",
+      "critical": false
+    },
+    {
+      "path": "/knowledge-graph.html",
       "kind": "html",
       "area": "root",
       "critical": false
@@ -407,11 +445,11 @@
       "path": "/platform-shell.js",
       "kind": "javascript",
       "area": "root",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/platform-ui.css",
-      "kind": "other",
+      "kind": "css",
       "area": "root",
       "critical": false
     },
@@ -422,7 +460,31 @@
       "critical": false
     },
     {
+      "path": "/registry/asset-variants.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/assets.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
       "path": "/registry/capabilities.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/content-operations.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": true
+    },
+    {
+      "path": "/registry/content-pages.json",
       "kind": "json",
       "area": "registry",
       "critical": false
@@ -431,7 +493,7 @@
       "path": "/registry/content.json",
       "kind": "json",
       "area": "registry",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/registry/decisions.json",
@@ -452,6 +514,12 @@
       "critical": false
     },
     {
+      "path": "/registry/experiences.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
       "path": "/registry/features.json",
       "kind": "json",
       "area": "registry",
@@ -461,7 +529,7 @@
       "path": "/registry/knowledge-graph.json",
       "kind": "json",
       "area": "registry",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/registry/policies.json",
@@ -473,16 +541,22 @@
       "path": "/registry/repository.json",
       "kind": "json",
       "area": "registry",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/registry/subsystems.json",
       "kind": "json",
       "area": "registry",
-      "critical": true
+      "critical": false
     },
     {
       "path": "/registry/tenants.json",
+      "kind": "json",
+      "area": "registry",
+      "critical": false
+    },
+    {
+      "path": "/registry/workspace.json",
       "kind": "json",
       "area": "registry",
       "critical": false
@@ -558,90 +632,6 @@
       "kind": "json",
       "area": "root",
       "critical": false
-    },
-    {
-      "path": "core/casa-assets.js",
-      "role": "runtime-service",
-      "critical": true,
-      "owner": "Asset Intelligence"
-    },
-    {
-      "path": "registry/assets.json",
-      "role": "registry",
-      "critical": true,
-      "owner": "Asset Intelligence"
-    },
-    {
-      "path": "/registry/asset-variants.json",
-      "kind": "json",
-      "area": "registry",
-      "critical": true
-    },
-    {
-      "kind": "text",
-      "area": "root",
-      "id": "core-casa-experience-js",
-      "path": "core/casa-experience.js",
-      "type": "javascript",
-      "critical": true,
-      "description": "Experience Engine runtime or registry",
-      "category": "platform-intelligence"
-    },
-    {
-      "kind": "text",
-      "area": "root",
-      "id": "registry-experiences-json",
-      "path": "registry/experiences.json",
-      "type": "registry",
-      "critical": true,
-      "description": "Experience Engine runtime or registry",
-      "category": "platform-intelligence"
-    },
-    {
-      "path": "core/casa-workspace.js",
-      "type": "platform",
-      "critical": true
-    },
-    {
-      "path": "registry/workspace.json",
-      "type": "platform",
-      "critical": true
-    },
-    {
-      "path": "asset-intelligence.html",
-      "type": "html",
-      "critical": true,
-      "description": "Operational Asset Intelligence dashboard",
-      "category": "ai-workspace"
-    },
-    {
-      "path": "knowledge-graph.html",
-      "type": "html",
-      "critical": true,
-      "description": "Operational AI Knowledge Graph dashboard",
-      "category": "ai-workspace"
-    },
-    {
-      "path": "experience-engine.html",
-      "type": "html",
-      "critical": true,
-      "description": "Operational Experience Engine dashboard",
-      "category": "ai-workspace"
-    },
-    {
-      "path": "content-studio.html",
-      "critical": true
-    },
-    {
-      "path": "core/casa-content-studio.js",
-      "critical": true
-    },
-    {
-      "path": "registry/content-pages.json",
-      "critical": true
     }
-  ],
-  "updated_at": "2026-07-27T23:38:51+02:00",
-  "release": "v2026.07.24.131",
-  "platform_version": "v2026.07.24.131"
+  ]
 }

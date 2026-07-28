@@ -13,9 +13,9 @@ const workerPlatform=worker.match(/platform_version:\s*"([^"]+)"/)?.[1];
 const workerVersion=worker.match(/worker_version:\s*"([^"]+)"/)?.[1];
 check(workerPlatform===manifest.platform_version,`Worker platform identity = ${manifest.platform_version}`);
 check(workerVersion===manifest.worker_version,`Worker version identity = ${manifest.worker_version}`);
-const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio'};
+const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio','content-operations':'content_operations'};
 for(const item of registry.subsystems){const key=mapping[item.id]; const mv=key==='platform_version'?manifest[key]:manifest[key]?.version; check(Boolean(key)&&item.version===mv,`${item.display_name} registry version matches manifest (${item.version})`)}
-const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio'};
+const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio','core/casa-content-operations.js':'content-operations'};
 for(const [file,id] of Object.entries(moduleFiles)){const v=read(file).match(/const VERSION="([^"]+)"/)?.[1]; const rv=registry.subsystems.find(x=>x.id===id)?.version; check(v===rv,`${file} version matches registry (${v})`)}
 const current=manifest.platform_version.match(/^v(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/); check(Boolean(current),'Platform version format is valid'); const cache=current?`${current[1]}${current[2]}${current[3]}.${current[4]}`:'';
 const deployExt=new Set(['.html','.js']);
@@ -183,6 +183,40 @@ check(workspaceRegistry.modules.find(x=>x.id==='website')?.status_source==='cont
 check(workspaceRegistry.quick_actions.find(x=>x.id==='new-page')?.href==='/content-studio.html','New page quick action opens Content Studio');
 for(const module of workspaceRegistry.modules||[])check(resolveWorkspaceTarget(module.href),`Workspace completeness: module destination resolves (${module.id})`);
 for(const action of workspaceRegistry.quick_actions||[])check(resolveWorkspaceTarget(action.href),`Workspace completeness: action destination resolves (${action.id})`);
+
+
+
+// Content Operations quality gates
+const contentOperations=json('registry/content-operations.json');
+const operationIds=new Set();
+const validOperationStatuses=new Set(contentOperations.statuses||[]);
+const validOperationPriorities=new Set(contentOperations.priorities||[]);
+for(const queueName of ['content','review','publish']){
+ const items=contentOperations.queues?.[queueName]||[];
+ check(Array.isArray(items),`Content Operations queue exists (${queueName})`);
+ if(queueName!=='publish')check(items.length>0,`Content Operations queue is non-empty (${queueName})`);
+ for(const item of items){
+  check(Boolean(item.id&&item.page_id&&item.title&&item.status&&item.action_label&&item.action_href),`Content Operations item is actionable (${queueName}:${item.id||'unknown'})`);
+  check(!operationIds.has(item.id),`Content Operations item id is unique (${item.id})`);operationIds.add(item.id);
+  check(contentPageIds.has(item.page_id),`Content Operations page resolves (${item.id} -> ${item.page_id})`);
+  check(validOperationStatuses.has(item.status),`Content Operations status is valid (${item.id}:${item.status})`);
+  if(item.priority)check(validOperationPriorities.has(item.priority),`Content Operations priority is valid (${item.id}:${item.priority})`);
+  check(resolveWorkspaceTarget(item.action_href),`Content Operations action target resolves (${item.id} -> ${item.action_href})`);
+  if(queueName==='publish'){
+   check(Array.isArray(item.blockers),`Publish Queue blockers are explicit (${item.id})`);
+   check(Array.isArray(item.impact)&&item.impact.length>0,`Publish Queue impact analysis exists (${item.id})`);
+   check(item.status!=='ready'||item.blockers.length===0,`Publish-ready item has no blockers (${item.id})`);
+   check(item.status!=='blocked'||item.blockers.length>0,`Blocked publish item explains blockers (${item.id})`);
+  }
+ }
+}
+check(contentStudioHtml.includes('id="operations"'),'Content Studio exposes Content Operations');
+check(contentStudioHtml.includes('Content Queue'),'Content Studio exposes Content Queue');
+check(contentStudioHtml.includes('Review Queue'),'Content Studio exposes Review Queue');
+check(contentStudioHtml.includes('Publish Queue'),'Content Studio exposes Publish Queue');
+check(contentStudioHtml.includes('casa-content-operations.js'),'Content Studio loads Content Operations service');
+check(read('core/casa-content-operations.js').includes('impact.analysis'),'Content Operations exposes impact analysis capability');
+check(read('core/casa-content-operations.js').includes('ai.actions'),'Content Operations exposes AI action capability');
 
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);

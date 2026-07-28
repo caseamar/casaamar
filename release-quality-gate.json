@@ -1,10 +1,10 @@
 {
   "version": "1.5.0",
-  "release": "v2026.07.24.131",
+  "release": "v2026.07.24.132",
   "status": "passed",
   "passed_checks": 852,
   "failed_checks": 0,
-  "executed_at": "2026-07-27T23:38:51+02:00",
+  "executed_at": "2026-07-28T00:04:37+02:00",
   "command": "node tools/release-quality-gate.mjs",
-  "updated_at": "2026-07-27T23:38:51+02:00"
+  "updated_at": "2026-07-28T00:04:37+02:00"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "updated_at": "2026-07-27T23:38:51+02:00",
+  "updated_at": "2026-07-28T00:04:37+02:00",
   "items": [
     {
       "id": "PI-111-01",
@@ -72,13 +72,13 @@
       "id": "PI-124-01",
       "title": "Asset variant generation pipeline and publication readiness",
       "status": "done",
-      "release": "v2026.07.24.131"
+      "release": "v2026.07.24.132"
     },
     {
       "id": "PI-125-01",
       "title": "Experience Engine foundation and guest-journey contracts",
       "status": "next",
-      "target_release": "v2026.07.24.131"
+      "target_release": "v2026.07.24.132"
     }
   ]
 }

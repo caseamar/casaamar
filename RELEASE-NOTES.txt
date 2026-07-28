@@ -1,2 +1,1 @@
-Casa Amar v131 - Content Studio Foundation
-Adds unified page management, page health and AI suggestions.
+Casa Amar v132 — Content Operations Foundation

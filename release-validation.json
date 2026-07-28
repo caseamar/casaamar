@@ -1,34 +1,38 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.131",
-  "platform_version": "v2026.07.24.131",
-  "generated_at": "2026-07-27T23:38:51+02:00",
+  "release": "v2026.07.24.132",
+  "platform_version": "v2026.07.24.132",
+  "generated_at": "2026-07-28T00:04:37+02:00",
   "status": "passed",
-  "release_name": "Workspace Dashboard Routing",
-  "summary": "Separates technical Platform Intelligence from dedicated operational dashboards for Assets, Knowledge and Experience.",
+  "release_name": "Content Operations Foundation",
+  "summary": "Adds operational content, review and publication queues with impact analysis and AI-ready actions.",
   "checks": [
     {
       "id": "release-quality-gate",
       "status": "passed"
     },
     {
-      "id": "knowledge-dashboard-navigation",
+      "id": "content-operations-registry",
       "status": "passed"
     },
     {
-      "id": "actionable-insight-contract",
+      "id": "content-queue-actionability",
       "status": "passed"
     },
     {
-      "id": "workspace-destination-resolution",
+      "id": "review-queue-actionability",
       "status": "passed"
     },
     {
-      "id": "legacy-redirect-exclusion",
+      "id": "publish-readiness-contract",
       "status": "passed"
     },
     {
-      "id": "keyboard-navigation",
+      "id": "impact-analysis-contract",
+      "status": "passed"
+    },
+    {
+      "id": "workspace-completeness",
       "status": "passed"
     },
     {
@@ -48,7 +52,7 @@
       "status": "passed"
     }
   ],
-  "checks_passed": 852,
+  "checks_passed": 1235,
   "checks_failed": 0,
   "zip_integrity": "passed",
   "quality_gate": "tools/release-quality-gate.mjs"

@@ -1,13 +1,13 @@
 {
-  "release": "v2026.07.24.131",
-  "name": "Content Studio Foundation",
-  "build_completed_at": "2026-07-27T23:38:51+02:00",
-  "summary": "Adds a unified Content Studio with page health, filters, page details and actionable AI suggestions.",
+  "release": "v2026.07.24.132",
+  "name": "Content Operations Foundation",
+  "build_completed_at": "2026-07-28T00:04:37+02:00",
+  "summary": "Adds operational content, review and publication queues with impact analysis and AI-ready actions.",
   "test_focus": [
     "Open Content Studio from AI Workspace",
-    "Verify page overview is populated",
-    "Open a page detail",
-    "Verify Side Health and AI Suggestions",
-    "Run Platform Doctor"
+    "Verify Content, Review and Publish queues",
+    "Open a queue item and confirm the page detail opens",
+    "Verify Publish Queue shows blockers and impact",
+    "Run Platform Doctor and confirm healthy status"
   ]
 }

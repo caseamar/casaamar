@@ -1,0 +1,439 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T00:04:37+02:00",
+  "statuses": [
+    "open",
+    "in-progress",
+    "ready",
+    "blocked"
+  ],
+  "priorities": [
+    "critical",
+    "high",
+    "medium",
+    "low"
+  ],
+  "queues": {
+    "content": [
+      {
+        "id": "home:missing-en",
+        "page_id": "home",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=home"
+      },
+      {
+        "id": "home:missing-es",
+        "page_id": "home",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=home"
+      },
+      {
+        "id": "practical:missing-en",
+        "page_id": "practical",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=practical"
+      },
+      {
+        "id": "practical:missing-es",
+        "page_id": "practical",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=practical"
+      },
+      {
+        "id": "practical:missing-seo-description",
+        "page_id": "practical",
+        "title": "Mangler SEO-beskrivelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=practical"
+      },
+      {
+        "id": "gallery:missing-en",
+        "page_id": "gallery",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=gallery"
+      },
+      {
+        "id": "gallery:missing-es",
+        "page_id": "gallery",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=gallery"
+      },
+      {
+        "id": "concierge:missing-en",
+        "page_id": "concierge",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=concierge"
+      },
+      {
+        "id": "concierge:missing-es",
+        "page_id": "concierge",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=concierge"
+      },
+      {
+        "id": "arrival:missing-es",
+        "page_id": "arrival",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=arrival"
+      },
+      {
+        "id": "departure:missing-en",
+        "page_id": "departure",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=departure"
+      },
+      {
+        "id": "departure:missing-es",
+        "page_id": "departure",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=departure"
+      },
+      {
+        "id": "experiences:missing-en",
+        "page_id": "experiences",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "experiences:missing-es",
+        "page_id": "experiences",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "experiences:missing-seo-title",
+        "page_id": "experiences",
+        "title": "Mangler SEO-titel",
+        "priority": "high",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "experiences:missing-seo-description",
+        "page_id": "experiences",
+        "title": "Mangler SEO-beskrivelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "restaurants:missing-en",
+        "page_id": "restaurants",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "restaurants:missing-es",
+        "page_id": "restaurants",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "restaurants:missing-seo-title",
+        "page_id": "restaurants",
+        "title": "Mangler SEO-titel",
+        "priority": "high",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "restaurants:missing-seo-description",
+        "page_id": "restaurants",
+        "title": "Mangler SEO-beskrivelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "restaurants:short-page",
+        "page_id": "restaurants",
+        "title": "For få indholdssektioner",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "faq:missing-en",
+        "page_id": "faq",
+        "title": "Mangler EN oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=faq"
+      },
+      {
+        "id": "faq:missing-es",
+        "page_id": "faq",
+        "title": "Mangler ES oversættelse",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=faq"
+      },
+      {
+        "id": "faq:short-page",
+        "page_id": "faq",
+        "title": "For få indholdssektioner",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=faq"
+      },
+      {
+        "id": "contact:short-page",
+        "page_id": "contact",
+        "title": "For få indholdssektioner",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Åbn side",
+        "action_href": "/content-studio.html?page=contact"
+      }
+    ],
+    "review": [
+      {
+        "id": "review:practical",
+        "page_id": "practical",
+        "title": "Praktisk information kræver review",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Gennemgå",
+        "action_href": "/content-studio.html?page=practical"
+      },
+      {
+        "id": "review:concierge",
+        "page_id": "concierge",
+        "title": "Digital Concierge kræver review",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Gennemgå",
+        "action_href": "/content-studio.html?page=concierge"
+      },
+      {
+        "id": "review:experiences",
+        "page_id": "experiences",
+        "title": "Oplevelser kræver review",
+        "priority": "high",
+        "status": "open",
+        "action_label": "Gennemgå",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "review:restaurants",
+        "page_id": "restaurants",
+        "title": "Restauranter kræver review",
+        "priority": "high",
+        "status": "open",
+        "action_label": "Gennemgå",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "review:faq",
+        "page_id": "faq",
+        "title": "FAQ kræver review",
+        "priority": "medium",
+        "status": "open",
+        "action_label": "Gennemgå",
+        "action_href": "/content-studio.html?page=faq"
+      }
+    ],
+    "publish": [
+      {
+        "id": "publish:home",
+        "page_id": "home",
+        "title": "Forside",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=home"
+      },
+      {
+        "id": "publish:practical",
+        "page_id": "practical",
+        "title": "Praktisk information",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=practical"
+      },
+      {
+        "id": "publish:gallery",
+        "page_id": "gallery",
+        "title": "Galleri",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=gallery"
+      },
+      {
+        "id": "publish:concierge",
+        "page_id": "concierge",
+        "title": "Digital Concierge",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=concierge"
+      },
+      {
+        "id": "publish:arrival",
+        "page_id": "arrival",
+        "title": "Ankomst",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=arrival"
+      },
+      {
+        "id": "publish:departure",
+        "page_id": "departure",
+        "title": "Afrejse",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=departure"
+      },
+      {
+        "id": "publish:experiences",
+        "page_id": "experiences",
+        "title": "Oplevelser",
+        "status": "blocked",
+        "blockers": [
+          "Mangler SEO-titel"
+        ],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=experiences"
+      },
+      {
+        "id": "publish:restaurants",
+        "page_id": "restaurants",
+        "title": "Restauranter",
+        "status": "blocked",
+        "blockers": [
+          "Mangler SEO-titel"
+        ],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=restaurants"
+      },
+      {
+        "id": "publish:faq",
+        "page_id": "faq",
+        "title": "FAQ",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=faq"
+      },
+      {
+        "id": "publish:contact",
+        "page_id": "contact",
+        "title": "Kontakt",
+        "status": "ready",
+        "blockers": [],
+        "impact": [
+          "Public website",
+          "AI Knowledge Graph",
+          "Experience Engine"
+        ],
+        "action_label": "Se publiceringsstatus",
+        "action_href": "/content-studio.html?page=contact"
+      }
+    ]
+  }
+}
