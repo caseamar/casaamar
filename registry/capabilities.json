@@ -361,8 +361,56 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "experience.context.create",
+      "display_name": "Create experience context",
+      "domain": "experience",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "data.envelope"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "experience.context.read",
+      "display_name": "Read active experience context",
+      "domain": "experience",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "experience.context.create"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "experience.context.update",
+      "display_name": "Update experience context",
+      "domain": "experience",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "experience.context.create"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "experience.context.clear",
+      "display_name": "Clear experience context",
+      "domain": "experience",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "experience.context.create"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.152"
+  "platform_version": "v2026.07.24.153"
 }

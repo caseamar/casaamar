@@ -1,10 +1,10 @@
 {
-  "release": "v2026.07.24.152",
+  "release": "v2026.07.24.153",
   "name": "Engineering Governance Foundation",
   "summary": "Versioned canonical contracts make platform data API-friendly, traceable and transport-neutral.",
-  "generated_at": "2026-07-28T13:40:00+02:00",
+  "generated_at": "2026-07-28T14:00:00+02:00",
   "title": "Platform Constitution Engine",
-  "build": "2026-07-28T13:40:00+02:00",
-  "platform_version": "v2026.07.24.152",
+  "build": "2026-07-28T14:00:00+02:00",
+  "platform_version": "v2026.07.24.153",
   "release_name": "Canonical Data Contracts Foundation"
 }

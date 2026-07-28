@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.0.0",
-  "platform_version": "v2026.07.24.152",
+  "version": "1.5.0",
+  "platform_version": "v2026.07.24.153",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -73,9 +73,15 @@
       "id": "ARTICLE-14",
       "title": "Contract-first Data",
       "rule": "Important platform data must use versioned, traceable, privacy-aware and transport-neutral canonical contracts."
+    },
+    {
+      "id": "article-15",
+      "title": "Shared Context by Contract",
+      "rule": "Cross-channel context must be purpose-bound, minimal, expiring and contract-based. Persistent identity or personal data requires explicit policy and approval.",
+      "blocking": true
     }
   ],
-  "updated_at": "2026-07-28T13:40:00+02:00",
+  "updated_at": "2026-07-28T14:00:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

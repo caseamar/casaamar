@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.152",
+  "platform_version": "v2026.07.24.153",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -199,6 +199,39 @@
         "conversion_type"
       ],
       "audited": true
+    },
+    {
+      "type": "experience.contextcreated",
+      "version": "1.0",
+      "owner": "Platform Core",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "contextId"
+      ],
+      "description": "Governed lifecycle event for shared experience context."
+    },
+    {
+      "type": "experience.contextupdated",
+      "version": "1.0",
+      "owner": "Platform Core",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "contextId"
+      ],
+      "description": "Governed lifecycle event for shared experience context."
+    },
+    {
+      "type": "experience.contextcleared",
+      "version": "1.0",
+      "owner": "Platform Core",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "contextId"
+      ],
+      "description": "Governed lifecycle event for shared experience context."
     }
   ]
 }

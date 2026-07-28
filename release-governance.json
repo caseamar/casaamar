@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
   "version": "3.5.0",
-  "generated_at": "2026-07-28T13:40:00+02:00",
-  "platform_version": "v2026.07.24.152",
+  "generated_at": "2026-07-28T14:00:00+02:00",
+  "platform_version": "v2026.07.24.153",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 15,
-    "automated_passed": 15,
+    "automated_checks": 16,
+    "automated_passed": 16,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.152",
+        "v2026.07.24.153",
         "15.37-platform-constitution-engine",
-        "2026-07-28T13:40:00+02:00"
+        "2026-07-28T14:00:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.152"
+        "v2026.07.24.153"
       ]
     },
     {
@@ -240,6 +240,19 @@
         "Duplicate idempotency keys return the original event",
         "No durable analytics or personal-data collection is activated"
       ]
+    },
+    {
+      "id": "experience-context",
+      "label": "Experience Context",
+      "mode": "automated",
+      "status": "pass",
+      "because": "The shared context boundary is channel-neutral, domain-neutral, TTL-bound and rejects direct personal-data fields by default.",
+      "evidence": [
+        "Whitelisted canonical context fields",
+        "Session-only retention and explicit expiry",
+        "No persistent identity profile or cross-channel identity linking",
+        "Executable lifecycle and negative-path tests"
+      ]
     }
   ],
   "manual_review": [
@@ -296,7 +309,7 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.152",
+  "release": "v2026.07.24.153",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

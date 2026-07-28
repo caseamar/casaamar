@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "3.6.0",
-  "updated_at": "2026-07-28T13:40:00+02:00",
+  "version": "3.7.0",
+  "updated_at": "2026-07-28T14:00:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.152",
+      "version": "v2026.07.24.153",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -162,7 +162,7 @@
     {
       "id": "subsystem-registry",
       "display_name": "Subsystem Registry",
-      "version": "3.6.0",
+      "version": "3.7.0",
       "owner": "Platform Intelligence",
       "status_source": "module",
       "manifest_key": "subsystem_registry",
@@ -310,7 +310,7 @@
     {
       "id": "release-governance",
       "display_name": "Release Governance",
-      "version": "3.5.0",
+      "version": "3.6.0",
       "owner": "Platform Governance",
       "status_source": "module",
       "manifest_key": "release_governance",
@@ -415,6 +415,18 @@
       "description": "Versioned canonical contracts for API-friendly, traceable and transport-neutral platform data.",
       "dashboard": true,
       "dashboard_entry": "/release-governance.html#data-contracts"
+    },
+    {
+      "id": "experience-context",
+      "display_name": "Experience Context",
+      "version": "1.0.0",
+      "owner": "Platform Core",
+      "status_source": "module",
+      "manifest_key": "experience_context",
+      "entry": "/core/casa-experience-context.js",
+      "description": "Governed shared context across channels, touchpoints, AI and future human interactions without hidden identity profiles.",
+      "dashboard": true,
+      "dashboard_entry": "/release-governance.html#experience-context"
     }
   ]
 }

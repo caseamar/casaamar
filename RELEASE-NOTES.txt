@@ -1,4 +1,4 @@
-RELEASE v2026.07.24.152
+RELEASE v2026.07.24.153
 Canonical Data Contracts Foundation
 
 - Adds Schema Registry and versioned canonical data contracts.

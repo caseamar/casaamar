@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.1.0",
-  "updated_at": "2026-07-28T13:40:00+02:00",
+  "updated_at": "2026-07-28T14:00:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -434,7 +434,68 @@
         "tools/release-quality-gate.mjs"
       ],
       "manual_review": []
+    },
+    {
+      "id": "shared-experience-context-foundation",
+      "version": "1.0.0",
+      "capability": "experience.context.create",
+      "owner": "Platform Core",
+      "entrypoints": [
+        "/core/casa-experience-context.js",
+        "/config/experience-context.json"
+      ],
+      "dependencies": [
+        "core/casa-data-contracts.js",
+        "core/casa-events.js",
+        "config/experience-context.json"
+      ],
+      "expected_behaviour": [
+        {
+          "id": "channel-neutral-context",
+          "given": "An experience begins in any channel",
+          "then": "A shared context uses canonical channel-neutral identifiers and an explicit TTL"
+        },
+        {
+          "id": "whitelisted-merge",
+          "given": "A touchpoint updates context",
+          "then": "Only registered fields are merged and provenance remains governed"
+        },
+        {
+          "id": "expiry-clears",
+          "given": "Context reaches its expiry time",
+          "then": "It is no longer returned as active"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-hidden-profile",
+          "given": "Experience context is created",
+          "then": "No persistent identity profile or cross-channel identity link is created"
+        },
+        {
+          "id": "no-personal-data-default",
+          "given": "A component attempts to store direct personal data",
+          "then": "The field is rejected by the context boundary"
+        },
+        {
+          "id": "no-domain-hardcoding",
+          "given": "A new domain uses the context engine",
+          "then": "Platform Core does not require domain-specific fields"
+        }
+      ],
+      "impact_areas": [
+        "website",
+        "digital-assistant",
+        "future-livechat",
+        "analytics",
+        "privacy",
+        "integrations"
+      ],
+      "automated_evidence": [
+        "tools/experience-context-test.mjs"
+      ],
+      "manual_review": []
     }
   ],
-  "platform_version": "v2026.07.24.152"
+  "platform_version": "v2026.07.24.153"
 }
