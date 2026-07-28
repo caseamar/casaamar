@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.24.0";
+ const VERSION="1.25.0";
  function result(id,passed,detail,evidence=[]){return {id,passed:Boolean(passed),status:passed?"passed":"failed",detail,evidence};}
  function releaseIdentity(manifest={},worker={}){
   const expectedPlatform=manifest.platform_version||null;

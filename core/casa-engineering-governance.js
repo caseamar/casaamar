@@ -1,6 +1,6 @@
 (()=>{
 "use strict";
-const VERSION="1.0.0";
+const VERSION="1.1.0";
 const REGISTRY="/registry/engineering-governance.json";
 const GRAPH="/registry/dependency-graph.json";
 async function loadJson(url){const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}

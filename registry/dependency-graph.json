@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.147",
+  "platform_version": "v2026.07.24.148",
   "nodes": [
     {
       "id": "platform",
       "type": "subsystem",
-      "version": "v2026.07.24.147",
+      "version": "v2026.07.24.148",
       "owner": "Platform"
     },
     {
@@ -152,6 +152,14 @@
       "type": "subsystem",
       "version": "1.0.0",
       "owner": "Platform Quality"
+    },
+    {
+      "id": "platform-intelligence",
+      "type": "subsystem"
+    },
+    {
+      "id": "learning-registry",
+      "type": "registry"
     }
   ],
   "edges": [
@@ -249,6 +257,21 @@
       "from": "platform-doctor",
       "to": "release-governance",
       "type": "depends_on"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "release-governance",
+      "type": "explains"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "learning-registry",
+      "type": "learns-from"
+    },
+    {
+      "from": "learning-registry",
+      "to": "behaviour-governance",
+      "type": "protects"
     }
   ]
 }

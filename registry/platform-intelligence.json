@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.148",
+  "generated_at": "2026-07-28T12:35:00+02:00",
+  "policy": {
+    "pass_requires_explanation": true,
+    "evidence_required": true,
+    "impact_required_for_nontrivial_change": true,
+    "next_action_required_for_attention_or_failure": true,
+    "unknown_must_not_be_reported_as_pass": true
+  },
+  "status_model": [
+    "healthy",
+    "attention",
+    "blocked",
+    "manual_review"
+  ],
+  "quality_dimensions": [
+    {
+      "id": "functional",
+      "label": "Funktionel kvalitet",
+      "score": 98,
+      "status": "healthy",
+      "because": "Registrerede flows og negative scenarier består de automatiske kontrakter.",
+      "evidence": [
+        "61 Behaviour Governance-kontroller",
+        "30 workspace-adfærdstests"
+      ]
+    },
+    {
+      "id": "platform",
+      "label": "Platformkvalitet",
+      "score": 100,
+      "status": "healthy",
+      "because": "Releaseidentitet, registries, routes og afhængigheder er konsistente.",
+      "evidence": [
+        "Manifest/Worker konsistens",
+        "Subsystem Registry",
+        "Dependency Graph"
+      ]
+    },
+    {
+      "id": "architecture",
+      "label": "Arkitekturkvalitet",
+      "score": 95,
+      "status": "healthy",
+      "because": "Kapabiliteter og afhængigheder er registreret, og teknisk gæld er eksplicit.",
+      "evidence": [
+        "Capability Registry",
+        "Engineering Governance",
+        "Teknisk gæld: 0"
+      ]
+    },
+    {
+      "id": "operations",
+      "label": "Operationel kvalitet",
+      "score": 100,
+      "status": "healthy",
+      "because": "Cloudflare preflight og pakkeintegritet består.",
+      "evidence": [
+        "Cloudflare asset preflight",
+        "ZIP integrity"
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "AI-kvalitet",
+      "score": 93,
+      "status": "healthy",
+      "because": "AI er forklarlig, menneskekontrolleret og endnu ikke hårdt koblet til en modelleverandør.",
+      "evidence": [
+        "Human approval",
+        "Provider lock-in scan",
+        "Explainable recommendations"
+      ]
+    }
+  ],
+  "overall": {
+    "score": 97,
+    "status": "attention",
+    "technical_status": "healthy",
+    "because": "Platformen er teknisk sund. Samlet status kræver kun opmærksomhed, fordi der findes forventet, ikke-udgivet indholdsarbejde.",
+    "evidence": [
+      "0 automatiske fejl",
+      "2 ikke-udgivne ændringer er arbejdsstatus, ikke teknisk fejl"
+    ],
+    "next_action": {
+      "label": "Gennemgå indholdsarbejde",
+      "href": "/content-studio.html#operations"
+    },
+    "manual_review": [
+      "Visuel browseroplevelse og naturligt sprog vurderes fortsat menneskeligt."
+    ]
+  },
+  "explanation_contract": {
+    "required_fields": [
+      "status",
+      "because",
+      "evidence",
+      "impact",
+      "next_action"
+    ],
+    "rule": "A judgement without traceable evidence cannot be displayed as PASS."
+  }
+}

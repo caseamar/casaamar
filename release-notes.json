@@ -1,6 +1,7 @@
 {
-  "release": "v2026.07.24.147",
+  "release": "v2026.07.24.148",
   "name": "Engineering Governance Foundation",
-  "summary": "Add capability architecture, dependency graph, Platform Constitution, ADRs and five-dimensional engineering quality validation.",
-  "generated_at": "2026-07-28T12:30:00+02:00"
+  "summary": "Add explainable platform judgements and durable learning records for defects, decisions and regression prevention.",
+  "generated_at": "2026-07-28T12:35:00+02:00",
+  "title": "Platform Intelligence and Learning Registry"
 }

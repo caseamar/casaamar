@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.148",
+  "updated_at": "2026-07-28T12:35:00+02:00",
+  "policy": {
+    "material_defects_must_be_recorded": true,
+    "every_defect_requires_prevention": true,
+    "every_prevention_requires_test_evidence": true,
+    "lessons_are_platform_wide_by_default": true,
+    "closed_items_remain_searchable": true
+  },
+  "entries": [
+    {
+      "id": "LR-001",
+      "type": "regression",
+      "title": "Workspace returposition blev ikke gendannet",
+      "status": "closed",
+      "first_seen": "v2026.07.24.138",
+      "resolved_in": "v2026.07.24.145",
+      "root_cause": "Returtilstand var ikke modelleret som en versionsbundet engangstransaktion med komplette negative scenarier.",
+      "learning": "Test både ønsket adfærd og alle situationer, hvor adfærden ikke må udløses.",
+      "prevention": [
+        "State machine",
+        "Positiv/negativ scenariomatrix",
+        "Integration og browserklassifikation"
+      ],
+      "test_evidence": [
+        "tools/workspace-state-behaviour-test.mjs",
+        "registry/behaviour-contracts.json"
+      ]
+    },
+    {
+      "id": "LR-002",
+      "type": "deployment",
+      "title": "Cloudflare afviste for stor statisk fil",
+      "status": "closed",
+      "first_seen": "v2026.07.24.142",
+      "resolved_in": "v2026.07.24.143",
+      "root_cause": "Deploypakken manglede en automatisk filstørrelsesgrænse og korrekt asset-ignore.",
+      "learning": "Deploymentgrænser skal verificeres før releasepakken godkendes.",
+      "prevention": [
+        ".assetsignore",
+        "Cloudflare asset preflight"
+      ],
+      "test_evidence": [
+        "tools/cloudflare-asset-preflight.mjs"
+      ]
+    },
+    {
+      "id": "LR-003",
+      "type": "ux",
+      "title": "Workspace-titler blev delt midt i ord",
+      "status": "closed",
+      "first_seen": "v2026.07.24.136",
+      "resolved_in": "v2026.07.24.137",
+      "root_cause": "Kompakte visningsnavne og titelkapacitet var ikke en del af UI-kontrakten.",
+      "learning": "Kompakte surfaces skal have registrerede display aliases og automatisk tekstkapacitetskontrol.",
+      "prevention": [
+        "Short display names",
+        "No mid-word title split",
+        "UI contract checks"
+      ],
+      "test_evidence": [
+        "registry/semantic-navigation.json",
+        "registry/test-contracts.json"
+      ]
+    },
+    {
+      "id": "LR-004",
+      "type": "architecture",
+      "title": "Komponenttests blev forvekslet med bevist brugeradfærd",
+      "status": "closed",
+      "first_seen": "v2026.07.24.138",
+      "resolved_in": "v2026.07.24.146",
+      "root_cause": "Isolerede tests antog, at integrationer og faktiske sider var korrekt forbundet.",
+      "learning": "Hele adfærdskæden er godkendelsesenheden. Tests må ikke antage afhængigheder.",
+      "prevention": [
+        "Behaviour Governance",
+        "Dependency impact suites",
+        "PASS/FAIL/MANUAL REVIEW"
+      ],
+      "test_evidence": [
+        "tools/behaviour-governance-test.mjs",
+        "registry/behaviour-contracts.json"
+      ]
+    }
+  ],
+  "summary": {
+    "entries": 4,
+    "open": 0,
+    "closed": 4,
+    "regression_protected": 4
+  }
+}

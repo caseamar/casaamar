@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "3.1.0",
-  "generated_at": "2026-07-28T12:30:00+02:00",
-  "platform_version": "v2026.07.24.147",
+  "version": "3.2.0",
+  "generated_at": "2026-07-28T12:35:00+02:00",
+  "platform_version": "v2026.07.24.148",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 12,
-    "automated_passed": 12,
+    "automated_checks": 14,
+    "automated_passed": 14,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
       "evidence": [
-        "v2026.07.24.147",
+        "v2026.07.24.148",
         "15.27-workspace-return-session-guard",
-        "2026-07-28T12:30:00+02:00"
+        "2026-07-28T12:35:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.147"
+        "v2026.07.24.148"
       ]
     },
     {
@@ -175,6 +175,32 @@
         "Capability and dependency registries resolve",
         "Platform Constitution contains 10 articles"
       ]
+    },
+    {
+      "id": "platform_intelligence",
+      "label": "Platform Intelligence",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Platformstatus kan forklares med årsag, evidens, impact og næste handling.",
+      "evidence": [
+        "registry/platform-intelligence.json",
+        "core/casa-platform-intelligence.js",
+        "Unknown is never PASS"
+      ]
+    },
+    {
+      "id": "learning_registry",
+      "label": "Learning Registry",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Kendte fejl og arkitekturlæringer er registreret med årsag, forebyggelse og testbevis.",
+      "evidence": [
+        "4 læringsposter",
+        "4 regressioner beskyttet",
+        "0 åbne poster"
+      ]
     }
   ],
   "manual_review": [
@@ -231,7 +257,7 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.147",
+  "release": "v2026.07.24.148",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

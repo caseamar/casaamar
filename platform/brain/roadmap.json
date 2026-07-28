@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.147",
+  "current_release": "v2026.07.24.148",
   "target_release": "v2026.07.24.150",
   "current_epic": "Behaviour Governance",
   "current_subsystem": "Behaviour Governance Foundation",
-  "next_release": "v2026.07.24.147",
+  "next_release": "v2026.07.24.148",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -44,7 +44,7 @@
     "Experience Engine foundation",
     "Content Studio readiness"
   ],
-  "updated_at": "2026-07-28T12:30:00+02:00",
+  "updated_at": "2026-07-28T12:35:00+02:00",
   "current_focus": "Behaviour-first release quality",
-  "platform_version": "v2026.07.24.147"
+  "platform_version": "v2026.07.24.148"
 }

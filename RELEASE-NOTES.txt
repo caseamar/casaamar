@@ -1,3 +1,7 @@
-Casa Amar v2026.07.24.147 — Engineering Governance Foundation
+Casa Amar Platform v2026.07.24.148
+Platform Intelligence and Learning Registry
 
-Adds capability architecture, dependency graph, Platform Constitution, ADRs, five-dimensional engineering assessment and release-blocking governance tests.
+- Explainable status with cause, evidence, impact and next action.
+- Learning Registry records defects, root causes, prevention and test evidence.
+- Release Governance now validates explanation and durable learning contracts.
+- No AI model routing is introduced in this release.

@@ -109,8 +109,31 @@
         "dependency-impact",
         "technical-debt-registration"
       ]
+    },
+    {
+      "id": "platform.explain",
+      "display_name": "Platform Explanation",
+      "owner": "Platform Intelligence",
+      "status": "active",
+      "dependencies": [
+        "release-governance",
+        "behaviour-governance",
+        "engineering-governance"
+      ],
+      "description": "Explain platform status with evidence, impact and next action."
+    },
+    {
+      "id": "platform.learn",
+      "display_name": "Platform Learning",
+      "owner": "Learning Registry",
+      "status": "active",
+      "dependencies": [
+        "behaviour-governance",
+        "engineering-governance"
+      ],
+      "description": "Convert defects and decisions into durable prevention and regression evidence."
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.147"
+  "platform_version": "v2026.07.24.148"
 }

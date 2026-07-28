@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.147",
-  "generated_at": "2026-07-28T12:30:00+02:00",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.148",
+  "generated_at": "2026-07-28T12:35:00+02:00",
   "quality_dimensions": [
     {
       "id": "functional",
@@ -102,6 +102,12 @@
       "statement": "A release must evaluate all five quality dimensions.",
       "severity": "blocking",
       "automated_check": "quality-dimension-completeness"
+    },
+    {
+      "id": "EG-008",
+      "statement": "Material defects and architecture learnings must become durable learning records with prevention and test evidence.",
+      "severity": "blocking",
+      "automated_check": "learning-registry-completeness"
     }
   ],
   "technical_debt": [],
@@ -111,11 +117,11 @@
     "dimensions": {
       "functional": 98,
       "platform": 100,
-      "architecture": 94,
+      "architecture": 95,
       "operations": 100,
-      "ai": 92
+      "ai": 93
     },
-    "because": "All registered capabilities resolve, dependencies are valid, no undeclared technical debt exists, and release evidence is complete.",
+    "because": "All registered capabilities resolve, dependencies are valid, platform judgements are explainable, and durable learning records protect known failure classes.",
     "manual_review": [
       "Confirm that the architecture explanation is understandable to a non-developer."
     ]
