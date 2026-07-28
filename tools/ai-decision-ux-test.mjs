@@ -5,5 +5,5 @@ for(const marker of ['Godkend og gem','Redigér først','Ikke nu','Afvis forslag
 if((html.match(/class="button primary"/g)||[]).length<1)throw new Error('No primary CTA');
 if(!html.includes("recordDecision('approved'")||!html.includes("recordDecision('edit'")||!html.includes("recordDecision('postponed'")||!html.includes("recordDecision('rejected'"))throw new Error('Decision outcomes are incomplete');
 if(html.includes('Forslag til alt-tekst for'))throw new Error('Meta wording leaked into proposed alt text');
-if(!html.includes("localStorage.setItem('casa.asset-alt.'"))throw new Error('Approve and save does not persist draft');
+if(!html.includes('CasaAssetIntelligence.saveAltText'))throw new Error('Approve and save does not use governed persistence API');
 console.log('AI Decision UX: 12 kontroller bestået');

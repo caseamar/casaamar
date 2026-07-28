@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.166
+Casa Amar Platform v2026.07.24.167
 
 Constitution Engine & AI Decision UX
 - Executable Constitution Registry with 100% rule-to-test coverage

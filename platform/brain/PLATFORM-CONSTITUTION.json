@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.21.0",
-  "platform_version": "v2026.07.24.166",
+  "platform_version": "v2026.07.24.167",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -114,6 +114,13 @@
       "rule": "Every user-facing AI recommendation must present one clear primary CTA, explicit alternative outcomes, and an understandable consequence for approval, editing, postponement and rejection.",
       "blocking": true,
       "automated_rule": "ai-decision-ux-integrity"
+    },
+    {
+      "id": "ARTICLE-22",
+      "title": "Closed Loop UX",
+      "rule": "Every approved AI action must update platform state visibly in the same workflow, remove the completed task, calculate the next best action, and surface any pending publication work.",
+      "blocking": true,
+      "automated_rule": "closed-loop-ux-integrity"
     }
   ],
   "updated_at": "2026-07-28T16:55:00+02:00",
