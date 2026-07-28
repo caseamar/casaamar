@@ -276,6 +276,32 @@ check(controlHtml.includes('data.uiSelfTest')||controlHtml.includes('uiSelfTest'
 check(recommendationHtml.includes('uiSelfTest'),'Recommendation UI includes runtime overflow and language self-test');
 check(fs.existsSync(path.join(root,'tools/browser-ui-smoke-test.mjs')),'Optional browser smoke-test runner is packaged for CI environments with Chromium support');
 
+
+
+// v137 scalable test-governance and compact workspace-title gates
+const testContracts=json('registry/test-contracts.json');
+check(testContracts.policy?.new_capability_requires_contract===true,'New capabilities require declarative test contracts');
+check(testContracts.policy?.changed_capability_requires_targeted_tests===true,'Changed capabilities require targeted tests');
+check(testContracts.policy?.full_platform_consistency_suite_required===true,'Every release runs the full platform consistency suite');
+check(testContracts.policy?.automatic_failure_blocks_release===true,'Automatic failures block release');
+check(testContracts.policy?.unverifiable_requires_manual_review===true,'Unverifiable behaviour is routed to manual review');
+const contractIds=new Set((testContracts.components||[]).map(x=>x.id));
+for(const required of ['ai-workspace','recommendation-engine','release-governance'])check(contractIds.has(required),`Test contract exists (${required})`);
+for(const component of testContracts.components||[]){check(Array.isArray(component.required_tests)&&component.required_tests.length>0,`Component has automatic tests (${component.id})`);check(Array.isArray(component.manual_review),`Component declares manual review scope (${component.id})`)}
+const compactLabels=new Map();
+for(const module of workspaceRegistry.modules||[]){
+ const compact=module.compact_display_name||module.display_name;
+ check(compact.length<=18,`Workspace compact title is bounded (${module.id}: ${compact})`);
+ check(!/[\u00ad]/.test(compact),`Workspace compact title avoids forced soft hyphenation (${module.id})`);
+ check(!compactLabels.has(normalizeLabel(compact)),`Workspace compact title is unique (${compact})`);compactLabels.set(normalizeLabel(compact),module.id);
+ check(Boolean(module.test_contract?.route_resolves&&module.test_contract?.operational_destination&&module.test_contract?.valid_empty_state),`Workspace module declares behavioural contract (${module.id})`);
+}
+check(workspaceRegistry.modules.find(x=>x.id==='recommendations')?.compact_display_name==='Anbefalinger','Recommendation card uses a compact title that fits');
+check(workspaceRegistry.modules.find(x=>x.id==='release-governance')?.compact_display_name==='Release-tjek','Release governance card uses a compact title that fits');
+check(controlHtml.includes('item.compact_display_name||item.display_name'),'Workspace renderer uses registered compact titles');
+check(controlHtml.includes('hyphens:none'),'Workspace titles disable automatic word splitting');
+check(controlHtml.includes("workspace-title-fit"),'Runtime UI self-test detects workspace title fit failures');
+
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 if(fail.length)process.exit(1);

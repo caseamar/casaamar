@@ -1,2 +1,1 @@
-Casa Amar v2026.07.24.135
-Explainable Release Governance and Configuration Compliance
+v137 — Workspace Title Governance and Scalable Test Contracts

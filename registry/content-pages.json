@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T09:17:17+02:00",
+  "updated_at": "2026-07-28T09:36:00+02:00",
   "statuses": [
     "draft",
     "review",
@@ -34,7 +34,7 @@
         "inspiration",
         "booking"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "practical",
@@ -55,7 +55,7 @@
         "before-arrival",
         "stay"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "gallery",
@@ -75,7 +75,7 @@
       "experience_stages": [
         "inspiration"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "concierge",
@@ -96,7 +96,7 @@
         "arrival",
         "stay"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "arrival",
@@ -118,7 +118,7 @@
         "before-arrival",
         "arrival"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "departure",
@@ -138,7 +138,7 @@
       "experience_stages": [
         "departure"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "experiences",
@@ -159,7 +159,7 @@
         "local-experiences",
         "stay"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "restaurants",
@@ -179,7 +179,7 @@
       "experience_stages": [
         "local-experiences"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "faq",
@@ -202,7 +202,7 @@
         "stay",
         "departure"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "id": "contact",
@@ -224,7 +224,7 @@
       "experience_stages": [
         "booking"
       ],
-      "updated_at": "2026-07-28T09:17:17+02:00"
+      "updated_at": "2026-07-28T09:36:00+02:00"
     }
   ],
   "health_rules": {

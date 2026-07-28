@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T09:36:00+02:00",
+  "policy": {
+    "new_capability_requires_contract": true,
+    "changed_capability_requires_targeted_tests": true,
+    "full_platform_consistency_suite_required": true,
+    "automatic_failure_blocks_release": true,
+    "unverifiable_requires_manual_review": true
+  },
+  "global_suites": [
+    "release-identity",
+    "registry-integrity",
+    "route-resolution",
+    "configuration-compliance",
+    "semantic-consistency",
+    "ui-language",
+    "package-integrity",
+    "regression"
+  ],
+  "components": [
+    {
+      "id": "ai-workspace",
+      "source": "registry/workspace.json",
+      "discover": "modules",
+      "required_tests": [
+        "route-resolves",
+        "operational-destination",
+        "compact-title-fits",
+        "no-mid-word-break",
+        "valid-empty-state"
+      ],
+      "manual_review": [
+        "browser-layout",
+        "text-clarity"
+      ]
+    },
+    {
+      "id": "recommendation-engine",
+      "source": "registry/recommendations.json",
+      "discover": "recommendations",
+      "required_tests": [
+        "explainable",
+        "human-decision-actions",
+        "no-auto-execution",
+        "evidence-present"
+      ],
+      "manual_review": [
+        "recommendation-language-quality"
+      ]
+    },
+    {
+      "id": "release-governance",
+      "source": "release-governance.json",
+      "required_tests": [
+        "all-automatic-pass",
+        "manual-review-explicit",
+        "evidence-present"
+      ],
+      "manual_review": [
+        "browser-rendering"
+      ]
+    }
+  ]
+}

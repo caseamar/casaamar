@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.13.0";
+ const VERSION="1.14.0";
  const URL="/registry/repository.json";
  let cache=null;
  async function load(options={}){

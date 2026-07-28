@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.136",
-  "build": "2026-07-28T09:17:17+02:00",
-  "worker_version": "15.25-semantic-ux-consistency",
-  "release_name": "Semantic UX Consistency and Explainable UI Governance",
-  "generated_at": "2026-07-28T09:17:17+02:00",
+  "platform_version": "v2026.07.24.137",
+  "build": "2026-07-28T09:36:00+02:00",
+  "worker_version": "15.26-workspace-title-governance",
+  "release_name": "Workspace Title Governance and Scalable Test Contracts",
+  "generated_at": "2026-07-28T09:36:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.2.0",
+    "version": "3.2.1",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -186,7 +186,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.23.0",
+    "version": "1.24.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -246,13 +246,13 @@
     ]
   },
   "platform_contracts": {
-    "version": "1.20.0",
+    "version": "1.21.0",
     "entry": "/core/casa-contracts.js",
     "release_identity_regression": true,
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -285,7 +285,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.13.0",
+    "version": "1.14.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -309,7 +309,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.136",
+    "asset_cache_key": "20260724.137",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -329,7 +329,7 @@
     ]
   },
   "release_quality_gate": {
-    "version": "1.4.0",
+    "version": "1.5.0",
     "entry": "/tools/release-quality-gate.mjs",
     "required": true,
     "checks": [
@@ -424,7 +424,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.7.0",
+    "version": "1.7.1",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -485,7 +485,7 @@
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "2.1.0",
+    "version": "2.2.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,

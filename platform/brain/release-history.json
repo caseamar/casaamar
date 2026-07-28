@@ -37,7 +37,7 @@
       "name": "Project Brain v1 and Platform Intelligence Registry",
       "epic": "Platform Intelligence",
       "summary": "Added a runtime Project Brain service, visible subsystem versions, stronger diagnostics, event waiting contracts and generic decision rule evaluation.",
-      "released_at": "2026-07-28T09:17:17+02:00",
+      "released_at": "2026-07-28T09:36:00+02:00",
       "status": "release-candidate"
     },
     {
@@ -74,7 +74,7 @@
       "name": "Repository Intelligence Foundation",
       "epic": "Platform Intelligence",
       "summary": "Introduced a canonical repository inventory, runtime repository service, critical-file integrity checks and registry-driven subsystem visibility.",
-      "released_at": "2026-07-28T09:17:17+02:00"
+      "released_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "version": "v2026.07.24.122",
@@ -87,7 +87,7 @@
       "epic": "Platform Intelligence",
       "status": "stable",
       "summary": "Aligned Worker and manifest identity, added readiness retries and introduced an executable release quality gate.",
-      "released_at": "2026-07-28T09:17:17+02:00"
+      "released_at": "2026-07-28T09:36:00+02:00"
     },
     {
       "version": "v2026.07.24.122",
@@ -110,39 +110,39 @@
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.136",
+      "version": "v2026.07.24.137",
       "name": "Experience Engine Foundation",
       "epic": "Platform Intelligence",
       "summary": "Added non-destructive responsive variant plans, publication readiness evaluation and variant quality gates.",
       "status": "release-candidate"
     },
     {
-      "version": "v2026.07.24.136",
+      "version": "v2026.07.24.137",
       "title": "Platform Intelligence Dashboard",
       "epic": "Platform Intelligence",
       "summary": "Interactive subsystem dashboards and real metrics for AI Knowledge Graph, Asset Intelligence and Experience Engine."
     },
     {
-      "release": "v2026.07.24.136",
+      "release": "v2026.07.24.137",
       "name": "AI Workspace Foundation",
-      "completed_at": "2026-07-28T09:17:17+02:00",
+      "completed_at": "2026-07-28T09:36:00+02:00",
       "epic": "AI Workspace",
       "summary": "Adds a unified operational workspace with status, work modules, AI insights and quick actions."
     },
     {
-      "version": "v2026.07.24.136",
+      "version": "v2026.07.24.137",
       "name": "Workspace Dashboard Routing",
       "epic": "AI Workspace",
       "summary": "Fixed Knowledge navigation and added actionable insight and destination quality gates.",
-      "completed_at": "2026-07-28T09:17:17+02:00"
+      "completed_at": "2026-07-28T09:36:00+02:00"
     },
     {
-      "version": "v2026.07.24.136",
+      "version": "v2026.07.24.137",
       "name": "Content Studio Foundation",
-      "completed_at": "2026-07-28T09:17:17+02:00",
+      "completed_at": "2026-07-28T09:36:00+02:00",
       "epic": "AI Workspace",
       "summary": "Operational page management with health scoring and AI suggestions."
     }
   ],
-  "updated_at": "2026-07-28T09:17:17+02:00"
+  "updated_at": "2026-07-28T09:36:00+02:00"
 }

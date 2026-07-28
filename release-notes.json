@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.136",
+  "release": "v2026.07.24.137",
   "name": "Semantic UX Consistency and Explainable UI Governance",
-  "summary": "Makes AI Workspace navigation unambiguous, separates operational work from technical metadata, and adds semantic, language and browser-based overflow gates.",
+  "summary": "Prevent mid-word workspace titles and require declarative test contracts for new and changed capabilities.",
   "changes": [
     "AI Workspace cards always open operational surfaces",
     "Technical recommendation subsystem renamed AI Recommendation Service",
@@ -12,5 +12,8 @@
   "manual_review": [
     "Confirm the wording feels natural",
     "Confirm visual balance in your browser despite automated overflow checks"
-  ]
+  ],
+  "build": "2026-07-28T09:36:00+02:00",
+  "generated_at": "2026-07-28T09:36:00+02:00",
+  "title": "Workspace Title Governance and Scalable Test Contracts"
 }

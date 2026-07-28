@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.136",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.137",
   "principles": [
     "Workspace opens operational surfaces",
     "Technical metadata is secondary",
@@ -14,7 +14,8 @@
       "label": "AI-anbefalinger",
       "role": "operational",
       "destination": "/recommendation-engine.html",
-      "intent": "review_and_decide_recommendations"
+      "intent": "review_and_decide_recommendations",
+      "compact_label": "Anbefalinger"
     },
     {
       "id": "technical-recommendation-service",
@@ -28,7 +29,8 @@
       "label": "Releasekontrol",
       "role": "operational",
       "destination": "/release-governance.html",
-      "intent": "review_release_readiness"
+      "intent": "review_release_readiness",
+      "compact_label": "Release-tjek"
     },
     {
       "id": "technical-release-governance",
@@ -43,5 +45,6 @@
     "near_duplicate_operational_labels_different_intent": true,
     "workspace_to_technical_surface": true,
     "unexplained_technical_language_in_danish_ui": true
-  }
+  },
+  "updated_at": "2026-07-28T09:36:00+02:00"
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": "2.1",
-  "release": "v2026.07.24.136",
-  "platform_version": "v2026.07.24.136",
-  "generated_at": "2026-07-28T09:17:17+02:00",
+  "release": "v2026.07.24.137",
+  "platform_version": "v2026.07.24.137",
+  "generated_at": "2026-07-28T09:36:00+02:00",
   "status": "passed",
   "release_name": "Content Operations Visibility Hotfix",
   "summary": "Makes Content Operations visible in Mission Control and clarifies that draft workspace state is expected content work, not a technical platform failure.",
