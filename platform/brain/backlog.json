@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "updated_at": "2026-07-28T20:15:00+02:00",
+  "updated_at": "2026-07-28T21:15:00+02:00",
   "items": [
     {
       "id": "PI-111-01",
@@ -72,25 +72,25 @@
       "id": "PI-124-01",
       "title": "Asset variant generation pipeline and publication readiness",
       "status": "done",
-      "release": "v2026.07.24.175"
+      "release": "v2026.07.24.176"
     },
     {
       "id": "PI-125-01",
       "title": "Experience Engine foundation and guest-journey contracts",
       "status": "next",
-      "target_release": "v2026.07.24.175"
+      "target_release": "v2026.07.24.176"
     },
     {
       "id": "BG-146-01",
       "title": "Behaviour Governance registry and executable contract validation",
       "status": "done",
-      "release": "v2026.07.24.175"
+      "release": "v2026.07.24.176"
     },
     {
       "id": "EPIC-14",
       "title": "Data Contracts & API Platform",
       "status": "foundation",
-      "release": "v2026.07.24.175",
+      "release": "v2026.07.24.176",
       "scope": [
         "Canonical Data Model",
         "Schema Registry",
@@ -127,5 +127,5 @@
       "description": "Governed KPI, trend and effect measurement built on verified observations."
     }
   ],
-  "platform_version": "v2026.07.24.175"
+  "platform_version": "v2026.07.24.176"
 }

@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.175",
-  "target_release": "v2026.07.24.175",
+  "current_release": "v2026.07.24.176",
+  "target_release": "v2026.07.24.176",
   "current_epic": "Event Platform",
   "current_subsystem": "Event Platform Foundation",
-  "next_release": "v2026.07.24.175",
+  "next_release": "v2026.07.24.176",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -82,7 +82,7 @@
       "id": "EPIC-16",
       "title": "Universal Action Framework",
       "status": "foundation-delivered",
-      "release": "v2026.07.24.175"
+      "release": "v2026.07.24.176"
     }
   ],
   "next_focus": [
@@ -90,7 +90,7 @@
     "Content Studio end-to-end workflow",
     "Beta hardening"
   ],
-  "updated_at": "2026-07-28T20:15:00+02:00",
+  "updated_at": "2026-07-28T21:15:00+02:00",
   "current_focus": "Channel-neutral experience events",
-  "platform_version": "v2026.07.24.175"
+  "platform_version": "v2026.07.24.176"
 }

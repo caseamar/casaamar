@@ -1,30 +1,30 @@
 {
-  "release": "v2026.07.24.175",
-  "name": "Verification Governance Foundation",
-  "platform_version": "v2026.07.24.175",
-  "build": "2026-07-28T20:15:00+02:00",
-  "summary": "Repairs stale domain discovery state so incomplete coverage always produces a visible, answerable question.",
+  "release": "v2026.07.24.176",
+  "name": "Domain Impact Engine Foundation",
+  "platform_version": "v2026.07.24.176",
+  "build": "2026-07-28T21:15:00+02:00",
+  "summary": "Adds explainable impact analysis from verified domain changes to affected assets, experiences and AI capabilities, with governed next actions and human approval.",
   "changes": [
-    "Platform Knowledge Graph v1.0.0",
-    "Capability Intelligence v1.0.0",
-    "Platform Intelligence v1.2.0",
-    "Subsystem Registry v3.8.0"
+    "Domain Impact Engine v1.0.0",
+    "Impact Rules Registry v1.0.0",
+    "Explainable evidence traversal",
+    "Governed next actions",
+    "Platform Constitution Article 28"
   ],
   "manual_review": [
     "Cloudflare deployment",
-    "Release-tjek Capability Intelligence card",
-    "Workspace return flow",
+    "Domain Intelligence impact section",
+    "Release-tjek Domain Impact Engine panel",
     "Public website smoke test"
   ],
-  "title": "Discovery Coverage Consistency Fix",
+  "title": "Domain Impact Engine Foundation",
   "highlights": [
-    "Verification Governance v1.0.0",
-    "Capability-based verification profiles",
-    "Deterministic rendered runtime integration tests",
-    "Mutation resistance for critical integrations",
-    "Fail-closed verdicts for incomplete evidence",
-    "Platform Constitution Article 16 – Evidence before approval"
+    "Impact analysis from verified domain objects",
+    "Affected asset and capability detection",
+    "Deduplikerede actions",
+    "No automatic publishing",
+    "Human approval required"
   ],
-  "release_name": "Observation Platform Foundation",
-  "updated_at": "2026-07-28T20:15:00+02:00"
+  "release_name": "Domain Impact Engine Foundation",
+  "updated_at": "2026-07-28T21:15:00+02:00"
 }

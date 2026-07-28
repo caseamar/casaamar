@@ -1,7 +1,3 @@
-Casa Amar v2026.07.24.175 — Domain Relationship Engine Foundation
+v2026.07.24.176 – Domain Impact Engine Foundation
 
-- Adds a typed, domain-neutral Relationship Registry and runtime.
-- Connects Casa Amar objects to experiences, atmosphere and consuming capabilities.
-- Separates verified and confidence-qualified derived relationships.
-- Adds relationship exploration to Domain Intelligence.
-- Adds Article 27 and release-blocking relationship integrity tests.
+Adds explainable impact analysis from verified domain changes to affected assets, experiences, AI capabilities and governed next actions. No content is published automatically.

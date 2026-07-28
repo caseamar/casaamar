@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.6.0",
-  "platform_version": "v2026.07.24.175",
+  "platform_version": "v2026.07.24.176",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -157,9 +157,16 @@
       "id": "ARTICLE-27",
       "title": "Typed Relationships before Inference",
       "rule": "Domain relationships must be typed, reference valid objects and carry an explicit evidence status before AI may use them for interpretation or generation. Derived relationships require confidence and must never be presented as human-verified facts."
+    },
+    {
+      "id": "ARTICLE-28",
+      "title": "Explainable Impact before Action",
+      "rule": "Verified domain changes must be analysed against typed relationships before actions are proposed. Every proposed action must identify affected objects, supporting evidence, risk and required human approval. No content may be published automatically from an impact analysis.",
+      "blocking": true,
+      "automated_rule": "domain-impact-integrity"
     }
   ],
-  "updated_at": "2026-07-28T18:30:00+02:00",
+  "updated_at": "2026-07-28T21:15:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

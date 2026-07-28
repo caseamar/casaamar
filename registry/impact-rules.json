@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.176",
+  "change_types": [
+    {
+      "id": "fact_added",
+      "label": "Nyt verificeret faktum",
+      "default_risk": "low"
+    },
+    {
+      "id": "fact_changed",
+      "label": "Verificeret faktum ændret",
+      "default_risk": "medium"
+    },
+    {
+      "id": "fact_removed",
+      "label": "Verificeret faktum fjernet",
+      "default_risk": "high"
+    }
+  ],
+  "consumer_rules": [
+    {
+      "object_type": "asset",
+      "target": "asset-intelligence",
+      "action": "review_asset_metadata",
+      "label": "Gennemgå billedmetadata og alt-tekst"
+    },
+    {
+      "object_type": "capability",
+      "target_from_object": true,
+      "action": "refresh_grounding",
+      "label": "Opdatér grounded AI-kontekst"
+    },
+    {
+      "object_type": "experience",
+      "target": "content-intelligence",
+      "action": "review_experience_content",
+      "label": "Gennemgå oplevelsesbeskrivelser"
+    },
+    {
+      "object_type": "atmosphere",
+      "target": "content-intelligence",
+      "action": "review_brand_language",
+      "label": "Gennemgå stemning og brandtekst"
+    },
+    {
+      "object_type": "page",
+      "target": "content-intelligence",
+      "action": "review_page_content",
+      "label": "Gennemgå sideindhold"
+    }
+  ],
+  "governance": {
+    "verified_facts_required_for_automatic_impact": true,
+    "derived_relationship_min_confidence": 0.7,
+    "publication_requires_human_approval": true,
+    "deduplicate_actions": true
+  }
+}
