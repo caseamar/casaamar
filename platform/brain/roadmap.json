@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.150",
-  "target_release": "v2026.07.24.150",
-  "current_epic": "Behaviour Governance",
-  "current_subsystem": "Behaviour Governance Foundation",
-  "next_release": "v2026.07.24.150",
+  "current_release": "v2026.07.24.151",
+  "target_release": "v2026.07.24.151",
+  "current_epic": "Event Platform",
+  "current_subsystem": "Event Platform Foundation",
+  "next_release": "v2026.07.24.152",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -37,14 +37,54 @@
         "changelog",
         "rollback information"
       ]
+    },
+    {
+      "id": "ai-orchestration",
+      "status": "strategic-backlog",
+      "description": "AI model/provider orchestration for quality, latency and cost"
+    },
+    {
+      "id": "trust-compliance",
+      "status": "strategic-backlog",
+      "description": "AI CISO, DPO, GDPR and AI Act intelligence"
+    },
+    {
+      "id": "conversation-handover",
+      "status": "strategic-backlog",
+      "description": "Digital assistant to human livechat, Messenger, email and other channels"
+    },
+    {
+      "id": "integration-platform",
+      "status": "strategic-backlog",
+      "description": "MCP, tools, REST, GraphQL, webhooks and future protocols"
+    },
+    {
+      "id": "operational-intelligence",
+      "status": "strategic-backlog",
+      "description": "Cross-channel reporting, conversation analytics and audit"
+    },
+    {
+      "id": "experience-orchestration",
+      "status": "strategic-backlog",
+      "description": "Assistant-triggered registered website actions"
+    },
+    {
+      "id": "experience-intelligence",
+      "status": "strategic-backlog",
+      "description": "Journey, funnel, conversion and broken-flow optimization"
+    },
+    {
+      "id": "multi-domain",
+      "status": "strategic-backlog",
+      "description": "Domain packs for property, consulting and future industries"
     }
   ],
   "next_focus": [
-    "Asset variant execution adapters",
-    "Experience Engine foundation",
-    "Content Studio readiness"
+    "Experience Context Engine",
+    "Content Studio end-to-end workflow",
+    "Beta hardening"
   ],
-  "updated_at": "2026-07-28T13:10:00+02:00",
-  "current_focus": "Behaviour-first release quality",
-  "platform_version": "v2026.07.24.150"
+  "updated_at": "2026-07-28T13:25:00+02:00",
+  "current_focus": "Channel-neutral experience events",
+  "platform_version": "v2026.07.24.151"
 }

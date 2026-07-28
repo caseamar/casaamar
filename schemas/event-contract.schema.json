@@ -1,32 +1,80 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Casa Amar Event Contract",
+  "title": "Casa Event Envelope",
   "type": "object",
   "required": [
+    "id",
     "type",
-    "owner",
-    "required_payload",
-    "audited"
+    "schema_version",
+    "occurred_at",
+    "source",
+    "payload",
+    "context",
+    "privacy",
+    "trace",
+    "validation"
   ],
   "properties": {
+    "id": {
+      "type": "string"
+    },
     "type": {
       "type": "string",
-      "minLength": 1
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+)+$"
     },
-    "owner": {
+    "schema_version": {
+      "type": "string"
+    },
+    "occurred_at": {
       "type": "string",
-      "minLength": 1
+      "format": "date-time"
     },
-    "required_payload": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "uniqueItems": true
+    "source": {
+      "type": "object",
+      "required": [
+        "service",
+        "version"
+      ]
     },
-    "audited": {
-      "type": "boolean"
+    "subject": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "context": {
+      "type": "object"
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "classification",
+        "retention"
+      ]
+    },
+    "trace": {
+      "type": "object",
+      "required": [
+        "correlation_id",
+        "causation_id"
+      ]
+    },
+    "idempotency_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "valid",
+        "registered",
+        "errors"
+      ]
     }
-  },
-  "additionalProperties": true
+  }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-28T13:10:00+02:00",
+  "version": "2.1.0",
+  "updated_at": "2026-07-28T13:25:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -273,6 +273,71 @@
         "tools/ai-service-layer-test.mjs"
       ],
       "manual_review": []
+    },
+    {
+      "id": "event-platform-foundation",
+      "version": "1.0.0",
+      "owner": "Platform Core",
+      "capability": "events.publish",
+      "expected_behaviour": [
+        {
+          "id": "registered-only",
+          "given": "A platform component publishes an event",
+          "then": "Only a registered channel-neutral event type is accepted"
+        },
+        {
+          "id": "governed-envelope",
+          "given": "A registered event is published",
+          "then": "The event contains trace, privacy, validation, source and context metadata"
+        },
+        {
+          "id": "idempotent-retry",
+          "given": "The same idempotency key is published twice",
+          "then": "The original event is returned without duplicate processing"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-channel-silos",
+          "given": "A new touchpoint emits an event",
+          "then": "The event name must not encode a specific vendor or channel implementation"
+        },
+        {
+          "id": "no-unregistered-events",
+          "given": "An unknown event type is requested",
+          "then": "Publication is rejected with an explainable validation error"
+        },
+        {
+          "id": "no-unclassified-personal-data",
+          "given": "An interaction may contain personal data",
+          "then": "Privacy classification and retention must be declared"
+        }
+      ],
+      "dependencies": [
+        "core/casa-events.js",
+        "registry/event-contracts.json",
+        "core/casa-audit.js"
+      ],
+      "automated_tests": [
+        "event-platform-test"
+      ],
+      "manual_review": [],
+      "entrypoints": [
+        "/core/casa-events.js",
+        "/registry/event-contracts.json"
+      ],
+      "impact_areas": [
+        "experience-context",
+        "conversation",
+        "analytics",
+        "audit",
+        "release-governance"
+      ],
+      "automated_evidence": [
+        "tools/event-platform-test.mjs",
+        "tools/release-quality-gate.mjs"
+      ]
     }
-  ]
+  ],
+  "platform_version": "v2026.07.24.151"
 }

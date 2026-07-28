@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.150",
-  "platform_version": "v2026.07.24.150",
-  "generated_at": "2026-07-28T13:10:00+02:00",
+  "release": "v2026.07.24.151",
+  "platform_version": "v2026.07.24.151",
+  "generated_at": "2026-07-28T13:25:00+02:00",
   "strategy": "complete_replace",
   "preserve": [
     ".git/",

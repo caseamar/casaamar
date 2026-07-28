@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.150",
-  "build": "2026-07-28T13:10:00+02:00",
-  "worker_version": "15.37-platform-constitution-engine",
-  "release_name": "Platform Constitution Engine",
-  "generated_at": "2026-07-28T13:10:00+02:00",
+  "platform_version": "v2026.07.24.151",
+  "build": "2026-07-28T13:25:00+02:00",
+  "worker_version": "15.38-event-platform-foundation",
+  "release_name": "Event Platform Foundation",
+  "generated_at": "2026-07-28T13:25:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T13:10:00+02:00"
+    "build": "2026-07-28T13:25:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.7.0",
+    "version": "3.8.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -133,7 +133,8 @@
       "platform_intelligence",
       "learning_registry_consistency",
       "ai_service_layer",
-      "platform_integrity"
+      "platform_integrity",
+      "event_platform"
     ],
     "completion_confirmation": true,
     "completion_timestamp": true,
@@ -177,22 +178,19 @@
     "audit_integrated": true
   },
   "event_engine": {
-    "version": "1.2.0",
+    "version": "2.0.0",
     "entry": "/core/casa-events.js",
-    "history_limit": 200,
-    "capabilities": [
-      "publish",
-      "subscribe",
-      "once",
-      "wait",
-      "history"
-    ],
-    "contract_registry": "/registry/event-contracts.json",
+    "registry": "/registry/event-contracts.json",
+    "history_limit": 500,
     "contract_validation": true,
-    "audit_integrated": true
+    "audit_integration": true,
+    "channel_neutral": true,
+    "privacy_by_design": true,
+    "idempotency": true,
+    "correlation": true
   },
   "diagnostics_framework": {
-    "version": "1.30.0",
+    "version": "1.31.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -258,7 +256,7 @@
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.5.0",
+    "version": "3.6.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -320,7 +318,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.150",
+    "asset_cache_key": "20260724.151",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -506,7 +504,7 @@
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "3.3.0",
+    "version": "3.5.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,
@@ -597,5 +595,18 @@
     "three_layer_rule": true,
     "domain_isolation": true,
     "architecture_budget": true
+  },
+  "event_platform": {
+    "version": "2.0.0",
+    "entry": "/core/casa-events.js",
+    "contracts": "/registry/event-contracts.json",
+    "schema": "/schemas/event-contract.schema.json",
+    "channel_neutral": true,
+    "domain_neutral": true,
+    "privacy_by_design": true,
+    "idempotency": true,
+    "correlation": true,
+    "persistence": "in-memory foundation; durable adapter deferred",
+    "max_runtime_history": 500
   }
 }

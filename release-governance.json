@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "3.4.0",
-  "generated_at": "2026-07-28T13:10:00+02:00",
-  "platform_version": "v2026.07.24.150",
+  "version": "3.5.0",
+  "generated_at": "2026-07-28T13:25:00+02:00",
+  "platform_version": "v2026.07.24.151",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.150",
+        "v2026.07.24.151",
         "15.37-platform-constitution-engine",
-        "2026-07-28T13:10:00+02:00"
+        "2026-07-28T13:25:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.150"
+        "v2026.07.24.151"
       ]
     },
     {
@@ -227,6 +227,19 @@
         "Three-layer placement enforced",
         "Architecture budget within threshold"
       ]
+    },
+    {
+      "id": "event-platform",
+      "label": "Event Platform",
+      "mode": "automated",
+      "status": "pass",
+      "because": "Registered channel-neutral event contracts, privacy metadata, trace IDs and idempotency are validated by executable tests.",
+      "evidence": [
+        "15 event contracts use dot notation",
+        "Unknown events are rejected",
+        "Duplicate idempotency keys return the original event",
+        "No durable analytics or personal-data collection is activated"
+      ]
     }
   ],
   "manual_review": [
@@ -283,7 +296,7 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.150",
+  "release": "v2026.07.24.151",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

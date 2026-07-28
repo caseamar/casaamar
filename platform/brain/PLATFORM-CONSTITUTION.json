@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.150",
+  "platform_version": "v2026.07.24.151",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -70,7 +70,7 @@
       "rule": "Industry-specific logic belongs in domain packs above Platform Core."
     }
   ],
-  "updated_at": "2026-07-28T13:10:00+02:00",
+  "updated_at": "2026-07-28T13:25:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

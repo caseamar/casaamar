@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.150",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.151",
   "nodes": [
     {
       "id": "platform",
       "type": "subsystem",
-      "version": "v2026.07.24.150",
+      "version": "v2026.07.24.151",
       "owner": "Platform"
     },
     {
@@ -36,8 +36,8 @@
     {
       "id": "event-engine",
       "type": "subsystem",
-      "version": "1.2.0",
-      "owner": "Platform Intelligence"
+      "version": "2.0.0",
+      "owner": "Platform Core"
     },
     {
       "id": "diagnostics",
@@ -297,6 +297,21 @@
       "from": "recommendation-engine",
       "to": "ai-service-layer",
       "type": "future-consumer"
+    },
+    {
+      "from": "platform-intelligence",
+      "to": "event-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "release-governance",
+      "to": "event-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-service-layer",
+      "to": "event-engine",
+      "type": "publishes_to"
     }
   ]
 }

@@ -1,26 +1,137 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
+  "schema_version": "2.0",
+  "version": "2.0.0",
+  "platform_version": "v2026.07.24.151",
+  "principles": {
+    "channel_neutral": true,
+    "domain_neutral": true,
+    "immutable_envelope": true,
+    "privacy_by_design": true,
+    "registered_events_only": true,
+    "explainable_validation": true
+  },
+  "privacy_classes": [
+    "public",
+    "operational",
+    "personal",
+    "sensitive"
+  ],
   "contracts": [
     {
-      "type": "platform:events-ready",
-      "owner": "event-engine",
+      "type": "platform.events.ready",
+      "owner": "event-platform",
+      "category": "platform",
+      "privacy_class": "operational",
+      "retention": "session",
       "required_payload": [
-        "version"
+        "version",
+        "contract_version"
       ],
       "audited": true
     },
     {
-      "type": "platform:diagnostics-ready",
-      "owner": "diagnostics-framework",
+      "type": "experience.started",
+      "owner": "experience-platform",
+      "category": "experience",
+      "privacy_class": "operational",
+      "retention": "90d",
       "required_payload": [
-        "version"
+        "experience_id",
+        "touchpoint"
       ],
       "audited": true
     },
     {
-      "type": "diagnostics:completed",
+      "type": "interaction.created",
+      "owner": "conversation-platform",
+      "category": "interaction",
+      "privacy_class": "personal",
+      "retention": "policy",
+      "required_payload": [
+        "interaction_id",
+        "touchpoint",
+        "direction"
+      ],
+      "audited": true
+    },
+    {
+      "type": "action.requested",
+      "owner": "experience-orchestration",
+      "category": "action",
+      "privacy_class": "operational",
+      "retention": "180d",
+      "required_payload": [
+        "action_id",
+        "capability"
+      ],
+      "audited": true
+    },
+    {
+      "type": "action.executed",
+      "owner": "experience-orchestration",
+      "category": "action",
+      "privacy_class": "operational",
+      "retention": "180d",
+      "required_payload": [
+        "action_id",
+        "status"
+      ],
+      "audited": true
+    },
+    {
+      "type": "recommendation.decided",
+      "owner": "recommendation-engine",
+      "category": "decision",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "recommendation_id",
+        "decision"
+      ],
+      "audited": true
+    },
+    {
+      "type": "knowledge.updated",
+      "owner": "knowledge-platform",
+      "category": "knowledge",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "resource_id",
+        "change_type"
+      ],
+      "audited": true
+    },
+    {
+      "type": "release.approved",
+      "owner": "release-governance",
+      "category": "release",
+      "privacy_class": "operational",
+      "retention": "permanent",
+      "required_payload": [
+        "release_version",
+        "evidence_id"
+      ],
+      "audited": true
+    },
+    {
+      "type": "release.deployed",
+      "owner": "deployment",
+      "category": "release",
+      "privacy_class": "operational",
+      "retention": "permanent",
+      "required_payload": [
+        "release_version",
+        "environment"
+      ],
+      "audited": true
+    },
+    {
+      "type": "diagnostics.completed",
       "owner": "diagnostics-framework",
+      "category": "platform",
+      "privacy_class": "operational",
+      "retention": "90d",
       "required_payload": [
         "overall",
         "results",
@@ -29,8 +140,11 @@
       "audited": true
     },
     {
-      "type": "decision:evaluated",
+      "type": "decision.evaluated",
       "owner": "decision-engine",
+      "category": "decision",
+      "privacy_class": "operational",
+      "retention": "365d",
       "required_payload": [
         "id",
         "status",
@@ -40,16 +154,49 @@
       "audited": true
     },
     {
-      "type": "platform:ready",
-      "owner": "core",
-      "required_payload": [],
+      "type": "workspace.ready",
+      "owner": "ai-workspace",
+      "category": "workspace",
+      "privacy_class": "operational",
+      "retention": "session",
+      "required_payload": [
+        "version"
+      ],
+      "audited": false
+    },
+    {
+      "type": "content.changed",
+      "owner": "content-studio",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "content_id",
+        "change_type"
+      ],
       "audited": true
     },
     {
-      "type": "release:identity-checked",
-      "owner": "platform-doctor",
+      "type": "handover.requested",
+      "owner": "conversation-platform",
+      "category": "handover",
+      "privacy_class": "personal",
+      "retention": "policy",
       "required_payload": [
-        "consistent"
+        "conversation_id",
+        "target"
+      ],
+      "audited": true
+    },
+    {
+      "type": "conversion.recorded",
+      "owner": "experience-intelligence",
+      "category": "analytics",
+      "privacy_class": "operational",
+      "retention": "policy",
+      "required_payload": [
+        "journey_id",
+        "conversion_type"
       ],
       "audited": true
     }

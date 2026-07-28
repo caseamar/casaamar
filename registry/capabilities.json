@@ -257,8 +257,66 @@
       "behaviour_contract_required": true,
       "layer": "platform-core",
       "purpose": "Enforce the executable Platform Constitution and preserve layer boundaries."
+    },
+    {
+      "id": "events.publish",
+      "display_name": "Publish registered event",
+      "domain": "events",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "events.subscribe",
+      "display_name": "Subscribe to event",
+      "domain": "events",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "events.publish"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "events.trace",
+      "display_name": "Correlate experience events",
+      "domain": "events",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "events.publish"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "events.privacy",
+      "display_name": "Classify event privacy and retention",
+      "domain": "events",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "events.publish"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
+    },
+    {
+      "id": "events.idempotency",
+      "display_name": "Prevent duplicate event processing",
+      "domain": "events",
+      "status": "active",
+      "owner": "Platform Core",
+      "dependencies": [
+        "events.publish"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.0.0",
-  "platform_version": "v2026.07.24.150"
+  "platform_version": "v2026.07.24.151"
 }
