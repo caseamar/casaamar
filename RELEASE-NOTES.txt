@@ -1,3 +1,3 @@
-v180 – Guided Work Engine
+v181 – Guided Work Engine – Synchronized Deployment
 
-Adds direct work-item execution, guided multi-action flow, automatic next-task progression, scroll restoration and concrete in-context proposals.
+Republishes Guided Work with manifest, Worker and Control Center locked to the same release identity. Adds a release-blocking deployment identity test.

@@ -1,30 +1,29 @@
 {
-  "release": "v2026.07.24.179",
-  "name": "Domain Impact Engine Foundation",
-  "platform_version": "v2026.07.24.179",
-  "build": "2026-07-28T21:15:00+02:00",
-  "summary": "Adds explainable impact analysis from verified domain changes to affected assets, experiences and AI capabilities, with governed next actions and human approval.",
+  "release": "v2026.07.24.181",
+  "name": "Guided Work Engine – Synchronized Deployment",
+  "platform_version": "v2026.07.24.181",
+  "build": "2026-07-28T23:32:00+02:00",
+  "summary": "Repackages Guided Work Engine with synchronized manifest, Worker and Control Center identities, plus a release-blocking deployment identity test.",
   "changes": [
-    "Domain Impact Engine v1.0.0",
-    "Impact Rules Registry v1.0.0",
-    "Explainable evidence traversal",
-    "Governed next actions",
-    "Platform Constitution Article 28"
+    "Guided Work Engine v1.0.0",
+    "Synchronized Platform/Worker identity",
+    "Control Center expected-version alignment",
+    "Deployment Identity Governance test",
+    "Complete-replace Cloudflare package"
   ],
   "manual_review": [
     "Cloudflare deployment",
-    "Domain Intelligence impact section",
-    "Release-tjek Domain Impact Engine panel",
+    "Control Center synchronization banner",
+    "Guided Work direct task flow",
     "Public website smoke test"
   ],
-  "title": "Domain Impact Engine Foundation",
+  "title": "Guided Work Engine – Synchronized Deployment",
   "highlights": [
-    "Impact analysis from verified domain objects",
-    "Affected asset and capability detection",
-    "Deduplikerede actions",
-    "No automatic publishing",
-    "Human approval required"
+    "Manifest and Worker both v2026.07.24.181",
+    "No mixed-runtime deployment",
+    "Release-blocking identity verification",
+    "Guided Work retained"
   ],
-  "release_name": "Domain Impact Engine Foundation",
-  "updated_at": "2026-07-28T21:15:00+02:00"
+  "release_name": "Guided Work Engine – Synchronized Deployment",
+  "updated_at": "2026-07-28T23:32:00+02:00"
 }

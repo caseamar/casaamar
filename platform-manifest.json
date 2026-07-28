@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.180",
-  "build": "2026-07-28T21:15:00+02:00",
-  "worker_version": "15.49-domain-impact-engine",
-  "release_name": "Domain Impact Engine Foundation",
-  "generated_at": "2026-07-28T21:15:00+02:00",
+  "platform_version": "v2026.07.24.181",
+  "build": "2026-07-28T23:32:00+02:00",
+  "worker_version": "15.54-guided-work-sync",
+  "release_name": "Guided Work Engine – Synchronized Deployment",
+  "generated_at": "2026-07-28T23:32:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T21:15:00+02:00"
+    "build": "2026-07-28T23:32:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.179",
+    "asset_cache_key": "20260724.181",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
