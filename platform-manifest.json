@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.134",
-  "build": "2026-07-28T08:12:42+02:00",
-  "worker_version": "15.23-configuration-recommendations-governance",
-  "release_name": "Configuration-driven Recommendations and Release Governance",
-  "generated_at": "2026-07-28T08:12:42+02:00",
+  "platform_version": "v2026.07.24.135",
+  "build": "2026-07-28T08:46:07+02:00",
+  "worker_version": "15.24-explainable-release-governance",
+  "release_name": "Explainable Release Governance and Configuration Compliance",
+  "generated_at": "2026-07-28T08:46:07+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -148,7 +148,7 @@
     "decision_engine": true
   },
   "configuration_service": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "entry": "/core/casa-config.js",
     "manifest": "/config/configuration-manifest.json",
     "default_tenant": "casa-amar",
@@ -186,7 +186,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.21.0",
+    "version": "1.23.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -252,7 +252,7 @@
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "2.8.0",
+    "version": "2.10.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -309,7 +309,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.134",
+    "asset_cache_key": "20260724.135",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -424,7 +424,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -459,7 +459,7 @@
     ]
   },
   "content_operations": {
-    "version": "1.0.1",
+    "version": "1.1.0",
     "entry": "/core/casa-content-operations.js",
     "registry": "/registry/content-operations.json",
     "queues": [
@@ -478,14 +478,14 @@
     "configuration_driven_validation": true
   },
   "recommendation_engine": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-recommendations.js",
     "registry": "/registry/recommendations.json",
     "human_decision_required": true,
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,

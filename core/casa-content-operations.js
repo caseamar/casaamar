@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.1"; const URL="/registry/content-operations.json"; let cache=null;
+ const VERSION="1.1.0"; const URL="/registry/content-operations.json"; let cache=null;
  const clone=v=>JSON.parse(JSON.stringify(v));
  async function load(options={}){if(cache&&!options.force)return cache;const r=await fetch(`${URL}?_content_ops=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`Content Operations returned HTTP ${r.status}`);cache=await r.json();const validation=validate();window.CasaEvents?.publish?.("content-operations:ready",{...snapshot(),validation});return cache;}
  function queue(name){return clone(cache?.queues?.[name]||[]);}

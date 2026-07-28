@@ -1,13 +1,17 @@
 {
-  "platform_version": "v2026.07.24.134",
-  "release_name": "Configuration-driven Recommendations and Release Governance",
-  "generated_at": "2026-07-28T08:12:42+02:00",
-  "summary": "Adds configuration-driven language validation, human-controlled AI recommendations, and mandatory release self-assessment.",
-  "features": [
-    "Website Configuration",
-    "Recommendation Engine",
-    "Release Governance",
-    "100% release readiness gate"
+  "release": "v2026.07.24.135",
+  "title": "Explainable Release Governance and Configuration Compliance",
+  "summary": "Adds evidence-backed automated release checks, explicit manual-review routing, and configuration-compliant content queues.",
+  "build_completed_at": "2026-07-28T08:46:07+02:00",
+  "new_features": [
+    "Explainable PASS/FAIL/UNABLE TO VERIFY results",
+    "Manual review queue with success criteria",
+    "Configuration compliance across Content Operations",
+    "Robust Recommendation Engine empty/error states"
   ],
-  "release": "v2026.07.24.134"
+  "quality": [
+    "Automated failures block release",
+    "Machine-unverifiable checks are explicit manual items",
+    "Disabled languages cannot create translation work"
+  ]
 }

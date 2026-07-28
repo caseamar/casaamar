@@ -1,63 +1,149 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "generated_at": "2026-07-28T08:12:42+02:00",
-  "platform_version": "v2026.07.24.134",
+  "schema_version": "2.0",
+  "version": "2.0.0",
+  "generated_at": "2026-07-28T08:46:07+02:00",
+  "platform_version": "v2026.07.24.135",
   "approval_policy": {
+    "required_automated_score": 100,
+    "block_on_automated_failure": true,
+    "manual_review_required_when_unverifiable": true,
+    "release_status": "approved_with_manual_checks",
     "required_score": 100,
     "block_on_failure": true,
     "human_review_required": true
   },
+  "summary": {
+    "automated_checks": 7,
+    "automated_passed": 7,
+    "automated_failed": 0,
+    "manual_checks": 3,
+    "manual_completed": 0,
+    "unable_to_verify": 3,
+    "automated_confidence": 100,
+    "overall_status": "manual_review_required"
+  },
   "categories": [
     {
       "id": "build",
-      "status": "pass"
+      "label": "Build integrity",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "JSON parses and JavaScript syntax checks pass.",
+      "evidence": [
+        "All JSON files parsed",
+        "All JavaScript files passed node --check"
+      ]
     },
     {
       "id": "release_identity",
-      "status": "pass"
+      "label": "Release identity",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
+      "evidence": [
+        "v2026.07.24.135",
+        "15.24-explainable-release-governance",
+        "2026-07-28T08:46:07+02:00"
+      ]
     },
     {
-      "id": "configuration",
-      "status": "pass"
+      "id": "configuration_compliance",
+      "label": "Configuration compliance",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Translation work is generated only for enabled languages.",
+      "evidence": [
+        "Enabled languages: da",
+        "No EN/ES translation tasks in active queues"
+      ]
     },
     {
       "id": "navigation",
-      "status": "pass"
-    },
-    {
-      "id": "workspace",
-      "status": "pass"
-    },
-    {
-      "id": "platform_doctor",
-      "status": "pass"
+      "label": "Navigation",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Registered workspace and dashboard destinations resolve to deployable files.",
+      "evidence": [
+        "Workspace registry targets resolved"
+      ]
     },
     {
       "id": "recommendations",
-      "status": "pass"
-    },
-    {
-      "id": "registries",
-      "status": "pass"
+      "label": "Recommendations",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Every recommendation has reason, confidence basis, impact, success criteria and human decision actions.",
+      "evidence": [
+        "accept/pause/reject/review_later",
+        "automatic_execution=false"
+      ]
     },
     {
       "id": "regression",
-      "status": "pass"
+      "label": "Regression protection",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Known version, URL, timestamp, routing and configuration regressions are encoded in the quality gate.",
+      "evidence": [
+        "Stale release token scan",
+        "Canonical URL checks",
+        "Future timestamp checks"
+      ]
     },
     {
       "id": "documentation",
-      "status": "pass"
+      "label": "Release documentation",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Release notes, manifest and governance report reference the current release.",
+      "evidence": [
+        "v2026.07.24.135"
+      ]
+    }
+  ],
+  "manual_review": [
+    {
+      "id": "visual-layout",
+      "label": "Visual layout",
+      "status": "pending",
+      "why_manual": "Automated checks cannot reliably judge clipping, spacing or visual balance across browsers.",
+      "success_criteria": "Cards fit their containers and no text is clipped at desktop and mobile widths.",
+      "test_instruction": "Open Mission Control and AI Recommendations; inspect at desktop width and a narrow mobile width."
+    },
+    {
+      "id": "recommendation-clarity",
+      "label": "Recommendation clarity",
+      "status": "pending",
+      "why_manual": "Naturalness and usefulness of Danish wording require human judgement.",
+      "success_criteria": "The recommendation is understandable, honest about limited evidence and does not imply automatic action.",
+      "test_instruction": "Read the English-language recommendation and confirm the reason, limitation and actions are clear."
+    },
+    {
+      "id": "workflow-usability",
+      "label": "Workflow usability",
+      "status": "pending",
+      "why_manual": "A browser smoke test can verify routing, but not whether the workflow feels intuitive.",
+      "success_criteria": "You can return to AI Workspace and understand the next action without explanation.",
+      "test_instruction": "Open Recommendations and Release Governance, then return to AI Workspace."
     }
   ],
   "self_assessment": {
-    "score": 100,
-    "status": "approved",
+    "automated_score": 100,
+    "status": "manual_review_required",
     "assumptions_introduced": false,
     "configuration_driven": true,
-    "implemented_features_only_in_test_plan": true,
+    "explainable_results": true,
+    "complexity_assessment": "No new runtime framework; governance extends existing JSON + static dashboard pattern.",
     "known_limitations": [
-      "Browser-language recommendations require analytics data before confidence can become evidence-based."
-    ]
+      "No analytics source is connected, so language recommendation confidence remains hypothesis-based."
+    ],
+    "score": 100
   }
 }

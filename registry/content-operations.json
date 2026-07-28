@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-28T08:12:42+02:00",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28T08:46:07+02:00",
   "statuses": [
     "open",
     "in-progress",
@@ -17,42 +17,6 @@
   "queues": {
     "content": [
       {
-        "id": "home:missing-en",
-        "page_id": "home",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=home"
-      },
-      {
-        "id": "home:missing-es",
-        "page_id": "home",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=home"
-      },
-      {
-        "id": "practical:missing-en",
-        "page_id": "practical",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=practical"
-      },
-      {
-        "id": "practical:missing-es",
-        "page_id": "practical",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=practical"
-      },
-      {
         "id": "practical:missing-seo-description",
         "page_id": "practical",
         "title": "Mangler SEO-beskrivelse",
@@ -60,87 +24,6 @@
         "status": "open",
         "action_label": "Åbn side",
         "action_href": "/content-studio.html?page=practical"
-      },
-      {
-        "id": "gallery:missing-en",
-        "page_id": "gallery",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=gallery"
-      },
-      {
-        "id": "gallery:missing-es",
-        "page_id": "gallery",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=gallery"
-      },
-      {
-        "id": "concierge:missing-en",
-        "page_id": "concierge",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=concierge"
-      },
-      {
-        "id": "concierge:missing-es",
-        "page_id": "concierge",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=concierge"
-      },
-      {
-        "id": "arrival:missing-es",
-        "page_id": "arrival",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=arrival"
-      },
-      {
-        "id": "departure:missing-en",
-        "page_id": "departure",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=departure"
-      },
-      {
-        "id": "departure:missing-es",
-        "page_id": "departure",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=departure"
-      },
-      {
-        "id": "experiences:missing-en",
-        "page_id": "experiences",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=experiences"
-      },
-      {
-        "id": "experiences:missing-es",
-        "page_id": "experiences",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=experiences"
       },
       {
         "id": "experiences:missing-seo-title",
@@ -159,24 +42,6 @@
         "status": "open",
         "action_label": "Åbn side",
         "action_href": "/content-studio.html?page=experiences"
-      },
-      {
-        "id": "restaurants:missing-en",
-        "page_id": "restaurants",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=restaurants"
-      },
-      {
-        "id": "restaurants:missing-es",
-        "page_id": "restaurants",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=restaurants"
       },
       {
         "id": "restaurants:missing-seo-title",
@@ -204,24 +69,6 @@
         "status": "open",
         "action_label": "Åbn side",
         "action_href": "/content-studio.html?page=restaurants"
-      },
-      {
-        "id": "faq:missing-en",
-        "page_id": "faq",
-        "title": "Mangler EN oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=faq"
-      },
-      {
-        "id": "faq:missing-es",
-        "page_id": "faq",
-        "title": "Mangler ES oversættelse",
-        "priority": "medium",
-        "status": "open",
-        "action_label": "Åbn side",
-        "action_href": "/content-studio.html?page=faq"
       },
       {
         "id": "faq:short-page",
@@ -435,5 +282,7 @@
         "action_href": "/content-studio.html?page=contact"
       }
     ]
-  }
+  },
+  "configuration_source": "/config/website.json",
+  "generation_policy": "Only enabled languages may create translation tasks."
 }

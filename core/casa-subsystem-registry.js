@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="2.8.0";
+ const VERSION="2.10.0";
  const URL="/registry/subsystems.json";
  let cache=null;
  const normalize=value=>String(value||"").trim().toLowerCase();
