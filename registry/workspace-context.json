@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.157",
+  "updated_at": "2026-07-28T15:04:00+02:00",
+  "storage": {
+    "scope": "session",
+    "key": "casa:workspace-context:v1",
+    "ttl_minutes": 480,
+    "persistent_identity": false
+  },
+  "allowed_fields": [
+    "workspaceId",
+    "organizationId",
+    "solutionId",
+    "domainId",
+    "activeModule",
+    "activeEntity",
+    "filters",
+    "activeTab"
+  ],
+  "default_context": {
+    "workspaceId": "primary",
+    "organizationId": null,
+    "solutionId": "casa-amar-es",
+    "domainId": "property",
+    "activeModule": "ai-workspace",
+    "activeEntity": {
+      "type": "solution",
+      "id": "casa-amar-es"
+    },
+    "filters": {},
+    "activeTab": null
+  },
+  "solutions": [
+    {
+      "id": "casa-amar-es",
+      "label": "Casa Amar · Spanien",
+      "domainId": "property",
+      "status": "active"
+    },
+    {
+      "id": "rental-denmark",
+      "label": "Udlejning · Danmark",
+      "domainId": "property",
+      "status": "planned"
+    },
+    {
+      "id": "consulting",
+      "label": "Konsulentforretning",
+      "domainId": "consulting",
+      "status": "planned"
+    }
+  ],
+  "events": [
+    "workspace.contextcreated",
+    "workspace.contextupdated",
+    "workspace.selectionchanged",
+    "workspace.contextcleared"
+  ],
+  "rules": {
+    "single_authoritative_context": true,
+    "cross_module_sync_required": true,
+    "unknown_fields_rejected": true,
+    "domain_neutral_core": true,
+    "selection_must_resolve": true
+  }
+}

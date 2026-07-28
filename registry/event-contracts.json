@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "version": "2.0.0",
-  "platform_version": "v2026.07.24.156",
+  "version": "2.1.0",
+  "platform_version": "v2026.07.24.157",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -232,6 +232,55 @@
         "contextId"
       ],
       "description": "Governed lifecycle event for shared experience context."
+    },
+    {
+      "type": "workspace.contextcreated",
+      "version": "1.0",
+      "owner": "workspace-operating-system",
+      "category": "workspace",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "workspace_id"
+      ],
+      "description": "Governed workspace context lifecycle event."
+    },
+    {
+      "type": "workspace.contextupdated",
+      "version": "1.0",
+      "owner": "workspace-operating-system",
+      "category": "workspace",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "workspace_id"
+      ],
+      "description": "Governed workspace context lifecycle event."
+    },
+    {
+      "type": "workspace.selectionchanged",
+      "version": "1.0",
+      "owner": "workspace-operating-system",
+      "category": "workspace",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "workspace_id"
+      ],
+      "description": "Governed workspace context lifecycle event."
+    },
+    {
+      "type": "workspace.contextcleared",
+      "version": "1.0",
+      "owner": "workspace-operating-system",
+      "category": "workspace",
+      "privacy_class": "operational",
+      "retention": "session-only",
+      "required_payload_fields": [
+        "workspace_id"
+      ],
+      "description": "Governed workspace context lifecycle event."
     }
-  ]
+  ],
+  "updated_at": "2026-07-28T15:04:00+02:00"
 }

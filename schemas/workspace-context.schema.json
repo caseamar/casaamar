@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casaamar.es/schemas/workspace-context.schema.json",
+  "title": "Workspace Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workspaceId",
+    "solutionId",
+    "domainId",
+    "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "organizationId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "solutionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domainId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "activeModule": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "activeEntity": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "filters": {
+      "type": "object"
+    },
+    "activeTab": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.6.0",
-  "platform_version": "v2026.07.24.156",
+  "platform_version": "v2026.07.24.157",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -87,7 +87,7 @@
       "enforcement": "Verification Governance derives mandatory test suites from capability profiles and blocks incomplete evidence."
     }
   ],
-  "updated_at": "2026-07-28T14:30:00+02:00",
+  "updated_at": "2026-07-28T15:04:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

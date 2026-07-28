@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T14:30:00+02:00",
-  "platform_version": "v2026.07.24.156",
+  "updated_at": "2026-07-28T15:04:00+02:00",
+  "platform_version": "v2026.07.24.157",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,
@@ -112,16 +112,38 @@
         "success",
         "error"
       ]
+    },
+    {
+      "id": "workspace-os-runtime",
+      "capability": "platform.workspace-os",
+      "runtime": "browser",
+      "async": true,
+      "user_visible": true,
+      "risk": "high",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "browser",
+        "negative",
+        "platform-impact",
+        "rendered-runtime"
+      ],
+      "terminal_states": [
+        "success",
+        "error",
+        "timeout"
+      ]
     }
   ],
   "summary": {
-    "profiles": 4,
-    "browser_required": 2,
+    "profiles": 5,
+    "browser_required": 3,
     "mutation_required": 2,
     "deployment_smoke_required": 1,
     "missing_required_suites": 0,
     "status": "verified",
-    "rendered_runtime_required": 2,
+    "rendered_runtime_required": 3,
     "browser_execution_status": "manual_deployed_verification"
   }
 }
