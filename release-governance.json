@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "3.5.0",
-  "generated_at": "2026-07-28T15:04:00+02:00",
-  "platform_version": "v2026.07.24.157",
+  "version": "3.6.0",
+  "generated_at": "2026-07-28T15:25:00+02:00",
+  "platform_version": "v2026.07.24.158",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.157",
+        "v2026.07.24.158",
         "15.37-platform-constitution-engine",
-        "2026-07-28T15:04:00+02:00"
+        "2026-07-28T15:25:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.157"
+        "v2026.07.24.158"
       ]
     },
     {
@@ -307,9 +307,15 @@
     "changed_capability_targeted_tests": true,
     "manual_review_for_unverifiable": true,
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
-    "component_flow_impact_platform_layers": true
+    "component_flow_impact_platform_layers": true,
+    "improvement_engine": {
+      "version": "1.0.0",
+      "status": "foundation",
+      "human_governed": true,
+      "lifecycle_steps": 9
+    }
   },
-  "release": "v2026.07.24.157",
+  "release": "v2026.07.24.158",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

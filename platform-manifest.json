@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.157",
-  "build": "2026-07-28T15:04:00+02:00",
-  "worker_version": "15.44-workspace-operating-system-foundation",
-  "release_name": "Workspace Operating System Foundation",
-  "generated_at": "2026-07-28T15:04:00+02:00",
+  "platform_version": "v2026.07.24.158",
+  "build": "2026-07-28T15:25:00+02:00",
+  "worker_version": "15.45-improvement-engine-foundation",
+  "release_name": "Improvement Engine Foundation",
+  "generated_at": "2026-07-28T15:25:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T15:04:00+02:00"
+    "build": "2026-07-28T15:25:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.157",
+    "asset_cache_key": "20260724.158",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -665,5 +665,24 @@
     "storage_scope": "session",
     "domain_neutral": true,
     "cross_module_sync": true
+  },
+  "improvement_engine": {
+    "version": "1.0.0",
+    "status": "foundation",
+    "entry": "/core/casa-improvement-engine.js",
+    "registry": "/registry/improvement-contracts.json",
+    "contract": "/schemas/improvement-contract.schema.json",
+    "human_governed": true,
+    "continuous_loop": [
+      "observe",
+      "understand",
+      "prioritize",
+      "recommend",
+      "approve",
+      "implement",
+      "verify",
+      "measure",
+      "learn"
+    ]
   }
 }

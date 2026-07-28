@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.1.0",
-  "updated_at": "2026-07-28T15:04:00+02:00",
+  "updated_at": "2026-07-28T15:25:00+02:00",
   "policy": {
     "all_capabilities_require_behaviour_contract": true,
     "expected_and_forbidden_behaviour_required": true,
@@ -577,7 +577,78 @@
       "manual_review": [
         "experience-quality-and-content-judgement"
       ]
+    },
+    {
+      "id": "continuous-improvement-loop",
+      "capability": "platform.improvement-engine",
+      "owner": "Platform Intelligence",
+      "dependencies": [
+        "/registry/improvement-contracts.json",
+        "/schemas/improvement-contract.schema.json",
+        "/core/casa-improvement-engine.js",
+        "/tools/improvement-engine-test.mjs",
+        "/tools/rendered-runtime-integration-test.mjs"
+      ],
+      "impact_areas": [
+        "workspace",
+        "recommendations",
+        "release-governance",
+        "platform-intelligence"
+      ],
+      "version": "1.0.0",
+      "description": "Improvements must follow a governed, evidence-based lifecycle from observation to measured learning.",
+      "expected_behaviour": [
+        {
+          "id": "evidence-before-recommendation",
+          "given": "An improvement is proposed",
+          "when": "The engine validates it",
+          "then": "Evidence, confidence, expected value, risk and measurable success criteria are present"
+        },
+        {
+          "id": "human-governed-risk",
+          "given": "An improvement has high or critical risk",
+          "when": "Implementation is requested",
+          "then": "Explicit human approval is required"
+        },
+        {
+          "id": "verification-before-claim",
+          "given": "An improvement is implemented",
+          "when": "Impact is assessed",
+          "then": "Verification and before/after measurement occur before learning is recorded"
+        },
+        {
+          "id": "sequential-lifecycle",
+          "given": "An improvement progresses",
+          "when": "A stage transition is requested",
+          "then": "The lifecycle cannot skip required evidence stages"
+        }
+      ],
+      "forbidden_behaviour": [
+        {
+          "id": "no-unsupported-ai-advice",
+          "given": "AI proposes an improvement without evidence",
+          "then": "The improvement is rejected"
+        },
+        {
+          "id": "no-autonomous-high-risk",
+          "given": "A high-risk action lacks approval",
+          "then": "Implementation is blocked"
+        },
+        {
+          "id": "no-unmeasured-success",
+          "given": "No before/after evidence exists",
+          "then": "The platform cannot claim improvement or record learning"
+        }
+      ],
+      "automated_evidence": [
+        "tools/improvement-engine-test.mjs",
+        "tools/rendered-runtime-integration-test.mjs"
+      ],
+      "manual_review": [
+        "strategic-priority",
+        "brand-and-ethical-judgement"
+      ]
     }
   ],
-  "platform_version": "v2026.07.24.157"
+  "platform_version": "v2026.07.24.158"
 }

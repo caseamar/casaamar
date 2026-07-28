@@ -6,7 +6,7 @@
 <title>Casa Amar | Feriehus i Cerros del Águila nær Fuengirola</title>
 <meta content="Casa Amar er et feriehus til op til 6 gæster i Cerros del Águila ved Fuengirola. Tre soveværelser, patio, tagterrasse, fælles pool, WiFi, aircondition og plads til ferie hele året." name="description"/>
 <meta content="v2026.07.24.116" name="casa-amar-version"/>
-<meta content="2026-07-28T15:04:00+02:00" name="casa-amar-build"/>
+<meta content="2026-07-28T15:25:00+02:00" name="casa-amar-build"/>
 <link href="favicon.svg" rel="icon"/>
 
 
@@ -2393,7 +2393,7 @@ let SITE_BUILD = 'Indlæser…';
 
 async function loadPublicPlatformVersion(){
  try{
-  const response=await fetch(`/platform-manifest.json?v=20260724.157&ts=${Date.now()}`,{cache:"no-store"});
+  const response=await fetch(`/platform-manifest.json?v=20260724.158&ts=${Date.now()}`,{cache:"no-store"});
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   const manifest=await response.json();
   SITE_VERSION=manifest.platform_version||"Ukendt";
@@ -2852,5 +2852,5 @@ ${question}`;
     if (event.key === 'Escape' && !panel.hidden) setOpen(false);
   });
 })();
-</script><script src="/core/casa-workspace-state.js?v=20260724.157"></script></body>
+</script><script src="/core/casa-workspace-state.js?v=20260724.158"></script></body>
 </html>

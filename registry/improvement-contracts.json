@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.158",
+  "updated_at": "2026-07-28T15:25:00+02:00",
+  "purpose": "Governed continuous improvement from observation to measured learning.",
+  "lifecycle": [
+    "observe",
+    "understand",
+    "prioritize",
+    "recommend",
+    "approve",
+    "implement",
+    "verify",
+    "measure",
+    "learn"
+  ],
+  "principles": {
+    "ai_assists_every_stage": true,
+    "human_governance_by_risk": true,
+    "evidence_required": true,
+    "confidence_required": true,
+    "measurable_outcome_required": true,
+    "verification_before_effect_claim": true,
+    "learning_requires_before_after_evidence": true,
+    "domain_neutral": true,
+    "channel_neutral": true,
+    "no_autonomous_high_risk_actions": true
+  },
+  "approval_policy": {
+    "low": "policy_or_human",
+    "medium": "human_required",
+    "high": "explicit_human_required",
+    "critical": "blocked_without_governance_exception"
+  },
+  "contracts": [
+    {
+      "id": "improvement-cycle",
+      "schema": "/schemas/improvement-contract.schema.json",
+      "owner": "improvement-engine",
+      "version": "1.0"
+    },
+    {
+      "id": "improvement-observation",
+      "owner": "improvement-engine",
+      "required": [
+        "source",
+        "metric",
+        "baseline",
+        "evidence"
+      ]
+    },
+    {
+      "id": "improvement-recommendation",
+      "owner": "improvement-engine",
+      "required": [
+        "hypothesis",
+        "confidence",
+        "expectedValue",
+        "risk",
+        "evidence"
+      ]
+    },
+    {
+      "id": "improvement-verification",
+      "owner": "verification-governance",
+      "required": [
+        "successCriteria",
+        "testEvidence",
+        "beforeAfter"
+      ]
+    }
+  ],
+  "sample": {
+    "id": "imp_demo_release_quality",
+    "status": "proposed",
+    "stage": "recommend",
+    "objective": "Reduce user-visible release integration failures",
+    "evidence": [
+      "Capability Intelligence loading regression",
+      "Verification Governance evidence profile"
+    ],
+    "confidence": 0.93,
+    "expectedValue": {
+      "dimension": "release-quality",
+      "direction": "increase",
+      "metric": "user-visible runtime integrations verified"
+    },
+    "risk": "low",
+    "approval": {
+      "mode": "human",
+      "required": true
+    },
+    "verification": {
+      "successCriteria": [
+        "All dynamic panels reach terminal state",
+        "Mutation removes integration and test fails"
+      ],
+      "requiredSuites": [
+        "integration",
+        "rendered-runtime",
+        "mutation"
+      ]
+    }
+  }
+}

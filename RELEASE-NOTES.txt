@@ -1,1 +1,5 @@
-v2026.07.24.157 - Workspace Operating System Foundation
+v2026.07.24.158 - Improvement Engine Foundation
+
+Introduces a governed continuous improvement lifecycle with evidence, confidence, expected value, risk-based human approval, implementation, verification, before/after measurement and learning.
+
+AI can assist throughout the lifecycle, while strategic and high-risk decisions remain human governed.

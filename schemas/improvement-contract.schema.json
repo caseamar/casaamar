@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Improvement Contract",
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "stage",
+    "objective",
+    "evidence",
+    "confidence",
+    "expectedValue",
+    "risk",
+    "approval",
+    "verification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "observed",
+        "analysed",
+        "proposed",
+        "approved",
+        "implementing",
+        "verifying",
+        "measuring",
+        "learned",
+        "rejected",
+        "paused"
+      ]
+    },
+    "stage": {
+      "enum": [
+        "observe",
+        "understand",
+        "prioritize",
+        "recommend",
+        "approve",
+        "implement",
+        "verify",
+        "measure",
+        "learn"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "expectedValue": {
+      "type": "object",
+      "required": [
+        "dimension",
+        "direction",
+        "metric"
+      ]
+    },
+    "risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "mode",
+        "required"
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "successCriteria",
+        "requiredSuites"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -467,9 +467,23 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "platform.improvement-engine",
+      "domain": "platform",
+      "status": "foundation",
+      "owner": "Platform Intelligence",
+      "dependencies": [
+        "platform.event-platform",
+        "platform.data-contracts",
+        "platform.verification-governance",
+        "platform.ai-service-layer"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
-  "version": "2.0.0",
-  "platform_version": "v2026.07.24.157",
-  "updated_at": "2026-07-28T15:04:00+02:00"
+  "version": "2.1.0",
+  "platform_version": "v2026.07.24.158",
+  "updated_at": "2026-07-28T15:25:00+02:00"
 }

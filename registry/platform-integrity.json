@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "updated_at": "2026-07-28T15:04:00+02:00",
-  "platform_version": "v2026.07.24.157",
+  "updated_at": "2026-07-28T15:25:00+02:00",
+  "platform_version": "v2026.07.24.158",
   "status": "pass",
   "score": 100,
   "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
@@ -88,8 +88,8 @@
       "status": "pass",
       "because": "Manifest, Worker, registry and release records share the current platform identity.",
       "evidence": [
-        "v2026.07.24.157",
-        "20260724.157"
+        "v2026.07.24.158",
+        "20260724.158"
       ]
     },
     {

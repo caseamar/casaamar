@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "version": "2.1.0",
-  "platform_version": "v2026.07.24.157",
+  "version": "2.2.0",
+  "platform_version": "v2026.07.24.158",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -280,7 +280,95 @@
         "workspace_id"
       ],
       "description": "Governed workspace context lifecycle event."
+    },
+    {
+      "type": "improvement.observed",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "objective",
+        "evidence_count"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.recommended",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "confidence",
+        "risk"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.approved",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "approval_mode"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.implemented",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "implementation_ref"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.verified",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "verification_status"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.measured",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "metric",
+        "before",
+        "after"
+      ],
+      "audited": true
+    },
+    {
+      "type": "improvement.learned",
+      "owner": "improvement-engine",
+      "category": "improvement",
+      "privacy_class": "operational",
+      "retention": "audit-standard",
+      "required_payload": [
+        "improvement_id",
+        "outcome"
+      ],
+      "audited": true
     }
   ],
-  "updated_at": "2026-07-28T15:04:00+02:00"
+  "updated_at": "2026-07-28T15:25:00+02:00"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.6.0",
-  "platform_version": "v2026.07.24.157",
+  "version": "1.8.0",
+  "platform_version": "v2026.07.24.158",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -85,9 +85,19 @@
       "title": "Evidence before approval",
       "principle": "A release may only be approved when the promised behaviour has observable evidence at every required test level. Missing evidence is not a pass.",
       "enforcement": "Verification Governance derives mandatory test suites from capability profiles and blocks incomplete evidence."
+    },
+    {
+      "id": "ARTICLE-17",
+      "title": "Human-Governed AI",
+      "rule": "AI may observe, analyse, recommend, implement and verify only within explicit risk policies; strategic, high-impact or irreversible actions require human approval."
+    },
+    {
+      "id": "ARTICLE-18",
+      "title": "Continuous Measured Improvement",
+      "rule": "Improvements must progress from evidence through verification and measurement before the platform records learning or claims impact."
     }
   ],
-  "updated_at": "2026-07-28T15:04:00+02:00",
+  "updated_at": "2026-07-28T15:25:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",
