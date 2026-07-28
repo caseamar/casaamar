@@ -1,19 +1,16 @@
 {
-  "release": "v2026.07.24.138",
-  "name": "Workspace State Restoration",
-  "title": "Workspace State Restoration",
-  "summary": "Restore the user to the same workspace position after opening and closing operational cards.",
+  "release": "v2026.07.24.139",
+  "name": "Workspace State Transaction Hotfix",
+  "title": "Workspace State Transaction Hotfix",
+  "build": "2026-07-28T10:14:31+02:00",
+  "summary": "Fix workspace return-state restoration with a transactional state model and executable behaviour tests.",
   "changes": [
-    "Added a reusable Workspace State Manager",
-    "Restores scroll position after returning to AI Workspace",
-    "Retains focus when the originating element can be resolved",
-    "Does not force old positions on fresh direct visits",
-    "Added declarative state-restoration test contract"
+    "Preserves the original workspace page and scroll position across navigation",
+    "Prevents return links from overwriting the stored origin",
+    "Coordinates workspace restoration with Mission Control start-position logic",
+    "Adds an executable state-machine behaviour regression test"
   ],
   "manual_review": [
-    "Open a card from lower on the page, return, and confirm the same position is restored",
-    "Confirm a fresh direct visit to Mission Control starts normally"
-  ],
-  "build": "2026-07-28T09:47:32+02:00",
-  "generated_at": "2026-07-28T09:47:32+02:00"
+    "Verify return position in the deployed browser environment using both in-page back links and the browser back button."
+  ]
 }

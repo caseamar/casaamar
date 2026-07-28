@@ -1,1 +1,3 @@
-v137 — Workspace Title Governance and Scalable Test Contracts
+Casa Amar v139 — Workspace State Transaction Hotfix
+
+Fixes return-position restoration and adds executable state-machine behaviour tests.

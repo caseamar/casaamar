@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "updated_at": "2026-07-28T09:47:32+02:00",
+  "updated_at": "2026-07-28T10:12:40+02:00",
   "policy": {
     "new_capability_requires_contract": true,
     "changed_capability_requires_targeted_tests": true,
@@ -64,15 +64,24 @@
     },
     {
       "id": "workspace-state-manager",
-      "source": "core/casa-workspace-state.js",
+      "capabilities": [
+        "preserve-return-position"
+      ],
+      "dependencies": [
+        "session-storage",
+        "mission-control-start-position"
+      ],
       "required_tests": [
-        "state-saved-before-navigation",
-        "scroll-restored-on-return",
-        "focus-restored-when-available",
-        "fresh-entry-does-not-force-restore"
+        "origin-state-captured",
+        "destination-cannot-overwrite-origin",
+        "explicit-return-restores-scroll",
+        "browser-back-restores-scroll",
+        "fresh-direct-open-does-not-restore",
+        "transaction-cleared-after-restore",
+        "start-position-does-not-compete"
       ],
       "manual_review": [
-        "browser-scroll-position-feels-correct"
+        "deployed-browser-scroll-position"
       ]
     }
   ]

@@ -1,15 +1,19 @@
 {
   "version": "1.5.0",
-  "release": "v2026.07.24.138",
-  "status": "passed",
+  "release": "v2026.07.24.139",
+  "status": "pass",
   "passed_checks": 1199,
   "failed_checks": 0,
-  "executed_at": "2026-07-28T09:47:32+02:00",
+  "executed_at": "2026-07-28T10:12:40+02:00",
   "command": "node tools/release-quality-gate.mjs",
-  "updated_at": "2026-07-28T09:47:32+02:00",
-  "generated_at": "2026-07-28T09:47:32+02:00",
-  "platform_version": "v2026.07.24.138",
+  "updated_at": "2026-07-28T10:12:40+02:00",
+  "generated_at": "2026-07-28T10:14:31+02:00",
+  "platform_version": "v2026.07.24.139",
   "checks_passed": 1250,
   "checks_failed": 0,
-  "zip_integrity": "passed"
+  "zip_integrity": "passed",
+  "automated_checks_passed": 1267,
+  "automated_checks_failed": 0,
+  "workspace_state_behaviour_tests_passed": 7,
+  "browser_smoke_test": "manual_review_required_timeout"
 }

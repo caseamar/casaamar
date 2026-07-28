@@ -302,6 +302,18 @@ check(controlHtml.includes('item.compact_display_name||item.display_name'),'Work
 check(controlHtml.includes('hyphens:none'),'Workspace titles disable automatic word splitting');
 check(controlHtml.includes("workspace-title-fit"),'Runtime UI self-test detects workspace title fit failures');
 
+
+// v139 transactional workspace-state regression gates
+const workspaceStateSource=read('core/casa-workspace-state.js');
+check(workspaceStateSource.includes("const TRANSACTION_KEY=PREFIX+'return-transaction'"),'Workspace state uses a transactional return model');
+check(workspaceStateSource.includes("destinationPath===existing.origin"),'Return navigation preserves the original origin state');
+check(workspaceStateSource.includes("tx.status==='returning'||navigationType()==='back_forward'"),'Restoration requires an explicit return or browser back navigation');
+check(controlHtml.includes("CasaWorkspaceState?.shouldRestore?.()"),'Mission Control start-position logic yields to workspace restoration');
+check(fs.existsSync(path.join(root,'tools/workspace-state-behaviour-test.mjs')),'Executable workspace-state behaviour regression test is packaged');
+const workspaceContract=testContracts.components.find(x=>x.id==='workspace-state-manager');
+check(Boolean(workspaceContract),'Workspace State Manager has a declarative test contract');
+check(workspaceContract?.required_tests?.includes('destination-cannot-overwrite-origin'),'Workspace State contract protects the origin transaction');
+
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 if(fail.length)process.exit(1);

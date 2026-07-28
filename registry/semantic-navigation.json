@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "platform_version": "v2026.07.24.138",
+  "platform_version": "v2026.07.24.139",
   "principles": [
     "Workspace opens operational surfaces",
     "Technical metadata is secondary",
@@ -46,5 +46,5 @@
     "workspace_to_technical_surface": true,
     "unexplained_technical_language_in_danish_ui": true
   },
-  "updated_at": "2026-07-28T09:47:32+02:00"
+  "updated_at": "2026-07-28T10:12:40+02:00"
 }
