@@ -2812,7 +2812,7 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.162",
+        platform_version: "v2026.07.24.163",
         build: "2026-07-28T14:00:00+02:00",
         worker_version: "15.47-observation-platform",
         source: "worker-runtime"
