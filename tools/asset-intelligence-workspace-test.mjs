@@ -9,7 +9,7 @@ const first=context.window.CasaAssetIntelligence.all()[0];if(!first)throw new Er
 const impact=context.window.CasaAssetIntelligence.impact(first.id);if(!impact||!impact.recommendations)throw new Error('Impact missing');
 if(!published.includes('asset.intelligence.ready'))throw new Error('Ready event not published');
 for(const type of ['asset.intelligence.ready','asset.intelligence.error'])if(!events.contracts.some(x=>x.type===type))throw new Error(`Missing event contract ${type}`);
-const html=read('asset-intelligence.html');for(const marker of ['Asset Intelligence Workspace','Næste bedste handling','Forbered forslag','Ingen filer ændres automatisk','bootAssetWorkspace','Prøv igen'])if(!html.includes(marker))throw new Error(`Missing UI marker: ${marker}`);
+const html=read('asset-intelligence.html');for(const marker of ['Asset Intelligence Workspace','Næste bedste handling','Forbered forslag','Godkend og gem','Afvis forslag','Ingen filer ændres automatisk','bootAssetWorkspace','Prøv igen'])if(!html.includes(marker))throw new Error(`Missing UI marker: ${marker}`);
 if(html.includes('asset-intelligence:ready')||html.includes('asset-intelligence:error'))throw new Error('Legacy event notation present');
 const startup=read('core/casa-startup-orchestrator.js');if(!startup.includes('bootAssetWorkspace')||startup.indexOf('asset-event-contracts')>startup.indexOf('asset-intelligence'))throw new Error('Asset startup ordering invalid');
 console.log('Asset Intelligence Workspace: 18 kontroller bestået');

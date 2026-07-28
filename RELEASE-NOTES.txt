@@ -1,9 +1,8 @@
-Casa Amar Platform v2026.07.24.165
-Asset Intelligence Workspace
+Casa Amar Platform v2026.07.24.166
 
-- Rebuilt Asset Intelligence as an operational workspace with previews, filters, readiness scoring and one explainable next-best action per asset.
-- Added governed before/after proposal previews. Original files are never changed automatically.
-- Added explicit asset startup ordering: Event Contracts before Asset Intelligence.
-- Replaced legacy asset event names with channel-neutral dot notation.
-- Added retry, timeout and controlled terminal states.
-- Added 18 Asset Intelligence Workspace tests.
+Constitution Engine & AI Decision UX
+- Executable Constitution Registry with 100% rule-to-test coverage
+- Release-blocking validation for principles without automated evidence
+- AI Decision UX with clear Approve, Edit, Postpone and Reject outcomes
+- Direct approve-and-save workflow for asset alt-text proposals
+- No editor required for the standard approval path

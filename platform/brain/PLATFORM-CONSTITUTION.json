@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.20.0",
-  "platform_version": "v2026.07.24.165",
+  "version": "1.21.0",
+  "platform_version": "v2026.07.24.166",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -107,9 +107,16 @@
       "principle": "AI may interpret observations, but it may not be treated as the primary source of facts. User-facing conclusions must be traceable to verified evidence and their confidence may not exceed evidence quality.",
       "blocking": true,
       "automated_rule": "observation-evidence-integrity"
+    },
+    {
+      "id": "ARTICLE-21",
+      "title": "AI Decision UX",
+      "rule": "Every user-facing AI recommendation must present one clear primary CTA, explicit alternative outcomes, and an understandable consequence for approval, editing, postponement and rejection.",
+      "blocking": true,
+      "automated_rule": "ai-decision-ux-integrity"
     }
   ],
-  "updated_at": "2026-07-28T16:20:00+02:00",
+  "updated_at": "2026-07-28T16:55:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

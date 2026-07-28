@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.165",
-  "build": "2026-07-28T16:20:00+02:00",
+  "platform_version": "v2026.07.24.166",
+  "build": "2026-07-28T16:55:00+02:00",
   "worker_version": "15.47-observation-platform",
   "release_name": "Observation Platform Foundation",
-  "generated_at": "2026-07-28T16:20:00+02:00",
+  "generated_at": "2026-07-28T16:55:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-28T16:20:00+02:00"
+    "build": "2026-07-28T16:55:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.165",
+    "asset_cache_key": "20260724.166",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -586,13 +586,14 @@
     "principle": "Features request AI capabilities rather than named models or providers."
   },
   "constitution_engine": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "entry": "/core/casa-constitution.js",
     "constitution": "/platform/brain/PLATFORM-CONSTITUTION.json",
     "integrity_registry": "/registry/platform-integrity.json",
     "executable": true,
     "block_on_failure": true,
-    "explainable": true
+    "explainable": true,
+    "coverage_registry": "/registry/constitution-rules.json"
   },
   "platform_integrity": {
     "version": "1.0.0",

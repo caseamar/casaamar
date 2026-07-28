@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.166",
+  "updated_at": "2026-07-28T16:55:00+02:00",
+  "principles": [
+    {
+      "principle_id": "ARTICLE-01",
+      "title": "AI First",
+      "blocking": true,
+      "automated_tests": [
+        "tools/ai-service-layer-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-02",
+      "title": "Configuration over Hardcoding",
+      "blocking": true,
+      "automated_tests": [
+        "tools/platform-integrity-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-03",
+      "title": "Behaviour before Components",
+      "blocking": true,
+      "automated_tests": [
+        "tools/behaviour-governance-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-04",
+      "title": "Human Approval for Risk",
+      "blocking": true,
+      "automated_tests": [
+        "tools/action-engine-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-05",
+      "title": "Explainability Required",
+      "blocking": true,
+      "automated_tests": [
+        "tools/release-quality-gate.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-06",
+      "title": "Registered Capabilities",
+      "blocking": true,
+      "automated_tests": [
+        "tools/capability-intelligence-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-07",
+      "title": "Contracted Behaviour",
+      "blocking": true,
+      "automated_tests": [
+        "tools/behaviour-governance-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-08",
+      "title": "Release Integrity",
+      "blocking": true,
+      "automated_tests": [
+        "tools/release-quality-gate.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-09",
+      "title": "Controlled Complexity",
+      "blocking": true,
+      "automated_tests": [
+        "tools/engineering-governance-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-10",
+      "title": "No Vendor Lock-in",
+      "blocking": true,
+      "automated_tests": [
+        "tools/ai-service-layer-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-11",
+      "title": "Shared Experience Context",
+      "blocking": true,
+      "automated_tests": [
+        "tools/experience-context-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-12",
+      "title": "Industry-neutral Core",
+      "blocking": true,
+      "automated_tests": [
+        "tools/platform-integrity-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-13",
+      "title": "Domain Isolation",
+      "blocking": true,
+      "automated_tests": [
+        "tools/platform-integrity-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-14",
+      "title": "Contract-first Data",
+      "blocking": true,
+      "automated_tests": [
+        "tools/data-contracts-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "article-15",
+      "title": "Shared Context by Contract",
+      "blocking": true,
+      "automated_tests": [
+        "tools/experience-context-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-16",
+      "title": "Evidence before approval",
+      "blocking": true,
+      "automated_tests": [
+        "tools/verification-governance-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-17",
+      "title": "Human-Governed AI",
+      "blocking": true,
+      "automated_tests": [
+        "tools/action-engine-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-18",
+      "title": "Continuous Measured Improvement",
+      "blocking": true,
+      "automated_tests": [
+        "tools/improvement-engine-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-19",
+      "title": "Governed Actions",
+      "blocking": true,
+      "automated_tests": [
+        "tools/action-engine-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "20",
+      "title": "Evidence before interpretation",
+      "blocking": true,
+      "automated_tests": [
+        "tools/observation-platform-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    },
+    {
+      "principle_id": "ARTICLE-21",
+      "title": "AI Decision UX",
+      "blocking": true,
+      "automated_tests": [
+        "tools/ai-decision-ux-test.mjs"
+      ],
+      "coverage_status": "covered",
+      "last_verified_release": "v2026.07.24.166"
+    }
+  ]
+}
