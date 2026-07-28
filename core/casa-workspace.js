@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-const VERSION="1.8.1";
+const VERSION="1.8.2";
 const REGISTRY="/registry/workspace.json";
 let state={loaded:false,registry:null,insights:[],status:{}};
 const fetchJson=async path=>{const r=await fetch(`${path}?_=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`Workspace registry kunne ikke indlæses (${r.status})`);return r.json()};

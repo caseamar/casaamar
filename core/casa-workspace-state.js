@@ -1,6 +1,6 @@
 (()=>{
 'use strict';
-const VERSION='1.1.0';
+const VERSION='1.2.0';
 const PREFIX='casa:workspace-state:';
 const TRANSACTION_KEY=PREFIX+'return-transaction';
 const MAX_AGE_MS=30*60*1000;
@@ -46,9 +46,11 @@ const beginNavigation=(destination,activeElement=document.activeElement)=>{
   });
 };
 const navigationType=()=>{try{return performance.getEntriesByType('navigation')[0]?.type||''}catch(_){return ''}};
+const referrerPath=()=>{try{return document.referrer?new URL(document.referrer,location.href).pathname:''}catch(_){return ''}};
 const shouldRestore=()=>{
   const tx=readTransaction();if(!tx||tx.origin!==location.pathname)return false;
-  return tx.status==='returning'||navigationType()==='back_forward';
+  const returnedFromDestination=referrerPath()===tx.destination;
+  return tx.status==='returning'||navigationType()==='back_forward'||returnedFromDestination;
 };
 const restore=()=>{
   if(!shouldRestore())return false;

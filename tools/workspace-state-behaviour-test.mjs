@@ -7,7 +7,7 @@ const active={id:'workspace-recommendations',getAttribute:n=>n==='href'?'/recomm
 const makeContext=()=>{
  const context={console,URL,Date,JSON,Math,setTimeout:(fn)=>{fn();return 1},clearTimeout(){},requestAnimationFrame:fn=>fn(),CustomEvent:class{constructor(type,opts){this.type=type;this.detail=opts?.detail}},CSS:{escape:s=>s},sessionStorage:storage,performance:{getEntriesByType:()=>[{type:navType}]}};
  context.location={get pathname(){return pathname},hash:'',href:'https://example.test'+pathname,origin:'https://example.test'};
- context.document={activeElement:active,documentElement:{scrollHeight:4000},getElementById:()=>active,querySelector:()=>active,addEventListener:(t,f)=>(listeners.document[t]??=[]).push(f)};
+ context.document={referrer:'',activeElement:active,documentElement:{scrollHeight:4000},getElementById:()=>active,querySelector:()=>active,addEventListener:(t,f)=>(listeners.document[t]??=[]).push(f)};
  context.window=context;context.innerHeight=900;context.scrollX=0;Object.defineProperty(context,'scrollY',{get:()=>scrollY});context.scrollTo=({top})=>{scrollY=top};context.addEventListener=(t,f)=>(listeners.window[t]??=[]).push(f);context.dispatchEvent=()=>{};context.CasaCore=null;
  return vm.createContext(context);
 };
@@ -27,4 +27,15 @@ if(ctx.CasaWorkspaceState.readTransaction()!==null)throw new Error('transaction 
 // A fresh direct visit must not restore stale state.
 pathname='/control/';scrollY=300;ctx.CasaWorkspaceState.beginNavigation('/asset-intelligence.html',active);pathname='/control/';scrollY=0;navType='navigate';
 if(ctx.CasaWorkspaceState.shouldRestore())throw new Error('fresh direct navigation incorrectly restores state');
-console.log('Workspace state behaviour test: 7 passed, 0 failed');
+
+// Normal return-link navigation must restore via referrer even without an explicit returning status.
+pathname='/control/';scrollY=980;navType='navigate';ctx.document.referrer='';ctx.CasaWorkspaceState.beginNavigation('/recommendation-engine.html',active);
+pathname='/control/';scrollY=0;ctx.document.referrer='https://example.test/recommendation-engine.html';
+if(!ctx.CasaWorkspaceState.shouldRestore())throw new Error('referrer-based return was not eligible for restoration');
+if(!ctx.CasaWorkspaceState.restore()||Math.abs(scrollY-980)>1)throw new Error('referrer-based restoration failed');
+
+for(const page of ['recommendation-engine.html','release-governance.html','asset-intelligence.html','knowledge-graph.html','experience-engine.html','content-studio.html']){
+ const html=fs.readFileSync(new URL('../'+page,import.meta.url),'utf8');
+ if(!html.includes('/core/casa-workspace-state.js?v=20260724.140'))throw new Error(page+' does not load workspace state manager');
+}
+console.log('Workspace state behaviour test: 15 passed, 0 failed');

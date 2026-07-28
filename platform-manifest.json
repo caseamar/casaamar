@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.139",
-  "build": "2026-07-28T10:14:31+02:00",
-  "worker_version": "15.28-workspace-state-transaction-hotfix",
-  "release_name": "Workspace State Transaction Hotfix",
-  "generated_at": "2026-07-28T10:14:31+02:00",
+  "platform_version": "v2026.07.24.140",
+  "build": "2026-07-28T10:31:00+02:00",
+  "worker_version": "15.29-workspace-state-return-flow-hotfix",
+  "release_name": "Workspace State Return Flow Hotfix",
+  "generated_at": "2026-07-28T10:31:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -85,7 +85,7 @@
     "seo": "/config/seo.json"
   },
   "platform_doctor": {
-    "version": "3.2.3",
+    "version": "3.2.4",
     "entry": "/control/#platform-doctor",
     "automatic_on_load": true,
     "manual_recheck": true,
@@ -186,7 +186,7 @@
     "audit_integrated": true
   },
   "diagnostics_framework": {
-    "version": "1.24.0",
+    "version": "1.25.0",
     "entry": "/core/casa-diagnostics.js",
     "registry": true,
     "standard_result_model": true,
@@ -252,7 +252,7 @@
     "manifest_driven_versions": true
   },
   "subsystem_registry": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "entry": "/core/casa-subsystem-registry.js",
     "registry": "/registry/subsystems.json",
     "source_of_truth": true,
@@ -285,7 +285,7 @@
     ]
   },
   "repository_intelligence": {
-    "version": "1.14.0",
+    "version": "1.15.0",
     "entry": "/core/casa-repository.js",
     "registry": "/registry/repository.json",
     "inventory_driven": true,
@@ -309,7 +309,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.139",
+    "asset_cache_key": "20260724.140",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
@@ -424,7 +424,7 @@
     ]
   },
   "ai_workspace": {
-    "version": "1.8.1",
+    "version": "1.8.2",
     "entry": "/core/casa-workspace.js",
     "registry": "/registry/workspace.json",
     "modules": 6,
@@ -433,7 +433,7 @@
     "cross_subsystem": true,
     "state_restoration": true,
     "state_manager": {
-      "version": "1.0.0",
+      "version": "1.2.0",
       "entry": "/core/casa-workspace-state.js",
       "restores": [
         "scroll",
@@ -495,7 +495,7 @@
     "automatic_execution": false
   },
   "release_governance": {
-    "version": "2.4.0",
+    "version": "2.5.0",
     "entry": "/core/casa-release-governance.js",
     "report": "/release-governance.json",
     "required_score": 100,
