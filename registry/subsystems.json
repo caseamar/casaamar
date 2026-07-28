@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.141",
+      "version": "v2026.07.24.142",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -51,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "3.2.5",
+      "version": "3.2.6",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -246,7 +246,7 @@
     {
       "id": "ai-workspace",
       "display_name": "AI Workspace",
-      "version": "1.8.3",
+      "version": "1.8.4",
       "owner": "AI Workspace",
       "status_source": "module",
       "manifest_key": "ai_workspace",
@@ -307,7 +307,7 @@
     {
       "id": "release-governance",
       "display_name": "Release Governance",
-      "version": "2.6.0",
+      "version": "2.7.0",
       "owner": "Platform Governance",
       "status_source": "module",
       "manifest_key": "release_governance",

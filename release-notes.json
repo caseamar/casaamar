@@ -1,9 +1,9 @@
 {
-  "release": "v2026.07.24.141",
+  "release": "v2026.07.24.142",
   "name": "Workspace State Authoritative Return Hotfix",
-  "title": "Workspace State Transaction Hotfix",
+  "title": "Workspace State Layout Stabilization Hotfix",
   "build": "2026-07-28T10:38:49+02:00",
-  "summary": "Fix workspace return-state restoration with a transactional state model and executable behaviour tests.",
+  "summary": "Wait for dynamic layout stabilization before restoring workspace scroll position.",
   "changes": [
     "Preserves the original workspace page and scroll position across navigation",
     "Prevents return links from overwriting the stored origin",
