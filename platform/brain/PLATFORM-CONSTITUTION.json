@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "2.9.0",
-  "platform_version": "v2026.07.24.182",
+  "version": "3.2.0",
+  "platform_version": "v2026.07.24.183",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -175,6 +175,18 @@
       "id": "ARTICLE-30",
       "title": "Plain-Language Actions",
       "rule": "User-facing actions must explain the outcome in ordinary language, hide internal architecture terms by default, present one clear primary action, and offer a guided multi-action flow when several improvements are available.",
+      "blocking": true
+    },
+    {
+      "id": "ARTICLE-31",
+      "title": "One Click to Work",
+      "rule": "A recommendation must open the concrete work item with context already selected, without forcing the user to search inside a general workspace.",
+      "blocking": true
+    },
+    {
+      "id": "ARTICLE-32",
+      "title": "Automatic Completion",
+      "rule": "A guided flow must close automatically when all tasks are complete, present a concise result and offer the next relevant step without requiring a redundant stop or close action.",
       "blocking": true
     }
   ],

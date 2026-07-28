@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.182",
+  "platform_version": "v2026.07.24.183",
   "build": "2026-07-28T23:32:00+02:00",
-  "worker_version": "15.54-guided-work-sync",
-  "release_name": "Guided Work Engine – Synchronized Deployment",
+  "worker_version": "15.55-guided-work-completion",
+  "release_name": "Guided Work Automatic Completion",
   "generated_at": "2026-07-28T23:32:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.182",
+    "asset_cache_key": "20260724.183",
     "stale_release_token_validation": true
   },
   "content_intelligence": {

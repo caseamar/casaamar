@@ -1,29 +1,29 @@
 {
-  "release": "v2026.07.24.182",
-  "name": "Guided Work Engine – Synchronized Deployment",
-  "platform_version": "v2026.07.24.182",
+  "release": "v2026.07.24.183",
+  "name": "Guided Work Automatic Completion",
+  "platform_version": "v2026.07.24.183",
   "build": "2026-07-28T23:32:00+02:00",
-  "summary": "Repackages Guided Work Engine with synchronized manifest, Worker and Control Center identities, plus a release-blocking deployment identity test.",
+  "summary": "Guided work now closes automatically after the final task, summarizes completed improvements and presents the next relevant publishing step.",
   "changes": [
-    "Guided Work Engine v1.0.0",
-    "Synchronized Platform/Worker identity",
-    "Control Center expected-version alignment",
-    "Deployment Identity Governance test",
-    "Complete-replace Cloudflare package"
+    "Automatic batch completion",
+    "Compact completed-task summary",
+    "Publishing next-step guidance",
+    "One Click to Work and Automatic Completion constitution rules",
+    "Release-blocking completion runtime test"
   ],
   "manual_review": [
-    "Cloudflare deployment",
-    "Control Center synchronization banner",
-    "Guided Work direct task flow",
+    "Complete a guided flow",
+    "Confirm no Stop flow button remains after completion",
+    "Confirm completion summary and publishing CTA",
     "Public website smoke test"
   ],
-  "title": "Guided Work Engine – Synchronized Deployment",
+  "title": "Guided Work Automatic Completion",
   "highlights": [
-    "Manifest and Worker both v2026.07.24.182",
-    "No mixed-runtime deployment",
-    "Release-blocking identity verification",
-    "Guided Work retained"
+    "No redundant completion click",
+    "Guided batch state closes automatically",
+    "Completed cards collapse into a compact list",
+    "Next step points to Udgivelsescenter"
   ],
-  "release_name": "Guided Work Engine – Synchronized Deployment",
+  "release_name": "Guided Work Automatic Completion",
   "updated_at": "2026-07-28T23:32:00+02:00"
 }
