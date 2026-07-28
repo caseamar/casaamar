@@ -1,3 +1,3 @@
-Release v177 – Action Orchestrator Foundation
+v178 – Action Orchestrator CTA Runtime Fix
 
-Impact recommendations are now executable through clear Udfør nu, Senere and Afvis actions. Context is transferred to the correct workspace, completion evidence returns to Domain Intelligence, and completed work leaves the active queue.
+Fixes impact-generated actions being stored as "suggested" and therefore rendered without Udfør nu / Senere / Afvis controls. Suggested impact actions now normalize to READY, including persisted stale actions. Adds executable regression tests proving that Impact Engine output reaches a visible actionable CTA state before release.
