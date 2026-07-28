@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+const read=p=>fs.readFileSync(p,'utf8');const ok=(x,m)=>{if(!x)throw new Error(m)};
+const core=read('core/casa-domain-intelligence.js'),page=read('domain-intelligence.html'),model=JSON.parse(read('registry/domain-model.json')),constitution=JSON.parse(read('registry/constitution-rules.json'));
+ok(core.includes("a==='no'")&&core.includes('noFollowup'),'Nej-svar udløser ikke betinget opfølgning');
+ok(core.includes('patio-floor-location')&&core.includes('Hvor ligger patioen?'),'Patio-opfølgning mangler');
+ok(core.includes('roof-sharing')&&core.includes('Hvem deles tagterrassen med?'),'Tagterrasse-opfølgning mangler');
+ok(core.includes("a==='unknown'")&&core.includes("a==='skip'"),'Ved ikke eller Spring over mangler');
+ok(core.includes('upsertFact')&&core.includes("source='human-verification'"),'Svar gemmes ikke som verificeret fakta');
+ok(page.includes('Ja</button>')&&page.includes('Nej</button>')&&page.includes('Ved ikke</button>')&&page.includes('Spring over</button>'),'Tydelige svar-CTAer mangler');
+ok(page.includes('Ét svar ad gangen')&&page.includes('Næste spørgsmål vises nu'),'Closed-loop fremdrift mangler');
+ok(model.clarifications.every(q=>q.why&&q.subject&&q.predicate),'Afklaringer mangler forklaring eller faktamapping');
+ok(constitution.principles.some(x=>x.principle_id==='ARTICLE-25'&&x.automated_tests.includes('tools/domain-verification-queue-test.mjs')),'Constitution Article 25 mangler');
+console.log('Domain Verification Queue: 9 kontroller bestået.');

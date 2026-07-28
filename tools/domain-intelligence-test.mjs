@@ -8,6 +8,8 @@ ok(model.objects.some(x=>x.id==='area.patio'&&x.status==='verified'),'Verificere
 for(const id of ['furniture.patio-sun-loungers','furniture.patio-table','amenity.patio-grill','plant.patio-bougainvillea'])ok(model.objects.some(x=>x.id===id),`Domæneobjekt mangler: ${id}`);
 ok(model.facts.filter(x=>x.subject==='asset-casa-amar-v2-hero-patio'&&x.predicate==='shows').length>=5,'Patio-asset mangler grounding-relationer');
 ok(core.includes('saveDescription')&&core.includes('contextFor')&&core.includes('proposeAlt'),'Domain Intelligence API er ufuldstændigt');
-ok(page.includes('Kort domænebeskrivelse')&&page.includes('AI spørger kun ved usikkerhed'),'Onboardingflow mangler');
+ok(page.includes('Kort domænebeskrivelse')&&page.includes('Verificeringskø'),'Onboardingflow mangler');
 ok(quality.includes('CasaDomainIntelligence'),'AI Output Quality bruger ikke Domain Intelligence');
-console.log('Domain Intelligence: 12 kontroller bestået.');
+ok(core.includes('answerClarification')&&core.includes('verificationQueue'),'Verificeringskø API mangler');
+ok(page.includes('Verificeringskø')&&page.includes('Hvorfor spørger AI?'),'Interaktiv verificeringskø mangler');
+console.log('Domain Intelligence: 14 kontroller bestået.');

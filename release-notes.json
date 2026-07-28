@@ -1,9 +1,9 @@
 {
-  "release": "v2026.07.24.170",
+  "release": "v2026.07.24.171",
   "name": "Verification Governance Foundation",
-  "platform_version": "v2026.07.24.170",
+  "platform_version": "v2026.07.24.171",
   "build": "2026-07-28T16:55:00+02:00",
-  "summary": "Adds the canonical verified evidence layer for AI interpretation and continuous improvement.",
+  "summary": "Adds an interactive, branching verification queue where AI asks one targeted question at a time and turns answers into verified domain facts.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
     "Capability Intelligence v1.0.0",
@@ -16,7 +16,7 @@
     "Workspace return flow",
     "Public website smoke test"
   ],
-  "title": "Verification Governance Foundation",
+  "title": "Adaptive Domain Verification Queue",
   "highlights": [
     "Verification Governance v1.0.0",
     "Capability-based verification profiles",

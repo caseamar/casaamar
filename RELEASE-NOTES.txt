@@ -1,3 +1,3 @@
-v2026.07.24.170 – Domain Intelligence Baseline
+v171 – Adaptive Domain Verification Queue
 
-Adds domain context onboarding, generic Domain Packs, verified facts, semantic grounding and Casa Amar baseline.
+Interactive one-question-at-a-time verification, branching follow-up questions, verified fact persistence, and release-blocking governance.

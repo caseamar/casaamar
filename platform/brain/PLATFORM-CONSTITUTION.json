@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.21.0",
-  "platform_version": "v2026.07.24.170",
+  "version": "2.5.0",
+  "platform_version": "v2026.07.24.171",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -133,6 +133,18 @@
       "rule": "AI must resolve verified domain context before generating domain-specific content. Unknown facts must be confidence-qualified or sent for clarification.",
       "blocking": true,
       "automated_rule": "domain-intelligence-integrity"
+    },
+    {
+      "id": "ARTICLE-25",
+      "title": "Adaptive Clarification Loop",
+      "principle": "AI must ask only relevant questions, present clear answer paths and use negative answers to request the missing corrective context.",
+      "rules": [
+        "One targeted question at a time",
+        "No answer path may end without a visible state update",
+        "A negative answer must trigger a relevant follow-up when a factual gap remains",
+        "Unknown and deferred answers must not be treated as verified facts",
+        "Human answers become versioned verified domain facts"
+      ]
     }
   ],
   "updated_at": "2026-07-28T18:30:00+02:00",

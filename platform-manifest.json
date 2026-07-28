@@ -1,5 +1,5 @@
 {
-  "platform_version": "v2026.07.24.170",
+  "platform_version": "v2026.07.24.171",
   "build": "2026-07-28T16:55:00+02:00",
   "worker_version": "15.47-observation-platform",
   "release_name": "Observation Platform Foundation",
@@ -323,7 +323,7 @@
       "_platform_release"
     ],
     "update_strategy": "reload canonical route with ephemeral cache-buster, then remove it from visible URL",
-    "asset_cache_key": "20260724.170",
+    "asset_cache_key": "20260724.171",
     "stale_release_token_validation": true
   },
   "content_intelligence": {
