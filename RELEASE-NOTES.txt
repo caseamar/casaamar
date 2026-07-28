@@ -1,10 +1,9 @@
-Casa Amar Platform v2026.07.24.161
-Observation Platform Foundation
+Casa Amar Platform v2026.07.24.162
+Content Intelligence Workspace
 
-- Canonical Observation Contract v1.0
-- Seven registered observation types
-- Verified evidence, confidence and provenance required
-- Orphan observations rejected
-- AI explicitly acts as interpreter, not primary source
-- Observation Platform panel integrated into Release Governance
-- Automated runtime, negative and rendered integration tests
+- Ny brugerrettet Content Intelligence Workspace.
+- Forklarlig score for publicering, SEO, sprog, assets, struktur og brugerrejse.
+- Én næste bedste handling pr. side med evidens, confidence, indsats og risiko.
+- Diff-preview før implementering.
+- Ingen automatisk publicering; menneskelig godkendelse er obligatorisk.
+- Ny runtime- og governance-verifikation i Release-tjek.

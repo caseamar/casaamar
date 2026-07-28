@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.161",
-  "updated_at": "2026-07-28T16:05:00+02:00",
+  "platform_version": "v2026.07.24.162",
+  "updated_at": "2026-07-28T14:00:00+02:00",
   "policy": {
     "material_defects_must_be_recorded": true,
     "every_defect_requires_prevention": true,

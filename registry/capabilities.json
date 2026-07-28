@@ -542,9 +542,32 @@
       ],
       "behaviour_contract_required": true,
       "layer": "platform-core"
+    },
+    {
+      "id": "content-intelligence",
+      "display_name": "Content Intelligence",
+      "layer": "experience",
+      "owner": "Content Platform",
+      "status": "active",
+      "version": "1.0.0",
+      "dependencies": [
+        "content-studio",
+        "universal-action-framework",
+        "observation-platform"
+      ],
+      "consumers": [
+        "ai-operations-center"
+      ],
+      "contracts": [
+        "canonical-page",
+        "action-contract"
+      ],
+      "behaviour_contract_required": true,
+      "api_ready": true,
+      "ai_ready": true
     }
   ],
   "version": "2.1.0",
-  "platform_version": "v2026.07.24.161",
-  "updated_at": "2026-07-28T16:05:00+02:00"
+  "platform_version": "v2026.07.24.162",
+  "updated_at": "2026-07-28T14:00:00+02:00"
 }

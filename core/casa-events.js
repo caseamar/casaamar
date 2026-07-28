@@ -8,7 +8,7 @@
  let registry={version:"0",contracts:[],principles:{}};
  const clone=v=>v===undefined?undefined:JSON.parse(JSON.stringify(v));
  const iso=()=>new Date().toISOString();
- const uid=p=>`${p}_${Date.now()}_${crypto?.randomUUID?.()||Math.random().toString(36).slice(2)}`;
+ const uid=p=>`${p}_${Date.now()}_${globalThis.crypto?.randomUUID?.()||Math.random().toString(36).slice(2)}`;
  async function loadContracts(){
   try{const r=await fetch(`/registry/event-contracts.json?_=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`HTTP ${r.status}`);registry=await r.json();}
   catch(error){registry={version:"unavailable",contracts:[],principles:{},load_error:error.message};}

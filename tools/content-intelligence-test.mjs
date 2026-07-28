@@ -1,0 +1,11 @@
+import fs from "node:fs";import vm from "node:vm";
+const root=new URL("../",import.meta.url),read=p=>fs.readFileSync(new URL(p,root),"utf8");
+const pages=JSON.parse(read("registry/content-pages.json")),cfg=JSON.parse(read("registry/content-intelligence.json"));
+const context={window:{CasaCore:{modules:{register(){}}},CasaEvents:{publish(){}},CasaContentStudio:{async load(){},list(){return pages.pages.map(x=>({...x,health:{score:80,level:"review",issues:[]}}))},get(id){const x=pages.pages.find(p=>p.id===id);return x?{...x,health:{score:80,level:"review",issues:[]}}:null}}},fetch:async()=>({ok:true,json:async()=>cfg}),CustomEvent:function(){}};context.window.window=context.window;vm.createContext(context);vm.runInContext(read("core/casa-content-intelligence.js"),context);
+await context.window.CasaContentIntelligence.load();
+const home=context.window.CasaContentIntelligence.analyze("home");if(!home||!Number.isFinite(home.intelligence.score))throw new Error("Home analysis missing");
+if(!home.intelligence.nextBestAction?.evidence?.length)throw new Error("Next best action lacks evidence");
+const p=context.window.CasaContentIntelligence.proposal(home.intelligence.nextBestAction.id);if(p.execution!=="proposal-only"||p.published!==false||!p.requiresApproval)throw new Error("Proposal governance invalid");
+const snap=context.window.CasaContentIntelligence.snapshot();if(snap.pages!==pages.pages.length||snap.opportunities<1)throw new Error("Snapshot invalid");
+const html=read("content-studio.html");for(const marker of ["Content Intelligence Workspace","Næste bedste handling","Forbered forslag","Før","Efter","Ingen ændring publiceres automatisk"])if(!html.includes(marker))throw new Error(`Missing UI marker: ${marker}`);
+console.log("Content Intelligence: 16 kontroller bestået");

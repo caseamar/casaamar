@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "version": "2.2.0",
-  "platform_version": "v2026.07.24.161",
+  "version": "2.3.0",
+  "platform_version": "v2026.07.24.162",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -429,7 +429,42 @@
         "verification_status"
       ],
       "audited": true
+    },
+    {
+      "type": "content.studio.ready",
+      "owner": "content-studio",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "session",
+      "required_payload": [
+        "version",
+        "page_count"
+      ],
+      "audited": false
+    },
+    {
+      "type": "content.studio.error",
+      "owner": "content-studio",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "30d",
+      "required_payload": [
+        "message"
+      ],
+      "audited": true
+    },
+    {
+      "type": "content.intelligence.ready",
+      "owner": "content-intelligence",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "session",
+      "required_payload": [
+        "version",
+        "pages"
+      ],
+      "audited": false
     }
   ],
-  "updated_at": "2026-07-28T16:05:00+02:00"
+  "updated_at": "2026-07-28T14:00:00+02:00"
 }

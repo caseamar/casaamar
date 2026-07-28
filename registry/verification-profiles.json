@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "updated_at": "2026-07-28T16:05:00+02:00",
-  "platform_version": "v2026.07.24.161",
+  "updated_at": "2026-07-28T14:00:00+02:00",
+  "platform_version": "v2026.07.24.162",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,
@@ -200,6 +200,32 @@
         "error",
         "timeout"
       ]
+    },
+    {
+      "id": "content-intelligence",
+      "capability": "content-intelligence",
+      "runtime": "browser",
+      "user_visible": true,
+      "async": true,
+      "risk": "medium",
+      "required_suites": [
+        "contract",
+        "component",
+        "integration",
+        "browser",
+        "negative",
+        "platform-impact",
+        "rendered-runtime",
+        "deployment-smoke"
+      ],
+      "terminal_states": [
+        "success",
+        "empty",
+        "error",
+        "timeout"
+      ],
+      "mutation_required": false,
+      "deployment_smoke_required": true
     }
   ],
   "summary": {

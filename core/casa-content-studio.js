@@ -10,8 +10,8 @@
   if(!response.ok)throw new Error(`Content Studio returned HTTP ${response.status}`);
   cache=await response.json();
   const validation=validate();
-  window.CasaEvents?.publish?.("content-studio:ready",{...snapshot(),validation});
-  window.dispatchEvent(new CustomEvent("casa:content-studio:ready",{detail:{...snapshot(),validation}}));
+  try{window.CasaEvents?.publish?.("content.studio.ready",{...snapshot(),validation})}catch(_e){}
+  window.dispatchEvent(new CustomEvent("casa:content.studio.ready",{detail:{...snapshot(),validation}}));
   return cache;
  }
  function health(page){
@@ -32,5 +32,5 @@
  function snapshot(){const items=list();return{version:VERSION,ready:Boolean(cache),page_count:items.length,ready_count:items.filter(x=>x.health.level==="ready").length,review_count:items.filter(x=>x.health.level==="review").length,blocked_count:items.filter(x=>x.health.level==="blocked").length,issue_count:items.reduce((n,x)=>n+x.health.issues.length,0)};}
  window.CasaContentStudio={version:VERSION,load,list,get,health,suggestions,validate,snapshot,get data(){return cache}};
  window.CasaCore?.modules?.register?.({id:"content-studio",version:VERSION,capabilities:["content.pages","content.health","content.suggestions","content.validate"]});
- load().catch(error=>window.CasaEvents?.publish?.("content-studio:error",{message:error.message}));
+ load().catch(error=>{try{window.CasaEvents?.publish?.("content.studio.error",{message:error.message})}catch(_e){}});
 })();

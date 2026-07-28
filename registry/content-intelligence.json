@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "updated_at": "2026-07-28T14:00:00+02:00",
+  "principles": {
+    "evidence_before_recommendation": true,
+    "one_next_best_action": true,
+    "diff_before_apply": true,
+    "human_approval_before_publish": true,
+    "no_effect_claim_without_measurement": true
+  },
+  "weights": {
+    "publication": 20,
+    "seo": 20,
+    "languages": 20,
+    "assets": 15,
+    "structure": 15,
+    "journey": 10
+  },
+  "action_catalog": {
+    "add-translation": {"label":"Forbered oversættelse","effort_minutes":12,"risk":"low","expected_value":"Forbedret tilgængelighed for internationale gæster"},
+    "add-seo-description": {"label":"Forbered SEO-beskrivelse","effort_minutes":6,"risk":"low","expected_value":"Bedre søgeresultat og tydeligere forventningsafstemning"},
+    "add-seo-title": {"label":"Forbered SEO-titel","effort_minutes":5,"risk":"low","expected_value":"Bedre søgerelevans"},
+    "add-hero": {"label":"Vælg hero-billede","effort_minutes":8,"risk":"medium","expected_value":"Stærkere førstehåndsindtryk"},
+    "add-faq": {"label":"Forbered FAQ","effort_minutes":10,"risk":"low","expected_value":"Flere direkte svar og bedre AI-dækning"},
+    "expand-content": {"label":"Udbyg siden","effort_minutes":15,"risk":"medium","expected_value":"Mere komplet brugerrejse"},
+    "review-ready": {"label":"Gennemgå publiceringsklarhed","effort_minutes":5,"risk":"low","expected_value":"Reduceret publiceringsrisiko"}
+  }
+}
