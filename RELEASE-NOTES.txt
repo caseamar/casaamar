@@ -1,5 +1,7 @@
-v2026.07.24.159 - Improvement Engine Foundation
+v2026.07.24.160 - AI Operations Center
 
-Introduces a governed continuous improvement lifecycle with evidence, confidence, expected value, risk-based human approval, implementation, verification, before/after measurement and learning.
-
-AI can assist throughout the lifecycle, while strategic and high-risk decisions remain human governed.
+- Added a real daily AI briefing in Mission Control.
+- Added prioritized, evidence-backed opportunities with explicit human/system responsibility.
+- Added active missions and action clarity.
+- Fixed ambiguous Universal Action wording: automatic verification now says “Ingen handling kræves”.
+- Added runtime and governance tests for user-facing action semantics.

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.159",
-  "updated_at": "2026-07-28T15:43:00+02:00",
+  "platform_version": "v2026.07.24.160",
+  "updated_at": "2026-07-28T15:55:00+02:00",
   "purpose": "Canonical action model for recommendations, approvals, execution, verification, measurement and learning across all platform capabilities.",
   "lifecycle": [
     "suggested",

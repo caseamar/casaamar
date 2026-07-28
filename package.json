@@ -1,11 +1,11 @@
 {
   "name": "casa-amar-platform",
   "private": true,
-  "version": "2026.7.24-159",
+  "version": "2026.7.24-160",
   "type": "module",
   "scripts": {
     "validate:release": "node tools/release-quality-gate.mjs",
-    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs",
+    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs && node tools/operations-center-test.mjs",
     "test:workspace-state": "node tools/workspace-state-behaviour-test.mjs",
     "test:behaviour": "node tools/behaviour-governance-test.mjs",
     "test:engineering": "node tools/engineering-governance-test.mjs",
@@ -18,6 +18,7 @@
     "test:verification": "node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs",
     "test:workspace-os": "node tools/workspace-os-test.mjs",
     "test:improvement": "node tools/improvement-engine-test.mjs",
-    "test:actions": "node tools/action-engine-test.mjs"
+    "test:actions": "node tools/action-engine-test.mjs",
+    "test:operations": "node tools/operations-center-test.mjs"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "operations-center.schema.json",
+  "title": "AI Operations Center",
+  "type": "object",
+  "required": [
+    "version",
+    "platform_version",
+    "brief",
+    "scores",
+    "opportunities",
+    "missions"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "platform_version": {
+      "type": "string"
+    },
+    "brief": {
+      "type": "object"
+    },
+    "scores": {
+      "type": "object"
+    },
+    "opportunities": {
+      "type": "array"
+    },
+    "missions": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

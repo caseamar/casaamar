@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.160",
+  "updated_at": "2026-07-28T15:55:00+02:00",
+  "principles": {
+    "action_oriented": true,
+    "clear_human_role": true,
+    "no_status_without_next_step": true,
+    "verified_sources_only": true
+  },
+  "brief": {
+    "headline": "Platformen fungerer normalt",
+    "summary": "Ingen kritiske problemer er fundet. Den største værdi lige nu er at færdiggøre indhold og billedkvalitet, før næste publicering.",
+    "requiresHumanAction": false,
+    "status": "healthy"
+  },
+  "scores": {
+    "platformHealth": 96,
+    "observationQuality": 98,
+    "improvementPotential": 11,
+    "openActions": 4,
+    "criticalIssues": 0
+  },
+  "opportunities": [
+    {
+      "id": "opp-content-ready",
+      "title": "Gør næste indholdsrelease klar",
+      "why": "Kladder og review-opgaver er forventet arbejde, men de blokerer en ren publicering.",
+      "evidence": [
+        "Content Operations har åbne kladder",
+        "Release Governance adskiller arbejdsstatus fra teknisk sundhed"
+      ],
+      "confidence": 0.94,
+      "expectedValue": "Høj",
+      "effortMinutes": 20,
+      "risk": "low",
+      "actor": "human",
+      "actionLabel": "Åbn Content Studio",
+      "href": "/content-studio.html#operations",
+      "state": "action_required"
+    },
+    {
+      "id": "opp-assets",
+      "title": "Forbedr billedernes metadata",
+      "why": "Bedre metadata styrker tilgængelighed, søgbarhed og fremtidig AI-genbrug.",
+      "evidence": [
+        "Asset Studio er aktivt",
+        "Canonical contracts understøtter provenance og metadata"
+      ],
+      "confidence": 0.89,
+      "expectedValue": "Mellem",
+      "effortMinutes": 10,
+      "risk": "low",
+      "actor": "human",
+      "actionLabel": "Åbn Asset Studio",
+      "href": "/asset-studio.html",
+      "state": "action_required"
+    },
+    {
+      "id": "opp-release-panels",
+      "title": "Verificér dynamiske releasepaneler",
+      "why": "Alle paneler er allerede kontrolleret automatisk i Verification Governance.",
+      "evidence": [
+        "Rendered runtime integration bestået",
+        "Loading-states når terminaltilstand"
+      ],
+      "confidence": 1.0,
+      "expectedValue": "Sikkerhed",
+      "effortMinutes": 0,
+      "risk": "low",
+      "actor": "system",
+      "actionLabel": "Ingen handling kræves",
+      "href": null,
+      "state": "completed_automatically"
+    }
+  ],
+  "missions": [
+    {
+      "id": "mission-beta-readiness",
+      "title": "Beta readiness",
+      "progress": 72,
+      "remaining": "Færdiggør åbne indholds- og reviewopgaver",
+      "expectedGain": "En mere troværdig beta"
+    },
+    {
+      "id": "mission-quality",
+      "title": "Releasekvalitet",
+      "progress": 100,
+      "remaining": "Ingen teknisk handling",
+      "expectedGain": "Lavere regressionsrisiko"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "release": "v2026.07.24.159",
+  "release": "v2026.07.24.160",
   "name": "Verification Governance Foundation",
-  "platform_version": "v2026.07.24.159",
-  "build": "2026-07-28T15:43:00+02:00",
+  "platform_version": "v2026.07.24.160",
+  "build": "2026-07-28T15:55:00+02:00",
   "summary": "Introduces a platform-wide verification architecture that derives required test levels, detects weakened integrations through mutation testing, and proves rendered runtime outcomes before release.",
   "changes": [
     "Platform Knowledge Graph v1.0.0",
