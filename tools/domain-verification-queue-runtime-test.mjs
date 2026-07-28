@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const ok=(x,m)=>{if(!x)throw new Error(m)};
+const canonical=JSON.parse(fs.readFileSync('registry/domain-model.json','utf8'));
+const packs=JSON.parse(fs.readFileSync('registry/domain-packs.json','utf8'));
+const source=fs.readFileSync('core/casa-domain-intelligence.js','utf8');
+const oldSaved=structuredClone(canonical);
+oldSaved.clarifications=oldSaved.clarifications.map(({noFollowup,...q})=>q); // simulate v170 workspace state
+const store=new Map([['casa-domain-context-v1',JSON.stringify(oldSaved)]]);
+const localStorage={getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)};
+const fetch=async url=>({ok:true,json:async()=>url.includes('domain-packs')?structuredClone(packs):structuredClone(canonical)});
+const ctx={window:{},localStorage,fetch,Date,JSON,structuredClone};ctx.window=ctx;
+vm.createContext(ctx);vm.runInContext(source,ctx);
+await ctx.CasaDomainIntelligence.load();
+const patio=ctx.CasaDomainIntelligence.model.clarifications.find(q=>q.id==='patio-floor');
+ok(patio.noFollowup==='patio-floor-location','Migration restored branching metadata');
+const result=ctx.CasaDomainIntelligence.answerClarification('patio-floor','no');
+ok(result.next?.id==='patio-floor-location','No answer creates and opens follow-up');
+ok(ctx.CasaDomainIntelligence.verificationQueue().open.some(q=>q.id==='patio-floor-location'),'Follow-up remains visible in queue');
+ctx.CasaDomainIntelligence.undoAnswer('patio-floor');
+ok(ctx.CasaDomainIntelligence.nextClarification()?.id==='patio-floor','Undo reopens original question');
+ok(!ctx.CasaDomainIntelligence.model.clarifications.some(q=>q.parentQuestionId==='patio-floor'),'Undo removes generated follow-up');
+console.log('Domain Verification Queue runtime: 5 kontroller bestået.');

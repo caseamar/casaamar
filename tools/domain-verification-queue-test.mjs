@@ -7,7 +7,10 @@ ok(core.includes('roof-sharing')&&core.includes('Hvem deles tagterrassen med?'),
 ok(core.includes("a==='unknown'")&&core.includes("a==='skip'"),'Ved ikke eller Spring over mangler');
 ok(core.includes('upsertFact')&&core.includes("source='human-verification'"),'Svar gemmes ikke som verificeret fakta');
 ok(page.includes('Ja</button>')&&page.includes('Nej</button>')&&page.includes('Ved ikke</button>')&&page.includes('Spring over</button>'),'Tydelige svar-CTAer mangler');
-ok(page.includes('Ét svar ad gangen')&&page.includes('Næste spørgsmål vises nu'),'Closed-loop fremdrift mangler');
+ok(page.includes('Ét svar ad gangen')&&page.includes('Næste spørgsmål er åbnet nedenfor'),'Closed-loop fremdrift mangler');
 ok(model.clarifications.every(q=>q.why&&q.subject&&q.predicate),'Afklaringer mangler forklaring eller faktamapping');
 ok(constitution.principles.some(x=>x.principle_id==='ARTICLE-25'&&x.automated_tests.includes('tools/domain-verification-queue-test.mjs')),'Constitution Article 25 mangler');
-console.log('Domain Verification Queue: 9 kontroller bestået.');
+ok(core.includes('mergeClarifications')&&core.includes('Canonical workflow metadata must always win'),'Persisted workspace migration mangler');
+ok(core.includes('undoAnswer')&&page.includes('Ret seneste svar'),'Svar kan ikke rettes');
+ok(page.includes('setQuestionBusy')&&page.includes('submitting'),'Dobbeltklik/stale question guard mangler');
+console.log('Domain Verification Queue: 12 kontroller bestået.');
