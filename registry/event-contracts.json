@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "version": "2.3.0",
-  "platform_version": "v2026.07.24.163",
+  "version": "2.4.0",
+  "platform_version": "v2026.07.24.164",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -464,7 +464,54 @@
         "pages"
       ],
       "audited": false
+    },
+    {
+      "type": "content.operations.ready",
+      "owner": "content-operations",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "session",
+      "required_payload": [
+        "version",
+        "content_count"
+      ],
+      "audited": false
+    },
+    {
+      "type": "content.operations.error",
+      "owner": "content-operations",
+      "category": "content",
+      "privacy_class": "operational",
+      "retention": "30d",
+      "required_payload": [
+        "message"
+      ],
+      "audited": true
+    },
+    {
+      "type": "platform.startup.ready",
+      "owner": "startup-orchestrator",
+      "category": "platform",
+      "privacy_class": "operational",
+      "retention": "30d",
+      "required_payload": [
+        "scope",
+        "version"
+      ],
+      "audited": true
+    },
+    {
+      "type": "platform.startup.failed",
+      "owner": "startup-orchestrator",
+      "category": "platform",
+      "privacy_class": "operational",
+      "retention": "90d",
+      "required_payload": [
+        "scope",
+        "message"
+      ],
+      "audited": true
     }
   ],
-  "updated_at": "2026-07-28T14:00:00+02:00"
+  "updated_at": "2026-07-28T15:10:00+02:00"
 }

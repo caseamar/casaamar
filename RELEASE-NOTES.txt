@@ -1,7 +1,7 @@
-Casa Amar Platform v2026.07.24.163
+Release v164 – Startup Governance & Content Intelligence boot fix
 
-Content Operations og Content Intelligence loading-state hotfix.
-Alle dynamiske indlæsninger afsluttes nu som ready, error eller timeout.
-Kontrolcenteret viser en tydelig fejl og Prøv igen i stedet for permanent “indlæser…”.
-Content Intelligence Workspace har samme terminaltilstande og en 8-sekunders timeout.
-HTML-strukturen i Content Intelligence Workspace er korrigeret.
+- Fixes invalid Content Operations event names.
+- Adds registered content.operations.ready/error contracts.
+- Adds Startup Orchestrator with explicit dependency ordering.
+- Content Intelligence now waits for Event Contracts, Content Studio and Content Operations.
+- Adds timeout, READY/WAITING/FAILED states and race-condition regression tests.
