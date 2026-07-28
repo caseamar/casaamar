@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+const read=p=>fs.readFileSync(p,'utf8'); const ok=(x,m)=>{if(!x)throw new Error(m)};
+const model=JSON.parse(read('registry/domain-model.json')),packs=JSON.parse(read('registry/domain-packs.json')),core=read('core/casa-domain-intelligence.js'),page=read('domain-intelligence.html'),quality=read('core/casa-ai-output-quality.js');
+ok(model.domainPack==='vacation-rental','Casa Amar skal bruge vacation-rental pack');
+ok(packs.packs.some(x=>x.id==='commerce'),'Commerce Domain Pack mangler');
+ok(packs.packs.some(x=>x.id==='professional-services'),'Professional Services Domain Pack mangler');
+ok(model.objects.some(x=>x.id==='area.patio'&&x.status==='verified'),'Verificeret patio mangler');
+for(const id of ['furniture.patio-sun-loungers','furniture.patio-table','amenity.patio-grill','plant.patio-bougainvillea'])ok(model.objects.some(x=>x.id===id),`Domæneobjekt mangler: ${id}`);
+ok(model.facts.filter(x=>x.subject==='asset-casa-amar-v2-hero-patio'&&x.predicate==='shows').length>=5,'Patio-asset mangler grounding-relationer');
+ok(core.includes('saveDescription')&&core.includes('contextFor')&&core.includes('proposeAlt'),'Domain Intelligence API er ufuldstændigt');
+ok(page.includes('Kort domænebeskrivelse')&&page.includes('AI spørger kun ved usikkerhed'),'Onboardingflow mangler');
+ok(quality.includes('CasaDomainIntelligence'),'AI Output Quality bruger ikke Domain Intelligence');
+console.log('Domain Intelligence: 12 kontroller bestået.');

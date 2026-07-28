@@ -1,0 +1,248 @@
+{
+  "version": "1.0.0",
+  "id": "domain.casa-amar",
+  "domainPack": "vacation-rental",
+  "name": "Casa Amar",
+  "description": "Casa Amar er min feriebolig i Spanien. Det er et rækkehus i tre etager, som udlejes til gæster. Huset har stue og spisestue i ét rum, køkken, entré, to badeværelser, tre soveværelser, patio og tagterrasse.",
+  "status": "baseline",
+  "objects": [
+    {
+      "id": "property.casa-amar",
+      "type": "property",
+      "name": "Casa Amar",
+      "status": "verified"
+    },
+    {
+      "id": "area.living-dining",
+      "type": "room",
+      "name": "Stue og spisestue",
+      "status": "verified"
+    },
+    {
+      "id": "room.kitchen",
+      "type": "room",
+      "name": "Køkken",
+      "status": "verified"
+    },
+    {
+      "id": "room.entrance",
+      "type": "room",
+      "name": "Entré",
+      "status": "verified"
+    },
+    {
+      "id": "room.bathroom-1",
+      "type": "room",
+      "name": "Badeværelse 1",
+      "status": "verified"
+    },
+    {
+      "id": "room.bathroom-2",
+      "type": "room",
+      "name": "Badeværelse 2",
+      "status": "verified"
+    },
+    {
+      "id": "room.bedroom-1",
+      "type": "room",
+      "name": "Soveværelse 1",
+      "status": "verified"
+    },
+    {
+      "id": "room.bedroom-2",
+      "type": "room",
+      "name": "Soveværelse 2",
+      "status": "verified"
+    },
+    {
+      "id": "room.bedroom-3",
+      "type": "room",
+      "name": "Soveværelse 3",
+      "status": "verified"
+    },
+    {
+      "id": "area.patio",
+      "type": "area",
+      "name": "Patio",
+      "status": "verified"
+    },
+    {
+      "id": "area.roof-terrace",
+      "type": "area",
+      "name": "Tagterrasse",
+      "status": "verified"
+    },
+    {
+      "id": "furniture.patio-sun-loungers",
+      "type": "furniture",
+      "name": "To solsenge med kraftige hynder",
+      "status": "verified"
+    },
+    {
+      "id": "furniture.patio-table",
+      "type": "furniture",
+      "name": "Stort terrassebord",
+      "status": "verified"
+    },
+    {
+      "id": "amenity.patio-grill",
+      "type": "amenity",
+      "name": "Grill",
+      "status": "verified"
+    },
+    {
+      "id": "plant.patio-bougainvillea",
+      "type": "plant",
+      "name": "Bougainvillea",
+      "status": "verified"
+    }
+  ],
+  "facts": [
+    {
+      "subject": "property.casa-amar",
+      "predicate": "building_type",
+      "object": "rækkehus",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "floor_count",
+      "object": 3,
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "usage",
+      "object": "feriebolig til udlejning",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "area.living-dining",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.kitchen",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.entrance",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.bathroom-1",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.bathroom-2",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.bedroom-1",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.bedroom-2",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "room.bedroom-3",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "area.patio",
+      "status": "verified"
+    },
+    {
+      "subject": "property.casa-amar",
+      "predicate": "contains",
+      "object": "area.roof-terrace",
+      "status": "verified"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "contains",
+      "object": "furniture.patio-sun-loungers",
+      "status": "verified"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "contains",
+      "object": "furniture.patio-table",
+      "status": "verified"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "contains",
+      "object": "amenity.patio-grill",
+      "status": "verified"
+    },
+    {
+      "subject": "area.patio",
+      "predicate": "contains",
+      "object": "plant.patio-bougainvillea",
+      "status": "verified"
+    },
+    {
+      "subject": "asset-casa-amar-v2-hero-patio",
+      "predicate": "shows",
+      "object": "area.patio",
+      "status": "verified"
+    },
+    {
+      "subject": "asset-casa-amar-v2-hero-patio",
+      "predicate": "shows",
+      "object": "furniture.patio-sun-loungers",
+      "status": "verified"
+    },
+    {
+      "subject": "asset-casa-amar-v2-hero-patio",
+      "predicate": "shows",
+      "object": "furniture.patio-table",
+      "status": "verified"
+    },
+    {
+      "subject": "asset-casa-amar-v2-hero-patio",
+      "predicate": "shows",
+      "object": "amenity.patio-grill",
+      "status": "verified"
+    },
+    {
+      "subject": "asset-casa-amar-v2-hero-patio",
+      "predicate": "shows",
+      "object": "plant.patio-bougainvillea",
+      "status": "verified"
+    }
+  ],
+  "clarifications": [
+    {
+      "id": "patio-floor",
+      "question": "Er patioen på stueplan?",
+      "status": "open",
+      "priority": "low"
+    },
+    {
+      "id": "roof-private",
+      "question": "Er tagterrassen privat og kun til Casa Amar?",
+      "status": "open",
+      "priority": "medium"
+    }
+  ]
+}

@@ -35,6 +35,8 @@
   return {status:issues.length?'failed':'verified',issues,score:Math.max(0,100-issues.length*20),text:value,purpose};
  }
  function proposeAlt(asset){
+  const grounded=window.CasaDomainIntelligence?.proposeAlt?.(asset?.id);
+  if(grounded?.status==='verified'){const review=validate(grounded.text,{purpose:'alt-text'});if(review.status==='verified')return {status:'verified',text:review.text,review,reason:'Forslaget er grounded i verificeret domænekontekst.',grounding:grounded.grounding,confidence:grounded.confidence};}
   const candidate=known[asset?.id]||'';
   const review=validate(candidate,{purpose:'alt-text'});
   if(review.status!=='verified')return {status:'manual_review',text:'',review,reason:'Der kunne ikke genereres en publiceringsklar alt-tekst ud fra verificeret billedkontekst.'};

@@ -565,9 +565,33 @@
       "behaviour_contract_required": true,
       "api_ready": true,
       "ai_ready": true
+    },
+    {
+      "id": "domain-intelligence",
+      "name": "Domain Intelligence",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence",
+      "purpose": "Build and maintain a verified domain baseline before AI generates domain-specific content.",
+      "dependencies": [
+        "data-contracts",
+        "knowledge-graph",
+        "ai-output-quality"
+      ],
+      "consumers": [
+        "asset-intelligence",
+        "content-intelligence",
+        "digital-concierge"
+      ],
+      "contracts": [
+        "domain-context",
+        "verified-facts",
+        "semantic-grounding"
+      ],
+      "behaviour_contract_required": true,
+      "layer": "platform-core"
     }
   ],
   "version": "2.1.0",
-  "platform_version": "v2026.07.24.169",
+  "platform_version": "v2026.07.24.170",
   "updated_at": "2026-07-28T16:55:00+02:00"
 }

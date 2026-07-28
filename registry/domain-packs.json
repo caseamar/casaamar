@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "packs": [
+    {
+      "id": "vacation-rental",
+      "name": "Feriebolig",
+      "objectTypes": [
+        "property",
+        "floor",
+        "area",
+        "room",
+        "amenity",
+        "furniture",
+        "plant",
+        "asset"
+      ],
+      "relations": [
+        "contains",
+        "part_of",
+        "located_in",
+        "shows",
+        "connected_to"
+      ]
+    },
+    {
+      "id": "commerce",
+      "name": "Webshop",
+      "objectTypes": [
+        "shop",
+        "category",
+        "product",
+        "variant",
+        "brand",
+        "inventory",
+        "supplier",
+        "asset"
+      ],
+      "relations": [
+        "contains",
+        "belongs_to",
+        "has_variant",
+        "supplied_by",
+        "shows"
+      ]
+    },
+    {
+      "id": "professional-services",
+      "name": "Konsulentforretning",
+      "objectTypes": [
+        "company",
+        "service",
+        "case",
+        "customer",
+        "person",
+        "competency",
+        "document"
+      ],
+      "relations": [
+        "offers",
+        "delivered_for",
+        "performed_by",
+        "demonstrates",
+        "related_to"
+      ]
+    }
+  ]
+}
