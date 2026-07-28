@@ -1,19 +1,19 @@
 {
-  "release": "v2026.07.24.137",
-  "name": "Semantic UX Consistency and Explainable UI Governance",
-  "summary": "Prevent mid-word workspace titles and require declarative test contracts for new and changed capabilities.",
+  "release": "v2026.07.24.138",
+  "name": "Workspace State Restoration",
+  "title": "Workspace State Restoration",
+  "summary": "Restore the user to the same workspace position after opening and closing operational cards.",
   "changes": [
-    "AI Workspace cards always open operational surfaces",
-    "Technical recommendation subsystem renamed AI Recommendation Service",
-    "Semantic consistency blocks confusing near-duplicate navigation",
-    "Browser smoke tests detect card overflow at desktop and mobile widths",
-    "Recommendation UI is consistently Danish and explains its evidence"
+    "Added a reusable Workspace State Manager",
+    "Restores scroll position after returning to AI Workspace",
+    "Retains focus when the originating element can be resolved",
+    "Does not force old positions on fresh direct visits",
+    "Added declarative state-restoration test contract"
   ],
   "manual_review": [
-    "Confirm the wording feels natural",
-    "Confirm visual balance in your browser despite automated overflow checks"
+    "Open a card from lower on the page, return, and confirm the same position is restored",
+    "Confirm a fresh direct visit to Mission Control starts normally"
   ],
-  "build": "2026-07-28T09:36:00+02:00",
-  "generated_at": "2026-07-28T09:36:00+02:00",
-  "title": "Workspace Title Governance and Scalable Test Contracts"
+  "build": "2026-07-28T09:47:32+02:00",
+  "generated_at": "2026-07-28T09:47:32+02:00"
 }

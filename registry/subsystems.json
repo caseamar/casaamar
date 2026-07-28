@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "2.8.0",
-  "updated_at": "2026-07-28T09:36:00+02:00",
+  "updated_at": "2026-07-28T09:47:32+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.137",
+      "version": "v2026.07.24.138",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -51,7 +51,7 @@
     {
       "id": "platform-doctor",
       "display_name": "Platform Doctor",
-      "version": "3.2.1",
+      "version": "3.2.2",
       "owner": "Platform Intelligence",
       "status_source": "diagnostics",
       "manifest_key": "platform_doctor",
@@ -246,7 +246,7 @@
     {
       "id": "ai-workspace",
       "display_name": "AI Workspace",
-      "version": "1.7.1",
+      "version": "1.8.0",
       "owner": "AI Workspace",
       "status_source": "module",
       "manifest_key": "ai_workspace",
@@ -307,7 +307,7 @@
     {
       "id": "release-governance",
       "display_name": "Release Governance",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "owner": "Platform Governance",
       "status_source": "module",
       "manifest_key": "release_governance",

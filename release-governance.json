@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "2.2.0",
-  "generated_at": "2026-07-28T09:36:00+02:00",
-  "platform_version": "v2026.07.24.137",
+  "version": "2.3.0",
+  "generated_at": "2026-07-28T09:47:32+02:00",
+  "platform_version": "v2026.07.24.138",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 9,
-    "automated_passed": 9,
+    "automated_checks": 10,
+    "automated_passed": 10,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical timestamp match v135.",
       "evidence": [
-        "v2026.07.24.137",
+        "v2026.07.24.138",
         "15.26-workspace-title-governance",
-        "2026-07-28T09:36:00+02:00"
+        "2026-07-28T09:47:32+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.137"
+        "v2026.07.24.138"
       ]
     },
     {
@@ -132,6 +132,19 @@
         "Sikkerhed",
         "Definition af succes",
         "Manuel vurdering kræves"
+      ]
+    },
+    {
+      "id": "workspace_state",
+      "label": "Workspace state restoration",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Navigation state is saved before leaving and restored only when returning to the originating workspace.",
+      "evidence": [
+        "Scroll position persisted in sessionStorage",
+        "Restoration retries after dynamic content render",
+        "Fresh direct visits do not force an old position"
       ]
     }
   ],

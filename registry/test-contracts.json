@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-28T09:36:00+02:00",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28T09:47:32+02:00",
   "policy": {
     "new_capability_requires_contract": true,
     "changed_capability_requires_targeted_tests": true,
@@ -60,6 +60,19 @@
       ],
       "manual_review": [
         "browser-rendering"
+      ]
+    },
+    {
+      "id": "workspace-state-manager",
+      "source": "core/casa-workspace-state.js",
+      "required_tests": [
+        "state-saved-before-navigation",
+        "scroll-restored-on-return",
+        "focus-restored-when-available",
+        "fresh-entry-does-not-force-restore"
+      ],
+      "manual_review": [
+        "browser-scroll-position-feels-correct"
       ]
     }
   ]
