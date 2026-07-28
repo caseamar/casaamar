@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.2.1";
+ const VERSION="1.3.0";
  const ASSET_URL="/registry/assets.json";
  const VARIANT_URL="/registry/asset-variants.json";
  let cache=null,variantCache=null;
@@ -12,7 +12,7 @@
   const report=validate(cache,variantCache);
   if(!report.consistent)throw new Error(`Asset Intelligence is inconsistent: ${report.errors.map(x=>x.code).join(", ")}`);
   const detail={...snapshot(),validation:report};
-  window.CasaEvents?.publish?.("asset-intelligence:ready",detail);
+  window.CasaEvents?.publish?.("asset.intelligence.ready",detail);
   window.dispatchEvent(new CustomEvent("casa:asset-intelligence:ready",{detail}));
   return cache;
  }
@@ -31,5 +31,5 @@
  function snapshot(){const report=validate();const list=cache?.items||[],plans=variantCache?.plans||[];return {version:VERSION,registry_version:cache?.version||null,variant_registry_version:variantCache?.version||null,ready:Boolean(cache&&variantCache),asset_count:list.length,active_count:list.filter(x=>x.lifecycle_status==="active").length,standalone_count:list.filter(x=>x.standalone).length,ready_count:list.filter(x=>x.readiness?.level==="ready").length,review_count:list.filter(x=>x.readiness?.level==="review").length,blocked_count:list.filter(x=>x.readiness?.level==="blocked").length,variant_plan_count:plans.length,publishable_count:plans.filter(x=>x.publication?.ready).length,pending_variant_count:plans.flatMap(x=>x.variants||[]).filter(x=>x.status==="planned").length,issue_count:report.issue_count,consistent:report.consistent};}
  window.CasaAssetIntelligence={version:VERSION,load,all,get,search,issues,relations,readiness,recommendations,variants,variantQueue,publicationReadiness,impact,validate,snapshot,get data(){return cache},get variantData(){return variantCache}};
  window.CasaCore?.modules?.register?.({id:"asset-intelligence",version:VERSION,capabilities:["assets.inventory","assets.search","assets.issues","assets.impact","assets.relations","assets.readiness","assets.recommendations","assets.variants","assets.variant-queue","assets.publication-readiness","assets.validate","assets.snapshot"]});
- load().catch(error=>window.CasaEvents?.publish?.("asset-intelligence:error",{message:error.message}));
+ load().catch(error=>window.CasaEvents?.publish?.("asset.intelligence.error",{message:error.message}));
 })();

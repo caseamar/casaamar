@@ -1,0 +1,15 @@
+import fs from 'node:fs';import vm from 'node:vm';
+const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
+const assets=JSON.parse(read('registry/assets.json')),variants=JSON.parse(read('registry/asset-variants.json')),events=JSON.parse(read('registry/event-contracts.json'));
+const published=[];
+const context={window:{dispatchEvent(){},CasaCore:{modules:{register(){}}},CasaEvents:{publish(type){published.push(type)}}},fetch:async url=>({ok:true,json:async()=>String(url).includes('variant')?variants:assets}),CustomEvent:function(){},setTimeout,clearTimeout};context.window.window=context.window;vm.createContext(context);vm.runInContext(read('core/casa-assets.js'),context);
+await context.window.CasaAssetIntelligence.load({force:true});
+const snap=context.window.CasaAssetIntelligence.snapshot();if(!snap.asset_count||snap.consistent!==true)throw new Error('Asset snapshot invalid');
+const first=context.window.CasaAssetIntelligence.all()[0];if(!first)throw new Error('No assets');
+const impact=context.window.CasaAssetIntelligence.impact(first.id);if(!impact||!impact.recommendations)throw new Error('Impact missing');
+if(!published.includes('asset.intelligence.ready'))throw new Error('Ready event not published');
+for(const type of ['asset.intelligence.ready','asset.intelligence.error'])if(!events.contracts.some(x=>x.type===type))throw new Error(`Missing event contract ${type}`);
+const html=read('asset-intelligence.html');for(const marker of ['Asset Intelligence Workspace','Næste bedste handling','Forbered forslag','Ingen filer ændres automatisk','bootAssetWorkspace','Prøv igen'])if(!html.includes(marker))throw new Error(`Missing UI marker: ${marker}`);
+if(html.includes('asset-intelligence:ready')||html.includes('asset-intelligence:error'))throw new Error('Legacy event notation present');
+const startup=read('core/casa-startup-orchestrator.js');if(!startup.includes('bootAssetWorkspace')||startup.indexOf('asset-event-contracts')>startup.indexOf('asset-intelligence'))throw new Error('Asset startup ordering invalid');
+console.log('Asset Intelligence Workspace: 18 kontroller bestået');

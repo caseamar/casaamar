@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "version": "2.4.0",
-  "platform_version": "v2026.07.24.164",
+  "version": "2.3.0",
+  "platform_version": "v2026.07.24.165",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -508,6 +508,29 @@
       "retention": "90d",
       "required_payload": [
         "scope",
+        "message"
+      ],
+      "audited": true
+    },
+    {
+      "type": "asset.intelligence.ready",
+      "owner": "asset-intelligence",
+      "category": "assets",
+      "privacy_class": "operational",
+      "retention": "30d",
+      "required_payload": [
+        "version",
+        "asset_count"
+      ],
+      "audited": true
+    },
+    {
+      "type": "asset.intelligence.error",
+      "owner": "asset-intelligence",
+      "category": "assets",
+      "privacy_class": "operational",
+      "retention": "90d",
+      "required_payload": [
         "message"
       ],
       "audited": true

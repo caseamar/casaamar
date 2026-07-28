@@ -1,7 +1,9 @@
-Release v164 – Startup Governance & Content Intelligence boot fix
+Casa Amar Platform v2026.07.24.165
+Asset Intelligence Workspace
 
-- Fixes invalid Content Operations event names.
-- Adds registered content.operations.ready/error contracts.
-- Adds Startup Orchestrator with explicit dependency ordering.
-- Content Intelligence now waits for Event Contracts, Content Studio and Content Operations.
-- Adds timeout, READY/WAITING/FAILED states and race-condition regression tests.
+- Rebuilt Asset Intelligence as an operational workspace with previews, filters, readiness scoring and one explainable next-best action per asset.
+- Added governed before/after proposal previews. Original files are never changed automatically.
+- Added explicit asset startup ordering: Event Contracts before Asset Intelligence.
+- Replaced legacy asset event names with channel-neutral dot notation.
+- Added retry, timeout and controlled terminal states.
+- Added 18 Asset Intelligence Workspace tests.

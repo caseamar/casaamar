@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="1.1.0";
  const states=new Map();
  const clone=v=>JSON.parse(JSON.stringify(v));
  const set=(id,status,detail={})=>{states.set(id,{id,status,updatedAt:new Date().toISOString(),...detail});window.dispatchEvent(new CustomEvent("casa:startup-state",{detail:clone(states.get(id))}));return states.get(id)};
@@ -35,7 +35,24 @@
    throw error;
   }
  }
+
+ async function bootAssetWorkspace(options={}){
+  const force=Boolean(options.force);
+  set("asset-workspace","starting");
+  try{
+   const events=await runStep("asset-event-contracts",async()=>{const api=await waitForGlobal("CasaEvents");const registry=await api.loadContracts();if(registry.load_error)throw new Error(registry.load_error);return registry});
+   if(!events.contracts?.length)throw new Error("Event Registry contains no contracts");
+   await runStep("asset-intelligence",async()=>{const api=await waitForGlobal("CasaAssetIntelligence");return api.load({force})});
+   set("asset-workspace","ready");
+   try{window.CasaEvents.publish("platform.startup.ready",{scope:"asset-workspace",version:VERSION},{source:{service:"startup-orchestrator",version:VERSION}})}catch(_e){}
+   return snapshot();
+  }catch(error){
+   set("asset-workspace","failed",{error:error.message});
+   try{window.CasaEvents?.publish?.("platform.startup.failed",{scope:"asset-workspace",message:error.message},{source:{service:"startup-orchestrator",version:VERSION}})}catch(_e){}
+   throw error;
+  }
+ }
  function snapshot(){return{version:VERSION,states:[...states.values()].map(clone),ready:states.get("content-workspace")?.status==="ready"};}
- window.CasaStartupOrchestrator={version:VERSION,bootContentWorkspace,snapshot,waitForGlobal};
+ window.CasaStartupOrchestrator={version:VERSION,bootContentWorkspace,bootAssetWorkspace,snapshot,waitForGlobal};
  window.CasaCore?.modules?.register?.({id:"startup-orchestrator",version:VERSION,capabilities:["startup.dependencies","startup.ordering","startup.timeout","startup.health"]});
 })();
