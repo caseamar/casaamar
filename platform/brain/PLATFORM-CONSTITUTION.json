@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.147",
+  "title": "Casa Amar Platform Constitution",
+  "articles": [
+    {
+      "id": "ARTICLE-01",
+      "title": "AI First",
+      "rule": "Use AI to analyse, explain and recommend while preserving human control."
+    },
+    {
+      "id": "ARTICLE-02",
+      "title": "Configuration over Hardcoding",
+      "rule": "Business rules must originate from configuration or explicit contracts."
+    },
+    {
+      "id": "ARTICLE-03",
+      "title": "Behaviour before Components",
+      "rule": "Validate complete behaviour chains, including forbidden outcomes."
+    },
+    {
+      "id": "ARTICLE-04",
+      "title": "Human Approval for Risk",
+      "rule": "High-impact actions require explicit human approval."
+    },
+    {
+      "id": "ARTICLE-05",
+      "title": "Explainability Required",
+      "rule": "Every automated verdict must include reason and evidence."
+    },
+    {
+      "id": "ARTICLE-06",
+      "title": "Registered Capabilities",
+      "rule": "Every platform capability must be registered with owner and dependencies."
+    },
+    {
+      "id": "ARTICLE-07",
+      "title": "Contracted Behaviour",
+      "rule": "Every user-visible capability must have a behaviour contract."
+    },
+    {
+      "id": "ARTICLE-08",
+      "title": "Release Integrity",
+      "rule": "Every release must prove feature, impact and platform consistency."
+    },
+    {
+      "id": "ARTICLE-09",
+      "title": "Controlled Complexity",
+      "rule": "Complexity increases require justification and registered technical debt."
+    },
+    {
+      "id": "ARTICLE-10",
+      "title": "No Vendor Lock-in",
+      "rule": "Features request capabilities and must not depend directly on a specific AI provider."
+    }
+  ]
+}

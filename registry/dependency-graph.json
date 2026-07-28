@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.147",
+  "nodes": [
+    {
+      "id": "platform",
+      "type": "subsystem",
+      "version": "v2026.07.24.147",
+      "owner": "Platform"
+    },
+    {
+      "id": "core",
+      "type": "subsystem",
+      "version": "1.1.0",
+      "owner": "Platform Core"
+    },
+    {
+      "id": "platform-doctor",
+      "type": "subsystem",
+      "version": "3.3.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "project-brain",
+      "type": "subsystem",
+      "version": "1.0.1",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "decision-engine",
+      "type": "subsystem",
+      "version": "1.2.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "event-engine",
+      "type": "subsystem",
+      "version": "1.2.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "diagnostics",
+      "type": "subsystem",
+      "version": "1.26.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "configuration",
+      "type": "subsystem",
+      "version": "1.2.0",
+      "owner": "Platform Core"
+    },
+    {
+      "id": "governance",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Core"
+    },
+    {
+      "id": "audit-engine",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "platform-contracts",
+      "type": "subsystem",
+      "version": "1.23.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "subsystem-registry",
+      "type": "subsystem",
+      "version": "3.1.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "public-website-runtime",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Experience Platform"
+    },
+    {
+      "id": "repository-intelligence",
+      "type": "subsystem",
+      "version": "1.15.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "content-intelligence",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "ai-knowledge-graph",
+      "type": "subsystem",
+      "version": "1.1.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "asset-intelligence",
+      "type": "subsystem",
+      "version": "1.2.1",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "experience-engine",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence"
+    },
+    {
+      "id": "ai-workspace",
+      "type": "subsystem",
+      "version": "1.8.6",
+      "owner": "AI Workspace"
+    },
+    {
+      "id": "content-studio",
+      "type": "subsystem",
+      "version": "1.1.0",
+      "owner": "AI Workspace"
+    },
+    {
+      "id": "content-operations",
+      "type": "subsystem",
+      "version": "1.1.0",
+      "owner": "AI Workspace"
+    },
+    {
+      "id": "website-configuration",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Configuration"
+    },
+    {
+      "id": "recommendation-engine",
+      "type": "subsystem",
+      "version": "1.2.0",
+      "owner": "AI Workspace"
+    },
+    {
+      "id": "release-governance",
+      "type": "subsystem",
+      "version": "3.0.0",
+      "owner": "Platform Governance"
+    },
+    {
+      "id": "behaviour-governance",
+      "type": "subsystem",
+      "version": "1.0.0",
+      "owner": "Platform Quality"
+    }
+  ],
+  "edges": [
+    {
+      "from": "release-governance",
+      "to": "behaviour-governance",
+      "type": "depends_on"
+    },
+    {
+      "from": "release-governance",
+      "to": "diagnostics",
+      "type": "depends_on"
+    },
+    {
+      "from": "release-governance",
+      "to": "platform-contracts",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "configuration",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "content-studio",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "asset-intelligence",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "ai-knowledge-graph",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "experience-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "ai-workspace",
+      "to": "recommendation-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "content-studio",
+      "to": "content-operations",
+      "type": "depends_on"
+    },
+    {
+      "from": "content-studio",
+      "to": "content-intelligence",
+      "type": "depends_on"
+    },
+    {
+      "from": "content-studio",
+      "to": "asset-intelligence",
+      "type": "depends_on"
+    },
+    {
+      "from": "content-studio",
+      "to": "ai-knowledge-graph",
+      "type": "depends_on"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "configuration",
+      "type": "depends_on"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "decision-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "recommendation-engine",
+      "to": "audit-engine",
+      "type": "depends_on"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "diagnostics",
+      "type": "depends_on"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "subsystem-registry",
+      "type": "depends_on"
+    },
+    {
+      "from": "platform-doctor",
+      "to": "release-governance",
+      "type": "depends_on"
+    }
+  ]
+}

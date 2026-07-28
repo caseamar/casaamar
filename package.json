@@ -1,12 +1,13 @@
 {
   "name": "casa-amar-platform",
   "private": true,
-  "version": "2026.7.24-146",
+  "version": "2026.7.24-147",
   "type": "module",
   "scripts": {
     "validate:release": "node tools/release-quality-gate.mjs",
-    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs",
+    "quality": "node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs",
     "test:workspace-state": "node tools/workspace-state-behaviour-test.mjs",
-    "test:behaviour": "node tools/behaviour-governance-test.mjs"
+    "test:behaviour": "node tools/behaviour-governance-test.mjs",
+    "test:engineering": "node tools/engineering-governance-test.mjs"
   }
 }

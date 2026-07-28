@@ -13,9 +13,9 @@ const workerPlatform=worker.match(/platform_version:\s*"([^"]+)"/)?.[1];
 const workerVersion=worker.match(/worker_version:\s*"([^"]+)"/)?.[1];
 check(workerPlatform===manifest.platform_version,`Worker platform identity = ${manifest.platform_version}`);
 check(workerVersion===manifest.worker_version,`Worker version identity = ${manifest.worker_version}`);
-const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio','content-operations':'content_operations','website-configuration':'website_configuration','recommendation-engine':'recommendation_engine','release-governance':'release_governance','behaviour-governance':'behaviour_governance'};
+const mapping={platform:'platform_version',core:'core','platform-doctor':'platform_doctor','project-brain':'project_brain','decision-engine':'decision_engine','event-engine':'event_engine',diagnostics:'diagnostics_framework',configuration:'configuration_service',governance:'governance','audit-engine':'audit_engine','platform-contracts':'platform_contracts','subsystem-registry':'subsystem_registry','public-website-runtime':'public_website_runtime','repository-intelligence':'repository_intelligence','content-intelligence':'content_intelligence','ai-knowledge-graph':'ai_knowledge_graph','asset-intelligence':'asset_intelligence','experience-engine':'experience_engine','ai-workspace':'ai_workspace','content-studio':'content_studio','content-operations':'content_operations','website-configuration':'website_configuration','recommendation-engine':'recommendation_engine','release-governance':'release_governance','behaviour-governance':'behaviour_governance','engineering-governance':'engineering_governance'};
 for(const item of registry.subsystems){const key=mapping[item.id]; const mv=key==='platform_version'?manifest[key]:manifest[key]?.version; check(Boolean(key)&&item.version===mv,`${item.display_name} registry version matches manifest (${item.version})`)}
-const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio','core/casa-content-operations.js':'content-operations','core/casa-recommendations.js':'recommendation-engine','core/casa-release-governance.js':'release-governance','core/casa-behaviour-governance.js':'behaviour-governance'};
+const moduleFiles={'core/casa-core.js':'core','core/casa-brain.js':'project-brain','core/casa-decision.js':'decision-engine','core/casa-events.js':'event-engine','core/casa-diagnostics.js':'diagnostics','core/casa-config.js':'configuration','core/casa-governance.js':'governance','core/casa-audit.js':'audit-engine','core/casa-contracts.js':'platform-contracts','core/casa-subsystem-registry.js':'subsystem-registry','core/casa-repository.js':'repository-intelligence','core/casa-content.js':'content-intelligence','core/casa-knowledge-graph.js':'ai-knowledge-graph','core/casa-assets.js':'asset-intelligence','core/casa-experience.js':'experience-engine','core/casa-workspace.js':'ai-workspace','core/casa-content-studio.js':'content-studio','core/casa-content-operations.js':'content-operations','core/casa-recommendations.js':'recommendation-engine','core/casa-release-governance.js':'release-governance','core/casa-behaviour-governance.js':'behaviour-governance','core/casa-engineering-governance.js':'engineering-governance'};
 for(const [file,id] of Object.entries(moduleFiles)){const v=read(file).match(/const VERSION="([^"]+)"/)?.[1]; const rv=registry.subsystems.find(x=>x.id===id)?.version; check(v===rv,`${file} version matches registry (${v})`)}
 const current=manifest.platform_version.match(/^v(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/); check(Boolean(current),'Platform version format is valid'); const cache=current?`${current[1]}${current[2]}${current[3]}.${current[4]}`:'';
 const deployExt=new Set(['.html','.js']);
@@ -319,6 +319,23 @@ check(Boolean(workspaceContract),'Workspace State Manager has a declarative test
 check(manifest.workspace_state_manager?.version==='1.6.0','Workspace State Manager manifest version is current');
 check(workspaceStateSource.includes("const VERSION='1.6.0'"),'Workspace State Manager runtime version matches manifest');
 
+
+// Engineering Governance quality gates
+const engineering=json('registry/engineering-governance.json');
+const dependencyGraph=json('registry/dependency-graph.json');
+const constitution=json('platform/brain/PLATFORM-CONSTITUTION.json');
+const capabilityRegistry=json('registry/capabilities.json');
+const capabilityItems=capabilityRegistry.capabilities||capabilityRegistry.items||[];
+check(engineering.quality_dimensions?.length===5,'Engineering Governance defines five quality dimensions');
+check(Object.keys(engineering.assessment?.dimensions||{}).length===5,'Engineering assessment covers five quality dimensions');
+check(engineering.rules?.every(x=>x.id&&x.statement&&x.severity&&x.automated_check),'Engineering rules are complete and executable');
+check(Array.isArray(engineering.technical_debt),'Technical debt registry exists');
+check(constitution.articles?.length>=10,'Platform Constitution is complete');
+check(capabilityItems.some(x=>x.id==='engineering-governance'),'Engineering Governance capability is registered');
+const engineeringSubsystemIds=new Set(registry.subsystems.map(x=>x.id));
+for(const node of dependencyGraph.nodes||[])check(engineeringSubsystemIds.has(node.id),`Dependency Graph node resolves (${node.id})`);
+for(const edge of dependencyGraph.edges||[])check(engineeringSubsystemIds.has(edge.from)&&engineeringSubsystemIds.has(edge.to)&&edge.from!==edge.to,`Dependency Graph edge resolves (${edge.from} -> ${edge.to})`);
+check(read('release-governance.html').includes('casa-engineering-governance.js'),'Releasekontrol loads Engineering Governance');
 console.log(`Release quality gate: ${pass.length} passed, ${fail.length} failed`);
 for(const x of fail)console.error(`FAIL: ${x}`);
 

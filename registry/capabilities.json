@@ -85,6 +85,32 @@
       "id": "decision.evaluate",
       "domain": "governance",
       "status": "active"
+    },
+    {
+      "id": "engineering-governance",
+      "name": "Engineering Governance",
+      "version": "1.0.0",
+      "owner": "Platform Quality",
+      "purpose": "Evaluate architecture, reuse, coupling, maintainability, technical debt and explainability across releases.",
+      "dependencies": [
+        "behaviour-governance",
+        "release-governance",
+        "subsystem-registry",
+        "repository-intelligence"
+      ],
+      "consumers": [
+        "platform-intelligence",
+        "platform-doctor",
+        "release-governance"
+      ],
+      "contracts": [
+        "engineering-quality-dimensions",
+        "explainable-evidence",
+        "dependency-impact",
+        "technical-debt-registration"
+      ]
     }
-  ]
+  ],
+  "version": "2.0.0",
+  "platform_version": "v2026.07.24.147"
 }

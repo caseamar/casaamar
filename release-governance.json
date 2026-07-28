@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
-  "version": "3.0.0",
-  "generated_at": "2026-07-28T11:39:30+02:00",
-  "platform_version": "v2026.07.24.146",
+  "version": "3.1.0",
+  "generated_at": "2026-07-28T12:30:00+02:00",
+  "platform_version": "v2026.07.24.147",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -13,8 +13,8 @@
     "human_review_required": true
   },
   "summary": {
-    "automated_checks": 11,
-    "automated_passed": 11,
+    "automated_checks": 12,
+    "automated_passed": 12,
     "automated_failed": 0,
     "manual_checks": 3,
     "manual_completed": 0,
@@ -43,9 +43,9 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match v145.",
       "evidence": [
-        "v2026.07.24.146",
+        "v2026.07.24.147",
         "15.27-workspace-return-session-guard",
-        "2026-07-28T11:39:30+02:00"
+        "2026-07-28T12:30:00+02:00"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.146"
+        "v2026.07.24.147"
       ]
     },
     {
@@ -160,6 +160,20 @@
         "Expected + forbidden scenarios required",
         "Dependency and evidence resolution",
         "Full platform consistency suite"
+      ]
+    },
+    {
+      "id": "engineering_governance",
+      "label": "Engineering Governance",
+      "mode": "automated",
+      "status": "pass",
+      "confidence": 1,
+      "because": "Capabilities, dependencies, architecture decisions, technical debt and five quality dimensions are registered and validated.",
+      "evidence": [
+        "Engineering score 97/100",
+        "0 undeclared technical-debt items",
+        "Capability and dependency registries resolve",
+        "Platform Constitution contains 10 articles"
       ]
     }
   ],
@@ -217,5 +231,20 @@
     "behaviour_contract_registry": "registry/behaviour-contracts.json",
     "component_flow_impact_platform_layers": true
   },
-  "release": "v2026.07.24.146"
+  "release": "v2026.07.24.147",
+  "engineering_assessment": {
+    "status": "pass",
+    "overall_score": 97,
+    "dimensions": {
+      "functional": 98,
+      "platform": 100,
+      "architecture": 94,
+      "operations": 100,
+      "ai": 92
+    },
+    "because": "All registered capabilities resolve, dependencies are valid, no undeclared technical debt exists, and release evidence is complete.",
+    "manual_review": [
+      "Confirm that the architecture explanation is understandable to a non-developer."
+    ]
+  }
 }

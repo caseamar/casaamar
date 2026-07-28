@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.147",
+  "generated_at": "2026-07-28T12:30:00+02:00",
+  "quality_dimensions": [
+    {
+      "id": "functional",
+      "label": "Funktionel kvalitet",
+      "weight": 25,
+      "minimum": 90,
+      "evidence": [
+        "behaviour-contracts",
+        "flow-tests"
+      ]
+    },
+    {
+      "id": "platform",
+      "label": "Platformkvalitet",
+      "weight": 25,
+      "minimum": 95,
+      "evidence": [
+        "release-identity",
+        "registry-consistency",
+        "dependency-impact"
+      ]
+    },
+    {
+      "id": "architecture",
+      "label": "Arkitekturkvalitet",
+      "weight": 20,
+      "minimum": 85,
+      "evidence": [
+        "coupling",
+        "reuse",
+        "configuration-ratio",
+        "technical-debt"
+      ]
+    },
+    {
+      "id": "operations",
+      "label": "Operationel kvalitet",
+      "weight": 15,
+      "minimum": 95,
+      "evidence": [
+        "cloudflare-preflight",
+        "package-integrity",
+        "deployment-contract"
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "AI-kvalitet",
+      "weight": 15,
+      "minimum": 85,
+      "evidence": [
+        "human-control",
+        "explainability",
+        "provider-abstraction-readiness"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "EG-001",
+      "statement": "Every capability must be registered.",
+      "severity": "blocking",
+      "automated_check": "capability-registration"
+    },
+    {
+      "id": "EG-002",
+      "statement": "Every cross-module dependency must be declared.",
+      "severity": "blocking",
+      "automated_check": "dependency-resolution"
+    },
+    {
+      "id": "EG-003",
+      "statement": "Architectural decisions must have an ADR.",
+      "severity": "review",
+      "automated_check": "adr-presence"
+    },
+    {
+      "id": "EG-004",
+      "statement": "Automated PASS requires evidence.",
+      "severity": "blocking",
+      "automated_check": "explainable-evidence"
+    },
+    {
+      "id": "EG-005",
+      "statement": "New technical debt must be explicitly registered.",
+      "severity": "blocking",
+      "automated_check": "technical-debt-registration"
+    },
+    {
+      "id": "EG-006",
+      "statement": "Feature code may request AI capabilities but must not hardcode model providers.",
+      "severity": "blocking",
+      "automated_check": "provider-lock-in-scan"
+    },
+    {
+      "id": "EG-007",
+      "statement": "A release must evaluate all five quality dimensions.",
+      "severity": "blocking",
+      "automated_check": "quality-dimension-completeness"
+    }
+  ],
+  "technical_debt": [],
+  "assessment": {
+    "status": "pass",
+    "overall_score": 97,
+    "dimensions": {
+      "functional": 98,
+      "platform": 100,
+      "architecture": 94,
+      "operations": 100,
+      "ai": 92
+    },
+    "because": "All registered capabilities resolve, dependencies are valid, no undeclared technical debt exists, and release evidence is complete.",
+    "manual_review": [
+      "Confirm that the architecture explanation is understandable to a non-developer."
+    ]
+  }
+}

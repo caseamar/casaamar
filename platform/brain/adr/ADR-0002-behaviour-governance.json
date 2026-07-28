@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "id": "ADR-0002-behaviour-governance",
+  "title": "Behaviour Governance",
+  "status": "accepted",
+  "date": "2026-07-28",
+  "decision": "Platform quality is validated through complete expected and forbidden behaviour chains.",
+  "consequences": [
+    "More reliable releases",
+    "Higher explainability",
+    "Lower long-term maintenance risk"
+  ]
+}

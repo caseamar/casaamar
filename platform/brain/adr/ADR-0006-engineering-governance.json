@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "id": "ADR-0006-engineering-governance",
+  "title": "Engineering Governance",
+  "status": "accepted",
+  "date": "2026-07-28",
+  "decision": "Every release is assessed across functional, platform, architecture, operations and AI quality.",
+  "consequences": [
+    "More reliable releases",
+    "Higher explainability",
+    "Lower long-term maintenance risk"
+  ]
+}
