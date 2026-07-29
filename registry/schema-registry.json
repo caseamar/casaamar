@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.201",
+  "platform_version": "v2026.07.24.210",
   "updated_at": "2026-07-29T13:01:00+02:00",
   "compatibility_policy": {
     "default": "backward",

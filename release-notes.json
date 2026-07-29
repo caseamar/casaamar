@@ -1,29 +1,28 @@
 {
-  "release": "v2026.07.24.201",
-  "name": "Desktop Release Identity Cache Hardening",
-  "platform_version": "v2026.07.24.201",
-  "build": "2026-07-29T13:55:00+02:00",
-  "summary": "Prevents stale desktop HTML from retaining an older public BETA version by explicitly disabling browser and Cloudflare caching on the root document and index.html.",
+  "release": "v2026.07.24.210",
+  "name": "Stay Discovery and Gallery Engine",
+  "platform_version": "v2026.07.24.210",
+  "build": "2026-07-29T14:02:00+02:00",
+  "summary": "Introduces a substantial public-experience subsystem for personalized stay discovery and cinematic gallery exploration.",
   "changes": [
-    "Introduces Experience Engine 2.0 as a dedicated progressive-enhancement runtime",
-    "Adds live page progress, contextual chapter awareness and synchronized active navigation",
-    "Adds a responsive compact header and accessible back-to-top action",
-    "Adds governed staggered reveals and image-readiness transitions across the full public journey",
-    "Adds accessible smooth anchor navigation with focus transfer",
-    "Adds subtle pointer depth on capable desktop devices and complete reduced-motion protection",
-    "Synchronizes desktop and mobile release identity to v2026.07.24.201",
-    "Adds permanent subsystem regression coverage with no visitor persistence or tracking"
+    "Adds an interactive stay planner with 15 profile combinations across pace and interests",
+    "Generates accessible, copyable day plans without storing visitor input",
+    "Upgrades gallery filtering with live category counts and animated transitions",
+    "Adds a responsive lightbox filmstrip and category context",
+    "Adds a reusable Stay Discovery runtime with health snapshot",
+    "Adds permanent subsystem regression coverage",
+    "Synchronizes public desktop, mobile and Mission Control identity to v2026.07.24.210"
   ],
   "manual_review": [
-    "Confirm v2026.07.24.201 appears on desktop and mobile",
+    "Confirm v2026.07.24.210 appears on desktop and mobile",
     "Scroll through all chapters and verify progress, active navigation and chapter indicator",
     "Verify compact header and back-to-top behaviour",
     "Test keyboard anchor navigation and reduced-motion behaviour",
     "Confirm inquiry, gallery, menu and conversion rail remain functional"
   ],
-  "title": "Desktop Release Identity Cache Hardening",
-  "release_name": "Desktop Release Identity Cache Hardening",
-  "updated_at": "2026-07-29T13:55:00+02:00",
+  "title": "Stay Discovery and Gallery Engine",
+  "release_name": "Stay Discovery and Gallery Engine",
+  "updated_at": "2026-07-29T14:02:00+02:00",
   "test_focus": [
     "Experience Engine 2.0",
     "Responsive navigation",
@@ -32,11 +31,14 @@
     "Accessibility",
     "Release identity"
   ],
-  "version": "v2026.07.24.201",
+  "version": "v2026.07.24.210",
   "test": [
-    "Åbn casaamar.es på en computer i en almindelig browserfane.",
-    "Kontrollér, at BETA-badget viser v2026.07.24.201.",
-    "Genindlæs siden normalt og kontrollér, at versionen fortsat er v2026.07.24.201.",
-    "Kontrollér samme version i sidefoden, på mobil og i Mission Control."
+    "Kontrollér, at BETA-badget viser v2026.07.24.210 på både computer og mobil.",
+    "Gå til Planlæg opholdet og skift mellem de tre tempi.",
+    "Vælg alle fem interesser og kontrollér, at dagsplanen ændrer sig.",
+    "Tryk på Kopiér dagsplan og kontrollér bekræftelsen.",
+    "Gå til galleriet og kontrollér antallet på alle filtre.",
+    "Åbn et billede og test filmstrimlen, piletaster, swipe og Escape.",
+    "Kontrollér, at Mission Control viser v2026.07.24.210."
   ]
 }
