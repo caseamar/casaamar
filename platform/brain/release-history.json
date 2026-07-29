@@ -178,13 +178,13 @@
     {
       "version": "v2026.07.24.187",
       "name": "Canonical Data Contracts Foundation",
-      "released_at": "2026-07-28T23:32:00+02:00",
+      "released_at": "2026-07-29T10:15:00+02:00",
       "status": "built"
     },
     {
       "version": "v2026.07.24.187",
       "name": "Improvement Engine Foundation",
-      "date": "2026-07-28T23:32:00+02:00",
+      "date": "2026-07-29T10:15:00+02:00",
       "summary": "Governed continuous improvement lifecycle with AI assistance and risk-based human approval."
     },
     {
@@ -192,8 +192,16 @@
       "title": "AI Operations Center",
       "status": "verified",
       "summary": "Daily briefing and explicit action responsibility."
+    },
+    {
+      "version": "v2026.07.24.188",
+      "name": "Beta Readiness Quality Foundation",
+      "date": "2026-07-29",
+      "epic": "Casa Amar Beta",
+      "status": "built",
+      "summary": "Introduces release-blocking semantic identity governance and aligns the platform baseline before beta implementation."
     }
   ],
-  "updated_at": "2026-07-28T23:32:00+02:00",
-  "platform_version": "v2026.07.24.187"
+  "updated_at": "2026-07-29T10:15:00+02:00",
+  "platform_version": "v2026.07.24.188"
 }

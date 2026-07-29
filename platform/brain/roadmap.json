@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.187",
-  "target_release": "v2026.07.24.187",
-  "current_epic": "Event Platform",
-  "current_subsystem": "Event Platform Foundation",
-  "next_release": "v2026.07.24.187",
+  "current_release": "v2026.07.24.188",
+  "target_release": "v2026.07.24.188",
+  "current_epic": "Casa Amar Beta",
+  "current_subsystem": "Beta Readiness and Quality",
+  "next_release": "v2026.07.24.188",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -82,15 +82,15 @@
       "id": "EPIC-16",
       "title": "Universal Action Framework",
       "status": "foundation-delivered",
-      "release": "v2026.07.24.187"
+      "release": "v2026.07.24.188"
     }
   ],
   "next_focus": [
-    "Experience Context Engine",
-    "Content Studio end-to-end workflow",
-    "Beta hardening"
+    "Public experience beta journey",
+    "Digital concierge beta journey",
+    "Rendered mobile and desktop regression coverage"
   ],
-  "updated_at": "2026-07-28T23:32:00+02:00",
-  "current_focus": "Channel-neutral experience events",
-  "platform_version": "v2026.07.24.187"
+  "updated_at": "2026-07-29T10:15:00+02:00",
+  "current_focus": "Stable end-to-end Casa Amar beta",
+  "platform_version": "v2026.07.24.188"
 }
