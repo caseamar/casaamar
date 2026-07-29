@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.2.0",
-  "platform_version": "v2026.07.24.192",
-  "generated_at": "2026-07-29T12:51:00+02:00",
+  "platform_version": "v2026.07.24.193",
+  "generated_at": "2026-07-29T13:01:00+02:00",
   "quality_dimensions": [
     {
       "id": "functional",

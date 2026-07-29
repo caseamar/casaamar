@@ -5,6 +5,11 @@
   const openers = document.querySelectorAll('[data-inquiry-open]');
   const closeButtons = dialog.querySelectorAll('[data-inquiry-close]');
   const form = dialog.querySelector('[data-inquiry-form]');
+  const formView = dialog.querySelector('[data-inquiry-form-view]');
+  const completionView = dialog.querySelector('[data-inquiry-completion]');
+  const completionTitle = dialog.querySelector('[data-inquiry-completion-title]');
+  const completionText = dialog.querySelector('[data-inquiry-completion-text]');
+  const completionClose = dialog.querySelector('[data-inquiry-completion-close]');
   const copyButton = dialog.querySelector('[data-inquiry-copy]');
   const status = dialog.querySelector('[data-inquiry-status]');
   const email = 'Larsenmichael@hotmail.com';
@@ -22,6 +27,20 @@
     if (!status) return;
     status.textContent = message;
     status.dataset.state = kind;
+  };
+
+  const setView = (view = 'form') => {
+    const complete = view === 'completion';
+    formView?.toggleAttribute('hidden', complete);
+    completionView?.toggleAttribute('hidden', !complete);
+    dialog.dataset.view = view;
+  };
+
+  const showCompletion = ({ title, text }) => {
+    if (completionTitle) completionTitle.textContent = title;
+    if (completionText) completionText.textContent = text;
+    setView('completion');
+    window.setTimeout(() => completionClose?.focus(), 0);
   };
 
   const formatDate = (value) => {
@@ -62,6 +81,7 @@
   const open = () => {
     lastFocused = document.activeElement;
     setStatus('');
+    setView('form');
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open', '');
     document.documentElement.classList.add('inquiry-open');
@@ -72,6 +92,7 @@
     if (typeof dialog.close === 'function') dialog.close();
     else dialog.removeAttribute('open');
     document.documentElement.classList.remove('inquiry-open');
+    setView('form');
     lastFocused?.focus?.();
   };
 
@@ -96,6 +117,10 @@
     close();
   });
 
+  form?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.target?.tagName !== 'TEXTAREA') event.preventDefault();
+  });
+
   form?.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!validateDates()) {
@@ -103,8 +128,12 @@
       fields.departure?.focus();
       return;
     }
-    setStatus('Din mail åbnes med oplysningerne udfyldt.', 'success');
+
     window.location.href = createMailto();
+    showCompletion({
+      title: 'Din forespørgsel er klar i dit mailprogram',
+      text: 'Send mailen derfra for at afslutte. Hjemmesiden kan ikke se, om mailen bliver sendt.'
+    });
   });
 
   copyButton?.addEventListener('click', async () => {
@@ -115,9 +144,12 @@
     }
     try {
       await navigator.clipboard.writeText(buildMessage());
-      setStatus('Forespørgslen er kopieret.', 'success');
+      showCompletion({
+        title: 'Forespørgslen er kopieret',
+        text: 'Du kan nu indsætte den i en mail, WhatsApp eller en anden besked.'
+      });
     } catch (_) {
-      setStatus('Kunne ikke kopiere automatisk. Brug knappen “Åbn mail”.', 'error');
+      setStatus('Kunne ikke kopiere automatisk. Brug knappen “Åbn mailprogram”.', 'error');
     }
   });
 })();

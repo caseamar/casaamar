@@ -9,7 +9,7 @@ let pass=0;
 const check=(ok,msg)=>{if(!ok)throw new Error(msg);pass++};
 
 check(source.includes("const VERSION='1.6.0'"),'Workspace State Manager version must be current');
-check(source.includes("const RELEASE='v2026.07.24.192'"),'Return state must be bound to the current release');
+check(source.includes("const RELEASE='v2026.07.24.193'"),'Return state must be bound to the current release');
 check(source.includes("state.returnRequested===true"),'Restoration must require an explicit one-time return request');
 check(!source.includes("location.hash==='#ai-workspace'"),'A URL hash must not trigger restoration');
 check(source.includes("x.release!==RELEASE"),'State from another release must be rejected');
@@ -25,7 +25,7 @@ check(control.includes('if(location.hash==="#ai-workspace")history.replaceState'
 check(!control.includes('navType==="back_forward" || location.hash==="#ai-workspace"'),'Legacy hash must not bypass normal top positioning');
 for(const page of ['recommendation-engine.html','asset-intelligence.html','knowledge-graph.html','experience-engine.html','release-governance.html']){
  const html=read(page);
- check(html.includes('/core/casa-workspace-state.js?v=20260724.192'),page+' must load workspace state manager');
+ check(html.includes('/core/casa-workspace-state.js?v=20260724.193'),page+' must load workspace state manager');
  check(html.includes('href="/control/"'),page+' must return to canonical control URL without a persistent anchor');
  check(!html.includes('/control/#ai-workspace'),page+' must not persist workspace anchor across reloads or releases');
 }

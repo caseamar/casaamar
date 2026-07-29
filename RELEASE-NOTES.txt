@@ -1,10 +1,3 @@
-Casa Amar Platform v2026.07.24.192
-Desktop Conversion Rail
+v2026.07.24.193 — Inquiry Completion Experience
 
-- Extends the proven mobile availability prompt to desktop
-- Uses one responsive conversion component across mobile and desktop
-- Adds session-scoped dismissal on desktop
-- Keeps the Spørg Casa Amar launcher clear at all supported breakpoints
-- Adds permanent regression coverage for layout, behaviour and accessibility
-
-Test: desktop rail placement/dismissal, Android mobile rail, contact scroll and AI launcher clearance.
+Completes the guided availability inquiry with an honest and accessible completion state. The primary action now explicitly opens the mail program, the dialog explains that sending happens outside the website, clipboard users receive tailored next-step guidance, and focus moves directly to a clear Close window action.

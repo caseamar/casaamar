@@ -12,7 +12,7 @@ const check = (value, message) => { if (!value) failures.push(message); };
 check(manifest.release_identity, 'platform-manifest.json is missing release_identity');
 check(['beta', 'production'].includes(manifest.release_identity?.channel), 'release_identity.channel must be beta or production');
 check(typeof manifest.release_identity?.public_badge === 'boolean', 'release_identity.public_badge must be boolean');
-check(html.includes('/core/casa-release-identity.js?v=20260724.192'), 'Public website does not load the release identity module for the current release');
+check(html.includes('/core/casa-release-identity.js?v=20260724.193'), 'Public website does not load the release identity module for the current release');
 check(html.includes('class="dev-badge"') === false, 'Public website must not hard-code beta badge markup');
 check(moduleSource.includes("identity.public_badge === true"), 'Release identity module does not explicitly require the badge flag');
 check(moduleSource.includes("!== 'production'"), 'Release identity module does not suppress production badges');

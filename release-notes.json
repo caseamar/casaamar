@@ -1,40 +1,34 @@
 {
-  "release": "v2026.07.24.192",
-  "name": "Guided Availability Inquiry",
-  "platform_version": "v2026.07.24.192",
-  "build": "2026-07-29T12:51:00+02:00",
-  "summary": "Adds a privacy-safe guided availability inquiry that turns dates, guest count and stay context into a ready-to-send email without introducing booking or payment complexity.",
+  "release": "v2026.07.24.193",
+  "name": "Inquiry Completion Experience",
+  "platform_version": "v2026.07.24.193",
+  "build": "2026-07-29T13:01:00+02:00",
+  "summary": "Completes the availability inquiry journey with honest mail-client handoff guidance, a dedicated completion state and a clear close action.",
   "changes": [
-    "Adds a guided availability inquiry opened from the conversion rail and contact section",
-    "Builds a ready-to-send email from dates, guest count, name and stay context",
-    "Validates that departure follows arrival before handoff",
-    "Offers clipboard copy as a channel fallback",
-    "Keeps all inquiry data client-side and does not persist personal information",
-    "Adds permanent regression coverage for the complete inquiry flow"
+    "Renames the primary action to Open mail program so the handoff is explicit",
+    "Shows a dedicated completion view after the mail client is opened",
+    "Explains honestly that the website cannot confirm whether the email was sent",
+    "Shows tailored completion guidance after copying the inquiry text",
+    "Moves keyboard focus to Close window and preserves Escape and focus restoration behaviour",
+    "Prevents Enter from accidentally submitting fields outside the intended action",
+    "Adds permanent regression coverage for the completed inquiry journey"
   ],
   "manual_review": [
-    "Open the inquiry from desktop and Android conversion rails",
-    "Confirm invalid date order is blocked with a clear message",
-    "Confirm Open mail creates a correctly prefilled email",
-    "Confirm Copy text copies the full inquiry",
-    "Close using the cross, Escape key and dialog backdrop"
+    "Open the inquiry and confirm the button says Åbn mailprogram",
+    "Open the mail program and confirm the dialog changes to the completion view",
+    "Return to the browser and close the completion view using Luk vindue",
+    "Copy the inquiry and confirm the tailored copy guidance appears",
+    "Confirm Escape and the close button restore focus correctly on desktop and Android"
   ],
-  "title": "Guided Availability Inquiry",
-  "highlights": [
-    "Adds a desktop availability contact rail while preserving the successful Android mobile pattern",
-    "Uses one responsive component across mobile and desktop",
-    "Allows desktop visitors to dismiss the rail for the current session",
-    "Keeps the AI launcher clear of the conversion rail at all supported breakpoints",
-    "Adds regression coverage for markup, behaviour, accessibility and responsive layout"
-  ],
-  "release_name": "Guided Availability Inquiry",
-  "updated_at": "2026-07-29T12:51:00+02:00",
+  "title": "Inquiry Completion Experience",
+  "release_name": "Inquiry Completion Experience",
+  "updated_at": "2026-07-29T13:01:00+02:00",
   "test_focus": [
-    "Open inquiry from desktop and mobile conversion rail",
-    "Validate departure date must follow arrival date",
-    "Open prefilled email",
-    "Copy inquiry text",
-    "Close dialog with Escape and backdrop"
+    "Mail-client handoff completion state",
+    "Clipboard completion state",
+    "Focus management",
+    "Escape and close behaviour",
+    "Accidental Enter-key prevention"
   ],
-  "version": "v2026.07.24.192"
+  "version": "v2026.07.24.193"
 }

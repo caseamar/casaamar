@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "3.9.0",
-  "updated_at": "2026-07-29T12:51:00+02:00",
+  "updated_at": "2026-07-29T13:01:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.192",
+      "version": "v2026.07.24.193",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",

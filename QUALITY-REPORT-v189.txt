@@ -1,7 +1,7 @@
 Casa Amar Platform — Quality Report
-Release: v2026.07.24.192
+Release: v2026.07.24.193
 Name: Beta Experience Quality Release
-Build: 2026-07-29T12:51:00+02:00
+Build: 2026-07-29T13:01:00+02:00
 
 AUTOMATED RESULT
 PASS — complete npm run quality pipeline

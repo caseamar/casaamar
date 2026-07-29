@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "updated_at": "2026-07-29T12:51:00+02:00",
+  "updated_at": "2026-07-29T13:01:00+02:00",
   "items": [
     {
       "id": "PI-111-01",
@@ -127,5 +127,5 @@
       "description": "Governed KPI, trend and effect measurement built on verified observations."
     }
   ],
-  "platform_version": "v2026.07.24.192"
+  "platform_version": "v2026.07.24.193"
 }

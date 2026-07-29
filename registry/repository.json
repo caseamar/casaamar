@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
   "version": "1.12.0",
-  "release": "v2026.07.24.192",
-  "platform_version": "v2026.07.24.192",
-  "generated_at": "2026-07-29T12:51:00+02:00",
-  "updated_at": "2026-07-29T12:51:00+02:00",
+  "release": "v2026.07.24.193",
+  "platform_version": "v2026.07.24.193",
+  "generated_at": "2026-07-29T13:01:00+02:00",
+  "updated_at": "2026-07-29T13:01:00+02:00",
   "source": "deployment-manifest.json",
   "policies": {
     "complete_replace": true,

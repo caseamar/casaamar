@@ -11,10 +11,17 @@ const checks = [
   ['date fields exist', html.includes('name="arrival"') && html.includes('name="departure"')],
   ['guest field exists', html.includes('name="guests"')],
   ['privacy statement exists', html.includes('Oplysningerne gemmes ikke på hjemmesiden.')],
-  ['script loaded', html.includes('/core/casa-inquiry-composer.js?v=20260724.192')],
+  ['mailprogram label is explicit', html.includes('Åbn mailprogram')],
+  ['completion view exists', html.includes('data-inquiry-completion')],
+  ['completion close action exists', html.includes('data-inquiry-completion-close') && html.includes('Luk vindue')],
+  ['script loaded', html.includes('/core/casa-inquiry-composer.js?v=20260724.193')],
   ['date order validation', js.includes('new Date(departure) > new Date(arrival)')],
   ['mail client handoff', js.includes('window.location.href = createMailto()')],
+  ['mail handoff is described honestly', js.includes('Hjemmesiden kan ikke se, om mailen bliver sendt.')],
   ['clipboard fallback', js.includes('navigator.clipboard.writeText')],
+  ['copy completion guidance', js.includes('WhatsApp eller en anden besked')],
+  ['completion focus management', js.includes('completionClose?.focus()')],
+  ['enter key protection', js.includes("event.key === 'Enter'")],
   ['focus restoration', js.includes('lastFocused?.focus?.()')],
   ['escape/cancel handling', js.includes("dialog.addEventListener('cancel'")]
 ];
