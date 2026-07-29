@@ -194,7 +194,7 @@
       "summary": "Daily briefing and explicit action responsibility."
     },
     {
-      "version": "v2026.07.24.200",
+      "version": "v2026.07.24.201",
       "name": "Beta Experience Quality Release",
       "date": "2026-07-29",
       "epic": "Casa Amar Beta",
@@ -203,5 +203,5 @@
     }
   ],
   "updated_at": "2026-07-29T13:01:00+02:00",
-  "platform_version": "v2026.07.24.200"
+  "platform_version": "v2026.07.24.201"
 }

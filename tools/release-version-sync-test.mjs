@@ -19,6 +19,11 @@ check(publicHtml.includes(`data-casa-amar-inline="${expected}"`), 'Public inline
 check(publicHtml.includes(`platform-manifest.json?v=${expectedCompact}`), 'Public manifest cache key is not synchronized');
 check(publicHtml.includes(`casa-release-identity.js?v=${expectedCompact}`), 'Public release identity asset cache key is not synchronized');
 
+const headers = fs.readFileSync(path.join(root, '_headers'), 'utf8');
+check(/(^|\n)\/\n\s+Cache-Control:.*no-store.*no-cache.*must-revalidate.*max-age=0/i.test(headers), 'Root route / must explicitly disable browser and CDN caching');
+check(/(^|\n)\/index\.html\n\s+Cache-Control:.*no-store.*no-cache.*must-revalidate.*max-age=0/i.test(headers), '/index.html must explicitly disable browser and CDN caching');
+check(headers.includes('Cloudflare-CDN-Cache-Control: no-store'), 'Cloudflare CDN cache control is missing for the public entry document');
+
 const deploymentFiles = ['deployment-manifest.json', 'release-validation.json', 'release-governance.json', 'release-quality-gate.json'];
 for (const file of deploymentFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');

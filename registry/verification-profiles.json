@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "version": "1.0.0",
   "updated_at": "2026-07-29T13:01:00+02:00",
-  "platform_version": "v2026.07.24.200",
+  "platform_version": "v2026.07.24.201",
   "policy": {
     "user_visible_runtime_requires_browser_test": true,
     "async_runtime_requires_terminal_state_tests": true,
