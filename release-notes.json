@@ -1,24 +1,23 @@
 {
-  "release": "v2026.07.24.320",
-  "name": "Platform Experience and Orchestration Foundation",
-  "platform_version": "v2026.07.24.320",
-  "summary": "Introduces the blueprint-aligned Platform Orchestrator, canonical lifecycle registry, implementation journey, continuous improvement loop and functional lifecycle administration.",
+  "release": "v2026.07.24.321",
+  "name": "Platform Lifecycle Runtime Hardening",
+  "platform_version": "v2026.07.24.321",
+  "summary": "Hardens the Platform Lifecycle runtime so implementation, stage completion and continuous-improvement actions update immediately, persist safely and emit governed events.",
   "major_changes": [
-    "Platform Orchestrator 1.0",
-    "Canonical journey registry",
-    "Implementation journey: Demo, Onboarding, Implementation, Go-live, Hyper Care and Maintenance",
-    "Continuous improvement loop: Insights, Assess, Prioritise, Implement, Evidence and Learn",
-    "Mission Control lifecycle integration",
-    "Evented state, evidence and decision history"
+    "Corrected lifecycle event publishing",
+    "Registered platform journey event contracts",
+    "Explicit lifecycle UI controller",
+    "Visible success and error feedback",
+    "End-to-end lifecycle button regression test"
   ],
   "test_focus": [
     "Open /platform-lifecycle.html",
-    "Confirm the implementation stages",
-    "Start the continuous improvement loop",
-    "Complete a stage and confirm the next stage",
-    "Open Mission Control and confirm active journey and next action"
+    "Start the implementation journey and confirm Demo is active",
+    "Complete Demo and confirm Onboarding becomes active",
+    "Start the improvement loop and confirm Insights becomes active",
+    "Reload and confirm journey state persists"
   ],
-  "release_name": "Platform Experience and Orchestration Foundation",
-  "title": "Platform Experience and Orchestration Foundation",
-  "build": "2026-07-29T18:50:00+02:00"
+  "release_name": "Platform Lifecycle Runtime Hardening",
+  "title": "Platform Lifecycle Runtime Hardening",
+  "build": "2026-07-29T19:10:00+02:00"
 }

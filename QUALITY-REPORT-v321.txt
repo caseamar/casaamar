@@ -1,0 +1,16 @@
+Casa Amar Platform v2026.07.24.321
+Platform Lifecycle Runtime Hardening
+
+Defect corrected:
+- lifecycle actions persisted state but event telemetry threw before the UI could re-render
+- lifecycle page depended on implicit element globals instead of explicit DOM bindings
+
+Corrections:
+- correct CasaEvents.publish signature
+- registered journey event contracts
+- telemetry failures isolated from state persistence and UI updates
+- explicit lifecycle UI controller with feedback and error handling
+- end-to-end simulated click test for implementation, completion and improvement actions
+
+Quality result: PASS
+See release-quality-gate.json and release-validation.json for machine-readable evidence.

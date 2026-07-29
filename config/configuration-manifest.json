@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "platform_version": "v2026.07.24.320",
+  "platform_version": "v2026.07.24.321",
   "default_tenant": "casa-amar",
   "sources": {
     "platform": "/platform-manifest.json",

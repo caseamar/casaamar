@@ -4,10 +4,10 @@
 
 Inquiry composer: 19 checks passed.
 Conversion rail test passed (12 assertions).
-Release Identity VERIFIED: v2026.07.24.320 / beta
+Release Identity VERIFIED: v2026.07.24.321 / beta
 Release semantic consistency tests: 22 passed, 0 failed
 Public Experience Quality Gate: 24 passed, 0 failed
-Deployment Identity Governance VERIFIED: v2026.07.24.320 / 15.58-beta-release-identity / 2026-07-29T13:01:00+02:00
+Deployment Identity Governance VERIFIED: v2026.07.24.321 / 15.58-beta-release-identity / 2026-07-29T13:01:00+02:00
 Release quality gate: 1392 passed, 0 failed
 Behaviour Governance PASS: 194 checks
 104 Engineering Governance checks passed

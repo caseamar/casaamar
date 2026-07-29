@@ -1,5 +1,5 @@
 Casa Amar Platform — Quality Report
-Release: v2026.07.24.320
+Release: v2026.07.24.321
 Name: Beta Experience Quality Release
 Build: 2026-07-29T13:01:00+02:00
 

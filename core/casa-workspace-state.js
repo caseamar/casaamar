@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 const VERSION='1.6.0';
-const RELEASE='v2026.07.24.320';
+const RELEASE='v2026.07.24.321';
 const KEY='casa:workspace-return:v3';
 const MAX_AGE_MS=10*60*1000;
 const now=()=>Date.now();

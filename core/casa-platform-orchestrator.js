@@ -1,13 +1,13 @@
 /** Platform Orchestrator 1.0 — blueprint-aligned lifecycle runtime. */
 (()=>{'use strict';
- const VERSION='1.0.0', STORAGE='casa.platform-orchestrator.state.v1'; let registry=null;
+ const VERSION='1.0.1', STORAGE='casa.platform-orchestrator.state.v1'; let registry=null;
  const now=()=>new Date().toISOString();
  async function load(){if(!registry){const r=await fetch('/registry/platform-journeys.json',{cache:'no-store'});if(!r.ok)throw new Error('Journey registry could not be loaded');registry=await r.json();validate(registry)}return snapshot()}
  function validate(r){if(!r?.journeys?.length)throw new Error('Journey registry has no journeys');const ids=new Set();for(const j of r.journeys){if(ids.has(j.id))throw new Error(`Duplicate journey ${j.id}`);ids.add(j.id);if(!j.stages?.length)throw new Error(`Journey ${j.id} has no stages`)}}
  function read(){try{return JSON.parse(localStorage.getItem(STORAGE)||'null')}catch{return null}}
  function defaultState(){return {journeyId:'implementation',stageId:'onboarding',status:'active',startedAt:now(),updatedAt:now(),completedStages:[],evidence:[],decisions:[]}}
  function state(){return read()||defaultState()}
- function save(s,eventType='platform.journey.changed'){const next={...s,updatedAt:now()};localStorage.setItem(STORAGE,JSON.stringify(next));window.dispatchEvent(new CustomEvent('casa:platform-orchestrator',{detail:{type:eventType,state:next}}));window.CasaEvents?.publish?.({type:eventType,source:'platform-orchestrator',payload:next});return next}
+ function save(s,eventType='platform.journey.changed'){const next={...s,updatedAt:now()};localStorage.setItem(STORAGE,JSON.stringify(next));try{window.dispatchEvent(new CustomEvent('casa:platform-orchestrator',{detail:{type:eventType,state:next}}))}catch(error){console.warn('Platform orchestrator DOM event failed',error)}try{window.CasaEvents?.publish?.(eventType,{journey_id:next.journeyId,stage_id:next.stageId,status:next.status,updated_at:next.updatedAt},{source:{service:'platform-orchestrator',version:VERSION}})}catch(error){console.warn('Platform orchestrator telemetry failed',error)}return next}
  function journey(id=state().journeyId){return registry?.journeys?.find(j=>j.id===id)||null}
  function current(){const s=state(),j=journey(s.journeyId),i=j?.stages.findIndex(x=>x.id===s.stageId)??-1;return {state:s,journey:j,stage:i>=0?j.stages[i]:null,index:i}}
  function start(journeyId,stageId){const j=journey(journeyId);if(!j)throw new Error('Unknown journey');const stage=j.stages.find(x=>x.id===stageId)||j.stages[0];return save({...defaultState(),journeyId:j.id,stageId:stage.id},'platform.journey.started')}
