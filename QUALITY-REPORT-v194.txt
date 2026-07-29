@@ -1,0 +1,24 @@
+Casa Amar Platform Quality Report
+Release: v2026.07.24.194
+Name: Privacy-Safe Journey Signals
+Build: 2026-07-29T13:00:00+02:00
+
+Automated quality result: PASS
+Release quality gate: 1393 passed, 0 failed
+Public journey signals: 13 passed
+Inquiry composer: 19 passed
+Public Experience Quality Gate: 24 passed
+Deployment Identity Governance: VERIFIED
+Behaviour Governance: 194 passed
+Engineering Governance: 105 passed
+Platform Integrity: 203 passed
+Mutation resistance: 4 mutations killed, 0 survived
+Rendered runtime integration: 18 panels settled, 0 failed
+Cloudflare asset preflight: PASS
+
+Privacy guarantees for public journey signals:
+- No form field values are captured
+- No dates, names, guest counts or stay descriptions are captured
+- No localStorage, sessionStorage or cookie persistence
+- Bounded in-memory history only
+- Operational aggregate counters only

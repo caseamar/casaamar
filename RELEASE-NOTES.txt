@@ -1,3 +1,3 @@
-v2026.07.24.193 — Inquiry Completion Experience
+v2026.07.24.194 — Privacy-Safe Journey Signals
 
 Completes the guided availability inquiry with an honest and accessible completion state. The primary action now explicitly opens the mail program, the dialog explains that sending happens outside the website, clipboard users receive tailored next-step guidance, and focus moves directly to a clear Close window action.

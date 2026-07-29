@@ -1,34 +1,34 @@
 {
-  "release": "v2026.07.24.193",
-  "name": "Inquiry Completion Experience",
-  "platform_version": "v2026.07.24.193",
-  "build": "2026-07-29T13:01:00+02:00",
-  "summary": "Completes the availability inquiry journey with honest mail-client handoff guidance, a dedicated completion state and a clear close action.",
+  "release": "v2026.07.24.194",
+  "name": "Privacy-Safe Journey Signals",
+  "platform_version": "v2026.07.24.194",
+  "build": "2026-07-29T13:00:00+02:00",
+  "summary": "Adds a privacy-safe public journey signal layer that observes the availability inquiry without storing form content or personal data.",
   "changes": [
-    "Renames the primary action to Open mail program so the handoff is explicit",
-    "Shows a dedicated completion view after the mail client is opened",
-    "Explains honestly that the website cannot confirm whether the email was sent",
-    "Shows tailored completion guidance after copying the inquiry text",
-    "Moves keyboard focus to Close window and preserves Escape and focus restoration behaviour",
-    "Prevents Enter from accidentally submitting fields outside the intended action",
-    "Adds permanent regression coverage for the completed inquiry journey"
+    "Introduces a reusable in-memory public journey signal service",
+    "Observes inquiry opens, closes, validation failures and handoff outcomes",
+    "Attributes activity to the conversion rail, contact section, hero or page context",
+    "Explicitly excludes dates, guest count, names and stay descriptions from signal payloads",
+    "Persists no journey data in localStorage, sessionStorage or cookies",
+    "Exposes bounded aggregate snapshots for future reporting and diagnostics",
+    "Adds permanent regression coverage for privacy, signal contracts and inquiry instrumentation"
   ],
   "manual_review": [
-    "Open the inquiry and confirm the button says Åbn mailprogram",
-    "Open the mail program and confirm the dialog changes to the completion view",
-    "Return to the browser and close the completion view using Luk vindue",
-    "Copy the inquiry and confirm the tailored copy guidance appears",
-    "Confirm Escape and the close button restore focus correctly on desktop and Android"
+    "Open the inquiry from the desktop conversion rail and complete the mail handoff",
+    "Open the inquiry from the contact section and use Copy text",
+    "In the browser console, inspect CasaPublicJourneySignals.snapshot() and confirm only aggregate operational counters are present",
+    "Inspect CasaPublicJourneySignals.recent() and confirm no entered dates, names, guest counts or stay text are present",
+    "Confirm the visible inquiry experience is unchanged on desktop and Android"
   ],
-  "title": "Inquiry Completion Experience",
-  "release_name": "Inquiry Completion Experience",
-  "updated_at": "2026-07-29T13:01:00+02:00",
+  "title": "Privacy-Safe Journey Signals",
+  "release_name": "Privacy-Safe Journey Signals",
+  "updated_at": "2026-07-29T13:00:00+02:00",
   "test_focus": [
-    "Mail-client handoff completion state",
-    "Clipboard completion state",
-    "Focus management",
-    "Escape and close behaviour",
-    "Accidental Enter-key prevention"
+    "Signal source attribution",
+    "No personal data in signal payloads",
+    "No browser persistence",
+    "Mail and clipboard handoff observation",
+    "Existing inquiry behaviour preservation"
   ],
-  "version": "v2026.07.24.193"
+  "version": "v2026.07.24.194"
 }

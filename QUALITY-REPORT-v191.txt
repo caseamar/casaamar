@@ -1,12 +1,12 @@
 
-> casa-amar-platform@2026.7.24-193 quality
+> casa-amar-platform@2026.7.24-194 quality
 > node tools/conversion-rail-test.mjs && node tools/release-identity-test.mjs && node tools/release-semantic-consistency-test.mjs && node tools/public-experience-quality-test.mjs && node tools/deployment-identity-governance-test.mjs && node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs && node tools/operations-center-test.mjs && node tools/observation-platform-test.mjs && node tools/content-intelligence-test.mjs && node tools/startup-governance-test.mjs && node tools/asset-intelligence-workspace-test.mjs && node tools/ai-decision-ux-test.mjs && node tools/constitution-engine-test.mjs && node tools/closed-loop-ux-test.mjs && node tools/asset-decision-runtime-test.mjs && node tools/ai-output-quality-test.mjs && node tools/domain-intelligence-test.mjs && node tools/domain-verification-queue-test.mjs && node tools/domain-verification-queue-runtime-test.mjs && node tools/domain-discovery-engine-test.mjs && node tools/domain-relationship-engine-test.mjs && node tools/domain-impact-engine-test.mjs && node tools/action-orchestrator-test.mjs && node tools/action-orchestrator-rendered-cta-test.mjs && node tools/action-language-ux-test.mjs && node tools/guided-work-engine-test.mjs && node tools/guided-work-completion-test.mjs && node tools/guided-work-stale-batch-test.mjs && node tools/ai-learning-engine-test.mjs && node tools/primary-cta-runtime-test.mjs
 
 Conversion rail test passed (12 assertions).
-Release Identity VERIFIED: v2026.07.24.193 / beta
+Release Identity VERIFIED: v2026.07.24.194 / beta
 Release semantic consistency tests: 22 passed, 0 failed
 Public Experience Quality Gate: 24 passed, 0 failed
-Deployment Identity Governance VERIFIED: v2026.07.24.193 / 15.58-beta-release-identity / 2026-07-29T13:01:00+02:00
+Deployment Identity Governance VERIFIED: v2026.07.24.194 / 15.58-beta-release-identity / 2026-07-29T13:01:00+02:00
 Release quality gate: 1391 passed, 0 failed
 Behaviour Governance PASS: 194 checks
 103 Engineering Governance checks passed

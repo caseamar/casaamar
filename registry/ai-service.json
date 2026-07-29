@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.193",
+  "platform_version": "v2026.07.24.194",
   "status": "foundation",
   "entry": "/core/casa-ai-service.js",
   "configuration": "/config/ai-service.json",

@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.193
+Casa Amar Platform v2026.07.24.194
 Beta Release Identity Foundation
 
 Automated quality suite: PASS

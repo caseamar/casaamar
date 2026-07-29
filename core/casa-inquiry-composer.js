@@ -14,6 +14,11 @@
   const status = dialog.querySelector('[data-inquiry-status]');
   const email = 'Larsenmichael@hotmail.com';
   let lastFocused = null;
+  let inquirySource = 'unknown';
+
+  const signal = (type, detail = {}) => {
+    try { return window.CasaPublicJourneySignals?.emit?.(type, detail); } catch (_) { return null; }
+  };
 
   const fields = {
     arrival: form?.elements.namedItem('arrival'),
@@ -78,14 +83,16 @@
     ].join('\n');
   };
 
-  const open = () => {
+  const open = (opener = null) => {
     lastFocused = document.activeElement;
+    inquirySource = window.CasaPublicJourneySignals?.sourceFrom?.(opener) || opener?.dataset?.inquirySource || 'unknown';
     setStatus('');
     setView('form');
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open', '');
     document.documentElement.classList.add('inquiry-open');
     window.setTimeout(() => fields.arrival?.focus(), 0);
+    signal('inquiry.opened', { source: inquirySource });
   };
 
   const close = () => {
@@ -93,6 +100,7 @@
     else dialog.removeAttribute('open');
     document.documentElement.classList.remove('inquiry-open');
     setView('form');
+    signal('inquiry.closed', { source: inquirySource });
     lastFocused?.focus?.();
   };
 
@@ -103,7 +111,7 @@
 
   openers.forEach((button) => button.addEventListener('click', (event) => {
     event.preventDefault();
-    open();
+    open(button);
   }));
 
   closeButtons.forEach((button) => button.addEventListener('click', close));
@@ -125,10 +133,12 @@
     event.preventDefault();
     if (!validateDates()) {
       setStatus('Afrejsedatoen skal ligge efter ankomstdatoen.', 'error');
+      signal('inquiry.validation_failed', { source: inquirySource, reason: 'date-order' });
       fields.departure?.focus();
       return;
     }
 
+    signal('inquiry.mail_handoff_started', { source: inquirySource, method: 'mailto' });
     window.location.href = createMailto();
     showCompletion({
       title: 'Din forespørgsel er klar i dit mailprogram',
@@ -139,16 +149,19 @@
   copyButton?.addEventListener('click', async () => {
     if (!validateDates()) {
       setStatus('Afrejsedatoen skal ligge efter ankomstdatoen.', 'error');
+      signal('inquiry.validation_failed', { source: inquirySource, reason: 'date-order' });
       fields.departure?.focus();
       return;
     }
     try {
       await navigator.clipboard.writeText(buildMessage());
+      signal('inquiry.clipboard_handoff_completed', { source: inquirySource, method: 'clipboard' });
       showCompletion({
         title: 'Forespørgslen er kopieret',
         text: 'Du kan nu indsætte den i en mail, WhatsApp eller en anden besked.'
       });
     } catch (_) {
+      signal('inquiry.clipboard_handoff_failed', { source: inquirySource, method: 'clipboard', reason: 'clipboard-unavailable' });
       setStatus('Kunne ikke kopiere automatisk. Brug knappen “Åbn mailprogram”.', 'error');
     }
   });
