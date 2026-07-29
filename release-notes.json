@@ -1,26 +1,29 @@
 {
-  "release": "v2026.07.24.270",
-  "title": "Semantic Discovery Engine and Compact Experience Results",
-  "platform_version": "v2026.07.24.270",
-  "summary": "Introduces relevance-ranked discovery, multi-purpose restaurant metadata and compact results while keeping the optional manual day board.",
+  "release": "v2026.07.24.280",
+  "title": "AI-First Discovery Core Foundation",
+  "platform_version": "v2026.07.24.280",
+  "summary": "Introduces a provider-independent AI-first Discovery Core with deterministic fallback, structured intent parsing, hybrid ranking and a Casa Amar domain adapter, while preserving the working explorer and optional day board.",
   "changes": [
-    "Adds a generic semantic Discovery Engine that ranks direct matches above contextual suggestions",
-    "Models restaurants with multiple meal moments instead of one fixed category",
-    "Separates primary beach results from restaurants and other nearby suggestions",
-    "Redesigns results as compact rows so five options are visible without excessive scrolling",
-    "Adds free search, clear search, category filters and expandable result groups",
-    "Keeps drag-and-drop, free-text planning, local persistence and sharing",
-    "Records discovery and plan signals without presenting invented popularity claims"
+    "Adds generic Discovery Core 2.0 with versioned normalized asset contracts",
+    "Adds an AI model adapter contract for intent parsing and reranking without coupling the platform to one provider",
+    "Keeps deterministic search and ranking as a resilient fallback when AI is unavailable",
+    "Separates generic discovery logic from the Casa Amar domain profile",
+    "Ranks direct intent matches above contextual and nearby suggestions",
+    "Models Restaurant Cerros del Águila and Hoyo 19 as multi-moment places for breakfast, lunch, dinner and drinks",
+    "Reuses the existing compact explorer, expandable result groups and optional manual day board",
+    "Adds regression coverage for ranking precision, adapter separation and load order"
   ],
   "test": [
-    "Confirm v2026.07.24.270 appears on desktop and mobile",
-    "Search for strand and confirm beaches and pool are shown before restaurants near the beach",
-    "Search for morgenmad and confirm Restaurant Cerros del Águila and Hoyo 19 are available",
-    "Open Spisning and confirm Restaurant Cerros del Águila is not locked to breakfast",
-    "Confirm at least five compact results can be scanned without large cards",
-    "Test expand and collapse where more than five results exist",
-    "Add results to Min dag, reorder them and add a custom free-text item",
-    "Reload and confirm the manual plan is retained",
+    "Confirm v2026.07.24.280 appears on desktop and mobile",
+    "Search for strand and confirm beaches rank above restaurants near the beach",
+    "Search for morgenmad, frokost, middag and aften and confirm Restaurant Cerros del Águila remains available across relevant moments",
+    "Confirm Hoyo 19 appears as one place rather than separate breakfast and evening duplicates",
+    "Test category filters, expandable result groups and the compact list",
+    "Add, reorder and remove items in Min dag and add a free-text item",
+    "Reload and confirm the plan remains locally stored",
     "Test copy, email and download"
-  ]
+  ],
+  "release_name": "AI-First Discovery Core Foundation",
+  "name": "AI-First Discovery Core Foundation",
+  "build": "2026-07-29T14:15:00.000Z"
 }

@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.270 — Quality Report
+Casa Amar Platform v2026.07.24.280 — Quality Report
 Release: Experience Engine 2.0
 
 Automated release quality gate: 1,394 passed, 0 failed

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "3.9.0",
-  "updated_at": "2026-07-29T12:05:00.000Z",
+  "updated_at": "2026-07-29T14:15:00.000Z",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.270",
+      "version": "v2026.07.24.280",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -514,6 +514,18 @@
       "description": "Canonical evidence layer that turns verified facts into traceable, confidence-scored observations for AI and improvement workflows.",
       "dashboard": true,
       "dashboard_entry": "/release-governance.html#observation-platform"
+    },
+    {
+      "id": "discovery-core",
+      "display_name": "Discovery Core",
+      "version": "2.0.0",
+      "owner": "Experience Platform",
+      "status_source": "module",
+      "manifest_key": "discovery_core",
+      "entry": "/core/casa-discovery-core.js",
+      "description": "Provider-independent AI-first intent parsing, hybrid ranking and deterministic fallback for domain-neutral discovery.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     }
   ]
 }

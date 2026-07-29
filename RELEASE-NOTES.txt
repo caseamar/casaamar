@@ -1,24 +1,20 @@
-Casa Amar Platform v2026.07.24.270 — Experience Engine 2.0
+Casa Amar Platform v2026.07.24.280 — AI-First Discovery Core Foundation
 
-A subsystem release that upgrades the complete public website experience rather than adding a single isolated feature.
+Builds on the working compact experience explorer with a solid, scalable and provider-independent discovery foundation.
 
 Highlights
-- New Experience Engine 2.0 runtime with progressive enhancement and no visitor tracking.
-- Live reading progress across the full website.
-- Context-aware chapter indicator and synchronized active navigation.
-- Responsive compact header with smoother desktop and mobile behaviour.
-- Governed staggered reveals across sections, cards and gallery content.
-- Image readiness transitions that reduce abrupt loading and layout perception.
-- Accessible smooth anchor navigation with focus transfer.
-- Responsive back-to-top control.
-- Subtle pointer-based depth interactions on capable desktop devices.
-- Full reduced-motion protection.
-- Desktop and mobile release identity synchronized to v2026.07.24.270.
-- New permanent subsystem regression test.
+- Generic Discovery Core 2.0 separated from Casa Amar domain content.
+- Versioned normalized discovery asset model.
+- Deterministic intent parsing and ranking fallback.
+- AI model adapter contract for future intent parsing and reranking.
+- Direct matches rank above contextual nearby suggestions.
+- Restaurant Cerros del Águila and Hoyo 19 support breakfast, lunch, dinner and drinks as one place each.
+- Existing compact explorer, filters, expansion and optional day board are retained.
+- New regression tests for precision, architecture and runtime load order.
 
 What to test
-1. Confirm v2026.07.24.270 appears on both desktop and mobile.
-2. Scroll through the page and verify the top progress line, active navigation and chapter indicator.
-3. Verify the compact header and back-to-top control.
-4. Check that sections and images enter smoothly without blocking interaction.
-5. Test keyboard anchor navigation and reduced-motion behaviour where available.
+1. Confirm v2026.07.24.280 appears on desktop and mobile.
+2. Search strand and confirm beaches rank before restaurants near the beach.
+3. Search breakfast, lunch, dinner and evening and verify multi-purpose restaurants remain discoverable.
+4. Confirm Hoyo 19 is represented once rather than as duplicate meal-specific places.
+5. Test filters, expansion, drag-and-drop, free text, persistence and sharing.
