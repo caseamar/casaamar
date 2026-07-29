@@ -11,7 +11,7 @@
     if(!asset?.id)issues.push('missing-id');
     if(!asset?.title)issues.push('missing-title');
     if(!asset?.primaryIntents?.length)issues.push('missing-primary-intents');
-    if(asset?.type==='restaurant'&&!asset?.mealMoments?.length)issues.push('restaurant-without-meal-moments');
+    if(asset?.role==='dining'&&!asset?.mealMoments?.length)issues.push('dining-asset-without-meal-moments');
     for(const [intent,weight] of Object.entries(asset?.intentWeights||{}))if(!Number.isFinite(Number(weight))||Number(weight)<0||Number(weight)>100)issues.push(`invalid-weight:${intent}`);
     return issues;
   };

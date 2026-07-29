@@ -40,5 +40,7 @@
   });
 
   window.CasaDiscoveryProfile = profile;
-  window.CasaDiscovery = core.createEngine({...profile, assets});
+  const create = () => { window.CasaDiscovery = core.createEngine({...profile, assets, graphScorer:(asset,intent)=>window.CasaKnowledgeGraph?.scoreAsset?.(asset,intent)||{boost:0,reasons:[]}}); };
+  if (window.CasaKnowledgeGraph?.snapshot?.().ready) create();
+  else { create(); window.addEventListener('casa:knowledge-graph:ready', create, {once:true}); }
 })();

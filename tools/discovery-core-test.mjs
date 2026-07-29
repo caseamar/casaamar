@@ -12,7 +12,7 @@ const context={window:{},document:{documentElement:{dataset:{}}},console,Date,Se
 context.window.window=context.window;
 vm.createContext(context);
 vm.runInContext(core,context);
-assert.equal(context.window.CasaDiscoveryCore.version,'2.1.0');
+assert.equal(context.window.CasaDiscoveryCore.version,'2.2.0');
 
 const engine=context.window.CasaDiscoveryCore.createEngine({
   domain:'test',

@@ -1,300 +1,1100 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "updated_at": "2026-07-27T23:58:00+02:00",
+  "schema_version": "2.0",
+  "version": "2.0.0",
+  "updated_at": "2026-07-29T17:55:00+02:00",
   "source_of_truth": true,
   "entity_types": [
-    "content",
     "place",
-    "facility",
-    "audience",
-    "language",
-    "season",
-    "topic",
-    "asset-collection",
-    "experience"
+    "experience",
+    "intent"
   ],
   "relation_types": [
-    "uses",
-    "describes",
-    "located-in",
-    "suitable-for",
-    "available-in",
-    "relevant-during",
-    "related-to",
-    "requires",
-    "supports",
-    "represented-by"
+    "located-at",
+    "matches-intent",
+    "supports-intent",
+    "pairs-with"
   ],
-  "policies": {
-    "unique_entity_ids": true,
-    "unique_relation_ids": true,
-    "relations_must_resolve": true,
-    "known_entity_type_required": true,
-    "known_relation_type_required": true,
-    "self_relations_forbidden": true,
-    "duplicate_edges_forbidden": true,
-    "cycles_allowed_only_for": [
-      "related-to"
-    ]
+  "recommendation_weights": {
+    "pairs-with": 75,
+    "matches-intent": 50,
+    "supports-intent": 25,
+    "located-at": 5
   },
   "entities": [
-    {
-      "id": "content-public-website",
-      "display_name": "Public Website Content",
-      "type": "content",
-      "source_ref": "public-website",
-      "standalone": false
-    },
-    {
-      "id": "content-knowledge-base",
-      "display_name": "Knowledge Base",
-      "type": "content",
-      "source_ref": "knowledge-base",
-      "standalone": false
-    },
-    {
-      "id": "content-asset-library",
-      "display_name": "Asset Library",
-      "type": "content",
-      "source_ref": "asset-library",
-      "standalone": false
-    },
     {
       "id": "place-casa-amar",
       "display_name": "Casa Amar",
       "type": "place",
+      "standalone": true,
+      "tags": [
+        "base",
+        "home"
+      ]
+    },
+    {
+      "id": "intent-beach",
+      "display_name": "beach",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "place-cerros-del-aguila",
-      "display_name": "Cerros del Águila",
-      "type": "place",
+      "id": "intent-breakfast",
+      "display_name": "breakfast",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "facility-rooftop",
-      "display_name": "Roof Terrace",
-      "type": "facility",
+      "id": "intent-lunch",
+      "display_name": "lunch",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "facility-pool",
-      "display_name": "Pool",
-      "type": "facility",
+      "id": "intent-dinner",
+      "display_name": "dinner",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "facility-tennis",
-      "display_name": "Tennis Court",
-      "type": "facility",
+      "id": "intent-evening",
+      "display_name": "evening",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "audience-family",
-      "display_name": "Families",
-      "type": "audience",
+      "id": "intent-meat",
+      "display_name": "meat",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "audience-couple",
-      "display_name": "Couples",
-      "type": "audience",
+      "id": "intent-family",
+      "display_name": "family",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "audience-workcation",
-      "display_name": "Workcation Guests",
-      "type": "audience",
+      "id": "intent-calm",
+      "display_name": "calm",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "language-da",
-      "display_name": "Danish",
-      "type": "language",
+      "id": "intent-active",
+      "display_name": "active",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "language-en",
-      "display_name": "English",
-      "type": "language",
+      "id": "intent-excursion",
+      "display_name": "excursion",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "language-es",
-      "display_name": "Spanish",
-      "type": "language",
+      "id": "intent-local",
+      "display_name": "local",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "season-spring",
-      "display_name": "Spring",
-      "type": "season",
+      "id": "intent-rain",
+      "display_name": "rain",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "season-summer",
-      "display_name": "Summer",
-      "type": "season",
+      "id": "intent-romantic",
+      "display_name": "romantic",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "season-autumn",
-      "display_name": "Autumn",
-      "type": "season",
+      "id": "intent-pool",
+      "display_name": "pool",
+      "type": "intent",
       "standalone": true
     },
     {
-      "id": "season-winter",
-      "display_name": "Winter",
-      "type": "season",
-      "standalone": true
-    },
-    {
-      "id": "topic-arrival",
-      "display_name": "Arrival",
-      "type": "topic",
-      "standalone": true
-    },
-    {
-      "id": "topic-stay",
-      "display_name": "Stay",
-      "type": "topic",
-      "standalone": true
-    },
-    {
-      "id": "topic-departure",
-      "display_name": "Departure",
-      "type": "topic",
-      "standalone": true
-    },
-    {
-      "id": "experience-local-living",
-      "display_name": "Local Living",
+      "id": "experience-work-home",
+      "display_name": "Rolig arbejdstid i huset",
       "type": "experience",
-      "standalone": true
+      "source": "casa-amar",
+      "summary": "Et fokuseret tidsrum med huset som base.",
+      "tags": [
+        "rolig",
+        "arbejde",
+        "workation",
+        "hjemme",
+        "rolig"
+      ],
+      "standalone": false,
+      "domain_ref": "work-home"
+    },
+    {
+      "id": "experience-home-breakfast",
+      "display_name": "Morgenmad og kaffe på terrassen",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Kaffe, frisk brød og en rolig start hjemme.",
+      "tags": [
+        "mad",
+        "rolig",
+        "familie",
+        "morgenmad",
+        "kaffe",
+        "hjemme",
+        "terrasse"
+      ],
+      "standalone": false,
+      "domain_ref": "home-breakfast"
+    },
+    {
+      "id": "experience-restaurant-cerros",
+      "display_name": "Restaurant Cerros del Águila",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Lokalt spisested tæt på huset med servering fra formiddag til aften.",
+      "tags": [
+        "mad",
+        "rolig",
+        "familie",
+        "lokal",
+        "terrasse",
+        "breakfast",
+        "lunch",
+        "dinner",
+        "evening",
+        "local",
+        "family",
+        "calm"
+      ],
+      "standalone": false,
+      "domain_ref": "restaurant-cerros"
+    },
+    {
+      "id": "experience-gran-parque-walk",
+      "display_name": "Tur i Gran Parque Mijas",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En fleksibel gåtur tæt på huset.",
+      "tags": [
+        "familie",
+        "aktiv",
+        "rolig",
+        "park",
+        "gåtur",
+        "børn",
+        "familie",
+        "legeplads",
+        "rolig",
+        "nær huset"
+      ],
+      "standalone": false,
+      "domain_ref": "gran-parque-walk"
+    },
+    {
+      "id": "experience-home-pool",
+      "display_name": "Pool og pause ved huset",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Badning eller ro tæt på huset — også som en kort aftensvømning.",
+      "tags": [
+        "rolig",
+        "familie",
+        "strand",
+        "pool",
+        "badning",
+        "slappe af",
+        "børn",
+        "aften",
+        "nær huset"
+      ],
+      "standalone": false,
+      "domain_ref": "home-pool"
+    },
+    {
+      "id": "experience-home-siesta",
+      "display_name": "Siesta og ro i huset",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Et fleksibelt pusterum med huset som base.",
+      "tags": [
+        "rolig",
+        "familie",
+        "siesta",
+        "slappe af",
+        "pause",
+        "hjemme",
+        "rolig"
+      ],
+      "standalone": false,
+      "domain_ref": "home-siesta"
+    },
+    {
+      "id": "experience-shopping",
+      "display_name": "Indkøb til huset",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Dagligvarer og gode råvarer til resten af opholdet.",
+      "tags": [
+        "mad",
+        "familie",
+        "indkøb",
+        "shopping",
+        "supermarked",
+        "madvarer",
+        "praktisk",
+        "familie"
+      ],
+      "standalone": false,
+      "domain_ref": "shopping"
+    },
+    {
+      "id": "experience-roof-sunset",
+      "display_name": "Solnedgang på tagterrassen",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Slut dagen med udsigt og god tid.",
+      "tags": [
+        "rolig",
+        "mad",
+        "kultur",
+        "solnedgang",
+        "udsigt",
+        "tagterrasse",
+        "rolig",
+        "drink",
+        "aften"
+      ],
+      "standalone": false,
+      "domain_ref": "roof-sunset"
+    },
+    {
+      "id": "experience-home-dinner",
+      "display_name": "Middag hjemme",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Gode råvarer og en rolig aften på patioen.",
+      "tags": [
+        "mad",
+        "rolig",
+        "familie",
+        "middag",
+        "aftensmad",
+        "hjemme",
+        "grill"
+      ],
+      "standalone": false,
+      "domain_ref": "home-dinner"
+    },
+    {
+      "id": "experience-hoyo19",
+      "display_name": "Hoyo 19",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Restaurant ved golfbanen med morgenmad, frokost, middag og drinks.",
+      "tags": [
+        "mad",
+        "rolig",
+        "familie",
+        "lokal",
+        "golf",
+        "terrasse",
+        "breakfast",
+        "lunch",
+        "dinner",
+        "evening",
+        "local",
+        "family",
+        "calm",
+        "golf"
+      ],
+      "standalone": false,
+      "domain_ref": "hoyo19"
+    },
+    {
+      "id": "experience-la-cala-restaurant",
+      "display_name": "Spis ved vandet i La Cala",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Spis tæt på vandet og kombiner med strand eller promenade.",
+      "tags": [
+        "mad",
+        "kyst",
+        "restaurant",
+        "frokost",
+        "middag",
+        "havudsigt",
+        "strand",
+        "promenade",
+        "la cala"
+      ],
+      "standalone": false,
+      "domain_ref": "la-cala-restaurant"
+    },
+    {
+      "id": "experience-fuengirola-tapas",
+      "display_name": "Tapas i Fuengirola",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En levende aften med en tur langs promenaden.",
+      "tags": [
+        "mad",
+        "kultur",
+        "tapas",
+        "middag",
+        "aften",
+        "night out",
+        "restaurant",
+        "promenade",
+        "fuengirola"
+      ],
+      "standalone": false,
+      "domain_ref": "fuengirola-tapas"
+    },
+    {
+      "id": "experience-primavera-dinner",
+      "display_name": "Middag på Primavera",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Aftensmad efter strand eller en rolig eftermiddag.",
+      "tags": [
+        "mad",
+        "strand",
+        "middag",
+        "restaurant",
+        "aften",
+        "primavera",
+        "strand",
+        "kysten"
+      ],
+      "standalone": false,
+      "domain_ref": "primavera-dinner"
+    },
+    {
+      "id": "experience-la-cala-beach",
+      "display_name": "Strand i La Cala",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Badning, strandliv og nem adgang til frokost.",
+      "tags": [
+        "strand",
+        "familie",
+        "rolig",
+        "strand",
+        "badning",
+        "hav",
+        "la cala",
+        "familie",
+        "promenade",
+        "frokost"
+      ],
+      "standalone": false,
+      "domain_ref": "la-cala-beach"
+    },
+    {
+      "id": "experience-fuengirola-beach",
+      "display_name": "Strand og promenade i Fuengirola",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Kombiner strand med byliv, is eller tapas.",
+      "tags": [
+        "strand",
+        "familie",
+        "strand",
+        "badning",
+        "hav",
+        "promenade",
+        "fuengirola",
+        "familie",
+        "is",
+        "tapas"
+      ],
+      "standalone": false,
+      "domain_ref": "fuengirola-beach"
+    },
+    {
+      "id": "experience-mijas-pueblo",
+      "display_name": "Mijas Pueblo",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Hvide gader, udsigter, kaffe og mulighed for et måltid.",
+      "tags": [
+        "kultur",
+        "mad",
+        "familie",
+        "mijas pueblo",
+        "udflugt",
+        "hvide by",
+        "udsigt",
+        "kultur",
+        "kaffe",
+        "middag",
+        "familie"
+      ],
+      "standalone": false,
+      "domain_ref": "mijas-pueblo"
+    },
+    {
+      "id": "experience-ronda",
+      "display_name": "Ronda",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En stor dagstur med broen, gamle gader og lokal frokost.",
+      "tags": [
+        "kultur",
+        "aktiv",
+        "ronda",
+        "udflugt",
+        "bro",
+        "kultur",
+        "heldagstur",
+        "frokost",
+        "historie"
+      ],
+      "standalone": false,
+      "domain_ref": "ronda"
+    },
+    {
+      "id": "experience-setenil",
+      "display_name": "Setenil de las Bodegas",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Klippebyen kan kombineres med Ronda på en lang dag.",
+      "tags": [
+        "kultur",
+        "aktiv",
+        "setenil",
+        "udflugt",
+        "klippeby",
+        "kultur",
+        "ronda"
+      ],
+      "standalone": false,
+      "domain_ref": "setenil"
+    },
+    {
+      "id": "experience-mtb",
+      "display_name": "MTB i Mijas-bakkerne",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "Aktiv tur i terrænet med tid til bad og pause bagefter.",
+      "tags": [
+        "aktiv",
+        "natur",
+        "mtb",
+        "cykling",
+        "aktiv",
+        "sport",
+        "natur",
+        "bakker",
+        "pool"
+      ],
+      "standalone": false,
+      "domain_ref": "mtb"
+    },
+    {
+      "id": "experience-diving",
+      "display_name": "Dykning ved kysten",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En halv dags aktivitet med briefing, transport og tid på vandet.",
+      "tags": [
+        "aktiv",
+        "strand",
+        "dykning",
+        "aktiv",
+        "hav",
+        "sport",
+        "strand",
+        "kysten"
+      ],
+      "standalone": false,
+      "domain_ref": "diving"
+    },
+    {
+      "id": "experience-golf",
+      "display_name": "Golf i nærområdet",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En runde tæt på Casa Amar med mulighed for frokost på klubben.",
+      "tags": [
+        "golf",
+        "aktiv",
+        "golf",
+        "aktiv",
+        "sport",
+        "frokost",
+        "hoyo 19"
+      ],
+      "standalone": false,
+      "domain_ref": "golf"
+    },
+    {
+      "id": "experience-movie-terrace",
+      "display_name": "Film og drinks på tagterrassen",
+      "type": "experience",
+      "source": "casa-amar",
+      "summary": "En rolig afslutning hjemme efter dagens aktiviteter.",
+      "tags": [
+        "rolig",
+        "familie",
+        "film",
+        "tagterrasse",
+        "aften",
+        "rolig",
+        "familie",
+        "drink"
+      ],
+      "standalone": false,
+      "domain_ref": "movie-terrace"
     }
   ],
   "relations": [
     {
-      "id": "r001",
-      "from": "content-public-website",
-      "type": "describes",
-      "to": "place-casa-amar"
+      "id": "rel-1",
+      "from": "experience-work-home",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     },
     {
-      "id": "r002",
-      "from": "place-casa-amar",
-      "type": "located-in",
-      "to": "place-cerros-del-aguila"
+      "id": "rel-2",
+      "from": "experience-home-breakfast",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     },
     {
-      "id": "r003",
-      "from": "content-public-website",
-      "type": "describes",
-      "to": "facility-rooftop"
+      "id": "rel-3",
+      "from": "experience-home-breakfast",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r004",
-      "from": "content-public-website",
-      "type": "describes",
-      "to": "facility-pool"
+      "id": "rel-4",
+      "from": "experience-home-breakfast",
+      "to": "experience-mijas-pueblo",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r005",
-      "from": "content-public-website",
-      "type": "describes",
-      "to": "facility-tennis"
+      "id": "rel-5",
+      "from": "experience-restaurant-cerros",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     },
     {
-      "id": "r006",
-      "from": "place-casa-amar",
-      "type": "suitable-for",
-      "to": "audience-family"
+      "id": "rel-6",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-breakfast",
+      "type": "matches-intent",
+      "weight": 72,
+      "label": "Strong breakfast match"
     },
     {
-      "id": "r007",
-      "from": "place-casa-amar",
-      "type": "suitable-for",
-      "to": "audience-couple"
+      "id": "rel-7",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-lunch",
+      "type": "matches-intent",
+      "weight": 86,
+      "label": "Strong lunch match"
     },
     {
-      "id": "r008",
-      "from": "place-casa-amar",
-      "type": "suitable-for",
-      "to": "audience-workcation"
+      "id": "rel-8",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-dinner",
+      "type": "matches-intent",
+      "weight": 96,
+      "label": "Strong dinner match"
     },
     {
-      "id": "r009",
-      "from": "content-public-website",
-      "type": "available-in",
-      "to": "language-da"
+      "id": "rel-9",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-evening",
+      "type": "matches-intent",
+      "weight": 94,
+      "label": "Strong evening match"
     },
     {
-      "id": "r010",
-      "from": "content-public-website",
-      "type": "supports",
-      "to": "language-en"
+      "id": "rel-10",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-local",
+      "type": "matches-intent",
+      "weight": 92,
+      "label": "Strong local match"
     },
     {
-      "id": "r011",
-      "from": "content-public-website",
-      "type": "supports",
-      "to": "language-es"
+      "id": "rel-11",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-family",
+      "type": "supports-intent",
+      "weight": 35,
+      "label": "Supports family"
     },
     {
-      "id": "r012",
-      "from": "place-casa-amar",
-      "type": "relevant-during",
-      "to": "season-spring"
+      "id": "rel-12",
+      "from": "experience-restaurant-cerros",
+      "to": "intent-calm",
+      "type": "supports-intent",
+      "weight": 35,
+      "label": "Supports calm"
     },
     {
-      "id": "r013",
-      "from": "place-casa-amar",
-      "type": "relevant-during",
-      "to": "season-summer"
+      "id": "rel-13",
+      "from": "experience-gran-parque-walk",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     },
     {
-      "id": "r014",
-      "from": "place-casa-amar",
-      "type": "relevant-during",
-      "to": "season-autumn"
+      "id": "rel-14",
+      "from": "experience-gran-parque-walk",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r015",
-      "from": "place-casa-amar",
-      "type": "relevant-during",
-      "to": "season-winter"
+      "id": "rel-15",
+      "from": "experience-gran-parque-walk",
+      "to": "experience-home-breakfast",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r016",
-      "from": "content-knowledge-base",
-      "type": "related-to",
-      "to": "topic-arrival"
+      "id": "rel-16",
+      "from": "experience-home-pool",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     },
     {
-      "id": "r017",
-      "from": "content-knowledge-base",
-      "type": "related-to",
-      "to": "topic-stay"
+      "id": "rel-17",
+      "from": "experience-home-pool",
+      "to": "intent-pool",
+      "type": "matches-intent",
+      "weight": 80,
+      "label": "Strong pool match"
     },
     {
-      "id": "r018",
-      "from": "content-knowledge-base",
-      "type": "related-to",
-      "to": "topic-departure"
+      "id": "rel-18",
+      "from": "experience-home-pool",
+      "to": "experience-home-dinner",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r019",
-      "from": "content-public-website",
-      "type": "uses",
-      "to": "content-asset-library"
+      "id": "rel-19",
+      "from": "experience-home-pool",
+      "to": "experience-roof-sunset",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
     },
     {
-      "id": "r020",
-      "from": "place-casa-amar",
-      "type": "supports",
-      "to": "experience-local-living"
+      "id": "rel-20",
+      "from": "experience-home-pool",
+      "to": "experience-ronda",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-21",
+      "from": "experience-home-siesta",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-22",
+      "from": "experience-shopping",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-23",
+      "from": "experience-shopping",
+      "to": "experience-la-cala-beach",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-24",
+      "from": "experience-shopping",
+      "to": "experience-mijas-pueblo",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-25",
+      "from": "experience-shopping",
+      "to": "experience-home-dinner",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-26",
+      "from": "experience-roof-sunset",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-27",
+      "from": "experience-roof-sunset",
+      "to": "experience-home-dinner",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-28",
+      "from": "experience-home-dinner",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-29",
+      "from": "experience-hoyo19",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-30",
+      "from": "experience-hoyo19",
+      "to": "intent-breakfast",
+      "type": "matches-intent",
+      "weight": 98,
+      "label": "Strong breakfast match"
+    },
+    {
+      "id": "rel-31",
+      "from": "experience-hoyo19",
+      "to": "intent-lunch",
+      "type": "matches-intent",
+      "weight": 94,
+      "label": "Strong lunch match"
+    },
+    {
+      "id": "rel-32",
+      "from": "experience-hoyo19",
+      "to": "intent-dinner",
+      "type": "matches-intent",
+      "weight": 84,
+      "label": "Strong dinner match"
+    },
+    {
+      "id": "rel-33",
+      "from": "experience-hoyo19",
+      "to": "intent-evening",
+      "type": "matches-intent",
+      "weight": 82,
+      "label": "Strong evening match"
+    },
+    {
+      "id": "rel-34",
+      "from": "experience-hoyo19",
+      "to": "intent-local",
+      "type": "matches-intent",
+      "weight": 90,
+      "label": "Strong local match"
+    },
+    {
+      "id": "rel-35",
+      "from": "experience-hoyo19",
+      "to": "intent-family",
+      "type": "supports-intent",
+      "weight": 35,
+      "label": "Supports family"
+    },
+    {
+      "id": "rel-36",
+      "from": "experience-hoyo19",
+      "to": "intent-calm",
+      "type": "supports-intent",
+      "weight": 35,
+      "label": "Supports calm"
+    },
+    {
+      "id": "rel-37",
+      "from": "experience-hoyo19",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-38",
+      "from": "experience-hoyo19",
+      "to": "experience-roof-sunset",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-39",
+      "from": "experience-la-cala-restaurant",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-40",
+      "from": "experience-la-cala-restaurant",
+      "to": "experience-la-cala-beach",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-41",
+      "from": "experience-fuengirola-tapas",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-42",
+      "from": "experience-fuengirola-tapas",
+      "to": "experience-fuengirola-beach",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-43",
+      "from": "experience-primavera-dinner",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-44",
+      "from": "experience-primavera-dinner",
+      "to": "experience-la-cala-beach",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-45",
+      "from": "experience-primavera-dinner",
+      "to": "experience-fuengirola-beach",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-46",
+      "from": "experience-la-cala-beach",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-47",
+      "from": "experience-la-cala-beach",
+      "to": "experience-la-cala-restaurant",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-48",
+      "from": "experience-fuengirola-beach",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-49",
+      "from": "experience-fuengirola-beach",
+      "to": "experience-fuengirola-tapas",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-50",
+      "from": "experience-mijas-pueblo",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-51",
+      "from": "experience-mijas-pueblo",
+      "to": "experience-roof-sunset",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-52",
+      "from": "experience-ronda",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-53",
+      "from": "experience-ronda",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-54",
+      "from": "experience-ronda",
+      "to": "experience-hoyo19",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-55",
+      "from": "experience-ronda",
+      "to": "experience-home-dinner",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-56",
+      "from": "experience-setenil",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-57",
+      "from": "experience-setenil",
+      "to": "experience-ronda",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-58",
+      "from": "experience-mtb",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-59",
+      "from": "experience-mtb",
+      "to": "intent-pool",
+      "type": "supports-intent",
+      "weight": 35,
+      "label": "Supports pool"
+    },
+    {
+      "id": "rel-60",
+      "from": "experience-mtb",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-61",
+      "from": "experience-mtb",
+      "to": "experience-hoyo19",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-62",
+      "from": "experience-diving",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-63",
+      "from": "experience-diving",
+      "to": "experience-la-cala-restaurant",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-64",
+      "from": "experience-diving",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-65",
+      "from": "experience-golf",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
+    },
+    {
+      "id": "rel-66",
+      "from": "experience-golf",
+      "to": "experience-hoyo19",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-67",
+      "from": "experience-golf",
+      "to": "experience-home-pool",
+      "type": "pairs-with",
+      "weight": 75,
+      "label": "Good combination"
+    },
+    {
+      "id": "rel-68",
+      "from": "experience-movie-terrace",
+      "to": "place-casa-amar",
+      "type": "located-at",
+      "weight": 5,
+      "label": "Casa Amar reference"
     }
   ]
 }

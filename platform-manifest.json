@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.290",
-  "build": "2026-07-29T14:15:00.000Z",
+  "platform_version": "v2026.07.24.300",
+  "build": "2026-07-29T17:58:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Discovery Content Intelligence and Search Precision",
-  "generated_at": "2026-07-29T14:15:00.000Z",
+  "release_name": "Knowledge Graph Intelligence Platform",
+  "generated_at": "2026-07-29T17:58:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-29T14:15:00.000Z"
+    "build": "2026-07-29T17:58:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -373,7 +373,7 @@
     ]
   },
   "ai_knowledge_graph": {
-    "version": "1.1.0",
+    "version": "2.0.0",
     "entry": "/core/casa-knowledge-graph.js",
     "registry": "/registry/knowledge-graph.json",
     "registry_driven": true,
@@ -387,6 +387,8 @@
       "neighbours",
       "search",
       "path",
+      "recommendations",
+      "discovery-boost",
       "validate",
       "snapshot"
     ]
@@ -757,7 +759,7 @@
     ]
   },
   "discovery_core": {
-    "version": "2.1.0",
+    "version": "2.2.0",
     "entry": "/core/casa-discovery-core.js",
     "capabilities": [
       "intent-parsing",
@@ -765,7 +767,8 @@
       "model-adapter",
       "deterministic-fallback",
       "intent-weighting",
-      "query-aware-grouping"
+      "query-aware-grouping",
+      "knowledge-graph-scoring"
     ]
   },
   "discovery_content_intelligence": {

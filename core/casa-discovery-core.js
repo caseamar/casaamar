@@ -6,7 +6,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '2.1.0';
+  const VERSION = '2.2.0';
   const norm = value => String(value || '')
     .toLowerCase()
     .normalize('NFD')
@@ -162,6 +162,9 @@
     score += Math.min(12, Math.max(0, asset.editorialScore / 10));
     score += Math.min(8, Math.max(0, asset.popularity / 12.5));
 
+    const graphSignal = typeof options.graphScorer === 'function' ? options.graphScorer(asset, intent) : null;
+    if (graphSignal?.boost) { score += graphSignal.boost; reasons.push(...(graphSignal.reasons || [])); }
+
     // Domain-neutral precision rule: related context must never outrank the thing requested.
     const requestedTypes = options.intentTypeMap || {};
     for (const semanticIntent of intent.intents) {
@@ -180,6 +183,7 @@
     const model = createModelAdapter(config.modelAdapter);
     const listeners = new Set();
     const intentTypeMap = config.intentTypeMap || {};
+    const graphScorer = typeof config.graphScorer === 'function' ? config.graphScorer : null;
 
     async function parseIntent(query, context = {}) {
       const fallback = deterministicIntent(query, lexicon);
@@ -202,7 +206,7 @@
       const filter = typeof options.filter === 'function' ? options.filter : () => true;
       let ranked = assets
         .filter(filter)
-        .map(asset => ({asset, ...scoreAsset(asset, intent, {intentTypeMap})}))
+        .map(asset => ({asset, ...scoreAsset(asset, intent, {intentTypeMap, graphScorer})}))
         .filter(result => !intent.normalizedQuery || result.score >= (options.minimumScore ?? 12))
         .sort((a, b) => b.score - a.score || a.asset.title.localeCompare(b.asset.title));
 

@@ -1,36 +1,23 @@
 {
-  "release": "v2026.07.24.290",
-  "title": "Discovery Content Intelligence and Search Precision",
-  "platform_version": "v2026.07.24.290",
-  "summary": "Adds query-aware result grouping, intent weighting, metadata governance and an AI-assisted Discovery Content Intelligence workspace while preserving the existing explorer and day board.",
-  "changes": [
-    "Adds generic Discovery Core 2.0 with versioned normalized asset contracts",
-    "Adds an AI model adapter contract for intent parsing and reranking without coupling the platform to one provider",
-    "Keeps deterministic search and ranking as a resilient fallback when AI is unavailable",
-    "Separates generic discovery logic from the Casa Amar domain profile",
-    "Ranks direct intent matches above contextual and nearby suggestions",
-    "Models Restaurant Cerros del Águila and Hoyo 19 as multi-moment places for breakfast, lunch, dinner and drinks",
-    "Reuses the existing compact explorer, expandable result groups and optional manual day board",
-    "Adds regression coverage for ranking precision, adapter separation and load order"
+  "release": "v2026.07.24.300",
+  "name": "Knowledge Graph Intelligence Platform",
+  "platform_version": "v2026.07.24.300",
+  "summary": "Connects the existing Discovery experience to a typed Knowledge Graph that can rank, explain and recommend related experiences without coupling the platform core to Casa Amar.",
+  "major_changes": [
+    "Knowledge Graph 2.0 with typed experience, intent and place entities",
+    "Weighted semantic relationships for direct intent matches and good combinations",
+    "Graph-assisted Discovery ranking with deterministic fallback",
+    "Explainable recommendation traversal and multi-hop graph paths",
+    "Casa Amar experience data compiled into a governed graph registry",
+    "Provider-independent architecture prepared for AI enrichment"
   ],
-  "test": [
-    "Confirm v2026.07.24.290 appears on desktop and mobile",
-    "Search for strand and confirm beaches rank above restaurants near the beach",
-    "Search for morgenmad, frokost, middag and aften and confirm Restaurant Cerros del Águila remains available across relevant moments",
-    "Confirm Hoyo 19 appears as one place rather than separate breakfast and evening duplicates",
-    "Test category filters, expandable result groups and the compact list",
-    "Add, reorder and remove items in Min dag and add a free-text item",
-    "Reload and confirm the plan remains locally stored",
-    "Test copy, email and download"
-  ],
-  "release_name": "AI-First Discovery Core Foundation",
-  "name": "AI-First Discovery Core Foundation",
-  "build": "2026-07-29T14:15:00.000Z",
   "test_focus": [
-    "Hoyo 19 appears and ranks strongly for breakfast searches",
-    "Restaurant Cerros del Águila appears under evening dining for evening searches",
-    "The first category chip is an explicit Alle filter",
-    "Search results remain compact and the manual day board continues to work",
-    "Discovery Studio saves metadata and intent-weight changes as drafts only"
-  ]
+    "Search for breakfast, evening and beach and confirm existing Discovery behaviour remains stable",
+    "Confirm Hoyo 19 remains the strongest breakfast restaurant result",
+    "Open /knowledge-graph.html and confirm the graph loads without consistency errors",
+    "Verify the optional day board, drag and drop, free text and sharing still work"
+  ],
+  "release_name": "Knowledge Graph Intelligence Platform",
+  "title": "Knowledge Graph Intelligence Platform",
+  "build": "2026-07-29T17:58:00+02:00"
 }

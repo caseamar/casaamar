@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const root=new URL('..',import.meta.url).pathname;const g=JSON.parse(fs.readFileSync(root+'registry/knowledge-graph.json','utf8'));
+const ids=new Set(g.entities.map(x=>x.id));const fail=[];
+if(g.schema_version!=='2.0')fail.push('schema');
+if(!ids.has('experience-hoyo19')||!ids.has('experience-restaurant-cerros'))fail.push('restaurant entities');
+if(!g.relations.some(x=>x.from==='experience-hoyo19'&&x.to==='intent-breakfast'&&x.weight>=90))fail.push('Hoyo breakfast relation');
+if(!g.relations.some(x=>x.type==='pairs-with'))fail.push('pair graph');
+for(const r of g.relations)if(!ids.has(r.from)||!ids.has(r.to))fail.push('unresolved '+r.id);
+const core=fs.readFileSync(root+'core/casa-knowledge-graph.js','utf8');for(const token of ['recommendations','scoreAsset','graph.discovery-boost'])if(!core.includes(token))fail.push(token);
+if(fail.length){console.error('Knowledge Graph v2 FAILED',fail);process.exit(1)}console.log(`Knowledge Graph v2 VERIFIED: ${g.entities.length} entities / ${g.relations.length} relations`);

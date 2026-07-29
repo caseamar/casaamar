@@ -16,7 +16,7 @@ const checks=[
  ['local persistence',engine.includes('localStorage.getItem')&&engine.includes('localStorage.setItem')],
  ['sharing',html.includes('data-plan-email')&&html.includes('data-plan-download')&&engine.includes('new Blob')],
  ['domain supports multi-moment dining',content.includes("mealMoments:['breakfast','lunch','dinner','drinks']")],
- ['runtime snapshot',engine.includes("version:'7.0.0'")&&discovery.includes("VERSION = '2.0.0'")],
+ ['runtime snapshot',engine.includes("version:'7.0.0'")&&discovery.includes("VERSION = '2.2.0'")],
  ['content and discovery load before UI',html.indexOf('casa-journey-content.js')<html.indexOf('casa-discovery-core.js')&&html.indexOf('discovery-profile.js')<html.indexOf('casa-journey-planner.js')]
 ];
 checks.forEach(([n,ok])=>console.log(`${ok?'PASS':'FAIL'} ${n}`));
