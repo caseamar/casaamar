@@ -7,6 +7,17 @@
  function normalize(a){if(!a?.key||!a?.title||!a?.targetWorkspace)throw new Error('Action mangler key, title eller targetWorkspace');const route=config?.workspace_routes?.[a.targetWorkspace];if(!route)throw new Error(`Ukendt target workspace: ${a.targetWorkspace}`);const incomingStatus=a.status||'ready';const status=incomingStatus==='suggested'?'ready':incomingStatus;return {id:a.id||`action.${a.key}`,key:a.key,title:a.title,reason:a.reason||'',priority:a.priority||'medium',status,targetWorkspace:a.targetWorkspace,targetId:a.targetId||a.target||'',route,expectedOutcome:a.expectedOutcome||'Forbedringen er gennemført og verificeret.',estimatedEffort:a.estimatedEffort||'2 min.',risk:a.risk||'low',evidence:a.evidence||[],source:a.source||'domain-impact',createdAt:a.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()}}
  function registerMany(actions=[]){const s=read();for(const raw of actions){const a=normalize(raw),i=s.actions.findIndex(x=>x.id===a.id);if(i>=0){if(!['completed','rejected'].includes(s.actions[i].status)){const previousStatus=s.actions[i].status==='suggested'?'ready':s.actions[i].status;s.actions[i]={...s.actions[i],...a,status:a.status==='ready'&&previousStatus==='deferred'?'deferred':a.status}}}else s.actions.push(a)}write(s);return list()}
  const list=()=>clone(read().actions);
+ function resetSource(source){
+  const s=read();
+  const removed=s.actions.filter(x=>x.source===source).map(x=>x.id);
+  s.actions=s.actions.filter(x=>x.source!==source);
+  if(removed.length){s.history.unshift({source,status:'analysis_reset',removed,at:new Date().toISOString()})}
+  write(s);
+  const batch=getBatch();
+  if(batch&&[...(batch.pending||[]),...(batch.completed||[])].some(id=>removed.includes(id))){localStorage.removeItem('casa.action-batch')}
+  localStorage.removeItem(BATCH_COMPLETION_KEY);
+  return {removed:removed.length};
+ }
  function get(id){return clone(read().actions.find(x=>x.id===id)||null)}
  function update(id,status,extra={}){const s=read(),i=s.actions.findIndex(x=>x.id===id);if(i<0)throw new Error('Action findes ikke');s.actions[i]={...s.actions[i],...extra,status,updatedAt:new Date().toISOString()};s.history.unshift({actionId:id,status,at:new Date().toISOString(),...extra});write(s);return clone(s.actions[i])}
  function execute(id,{returnTo='/domain-intelligence.html#impact'}={}){const a=get(id);if(!a)throw new Error('Action findes ikke');update(id,'in_progress',{returnTo});localStorage.setItem('casa.active-action',JSON.stringify({...a,status:'in_progress',returnTo,startedAt:new Date().toISOString()}));sessionStorage.setItem('casa.action-return-scroll',String(window.scrollY||0));const q=new URLSearchParams({action:a.id,target:a.targetId,returnTo,autostart:'1',batch:getBatch()?'1':'0'});location.href=`${a.route}?${q.toString()}`}
@@ -22,5 +33,5 @@
  function reconcileBatch(){const b=getBatch();if(!b)return null;const actions=read().actions||[];const byId=new Map(actions.map(a=>[a.id,a]));const completed=[...new Set([...(b.completed||[]),...(b.pending||[]).filter(id=>byId.get(id)?.status==='completed')])];const pending=[...new Set((b.pending||[]).filter(id=>{const status=byId.get(id)?.status;return status&&['ready','deferred','in_progress'].includes(status)}))];const total=Math.max((b.pending?.length||0)+(b.completed?.length||0),pending.length+completed.length);if(!pending.length){localStorage.removeItem('casa.action-batch');if(total>0&&!localStorage.getItem(BATCH_COMPLETION_KEY)){localStorage.setItem(BATCH_COMPLETION_KEY,JSON.stringify({total,completed,startedAt:b.startedAt,finishedAt:new Date().toISOString(),returnTo:b.returnTo||'/domain-intelligence.html#impact'}))}return null}const next={...b,pending,completed};localStorage.setItem('casa.action-batch',JSON.stringify(next));return next}
  function batchProgress(){const b=reconcileBatch();if(!b)return null;const total=(b.pending?.length||0)+(b.completed?.length||0);return {total,completed:b.completed?.length||0,remaining:b.pending?.length||0,current:b.pending?.[0]||null}} 
  function snapshot(){const a=read().actions;return {version:VERSION,status:config?'verified':'not_loaded',total:a.length,ready:a.filter(x=>x.status==='ready').length,inProgress:a.filter(x=>x.status==='in_progress').length,deferred:a.filter(x=>x.status==='deferred').length,completed:a.filter(x=>x.status==='completed').length,rejected:a.filter(x=>x.status==='rejected').length}}
- window.CasaActionOrchestrator={VERSION,load,registerMany,list,get,execute,defer,reject,complete,consumeCompletion,consumeBatchCompletion,getBatch,startBatch,continueBatch,cancelBatch,batchProgress,reconcileBatch,snapshot};
+ window.CasaActionOrchestrator={VERSION,load,registerMany,list,resetSource,get,execute,defer,reject,complete,consumeCompletion,consumeBatchCompletion,getBatch,startBatch,continueBatch,cancelBatch,batchProgress,reconcileBatch,snapshot};
 })();

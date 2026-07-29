@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.186",
-  "target_release": "v2026.07.24.186",
+  "current_release": "v2026.07.24.187",
+  "target_release": "v2026.07.24.187",
   "current_epic": "Event Platform",
   "current_subsystem": "Event Platform Foundation",
-  "next_release": "v2026.07.24.186",
+  "next_release": "v2026.07.24.187",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -82,7 +82,7 @@
       "id": "EPIC-16",
       "title": "Universal Action Framework",
       "status": "foundation-delivered",
-      "release": "v2026.07.24.186"
+      "release": "v2026.07.24.187"
     }
   ],
   "next_focus": [
@@ -92,5 +92,5 @@
   ],
   "updated_at": "2026-07-28T23:32:00+02:00",
   "current_focus": "Channel-neutral experience events",
-  "platform_version": "v2026.07.24.186"
+  "platform_version": "v2026.07.24.187"
 }

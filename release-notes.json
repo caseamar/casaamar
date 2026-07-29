@@ -1,29 +1,30 @@
 {
-  "release": "v2026.07.24.186",
-  "name": "Governed AI Learning Engine",
-  "platform_version": "v2026.07.24.186",
-  "build": "2026-07-28T23:32:00+02:00",
-  "summary": "Automatically closes stale guided flows when all tasks are already completed and hides Stop flow when no work remains.",
+  "release": "v2026.07.24.187",
+  "name": "Primary CTA Quality Hardening",
+  "platform_version": "v2026.07.24.187",
+  "build": "2026-07-29T07:49:00+02:00",
+  "summary": "Fix the Find new improvements action and add release-blocking primary CTA runtime verification.",
   "changes": [
-    "Automatic batch completion",
-    "Compact completed-task summary",
-    "Publishing next-step guidance",
-    "One Click to Work and Automatic Completion constitution rules",
-    "Release-blocking completion runtime test"
+    "Reset completed impact actions before a new analysis",
+    "Immediate visible analysis state and controlled timeout",
+    "Retry state for runtime failures",
+    "Primary CTA runtime contract and executable test",
+    "Platform Constitution Article 33 – Primary CTA Runtime Verification"
   ],
   "manual_review": [
-    "Complete a guided flow",
-    "Confirm no Stop flow button remains after completion",
-    "Confirm completion summary and publishing CTA",
-    "Public website smoke test"
+    "Open Domain Intelligence",
+    "Click Find new improvements",
+    "Confirm Analyserer appears immediately",
+    "Confirm actionable cards and Start opgaven buttons render",
+    "Repeat after a completed analysis"
   ],
-  "title": "Guided Work Completion State Recovery",
+  "title": "Primary CTA Quality Hardening",
   "highlights": [
-    "No redundant completion click",
-    "Guided batch state closes automatically",
-    "Completed cards collapse into a compact list",
-    "Next step points to Udgivelsescenter"
+    "Completed analyses can be rerun",
+    "No silent CTA failure",
+    "Visible failure and retry state",
+    "Release-blocking interaction-chain test"
   ],
-  "release_name": "Governed AI Learning Engine",
-  "updated_at": "2026-07-28T23:32:00+02:00"
+  "release_name": "Primary CTA Quality Hardening",
+  "updated_at": "2026-07-29T07:49:00+02:00"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "3.2.0",
-  "platform_version": "v2026.07.24.186",
+  "version": "3.3.0",
+  "platform_version": "v2026.07.24.187",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -188,9 +188,15 @@
       "title": "Automatic Completion",
       "rule": "A guided flow must close automatically when all tasks are complete, present a concise result and offer the next relevant step without requiring a redundant stop or close action.",
       "blocking": true
+    },
+    {
+      "id": "ARTICLE-33",
+      "title": "Primary CTA Runtime Verification",
+      "rule": "A primary user action is not verified until the executable interaction chain proves that it changes the visible state or reaches a clear error terminal state. Silent or stale actions block release.",
+      "blocking": true
     }
   ],
-  "updated_at": "2026-07-28T22:15:00+02:00",
+  "updated_at": "2026-07-29T07:49:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",
