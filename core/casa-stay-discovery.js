@@ -4,7 +4,9 @@
   const root = document.querySelector('[data-stay-planner]');
   const timeline = root?.querySelector('[data-plan-timeline]');
   if (!root || !timeline) return;
+  const journeyPlannerOwnsPlan = Boolean(window.CasaJourneyPlanner);
 
+  if (!journeyPlannerOwnsPlan) {
   const plans = {
     rolig: {
       mad: [['09.00','Langsom morgen på patioen','Espresso, frisk brød og tid uden en fast agenda.'],['12.30','Frokost ved kysten','Kør til La Cala eller Fuengirola og vælg et sted tæt på vandet.'],['16.00','Pause hjemme','Skygge, bog eller en tur i poolen, når den er åben.'],['20.00','Middag hjemme','Gode råvarer fra Carrefour og en rolig aften på patioen.']],
@@ -41,6 +43,8 @@
   root.querySelectorAll('[data-planner-interest]').forEach(button=>button.addEventListener('click',()=>{interest=button.dataset.plannerInterest;root.querySelectorAll('[data-planner-interest]').forEach(b=>{const on=b===button;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});render();}));
   root.querySelector('[data-plan-copy]')?.addEventListener('click',async()=>{const text=[`${labels[pace]} · ${labels[interest]}`,...plans[pace][interest].map(x=>`${x[0]} – ${x[1]}: ${x[2]}`)].join('\n');const feedback=root.querySelector('[data-plan-feedback]');try{await navigator.clipboard.writeText(text);feedback.textContent='Dagsplanen er kopieret.';}catch{feedback.textContent='Markér og kopiér planen manuelt.';}setTimeout(()=>feedback.textContent='',3500);});
   render();
+
+  }
 
   // Gallery intelligence: counts, animated filtering and filmstrip navigation.
   const items=[...document.querySelectorAll('[data-gallery] .gallery-item')];

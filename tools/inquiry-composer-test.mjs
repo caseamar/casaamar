@@ -14,7 +14,7 @@ const checks = [
   ['mailprogram label is explicit', html.includes('Åbn mailprogram')],
   ['completion view exists', html.includes('data-inquiry-completion')],
   ['completion close action exists', html.includes('data-inquiry-completion-close') && html.includes('Luk vindue')],
-  ['script loaded', html.includes('/core/casa-inquiry-composer.js?v=20260724.210')],
+  ['script loaded', html.includes('/core/casa-inquiry-composer.js?v=20260724.220')],
   ['date order validation', js.includes('new Date(departure) > new Date(arrival)')],
   ['mail client handoff', js.includes('window.location.href = createMailto()')],
   ['mail handoff is described honestly', js.includes('Hjemmesiden kan ikke se, om mailen bliver sendt.')],
