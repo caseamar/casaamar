@@ -1,1 +1,8 @@
-Beta Experience Quality Release
+Casa Amar Platform v2026.07.24.190
+Beta Release Identity Foundation
+
+- Visible manifest-governed BETA badge on the public website
+- Safe production off-switch
+- Mandatory release identity regression coverage
+
+Test: public badge on desktop/mobile and npm run quality.

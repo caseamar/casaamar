@@ -1,0 +1,16 @@
+Casa Amar Platform v2026.07.24.190
+Beta Release Identity Foundation
+
+Automated quality suite: PASS
+Release quality gate: 1390 passed, 0 failed
+Public Experience Quality Gate: 24 passed, 0 failed
+Behaviour Governance: 194 passed
+Engineering Governance: 102 passed
+Platform Integrity: 191 passed
+Release Identity: VERIFIED
+Deployment Identity: VERIFIED
+
+Primary change:
+- Public beta version badge is generated from platform-manifest.json.
+- Production can disable it through release_identity.public_badge=false or channel=production.
+- Regression coverage is mandatory in npm run quality.

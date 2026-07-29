@@ -1,27 +1,27 @@
 {
-  "release": "v2026.07.24.189",
-  "name": "Beta Experience Quality Release",
-  "platform_version": "v2026.07.24.189",
-  "build": "2026-07-29T11:55:00+02:00",
-  "summary": "Delivers the first beta experience hardening package with clearer location proof, stronger mobile conversion and release-blocking public experience QA.",
+  "release": "v2026.07.24.190",
+  "name": "Beta Release Identity Foundation",
+  "platform_version": "v2026.07.24.190",
+  "build": "2026-07-29T12:31:53+02:00",
+  "summary": "Introduces manifest-governed beta release identity on the public website, with a safe production off-switch and permanent regression coverage.",
   "changes": [
-    "Clear location proof near the first screen: 25 minutes from Málaga Airport and 3 km from the beach",
-    "Mobile booking enquiry action that remains accessible without covering core content",
-    "Production-facing public site without an exposed development badge",
-    "Release-blocking Public Experience Quality Gate for navigation, accessibility, content integrity and conversion paths"
+    "Public beta badge is rendered from platform-manifest.json as the single source of truth",
+    "Production mode suppresses the badge without removing website code",
+    "Release identity rendering avoids unsafe manifest interpolation",
+    "Release identity governance is now part of the mandatory full quality suite"
   ],
   "manual_review": [
-    "Open the public site on mobile and confirm the bottom enquiry action is visible and does not cover the contact section",
-    "Confirm the hero and location proof communicate the airport and beach distance immediately",
-    "Test all main navigation links, gallery lightbox, AI panel and contact actions",
+    "Open the public website and confirm the BETA badge displays v2026.07.24.190 in the lower-left corner",
+    "Check desktop and mobile placement and confirm the badge does not block navigation or enquiry actions",
+    "Temporarily set release_identity.public_badge to false and confirm the badge disappears",
     "Run npm run quality before deployment"
   ],
-  "title": "Beta Experience Quality Release",
+  "title": "Beta Release Identity Foundation",
   "highlights": [
-    "Location understood immediately",
-    "Mobile enquiry path always available",
-    "Public experience defects now block release"
+    "Visible beta deployment identity",
+    "Manifest-controlled production switch",
+    "Permanent release identity regression test"
   ],
-  "release_name": "Beta Experience Quality Release",
-  "updated_at": "2026-07-29T11:55:00+02:00"
+  "release_name": "Beta Release Identity Foundation",
+  "updated_at": "2026-07-29T12:31:53+02:00"
 }
