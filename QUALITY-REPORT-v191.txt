@@ -1,0 +1,69 @@
+
+> casa-amar-platform@2026.7.24-191 quality
+> node tools/conversion-rail-test.mjs && node tools/release-identity-test.mjs && node tools/release-semantic-consistency-test.mjs && node tools/public-experience-quality-test.mjs && node tools/deployment-identity-governance-test.mjs && node tools/release-quality-gate.mjs && node tools/behaviour-governance-test.mjs && node tools/engineering-governance-test.mjs && node tools/workspace-state-behaviour-test.mjs && node tools/cloudflare-asset-preflight.mjs && node tools/ai-service-layer-test.mjs && node tools/platform-integrity-test.mjs && node tools/event-platform-test.mjs && node tools/data-contracts-test.mjs && node tools/experience-context-test.mjs && node tools/capability-intelligence-test.mjs && node tools/verification-governance-test.mjs && node tools/mutation-resistance-test.mjs && node tools/rendered-runtime-integration-test.mjs && node tools/workspace-os-test.mjs && node tools/improvement-engine-test.mjs && node tools/action-engine-test.mjs && node tools/operations-center-test.mjs && node tools/observation-platform-test.mjs && node tools/content-intelligence-test.mjs && node tools/startup-governance-test.mjs && node tools/asset-intelligence-workspace-test.mjs && node tools/ai-decision-ux-test.mjs && node tools/constitution-engine-test.mjs && node tools/closed-loop-ux-test.mjs && node tools/asset-decision-runtime-test.mjs && node tools/ai-output-quality-test.mjs && node tools/domain-intelligence-test.mjs && node tools/domain-verification-queue-test.mjs && node tools/domain-verification-queue-runtime-test.mjs && node tools/domain-discovery-engine-test.mjs && node tools/domain-relationship-engine-test.mjs && node tools/domain-impact-engine-test.mjs && node tools/action-orchestrator-test.mjs && node tools/action-orchestrator-rendered-cta-test.mjs && node tools/action-language-ux-test.mjs && node tools/guided-work-engine-test.mjs && node tools/guided-work-completion-test.mjs && node tools/guided-work-stale-batch-test.mjs && node tools/ai-learning-engine-test.mjs && node tools/primary-cta-runtime-test.mjs
+
+Conversion rail test passed (12 assertions).
+Release Identity VERIFIED: v2026.07.24.191 / beta
+Release semantic consistency tests: 22 passed, 0 failed
+Public Experience Quality Gate: 24 passed, 0 failed
+Deployment Identity Governance VERIFIED: v2026.07.24.191 / 15.58-beta-release-identity / 2026-07-29T12:31:53+02:00
+Release quality gate: 1391 passed, 0 failed
+Behaviour Governance PASS: 194 checks
+103 Engineering Governance checks passed
+Workspace return session test: 30 passed, 0 failed
+Cloudflare asset preflight passed: no deployable file exceeds 25 MiB.
+11 AI Service Layer checks passed
+Platform Integrity PASS: 195 checks passed
+14 Event Platform checks passed
+27 Data Contract checks passed
+Experience Context: 15 checks passed.
+19 Capability Intelligence tests passed
+Verification Governance tests: 61 passed, 0 failed
+Mutation resistance tests: 4 mutations killed, 0 survived
+Rendered runtime integration: 18 panels settled, 0 failed
+Workspace OS tests: 20 passed, 0 failed
+Improvement Engine tests: 15 passed, 0 failed
+Action Engine tests: 13 passed, 0 failed
+AI Operations Center tests: 12 passed, 0 failed
+Observation Platform tests: 15 passed, 0 failed
+Content Intelligence: 16 kontroller bestået
+11 Startup Governance-kontroller bestået
+Asset Intelligence Workspace: 18 kontroller bestået
+AI Decision UX: 12 kontroller bestået
+Constitution Engine: 33 principper · 100% automatisk coverage
+✓ approve persists through governed API
+✓ approved task is immediately recalculated
+✓ asset list refreshes after approval
+✓ completion acknowledgement names next task
+✓ publication reminder is explicit
+✓ pending publication banner is persistent
+✓ draft overlay removes completed alt-text issue
+✓ workspace state records unpublished change
+✓ publish payload receives asset draft
+✓ constitution article 22 exists
+10 Closed Loop UX checks passed.
+✓ semantic alt text uses quality engine
+✓ technical tokens are rejected centrally
+✓ semantic alt text is descriptive
+✓ unsafe output falls back to manual review
+✓ approval handler is guarded
+✓ approval failures are visible
+✓ receipt supports rendered completion links
+✓ event telemetry cannot block persistence
+✓ closed loop recalculates selected task
+9 Asset Decision Runtime checks passed.
+AI Output Quality: 12 checks passed
+Domain Intelligence: 15 kontroller bestået.
+Domain Verification Queue: 10 kontroller bestået.
+Domain Verification Queue runtime: 5 kontroller bestået.
+Domain Discovery Engine: 10 kontroller bestået.
+18 Domain Relationship Engine-kontroller bestået
+Domain Impact Engine: 12 checks passed
+Action Orchestrator: 22 checks passed
+Action Orchestrator rendered CTA: 5 checks passed
+Action Language UX: 25 checks passed
+Guided Work Engine: 8 kontroller bestået.
+Guided Work Automatic Completion: 6 kontroller bestået.
+Guided Work stale batch: 4 kontroller bestået.
+AI Learning Engine: 12 kontroller bestået.
+Primary CTA runtime test: stale-state reset, ready action, binding, feedback and terminal-state safeguards passed

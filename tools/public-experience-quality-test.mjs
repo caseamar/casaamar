@@ -26,8 +26,8 @@ check(blankLinks.every(tag => /rel="[^"]*noopener/.test(tag)), 'Every target=_bl
 check(/25 minutter fra Málaga Lufthavn/.test(html), 'Airport proximity must be visible in the first screen');
 check(/3 km fra stranden/.test(html), 'Beach distance must be visible in the first screen');
 check(/class="hero-proof"/.test(html), 'Hero location proof must exist');
-check(/class="mobile-enquiry"/.test(html), 'Mobile enquiry action must exist');
-check(/href="#kontakt" aria-label="Gå til kontakt/.test(html), 'Mobile enquiry action must resolve to contact');
+check(/data-conversion-rail/.test(html), 'Responsive conversion rail must exist');
+check(/class="conversion-rail-action" href="#kontakt"/.test(html), 'Conversion rail action must resolve to contact');
 check(!/class="dev-badge"/.test(html), 'Development badge must not be exposed on the public site');
 check(/class="release-meta"[^>]*hidden/.test(html), 'Runtime release metadata must remain available without visual noise');
 check(/mailto:Larsenmichael@hotmail\.com/.test(html), 'Primary email contact route must exist');
@@ -38,7 +38,7 @@ check(/<label[^>]*for="casa-ai-question"/.test(html), 'AI question input must ha
 check(!/(TODO|FIXME|Lorem ipsum|placeholder text)/i.test(html), 'No unfinished placeholder content may ship');
 check(html.includes(`meta content="${notes.release}" name="casa-amar-version"`), 'Public version meta must match release identity');
 check(html.includes(`data-casa-amar-inline="${notes.release}"`), 'Inline public assets must carry current release identity');
-check(/@media\(max-width:760px\)[\s\S]*\.mobile-enquiry\{position:fixed/.test(html), 'Mobile enquiry action must be responsive and fixed');
+check(/@media\(max-width:760px\)[\s\S]*\.conversion-rail\{left:10px;right:10px;bottom:10px/.test(html), 'Mobile conversion rail must remain responsive and fixed');
 check(/@media\(prefers-reduced-motion:reduce\)/.test(html), 'Reduced-motion handling must exist');
 
 console.log(`Public Experience Quality Gate: ${passed} passed, 0 failed`);

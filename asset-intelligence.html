@@ -21,10 +21,10 @@
 </section>
 </main>
 <dialog id="proposal"><div class="dialog-shell"><div class="dialog-head"><div><div class="kicker">AI-forslag · du beslutter</div><h2 id="proposalTitle">Vurder forslag</h2></div><button class="close" aria-label="Luk uden ændringer">×</button></div><div class="diff"><section><h3>Nuværende</h3><div id="before"></div></section><section><h3>AI foreslår</h3><div id="after"></div></section></div><div class="notice" id="proposalNotice">Vælg én handling. Intet ændres, før du godkender.</div><div id="decisionResult" class="decision-result" hidden></div><div class="buttons" id="decisionButtons"><button class="button primary" id="approveSave">Godkend og gem</button><button class="button" id="editFirst">Redigér først</button><button class="button tertiary" id="notNow">Ikke nu</button><button class="button danger" id="rejectSuggestion">Afvis forslag</button></div><div class="decision-help" id="decisionHelp">Godkend og gem anvender forslaget direkte. Redigér først åbner Asset Studio. Ikke nu gemmer ingen ændring. Afvis registrerer, at forslaget ikke var brugbart.</div></div></dialog>
-<script src="/core/casa-events.js?v=20260724.190"></script>
-<script src="/core/casa-assets.js?v=20260724.190"></script>
-<script src="/core/casa-startup-orchestrator.js?v=20260724.190"></script>
-<script src="/core/casa-domain-intelligence.js?v=20260724.190"></script><script src="/core/casa-ai-output-quality.js?v=20260724.190"></script>
+<script src="/core/casa-events.js?v=20260724.191"></script>
+<script src="/core/casa-assets.js?v=20260724.191"></script>
+<script src="/core/casa-startup-orchestrator.js?v=20260724.191"></script>
+<script src="/core/casa-domain-intelligence.js?v=20260724.191"></script><script src="/core/casa-ai-output-quality.js?v=20260724.191"></script>
 <script>
 (()=>{
  const routeParams=new URLSearchParams(location.search),activeActionId=routeParams.get('action'),routedAsset=routeParams.get('asset'),returnTo=routeParams.get('returnTo')||'/domain-intelligence.html#impact',autostart=routeParams.get('autostart')==='1';
@@ -55,5 +55,5 @@
  document.querySelector('#rejectSuggestion').addEventListener('click',()=>{recordDecision('rejected',currentAction());showDecision('Forslaget er afvist og registreret. Ingen ændring er gemt.');setTimeout(()=>document.querySelector('#proposal').close(),900)});boot();
 })();
 </script>
-<script src="/core/casa-workspace-state.js?v=20260724.190"></script>
+<script src="/core/casa-workspace-state.js?v=20260724.191"></script>
 </body></html>

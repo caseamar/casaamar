@@ -1,8 +1,10 @@
-Casa Amar Platform v2026.07.24.190
-Beta Release Identity Foundation
+Casa Amar Platform v2026.07.24.191
+Desktop Conversion Rail
 
-- Visible manifest-governed BETA badge on the public website
-- Safe production off-switch
-- Mandatory release identity regression coverage
+- Extends the proven mobile availability prompt to desktop
+- Uses one responsive conversion component across mobile and desktop
+- Adds session-scoped dismissal on desktop
+- Keeps the Spørg Casa Amar launcher clear at all supported breakpoints
+- Adds permanent regression coverage for layout, behaviour and accessibility
 
-Test: public badge on desktop/mobile and npm run quality.
+Test: desktop rail placement/dismissal, Android mobile rail, contact scroll and AI launcher clearance.
