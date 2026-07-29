@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.260 — Experience Engine 2.0
+Casa Amar Platform v2026.07.24.270 — Experience Engine 2.0
 
 A subsystem release that upgrades the complete public website experience rather than adding a single isolated feature.
 
@@ -13,11 +13,11 @@ Highlights
 - Responsive back-to-top control.
 - Subtle pointer-based depth interactions on capable desktop devices.
 - Full reduced-motion protection.
-- Desktop and mobile release identity synchronized to v2026.07.24.260.
+- Desktop and mobile release identity synchronized to v2026.07.24.270.
 - New permanent subsystem regression test.
 
 What to test
-1. Confirm v2026.07.24.260 appears on both desktop and mobile.
+1. Confirm v2026.07.24.270 appears on both desktop and mobile.
 2. Scroll through the page and verify the top progress line, active navigation and chapter indicator.
 3. Verify the compact header and back-to-top control.
 4. Check that sections and images enter smoothly without blocking interaction.

@@ -1,0 +1,23 @@
+Casa Amar Platform v2026.07.24.270
+Release: Semantic Discovery Engine and Compact Experience Results
+
+AUTOMATED CHECKS
+- JavaScript syntax: PASS
+- Domain content syntax: PASS
+- Release version synchronization: PASS
+- Old v260 cache references: 0
+- Multi-purpose restaurant metadata: PASS
+- Search relevance metadata for beach, meals, family, active and destination intents: PASS
+- Compact result-row layout: PASS
+- Search clear control: PASS
+- Optional day board retained: PASS
+- Drag-and-drop, free text, local persistence and sharing retained: PASS
+
+BEHAVIOUR EXPECTATIONS
+- Search 'strand': beach and pool are ranked before restaurants near the beach.
+- Search 'morgenmad': Hoyo 19 and Restaurant Cerros del Águila are eligible.
+- Restaurant Cerros del Águila is also eligible for lunch, dinner and drinks.
+- Contextual matches are separated under 'Også relevant i nærheden'.
+- Five compact results can be scanned with materially less vertical scrolling.
+
+Manual browser validation is still required after Cloudflare deployment.

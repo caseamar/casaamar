@@ -1,25 +1,26 @@
 {
-  "release": "v2026.07.24.260",
-  "title": "Open Experience Explorer and Optional Day Board",
-  "platform_version": "v2026.07.24.260",
-  "summary": "Replaces automatic day composition with a searchable inspiration catalogue and a simple optional drag-and-drop day board.",
+  "release": "v2026.07.24.270",
+  "title": "Semantic Discovery Engine and Compact Experience Results",
+  "platform_version": "v2026.07.24.270",
+  "summary": "Introduces relevance-ranked discovery, multi-purpose restaurant metadata and compact results while keeping the optional manual day board.",
   "changes": [
-    "Introduces inspiration-first browsing across structured experience categories",
-    "Adds search for intent such as breakfast, meat, beach or children",
-    "Shows five options per category by default with expandable lists",
-    "Adds manual drag-and-drop and mobile-friendly plus controls",
-    "Supports fully open free-text plan items",
-    "Persists the manual plan locally and supports copy, email and download",
-    "Removes automatic assumptions and generated schedules from the MVP"
+    "Adds a generic semantic Discovery Engine that ranks direct matches above contextual suggestions",
+    "Models restaurants with multiple meal moments instead of one fixed category",
+    "Separates primary beach results from restaurants and other nearby suggestions",
+    "Redesigns results as compact rows so five options are visible without excessive scrolling",
+    "Adds free search, clear search, category filters and expandable result groups",
+    "Keeps drag-and-drop, free-text planning, local persistence and sharing",
+    "Records discovery and plan signals without presenting invented popularity claims"
   ],
   "test": [
-    "Confirm v2026.07.24.260 appears on desktop and mobile",
-    "Search for breakfast and confirm only relevant options appear",
-    "Open the dining and evening filters and expand a list beyond five items when available",
-    "Add cards with the plus button and by drag-and-drop",
-    "Reorder plan items and confirm the order remains after reload",
-    "Add a custom free-text item",
-    "Copy, email and download the plan",
-    "Confirm the experience catalogue remains useful without creating a plan"
+    "Confirm v2026.07.24.270 appears on desktop and mobile",
+    "Search for strand and confirm beaches and pool are shown before restaurants near the beach",
+    "Search for morgenmad and confirm Restaurant Cerros del Águila and Hoyo 19 are available",
+    "Open Spisning and confirm Restaurant Cerros del Águila is not locked to breakfast",
+    "Confirm at least five compact results can be scanned without large cards",
+    "Test expand and collapse where more than five results exist",
+    "Add results to Min dag, reorder them and add a custom free-text item",
+    "Reload and confirm the manual plan is retained",
+    "Test copy, email and download"
   ]
 }

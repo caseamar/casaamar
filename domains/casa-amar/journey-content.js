@@ -43,9 +43,36 @@
     golf:{home:10,pool:12,cerros:10,park:12,fuengirola:18,'la-cala':20,mijas:22,ronda:90,coast:25}
   };
 
+  const discovery = {
+    'cerros-breakfast': {title:'Restaurant Cerros del Águila',summary:'Lokalt spisested tæt på huset — morgenmad, frokost, middag eller en drink.',mealMoments:['breakfast','lunch','dinner','drinks'],primaryIntents:['restaurant','morgenmad','frokost','middag','drink','lokalt'],secondaryIntents:['familie','terrasse','nær huset'],discoveryGroup:'dining'},
+    'hoyo-breakfast': {title:'Hoyo 19',summary:'Morgenmad, frokost, middag eller en drink ved golfbanen tæt på Casa Amar.',mealMoments:['breakfast','lunch','dinner','drinks'],primaryIntents:['restaurant','morgenmad','frokost','middag','drink','golf'],secondaryIntents:['lokalt','familie','terrasse'],discoveryGroup:'dining'},
+    'hoyo19': {hiddenFromSuggestions:true},
+    'home-breakfast': {mealMoments:['breakfast'],primaryIntents:['morgenmad','kaffe','hjemme','terrasse'],discoveryGroup:'breakfast'},
+    'home-dinner': {mealMoments:['dinner'],primaryIntents:['middag','aftensmad','hjemme','grill'],discoveryGroup:'dinner'},
+    'la-cala-restaurant': {title:'Spis ved vandet i La Cala',mealMoments:['lunch','dinner'],primaryIntents:['restaurant','frokost','middag','havudsigt'],secondaryIntents:['strand','promenade','la cala'],relatedIntents:['strand'],discoveryGroup:'dining'},
+    'fuengirola-tapas': {mealMoments:['dinner','drinks'],primaryIntents:['tapas','middag','aften','night out','restaurant'],secondaryIntents:['promenade','fuengirola'],discoveryGroup:'dinner'},
+    'primavera-dinner': {mealMoments:['dinner'],primaryIntents:['middag','restaurant','aften','primavera'],secondaryIntents:['strand','kysten'],relatedIntents:['strand'],discoveryGroup:'dinner'},
+    'la-cala-beach': {primaryIntents:['strand','badning','hav','la cala'],secondaryIntents:['familie','promenade','frokost'],discoveryGroup:'beach'},
+    'fuengirola-beach': {primaryIntents:['strand','badning','hav','promenade','fuengirola'],secondaryIntents:['familie','is','tapas'],discoveryGroup:'beach'},
+    'home-pool': {primaryIntents:['pool','badning','slappe af','børn'],secondaryIntents:['aften','nær huset'],discoveryGroup:'beach'},
+    'mijas-pueblo': {primaryIntents:['mijas pueblo','udflugt','hvide by','udsigt','kultur'],secondaryIntents:['kaffe','middag','familie'],discoveryGroup:'destination'},
+    'ronda': {primaryIntents:['ronda','udflugt','bro','kultur','heldagstur'],secondaryIntents:['frokost','historie'],discoveryGroup:'destination'},
+    'setenil': {primaryIntents:['setenil','udflugt','klippeby','kultur'],secondaryIntents:['ronda'],discoveryGroup:'destination'},
+    'mtb': {primaryIntents:['mtb','cykling','aktiv','sport','natur'],secondaryIntents:['bakker','pool'],discoveryGroup:'active'},
+    'diving': {primaryIntents:['dykning','aktiv','hav','sport'],secondaryIntents:['strand','kysten'],discoveryGroup:'active'},
+    'golf': {primaryIntents:['golf','aktiv','sport'],secondaryIntents:['frokost','hoyo 19'],discoveryGroup:'active'},
+    'gran-parque-walk': {primaryIntents:['park','gåtur','børn','familie','legeplads'],secondaryIntents:['rolig','nær huset'],discoveryGroup:'family'},
+    'shopping': {primaryIntents:['indkøb','shopping','supermarked','madvarer'],secondaryIntents:['praktisk','familie'],discoveryGroup:'practical'},
+    'roof-sunset': {primaryIntents:['solnedgang','udsigt','tagterrasse','rolig'],secondaryIntents:['drink','aften'],discoveryGroup:'home'},
+    'movie-terrace': {primaryIntents:['film','tagterrasse','aften','rolig'],secondaryIntents:['familie','drink'],discoveryGroup:'home'},
+    'home-siesta': {primaryIntents:['siesta','slappe af','pause','hjemme','rolig'],discoveryGroup:'home'},
+    'work-home': {primaryIntents:['arbejde','workation','hjemme','rolig'],discoveryGroup:'home'}
+  };
+  items.forEach(item=>Object.assign(item,discovery[item.id]||{}));
+
   window.CasaJourneyContent = Object.freeze({
     domain:'hospitality.stay',
-    version:'3.0.0',
+    version:'4.0.0',
     baseLocation:'home',
     defaultTravelMinutes:25,
     participantModes:['all','subgroup','individual'],
