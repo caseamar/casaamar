@@ -25,8 +25,8 @@ for (const file of deploymentFiles) {
   check(content.includes(expected), `${file} does not reference ${expected}`);
 }
 
-const forbiddenPrevious = 'v2026.07.24.194';
-const forbiddenPreviousCompact = '20260724.194';
+const forbiddenPrevious = 'v2026.07.24.195';
+const forbiddenPreviousCompact = '20260724.195';
 const stale = [];
 const currentSurfaceFiles = [
   'index.html', 'control/index.html', 'platform-shell.js', '_worker.js',

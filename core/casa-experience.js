@@ -1,6 +1,6 @@
 (function(){
  "use strict";
- const VERSION="1.0.0";
+ const VERSION="2.0.0";
  const URL="/registry/experiences.json";
  let cache=null;
  async function load(options={}){

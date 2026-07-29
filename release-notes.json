@@ -1,32 +1,36 @@
 {
-  "release": "v2026.07.24.195",
-  "name": "Release Version Synchronization Governance",
-  "platform_version": "v2026.07.24.195",
-  "build": "2026-07-29T13:20:00+02:00",
-  "summary": "Adds governed release stamping and regression checks so the public website, cache keys, manifests and deployment metadata always move to the same version.",
+  "release": "v2026.07.24.200",
+  "name": "Experience Engine 2.0",
+  "platform_version": "v2026.07.24.200",
+  "build": "2026-07-29T13:40:00+02:00",
+  "summary": "A subsystem-level upgrade of the complete public website experience with contextual navigation, governed motion, responsive interaction patterns, image readiness and accessibility safeguards.",
   "changes": [
-    "Introduces a reusable release stamping tool with explicit previous and next version inputs",
-    "Synchronizes public version metadata, script cache keys, platform manifests and package metadata",
-    "Adds a permanent release-version synchronization quality gate",
-    "Fails QA when stale release numbers remain in deployable HTML, JavaScript or JSON",
-    "Ensures the visible website version follows every deployed platform release",
-    "Preserves the manifest as the canonical runtime source of truth"
+    "Introduces Experience Engine 2.0 as a dedicated progressive-enhancement runtime",
+    "Adds live page progress, contextual chapter awareness and synchronized active navigation",
+    "Adds a responsive compact header and accessible back-to-top action",
+    "Adds governed staggered reveals and image-readiness transitions across the full public journey",
+    "Adds accessible smooth anchor navigation with focus transfer",
+    "Adds subtle pointer depth on capable desktop devices and complete reduced-motion protection",
+    "Synchronizes desktop and mobile release identity to v2026.07.24.200",
+    "Adds permanent subsystem regression coverage with no visitor persistence or tracking"
   ],
   "manual_review": [
-    "Open the public website and confirm the footer and BETA badge show v2026.07.24.195",
-    "Hard refresh desktop and Android and confirm no assets are served with v194 cache keys",
-    "Open /control/ and confirm the platform version is v2026.07.24.195",
-    "Run npm run test:release-version-sync and confirm it passes"
+    "Confirm v2026.07.24.200 appears on desktop and mobile",
+    "Scroll through all chapters and verify progress, active navigation and chapter indicator",
+    "Verify compact header and back-to-top behaviour",
+    "Test keyboard anchor navigation and reduced-motion behaviour",
+    "Confirm inquiry, gallery, menu and conversion rail remain functional"
   ],
-  "title": "Release Version Synchronization Governance",
-  "release_name": "Release Version Synchronization Governance",
-  "updated_at": "2026-07-29T13:20:00+02:00",
+  "title": "Experience Engine 2.0",
+  "release_name": "Experience Engine 2.0",
+  "updated_at": "2026-07-29T13:40:00+02:00",
   "test_focus": [
-    "Public version visibility",
-    "Cache-key synchronization",
-    "Manifest consistency",
-    "Stale-version detection",
-    "Deployment identity"
+    "Experience Engine 2.0",
+    "Responsive navigation",
+    "Motion governance",
+    "Image readiness",
+    "Accessibility",
+    "Release identity"
   ],
-  "version": "v2026.07.24.195"
+  "version": "v2026.07.24.200"
 }

@@ -1,3 +1,24 @@
-v2026.07.24.195 — Release Version Synchronization Governance
+Casa Amar Platform v2026.07.24.200 — Experience Engine 2.0
 
-Adds governed release stamping and permanent regression checks so the public website, asset cache keys, manifests and deployment metadata always advance together.
+A subsystem release that upgrades the complete public website experience rather than adding a single isolated feature.
+
+Highlights
+- New Experience Engine 2.0 runtime with progressive enhancement and no visitor tracking.
+- Live reading progress across the full website.
+- Context-aware chapter indicator and synchronized active navigation.
+- Responsive compact header with smoother desktop and mobile behaviour.
+- Governed staggered reveals across sections, cards and gallery content.
+- Image readiness transitions that reduce abrupt loading and layout perception.
+- Accessible smooth anchor navigation with focus transfer.
+- Responsive back-to-top control.
+- Subtle pointer-based depth interactions on capable desktop devices.
+- Full reduced-motion protection.
+- Desktop and mobile release identity synchronized to v2026.07.24.200.
+- New permanent subsystem regression test.
+
+What to test
+1. Confirm v2026.07.24.200 appears on both desktop and mobile.
+2. Scroll through the page and verify the top progress line, active navigation and chapter indicator.
+3. Verify the compact header and back-to-top control.
+4. Check that sections and images enter smoothly without blocking interaction.
+5. Test keyboard anchor navigation and reduced-motion behaviour where available.

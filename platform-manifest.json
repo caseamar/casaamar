@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.195",
-  "build": "2026-07-29T13:20:00+02:00",
+  "platform_version": "v2026.07.24.200",
+  "build": "2026-07-29T13:40:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Release Version Synchronization Governance",
-  "generated_at": "2026-07-29T13:20:00+02:00",
+  "release_name": "Experience Engine 2.0",
+  "generated_at": "2026-07-29T13:40:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-29T13:20:00+02:00"
+    "build": "2026-07-29T13:40:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -421,20 +421,22 @@
     "non_destructive_generation": true
   },
   "experience_engine": {
-    "version": "1.0.0",
-    "entry": "/core/casa-experience.js",
-    "registry": "/registry/experiences.json",
-    "journey_model": true,
-    "cross_subsystem_references": true,
-    "validation": true,
+    "version": "2.0.0",
+    "status": "active",
+    "entry": "/core/casa-experience-engine-v2.js",
+    "progressive_enhancement": true,
+    "privacy_safe": true,
     "capabilities": [
-      "journey",
-      "touchpoints",
-      "audiences",
-      "content-links",
-      "asset-links",
-      "validate",
-      "snapshot"
+      "scroll-progress",
+      "contextual-chapter-awareness",
+      "active-navigation",
+      "staggered-reveal",
+      "image-readiness",
+      "smooth-anchor-focus",
+      "responsive-header",
+      "back-to-top",
+      "pointer-depth",
+      "reduced-motion"
     ]
   },
   "ai_workspace": {
@@ -720,7 +722,7 @@
     "synchronization_policy": "Public version metadata, runtime manifest, cache keys and deployment manifests must advance atomically."
   },
   "public_experience": {
-    "version": "1.4.0",
+    "version": "2.0.0",
     "availability_inquiry": "guided-client-side-composer-with-completion-state",
     "data_persistence": false,
     "handoff_channels": [
@@ -734,7 +736,8 @@
       "personal_data": false,
       "bounded_history": 100,
       "status": "active"
-    }
+    },
+    "experience_engine": "2.0.0"
   },
   "quality_foundation": {
     "release_version_sync_regression": true

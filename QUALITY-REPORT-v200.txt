@@ -1,0 +1,24 @@
+Casa Amar Platform v2026.07.24.200 — Quality Report
+Release: Experience Engine 2.0
+
+Automated release quality gate: 1,394 passed, 0 failed
+Subsystem regression: passed
+Release identity synchronization: passed
+Desktop/mobile public identity: passed
+Public experience quality: passed
+Deployment identity governance: passed
+Behaviour governance: 194 passed
+Engineering governance: 106 passed
+Platform integrity: 207 passed
+Verification governance: 61 passed
+Mutation resistance: 4/4 mutations killed
+Cloudflare asset preflight: passed
+
+New permanent coverage
+- Experience Engine 2.0 runtime and manifest alignment
+- Privacy-safe progressive enhancement
+- Contextual chapter navigation
+- Active navigation accessibility
+- Scroll progress and frame-governed updates
+- Reduced-motion protection
+- Desktop/mobile version synchronization
