@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
   "version": "3.6.0",
-  "generated_at": "2026-07-29T12:09:00.000Z",
-  "platform_version": "v2026.07.24.220",
+  "generated_at": "2026-07-29T12:56:59.000Z",
+  "platform_version": "v2026.07.24.230",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,7 +43,7 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.220",
+        "v2026.07.24.230",
         "15.37-platform-constitution-engine",
         "2026-07-29T13:01:00+02:00"
       ]
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.220"
+        "v2026.07.24.230"
       ]
     },
     {
@@ -315,7 +315,7 @@
       "lifecycle_steps": 9
     }
   },
-  "release": "v2026.07.24.220",
+  "release": "v2026.07.24.230",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,
