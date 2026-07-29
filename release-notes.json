@@ -1,22 +1,25 @@
 {
-  "release": "v2026.07.24.191",
-  "name": "Desktop Conversion Rail",
-  "platform_version": "v2026.07.24.191",
-  "build": "2026-07-29T12:31:53+02:00",
-  "summary": "Extends the proven mobile availability prompt to desktop with a responsive, dismissible conversion rail and permanent regression coverage.",
+  "release": "v2026.07.24.192",
+  "name": "Guided Availability Inquiry",
+  "platform_version": "v2026.07.24.192",
+  "build": "2026-07-29T12:51:00+02:00",
+  "summary": "Adds a privacy-safe guided availability inquiry that turns dates, guest count and stay context into a ready-to-send email without introducing booking or payment complexity.",
   "changes": [
-    "Public beta badge is rendered from platform-manifest.json as the single source of truth",
-    "Production mode suppresses the badge without removing website code",
-    "Release identity rendering avoids unsafe manifest interpolation",
-    "Release identity governance is now part of the mandatory full quality suite"
+    "Adds a guided availability inquiry opened from the conversion rail and contact section",
+    "Builds a ready-to-send email from dates, guest count, name and stay context",
+    "Validates that departure follows arrival before handoff",
+    "Offers clipboard copy as a channel fallback",
+    "Keeps all inquiry data client-side and does not persist personal information",
+    "Adds permanent regression coverage for the complete inquiry flow"
   ],
   "manual_review": [
-    "Open the public website and confirm the BETA badge displays v2026.07.24.191 in the lower-left corner",
-    "Check desktop and mobile placement and confirm the badge does not block navigation or enquiry actions",
-    "Temporarily set release_identity.public_badge to false and confirm the badge disappears",
-    "Run npm run quality before deployment"
+    "Open the inquiry from desktop and Android conversion rails",
+    "Confirm invalid date order is blocked with a clear message",
+    "Confirm Open mail creates a correctly prefilled email",
+    "Confirm Copy text copies the full inquiry",
+    "Close using the cross, Escape key and dialog backdrop"
   ],
-  "title": "Desktop Conversion Rail",
+  "title": "Guided Availability Inquiry",
   "highlights": [
     "Adds a desktop availability contact rail while preserving the successful Android mobile pattern",
     "Uses one responsive component across mobile and desktop",
@@ -24,12 +27,14 @@
     "Keeps the AI launcher clear of the conversion rail at all supported breakpoints",
     "Adds regression coverage for markup, behaviour, accessibility and responsive layout"
   ],
-  "release_name": "Desktop Conversion Rail",
-  "updated_at": "2026-07-29T12:31:53+02:00",
+  "release_name": "Guided Availability Inquiry",
+  "updated_at": "2026-07-29T12:51:00+02:00",
   "test_focus": [
-    "Desktop: confirm the availability rail appears at the lower-right and does not overlap Spørg Casa Amar",
-    "Desktop: dismiss the rail and confirm it stays hidden during the current browser session",
-    "Mobile Android: confirm the existing bottom availability prompt still feels and works as before",
-    "Confirm Se kontakt scrolls to the contact section on desktop and mobile"
-  ]
+    "Open inquiry from desktop and mobile conversion rail",
+    "Validate departure date must follow arrival date",
+    "Open prefilled email",
+    "Copy inquiry text",
+    "Close dialog with Escape and backdrop"
+  ],
+  "version": "v2026.07.24.192"
 }

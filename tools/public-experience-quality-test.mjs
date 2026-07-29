@@ -27,7 +27,7 @@ check(/25 minutter fra Málaga Lufthavn/.test(html), 'Airport proximity must be 
 check(/3 km fra stranden/.test(html), 'Beach distance must be visible in the first screen');
 check(/class="hero-proof"/.test(html), 'Hero location proof must exist');
 check(/data-conversion-rail/.test(html), 'Responsive conversion rail must exist');
-check(/class="conversion-rail-action" href="#kontakt"/.test(html), 'Conversion rail action must resolve to contact');
+check(/class="conversion-rail-action" href="#forespoergsel"[^>]*data-inquiry-open/.test(html), 'Conversion rail action must open the guided inquiry');
 check(!/class="dev-badge"/.test(html), 'Development badge must not be exposed on the public site');
 check(/class="release-meta"[^>]*hidden/.test(html), 'Runtime release metadata must remain available without visual noise');
 check(/mailto:Larsenmichael@hotmail\.com/.test(html), 'Primary email contact route must exist');

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.191",
-  "generated_at": "2026-07-29T12:31:53+02:00",
+  "platform_version": "v2026.07.24.192",
+  "generated_at": "2026-07-29T12:51:00+02:00",
   "purpose": "Authoritative, explainable graph of platform capabilities, contracts, subsystems and dependencies.",
   "nodes": [
     {
@@ -306,7 +306,7 @@
       "type": "subsystem",
       "status": "active",
       "owner": "Platform",
-      "version": "v2026.07.24.191"
+      "version": "v2026.07.24.192"
     },
     {
       "id": "core",
