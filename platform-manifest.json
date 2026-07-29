@@ -1,5 +1,5 @@
 {
-  "platform_version": "v2026.07.24.321",
+  "platform_version": "v2026.07.24.322",
   "build": "2026-07-29T19:10:00+02:00",
   "worker_version": "15.59-release-version-sync",
   "release_name": "Platform Lifecycle Runtime Hardening",

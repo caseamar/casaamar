@@ -1,7 +1,7 @@
 {
-  "release": "v2026.07.24.321",
+  "release": "v2026.07.24.322",
   "name": "Platform Lifecycle Runtime Hardening",
-  "platform_version": "v2026.07.24.321",
+  "platform_version": "v2026.07.24.322",
   "summary": "Hardens the Platform Lifecycle runtime so implementation, stage completion and continuous-improvement actions update immediately, persist safely and emit governed events.",
   "major_changes": [
     "Corrected lifecycle event publishing",

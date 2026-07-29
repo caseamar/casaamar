@@ -1,11 +1,12 @@
-Casa Amar v2026.07.24.321
+Casa Amar Platform v2026.07.24.322
 
-AI Service Layer 2.0
-- Governed capability router
-- Versioned prompt registry
-- Provider adapter registry
-- Deterministic local fallback
-- Cache and observability
-- Human-review policies
-- AI Operations dashboard
-- Mission Control primary CTA hardening
+Platform Lifecycle Interaction Repair
+
+- Replaces cached lifecycle runtime files with uniquely versioned v322 assets.
+- Awaits lifecycle state mutations before rendering.
+- Adds an always-visible journey/status line.
+- Adds persistent success/error feedback after every action.
+- Makes all action buttons explicit type=button controls.
+- Starts the implementation journey at Demo and continuous improvement at Indsigter.
+- Prevents completing stages before a journey has been started.
+- Adds real Chromium click-path validation.
