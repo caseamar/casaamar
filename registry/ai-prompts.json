@@ -1,0 +1,12 @@
+{
+  "schema_version":"1.0",
+  "version":"1.0.0",
+  "platform_version":"v2026.07.24.310",
+  "governance":"versioned-and-human-reviewed",
+  "prompts":[
+    {"id":"discovery.intent","version":"1.0.0","capability":"intent","status":"approved","system":"Fortolk brugerens hensigt uden at opfinde fakta.","template":"Forespørgsel: {{query}}","outputs":["intent","confidence"]},
+    {"id":"content.tags","version":"1.0.0","capability":"tagging","status":"approved","system":"Foreslå kun tags, der understøttes af teksten.","template":"Indhold: {{content}}","outputs":["tags","confidence"]},
+    {"id":"content.summary","version":"1.0.0","capability":"summarization","status":"approved","system":"Bevar fakta og skriv kort.","template":"Indhold: {{content}}","outputs":["summary","confidence"]},
+    {"id":"content.classification","version":"1.0.0","capability":"classification","status":"approved","system":"Klassificér kun i den angivne taksonomi.","template":"Indhold: {{content}}\nTaksonomi: {{taxonomy}}","outputs":["labels","confidence"]}
+  ]
+}

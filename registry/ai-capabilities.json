@@ -1,66 +1,12 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.300",
-  "principle": "AI consumers depend on capability contracts, never provider or model names.",
-  "capabilities": [
-    {
-      "id": "guest-assistant",
-      "status": "foundation",
-      "inputs": [
-        "message",
-        "locale",
-        "context"
-      ],
-      "outputs": [
-        "answer",
-        "confidence",
-        "evidence"
-      ],
-      "risk": "medium"
-    },
-    {
-      "id": "architecture-review",
-      "status": "foundation",
-      "inputs": [
-        "change",
-        "contracts",
-        "dependencies"
-      ],
-      "outputs": [
-        "assessment",
-        "risks",
-        "recommendations"
-      ],
-      "risk": "high"
-    },
-    {
-      "id": "translation",
-      "status": "foundation",
-      "inputs": [
-        "source",
-        "source_locale",
-        "target_locale"
-      ],
-      "outputs": [
-        "translation",
-        "confidence",
-        "review_flags"
-      ],
-      "risk": "medium"
-    },
-    {
-      "id": "classification",
-      "status": "foundation",
-      "inputs": [
-        "content",
-        "taxonomy"
-      ],
-      "outputs": [
-        "labels",
-        "confidence"
-      ],
-      "risk": "low"
-    }
+  "schema_version":"2.0","version":"2.0.0","platform_version":"v2026.07.24.310","principle":"AI consumers depend on capability contracts, never provider or model names.",
+  "capabilities":[
+    {"id":"intent","status":"ready-fallback","inputs":["query","locale","context"],"outputs":["intent","confidence"],"risk":"low"},
+    {"id":"classification","status":"ready-fallback","inputs":["content","taxonomy"],"outputs":["labels","confidence"],"risk":"low"},
+    {"id":"tagging","status":"ready-fallback","inputs":["content","taxonomy"],"outputs":["tags","confidence"],"risk":"medium"},
+    {"id":"summarization","status":"ready-fallback","inputs":["content","locale"],"outputs":["summary","confidence"],"risk":"medium"},
+    {"id":"guest-assistant","status":"adapter-required","inputs":["message","locale","context"],"outputs":["answer","confidence","evidence"],"risk":"medium"},
+    {"id":"architecture-review","status":"adapter-required","inputs":["change","contracts","dependencies"],"outputs":["assessment","risks","recommendations"],"risk":"high"},
+    {"id":"translation","status":"adapter-required","inputs":["source","source_locale","target_locale"],"outputs":["translation","confidence","review_flags"],"risk":"medium"}
   ]
 }

@@ -56,7 +56,7 @@ function casaMigrateLegacyWorkspace(){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_MIGRATION_KEY,JSON.stringify({migrated_at:new Date().toISOString(),action:"deferred_active_release"}));
   casaDeriveWorkspaceState();return;
  }
- const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.300",items:{}};
+ const backup={created_at:new Date().toISOString(),platform_version:"v2026.07.24.310",items:{}};
  CASA_WORKSPACE_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)backup.items[key]=value});
  if(Object.keys(backup.items).length){
   casaNativeSetItem.call(localStorage,CASA_WORKSPACE_BACKUP_KEY,JSON.stringify(backup));
@@ -106,7 +106,7 @@ function applyPlatformManifest(manifest){
  document.querySelectorAll("[data-platform-confirmed-at]").forEach(el=>el.textContent=casaFormatDateTime(confirmedAt));
 }
 async function fetchPlatformManifest(){
- const response=await fetch(`/platform-manifest.json?v=20260724.300&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
+ const response=await fetch(`/platform-manifest.json?v=20260724.310&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}});
  if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json();
 }
 
@@ -171,7 +171,7 @@ function canonicalizeReleaseUrl(manifest){
 async function fetchPlatformIdentityPair(){
  const [manifest,metaResponse]=await Promise.all([
   fetchPlatformManifest(),
-  fetch(`/api/platform-meta?v=20260724.300&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
+  fetch(`/api/platform-meta?v=20260724.310&_=${Date.now()}`,{cache:"no-store",headers:{"cache-control":"no-cache"}})
  ]);
  const meta=metaResponse.ok?await metaResponse.json():null;
  return {manifest,meta,consistent:Boolean(meta&&manifest.platform_version===meta.platform_version&&manifest.worker_version===meta.worker_version)};
@@ -210,6 +210,33 @@ async function loadPlatformManifest(){
 window.CasaPlatformManifestPromise=new Promise(resolve=>{const initial=()=>loadPlatformManifest().then(result=>{startSupervisor();resolve(result)});if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initial,{once:true});else initial()});
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")stopSupervisor();else if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
 window.addEventListener("focus",()=>{if(!casaSupervisorPaused){casaSupervisorLastActivity=Date.now();checkForPlatformUpdate();startSupervisor()}});
+
+
+function resolvePrimaryActionTarget(href){
+ const target=String(href||"").trim();
+ if(!target||target==="#")return null;
+ if(target==="#next-best-action"){
+  const local=document.querySelector(target);
+  if(local)return {type:"element",value:local};
+  return {type:"url",value:"/control/#next-best-action"};
+ }
+ if(target.startsWith("#")){
+  const local=document.querySelector(target);
+  return local?{type:"element",value:local}:null;
+ }
+ return {type:"url",value:target};
+}
+function activatePrimaryAction(event,href){
+ const resolved=resolvePrimaryActionTarget(href);
+ if(!resolved)return;
+ event?.preventDefault?.();
+ if(resolved.type==="element")resolved.value.scrollIntoView({behavior:"smooth",block:"start"});
+ else location.assign(resolved.value);
+}
+window.CasaPrimaryAction={resolve:resolvePrimaryActionTarget,activate:activatePrimaryAction};
+if(location.hash==="#next-best-action"&&!document.querySelector("#next-best-action")&&location.pathname!=="/control/"&&location.pathname!=="/control"){
+ location.replace("/control/#next-best-action");
+}
 
 
 const PAGES={
@@ -412,6 +439,11 @@ const helpPanel=document.createElement("div");
 helpPanel.className="ca-help-panel ca-hidden";
 helpPanel.innerHTML=`<h3>Hvad gør jeg her?</h3><p>${cfg.description}</p><p><strong>Anbefalet næste skridt:</strong> ${cfg.next}</p>`;
 document.body.appendChild(helpPanel);
+document.addEventListener("click",event=>{
+ const link=event.target.closest?.("a[href='#next-best-action']");
+ if(link)activatePrimaryAction(event,link.getAttribute("href"));
+});
+
 help.querySelector("button").onclick=()=>helpPanel.classList.toggle("ca-hidden");
 
 function localJson(key,fallback){try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}}
@@ -442,7 +474,7 @@ if(path==="/knowledge-center.html"){
  window.CasaWorkflow.set(1,"AI hjælper dig med opgaven","Brug den primære handling på siden. AI viser resultat, status og det næste du skal gøre.");
 }
 
-fetch(`/content-release.json?v=20260724.300&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+fetch(`/content-release.json?v=20260724.310&_=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
  document.querySelector("#caContentVersion").textContent=data.content_version||"Ukendt";
  const liveValue=casaLatestLiveAt()||data.verified_live_at||data.live_at||data.published_at;
  const liveEl=document.querySelector("#caPlatformLiveAt");if(liveEl)liveEl.textContent=casaFormatDateTime(liveValue);

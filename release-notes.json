@@ -1,23 +1,25 @@
 {
-  "release": "v2026.07.24.300",
-  "name": "Knowledge Graph Intelligence Platform",
-  "platform_version": "v2026.07.24.300",
-  "summary": "Connects the existing Discovery experience to a typed Knowledge Graph that can rank, explain and recommend related experiences without coupling the platform core to Casa Amar.",
+  "release": "v2026.07.24.310",
+  "name": "AI Service Layer 2.0",
+  "platform_version": "v2026.07.24.310",
+  "summary": "Introduces a provider-neutral AI orchestration layer with governed capability routing, versioned prompts, deterministic fallback, caching, review policies and operational telemetry.",
   "major_changes": [
-    "Knowledge Graph 2.0 with typed experience, intent and place entities",
-    "Weighted semantic relationships for direct intent matches and good combinations",
-    "Graph-assisted Discovery ranking with deterministic fallback",
-    "Explainable recommendation traversal and multi-hop graph paths",
-    "Casa Amar experience data compiled into a governed graph registry",
-    "Provider-independent architecture prepared for AI enrichment"
+    "Capability-based model router",
+    "Versioned prompt registry",
+    "Provider adapter registry",
+    "Deterministic local fallback",
+    "Request cache and observability",
+    "Human-review policies",
+    "AI Operations dashboard",
+    "Mission Control primary CTA hardening"
   ],
   "test_focus": [
-    "Search for breakfast, evening and beach and confirm existing Discovery behaviour remains stable",
-    "Confirm Hoyo 19 remains the strongest breakfast restaurant result",
-    "Open /knowledge-graph.html and confirm the graph loads without consistency errors",
-    "Verify the optional day board, drag and drop, free text and sharing still work"
+    "Open /ai-operations.html and run the smoke test",
+    "Use Mission Control and confirm the primary task button navigates correctly",
+    "Verify Discovery and Knowledge Graph behaviour remains stable",
+    "Confirm no feature code contains direct provider endpoints"
   ],
-  "release_name": "Knowledge Graph Intelligence Platform",
-  "title": "Knowledge Graph Intelligence Platform",
-  "build": "2026-07-29T17:58:00+02:00"
+  "release_name": "AI Service Layer 2.0",
+  "title": "AI Service Layer 2.0",
+  "build": "2026-07-29T18:05:00+02:00"
 }

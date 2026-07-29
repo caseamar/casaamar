@@ -1,0 +1,15 @@
+Casa Amar Platform v2026.07.24.310
+AI Service Layer 2.0
+
+Full quality suite: PASSED
+Release quality gate: 1,752 passed, 0 failed
+AI Service orchestration: 12 passed, 0 failed
+Rendered runtime integration: 18 panels settled, 0 failed
+Deployment identity: VERIFIED
+Public experience regression: PASSED
+Knowledge Graph: 37 entities / 68 relations verified
+
+Manual deployment checks:
+1. Open PLATFORM: /control/ and click “Se min vigtigste opgave”.
+2. Open PLATFORM: /ai-operations.html and run “Kør AI-smoketest”.
+3. Open WEBSITE: / and confirm Discovery, gallery and inquiry continue to work.

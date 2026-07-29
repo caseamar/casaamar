@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0",
+  "version":"1.0.0",
+  "platform_version":"v2026.07.24.310",
+  "provider_neutral":true,
+  "direct_feature_bindings":false,
+  "adapters":[
+    {"id":"deterministic-local","kind":"fallback","status":"active","external":false,"capabilities":["intent","classification","tagging","summarization"],"purpose":"Reliable offline fallback and test adapter."}
+  ],
+  "future_adapter_contract":{"required":["id","kind","capabilities","execute"],"optional":["priority","health","cost_class","latency_class","quality_class"]}
+}

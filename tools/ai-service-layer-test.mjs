@@ -4,9 +4,9 @@ const manifest=j("platform-manifest.json"),service=j("registry/ai-service.json")
 check(manifest.ai_service_layer?.version===service.version,"Manifest and AI Service registry versions match");
 check(subs.subsystems.some(x=>x.id==="ai-service-layer"&&x.version===service.version),"AI Service Layer subsystem is registered");
 check(config.direct_provider_calls_allowed===false,"Direct provider calls are forbidden");
-check(service.provider_neutral===true&&service.provider_adapters.length===0,"Foundation has no provider lock-in or active adapter");
+check(service.provider_neutral===true&&service.provider_adapters.includes("deterministic-local"),"Provider-neutral local fallback adapter is registered");
 check(caps.capabilities.every(x=>x.id&&x.inputs&&x.outputs&&x.risk),"Every AI capability has input, output and risk contracts");
 check(beh.contracts.some(x=>x.id==="ai-capability-provider-neutral-foundation"),"AI Service behaviour contract exists");
-const runtime=s("core/casa-ai-service.js");check(runtime.includes('status:"unavailable"'),"No-provider state is explicit and explainable");check(runtime.includes('status:"blocked"'),"Unknown capability is blocked");
+const runtime=s("core/casa-ai-service.js");check(runtime.includes('status:"unavailable"'),"No-provider state is explicit and explainable");check(runtime.includes('status:"blocked"'),"Unknown capability is blocked");check(runtime.includes('selectAdapter'),"Capability routing is implemented");
 for(const file of ["core/casa-ai-service.js","registry/ai-service.json","config/ai-service.json"]){const text=s(file);check(!/api\.openai\.com|api\.anthropic\.com|generativelanguage\.googleapis\.com|model\s*:\s*["'][^"']+/i.test(text),`No named provider or model binding in ${file}`)}
 console.log(`${pass.length} AI Service Layer checks passed`);if(failures.length){console.error(failures.join("\n"));process.exit(1)}

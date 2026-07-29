@@ -1,20 +1,11 @@
-Casa Amar Platform v2026.07.24.300 — AI-First Discovery Core Foundation
+Casa Amar v2026.07.24.310
 
-Builds on the working compact experience explorer with a solid, scalable and provider-independent discovery foundation.
-
-Highlights
-- Generic Discovery Core 2.0 separated from Casa Amar domain content.
-- Versioned normalized discovery asset model.
-- Deterministic intent parsing and ranking fallback.
-- AI model adapter contract for future intent parsing and reranking.
-- Direct matches rank above contextual nearby suggestions.
-- Restaurant Cerros del Águila and Hoyo 19 support breakfast, lunch, dinner and drinks as one place each.
-- Existing compact explorer, filters, expansion and optional day board are retained.
-- New regression tests for precision, architecture and runtime load order.
-
-What to test
-1. Confirm v2026.07.24.300 appears on desktop and mobile.
-2. Search strand and confirm beaches rank before restaurants near the beach.
-3. Search breakfast, lunch, dinner and evening and verify multi-purpose restaurants remain discoverable.
-4. Confirm Hoyo 19 is represented once rather than as duplicate meal-specific places.
-5. Test filters, expansion, drag-and-drop, free text, persistence and sharing.
+AI Service Layer 2.0
+- Governed capability router
+- Versioned prompt registry
+- Provider adapter registry
+- Deterministic local fallback
+- Cache and observability
+- Human-review policies
+- AI Operations dashboard
+- Mission Control primary CTA hardening

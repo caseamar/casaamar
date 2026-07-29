@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.300",
-  "build": "2026-07-29T17:58:00+02:00",
+  "platform_version": "v2026.07.24.310",
+  "build": "2026-07-29T18:05:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Knowledge Graph Intelligence Platform",
-  "generated_at": "2026-07-29T17:58:00+02:00",
+  "release_name": "AI Service Layer 2.0",
+  "generated_at": "2026-07-29T18:05:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-29T17:58:00+02:00"
+    "build": "2026-07-29T18:05:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -580,14 +580,17 @@
     "principle": "Every material defect or architectural learning becomes durable evidence, prevention and regression protection."
   },
   "ai_service_layer": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "entry": "/core/casa-ai-service.js",
     "configuration": "/config/ai-service.json",
     "capability_registry": "/registry/ai-capabilities.json",
+    "prompt_registry": "/registry/ai-prompts.json",
+    "provider_registry": "/registry/ai-providers.json",
+    "operations": "/ai-operations.html",
     "provider_neutral": true,
-    "provider_adapters": 0,
+    "provider_adapters": 1,
     "direct_provider_calls_allowed": false,
-    "principle": "Features request AI capabilities rather than named models or providers."
+    "principle": "Features request governed capabilities; the platform selects approved adapters and prompts."
   },
   "constitution_engine": {
     "version": "2.0.0",
