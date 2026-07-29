@@ -1,0 +1,36 @@
+Casa Amar Platform — Quality Report
+Release: v2026.07.24.189
+Name: Beta Experience Quality Release
+Build: 2026-07-29T11:55:00+02:00
+
+AUTOMATED RESULT
+PASS — complete npm run quality pipeline
+
+NEW RELEASE-BLOCKING GATE
+Public Experience Quality Gate: 24 passed, 0 failed
+
+CORE RESULTS
+Release semantic consistency: 22 passed, 0 failed
+Deployment Identity Governance: verified
+Release quality gate: 1389 passed, 0 failed
+Behaviour Governance: 194 passed
+Engineering Governance: 101 passed
+Platform Integrity: 187 passed
+Verification Governance: 61 passed
+Mutation resistance: 4 killed, 0 survived
+Rendered runtime integration: 18 panels settled, 0 failed
+
+EXPERIENCE CHANGES VERIFIED
+- Airport proximity and beach distance visible in the first screen
+- Mobile enquiry CTA resolves to the contact section
+- Public development badge removed
+- Internal navigation anchors resolve
+- Content images have meaningful alt text
+- Contact routes remain present
+- Reduced-motion handling remains present
+
+MANUAL DEPLOYED CHECKS
+- Mobile visual review of sticky enquiry CTA
+- Gallery and AI panel interaction
+- Final image availability in deployed repository
+- Cloudflare live identity confirmation

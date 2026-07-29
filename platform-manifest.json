@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.188",
-  "build": "2026-07-29T10:15:00+02:00",
-  "worker_version": "15.56-beta-readiness-quality",
-  "release_name": "Beta Readiness Quality Foundation",
-  "generated_at": "2026-07-29T10:15:00+02:00",
+  "platform_version": "v2026.07.24.189",
+  "build": "2026-07-29T11:55:00+02:00",
+  "worker_version": "15.57-beta-experience-quality",
+  "release_name": "Beta Experience Quality Release",
+  "generated_at": "2026-07-29T11:55:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-29T10:15:00+02:00"
+    "build": "2026-07-29T11:55:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",

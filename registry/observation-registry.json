@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.188",
-  "updated_at": "2026-07-29T10:15:00+02:00",
+  "platform_version": "v2026.07.24.189",
+  "updated_at": "2026-07-29T11:55:00+02:00",
   "principles": {
     "facts_before_interpretation": true,
     "verified_evidence_required": true,
@@ -99,7 +99,7 @@
       "version": "1.0.0"
     },
     "category": "release",
-    "observedAt": "2026-07-29T10:15:00+02:00",
+    "observedAt": "2026-07-29T11:55:00+02:00",
     "evidence": [
       {
         "kind": "runtime",

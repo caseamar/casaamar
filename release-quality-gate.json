@@ -1,14 +1,14 @@
 {
   "version": "2.0.0",
-  "release": "v2026.07.24.188",
+  "release": "v2026.07.24.189",
   "status": "pass",
   "passed_checks": 1369,
   "failed_checks": 0,
-  "executed_at": "2026-07-29T10:15:00+02:00",
+  "executed_at": "2026-07-29T11:55:00+02:00",
   "command": "node tools/release-quality-gate.mjs",
-  "updated_at": "2026-07-29T10:15:00+02:00",
-  "generated_at": "2026-07-29T10:15:00+02:00",
-  "platform_version": "v2026.07.24.188",
+  "updated_at": "2026-07-29T11:55:00+02:00",
+  "generated_at": "2026-07-29T11:55:00+02:00",
+  "platform_version": "v2026.07.24.189",
   "checks_passed": 1369,
   "checks_failed": 0,
   "zip_integrity": "passed",
@@ -30,5 +30,7 @@
   "rendered_runtime_panels_verified": 12,
   "improvement_engine_version": "1.0.0",
   "improvement_engine_tests": "passed",
-  "improvement_engine_tests_passed": 15
+  "improvement_engine_tests_passed": 15,
+  "public_experience_quality_gate": "passed",
+  "public_experience_quality_tests_passed": 24
 }

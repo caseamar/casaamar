@@ -1,26 +1,27 @@
 {
-  "release": "v2026.07.24.188",
-  "name": "Beta Readiness Quality Foundation",
-  "platform_version": "v2026.07.24.188",
-  "build": "2026-07-29T10:15:00+02:00",
-  "summary": "Establishes cross-file release identity governance and beta-readiness quality controls before Casa Amar beta implementation.",
+  "release": "v2026.07.24.189",
+  "name": "Beta Experience Quality Release",
+  "platform_version": "v2026.07.24.189",
+  "build": "2026-07-29T11:55:00+02:00",
+  "summary": "Delivers the first beta experience hardening package with clearer location proof, stronger mobile conversion and release-blocking public experience QA.",
   "changes": [
-    "Canonical release identity consistency across manifests, runtime and release metadata",
-    "Release-blocking semantic identity test",
-    "Aligned worker, platform and package versions",
-    "Explicit beta-readiness roadmap and release receipt"
+    "Clear location proof near the first screen: 25 minutes from Málaga Airport and 3 km from the beach",
+    "Mobile booking enquiry action that remains accessible without covering core content",
+    "Production-facing public site without an exposed development badge",
+    "Release-blocking Public Experience Quality Gate for navigation, accessibility, content integrity and conversion paths"
   ],
   "manual_review": [
-    "Open the platform home and confirm the current version is v2026.07.24.188",
-    "Open Release Governance and confirm the release name and identity are consistent",
-    "Run the complete quality command before deployment"
+    "Open the public site on mobile and confirm the bottom enquiry action is visible and does not cover the contact section",
+    "Confirm the hero and location proof communicate the airport and beach distance immediately",
+    "Test all main navigation links, gallery lightbox, AI panel and contact actions",
+    "Run npm run quality before deployment"
   ],
-  "title": "Beta Readiness Quality Foundation",
+  "title": "Beta Experience Quality Release",
   "highlights": [
-    "One canonical release identity",
-    "Semantic inconsistencies now block release",
-    "Stronger prevention before beta development"
+    "Location understood immediately",
+    "Mobile enquiry path always available",
+    "Public experience defects now block release"
   ],
-  "release_name": "Beta Readiness Quality Foundation",
-  "updated_at": "2026-07-29T10:15:00+02:00"
+  "release_name": "Beta Experience Quality Release",
+  "updated_at": "2026-07-29T11:55:00+02:00"
 }
