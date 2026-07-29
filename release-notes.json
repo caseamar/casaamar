@@ -1,8 +1,8 @@
 {
-  "release": "v2026.07.24.280",
-  "title": "AI-First Discovery Core Foundation",
-  "platform_version": "v2026.07.24.280",
-  "summary": "Introduces a provider-independent AI-first Discovery Core with deterministic fallback, structured intent parsing, hybrid ranking and a Casa Amar domain adapter, while preserving the working explorer and optional day board.",
+  "release": "v2026.07.24.290",
+  "title": "Discovery Content Intelligence and Search Precision",
+  "platform_version": "v2026.07.24.290",
+  "summary": "Adds query-aware result grouping, intent weighting, metadata governance and an AI-assisted Discovery Content Intelligence workspace while preserving the existing explorer and day board.",
   "changes": [
     "Adds generic Discovery Core 2.0 with versioned normalized asset contracts",
     "Adds an AI model adapter contract for intent parsing and reranking without coupling the platform to one provider",
@@ -14,7 +14,7 @@
     "Adds regression coverage for ranking precision, adapter separation and load order"
   ],
   "test": [
-    "Confirm v2026.07.24.280 appears on desktop and mobile",
+    "Confirm v2026.07.24.290 appears on desktop and mobile",
     "Search for strand and confirm beaches rank above restaurants near the beach",
     "Search for morgenmad, frokost, middag and aften and confirm Restaurant Cerros del Águila remains available across relevant moments",
     "Confirm Hoyo 19 appears as one place rather than separate breakfast and evening duplicates",
@@ -25,5 +25,12 @@
   ],
   "release_name": "AI-First Discovery Core Foundation",
   "name": "AI-First Discovery Core Foundation",
-  "build": "2026-07-29T14:15:00.000Z"
+  "build": "2026-07-29T14:15:00.000Z",
+  "test_focus": [
+    "Hoyo 19 appears and ranks strongly for breakfast searches",
+    "Restaurant Cerros del Águila appears under evening dining for evening searches",
+    "The first category chip is an explicit Alle filter",
+    "Search results remain compact and the manual day board continues to work",
+    "Discovery Studio saves metadata and intent-weight changes as drafts only"
+  ]
 }

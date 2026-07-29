@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "3.3.0",
-  "platform_version": "v2026.07.24.280",
+  "platform_version": "v2026.07.24.290",
   "updated_at": "2026-07-29T07:49:00+02:00",
   "principles": [
     {
@@ -12,7 +12,7 @@
         "tools/ai-service-layer-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-02",
@@ -22,7 +22,7 @@
         "tools/platform-integrity-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-03",
@@ -32,7 +32,7 @@
         "tools/behaviour-governance-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-04",
@@ -42,7 +42,7 @@
         "tools/action-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-05",
@@ -52,7 +52,7 @@
         "tools/release-quality-gate.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-06",
@@ -62,7 +62,7 @@
         "tools/capability-intelligence-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-07",
@@ -72,7 +72,7 @@
         "tools/behaviour-governance-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-08",
@@ -82,7 +82,7 @@
         "tools/release-quality-gate.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-09",
@@ -92,7 +92,7 @@
         "tools/engineering-governance-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-10",
@@ -102,7 +102,7 @@
         "tools/ai-service-layer-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-11",
@@ -112,7 +112,7 @@
         "tools/experience-context-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-12",
@@ -122,7 +122,7 @@
         "tools/platform-integrity-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-13",
@@ -132,7 +132,7 @@
         "tools/platform-integrity-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-14",
@@ -142,7 +142,7 @@
         "tools/data-contracts-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "article-15",
@@ -152,7 +152,7 @@
         "tools/experience-context-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-16",
@@ -162,7 +162,7 @@
         "tools/verification-governance-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-17",
@@ -172,7 +172,7 @@
         "tools/action-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-18",
@@ -182,7 +182,7 @@
         "tools/improvement-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-19",
@@ -192,7 +192,7 @@
         "tools/action-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "20",
@@ -202,7 +202,7 @@
         "tools/observation-platform-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-21",
@@ -212,7 +212,7 @@
         "tools/ai-decision-ux-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-22",
@@ -222,7 +222,7 @@
         "tools/closed-loop-ux-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-23",
@@ -232,7 +232,7 @@
         "tools/ai-output-quality-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-24",
@@ -242,7 +242,7 @@
         "tools/domain-intelligence-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-25",
@@ -252,7 +252,7 @@
         "tools/domain-verification-queue-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-26",
@@ -262,7 +262,7 @@
         "tools/domain-discovery-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-27",
@@ -272,7 +272,7 @@
         "tools/domain-relationship-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-28",
@@ -282,7 +282,7 @@
         "tools/domain-impact-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-29",
@@ -292,7 +292,7 @@
         "tools/action-orchestrator-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-30",
@@ -302,7 +302,7 @@
         "tools/action-language-ux-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-31",
@@ -312,7 +312,7 @@
         "tools/guided-work-engine-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-32",
@@ -322,7 +322,7 @@
         "tools/guided-work-completion-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     },
     {
       "principle_id": "ARTICLE-33",
@@ -332,7 +332,7 @@
         "tools/primary-cta-runtime-test.mjs"
       ],
       "coverage_status": "covered",
-      "last_verified_release": "v2026.07.24.280"
+      "last_verified_release": "v2026.07.24.290"
     }
   ]
 }

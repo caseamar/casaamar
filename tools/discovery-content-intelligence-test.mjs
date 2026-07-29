@@ -1,0 +1,15 @@
+import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';import assert from 'node:assert/strict';
+const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
+const files=['core/casa-discovery-core.js','domains/casa-amar/journey-content.js','domains/casa-amar/discovery-profile.js'];
+const context={window:{},document:{documentElement:{dataset:{}}},console,Date,Set,Map,Object,String,Number,Array,Math};context.window.window=context.window;vm.createContext(context);for(const f of files)vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),context);
+assert.equal(context.window.CasaDiscoveryCore.version,'2.1.0');
+const morning=await context.window.CasaDiscovery.search('morgenmad');
+assert.ok(morning.results.some(x=>x.asset.id==='hoyo19'),'Hoyo 19 must appear for breakfast');
+assert.ok(morning.results.findIndex(x=>x.asset.id==='hoyo19')<morning.results.findIndex(x=>x.asset.id==='restaurant-cerros'),'Hoyo 19 should outrank Cerros for breakfast');
+const evening=await context.window.CasaDiscovery.search('aften');
+assert.ok(evening.results.some(x=>x.asset.id==='restaurant-cerros'),'Cerros must remain relevant for evening');
+assert.ok(fs.readFileSync(path.join(root,'core/casa-journey-planner.js'),'utf8').includes("function resultGroup"),'query-aware grouping required');
+assert.ok(fs.readFileSync(path.join(root,'core/casa-journey-planner.js'),'utf8').includes("all:'Alle'"),'explicit Alle filter required');
+assert.ok(fs.existsSync(path.join(root,'discovery-studio.html')),'content intelligence workspace required');
+assert.ok(fs.readFileSync(path.join(root,'core/casa-discovery-content-intelligence.js'),'utf8').includes('validate'),'metadata validation required');
+console.log('Discovery Content Intelligence: 8 checks passed');

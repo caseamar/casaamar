@@ -6,7 +6,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '2.0.0';
+  const VERSION = '2.1.0';
   const norm = value => String(value || '')
     .toLowerCase()
     .normalize('NFD')
@@ -16,7 +16,8 @@
     .trim();
 
   const unique = values => [...new Set((values || []).filter(Boolean))];
-  const tokenise = value => norm(value).split(' ').filter(Boolean);
+  const STOPWORDS = new Set(['om','i','på','til','og','eller','en','et','the','at','of']);
+  const tokenise = value => norm(value).split(' ').filter(token => token && !STOPWORDS.has(token));
 
   const DEFAULT_LEXICON = Object.freeze({
     beach: ['strand', 'beach', 'hav', 'bade', 'badning', 'kyst'],
@@ -88,6 +89,7 @@
       mealMoments: unique((asset?.mealMoments || []).map(norm)),
       popularity: Number.isFinite(asset?.popularity) ? asset.popularity : 0,
       editorialScore: Number.isFinite(asset?.editorialScore) ? asset.editorialScore : 50,
+      intentWeights: Object.freeze(Object.fromEntries(Object.entries(asset?.intentWeights || {}).map(([key,value]) => [norm(key), Number(value) || 0]))),
       discovery: Object.freeze({
         schemaVersion: '2.0',
         searchableText: norm([
@@ -99,7 +101,8 @@
           ...(asset?.primaryIntents || []),
           ...(asset?.secondaryIntents || []),
           ...(asset?.relatedIntents || []),
-          ...(asset?.mealMoments || [])
+          ...(asset?.mealMoments || []),
+          ...Object.keys(asset?.intentWeights || {})
         ].filter(Boolean).join(' '))
       })
     });
@@ -145,6 +148,12 @@
     }
 
     for (const semanticIntent of intent.intents) {
+      const configuredWeight = Number(asset.intentWeights?.[semanticIntent] || 0);
+      if (configuredWeight > 0) {
+        score += configuredWeight;
+        directStrength += configuredWeight >= 70 ? 4 : configuredWeight >= 35 ? 2 : 1;
+        reasons.push(`intent-weight:${semanticIntent}:${configuredWeight}`);
+      }
       if (direct.has(semanticIntent) || allTags.has(semanticIntent)) { score += 88; directStrength += 4; reasons.push(`intent:${semanticIntent}`); }
       else if (secondary.has(semanticIntent)) { score += 28; reasons.push(`secondary:${semanticIntent}`); }
       else if (related.has(semanticIntent)) { score += 10; reasons.push(`related:${semanticIntent}`); }

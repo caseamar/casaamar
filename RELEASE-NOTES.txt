@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.280 — AI-First Discovery Core Foundation
+Casa Amar Platform v2026.07.24.290 — AI-First Discovery Core Foundation
 
 Builds on the working compact experience explorer with a solid, scalable and provider-independent discovery foundation.
 
@@ -13,7 +13,7 @@ Highlights
 - New regression tests for precision, architecture and runtime load order.
 
 What to test
-1. Confirm v2026.07.24.280 appears on desktop and mobile.
+1. Confirm v2026.07.24.290 appears on desktop and mobile.
 2. Search strand and confirm beaches rank before restaurants near the beach.
 3. Search breakfast, lunch, dinner and evening and verify multi-purpose restaurants remain discoverable.
 4. Confirm Hoyo 19 is represented once rather than as duplicate meal-specific places.

@@ -1,0 +1,8 @@
+Casa Amar Platform v2026.07.24.290
+Discovery Content Intelligence and Search Precision
+
+Automated quality gate: 1,406 passed, 0 failed.
+Discovery Content Intelligence tests: 8 passed.
+Discovery Core regression tests: 12 passed.
+
+Manual deployed verification required for responsive rendering, drag-and-drop and Cloudflare cache identity.

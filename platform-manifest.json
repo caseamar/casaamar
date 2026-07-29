@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.280",
+  "platform_version": "v2026.07.24.290",
   "build": "2026-07-29T14:15:00.000Z",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "AI-First Discovery Core Foundation",
+  "release_name": "Discovery Content Intelligence and Search Precision",
   "generated_at": "2026-07-29T14:15:00.000Z",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
@@ -757,13 +757,26 @@
     ]
   },
   "discovery_core": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "entry": "/core/casa-discovery-core.js",
     "capabilities": [
       "intent-parsing",
       "hybrid-ranking",
       "model-adapter",
-      "deterministic-fallback"
+      "deterministic-fallback",
+      "intent-weighting",
+      "query-aware-grouping"
+    ]
+  },
+  "discovery_content_intelligence": {
+    "version": "1.0.0",
+    "entry": "/core/casa-discovery-content-intelligence.js",
+    "workspace": "/discovery-studio.html",
+    "capabilities": [
+      "metadata-validation",
+      "intent-weight-drafts",
+      "ai-tag-suggestions",
+      "human-approval"
     ]
   }
 }
