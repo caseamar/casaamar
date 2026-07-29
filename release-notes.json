@@ -1,23 +1,23 @@
 {
-  "release": "v2026.07.24.240",
-  "name": "Journey Planner MVP and Learning Infrastructure",
-  "platform_version": "v2026.07.24.240",
-  "build": "2026-07-29T13:25:00.000Z",
-  "summary": "Delivers a constraint-aware Journey Planner MVP with mutually exclusive meal roles, universal free-time choices, clearer round-trip timing and privacy-safe learning infrastructure.",
+  "release": "v2026.07.24.250",
+  "name": "Wish-First Experience Composer MVP",
+  "platform_version": "v2026.07.24.250",
+  "build": "2026-07-29T12:05:00.000Z",
+  "summary": "Replaces the system-led timeline planner with a wish-first Experience Composer that lets visitors choose what they want to do and receive three realistic day proposals.",
   "changes": [
-    "Prevents duplicate breakfast, lunch and dinner choices through semantic roles and exclusivity groups",
-    "Adds Fri tid as a valid alternative for every planning block",
-    "Allows compatible cross-role replacements such as an evening swim instead of a formal dinner block",
-    "Presents major excursions as round-trip containers with departure, arrival, return departure and homecoming times",
-    "Keeps anchor activities and explicit choices stable during recomposition",
-    "Adds anonymous local learning for selected anchors, replacements and copied plans",
-    "Adds an adapter contract for future aggregate learning across visitors without collecting personal data",
-    "Uses learned local preference counts as a small ranking signal without inventing social proof",
-    "Extends permanent Journey Planner regression coverage",
-    "Synchronizes release identity to v2026.07.24.240"
+    "Introduces a wish-first selection experience built from the domain content package",
+    "Generates three different day proposals from the same selected building blocks",
+    "Adds group context, dining rhythm and pace without forcing fixed time slots",
+    "Supports later Spanish dining and earlier family-oriented dining",
+    "Uses opening windows, estimated duration and transport in composition",
+    "Adds inspiration mode for visitors who do not know what to choose",
+    "Adds copy, email and download actions for the resulting plan",
+    "Records anonymous selection and generation signals for future aggregate learning",
+    "Keeps the generic engine independent from Casa Amar content",
+    "Synchronizes release identity to v2026.07.24.250"
   ],
   "manual_review": [
-    "Confirm v2026.07.24.240 appears on desktop and mobile",
+    "Confirm v2026.07.24.250 appears on desktop and mobile",
     "Build a day around Ronda and confirm the anchor remains stable",
     "Replace an evening block and confirm Ronda is retained",
     "Replace a restaurant and confirm only the selected block changes",
@@ -25,9 +25,9 @@
     "Lock a block and change pace or interest",
     "Use undo and copy the resulting plan"
   ],
-  "title": "Journey Planner MVP and Learning Infrastructure",
-  "release_name": "Journey Planner MVP and Learning Infrastructure",
-  "updated_at": "2026-07-29T13:25:00.000Z",
+  "title": "Wish-First Experience Composer MVP",
+  "release_name": "Wish-First Experience Composer MVP",
+  "updated_at": "2026-07-29T12:05:00.000Z",
   "test_focus": [
     "Meal exclusivity",
     "Free-time replacement",
@@ -37,17 +37,17 @@
     "Learning events",
     "Release identity"
   ],
-  "version": "v2026.07.24.240",
+  "version": "v2026.07.24.250",
   "test": [
-    "Kontrollér, at BETA-badget viser v2026.07.24.240 på både computer og mobil.",
-    "Kontrollér, at en genereret plan aldrig indeholder mere end én morgenmad.",
-    "Vælg Ronda, og kontrollér, at afgang, ankomst, hjemkørsel og returtid vises i samme blok.",
-    "Udskift en aktivitet med Fri tid, og kontrollér, at resten af planen bevares.",
-    "Udskift en middagsblok, og kontrollér, at Pool og pause kan vises som kompatibelt alternativ, når tiden tillader det.",
-    "Vælg et alternativ, og kontrollér, at det valgte punkt fastholdes.",
-    "Kopiér planen, og kontrollér, at bekræftelsen vises.",
-    "Genindlæs siden, foretag flere valg, og kontrollér i browserens udviklerværktøjer, at CasaJourneyLearning.insights() returnerer anonyme tællinger.",
-    "Kontrollér, at der ikke vises påstande som “andre har valgt”, før der er en reel fælles datakilde.",
-    "Kontrollér, at galleri, forespørgselsflow, navigation og Mission Control fortsat virker."
+    "Kontrollér, at BETA-badget viser v2026.07.24.250 på computer og mobil.",
+    "Vælg Mijas Pueblo, strand, pool og Primavera, og generér en plan.",
+    "Skift mellem de tre planforslag, og kontrollér, at rækkefølgen ændrer sig.",
+    "Vælg Sen spansk middag, og kontrollér, at middag placeres sent.",
+    "Vælg Tidligere middag, og kontrollér, at middag placeres tidligere.",
+    "Vælg Familie med baby og Roligt tempo, og generér en plan.",
+    "Fjern og tilføj ønsker, og kontrollér, at planen først opdateres, når den genereres igen.",
+    "Tryk Inspirér mig, og kontrollér, at der vælges en relevant kombination.",
+    "Test Kopiér, Send med mail og Download.",
+    "Kontrollér, at galleri, forespørgselsflow og Mission Control fortsat fungerer."
   ]
 }
