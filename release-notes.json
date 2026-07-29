@@ -1,25 +1,24 @@
 {
-  "release": "v2026.07.24.310",
-  "name": "AI Service Layer 2.0",
-  "platform_version": "v2026.07.24.310",
-  "summary": "Introduces a provider-neutral AI orchestration layer with governed capability routing, versioned prompts, deterministic fallback, caching, review policies and operational telemetry.",
+  "release": "v2026.07.24.320",
+  "name": "Platform Experience and Orchestration Foundation",
+  "platform_version": "v2026.07.24.320",
+  "summary": "Introduces the blueprint-aligned Platform Orchestrator, canonical lifecycle registry, implementation journey, continuous improvement loop and functional lifecycle administration.",
   "major_changes": [
-    "Capability-based model router",
-    "Versioned prompt registry",
-    "Provider adapter registry",
-    "Deterministic local fallback",
-    "Request cache and observability",
-    "Human-review policies",
-    "AI Operations dashboard",
-    "Mission Control primary CTA hardening"
+    "Platform Orchestrator 1.0",
+    "Canonical journey registry",
+    "Implementation journey: Demo, Onboarding, Implementation, Go-live, Hyper Care and Maintenance",
+    "Continuous improvement loop: Insights, Assess, Prioritise, Implement, Evidence and Learn",
+    "Mission Control lifecycle integration",
+    "Evented state, evidence and decision history"
   ],
   "test_focus": [
-    "Open /ai-operations.html and run the smoke test",
-    "Use Mission Control and confirm the primary task button navigates correctly",
-    "Verify Discovery and Knowledge Graph behaviour remains stable",
-    "Confirm no feature code contains direct provider endpoints"
+    "Open /platform-lifecycle.html",
+    "Confirm the implementation stages",
+    "Start the continuous improvement loop",
+    "Complete a stage and confirm the next stage",
+    "Open Mission Control and confirm active journey and next action"
   ],
-  "release_name": "AI Service Layer 2.0",
-  "title": "AI Service Layer 2.0",
-  "build": "2026-07-29T18:05:00+02:00"
+  "release_name": "Platform Experience and Orchestration Foundation",
+  "title": "Platform Experience and Orchestration Foundation",
+  "build": "2026-07-29T18:50:00+02:00"
 }

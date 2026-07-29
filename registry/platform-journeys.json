@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "blueprint_version": "1.0",
+  "value_chain": [
+    "idea",
+    "understanding",
+    "assessment",
+    "guidance",
+    "decision",
+    "execution",
+    "evidence",
+    "learning",
+    "documented-value"
+  ],
+  "journeys": [
+    {
+      "id": "implementation",
+      "display_name": "Implementering",
+      "purpose": "Move from approved idea to a validated live solution with minimum user effort.",
+      "stages": [
+        {
+          "id": "demo",
+          "display_name": "Demo",
+          "outcome": "Scope and intended value are understood",
+          "capabilities": [
+            "understanding",
+            "assessment"
+          ]
+        },
+        {
+          "id": "onboarding",
+          "display_name": "Onboarding",
+          "outcome": "Inputs, owners, constraints and success criteria are grounded",
+          "capabilities": [
+            "understanding",
+            "guidance"
+          ]
+        },
+        {
+          "id": "implementation",
+          "display_name": "Implementering",
+          "outcome": "The smallest coherent solution is configured and built",
+          "capabilities": [
+            "decision",
+            "execution"
+          ]
+        },
+        {
+          "id": "go-live",
+          "display_name": "Go-live",
+          "outcome": "Release gates pass and the intended version is live",
+          "capabilities": [
+            "assessment",
+            "evidence",
+            "execution"
+          ]
+        },
+        {
+          "id": "hyper-care",
+          "display_name": "Hyper Care",
+          "outcome": "Early issues and adoption signals are handled quickly",
+          "capabilities": [
+            "understanding",
+            "guidance",
+            "learning"
+          ]
+        },
+        {
+          "id": "maintenance",
+          "display_name": "Drift",
+          "outcome": "The solution remains healthy, useful and governed",
+          "capabilities": [
+            "assessment",
+            "evidence",
+            "learning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "continuous-improvement",
+      "display_name": "Kontinuerlig forbedring",
+      "purpose": "Turn observations into governed, prioritised and evidenced improvements.",
+      "stages": [
+        {
+          "id": "observe",
+          "display_name": "Indsigter",
+          "outcome": "Relevant signals and gaps are grounded",
+          "capabilities": [
+            "understanding"
+          ]
+        },
+        {
+          "id": "assess",
+          "display_name": "Vurdér",
+          "outcome": "Impact, urgency, confidence and effort are evaluated",
+          "capabilities": [
+            "assessment"
+          ]
+        },
+        {
+          "id": "prioritise",
+          "display_name": "Prioritér",
+          "outcome": "The next best improvement is selected and explained",
+          "capabilities": [
+            "guidance",
+            "decision"
+          ]
+        },
+        {
+          "id": "implement",
+          "display_name": "Implementér",
+          "outcome": "The accepted improvement is executed",
+          "capabilities": [
+            "execution"
+          ]
+        },
+        {
+          "id": "prove",
+          "display_name": "Dokumentér effekt",
+          "outcome": "Evidence and value are recorded",
+          "capabilities": [
+            "evidence"
+          ]
+        },
+        {
+          "id": "learn",
+          "display_name": "Lær",
+          "outcome": "Outcome and feedback improve future guidance",
+          "capabilities": [
+            "learning"
+          ]
+        }
+      ]
+    }
+  ]
+}
