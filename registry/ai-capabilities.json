@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.185",
+  "platform_version": "v2026.07.24.186",
   "principle": "AI consumers depend on capability contracts, never provider or model names.",
   "capabilities": [
     {

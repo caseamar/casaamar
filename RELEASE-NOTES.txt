@@ -1,3 +1,1 @@
-v185 – Improvement Completion View
-
-Completed analyses now switch to a clear completion state with no misleading active-task language.
+v2026.07.24.186 – Governed AI Learning Engine
