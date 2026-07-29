@@ -1,53 +1,25 @@
 {
-  "release": "v2026.07.24.250",
-  "name": "Wish-First Experience Composer MVP",
-  "platform_version": "v2026.07.24.250",
-  "build": "2026-07-29T12:05:00.000Z",
-  "summary": "Replaces the system-led timeline planner with a wish-first Experience Composer that lets visitors choose what they want to do and receive three realistic day proposals.",
+  "release": "v2026.07.24.260",
+  "title": "Open Experience Explorer and Optional Day Board",
+  "platform_version": "v2026.07.24.260",
+  "summary": "Replaces automatic day composition with a searchable inspiration catalogue and a simple optional drag-and-drop day board.",
   "changes": [
-    "Introduces a wish-first selection experience built from the domain content package",
-    "Generates three different day proposals from the same selected building blocks",
-    "Adds group context, dining rhythm and pace without forcing fixed time slots",
-    "Supports later Spanish dining and earlier family-oriented dining",
-    "Uses opening windows, estimated duration and transport in composition",
-    "Adds inspiration mode for visitors who do not know what to choose",
-    "Adds copy, email and download actions for the resulting plan",
-    "Records anonymous selection and generation signals for future aggregate learning",
-    "Keeps the generic engine independent from Casa Amar content",
-    "Synchronizes release identity to v2026.07.24.250"
+    "Introduces inspiration-first browsing across structured experience categories",
+    "Adds search for intent such as breakfast, meat, beach or children",
+    "Shows five options per category by default with expandable lists",
+    "Adds manual drag-and-drop and mobile-friendly plus controls",
+    "Supports fully open free-text plan items",
+    "Persists the manual plan locally and supports copy, email and download",
+    "Removes automatic assumptions and generated schedules from the MVP"
   ],
-  "manual_review": [
-    "Confirm v2026.07.24.250 appears on desktop and mobile",
-    "Build a day around Ronda and confirm the anchor remains stable",
-    "Replace an evening block and confirm Ronda is retained",
-    "Replace a restaurant and confirm only the selected block changes",
-    "Check real start/end times and displayed transport estimates",
-    "Lock a block and change pace or interest",
-    "Use undo and copy the resulting plan"
-  ],
-  "title": "Wish-First Experience Composer MVP",
-  "release_name": "Wish-First Experience Composer MVP",
-  "updated_at": "2026-07-29T12:05:00.000Z",
-  "test_focus": [
-    "Meal exclusivity",
-    "Free-time replacement",
-    "Trip containers",
-    "Stable choices",
-    "Transport clarity",
-    "Learning events",
-    "Release identity"
-  ],
-  "version": "v2026.07.24.250",
   "test": [
-    "Kontrollér, at BETA-badget viser v2026.07.24.250 på computer og mobil.",
-    "Vælg Mijas Pueblo, strand, pool og Primavera, og generér en plan.",
-    "Skift mellem de tre planforslag, og kontrollér, at rækkefølgen ændrer sig.",
-    "Vælg Sen spansk middag, og kontrollér, at middag placeres sent.",
-    "Vælg Tidligere middag, og kontrollér, at middag placeres tidligere.",
-    "Vælg Familie med baby og Roligt tempo, og generér en plan.",
-    "Fjern og tilføj ønsker, og kontrollér, at planen først opdateres, når den genereres igen.",
-    "Tryk Inspirér mig, og kontrollér, at der vælges en relevant kombination.",
-    "Test Kopiér, Send med mail og Download.",
-    "Kontrollér, at galleri, forespørgselsflow og Mission Control fortsat fungerer."
+    "Confirm v2026.07.24.260 appears on desktop and mobile",
+    "Search for breakfast and confirm only relevant options appear",
+    "Open the dining and evening filters and expand a list beyond five items when available",
+    "Add cards with the plus button and by drag-and-drop",
+    "Reorder plan items and confirm the order remains after reload",
+    "Add a custom free-text item",
+    "Copy, email and download the plan",
+    "Confirm the experience catalogue remains useful without creating a plan"
   ]
 }

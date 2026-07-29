@@ -1,218 +1,111 @@
-/** Generic wish-first Experience Composer. Domain content is supplied through window.CasaJourneyContent. */
+/** Generic open experience explorer with an optional manual day board. */
 (() => {
   'use strict';
   const root = document.querySelector('[data-stay-planner]');
   const source = window.CasaJourneyContent;
   if (!root || !source?.items?.length) return;
 
-  const DAY_START = 420;
-  const DAY_END = 1430;
   const items = source.items.filter(item => !item.hiddenFromSuggestions);
   const byId = new Map(items.map(item => [item.id, item]));
-  const travel = (from, to) => from === to ? 0 : source.travel?.[from]?.[to] ?? source.travel?.[to]?.[from] ?? source.defaultTravelMinutes ?? 25;
-  const typical = item => item.duration?.typical ?? item.duration ?? 90;
-  const minDuration = item => item.duration?.min ?? typical(item);
-  const clock = minutes => `${String(Math.floor(minutes / 60) % 24).padStart(2,'0')}.${String(minutes % 60).padStart(2,'0')}`;
-  const windows = item => item.windows?.length ? item.windows : [{start: DAY_START, end: DAY_END}];
-  const role = item => item.role || item.type || 'activity';
-  const mealRoles = new Set(['breakfast','lunch','dinner']);
+  const storageKey = `casa.day-board.${source.domain}.v1`;
+  const labels = {all:'Alle',dining:'Spisning',breakfast:'Morgenmad',lunch:'Frokost',dinner:'Aften & night out',beach:'Strand & pool',destination:'Udflugter',active:'Aktiv',family:'Med børn',home:'Hjemme',practical:'Praktisk'};
+  const order = ['all','dining','breakfast','lunch','dinner','beach','destination','active','family','home','practical'];
+  const groupLabels = {breakfast:'Morgenmad',lunch:'Frokost',dinner:'Aften, middag & night out',destination:'Udflugter',beach:'Strand & pool',active:'Aktive oplevelser',home:'Ro og tid hjemme',practical:'Praktisk',other:'Andre muligheder'};
+  const state = {filter:'all',query:'',expanded:new Set(),plan:loadPlan(),dragId:null};
 
-  const state = {
-    selected: new Set(['home-pool','mijas-pueblo','primavera-dinner']),
-    audience: 'adults',
-    rhythm: 'spanish',
-    pace: 'balanced',
-    activePlan: 0,
-    variants: [],
-    generation: 0
-  };
-
-  const audienceLabels = {adults:'Voksne',family:'Familie med børn',baby:'Familie med baby'};
-  const rhythmLabels = {spanish:'Sen spansk middag',danish:'Tidligere middag',flexible:'Fleksibel'};
-  const paceLabels = {relaxed:'Rolig',balanced:'Balanceret',active:'Aktiv'};
-  const categoryLabels = {destination:'Udflugter',activity:'Aktiviteter',dining:'Spisesteder',meal:'Mad',recovery:'Ro og base',errand:'Praktisk',personal:'Egen tid'};
-
-  const itemCategory = item => item.type === 'destination' ? 'destination' : mealRoles.has(role(item)) ? 'dining' : item.type === 'recovery' ? 'recovery' : item.type === 'errand' ? 'errand' : item.type === 'personal' ? 'personal' : 'activity';
-  const selectedItems = () => [...state.selected].map(id => byId.get(id)).filter(Boolean);
-
-  function preferenceScore(item) {
-    let score = item.priority || 0;
-    if (state.audience !== 'adults' && item.tags?.includes('familie')) score += 4;
-    if (state.audience === 'baby' && item.location === 'home') score += 2;
-    if (state.pace === 'relaxed' && item.energy <= 2) score += 3;
-    if (state.pace === 'active' && item.energy >= 3) score += 3;
-    score += Math.min(2, window.CasaJourneyLearning?.insights?.().topChoices?.find(([id]) => id === item.id)?.[1] || 0) * .1;
-    return score;
+  function categories(item) {
+    const result = new Set();
+    const role = item.role || '';
+    const tags = item.tags || [];
+    if (item.type === 'restaurant' || item.type === 'meal' || ['breakfast','lunch','dinner'].includes(role)) result.add('dining');
+    if (['breakfast','lunch','dinner'].includes(role)) result.add(role);
+    if (role === 'evening' || role === 'dinner') result.add('dinner');
+    if (tags.includes('strand') || item.id.includes('pool') || item.id.includes('beach')) result.add('beach');
+    if (item.type === 'destination') result.add('destination');
+    if (tags.includes('aktiv') || (item.energy || 0) >= 3) result.add('active');
+    if (tags.includes('familie')) result.add('family');
+    if (item.location === 'home' || item.type === 'recovery' || item.type === 'personal') result.add('home');
+    if (item.type === 'errand') result.add('practical');
+    return [...result];
   }
-
-  function diningWindow(item) {
-    if (role(item) !== 'dinner') return windows(item);
-    if (state.rhythm === 'danish') return windows(item).map(w => ({start:Math.max(w.start,1050),end:Math.min(w.end,1260)})).filter(w=>w.end>w.start);
-    if (state.rhythm === 'spanish') return windows(item).map(w => ({start:Math.max(w.start,1200),end:w.end})).filter(w=>w.end>w.start);
-    return windows(item);
+  function groupFor(item) {
+    const cats=categories(item), role=item.role;
+    if (role==='breakfast') return 'breakfast';
+    if (role==='lunch') return 'lunch';
+    if (role==='dinner' || role==='evening') return 'dinner';
+    if (cats.includes('destination')) return 'destination';
+    if (cats.includes('beach')) return 'beach';
+    if (cats.includes('active')) return 'active';
+    if (cats.includes('home')) return 'home';
+    if (cats.includes('practical')) return 'practical';
+    return 'other';
   }
-
-  function effectiveWindows(item) { return role(item) === 'dinner' ? diningWindow(item) : windows(item); }
-
-  function dedupeMeals(list) {
-    const seen = new Set();
-    return list.filter(item => {
-      if (!mealRoles.has(role(item))) return true;
-      if (seen.has(role(item))) return false;
-      seen.add(role(item)); return true;
-    });
+  function text(item){ return [item.title,item.summary,item.locationLabel,item.location,...(item.tags||[]),...categories(item).map(c=>labels[c])].join(' ').toLowerCase(); }
+  function visibleItems(){
+    const q=state.query.trim().toLowerCase();
+    return items.filter(item => (state.filter==='all'||categories(item).includes(state.filter)) && (!q||text(item).includes(q)));
   }
+  function loadPlan(){ try { const v=JSON.parse(localStorage.getItem(storageKey)||'[]'); return Array.isArray(v)?v:[]; } catch { return []; } }
+  function savePlan(){ localStorage.setItem(storageKey,JSON.stringify(state.plan)); }
+  function planItem(key){ if(key.startsWith('custom:')) return {id:key,title:key.slice(7),summary:'Eget punkt',custom:true}; return byId.get(key); }
+  function addToPlan(id){ state.plan.push(id); savePlan(); renderPlan(); window.CasaJourneyLearning?.record?.('plan_item_added',{domain:source.domain,itemId:id,planIds:state.plan.filter(x=>!x.startsWith('custom:'))}); }
+  function removeAt(index){ state.plan.splice(index,1); savePlan(); renderPlan(); }
+  function move(from,to){ if(from===to||from<0||to<0)return; const [v]=state.plan.splice(from,1); state.plan.splice(to,0,v); savePlan(); renderPlan(); }
 
-  function orderCandidates(list, variant) {
-    const preferred = item => effectiveWindows(item)[0]?.start ?? DAY_START;
-    return [...list].sort((a,b) => {
-      if (a.dayWeight === 'full') return -1;
-      if (b.dayWeight === 'full') return 1;
-      const aw = preferred(a), bw = preferred(b);
-      const locationBonus = variant === 1 && a.location === 'home' ? -90 : 0;
-      return (aw + locationBonus) - (bw + (variant === 1 && b.location === 'home' ? -90 : 0));
-    });
+  function renderFilters(){
+    const counts={all:items.length}; items.forEach(i=>categories(i).forEach(c=>counts[c]=(counts[c]||0)+1));
+    root.querySelector('[data-experience-filters]').innerHTML=order.filter(k=>counts[k]).map(k=>`<button type="button" class="${state.filter===k?'active':''}" data-filter="${k}">${labels[k]} <span>${counts[k]}</span></button>`).join('');
   }
-
-  function placePlan(chosen, variant = 0) {
-    let list = dedupeMeals(orderCandidates(chosen, variant));
-    const full = list.find(item => item.dayWeight === 'full');
-    if (full) list = [full, ...list.filter(item => item !== full && (item.location === 'home' || item.location === 'cerros') && typical(item) <= 120).slice(0,2)];
-
-    const blocks = [];
-    let cursor = DAY_START;
-    let previousLocation = source.baseLocation;
-    for (const item of list) {
-      const trip = travel(previousLocation, item.location);
-      const duration = typical(item);
-      const wins = effectiveWindows(item);
-      let start = null;
-      for (const w of wins) {
-        const candidate = Math.max(cursor + trip, w.start, item.preferredStart || DAY_START);
-        if (candidate + duration <= w.end && candidate + duration <= DAY_END) { start = candidate; break; }
-      }
-      if (start == null) {
-        const w = wins[0];
-        if (!w) continue;
-        const short = Math.max(minDuration(item), Math.min(duration, w.end - Math.max(cursor + trip, w.start)));
-        const candidate = Math.max(cursor + trip, w.start);
-        if (short < minDuration(item) || candidate + short > DAY_END) continue;
-        blocks.push({item,start:candidate,end:candidate+short,duration:short,travel:trip});
-        cursor = candidate + short; previousLocation = item.location; continue;
-      }
-      blocks.push({item,start,end:start+duration,duration,travel:trip});
-      cursor = start + duration; previousLocation = item.location;
-    }
-    return blocks;
+  function card(item){
+    const meta=[item.locationLabel||item.location,item.duration?.typical?`${item.duration.typical} min.`:''].filter(Boolean).join(' · ');
+    return `<article class="experience-card" draggable="true" data-experience-id="${item.id}"><h4>${item.title}</h4><button type="button" data-add-item="${item.id}" aria-label="Tilføj ${item.title} til min dag">+</button><p>${item.summary||''}</p><div class="experience-card-meta"><span>${meta}</span></div></article>`;
   }
-
-  function enrichSelection(base, variant) {
-    const list = [...base];
-    const ids = new Set(list.map(i=>i.id));
-    const hasDinner = list.some(i=>role(i)==='dinner');
-    const hasRecovery = list.some(i=>i.type==='recovery');
-    const ranked = items.filter(i=>!ids.has(i.id)).sort((a,b)=>preferenceScore(b)-preferenceScore(a));
-    if (!hasRecovery && variant !== 2) list.push(ranked.find(i=>i.type==='recovery') || byId.get('home-siesta'));
-    if (!hasDinner) list.push(ranked.find(i=>role(i)==='dinner') || byId.get('home-dinner'));
-    if (variant === 2 && list.length < 5) list.push(ranked.find(i=>i.energy>=3 && !list.includes(i)) || ranked[0]);
-    return list.filter(Boolean);
+  function renderCatalogue(){
+    const result=visibleItems(), groups=new Map();
+    result.forEach(item=>{const g=groupFor(item);if(!groups.has(g))groups.set(g,[]);groups.get(g).push(item);});
+    root.querySelector('[data-result-count]').textContent=`${result.length} muligheder`;
+    const host=root.querySelector('[data-experience-catalogue]');
+    if(!result.length){host.innerHTML='<div class="experience-empty"><strong>Ingen præcise resultater.</strong><p>Prøv et bredere ord — eller tilføj jeres eget punkt direkte i planen.</p></div>';return;}
+    const groupOrder=['breakfast','lunch','dinner','destination','beach','active','home','practical','other'];
+    host.innerHTML=groupOrder.filter(g=>groups.has(g)).map(g=>{
+      const all=groups.get(g), expanded=state.expanded.has(g), shown=expanded?all:all.slice(0,5);
+      return `<section class="experience-group"><div class="experience-group-head"><h3>${groupLabels[g]}</h3>${all.length>5?`<button type="button" data-expand-group="${g}">${expanded?'Vis færre':`Vis alle ${all.length}`}</button>`:''}</div><div class="experience-grid">${shown.map(card).join('')}</div></section>`;
+    }).join('');
   }
-
-  function makeVariants() {
-    const base = selectedItems();
-    const alternatives = [
-      {name:'Bedste rækkefølge',tone:'Den mest naturlige rute med jeres valgte oplevelser.'},
-      {name:'Mere luft',tone:'Mere tid hjemme og færre skift i løbet af dagen.'},
-      {name:'Mere oplevelse',tone:'En lidt mere aktiv udgave, hvis der er plads.'}
-    ];
-    state.variants = alternatives.map((meta,index) => ({...meta,blocks:placePlan(enrichSelection(base,index),index)}));
-    state.activePlan = 0;
-    state.generation++;
-    window.CasaJourneyLearning?.record?.('plan_generated',{domain:source.domain,planIds:base.map(i=>i.id),itemId:`audience.${state.audience}`,anchorId:`rhythm.${state.rhythm}`});
+  function renderPlan(){
+    const host=root.querySelector('[data-day-plan-list]');
+    if(!state.plan.length){host.innerHTML='<li class="day-plan-empty"><div><strong>Jeres dag er åben.</strong><p>Træk inspiration hertil eller brug +. I behøver ikke lave en plan.</p></div></li>';return;}
+    host.innerHTML=state.plan.map((key,index)=>{const item=planItem(key);if(!item)return'';return `<li class="day-plan-item" draggable="true" data-plan-index="${index}"><span class="day-plan-number">${index+1}</span><div><strong>${item.title}</strong><small>${item.custom?'Eget punkt':item.locationLabel||item.location||''}</small></div><div class="day-plan-controls"><button type="button" data-move-up="${index}" aria-label="Flyt op">↑</button><button type="button" data-move-down="${index}" aria-label="Flyt ned">↓</button><button type="button" data-remove-index="${index}" aria-label="Fjern">×</button></div></li>`;}).join('');
   }
+  function refresh(){renderFilters();renderCatalogue();renderPlan();}
+  function planText(){return ['Vores idéer til dagen fra Casa Amar','',...state.plan.map((key,i)=>`${i+1}. ${planItem(key)?.title||key}`)].join('\n');}
+  async function copyPlan(){const feedback=root.querySelector('[data-plan-feedback]');if(!state.plan.length){feedback.textContent='Tilføj mindst ét punkt først.';return'';}try{await navigator.clipboard.writeText(planText());feedback.textContent='Planen er kopieret.';}catch{feedback.textContent='Kunne ikke kopiere automatisk.';}return planText();}
 
-  function tripDetails(block) {
-    if (!block.item.tripContainer) return '';
-    const eachWay = travel(source.baseLocation, block.item.location);
-    return `<div class="composer-trip"><span><b>${clock(block.start)}</b>Afgang</span><span><b>${clock(block.start+eachWay)}</b>Ankomst</span><span><b>${clock(block.end-eachWay)}</b>Kør hjem</span><span><b>${clock(block.end)}</b>Retur</span></div>`;
-  }
-
-  function renderCatalogue() {
-    const host = root.querySelector('[data-wish-catalogue]');
-    const groups = new Map();
-    items.filter(i=>!['breakfast','lunch'].includes(role(i))).forEach(item => {
-      const category = itemCategory(item); if (!groups.has(category)) groups.set(category,[]); groups.get(category).push(item);
-    });
-    host.innerHTML = [...groups].map(([category,group]) => `<section class="wish-group"><h3>${categoryLabels[category] || category}</h3><div class="wish-grid">${group.map(item => `<button type="button" class="wish-card ${state.selected.has(item.id)?'selected':''}" data-wish-id="${item.id}" aria-pressed="${state.selected.has(item.id)}"><span>${item.title}</span><small>${item.summary}</small><em>${typical(item)} min. · ${item.locationLabel || item.location}</em></button>`).join('')}</div></section>`).join('');
-  }
-
-  function renderSelection() {
-    const host = root.querySelector('[data-selected-wishes]');
-    const chosen = selectedItems();
-    host.innerHTML = chosen.length ? chosen.map(item=>`<button type="button" data-remove-wish="${item.id}" title="Fjern ${item.title}">${item.title}<span>×</span></button>`).join('') : '<span class="empty-selection">Vælg mindst én oplevelse nedenfor.</span>';
-    root.querySelector('[data-compose-day]').disabled = chosen.length === 0;
-  }
-
-  function renderPlans() {
-    const host = root.querySelector('[data-plan-results]');
-    if (!state.variants.length) { host.hidden = true; return; }
-    host.hidden = false;
-    host.querySelector('[data-plan-tabs]').innerHTML = state.variants.map((plan,index)=>`<button type="button" class="${index===state.activePlan?'active':''}" data-plan-variant="${index}">${plan.name}</button>`).join('');
-    const plan = state.variants[state.activePlan];
-    host.querySelector('[data-plan-explanation]').textContent = plan.tone;
-    host.querySelector('[data-plan-timeline]').innerHTML = plan.blocks.map(block=>`<li><time><strong>${clock(block.start)}</strong><span>${clock(block.end)}</span></time><div>${block.travel?`<small class="journey-travel">Ca. ${block.travel} min. transport</small>`:''}<strong>${block.item.title}</strong><p>${block.item.summary}</p>${tripDetails(block)}<div class="journey-meta"><span>${block.duration} min.</span><span>${block.item.locationLabel || block.item.location}</span></div></div></li>`).join('') || '<li class="plan-warning">Kombinationen kan ikke placeres realistisk på én dag. Fjern et ønske eller vælg en anden sammensætning.</li>';
-  }
-
-  function renderControls() {
-    root.querySelectorAll('[data-audience]').forEach(b=>b.classList.toggle('active',b.dataset.audience===state.audience));
-    root.querySelectorAll('[data-rhythm]').forEach(b=>b.classList.toggle('active',b.dataset.rhythm===state.rhythm));
-    root.querySelectorAll('[data-pace]').forEach(b=>b.classList.toggle('active',b.dataset.pace===state.pace));
-  }
-
-  function refresh() { renderControls(); renderSelection(); renderCatalogue(); renderPlans(); }
-
-  function inspire() {
-    const pools = {
-      relaxed:['home-pool','mijas-pueblo','roof-sunset','home-dinner'],
-      balanced:['gran-parque-walk','home-pool','la-cala-beach','primavera-dinner'],
-      active:['mtb','home-pool','hoyo19']
-    };
-    state.selected = new Set(pools[state.pace] || pools.balanced);
-    makeVariants(); refresh();
-    root.querySelector('[data-plan-results]')?.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-
-  async function copyPlan() {
-    const plan = state.variants[state.activePlan]; if (!plan) return;
-    const text = [`Vores dag fra Casa Amar — ${plan.name}`,`Gruppe: ${audienceLabels[state.audience]} · Måltidsrytme: ${rhythmLabels[state.rhythm]}`,'',...plan.blocks.map(b=>`${clock(b.start)}–${clock(b.end)}  ${b.item.title}${b.travel?` (ca. ${b.travel} min. transport)`:''}`)].join('\n');
-    const feedback = root.querySelector('[data-plan-feedback]');
-    try { await navigator.clipboard.writeText(text); feedback.textContent='Planen er kopieret.'; } catch { feedback.textContent='Kunne ikke kopiere automatisk.'; }
-    window.CasaJourneyLearning?.record?.('plan_copied',{domain:source.domain,planIds:plan.blocks.map(b=>b.item.id)});
-    return text;
-  }
-
-  root.addEventListener('click', async event => {
-    const wish = event.target.closest('[data-wish-id]');
-    const remove = event.target.closest('[data-remove-wish]');
-    const audience = event.target.closest('[data-audience]');
-    const rhythm = event.target.closest('[data-rhythm]');
-    const pace = event.target.closest('[data-pace]');
-    const variant = event.target.closest('[data-plan-variant]');
-    if (wish) { const id=wish.dataset.wishId; state.selected.has(id)?state.selected.delete(id):state.selected.add(id); state.variants=[]; refresh(); window.CasaJourneyLearning?.record?.('wish_toggled',{domain:source.domain,itemId:id,planIds:[...state.selected]}); }
-    if (remove) { state.selected.delete(remove.dataset.removeWish); state.variants=[]; refresh(); }
-    if (audience) { state.audience=audience.dataset.audience; state.variants=[]; refresh(); }
-    if (rhythm) { state.rhythm=rhythm.dataset.rhythm; state.variants=[]; refresh(); }
-    if (pace) { state.pace=pace.dataset.pace; state.variants=[]; refresh(); }
-    if (variant) { state.activePlan=Number(variant.dataset.planVariant); renderPlans(); }
+  root.addEventListener('click',async e=>{
+    const filter=e.target.closest('[data-filter]'), add=e.target.closest('[data-add-item]'), expand=e.target.closest('[data-expand-group]'), remove=e.target.closest('[data-remove-index]'), up=e.target.closest('[data-move-up]'), down=e.target.closest('[data-move-down]');
+    if(filter){state.filter=filter.dataset.filter;renderFilters();renderCatalogue();}
+    if(add)addToPlan(add.dataset.addItem);
+    if(expand){const g=expand.dataset.expandGroup;state.expanded.has(g)?state.expanded.delete(g):state.expanded.add(g);renderCatalogue();}
+    if(remove)removeAt(Number(remove.dataset.removeIndex));
+    if(up)move(Number(up.dataset.moveUp),Math.max(0,Number(up.dataset.moveUp)-1));
+    if(down)move(Number(down.dataset.moveDown),Math.min(state.plan.length-1,Number(down.dataset.moveDown)+1));
   });
-  root.querySelector('[data-compose-day]')?.addEventListener('click',()=>{makeVariants();refresh();root.querySelector('[data-plan-results]')?.scrollIntoView({behavior:'smooth',block:'start'});});
-  root.querySelector('[data-inspire-day]')?.addEventListener('click',inspire);
-  root.querySelector('[data-plan-another]')?.addEventListener('click',()=>{state.activePlan=(state.activePlan+1)%state.variants.length;renderPlans();});
+  root.querySelector('[data-experience-search]')?.addEventListener('input',e=>{state.query=e.target.value;renderCatalogue();});
+  root.querySelector('[data-add-custom]')?.addEventListener('click',()=>{const input=root.querySelector('[data-custom-plan-text]'),value=input.value.trim();if(!value)return;addToPlan(`custom:${value}`);input.value='';});
+  root.querySelector('[data-custom-plan-text]')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();root.querySelector('[data-add-custom]').click();}});
+  root.querySelector('[data-clear-plan]')?.addEventListener('click',()=>{state.plan=[];savePlan();renderPlan();});
   root.querySelector('[data-plan-copy]')?.addEventListener('click',copyPlan);
-  root.querySelector('[data-plan-email]')?.addEventListener('click',async()=>{const text=await copyPlan();if(text)location.href=`mailto:?subject=${encodeURIComponent('Vores plan fra Casa Amar')}&body=${encodeURIComponent(text)}`;});
-  root.querySelector('[data-plan-download]')?.addEventListener('click',()=>{const plan=state.variants[state.activePlan];if(!plan)return;const text=[`Vores dag fra Casa Amar — ${plan.name}`,'',...plan.blocks.map(b=>`${clock(b.start)}–${clock(b.end)}  ${b.item.title}`)].join('\n');const blob=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='casa-amar-dagsplan.txt';a.click();URL.revokeObjectURL(a.href);window.CasaJourneyLearning?.record?.('plan_downloaded',{domain:source.domain,planIds:plan.blocks.map(b=>b.item.id)});});
+  root.querySelector('[data-plan-email]')?.addEventListener('click',async()=>{const txt=await copyPlan();if(txt)location.href=`mailto:?subject=${encodeURIComponent('Vores idéer fra Casa Amar')}&body=${encodeURIComponent(txt)}`;});
+  root.querySelector('[data-plan-download]')?.addEventListener('click',()=>{if(!state.plan.length)return;const blob=new Blob([planText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='casa-amar-min-dag.txt';a.click();URL.revokeObjectURL(a.href);});
+
+  root.addEventListener('dragstart',e=>{const card=e.target.closest('[data-experience-id]'),row=e.target.closest('[data-plan-index]');if(card){state.dragId=card.dataset.experienceId;e.dataTransfer.effectAllowed='copy';e.dataTransfer.setData('text/plain',state.dragId);}if(row){state.dragId=`plan:${row.dataset.planIndex}`;row.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',state.dragId);}});
+  root.addEventListener('dragend',e=>{e.target.closest('.dragging')?.classList.remove('dragging');state.dragId=null;root.querySelector('[data-day-plan-list]')?.classList.remove('drag-over');});
+  const board=root.querySelector('[data-day-plan-list]');
+  board?.addEventListener('dragover',e=>{e.preventDefault();board.classList.add('drag-over');});
+  board?.addEventListener('dragleave',()=>board.classList.remove('drag-over'));
+  board?.addEventListener('drop',e=>{e.preventDefault();board.classList.remove('drag-over');const payload=e.dataTransfer.getData('text/plain')||state.dragId,target=e.target.closest('[data-plan-index]'),to=target?Number(target.dataset.planIndex):state.plan.length;if(payload?.startsWith('plan:'))move(Number(payload.slice(5)),to);else if(byId.has(payload)){state.plan.splice(to,0,payload);savePlan();renderPlan();}});
 
   refresh();
-  window.CasaJourneyPlanner = Object.freeze({version:'4.0.0',domain:source.domain,snapshot:()=>({selected:[...state.selected],audience:state.audience,rhythm:state.rhythm,pace:state.pace,generation:state.generation,variants:state.variants.map(v=>v.blocks.map(b=>({id:b.item.id,start:b.start,end:b.end,travel:b.travel})) )})});
-  document.documentElement.dataset.journeyPlanner='4.0.0';
+  window.CasaJourneyPlanner=Object.freeze({version:'5.0.0',domain:source.domain,snapshot:()=>({filter:state.filter,query:state.query,plan:[...state.plan]})});
+  document.documentElement.dataset.journeyPlanner='5.0.0';
 })();
