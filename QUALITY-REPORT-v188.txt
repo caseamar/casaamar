@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.230
+Casa Amar Platform v2026.07.24.240
 Beta Experience Quality Release
 
 Automated result: PASS
