@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.1.0",
-  "platform_version": "v2026.07.24.328",
+  "platform_version": "v2026.07.24.329",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -125,7 +125,7 @@
     {
       "article": 23,
       "title": "AI Output Quality",
-      "rule": "AI-genereret brugerindhold m\u00e5 kun vises, n\u00e5r det har best\u00e5et form\u00e5lsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive pr\u00e6senteret som publiceringsklart."
+      "rule": "AI-genereret brugerindhold må kun vises, når det har bestået formålsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive præsenteret som publiceringsklart."
     },
     {
       "id": "ARTICLE-24",
@@ -250,9 +250,16 @@
       "rule": "Material platform state changes must produce registered, immutable and ordered events with trace continuity, integrity evidence and retention metadata. Consumers checkpoint only after successful processing; failed delivery becomes observable dead-letter evidence, and replay must preserve the original event envelope.",
       "blocking": true,
       "automated_rule": "event-fabric-integrity"
+    },
+    {
+      "id": "ARTICLE-42",
+      "title": "Governed and Explainable Policy Evaluation",
+      "rule": "Material platform constraints must be expressed as versioned policies and evaluated deterministically without dynamic code execution. Invalid registries and unsupported conditions fail closed; every verdict identifies the winning policy, evidence requirements and resulting obligations.",
+      "blocking": true,
+      "automated_rule": "policy-runtime-integrity"
     }
   ],
-  "updated_at": "2026-07-30T08:35:00+02:00",
+  "updated_at": "2026-07-30T08:50:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

@@ -1,25 +1,25 @@
 {
-  "version": "v2026.07.24.328",
-  "name": "Event Fabric Runtime",
-  "summary": "Upgrades the existing event platform in place with immutable ordered partitions, consumer checkpoints, bounded retries, dead-letter evidence, integrity signatures and deterministic replay while preserving existing publishers and subscribers.",
+  "version": "v2026.07.24.329",
+  "name": "Governed Policy Runtime",
+  "summary": "Introduces deterministic, explainable and fail-closed policy evaluation over one authoritative versioned registry, enabling governance to scale across capabilities, AI agents, services and experiences without hardcoded rules.",
   "changes": [
-    "Event Platform 3.0 with append-only ordered streams",
-    "Registered consumer contracts with success checkpoints",
-    "Replay by partition, sequence, time and event type",
-    "Bounded retry and observable dead-letter queue",
-    "Integrity signature and verification for every event",
-    "ADR-028 and Constitution Article 41"
+    "Policy Runtime 1.0 with bounded declarative conditions",
+    "Versioned Policy Registry 2.0 with priorities, effects, obligations and evidence requirements",
+    "Deterministic conflict resolution and fail-closed registry validation",
+    "Explainable verdicts with condition traces and winning policy",
+    "Policy events for evaluation, denial and manual review",
+    "ADR-029 and Constitution Article 42"
   ],
   "test_focus": [
     "Existing website and workspaces remain functional",
-    "Event sequence is monotonic within each partition",
-    "Failed consumers create dead-letter evidence and do not checkpoint",
-    "Replay preserves original event identifiers and signatures",
-    "Platform Doctor and release surfaces show v2026.07.24.328"
+    "Healthy human-approved publication remains allowed",
+    "Unhealthy releases and unsafe mutations are denied",
+    "High-risk AI decisions route to explicit human review",
+    "Platform Doctor and release surfaces show v2026.07.24.329"
   ],
-  "release": "v2026.07.24.328",
-  "platform_version": "v2026.07.24.328",
-  "release_name": "Event Fabric Runtime",
-  "title": "Event Fabric Runtime",
-  "build": "2026-07-30T08:35:00+02:00"
+  "release": "v2026.07.24.329",
+  "platform_version": "v2026.07.24.329",
+  "release_name": "Governed Policy Runtime",
+  "title": "Governed Policy Runtime",
+  "build": "2026-07-30T08:50:00+02:00"
 }

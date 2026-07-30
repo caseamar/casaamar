@@ -1,33 +1,211 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "version": "2.0.0",
+  "platform_version": "v2026.07.24.329",
+  "updated_at": "2026-07-30T08:50:00+02:00",
+  "source_of_truth": true,
+  "principles": {
+    "configuration_over_code": true,
+    "deterministic_evaluation": true,
+    "deny_overrides": true,
+    "human_control_for_consequential_actions": true,
+    "explain_every_verdict": true,
+    "fail_closed_on_invalid_policy": true
+  },
   "policies": [
     {
       "id": "release.requires_health",
-      "description": "En udgivelse kræver en sund platform eller en eksplicit menneskelig overstyring.",
-      "effect": "require",
-      "applies_to": "content.publish",
-      "status": "active"
+      "version": "1.0.0",
+      "description": "A release requires a healthy platform or an explicit governed human override.",
+      "status": "active",
+      "priority": 900,
+      "applies_to": [
+        "content.publish",
+        "platform.release"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "platform.health",
+            "operator": "not_in",
+            "value": [
+              "pass",
+              "overridden"
+            ]
+          }
+        ]
+      },
+      "effect": "deny",
+      "reason": "Platform health is not sufficient for release.",
+      "obligations": [
+        "resolve_platform_health_or_record_governed_override"
+      ],
+      "evidence_required": [
+        "platform_health_report"
+      ]
     },
     {
       "id": "ai.requires_human_approval",
-      "description": "AI må foreslå og klargøre, men ikke publicere uden menneskelig godkendelse.",
-      "effect": "require",
-      "applies_to": "ai.publish",
-      "status": "active"
+      "version": "1.0.0",
+      "description": "AI may prepare consequential publication but cannot complete it without explicit human approval.",
+      "status": "active",
+      "priority": 1000,
+      "applies_to": [
+        "ai.publish",
+        "content.publish"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "actor.type",
+            "operator": "eq",
+            "value": "ai"
+          },
+          {
+            "fact": "approval.human",
+            "operator": "neq",
+            "value": true
+          }
+        ]
+      },
+      "effect": "manual_review",
+      "reason": "Consequential AI publication requires human approval.",
+      "obligations": [
+        "collect_human_approval"
+      ],
+      "evidence_required": [
+        "reviewer_identity",
+        "approval_decision"
+      ]
     },
     {
       "id": "cookies.require_consent",
-      "description": "Ikke-nødvendige cookies må først aktiveres efter samtykke.",
-      "effect": "deny_until",
-      "applies_to": "compliance.cookies",
-      "status": "foundation"
+      "version": "1.0.0",
+      "description": "Non-essential cookies require valid consent.",
+      "status": "active",
+      "priority": 1000,
+      "applies_to": [
+        "compliance.cookies"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "cookie.essential",
+            "operator": "eq",
+            "value": false
+          },
+          {
+            "fact": "consent.valid",
+            "operator": "neq",
+            "value": true
+          }
+        ]
+      },
+      "effect": "deny",
+      "reason": "Consent is required before non-essential cookies may be activated.",
+      "obligations": [
+        "collect_valid_consent"
+      ],
+      "evidence_required": [
+        "consent_receipt"
+      ]
     },
     {
       "id": "security.least_privilege",
-      "description": "Brugere får kun de rettigheder, som er nødvendige for deres rolle.",
-      "effect": "require",
-      "applies_to": "security.auth",
-      "status": "foundation"
+      "version": "1.0.0",
+      "description": "Access is permitted only when the requested permission is explicitly granted.",
+      "status": "active",
+      "priority": 1000,
+      "applies_to": [
+        "security.auth",
+        "service.execute"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "permission.granted",
+            "operator": "neq",
+            "value": true
+          }
+        ]
+      },
+      "effect": "deny",
+      "reason": "Least-privilege policy blocks ungranted access.",
+      "obligations": [
+        "request_authorised_permission"
+      ],
+      "evidence_required": [
+        "access_decision"
+      ]
+    },
+    {
+      "id": "decision.high_risk_requires_review",
+      "version": "1.0.0",
+      "description": "High-risk decisions require explicit human review before completion.",
+      "status": "active",
+      "priority": 950,
+      "applies_to": [
+        "capability.decision",
+        "decision.execute"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "risk.level",
+            "operator": "in",
+            "value": [
+              "high",
+              "critical"
+            ]
+          },
+          {
+            "fact": "approval.human",
+            "operator": "neq",
+            "value": true
+          }
+        ]
+      },
+      "effect": "manual_review",
+      "reason": "High-risk decisions require accountable human review.",
+      "obligations": [
+        "route_to_human_review"
+      ],
+      "evidence_required": [
+        "risk_assessment",
+        "reviewer_identity"
+      ]
+    },
+    {
+      "id": "mutation.requires_idempotency",
+      "version": "1.0.0",
+      "description": "State-changing operations require an idempotency key.",
+      "status": "active",
+      "priority": 850,
+      "applies_to": [
+        "service.execute",
+        "capability.execute"
+      ],
+      "when": {
+        "all": [
+          {
+            "fact": "operation.mutates_state",
+            "operator": "eq",
+            "value": true
+          },
+          {
+            "fact": "operation.idempotency_key",
+            "operator": "missing"
+          }
+        ]
+      },
+      "effect": "deny",
+      "reason": "Mutation cannot execute without idempotency protection.",
+      "obligations": [
+        "supply_idempotency_key"
+      ],
+      "evidence_required": [
+        "execution_request"
+      ]
     }
   ]
 }

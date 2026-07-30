@@ -1,9 +1,9 @@
-Platform v2026.07.24.328 – Authoritative Platform Metadata Runtime
+Platform v2026.07.24.329 – Authoritative Platform Metadata Runtime
 
 Adds a stable, machine-readable discovery layer over existing authoritative registries. The runtime indexes capabilities, contracts, reviews, services, experiences, events, policies and schemas without duplicating their source data. It provides deterministic lookup, semantic search, relationship traversal, impact analysis and fail-closed integrity validation for AI and platform consumers.
 
 Test focus:
 - Confirm existing public and workspace experiences behave normally.
-- Verify Platform Doctor and release surfaces show v2026.07.24.328.
+- Verify Platform Doctor and release surfaces show v2026.07.24.329.
 - Verify metadata health reports no unresolved relationships.
 - Verify semantic discovery and impact traversal return deterministic results.

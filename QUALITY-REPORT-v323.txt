@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.328
+Casa Amar Platform v2026.07.24.329
 Strategic Capability Kernel Foundation
 
 RESULT: PASS
@@ -14,7 +14,7 @@ Validation completed:
 - Verification Governance: 61 checks passed
 - Mutation resistance: 4 mutations killed, 0 survived
 - Public Experience Quality: 24 checks passed
-- Release identity synchronized: v2026.07.24.328
+- Release identity synchronized: v2026.07.24.329
 
 Architecture decision:
 Evolve the existing platform without a big-bang rewrite. Strategic capabilities now sit above existing registered services. Human roles are configurable review assignees, not architecture.

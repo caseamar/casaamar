@@ -1,0 +1,15 @@
+import fs from 'node:fs';import vm from 'node:vm';
+const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8'),json=p=>JSON.parse(read(p));
+const registry=json('registry/policies.json'),events=[];const sandbox={console,CustomEvent:class{constructor(type,o){this.type=type;this.detail=o?.detail}},window:{dispatchEvent(){}}};sandbox.window.window=sandbox.window;vm.createContext(sandbox);vm.runInContext(read('core/casa-policy-runtime.js'),sandbox);
+const runtime=sandbox.window.CasaPolicyRuntime.createRuntime(registry,{eventPublisher:(type,payload)=>events.push({type,payload})});const fail=[],check=(ok,msg)=>{if(!ok)fail.push(msg)};
+check(runtime.version==='1.0.0','runtime version');check(runtime.validate().status==='pass','registry integrity');check(runtime.snapshot().health.summary.policies===6,'policy count');
+let r=runtime.evaluate({action:'content.publish',facts:{platform:{health:'pass'},actor:{type:'human'},approval:{human:true}}});check(r.decision==='allow','healthy approved publication allowed');
+r=runtime.evaluate({action:'content.publish',facts:{platform:{health:'fail'},actor:{type:'ai'},approval:{human:false}}});check(r.decision==='deny'&&r.winning_policy==='release.requires_health','deny overrides manual review for unhealthy publication');
+// deny has higher precedence and release policy should win when action targets platform.release
+r=runtime.evaluate({action:'platform.release',facts:{platform:{health:'fail'}}});check(r.decision==='deny'&&r.winning_policy==='release.requires_health','unhealthy release denied');
+r=runtime.evaluate({action:'decision.execute',facts:{risk:{level:'critical'},approval:{human:false}}});check(r.decision==='manual_review'&&r.evidence_required.includes('risk_assessment'),'high risk routes to review with evidence');
+r=runtime.evaluate({action:'service.execute',facts:{permission:{granted:true},operation:{mutates_state:true}}});check(r.decision==='deny'&&r.winning_policy==='mutation.requires_idempotency','mutation without idempotency denied');
+r=runtime.evaluate({action:'service.execute',facts:{permission:{granted:true},operation:{mutates_state:true,idempotency_key:'abc'}}});check(r.decision==='allow','authorised idempotent mutation allowed');
+const explanation=runtime.explain(runtime.evaluate({action:'compliance.cookies',facts:{cookie:{essential:false},consent:{valid:false}}}));check(explanation.winning_policy==='cookies.require_consent'&&explanation.matched_policies[0].trace.length===2,'verdict is explainable');check(events.some(x=>x.type==='policy.denied'),'deny event emitted');
+const invalid=sandbox.window.CasaPolicyRuntime.createRuntime({policies:[{id:'broken'}]});check(invalid.evaluate({action:'anything'}).decision==='deny','invalid registry fails closed');
+if(fail.length){console.error('Policy Runtime FAILED\n- '+fail.join('\n- '));process.exit(1)}console.log(`Policy Runtime VERIFIED: ${runtime.snapshot().health.summary.policies} policies, deterministic evaluation and explainable fail-closed governance`);

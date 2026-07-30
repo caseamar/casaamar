@@ -1,0 +1,11 @@
+Casa Amar Platform v2026.07.24.329 — Governed Policy Runtime
+
+Automated verification completed:
+- Release Quality Gate: 1772 passed, 0 failed
+- Policy Runtime: 6 policies; deterministic evaluation; fail-closed registry validation
+- Platform Metadata Runtime: 10 entity types, 170 entities, 124 relationships
+- Constitution Engine: 42 principles, 100% automated coverage
+- Event Fabric: 12 checks passed
+- ZIP integrity: verified after packaging
+
+A broad ad-hoc run of every historical test file was not used as a release gate because discovery-content-intelligence-test.mjs has a pre-existing standalone VM harness issue (window.addEventListener is not mocked). The authoritative release gate and targeted changed-component suites are green.

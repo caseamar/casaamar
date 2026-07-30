@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "version": "1.1.0",
-  "platform_version": "v2026.07.24.328",
-  "updated_at": "2026-07-30T08:35:00+02:00",
+  "platform_version": "v2026.07.24.329",
+  "updated_at": "2026-07-30T08:50:00+02:00",
   "purpose": "Authoritative machine-readable catalogue of platform building blocks and their relationships.",
   "principles": {
     "authoritative_sources_only": true,
@@ -139,11 +139,16 @@
         "id",
         "description",
         "applies_to",
-        "effect"
+        "effect",
+        "reason",
+        "obligations",
+        "evidence_required"
       ],
       "ai_usage": [
         "constraint-retrieval",
-        "decision-explanation"
+        "policy-planning",
+        "decision-explanation",
+        "governance-routing"
       ]
     },
     {

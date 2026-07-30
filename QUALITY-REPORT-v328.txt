@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.328 — Event Fabric Runtime
+Casa Amar Platform v2026.07.24.329 — Event Fabric Runtime
 Build: 2026-07-30T08:35:00+02:00
 
 Full quality suite: PASS

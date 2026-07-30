@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "release": "v2026.07.24.328",
+  "release": "v2026.07.24.329",
   "status": "pass",
   "passed_checks": 1406,
   "failed_checks": 0,
@@ -8,7 +8,7 @@
   "command": "node tools/release-quality-gate.mjs",
   "updated_at": "2026-07-30T08:35:00+02:00",
   "generated_at": "2026-07-30T08:35:00+02:00",
-  "platform_version": "v2026.07.24.328",
+  "platform_version": "v2026.07.24.329",
   "checks_passed": 1406,
   "checks_failed": 0,
   "zip_integrity": "passed",

@@ -2812,8 +2812,8 @@ export default {
     if (request.method === "GET" && url.pathname === "/api/platform-meta") {
       return json({
         ok: true,
-        platform_version: "v2026.07.24.328",
-        build: "2026-07-30T08:35:00+02:00",
+        platform_version: "v2026.07.24.329",
+        build: "2026-07-30T08:50:00+02:00",
         worker_version: "15.59-release-version-sync",
         source: "worker-runtime"
       }, 200, {

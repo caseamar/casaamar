@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "4.0.1",
-  "updated_at": "2026-07-30T08:35:00+02:00",
+  "version": "4.1.0",
+  "updated_at": "2026-07-30T08:50:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.328",
+      "version": "v2026.07.24.329",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -586,6 +586,18 @@
       "description": "Contract-driven dependency injection and implementation resolution with explicit scopes, replacement policy, cycle detection and fail-closed health validation.",
       "dashboard": false,
       "dashboard_entry": null
+    },
+    {
+      "id": "policy-runtime",
+      "display_name": "Policy Runtime",
+      "version": "1.0.0",
+      "owner": "Platform Governance",
+      "status_source": "module",
+      "manifest_key": "policy_runtime",
+      "entry": "/core/casa-policy-runtime.js",
+      "description": "Deterministic, explainable and fail-closed evaluation of versioned governance policies.",
+      "dashboard": true,
+      "dashboard_entry": "/control/#platform-intelligence"
     }
   ]
 }
