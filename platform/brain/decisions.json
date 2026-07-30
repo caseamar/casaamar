@@ -43,6 +43,13 @@
       "status": "accepted",
       "date": "2026-07-30",
       "document": "/platform/brain/ADR-026-AUTHORITATIVE-PLATFORM-METADATA-RUNTIME.md"
+    },
+    {
+      "id": "ADR-027",
+      "title": "Contract-driven Service Container",
+      "status": "accepted",
+      "decision": "Resolve platform implementations through stable service bindings with explicit scope, dependency injection, controlled replacement and fail-closed cycle validation.",
+      "document": "/platform/brain/ADR-027-CONTRACT-DRIVEN-SERVICE-CONTAINER.md"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.1.0",
-  "platform_version": "v2026.07.24.326",
+  "platform_version": "v2026.07.24.327",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -236,9 +236,16 @@
       "rule": "Platform building blocks must be discoverable through authoritative versioned metadata. Runtime consumers and AI must resolve entities and relationships through stable identifiers rather than duplicated or hardcoded lists, and unresolved references fail closed.",
       "blocking": true,
       "automated_rule": "platform-metadata-runtime-integrity"
+    },
+    {
+      "id": "ARTICLE-40",
+      "title": "Contract-driven Service Resolution",
+      "rule": "Platform consumers must resolve implementations through stable, versioned service-binding contracts. Dependency cycles, unknown implementations and unauthorised replacements fail closed; concrete implementations remain replaceable only where explicitly permitted.",
+      "blocking": true,
+      "automated_rule": "service-container-integrity"
     }
   ],
-  "updated_at": "2026-07-30T08:05:00+02:00",
+  "updated_at": "2026-07-30T08:17:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

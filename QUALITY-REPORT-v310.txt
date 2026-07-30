@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.326
+Casa Amar Platform v2026.07.24.327
 AI Service Layer 2.0
 
 Full quality suite: PASSED

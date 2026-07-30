@@ -1,26 +1,20 @@
 {
-  "release": "v2026.07.24.326",
-  "name": "Authoritative Platform Metadata Runtime",
-  "platform_version": "v2026.07.24.326",
-  "summary": "Introduces a machine-readable metadata runtime that indexes existing authoritative registries and provides deterministic discovery, semantic search, relationship traversal and impact analysis for AI and platform consumers.",
-  "major_changes": [
-    "Authoritative platform metadata manifest",
-    "Read-only metadata indexing runtime",
-    "Stable entity identity across capabilities, contracts, reviews, services, experiences, events, policies and schemas",
-    "Deterministic semantic and AI-usage discovery",
-    "Relationship validation and impact traversal",
-    "Fail-closed unresolved-reference handling",
-    "ADR-026 and Constitution Article 39"
+  "version": "v2026.07.24.327",
+  "name": "Contract-Driven Service Resolution Runtime",
+  "summary": "Introduces a stable dependency injection and implementation resolution layer over authoritative platform metadata.",
+  "highlights": [
+    "Contract-driven service bindings",
+    "Singleton and transient scopes",
+    "Dependency graph and cycle detection",
+    "Protected implementation replacement",
+    "AI-ready implementation discovery",
+    "ADR-027 and Constitution Article 40"
   ],
   "test_focus": [
-    "Run the complete quality suite",
-    "Verify all metadata sources and relationships resolve",
-    "Verify capability, service and experience discovery",
-    "Verify semantic and AI-usage search",
-    "Verify broken references fail closed",
-    "Confirm existing public and workspace experiences remain unchanged"
+    "Existing public and workspace experiences remain unchanged",
+    "Service bindings resolve deterministically",
+    "Unknown services and dependency cycles fail closed",
+    "Release identity shows v2026.07.24.327"
   ],
-  "release_name": "Authoritative Platform Metadata Runtime",
-  "title": "Authoritative Platform Metadata Runtime",
-  "build": "2026-07-30T08:05:00+02:00"
+  "release": "v2026.07.24.327"
 }

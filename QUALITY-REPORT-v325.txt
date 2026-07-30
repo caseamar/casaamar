@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.326
+Casa Amar Platform v2026.07.24.327
 Dependency and Human Review Control Runtime
 
 Complete quality suite: PASS

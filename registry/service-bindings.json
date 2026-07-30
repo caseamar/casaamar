@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.327",
+  "bindings": [
+    {
+      "id": "platform.metadata",
+      "contract_id": "platform.metadata.runtime.v1",
+      "implementation_id": "platform-metadata-runtime",
+      "scope": "singleton",
+      "replaceable": false,
+      "dependencies": [],
+      "qualifier": "authoritative"
+    },
+    {
+      "id": "capability.orchestrator",
+      "contract_id": "capability.orchestration.runtime.v1",
+      "implementation_id": "capability-orchestrator",
+      "scope": "singleton",
+      "replaceable": false,
+      "dependencies": ["platform.metadata"],
+      "qualifier": "governed"
+    },
+    {
+      "id": "ai.service",
+      "contract_id": "ai.service.runtime.v1",
+      "implementation_id": "ai-service-layer",
+      "scope": "singleton",
+      "replaceable": true,
+      "dependencies": ["platform.metadata"],
+      "qualifier": "default"
+    }
+  ],
+  "policies": {
+    "unknown_bindings_fail_closed": true,
+    "circular_dependencies_fail_closed": true,
+    "replacement_requires_explicit_permission": true,
+    "singleton_is_default_scope": true,
+    "direct_implementation_lookup_deprecated": true
+  }
+}

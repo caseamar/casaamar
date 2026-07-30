@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.326",
-  "build": "2026-07-30T08:05:00+02:00",
+  "platform_version": "v2026.07.24.327",
+  "build": "2026-07-30T08:17:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Authoritative Platform Metadata Runtime",
-  "generated_at": "2026-07-30T08:05:00+02:00",
+  "release_name": "Contract-Driven Service Resolution Runtime",
+  "generated_at": "2026-07-30T08:17:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-30T08:05:00+02:00"
+    "build": "2026-07-30T08:17:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -820,5 +820,11 @@
     "authoritative_sources_only": true,
     "fail_closed": true,
     "ai_discovery_ready": true
+  },
+  "service_container": {
+    "version": "1.0.0",
+    "status": "active",
+    "entry": "/core/casa-service-container.js",
+    "registry": "/registry/service-bindings.json"
   }
 }
