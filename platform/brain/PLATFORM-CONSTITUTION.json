@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.1.0",
-  "platform_version": "v2026.07.24.324",
+  "platform_version": "v2026.07.24.325",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -125,7 +125,7 @@
     {
       "article": 23,
       "title": "AI Output Quality",
-      "rule": "AI-genereret brugerindhold m\u00e5 kun vises, n\u00e5r det har best\u00e5et form\u00e5lsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive pr\u00e6senteret som publiceringsklart."
+      "rule": "AI-genereret brugerindhold må kun vises, når det har bestået formålsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive præsenteret som publiceringsklart."
     },
     {
       "id": "ARTICLE-24",
@@ -222,9 +222,16 @@
       "rule": "Strategic capabilities execute only through registered adapters, explicit lifecycle transitions, stable contracts, idempotency for mutations and durable evidence. Unknown execution paths fail closed.",
       "blocking": true,
       "automated_rule": "capability-orchestrator-integrity"
+    },
+    {
+      "id": "ARTICLE-38",
+      "title": "Dependency and Human Review Integrity",
+      "rule": "A capability may execute only when all declared capability dependencies are backed by completed, correlated execution evidence. Consequential manual-review states may become complete only through an explicit human decision with reviewer identity and evidence; rejection fails closed.",
+      "blocking": true,
+      "automated_rule": "capability-dependency-review-integrity"
     }
   ],
-  "updated_at": "2026-07-29T07:49:00+02:00",
+  "updated_at": "2026-07-30T07:45:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

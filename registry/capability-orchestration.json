@@ -1,15 +1,17 @@
 {
-  "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.324",
+  "schema_version": "1.1",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.325",
   "execution_policy": {
-    "dependency_mode": "explicit",
+    "dependency_mode": "completed_execution_evidence",
     "default_timeout_ms": 30000,
     "max_parallel_executions": 8,
     "idempotency_required_for_mutations": true,
     "high_consequence_requires_human_approval": true,
     "unknown_service_policy": "block",
-    "contract_violation_policy": "fail_closed"
+    "contract_violation_policy": "fail_closed",
+    "dependency_violation_policy": "block",
+    "review_violation_policy": "fail_closed"
   },
   "status_transitions": {
     "requested": ["blocked", "running", "cancelled"],
@@ -25,9 +27,23 @@
     "fallback": "none",
     "require_explicit_adapter": true
   },
+  "dependency_policy": {
+    "required_status": "completed",
+    "require_same_correlation": true,
+    "require_evidence": true,
+    "allow_explicit_execution_references": true
+  },
   "evidence_policy": {
     "completed_requires_evidence": true,
     "failed_requires_error": true,
-    "manual_review_requires_reason": true
+    "manual_review_requires_reason": true,
+    "approval_requires_reviewer_identity": true,
+    "approval_requires_evidence": true
+  },
+  "review_policy": {
+    "allowed_decisions": ["approved", "rejected"],
+    "role_is_assignment_not_architecture": true,
+    "review_record_is_immutable": true,
+    "rejection_is_terminal_failure": true
   }
 }

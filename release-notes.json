@@ -1,25 +1,25 @@
 {
-  "release": "v2026.07.24.324",
-  "name": "Governed Capability Orchestration Runtime",
-  "platform_version": "v2026.07.24.324",
-  "summary": "Adds the governed runtime that turns strategic capability contracts into safe, traceable service execution without replacing existing services.",
+  "release": "v2026.07.24.325",
+  "name": "Dependency and Human Review Control Runtime",
+  "platform_version": "v2026.07.24.325",
+  "summary": "Enforces declared capability dependencies through completed correlated evidence and adds explicit, auditable human approval and rejection for manual-review executions.",
   "major_changes": [
-    "Capability execution envelope and lifecycle schema",
-    "Registered service-adapter orchestration runtime",
-    "Fail-closed execution and explicit blocked states",
-    "Idempotency enforcement for mutating operations",
-    "Evidence, audit and event requirements",
-    "Manual-review execution state",
-    "ADR-024 and Constitution Article 37"
+    "Dependency evidence enforcement for declared capability chains",
+    "Correlation-safe execution references",
+    "Explicit human approval and rejection decisions",
+    "Reviewer identity and decision evidence requirements",
+    "Fail-closed review and dependency violations",
+    "Blocked execution retry and cancellation",
+    "ADR-025 and Constitution Article 38"
   ],
   "test_focus": [
     "Run the complete quality suite",
-    "Verify capability execution blocks when no adapter exists",
-    "Verify successful execution requires evidence",
-    "Verify mutating adapters require idempotency keys",
-    "Verify existing public and workspace behaviour remains unchanged"
+    "Verify incomplete dependencies block execution",
+    "Verify completed correlated dependency evidence unlocks execution",
+    "Verify approval requires reviewer identity and evidence",
+    "Verify rejection fails closed and existing experiences remain unchanged"
   ],
-  "release_name": "Governed Capability Orchestration Runtime",
-  "title": "Governed Capability Orchestration Runtime",
+  "release_name": "Dependency and Human Review Control Runtime",
+  "title": "Dependency and Human Review Control Runtime",
   "build": "2026-07-30T07:45:00+02:00"
 }

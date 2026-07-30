@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.324",
+  "platform_version": "v2026.07.24.325",
   "assignment_policy": "Review capabilities are stable. Human or digital role assignment is tenant configuration and may change without changing architecture.",
   "reviews": [
     {

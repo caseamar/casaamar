@@ -1,8 +1,8 @@
 {
-  "platform_version": "v2026.07.24.324",
+  "platform_version": "v2026.07.24.325",
   "build": "2026-07-30T07:45:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Governed Capability Orchestration Runtime",
+  "release_name": "Dependency and Human Review Control Runtime",
   "generated_at": "2026-07-30T07:45:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
@@ -802,12 +802,15 @@
     "compatibility": "non-breaking-over-existing-services"
   },
   "capability_orchestrator": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry": "/core/casa-capability-orchestrator.js",
     "policy": "/registry/capability-orchestration.json",
     "execution_schema": "/schemas/capability-execution.schema.json",
     "fail_closed": true,
     "mutation_idempotency": true,
-    "evidence_required": true
+    "evidence_required": true,
+    "review_schema": "/schemas/capability-review.schema.json",
+    "dependency_evidence_required": true,
+    "human_review_decision_required": true
   }
 }

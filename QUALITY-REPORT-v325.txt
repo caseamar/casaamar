@@ -1,0 +1,21 @@
+Casa Amar Platform v2026.07.24.325
+Dependency and Human Review Control Runtime
+
+Complete quality suite: PASS
+Release Quality Gate: 1763 passed, 0 failed
+Behaviour Governance: 194 passed
+Engineering Governance: 124 passed
+Platform Integrity: 251 passed
+Verification Governance: 61 passed
+Mutation Resistance: 4 killed, 0 survived
+Constitution Engine: 38 principles, 100% automated coverage
+Public Experience Quality: 24 passed
+
+New runtime validation:
+- Declared dependency evidence enforcement: PASS
+- Correlation-safe capability chains: PASS
+- Explicit review approval and rejection: PASS
+- Reviewer identity and evidence requirements: PASS
+- Fail-closed dependency and review violations: PASS
+- Blocked execution retry and cancellation: PASS
+- Existing capability contracts and adapters: PASS

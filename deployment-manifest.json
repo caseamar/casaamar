@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "release": "v2026.07.24.324",
-  "platform_version": "v2026.07.24.324",
+  "release": "v2026.07.24.325",
+  "platform_version": "v2026.07.24.325",
   "generated_at": "2026-07-30T07:45:00+02:00",
   "strategy": "complete_replace",
   "preserve": [

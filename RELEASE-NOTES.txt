@@ -1,3 +1,8 @@
-Platform v2026.07.24.324 – Governed Capability Orchestration Runtime
+Platform v2026.07.24.325 – Dependency and Human Review Control Runtime
 
-Adds a fail-closed capability execution runtime with registered service adapters, explicit lifecycle transitions, mutation idempotency, evidence requirements, events, audit and manual review. Existing services are preserved and can be migrated incrementally.
+Enforces declared capability dependencies using completed correlated execution evidence and adds an explicit, auditable human review decision path. Approval requires reviewer identity and evidence; rejection fails closed. Existing capability contracts and service adapters remain compatible.
+
+Test focus:
+- Confirm existing public and platform experiences behave normally.
+- Confirm Platform Doctor and release surfaces show v2026.07.24.325.
+- Validate dependency-blocked executions, review approval/rejection and normal deployment.

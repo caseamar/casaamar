@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.324
+Casa Amar Platform v2026.07.24.325
 Release: Semantic Discovery Engine and Compact Experience Results
 
 AUTOMATED CHECKS

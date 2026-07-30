@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.324",
+      "version": "v2026.07.24.325",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -554,12 +554,12 @@
     {
       "id": "capability-orchestrator",
       "display_name": "Capability Orchestrator",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "owner": "Platform Kernel",
       "status_source": "module",
       "manifest_key": "capability_orchestrator",
       "entry": "/core/casa-capability-orchestrator.js",
-      "description": "Executes strategic capabilities through registered service adapters with governed lifecycle, idempotency, evidence and audit.",
+      "description": "Executes strategic capabilities through registered service adapters with governed dependencies, idempotency, evidence, auditable human review and fail-closed lifecycle control.",
       "dashboard": false,
       "dashboard_entry": null
     }
