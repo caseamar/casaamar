@@ -1,0 +1,514 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.323",
+  "contracts": [
+    {
+      "id": "capability.understanding.v1",
+      "version": "1.0.0",
+      "capability_id": "understanding",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.understanding.started",
+        "completed": "capability.understanding.completed",
+        "failed": "capability.understanding.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.assessment.v1",
+      "version": "1.0.0",
+      "capability_id": "assessment",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.assessment.started",
+        "completed": "capability.assessment.completed",
+        "failed": "capability.assessment.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.guidance.v1",
+      "version": "1.0.0",
+      "capability_id": "guidance",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.guidance.started",
+        "completed": "capability.guidance.completed",
+        "failed": "capability.guidance.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.decision.v1",
+      "version": "1.0.0",
+      "capability_id": "decision",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.decision.started",
+        "completed": "capability.decision.completed",
+        "failed": "capability.decision.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.execution.v1",
+      "version": "1.0.0",
+      "capability_id": "execution",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.execution.started",
+        "completed": "capability.execution.completed",
+        "failed": "capability.execution.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.evidence.v1",
+      "version": "1.0.0",
+      "capability_id": "evidence",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.evidence.started",
+        "completed": "capability.evidence.completed",
+        "failed": "capability.evidence.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.learning.v1",
+      "version": "1.0.0",
+      "capability_id": "learning",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.learning.started",
+        "completed": "capability.learning.completed",
+        "failed": "capability.learning.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.experience.v1",
+      "version": "1.0.0",
+      "capability_id": "experience",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.experience.started",
+        "completed": "capability.experience.completed",
+        "failed": "capability.experience.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.governance.v1",
+      "version": "1.0.0",
+      "capability_id": "governance",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.governance.started",
+        "completed": "capability.governance.completed",
+        "failed": "capability.governance.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.configuration.v1",
+      "version": "1.0.0",
+      "capability_id": "configuration",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.configuration.started",
+        "completed": "capability.configuration.completed",
+        "failed": "capability.configuration.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.integration.v1",
+      "version": "1.0.0",
+      "capability_id": "integration",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.integration.started",
+        "completed": "capability.integration.completed",
+        "failed": "capability.integration.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.observability.v1",
+      "version": "1.0.0",
+      "capability_id": "observability",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.observability.started",
+        "completed": "capability.observability.completed",
+        "failed": "capability.observability.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    },
+    {
+      "id": "capability.release.v1",
+      "version": "1.0.0",
+      "capability_id": "release",
+      "inputs": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "outputs": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "partial",
+              "failed",
+              "manual_review"
+            ]
+          },
+          "evidence": {
+            "type": "array"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "events": {
+        "started": "capability.release.started",
+        "completed": "capability.release.completed",
+        "failed": "capability.release.failed"
+      },
+      "compatibility": "backward-compatible-within-major",
+      "status": "active"
+    }
+  ]
+}

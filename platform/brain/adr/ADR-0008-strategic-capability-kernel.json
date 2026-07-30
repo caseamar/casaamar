@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "id": "ADR-0008-strategic-capability-kernel",
+  "title": "Strategic Capability Kernel over Existing Services",
+  "status": "accepted",
+  "date": "2026-07-30",
+  "context": "The platform already contains strong services and atomic capability operations, but abstraction levels are mixed and governance risks becoming role-driven.",
+  "decision": "Introduce an authoritative strategic capability model and runtime above existing services. Keep atomic operations in registry/capabilities.json. Model reviews as stable capabilities and role assignments as configuration.",
+  "consequences": [
+    "Existing services are reused without a big-bang rewrite",
+    "Capabilities become traceable from value chain to contracts, services, reviews and metrics",
+    "Organisational roles can change without changing platform architecture",
+    "Release validation can detect orphan dependencies, contracts, reviews and services"
+  ]
+}

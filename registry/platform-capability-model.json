@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.323",
+  "purpose": "Authoritative strategic capability model. Atomic operations remain in registry/capabilities.json and are mapped through services.",
+  "architecture_rule": "Value chain -> strategic capability -> stable contract -> service -> experience. Human roles are configurable assignees, not architecture.",
+  "capabilities": [
+    {
+      "id": "understanding",
+      "name": "Understanding",
+      "value_chain_stage": "understanding",
+      "mission": "Create a reliable, explainable understanding of context, intent, content, assets and domain facts.",
+      "outcomes": [
+        "Relevant context is available",
+        "Facts are evidence-backed",
+        "Unknowns are explicit"
+      ],
+      "dependencies": [],
+      "services": [
+        "discovery-core",
+        "ai-knowledge-graph",
+        "repository-intelligence",
+        "content-intelligence",
+        "asset-intelligence",
+        "observation-platform"
+      ],
+      "contracts": [
+        "capability.understanding.v1"
+      ],
+      "reviews": [
+        "evidence-validation",
+        "privacy-validation"
+      ],
+      "metrics": [
+        "evidence_coverage",
+        "unknown_fact_rate",
+        "context_resolution_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "assessment",
+      "name": "Assessment",
+      "value_chain_stage": "assessment",
+      "mission": "Evaluate current state, quality, risk, impact and readiness using explicit criteria.",
+      "outcomes": [
+        "Status is measurable",
+        "Risk is classified",
+        "Gaps are explainable"
+      ],
+      "dependencies": [
+        "understanding"
+      ],
+      "services": [
+        "platform-doctor",
+        "diagnostics",
+        "engineering-governance",
+        "behaviour-governance",
+        "platform-integrity",
+        "verification-governance",
+        "improvement-engine"
+      ],
+      "contracts": [
+        "capability.assessment.v1"
+      ],
+      "reviews": [
+        "architecture-validation",
+        "behaviour-validation",
+        "security-validation"
+      ],
+      "metrics": [
+        "assessment_coverage",
+        "false_pass_rate",
+        "manual_review_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "value_chain_stage": "guidance",
+      "mission": "Turn assessed evidence into understandable, actionable and prioritised guidance.",
+      "outcomes": [
+        "Recommendations are actionable",
+        "Consequences are explicit",
+        "Next action is clear"
+      ],
+      "dependencies": [
+        "assessment"
+      ],
+      "services": [
+        "recommendation-engine",
+        "platform-intelligence"
+      ],
+      "contracts": [
+        "capability.guidance.v1"
+      ],
+      "reviews": [
+        "business-value-validation",
+        "ai-output-validation"
+      ],
+      "metrics": [
+        "actionability_rate",
+        "recommendation_acceptance_rate",
+        "clarification_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "decision",
+      "name": "Decision",
+      "value_chain_stage": "decision",
+      "mission": "Support explicit, explainable and human-governed decisions.",
+      "outcomes": [
+        "Decision authority is clear",
+        "Evidence is preserved",
+        "High-risk decisions require approval"
+      ],
+      "dependencies": [
+        "guidance"
+      ],
+      "services": [
+        "decision-engine",
+        "governance",
+        "recommendation-engine"
+      ],
+      "contracts": [
+        "capability.decision.v1"
+      ],
+      "reviews": [
+        "human-control-validation",
+        "legal-compliance-validation"
+      ],
+      "metrics": [
+        "decision_traceability",
+        "approval_compliance",
+        "decision_reversal_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "execution",
+      "name": "Execution",
+      "value_chain_stage": "execution",
+      "mission": "Execute approved work through governed, idempotent and observable actions.",
+      "outcomes": [
+        "Approved actions execute once",
+        "Failures are visible",
+        "State changes are consistent"
+      ],
+      "dependencies": [
+        "decision"
+      ],
+      "services": [
+        "action-engine",
+        "platform-orchestrator",
+        "content-operations",
+        "workspace-operating-system"
+      ],
+      "contracts": [
+        "capability.execution.v1"
+      ],
+      "reviews": [
+        "execution-safety-validation",
+        "deployment-validation"
+      ],
+      "metrics": [
+        "execution_success_rate",
+        "duplicate_action_rate",
+        "rollback_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "evidence",
+      "name": "Evidence",
+      "value_chain_stage": "evidence",
+      "mission": "Capture durable evidence of actions, state, verification and outcomes.",
+      "outcomes": [
+        "Claims are traceable",
+        "Audit history is durable",
+        "Verification evidence is complete"
+      ],
+      "dependencies": [
+        "execution"
+      ],
+      "services": [
+        "audit-engine",
+        "event-engine",
+        "observation-platform",
+        "verification-governance",
+        "release-governance"
+      ],
+      "contracts": [
+        "capability.evidence.v1"
+      ],
+      "reviews": [
+        "evidence-validation",
+        "audit-validation"
+      ],
+      "metrics": [
+        "evidence_completeness",
+        "trace_resolution_rate",
+        "orphan_evidence_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "learning",
+      "name": "Learning",
+      "value_chain_stage": "learning",
+      "mission": "Convert verified outcomes, defects and decisions into durable platform improvement.",
+      "outcomes": [
+        "Learning is versioned",
+        "Regression protection increases",
+        "Repeated defects decline"
+      ],
+      "dependencies": [
+        "evidence"
+      ],
+      "services": [
+        "learning-registry",
+        "improvement-engine",
+        "project-brain"
+      ],
+      "contracts": [
+        "capability.learning.v1"
+      ],
+      "reviews": [
+        "learning-quality-validation"
+      ],
+      "metrics": [
+        "regression_prevention_rate",
+        "repeated_defect_rate",
+        "measured_improvement_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "experience",
+      "name": "Experience",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Deliver replaceable, coherent and context-aware user experiences over stable platform contracts.",
+      "outcomes": [
+        "Experiences remain replaceable",
+        "Context transfers safely",
+        "User flows are complete"
+      ],
+      "dependencies": [
+        "understanding",
+        "guidance",
+        "decision",
+        "execution"
+      ],
+      "services": [
+        "experience-engine",
+        "experience-context",
+        "workspace-operating-system",
+        "public-website-runtime"
+      ],
+      "contracts": [
+        "capability.experience.v1"
+      ],
+      "reviews": [
+        "experience-quality-validation",
+        "accessibility-validation"
+      ],
+      "metrics": [
+        "journey_completion_rate",
+        "context_handoff_success",
+        "experience_contract_violations"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "governance",
+      "name": "Governance",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Apply policy, reviews, approval and accountability without hardcoding organisational roles.",
+      "outcomes": [
+        "Reviews are capability-based",
+        "Role assignment is configurable",
+        "Policy violations block safely"
+      ],
+      "dependencies": [
+        "assessment",
+        "decision",
+        "evidence"
+      ],
+      "services": [
+        "governance",
+        "engineering-governance",
+        "behaviour-governance",
+        "verification-governance",
+        "release-governance",
+        "platform-integrity"
+      ],
+      "contracts": [
+        "capability.governance.v1"
+      ],
+      "reviews": [
+        "architecture-validation",
+        "security-validation",
+        "privacy-validation",
+        "legal-compliance-validation",
+        "release-validation"
+      ],
+      "metrics": [
+        "policy_compliance_rate",
+        "unassigned_review_rate",
+        "governance_bypass_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "configuration",
+      "name": "Configuration",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Keep business, tenant and experience variation versioned and outside core code.",
+      "outcomes": [
+        "Variation is configuration-driven",
+        "Invalid configuration fails early",
+        "Tenant isolation is preserved"
+      ],
+      "dependencies": [],
+      "services": [
+        "configuration",
+        "data-contracts",
+        "subsystem-registry"
+      ],
+      "contracts": [
+        "capability.configuration.v1"
+      ],
+      "reviews": [
+        "configuration-validation"
+      ],
+      "metrics": [
+        "hardcoded_rule_rate",
+        "configuration_validation_rate",
+        "tenant_leakage_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "integration",
+      "name": "Integration",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Connect providers, channels and tools through replaceable adapters and canonical contracts.",
+      "outcomes": [
+        "Providers are replaceable",
+        "Interfaces are contract-first",
+        "Failures are isolated"
+      ],
+      "dependencies": [
+        "configuration",
+        "evidence"
+      ],
+      "services": [
+        "ai-service-layer",
+        "event-engine",
+        "data-contracts"
+      ],
+      "contracts": [
+        "capability.integration.v1"
+      ],
+      "reviews": [
+        "integration-contract-validation",
+        "security-validation"
+      ],
+      "metrics": [
+        "adapter_replaceability",
+        "contract_failure_rate",
+        "integration_recovery_rate"
+      ],
+      "status": "foundation"
+    },
+    {
+      "id": "observability",
+      "name": "Observability",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Expose health, behaviour, evidence and operational state across the platform.",
+      "outcomes": [
+        "Failures are diagnosable",
+        "Critical flows are traceable",
+        "Operational status is current"
+      ],
+      "dependencies": [
+        "evidence"
+      ],
+      "services": [
+        "platform-doctor",
+        "diagnostics",
+        "platform-intelligence",
+        "ai-operations-center",
+        "event-engine"
+      ],
+      "contracts": [
+        "capability.observability.v1"
+      ],
+      "reviews": [
+        "operational-readiness-validation"
+      ],
+      "metrics": [
+        "diagnostic_coverage",
+        "mean_time_to_explain",
+        "silent_failure_rate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "release",
+      "name": "Release",
+      "value_chain_stage": "cross-cutting",
+      "mission": "Produce reproducible, verified and deployable releases with atomic identity and evidence.",
+      "outcomes": [
+        "Release identity is atomic",
+        "Required gates are complete",
+        "Deployment can be verified"
+      ],
+      "dependencies": [
+        "assessment",
+        "governance",
+        "evidence",
+        "observability"
+      ],
+      "services": [
+        "release-governance",
+        "verification-governance",
+        "platform-integrity",
+        "repository-intelligence",
+        "platform-doctor"
+      ],
+      "contracts": [
+        "capability.release.v1"
+      ],
+      "reviews": [
+        "release-validation",
+        "deployment-validation",
+        "behaviour-validation"
+      ],
+      "metrics": [
+        "release_gate_pass_rate",
+        "version_drift_rate",
+        "deployment_verification_rate"
+      ],
+      "status": "active"
+    }
+  ]
+}

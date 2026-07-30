@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "3.3.0",
-  "platform_version": "v2026.07.24.322",
+  "version": "4.0.0",
+  "platform_version": "v2026.07.24.323",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -194,6 +194,27 @@
       "title": "Primary CTA Runtime Verification",
       "rule": "A primary user action is not verified until the executable interaction chain proves that it changes the visible state or reaches a clear error terminal state. Silent or stale actions block release.",
       "blocking": true
+    },
+    {
+      "id": "ARTICLE-34",
+      "title": "Strategic Capability Traceability",
+      "rule": "Every material platform change must trace from value-chain stage through strategic capability, contract, registered service and experience.",
+      "blocking": true,
+      "automated_rule": "capability-kernel-integrity"
+    },
+    {
+      "id": "ARTICLE-35",
+      "title": "Roles are Configuration",
+      "rule": "Human and digital roles may be assigned to review capabilities, but organisational roles must not define platform architecture.",
+      "blocking": true,
+      "automated_rule": "role-independent-governance"
+    },
+    {
+      "id": "ARTICLE-36",
+      "title": "Evolution before Replacement",
+      "rule": "Existing services must be reused or migrated unless repository evidence demonstrates that replacement is safer and materially improves the target architecture.",
+      "blocking": true,
+      "automated_rule": "repository-migration-integrity"
     }
   ],
   "updated_at": "2026-07-29T07:49:00+02:00",

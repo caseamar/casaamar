@@ -1,4 +1,4 @@
-Casa Amar Platform v2026.07.24.321
+Casa Amar Platform v2026.07.24.323
 Discovery Content Intelligence and Search Precision
 
 Automated quality gate: 1,406 passed, 0 failed.

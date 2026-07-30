@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.323",
+  "assignment_policy": "Review capabilities are stable. Human or digital role assignment is tenant configuration and may change without changing architecture.",
+  "reviews": [
+    {
+      "id": "business-value-validation",
+      "name": "Business Value Validation",
+      "purpose": "Confirm expected outcome and measurable value.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "architecture-validation",
+      "name": "Architecture Validation",
+      "purpose": "Confirm boundaries, reuse, coupling, scalability and technical-debt impact.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "security-validation",
+      "name": "Security Validation",
+      "purpose": "Confirm threats, access control and secure defaults.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "privacy-validation",
+      "name": "Privacy Validation",
+      "purpose": "Confirm purpose limitation, data minimisation, retention and consent requirements.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "legal-compliance-validation",
+      "name": "Legal and Compliance Validation",
+      "purpose": "Confirm applicable legal and regulatory obligations.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "behaviour-validation",
+      "name": "Behaviour Validation",
+      "purpose": "Confirm complete expected and forbidden behaviour chains.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "evidence-validation",
+      "name": "Evidence Validation",
+      "purpose": "Confirm claims and decisions are supported by resolvable evidence.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "audit-validation",
+      "name": "Audit Validation",
+      "purpose": "Confirm material actions and decisions are traceable.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "human-control-validation",
+      "name": "Human Control Validation",
+      "purpose": "Confirm consequential decisions remain under explicit human control.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "ai-output-validation",
+      "name": "AI Output Validation",
+      "purpose": "Confirm AI output is fit for purpose, grounded and confidence-qualified.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "execution-safety-validation",
+      "name": "Execution Safety Validation",
+      "purpose": "Confirm approved actions are bounded, idempotent and recoverable.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "deployment-validation",
+      "name": "Deployment Validation",
+      "purpose": "Confirm the deployed build matches the approved release.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "learning-quality-validation",
+      "name": "Learning Quality Validation",
+      "purpose": "Confirm learning is based on measured and verified outcomes.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "experience-quality-validation",
+      "name": "Experience Quality Validation",
+      "purpose": "Confirm journeys are coherent, complete and understandable.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "accessibility-validation",
+      "name": "Accessibility Validation",
+      "purpose": "Confirm experience accessibility requirements are met.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "configuration-validation",
+      "name": "Configuration Validation",
+      "purpose": "Confirm configuration is valid, versioned and isolated.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "integration-contract-validation",
+      "name": "Integration Contract Validation",
+      "purpose": "Confirm adapters satisfy canonical contracts and failure policies.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "operational-readiness-validation",
+      "name": "Operational Readiness Validation",
+      "purpose": "Confirm monitoring, diagnostics and recovery evidence exist.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    },
+    {
+      "id": "release-validation",
+      "name": "Release Validation",
+      "purpose": "Confirm all mandatory capability gates and artefacts pass.",
+      "assignee_ref": null,
+      "required_evidence": [],
+      "status": "active"
+    }
+  ]
+}

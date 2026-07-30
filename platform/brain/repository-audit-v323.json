@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.323",
+  "scope": "Repository architecture audit for capability foundation",
+  "decision": "Evolve the existing platform. Do not rebuild. Preserve proven runtimes and introduce a strategic capability kernel above existing services.",
+  "findings": [
+    {
+      "classification": "reuse",
+      "targets": [
+        "event-engine",
+        "data-contracts",
+        "experience-context",
+        "verification-governance",
+        "release-governance",
+        "platform-integrity",
+        "workspace-operating-system"
+      ],
+      "reason": "Boundaries and contracts are already explicit and aligned with the target architecture."
+    },
+    {
+      "classification": "refactor",
+      "targets": [
+        "registry/capabilities.json",
+        "core/casa-capability-intelligence.js"
+      ],
+      "reason": "They correctly model atomic operations and impact, but previously mixed strategic capabilities, operations and governance concepts. They remain supported below the new strategic model."
+    },
+    {
+      "classification": "merge-logically",
+      "targets": [
+        "platform-intelligence",
+        "domain-intelligence",
+        "content-intelligence",
+        "asset-intelligence",
+        "repository-intelligence"
+      ],
+      "reason": "Keep separate services, but map them under stable strategic capabilities instead of creating another combined runtime."
+    },
+    {
+      "classification": "retain-as-experience",
+      "targets": [
+        "public-website-runtime",
+        "content-studio",
+        "asset-studio",
+        "guided-work"
+      ],
+      "reason": "These are replaceable experiences and workspaces, not platform capabilities."
+    },
+    {
+      "classification": "retire",
+      "targets": [],
+      "reason": "No subsystem is retired in this migration because available evidence does not justify destructive removal."
+    }
+  ],
+  "risks": [
+    {
+      "id": "mixed-abstraction-levels",
+      "mitigation": "Separate strategic capability model from atomic operation registry."
+    },
+    {
+      "id": "role-hardcoding",
+      "mitigation": "Use review-capability registry with configurable assignee references."
+    },
+    {
+      "id": "big-bang-migration",
+      "mitigation": "Add compatibility runtime and keep all existing service APIs unchanged."
+    }
+  ],
+  "migration_policy": [
+    "No breaking changes to existing services",
+    "No new direct provider dependencies",
+    "Every strategic capability must resolve contracts, reviews and registered services",
+    "Future features must trace to a strategic capability"
+  ]
+}

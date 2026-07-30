@@ -1,23 +1,22 @@
 {
-  "release": "v2026.07.24.322",
-  "name": "Platform Lifecycle Runtime Hardening",
-  "platform_version": "v2026.07.24.322",
-  "summary": "Hardens the Platform Lifecycle runtime so implementation, stage completion and continuous-improvement actions update immediately, persist safely and emit governed events.",
+  "release": "v2026.07.24.323",
+  "name": "Strategic Capability Kernel Foundation",
+  "platform_version": "v2026.07.24.323",
+  "summary": "Introduces a non-breaking strategic capability kernel above the existing platform services, with explicit contracts, capability-based reviews, repository migration evidence and automated integrity validation.",
   "major_changes": [
-    "Corrected lifecycle event publishing",
-    "Registered platform journey event contracts",
-    "Explicit lifecycle UI controller",
-    "Visible success and error feedback",
-    "End-to-end lifecycle button regression test"
+    "Authoritative strategic capability model",
+    "Capability contracts and runtime traceability",
+    "Role-independent review capability registry",
+    "Repository reuse/refactor audit",
+    "Release-blocking capability kernel integrity test"
   ],
   "test_focus": [
-    "Open /platform-lifecycle.html",
-    "Start the implementation journey and confirm Demo is active",
-    "Complete Demo and confirm Onboarding becomes active",
-    "Start the improvement loop and confirm Insights becomes active",
-    "Reload and confirm journey state persists"
+    "Run the complete quality suite",
+    "Confirm all strategic capabilities resolve dependencies, contracts, reviews and registered services",
+    "Confirm existing public and workspace behaviour remains unchanged",
+    "Inspect repository-audit-v323.json for reuse and migration decisions"
   ],
-  "release_name": "Platform Lifecycle Runtime Hardening",
-  "title": "Platform Lifecycle Runtime Hardening",
-  "build": "2026-07-29T19:10:00+02:00"
+  "release_name": "Strategic Capability Kernel Foundation",
+  "title": "Strategic Capability Kernel Foundation",
+  "build": "2026-07-30T07:30:00+02:00"
 }

@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.322",
-  "build": "2026-07-29T19:10:00+02:00",
+  "platform_version": "v2026.07.24.323",
+  "build": "2026-07-30T07:30:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Platform Lifecycle Runtime Hardening",
-  "generated_at": "2026-07-29T19:10:00+02:00",
+  "release_name": "Strategic Capability Kernel Foundation",
+  "generated_at": "2026-07-30T07:30:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-29T19:10:00+02:00"
+    "build": "2026-07-30T07:30:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -789,5 +789,16 @@
     "version": "1.0.1",
     "entry": "/core/casa-platform-orchestrator.js",
     "journey_registry": "/registry/platform-journeys.json"
+  },
+  "capability_kernel": {
+    "version": "1.0.0",
+    "entry": "/core/casa-capability-kernel.js",
+    "model": "/registry/platform-capability-model.json",
+    "contracts": "/registry/capability-contracts.json",
+    "reviews": "/registry/review-capabilities.json",
+    "audit": "/platform/brain/repository-audit-v323.json",
+    "strategic_capabilities": 13,
+    "role_independent_governance": true,
+    "compatibility": "non-breaking-over-existing-services"
   }
 }
