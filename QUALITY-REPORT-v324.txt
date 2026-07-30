@@ -1,0 +1,22 @@
+Casa Amar Platform v2026.07.24.324
+Governed Capability Orchestration Runtime
+
+Complete quality suite: PASS
+Release Quality Gate: 1763 passed, 0 failed
+Behaviour Governance: 194 passed
+Engineering Governance: 124 passed
+Platform Integrity: 251 passed
+Verification Governance: 61 passed
+Mutation Resistance: 4 killed, 0 survived
+Constitution Engine: 37 principles, 100% automated coverage
+Public Experience Quality: 24 passed
+
+New runtime validation:
+- Capability planning and contract resolution: PASS
+- Fail-closed execution without adapter: PASS
+- Registered service adapter execution: PASS
+- Mutation idempotency enforcement: PASS
+- Evidence-required completion: PASS
+- Explicit manual-review state: PASS
+- Lifecycle transition governance: PASS
+- Event contract compatibility: PASS

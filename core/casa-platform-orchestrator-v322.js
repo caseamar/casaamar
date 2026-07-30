@@ -6,7 +6,7 @@
  const now=()=>new Date().toISOString();
  async function ensureRegistry(){
    if(registry)return registry;
-   const response=await fetch('/registry/platform-journeys.json?v=20260724.323',{cache:'no-store'});
+   const response=await fetch('/registry/platform-journeys.json?v=20260724.324',{cache:'no-store'});
    if(!response.ok)throw new Error('Journey registry could not be loaded');
    registry=await response.json();
    validate(registry);

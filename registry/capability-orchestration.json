@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.324",
+  "execution_policy": {
+    "dependency_mode": "explicit",
+    "default_timeout_ms": 30000,
+    "max_parallel_executions": 8,
+    "idempotency_required_for_mutations": true,
+    "high_consequence_requires_human_approval": true,
+    "unknown_service_policy": "block",
+    "contract_violation_policy": "fail_closed"
+  },
+  "status_transitions": {
+    "requested": ["blocked", "running", "cancelled"],
+    "blocked": ["requested", "cancelled"],
+    "running": ["completed", "failed", "manual_review", "cancelled"],
+    "manual_review": ["completed", "failed", "cancelled"],
+    "completed": [],
+    "failed": [],
+    "cancelled": []
+  },
+  "service_selection": {
+    "strategy": "registered-priority",
+    "fallback": "none",
+    "require_explicit_adapter": true
+  },
+  "evidence_policy": {
+    "completed_requires_evidence": true,
+    "failed_requires_error": true,
+    "manual_review_requires_reason": true
+  }
+}

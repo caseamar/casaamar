@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "version": "2.3.1",
-  "platform_version": "v2026.07.24.323",
+  "platform_version": "v2026.07.24.324",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
@@ -602,6 +602,104 @@
         "stage_id",
         "status",
         "updated_at"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.requested",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.started",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at",
+        "service_id"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.blocked",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "365d",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at",
+        "reason"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.completed",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "permanent",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at",
+        "service_id",
+        "evidence_count"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.failed",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "permanent",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at",
+        "service_id",
+        "error"
+      ],
+      "audited": true
+    },
+    {
+      "type": "capability.execution.reviewrequired",
+      "owner": "capability-orchestrator",
+      "category": "capability",
+      "privacy_class": "operational",
+      "retention": "permanent",
+      "required_payload": [
+        "execution_id",
+        "capability_id",
+        "contract_id",
+        "status",
+        "updated_at",
+        "service_id",
+        "reason"
       ],
       "audited": true
     }

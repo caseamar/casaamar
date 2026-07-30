@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casaamar.es/schemas/capability-execution.schema.json",
+  "title": "Capability Execution Envelope",
+  "type": "object",
+  "required": ["id", "capability_id", "contract_id", "status", "requested_at", "input", "context", "trace"],
+  "properties": {
+    "id": {"type": "string", "minLength": 8},
+    "capability_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"},
+    "contract_id": {"type": "string", "pattern": "^capability\\.[a-z0-9-]+\\.v[0-9]+$"},
+    "status": {"enum": ["requested", "blocked", "running", "completed", "failed", "manual_review", "cancelled"]},
+    "requested_at": {"type": "string", "format": "date-time"},
+    "started_at": {"type": ["string", "null"], "format": "date-time"},
+    "completed_at": {"type": ["string", "null"], "format": "date-time"},
+    "input": {"type": "object"},
+    "output": {"type": ["object", "null"]},
+    "context": {"type": "object"},
+    "trace": {
+      "type": "object",
+      "required": ["correlation_id"],
+      "properties": {
+        "correlation_id": {"type": "string", "minLength": 3},
+        "causation_id": {"type": ["string", "null"]}
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "reviews": {"type": "array", "items": {"type": "object"}},
+    "errors": {"type": "array", "items": {"type": "object"}},
+    "idempotency_key": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

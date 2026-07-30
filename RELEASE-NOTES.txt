@@ -1,12 +1,3 @@
-Casa Amar Platform v2026.07.24.323
+Platform v2026.07.24.324 – Governed Capability Orchestration Runtime
 
-Platform Lifecycle Interaction Repair
-
-- Replaces cached lifecycle runtime files with uniquely versioned v322 assets.
-- Awaits lifecycle state mutations before rendering.
-- Adds an always-visible journey/status line.
-- Adds persistent success/error feedback after every action.
-- Makes all action buttons explicit type=button controls.
-- Starts the implementation journey at Demo and continuous improvement at Indsigter.
-- Prevents completing stages before a journey has been started.
-- Adds real Chromium click-path validation.
+Adds a fail-closed capability execution runtime with registered service adapters, explicit lifecycle transitions, mutation idempotency, evidence requirements, events, audit and manual review. Existing services are preserved and can be migrated incrementally.

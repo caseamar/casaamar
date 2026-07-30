@@ -1,22 +1,25 @@
 {
-  "release": "v2026.07.24.323",
-  "name": "Strategic Capability Kernel Foundation",
-  "platform_version": "v2026.07.24.323",
-  "summary": "Introduces a non-breaking strategic capability kernel above the existing platform services, with explicit contracts, capability-based reviews, repository migration evidence and automated integrity validation.",
+  "release": "v2026.07.24.324",
+  "name": "Governed Capability Orchestration Runtime",
+  "platform_version": "v2026.07.24.324",
+  "summary": "Adds the governed runtime that turns strategic capability contracts into safe, traceable service execution without replacing existing services.",
   "major_changes": [
-    "Authoritative strategic capability model",
-    "Capability contracts and runtime traceability",
-    "Role-independent review capability registry",
-    "Repository reuse/refactor audit",
-    "Release-blocking capability kernel integrity test"
+    "Capability execution envelope and lifecycle schema",
+    "Registered service-adapter orchestration runtime",
+    "Fail-closed execution and explicit blocked states",
+    "Idempotency enforcement for mutating operations",
+    "Evidence, audit and event requirements",
+    "Manual-review execution state",
+    "ADR-024 and Constitution Article 37"
   ],
   "test_focus": [
     "Run the complete quality suite",
-    "Confirm all strategic capabilities resolve dependencies, contracts, reviews and registered services",
-    "Confirm existing public and workspace behaviour remains unchanged",
-    "Inspect repository-audit-v323.json for reuse and migration decisions"
+    "Verify capability execution blocks when no adapter exists",
+    "Verify successful execution requires evidence",
+    "Verify mutating adapters require idempotency keys",
+    "Verify existing public and workspace behaviour remains unchanged"
   ],
-  "release_name": "Strategic Capability Kernel Foundation",
-  "title": "Strategic Capability Kernel Foundation",
-  "build": "2026-07-30T07:30:00+02:00"
+  "release_name": "Governed Capability Orchestration Runtime",
+  "title": "Governed Capability Orchestration Runtime",
+  "build": "2026-07-30T07:45:00+02:00"
 }

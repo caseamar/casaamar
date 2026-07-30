@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "4.0.0",
-  "platform_version": "v2026.07.24.323",
+  "version": "4.1.0",
+  "platform_version": "v2026.07.24.324",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -125,7 +125,7 @@
     {
       "article": 23,
       "title": "AI Output Quality",
-      "rule": "AI-genereret brugerindhold må kun vises, når det har bestået formålsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive præsenteret som publiceringsklart."
+      "rule": "AI-genereret brugerindhold m\u00e5 kun vises, n\u00e5r det har best\u00e5et form\u00e5lsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive pr\u00e6senteret som publiceringsklart."
     },
     {
       "id": "ARTICLE-24",
@@ -215,6 +215,13 @@
       "rule": "Existing services must be reused or migrated unless repository evidence demonstrates that replacement is safer and materially improves the target architecture.",
       "blocking": true,
       "automated_rule": "repository-migration-integrity"
+    },
+    {
+      "id": "ARTICLE-37",
+      "title": "Governed Capability Execution",
+      "rule": "Strategic capabilities execute only through registered adapters, explicit lifecycle transitions, stable contracts, idempotency for mutations and durable evidence. Unknown execution paths fail closed.",
+      "blocking": true,
+      "automated_rule": "capability-orchestrator-integrity"
     }
   ],
   "updated_at": "2026-07-29T07:49:00+02:00",
