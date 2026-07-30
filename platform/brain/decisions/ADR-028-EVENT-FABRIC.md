@@ -1,7 +1,7 @@
 # ADR-028 — Immutable and Replayable Event Fabric
 
 **Status:** Accepted  
-**Release:** v2026.07.24.329
+**Release:** v2026.07.24.330
 
 ## Context
 The event platform already provided registered events, correlation, idempotency and runtime subscriptions, but it did not provide ordered partitions, consumer checkpoints, replay ranges or observable failed delivery. Those omissions would force future AI agents and distributed services to invent incompatible delivery semantics.

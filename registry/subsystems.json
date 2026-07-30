@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "4.1.0",
-  "updated_at": "2026-07-30T08:50:00+02:00",
+  "version": "4.2.0",
+  "updated_at": "2026-07-30T09:00:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.329",
+      "version": "v2026.07.24.330",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -598,6 +598,18 @@
       "description": "Deterministic, explainable and fail-closed evaluation of versioned governance policies.",
       "dashboard": true,
       "dashboard_entry": "/control/#platform-intelligence"
+    },
+    {
+      "id": "semantic-knowledge-runtime",
+      "display_name": "Semantic Knowledge Runtime",
+      "version": "1.0.0",
+      "owner": "Platform Intelligence",
+      "status_source": "module",
+      "manifest_key": "semantic_knowledge_runtime",
+      "entry": "/core/casa-semantic-knowledge.js",
+      "description": "Evidence-backed knowledge claims, provenance, confidence, validity, lineage and AI context assembly.",
+      "dashboard": true,
+      "dashboard_entry": "/knowledge-graph.html"
     }
   ]
 }

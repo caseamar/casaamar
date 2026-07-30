@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/semantic-knowledge.schema.json",
+  "title": "Semantic Knowledge Store",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "version",
+    "sources",
+    "evidence",
+    "claims",
+    "relations"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "claims": {
+      "type": "array"
+    },
+    "relations": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": false
+}

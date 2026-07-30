@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.1.0",
-  "platform_version": "v2026.07.24.329",
-  "updated_at": "2026-07-30T08:50:00+02:00",
+  "version": "1.2.0",
+  "platform_version": "v2026.07.24.330",
+  "updated_at": "2026-07-30T09:20:00+02:00",
   "purpose": "Authoritative machine-readable catalogue of platform building blocks and their relationships.",
   "principles": {
     "authoritative_sources_only": true,
@@ -205,6 +205,28 @@
         "event-routing",
         "replay-planning",
         "operational-impact-analysis"
+      ]
+    },
+    {
+      "id": "semantic-knowledge",
+      "source": "/registry/semantic-knowledge.json",
+      "collection": "claims",
+      "id_field": "id",
+      "version_field": null,
+      "relationship_fields": {},
+      "semantic_fields": [
+        "subject",
+        "predicate",
+        "object",
+        "statement",
+        "tags"
+      ],
+      "ai_usage": [
+        "evidence-grounding",
+        "context-assembly",
+        "reasoning",
+        "explanation",
+        "conflict-detection"
       ]
     }
   ],

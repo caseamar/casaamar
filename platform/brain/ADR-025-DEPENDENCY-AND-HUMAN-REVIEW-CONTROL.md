@@ -1,6 +1,6 @@
 # ADR-025 — Dependency and Human Review Control
 
-**Status:** Accepted — v2026.07.24.329
+**Status:** Accepted — v2026.07.24.330
 
 ## Context
 The governed capability orchestrator introduced explicit execution states and adapter control, but declared capability dependencies were still informational and manual-review executions had no governed completion path. This allowed an implementation to bypass the platform value chain or treat a review-required result as an operational dead end.

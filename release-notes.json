@@ -1,25 +1,27 @@
 {
-  "version": "v2026.07.24.329",
-  "name": "Governed Policy Runtime",
-  "summary": "Introduces deterministic, explainable and fail-closed policy evaluation over one authoritative versioned registry, enabling governance to scale across capabilities, AI agents, services and experiences without hardcoded rules.",
+  "version": "v2026.07.24.330",
+  "name": "Semantic Knowledge Runtime",
+  "summary": "Introduces an evidence-backed semantic knowledge layer with explicit provenance, confidence, temporal validity, lineage and governed AI context assembly while preserving the existing domain knowledge graph.",
   "changes": [
-    "Policy Runtime 1.0 with bounded declarative conditions",
-    "Versioned Policy Registry 2.0 with priorities, effects, obligations and evidence requirements",
-    "Deterministic conflict resolution and fail-closed registry validation",
-    "Explainable verdicts with condition traces and winning policy",
-    "Policy events for evaluation, denial and manual review",
-    "ADR-029 and Constitution Article 42"
+    "Semantic Knowledge Runtime 1.0",
+    "Authoritative claim, evidence and source registry",
+    "Explicit confidence and temporal validity",
+    "Deterministic provider-neutral retrieval fallback",
+    "Provenance and lineage traversal",
+    "Governed AI context assembly",
+    "Conflict preservation and human-review policy",
+    "ADR-030 and Constitution Article 43"
   ],
   "test_focus": [
     "Existing website and workspaces remain functional",
-    "Healthy human-approved publication remains allowed",
-    "Unhealthy releases and unsafe mutations are denied",
-    "High-risk AI decisions route to explicit human review",
-    "Platform Doctor and release surfaces show v2026.07.24.329"
+    "Knowledge claims resolve to authoritative evidence and sources",
+    "Low-confidence or conflicting knowledge remains explicit",
+    "Platform Metadata discovers semantic knowledge entities",
+    "Platform Doctor and release surfaces show v2026.07.24.330"
   ],
-  "release": "v2026.07.24.329",
-  "platform_version": "v2026.07.24.329",
-  "release_name": "Governed Policy Runtime",
-  "title": "Governed Policy Runtime",
-  "build": "2026-07-30T08:50:00+02:00"
+  "release": "v2026.07.24.330",
+  "platform_version": "v2026.07.24.330",
+  "release_name": "Semantic Knowledge Runtime",
+  "title": "Semantic Knowledge Runtime",
+  "build": "2026-07-30T09:00:00+02:00"
 }

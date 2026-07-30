@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.329",
+  "platform_version": "v2026.07.24.330",
   "purpose": "Authoritative strategic capability model. Atomic operations remain in registry/capabilities.json and are mapped through services.",
   "architecture_rule": "Value chain -> strategic capability -> stable contract -> service -> experience. Human roles are configurable assignees, not architecture.",
   "capabilities": [
@@ -19,6 +19,7 @@
       "services": [
         "discovery-core",
         "ai-knowledge-graph",
+        "semantic-knowledge-runtime",
         "repository-intelligence",
         "content-intelligence",
         "asset-intelligence",

@@ -1,0 +1,17 @@
+Casa Amar Platform v2026.07.24.330 — Semantic Knowledge Runtime
+
+Automated verification completed:
+- Full platform quality suite: passed
+- Release Quality Gate: 1775 passed, 0 failed
+- Semantic Knowledge Runtime: 4 claims, 4 evidence items, provenance, lineage and governed AI context assembly
+- Platform Metadata Runtime: 11 entity types, 176 entities, 125 relationships
+- Constitution Engine: 43 principles, 100% automated coverage
+- Platform Integrity: 267 checks passed
+- Behaviour Governance: 194 checks passed
+- Engineering Governance: 133 checks passed
+- Event Fabric: 12 checks passed
+- Data Contracts: 29 checks passed
+- Release semantic consistency: 22 checks passed
+
+Architecture outcome:
+The existing domain Knowledge Graph remains backward compatible. A new generic semantic knowledge layer adds evidence-backed claims, source provenance, explicit confidence, temporal validity, lineage traversal, deterministic provider-neutral retrieval and governed AI context assembly. Embeddings remain replaceable adapters and are never treated as authoritative truth.

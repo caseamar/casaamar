@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.330",
+  "updated_at": "2026-07-30T09:20:00+02:00",
+  "purpose": "Authoritative evidence-backed semantic knowledge store for AI retrieval, explanation and governed reasoning.",
+  "principles": {
+    "claims_require_evidence": true,
+    "provenance_required": true,
+    "confidence_is_explicit": true,
+    "temporal_validity_is_explicit": true,
+    "unknown_is_not_false": true,
+    "contradictions_are_preserved": true,
+    "embeddings_are_adapters_not_truth": true,
+    "human_review_for_material_conflicts": true
+  },
+  "confidence_model": {
+    "minimum": 0,
+    "maximum": 1,
+    "default_unverified": 0.25,
+    "review_threshold": 0.6,
+    "high_confidence_threshold": 0.85
+  },
+  "sources": [
+    {
+      "id": "source-platform-constitution",
+      "type": "registry",
+      "uri": "/platform/brain/PLATFORM-CONSTITUTION.json",
+      "authority": "constitutional",
+      "owner": "Platform Governance",
+      "version": "4.2.0"
+    },
+    {
+      "id": "source-event-fabric",
+      "type": "registry",
+      "uri": "/registry/event-fabric.json",
+      "authority": "authoritative",
+      "owner": "Platform Core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "source-policy-runtime",
+      "type": "registry",
+      "uri": "/registry/policy-runtime.json",
+      "authority": "authoritative",
+      "owner": "Platform Governance",
+      "version": "1.0.0"
+    },
+    {
+      "id": "source-platform-metadata",
+      "type": "registry",
+      "uri": "/registry/platform-metadata.json",
+      "authority": "authoritative",
+      "owner": "Platform Intelligence",
+      "version": "1.2.0"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence-industry-neutral-core",
+      "source_id": "source-platform-constitution",
+      "locator": "ARTICLE-12",
+      "evidence_type": "constitutional-rule",
+      "captured_at": "2026-07-30T09:20:00+02:00",
+      "content_hash": "sha256:article-12-industry-neutral-core"
+    },
+    {
+      "id": "evidence-event-append-only",
+      "source_id": "source-event-fabric",
+      "locator": "principles.append_only",
+      "evidence_type": "registry-field",
+      "captured_at": "2026-07-30T09:20:00+02:00",
+      "content_hash": "sha256:event-fabric-append-only"
+    },
+    {
+      "id": "evidence-policy-fail-closed",
+      "source_id": "source-policy-runtime",
+      "locator": "evaluation_contract.fail_closed",
+      "evidence_type": "registry-field",
+      "captured_at": "2026-07-30T09:20:00+02:00",
+      "content_hash": "sha256:policy-runtime-fail-closed"
+    },
+    {
+      "id": "evidence-metadata-authoritative",
+      "source_id": "source-platform-metadata",
+      "locator": "principles.authoritative_sources_only",
+      "evidence_type": "registry-field",
+      "captured_at": "2026-07-30T09:20:00+02:00",
+      "content_hash": "sha256:metadata-authoritative"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-core-industry-neutral",
+      "subject": "platform-core",
+      "predicate": "must-remain",
+      "object": "industry-neutral",
+      "statement": "Platform Core must remain independent of any specific industry, tenant, customer or experience.",
+      "status": "accepted",
+      "confidence": 1.0,
+      "evidence_ids": [
+        "evidence-industry-neutral-core"
+      ],
+      "valid_from": "2026-07-24",
+      "valid_to": null,
+      "tags": [
+        "architecture",
+        "core",
+        "scalability"
+      ]
+    },
+    {
+      "id": "claim-events-append-only",
+      "subject": "event-fabric",
+      "predicate": "uses",
+      "object": "append-only-streams",
+      "statement": "The Event Fabric uses immutable append-only event streams.",
+      "status": "accepted",
+      "confidence": 1.0,
+      "evidence_ids": [
+        "evidence-event-append-only"
+      ],
+      "valid_from": "2026-07-30",
+      "valid_to": null,
+      "tags": [
+        "events",
+        "audit",
+        "replay"
+      ]
+    },
+    {
+      "id": "claim-policy-fail-closed",
+      "subject": "policy-runtime",
+      "predicate": "fails",
+      "object": "closed",
+      "statement": "The Policy Runtime fails closed when policies are invalid or cannot be evaluated safely.",
+      "status": "accepted",
+      "confidence": 1.0,
+      "evidence_ids": [
+        "evidence-policy-fail-closed"
+      ],
+      "valid_from": "2026-07-30",
+      "valid_to": null,
+      "tags": [
+        "policy",
+        "governance",
+        "safety"
+      ]
+    },
+    {
+      "id": "claim-metadata-authoritative",
+      "subject": "platform-metadata-runtime",
+      "predicate": "indexes",
+      "object": "authoritative-sources-only",
+      "statement": "Platform Metadata Runtime indexes authoritative registries instead of duplicating their truth.",
+      "status": "accepted",
+      "confidence": 0.98,
+      "evidence_ids": [
+        "evidence-metadata-authoritative"
+      ],
+      "valid_from": "2026-07-30",
+      "valid_to": null,
+      "tags": [
+        "metadata",
+        "discovery",
+        "architecture"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation-policy-depends-metadata",
+      "from": "claim-policy-fail-closed",
+      "type": "supported-by-context",
+      "to": "claim-metadata-authoritative"
+    },
+    {
+      "id": "relation-events-support-audit",
+      "from": "claim-events-append-only",
+      "type": "supports",
+      "to": "claim-core-industry-neutral"
+    },
+    {
+      "id": "relation-metadata-supports-core",
+      "from": "claim-metadata-authoritative",
+      "type": "supports",
+      "to": "claim-core-industry-neutral"
+    }
+  ],
+  "retrieval_contract": {
+    "deterministic_lexical_fallback": true,
+    "semantic_adapter_contract": "knowledge.embedding-provider.v1",
+    "filters": [
+      "status",
+      "minimum_confidence",
+      "tags",
+      "valid_at",
+      "subject",
+      "predicate"
+    ],
+    "context_output": [
+      "claim",
+      "confidence",
+      "evidence",
+      "provenance",
+      "validity",
+      "explanation"
+    ],
+    "maximum_default_results": 20
+  },
+  "conflict_policy": {
+    "preserve_conflicting_claims": true,
+    "automatic_resolution": false,
+    "material_conflict_outcome": "manual_review"
+  }
+}
