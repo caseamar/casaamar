@@ -1,56 +1,49 @@
 (function(){
  "use strict";
- const VERSION="2.0.0";
- const MAX_HISTORY=500;
- const history=[];
- const subscribers=new Map();
- const idempotency=new Map();
- let registry={version:"0",contracts:[],principles:{}};
+ const VERSION="3.0.0";
+ const DEFAULT_MAX=2000;
+ const streams=new Map(), subscribers=new Map(), consumers=new Map(), checkpoints=new Map(), idempotency=new Map(), deadLetters=[];
+ let registry={version:"0",contracts:[],principles:{}}, fabric={version:"0",defaults:{}};
  const clone=v=>v===undefined?undefined:JSON.parse(JSON.stringify(v));
  const iso=()=>new Date().toISOString();
  const uid=p=>`${p}_${Date.now()}_${globalThis.crypto?.randomUUID?.()||Math.random().toString(36).slice(2)}`;
+ const canonical=v=>Array.isArray(v)?v.map(canonical):(v&&typeof v==="object"?Object.keys(v).sort().reduce((o,k)=>(o[k]=canonical(v[k]),o),{}):v);
+ const stable=v=>JSON.stringify(canonical(v));
+ function hash(input){let h=2166136261;for(let i=0;i<input.length;i++){h^=input.charCodeAt(i);h=Math.imul(h,16777619)}return (`00000000${(h>>>0).toString(16)}`).slice(-8)}
  async function loadContracts(){
-  try{const r=await fetch(`/registry/event-contracts.json?_=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`HTTP ${r.status}`);registry=await r.json();}
-  catch(error){registry={version:"unavailable",contracts:[],principles:{},load_error:error.message};}
-  return clone(registry);
+  try{const [a,b]=await Promise.all([fetch(`/registry/event-contracts.json?_=${Date.now()}`,{cache:"no-store"}),fetch(`/registry/event-fabric.json?_=${Date.now()}`,{cache:"no-store"})]);if(!a.ok||!b.ok)throw new Error(`HTTP ${a.status}/${b.status}`);registry=await a.json();fabric=await b.json();}
+  catch(error){registry={version:"unavailable",contracts:[],principles:{},load_error:error.message};fabric={version:"unavailable",defaults:{},load_error:error.message};}
+  return {contracts:clone(registry),fabric:clone(fabric)};
  }
  function contractFor(type){return (registry.contracts||[]).find(x=>x.type===type)||null;}
- function validate(type,payload={}){
-  const contract=contractFor(type);const errors=[];
-  if(!/^[a-z][a-z0-9]*(\.[a-z0-9]+)+$/.test(type||""))errors.push("Event type must use channel-neutral dot notation.");
-  if(!contract)errors.push("Event type is not registered.");
-  for(const key of contract?.required_payload||[])if(payload?.[key]===undefined)errors.push(`Missing payload field: ${key}`);
-  return {valid:errors.length===0,registered:Boolean(contract),errors,contract:clone(contract)};
- }
+ function partitionFor(type,options={}){if(options.partition)return options.partition;const category=contractFor(type)?.category||"platform";if(["experience","interaction","handover","analytics","workspace"].includes(category))return "experience";if(["decision","action","governance"].includes(category))return "capability";if(["knowledge","content","asset"].includes(category))return "knowledge";return "platform";}
+ function stream(partition){if(!streams.has(partition))streams.set(partition,[]);return streams.get(partition)}
+ function validate(type,payload={}){const contract=contractFor(type),errors=[];if(!/^[a-z][a-z0-9]*(\.[a-z0-9]+)+$/.test(type||""))errors.push("Event type must use channel-neutral dot notation.");if(!contract)errors.push("Event type is not registered.");for(const key of contract?.required_payload||[])if(payload?.[key]===undefined)errors.push(`Missing payload field: ${key}`);return {valid:errors.length===0,registered:Boolean(contract),errors,contract:clone(contract)};}
  function build(type,payload={},options={}){
-  const validation=validate(type,payload);const contract=validation.contract;
-  return Object.freeze({
-   id:options.id||uid("evt"),type,schema_version:"2.0",occurred_at:options.occurred_at||iso(),
-   source:{service:options.source?.service||"unknown",version:options.source?.version||"unknown"},
-   subject:clone(options.subject||null),payload:clone(payload)||{},context:clone(options.context||{}),
-   privacy:{classification:options.privacy?.classification||contract?.privacy_class||"operational",retention:options.privacy?.retention||contract?.retention||"policy"},
-   trace:{correlation_id:options.trace?.correlation_id||uid("corr"),causation_id:options.trace?.causation_id||null},
-   idempotency_key:options.idempotency_key||null,validation:{valid:validation.valid,registered:validation.registered,errors:validation.errors}
-  });
+  const validation=validate(type,payload),contract=validation.contract,partition=partitionFor(type,options),sequence=stream(partition).length+1;
+  const event={id:options.id||uid("evt"),type,schema_version:options.schema_version||contract?.schema_version||"3.0",sequence,partition,occurred_at:options.occurred_at||iso(),source:{service:options.source?.service||"unknown",version:options.source?.version||"unknown"},subject:clone(options.subject||null),payload:clone(payload)||{},context:clone(options.context||{}),privacy:{classification:options.privacy?.classification||contract?.privacy_class||"operational",retention:options.privacy?.retention||contract?.retention||"policy"},trace:{correlation_id:options.trace?.correlation_id||uid("corr"),causation_id:options.trace?.causation_id||null},idempotency_key:options.idempotency_key||null,validation:{valid:validation.valid,registered:validation.registered,errors:validation.errors}};
+  event.integrity={algorithm:"fnv1a-32",signature:hash(stable({id:event.id,type:event.type,sequence:event.sequence,partition:event.partition,occurred_at:event.occurred_at,payload:event.payload,trace:event.trace}))};
+  return Object.freeze(event);
  }
+ function verify(event){if(!event?.integrity)return false;const expected=hash(stable({id:event.id,type:event.type,sequence:event.sequence,partition:event.partition,occurred_at:event.occurred_at,payload:event.payload,trace:event.trace}));return expected===event.integrity.signature;}
+ function append(event){const s=stream(event.partition);if(event.sequence!==s.length+1)throw new Error("Event sequence conflict.");s.push(event);const max=Number(fabric.defaults?.max_runtime_events||DEFAULT_MAX);if(s.length>max)s.splice(0,s.length-max);return event;}
+ async function deliverConsumer(consumer,event){const key=`${consumer.id}:${event.partition}`;const current=checkpoints.get(key)||0;if(event.sequence<=current)return;let attempt=0,lastError=null,max=consumer.max_attempts||fabric.defaults?.max_delivery_attempts||3;while(attempt<max){attempt++;try{await consumer.handler(clone(event),{attempt,consumer_id:consumer.id});checkpoints.set(key,event.sequence);return}catch(error){lastError=error}}deadLetters.push({id:uid("dlq"),consumer_id:consumer.id,event:clone(event),attempts:attempt,error:lastError?.message||String(lastError),failed_at:iso()});window.CasaAudit?.record?.("platform.event.delivery_failed",event.type,{event_id:event.id,consumer_id:consumer.id,attempts:attempt},{owner:"event-fabric"});}
  function publish(type,payload={},options={}){
-  const event=build(type,payload,options);
-  if(!event.validation.valid&&!options.allow_unregistered)throw new Error(event.validation.errors.join(" "));
-  if(event.idempotency_key&&idempotency.has(event.idempotency_key))return clone(idempotency.get(event.idempotency_key));
-  history.push(event);if(history.length>MAX_HISTORY)history.splice(0,history.length-MAX_HISTORY);
-  if(event.idempotency_key)idempotency.set(event.idempotency_key,event);
-  for(const handler of subscribers.get(type)||[])queueMicrotask(()=>handler(clone(event)));
-  for(const handler of subscribers.get("*")||[])queueMicrotask(()=>handler(clone(event)));
-  window.CasaCore?.emit?.(type,event);window.dispatchEvent(new CustomEvent("casa:event",{detail:clone(event)}));
-  if(contractFor(type)?.audited!==false)window.CasaAudit?.record?.("platform.event",type,{event_id:event.id,valid:true,trace:event.trace,privacy:event.privacy},{owner:contractFor(type)?.owner||"event-platform"});
-  return clone(event);
+  const event=build(type,payload,options);if(!event.validation.valid&&!options.allow_unregistered)throw new Error(event.validation.errors.join(" "));if(event.idempotency_key&&idempotency.has(event.idempotency_key))return clone(idempotency.get(event.idempotency_key));append(event);if(event.idempotency_key)idempotency.set(event.idempotency_key,event);
+  for(const handler of subscribers.get(type)||[])queueMicrotask(()=>handler(clone(event)));for(const handler of subscribers.get("*")||[])queueMicrotask(()=>handler(clone(event)));
+  for(const consumer of consumers.values())if(consumer.event_types.includes("*")||consumer.event_types.includes(type))queueMicrotask(()=>deliverConsumer(consumer,event));
+  window.CasaCore?.emit?.(type,event);window.dispatchEvent(new CustomEvent("casa:event",{detail:clone(event)}));if(contractFor(type)?.audited!==false)window.CasaAudit?.record?.("platform.event",type,{event_id:event.id,sequence:event.sequence,partition:event.partition,valid:true,trace:event.trace,privacy:event.privacy,integrity:event.integrity},{owner:contractFor(type)?.owner||"event-fabric"});return clone(event);
  }
- function subscribe(type,handler,{replayLatest=false}={}){if(!subscribers.has(type))subscribers.set(type,new Set());subscribers.get(type).add(handler);if(replayLatest){const e=[...history].reverse().find(x=>type==="*"||x.type===type);if(e)queueMicrotask(()=>handler(clone(e)));}return()=>subscribers.get(type)?.delete(handler);}
- function once(type,handler){const off=subscribe(type,e=>{off();handler(e)});return off;}
- function waitFor(type,{timeout=5000,replayLatest=false}={}){return new Promise((resolve,reject)=>{let off=()=>{};const timer=setTimeout(()=>{off();reject(new Error(`Timed out waiting for ${type}`));},timeout);off=subscribe(type,e=>{clearTimeout(timer);off();resolve(e)},{replayLatest});});}
- function recent({limit=20,type,correlation_id}={}){return clone(history.filter(e=>(!type||e.type===type)&&(!correlation_id||e.trace.correlation_id===correlation_id)).slice(-limit).reverse());}
- function snapshot(){return {version:VERSION,ready:true,contract_version:registry.version||null,contract_count:registry.contracts?.length||0,event_count:history.length,subscriber_types:subscribers.size,idempotency_entries:idempotency.size,channel_neutral:Boolean(registry.principles?.channel_neutral),privacy_by_design:Boolean(registry.principles?.privacy_by_design)};}
- window.CasaEvents={VERSION,version:VERSION,loadContracts,contractFor,validate,build,publish,subscribe,once,waitFor,recent,snapshot,get registry(){return clone(registry)},ready:true};
- window.CasaCore?.modules?.register?.({id:"event-platform",version:VERSION,capabilities:["events.registered","events.publish","events.subscribe","events.trace","events.idempotency","events.privacy","events.audit"]});
- loadContracts().then(()=>publish("platform.events.ready",{version:VERSION,contract_version:registry.version},{source:{service:"event-platform",version:VERSION},idempotency_key:`event-platform-ready-${VERSION}`})).catch(()=>{});
+ function subscribe(type,handler,{replayLatest=false}={}){if(!subscribers.has(type))subscribers.set(type,new Set());subscribers.get(type).add(handler);if(replayLatest){const e=recent({limit:1,type})[0];if(e)queueMicrotask(()=>handler(clone(e)));}return()=>subscribers.get(type)?.delete(handler)}
+ function registerConsumer(def){if(!def?.id||!Array.isArray(def.event_types)||typeof def.handler!=="function")throw new Error("Consumer requires id, event_types and handler.");if(consumers.has(def.id))throw new Error(`Consumer already registered: ${def.id}`);consumers.set(def.id,{...def,event_types:[...def.event_types]});return()=>consumers.delete(def.id)}
+ function replay({partition,type,from_sequence=1,to_sequence=Number.MAX_SAFE_INTEGER,from_time,to_time,consumer_id}={}){const source=partition?stream(partition):[...streams.values()].flat();const events=source.filter(e=>(!type||e.type===type)&&e.sequence>=from_sequence&&e.sequence<=to_sequence&&(!from_time||e.occurred_at>=from_time)&&(!to_time||e.occurred_at<=to_time)).sort((a,b)=>a.occurred_at.localeCompare(b.occurred_at)||a.sequence-b.sequence);if(consumer_id){const c=consumers.get(consumer_id);if(!c)throw new Error(`Unknown consumer: ${consumer_id}`);for(const e of events)queueMicrotask(()=>deliverConsumer(c,e));}return clone(events)}
+ function once(type,handler){const off=subscribe(type,e=>{off();handler(e)});return off}
+ function waitFor(type,{timeout=5000,replayLatest=false}={}){return new Promise((resolve,reject)=>{let off=()=>{};const timer=setTimeout(()=>{off();reject(new Error(`Timed out waiting for ${type}`))},timeout);off=subscribe(type,e=>{clearTimeout(timer);off();resolve(e)},{replayLatest})})}
+ function recent({limit=20,type,correlation_id,partition}={}){const all=partition?stream(partition):[...streams.values()].flat();return clone(all.filter(e=>(!type||e.type===type)&&(!correlation_id||e.trace.correlation_id===correlation_id)).sort((a,b)=>b.occurred_at.localeCompare(a.occurred_at)||b.sequence-a.sequence).slice(0,limit))}
+ function checkpoint(consumer_id,partition){return checkpoints.get(`${consumer_id}:${partition}`)||0}
+ function snapshot(){return {version:VERSION,ready:true,contract_version:registry.version||null,fabric_version:fabric.version||null,contract_count:registry.contracts?.length||0,event_count:[...streams.values()].reduce((n,s)=>n+s.length,0),partitions:[...streams.entries()].map(([id,s])=>({id,count:s.length,last_sequence:s.at(-1)?.sequence||0})),consumer_count:consumers.size,checkpoint_count:checkpoints.size,dead_letter_count:deadLetters.length,idempotency_entries:idempotency.size,replayable:true,append_only:true,integrity_verification:true,channel_neutral:Boolean(registry.principles?.channel_neutral),privacy_by_design:Boolean(registry.principles?.privacy_by_design)}}
+ window.CasaEvents={VERSION,version:VERSION,loadContracts,contractFor,partitionFor,validate,build,verify,publish,subscribe,registerConsumer,replay,once,waitFor,recent,checkpoint,snapshot,deadLetters:()=>clone(deadLetters),get registry(){return clone(registry)},get fabric(){return clone(fabric)},ready:true};
+ window.CasaEventFabric=window.CasaEvents;
+ window.CasaCore?.modules?.register?.({id:"event-fabric",version:VERSION,capabilities:["events.registered","events.append-only","events.ordered","events.publish","events.subscribe","events.consumer-groups","events.checkpoints","events.replay","events.dead-letter","events.trace","events.idempotency","events.integrity","events.privacy","events.audit"]});
+ loadContracts().then(()=>publish("platform.events.ready",{version:VERSION,contract_version:registry.version},{source:{service:"event-fabric",version:VERSION},idempotency_key:`event-fabric-ready-${VERSION}`,partition:"platform"})).catch(()=>{});
 })();

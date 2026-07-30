@@ -7,7 +7,7 @@ const documents=Object.fromEntries([...new Set(manifest.entity_types.map(x=>x.so
 const listeners=[];const context={window:{dispatchEvent:event=>listeners.push(event)},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail}},console};context.window.window=context.window;
 vm.createContext(context);vm.runInContext(fs.readFileSync(root+'core/casa-platform-metadata.js','utf8'),context);
 const runtime=context.window.CasaPlatformMetadata.createRuntime(manifest,documents),health=runtime.validate(),fail=[];const check=(ok,msg)=>{if(!ok)fail.push(msg)};
-check(manifest.platform_version==='v2026.07.24.327','metadata platform version');
+check(manifest.platform_version==='v2026.07.24.328','metadata platform version');
 check(manifest.entity_types.length>=8,'metadata type coverage');
 check(health.errors.length===0,'metadata references resolve');
 check(health.summary.entities>=50,'metadata entity coverage');

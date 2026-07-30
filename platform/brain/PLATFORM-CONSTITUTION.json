@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.1.0",
-  "platform_version": "v2026.07.24.327",
+  "platform_version": "v2026.07.24.328",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -125,7 +125,7 @@
     {
       "article": 23,
       "title": "AI Output Quality",
-      "rule": "AI-genereret brugerindhold må kun vises, når det har bestået formålsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive præsenteret som publiceringsklart."
+      "rule": "AI-genereret brugerindhold m\u00e5 kun vises, n\u00e5r det har best\u00e5et form\u00e5lsspecifik semantisk kvalitetsvalidering. Uverificeret output sendes til manuel kontrol frem for at blive pr\u00e6senteret som publiceringsklart."
     },
     {
       "id": "ARTICLE-24",
@@ -243,9 +243,16 @@
       "rule": "Platform consumers must resolve implementations through stable, versioned service-binding contracts. Dependency cycles, unknown implementations and unauthorised replacements fail closed; concrete implementations remain replaceable only where explicitly permitted.",
       "blocking": true,
       "automated_rule": "service-container-integrity"
+    },
+    {
+      "id": "ARTICLE-41",
+      "title": "Immutable and Replayable Event Fabric",
+      "rule": "Material platform state changes must produce registered, immutable and ordered events with trace continuity, integrity evidence and retention metadata. Consumers checkpoint only after successful processing; failed delivery becomes observable dead-letter evidence, and replay must preserve the original event envelope.",
+      "blocking": true,
+      "automated_rule": "event-fabric-integrity"
     }
   ],
-  "updated_at": "2026-07-30T08:17:00+02:00",
+  "updated_at": "2026-07-30T08:35:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",

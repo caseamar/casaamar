@@ -1,14 +1,20 @@
 {
-  "schema_version": "2.0",
-  "version": "2.3.1",
-  "platform_version": "v2026.07.24.327",
+  "schema_version": "3.0",
+  "version": "3.0.0",
+  "platform_version": "v2026.07.24.328",
   "principles": {
     "channel_neutral": true,
     "domain_neutral": true,
     "immutable_envelope": true,
     "privacy_by_design": true,
     "registered_events_only": true,
-    "explainable_validation": true
+    "explainable_validation": true,
+    "append_only": true,
+    "ordered_partitions": true,
+    "replayable": true,
+    "consumer_checkpoints": true,
+    "dead_letter_on_failure": true,
+    "integrity_signature": true
   },
   "privacy_classes": [
     "public",
@@ -27,7 +33,8 @@
         "version",
         "contract_version"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "experience.started",
@@ -39,7 +46,8 @@
         "experience_id",
         "touchpoint"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "interaction.created",
@@ -52,7 +60,8 @@
         "touchpoint",
         "direction"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "action.requested",
@@ -64,7 +73,8 @@
         "action_id",
         "capability"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "action.executed",
@@ -76,7 +86,8 @@
         "action_id",
         "status"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "recommendation.decided",
@@ -88,7 +99,8 @@
         "recommendation_id",
         "decision"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "knowledge.updated",
@@ -100,7 +112,8 @@
         "resource_id",
         "change_type"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "release.approved",
@@ -112,7 +125,8 @@
         "release_version",
         "evidence_id"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "release.deployed",
@@ -124,7 +138,8 @@
         "release_version",
         "environment"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "diagnostics.completed",
@@ -137,7 +152,8 @@
         "results",
         "generated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "decision.evaluated",
@@ -151,7 +167,8 @@
         "evaluated_at",
         "explanation"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "workspace.ready",
@@ -162,7 +179,8 @@
       "required_payload": [
         "version"
       ],
-      "audited": false
+      "audited": false,
+      "schema_version": "1.0"
     },
     {
       "type": "content.changed",
@@ -174,7 +192,8 @@
         "content_id",
         "change_type"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "handover.requested",
@@ -186,7 +205,8 @@
         "conversation_id",
         "target"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "conversion.recorded",
@@ -198,7 +218,8 @@
         "journey_id",
         "conversion_type"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "experience.contextcreated",
@@ -209,7 +230,8 @@
       "required_payload_fields": [
         "contextId"
       ],
-      "description": "Governed lifecycle event for shared experience context."
+      "description": "Governed lifecycle event for shared experience context.",
+      "schema_version": "1.0"
     },
     {
       "type": "experience.contextupdated",
@@ -220,7 +242,8 @@
       "required_payload_fields": [
         "contextId"
       ],
-      "description": "Governed lifecycle event for shared experience context."
+      "description": "Governed lifecycle event for shared experience context.",
+      "schema_version": "1.0"
     },
     {
       "type": "experience.contextcleared",
@@ -231,7 +254,8 @@
       "required_payload_fields": [
         "contextId"
       ],
-      "description": "Governed lifecycle event for shared experience context."
+      "description": "Governed lifecycle event for shared experience context.",
+      "schema_version": "1.0"
     },
     {
       "type": "workspace.contextcreated",
@@ -243,7 +267,8 @@
       "required_payload_fields": [
         "workspace_id"
       ],
-      "description": "Governed workspace context lifecycle event."
+      "description": "Governed workspace context lifecycle event.",
+      "schema_version": "1.0"
     },
     {
       "type": "workspace.contextupdated",
@@ -255,7 +280,8 @@
       "required_payload_fields": [
         "workspace_id"
       ],
-      "description": "Governed workspace context lifecycle event."
+      "description": "Governed workspace context lifecycle event.",
+      "schema_version": "1.0"
     },
     {
       "type": "workspace.selectionchanged",
@@ -267,7 +293,8 @@
       "required_payload_fields": [
         "workspace_id"
       ],
-      "description": "Governed workspace context lifecycle event."
+      "description": "Governed workspace context lifecycle event.",
+      "schema_version": "1.0"
     },
     {
       "type": "workspace.contextcleared",
@@ -279,7 +306,8 @@
       "required_payload_fields": [
         "workspace_id"
       ],
-      "description": "Governed workspace context lifecycle event."
+      "description": "Governed workspace context lifecycle event.",
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.observed",
@@ -292,7 +320,8 @@
         "objective",
         "evidence_count"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.recommended",
@@ -305,7 +334,8 @@
         "confidence",
         "risk"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.approved",
@@ -317,7 +347,8 @@
         "improvement_id",
         "approval_mode"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.implemented",
@@ -329,7 +360,8 @@
         "improvement_id",
         "implementation_ref"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.verified",
@@ -341,7 +373,8 @@
         "improvement_id",
         "verification_status"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.measured",
@@ -355,7 +388,8 @@
         "before",
         "after"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "improvement.learned",
@@ -367,7 +401,8 @@
         "improvement_id",
         "outcome"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "observation.detected",
@@ -380,7 +415,8 @@
         "type",
         "confidence"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "observation.validated",
@@ -392,7 +428,8 @@
         "observation_id",
         "evidence_count"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "observation.correlated",
@@ -404,7 +441,8 @@
         "observation_id",
         "relation_count"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "observation.resolved",
@@ -416,7 +454,8 @@
         "observation_id",
         "resolution_ref"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "observation.verified",
@@ -428,7 +467,8 @@
         "observation_id",
         "verification_status"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "content.studio.ready",
@@ -440,7 +480,8 @@
         "version",
         "page_count"
       ],
-      "audited": false
+      "audited": false,
+      "schema_version": "1.0"
     },
     {
       "type": "content.studio.error",
@@ -451,7 +492,8 @@
       "required_payload": [
         "message"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "content.intelligence.ready",
@@ -463,7 +505,8 @@
         "version",
         "pages"
       ],
-      "audited": false
+      "audited": false,
+      "schema_version": "1.0"
     },
     {
       "type": "content.operations.ready",
@@ -475,7 +518,8 @@
         "version",
         "content_count"
       ],
-      "audited": false
+      "audited": false,
+      "schema_version": "1.0"
     },
     {
       "type": "content.operations.error",
@@ -486,7 +530,8 @@
       "required_payload": [
         "message"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.startup.ready",
@@ -498,7 +543,8 @@
         "scope",
         "version"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.startup.failed",
@@ -510,7 +556,8 @@
         "scope",
         "message"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "asset.intelligence.ready",
@@ -522,7 +569,8 @@
         "version",
         "asset_count"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "asset.intelligence.error",
@@ -533,7 +581,8 @@
       "required_payload": [
         "message"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.journey.changed",
@@ -547,7 +596,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.journey.started",
@@ -561,7 +611,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.stage.completed",
@@ -575,7 +626,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.journey.completed",
@@ -589,7 +641,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "platform.decision.recorded",
@@ -603,7 +656,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.requested",
@@ -618,7 +672,8 @@
         "status",
         "updated_at"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.started",
@@ -634,7 +689,8 @@
         "updated_at",
         "service_id"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.blocked",
@@ -650,7 +706,8 @@
         "updated_at",
         "reason"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.completed",
@@ -667,7 +724,8 @@
         "service_id",
         "evidence_count"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.failed",
@@ -684,7 +742,8 @@
         "service_id",
         "error"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     },
     {
       "type": "capability.execution.reviewrequired",
@@ -701,7 +760,8 @@
         "service_id",
         "reason"
       ],
-      "audited": true
+      "audited": true,
+      "schema_version": "1.0"
     }
   ],
   "updated_at": "2026-07-28T15:10:00+02:00"

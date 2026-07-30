@@ -1,20 +1,25 @@
 {
-  "version": "v2026.07.24.327",
-  "name": "Contract-Driven Service Resolution Runtime",
-  "summary": "Introduces a stable dependency injection and implementation resolution layer over authoritative platform metadata.",
-  "highlights": [
-    "Contract-driven service bindings",
-    "Singleton and transient scopes",
-    "Dependency graph and cycle detection",
-    "Protected implementation replacement",
-    "AI-ready implementation discovery",
-    "ADR-027 and Constitution Article 40"
+  "version": "v2026.07.24.328",
+  "name": "Event Fabric Runtime",
+  "summary": "Upgrades the existing event platform in place with immutable ordered partitions, consumer checkpoints, bounded retries, dead-letter evidence, integrity signatures and deterministic replay while preserving existing publishers and subscribers.",
+  "changes": [
+    "Event Platform 3.0 with append-only ordered streams",
+    "Registered consumer contracts with success checkpoints",
+    "Replay by partition, sequence, time and event type",
+    "Bounded retry and observable dead-letter queue",
+    "Integrity signature and verification for every event",
+    "ADR-028 and Constitution Article 41"
   ],
   "test_focus": [
-    "Existing public and workspace experiences remain unchanged",
-    "Service bindings resolve deterministically",
-    "Unknown services and dependency cycles fail closed",
-    "Release identity shows v2026.07.24.327"
+    "Existing website and workspaces remain functional",
+    "Event sequence is monotonic within each partition",
+    "Failed consumers create dead-letter evidence and do not checkpoint",
+    "Replay preserves original event identifiers and signatures",
+    "Platform Doctor and release surfaces show v2026.07.24.328"
   ],
-  "release": "v2026.07.24.327"
+  "release": "v2026.07.24.328",
+  "platform_version": "v2026.07.24.328",
+  "release_name": "Event Fabric Runtime",
+  "title": "Event Fabric Runtime",
+  "build": "2026-07-30T08:35:00+02:00"
 }

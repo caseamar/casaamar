@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "version": "1.0.0",
-  "platform_version": "v2026.07.24.327",
-  "updated_at": "2026-07-30T08:05:00+02:00",
+  "version": "1.1.0",
+  "platform_version": "v2026.07.24.328",
+  "updated_at": "2026-07-30T08:35:00+02:00",
   "purpose": "Authoritative machine-readable catalogue of platform building blocks and their relationships.",
   "principles": {
     "authoritative_sources_only": true,
@@ -183,6 +183,23 @@
         "service-resolution",
         "implementation-selection",
         "impact-analysis"
+      ]
+    },
+    {
+      "id": "event-fabric",
+      "source": "/registry/event-fabric.json",
+      "collection": "partitions",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "id",
+        "description"
+      ],
+      "ai_usage": [
+        "event-routing",
+        "replay-planning",
+        "operational-impact-analysis"
       ]
     }
   ],

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.0.1",
-  "updated_at": "2026-07-30T08:17:00+02:00",
+  "updated_at": "2026-07-30T08:35:00+02:00",
   "source_of_truth": true,
   "naming_policy": {
     "rule": "All user-facing subsystem names and versions must be resolved from this registry. Every versioned subsystem must be registered and visible in the Platform Intelligence inventory.",
@@ -27,7 +27,7 @@
     {
       "id": "platform",
       "display_name": "Platform",
-      "version": "v2026.07.24.327",
+      "version": "v2026.07.24.328",
       "owner": "Platform",
       "status_source": "platform-manifest",
       "manifest_key": "platform_version",
@@ -86,18 +86,18 @@
     },
     {
       "id": "event-engine",
-      "display_name": "Event Platform",
-      "version": "2.0.0",
+      "display_name": "Event Fabric",
+      "version": "3.0.0",
       "owner": "Platform Core",
       "status_source": "module",
       "manifest_key": "event_engine",
       "entry": "/core/casa-events.js",
-      "description": "Validated platform event publication, subscription and history.",
+      "description": "Immutable, ordered and replayable platform event fabric with checkpoints and dead-letter evidence.",
       "dashboard": true,
       "dashboard_entry": "/control/#platform-intelligence",
-      "name": "Event Platform",
+      "name": "Event Fabric",
       "status": "active",
-      "purpose": "Channel-neutral, domain-neutral event envelopes with contracts, traceability, privacy classification and idempotency."
+      "purpose": "Transport-neutral event envelopes with contracts, traceability, privacy, idempotency, ordered partitions, replay and observable delivery."
     },
     {
       "id": "diagnostics",

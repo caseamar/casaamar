@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0",
   "version": "3.6.0",
-  "generated_at": "2026-07-30T08:05:00+02:00",
-  "platform_version": "v2026.07.24.327",
+  "generated_at": "2026-07-30T08:35:00+02:00",
+  "platform_version": "v2026.07.24.328",
   "approval_policy": {
     "required_automated_score": 100,
     "block_on_automated_failure": true,
@@ -43,7 +43,7 @@
       "confidence": 1,
       "because": "Manifest, Worker, cache keys and canonical build timestamp match the current release.",
       "evidence": [
-        "v2026.07.24.327",
+        "v2026.07.24.328",
         "15.37-platform-constitution-engine",
         "2026-07-29T13:01:00+02:00"
       ]
@@ -104,7 +104,7 @@
       "confidence": 1,
       "because": "Release notes, manifest and governance report reference the current release.",
       "evidence": [
-        "v2026.07.24.327"
+        "v2026.07.24.328"
       ]
     },
     {
@@ -113,9 +113,9 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "AI Workspace-navne er entydige, og arbejdsflader åbner operationelle destinationer frem for tekniske metadata.",
+      "because": "AI Workspace-navne er entydige, og arbejdsflader \u00e5bner operationelle destinationer frem for tekniske metadata.",
       "evidence": [
-        "AI-anbefalinger → /recommendation-engine.html",
+        "AI-anbefalinger \u2192 /recommendation-engine.html",
         "AI Recommendation Service er kun teknisk metadata",
         "Ingen workspace-kort bruger data-open-subsystem"
       ]
@@ -131,7 +131,7 @@
         "Forslag",
         "Sikkerhed",
         "Definition af succes",
-        "Manuel vurdering kræves"
+        "Manuel vurdering kr\u00e6ves"
       ]
     },
     {
@@ -150,11 +150,11 @@
     },
     {
       "id": "behaviour_governance",
-      "label": "Adfærdsstyring",
+      "label": "Adf\u00e6rdsstyring",
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Alle registrerede kapabiliteter valideres som sammenhængende adfærdskæder med både ønskede og forbudte scenarier, afhængigheder og impactområder.",
+      "because": "Alle registrerede kapabiliteter valideres som sammenh\u00e6ngende adf\u00e6rdsk\u00e6der med b\u00e5de \u00f8nskede og forbudte scenarier, afh\u00e6ngigheder og impactomr\u00e5der.",
       "evidence": [
         "registry/behaviour-contracts.json",
         "Expected + forbidden scenarios required",
@@ -182,7 +182,7 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Platformstatus kan forklares med årsag, evidens, impact og næste handling.",
+      "because": "Platformstatus kan forklares med \u00e5rsag, evidens, impact og n\u00e6ste handling.",
       "evidence": [
         "registry/platform-intelligence.json",
         "core/casa-platform-intelligence.js",
@@ -195,11 +195,11 @@
       "mode": "automated",
       "status": "pass",
       "confidence": 1,
-      "because": "Kendte fejl og arkitekturlæringer er registreret med årsag, forebyggelse og testbevis.",
+      "because": "Kendte fejl og arkitekturl\u00e6ringer er registreret med \u00e5rsag, forebyggelse og testbevis.",
       "evidence": [
-        "4 læringsposter",
+        "4 l\u00e6ringsposter",
         "4 regressioner beskyttet",
-        "0 åbne poster"
+        "0 \u00e5bne poster"
       ]
     },
     {
@@ -260,9 +260,9 @@
       "id": "visual-layout",
       "label": "Visuelt layout og overflow",
       "status": "pending",
-      "why_manual": "Runtime-koden kan opdage overflow i browseren, men denne release blev ikke kørt i et fuldt browser-CI-miljø under pakningen.",
-      "success_criteria": "Ingen kort, tekster eller knapper går uden for deres containere på desktop eller mobil.",
-      "test_instruction": "Åbn Mission Control ved normal desktopbredde og smal mobilbredde. Runtime self-test markerer teknisk overflow, mens du bekræfter den visuelle balance."
+      "why_manual": "Runtime-koden kan opdage overflow i browseren, men denne release blev ikke k\u00f8rt i et fuldt browser-CI-milj\u00f8 under pakningen.",
+      "success_criteria": "Ingen kort, tekster eller knapper g\u00e5r uden for deres containere p\u00e5 desktop eller mobil.",
+      "test_instruction": "\u00c5bn Mission Control ved normal desktopbredde og smal mobilbredde. Runtime self-test markerer teknisk overflow, mens du bekr\u00e6fter den visuelle balance."
     },
     {
       "id": "recommendation-clarity",
@@ -283,9 +283,9 @@
     {
       "id": "workspace-return-browser",
       "label": "Returposition i rigtig browser",
-      "why_manual": "Den faktiske scroll-position afhænger af browserens navigation og dynamiske rendering.",
+      "why_manual": "Den faktiske scroll-position afh\u00e6nger af browserens navigation og dynamiske rendering.",
       "success_criteria": "Browserens tilbageknap gendanner positionen, og det eksplicitte tilbage-link lander ved den gemte position eller AI Workspace.",
-      "test_instruction": "Scroll til AI Workspace, åbn et kort, gå tilbage med både browserknap og sidens link."
+      "test_instruction": "Scroll til AI Workspace, \u00e5bn et kort, g\u00e5 tilbage med b\u00e5de browserknap og sidens link."
     }
   ],
   "self_assessment": {
@@ -315,7 +315,7 @@
       "lifecycle_steps": 9
     }
   },
-  "release": "v2026.07.24.327",
+  "release": "v2026.07.24.328",
   "engineering_assessment": {
     "status": "pass",
     "overall_score": 97,

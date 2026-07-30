@@ -1,0 +1,23 @@
+Casa Amar Platform v2026.07.24.328 — Event Fabric Runtime
+Build: 2026-07-30T08:35:00+02:00
+
+Full quality suite: PASS
+Release Quality Gate: 1769 passed, 0 failed
+Behaviour Governance: 194 passed
+Engineering Governance: 129 passed
+Platform Integrity: 259 passed
+Verification Governance: 61 passed
+Mutation resistance: 4 mutations killed, 0 survived
+Public Experience Quality: 24 passed, 0 failed
+Event Platform: 14 passed
+Event Fabric: 12 passed
+Constitution Engine: 41 principles, 100% automated coverage
+
+Architecture outcome:
+- Existing CasaEvents API preserved
+- Ordered append-only partitions
+- Consumer checkpoints after successful delivery
+- Bounded retry and dead-letter evidence
+- Deterministic replay preserving original envelopes
+- Integrity verification
+- Transport-neutral, adapter-ready persistence contract

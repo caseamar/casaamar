@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.328",
+  "updated_at": "2026-07-30T08:35:00+02:00",
+  "purpose": "Operational event-fabric policy for immutable, ordered, replayable and observable platform events.",
+  "principles": {
+    "append_only": true,
+    "ordered_partitions": true,
+    "registered_events_only": true,
+    "consumer_checkpoints": true,
+    "replayable": true,
+    "dead_letter_on_failure": true,
+    "trace_continuity": true,
+    "privacy_and_retention_required": true,
+    "transport_neutral": true
+  },
+  "defaults": {
+    "partition_key": "global",
+    "max_runtime_events": 2000,
+    "max_delivery_attempts": 3,
+    "consumer_timeout_ms": 5000,
+    "checkpoint_mode": "after_success",
+    "signature_algorithm": "fnv1a-32",
+    "persistence_adapter": "memory"
+  },
+  "partitions": [
+    {
+      "id": "platform",
+      "description": "Platform, release and diagnostics events"
+    },
+    {
+      "id": "experience",
+      "description": "Experience and interaction events"
+    },
+    {
+      "id": "capability",
+      "description": "Capability execution, governance and decision events"
+    },
+    {
+      "id": "knowledge",
+      "description": "Knowledge, content and asset events"
+    }
+  ],
+  "required_envelope_fields": [
+    "id",
+    "type",
+    "schema_version",
+    "sequence",
+    "partition",
+    "occurred_at",
+    "source",
+    "payload",
+    "privacy",
+    "trace",
+    "integrity"
+  ],
+  "consumer_contract": {
+    "required_fields": [
+      "id",
+      "event_types",
+      "handler"
+    ],
+    "checkpoint_per_partition": true,
+    "at_least_once_delivery": true,
+    "failure_is_observable": true
+  },
+  "replay_contract": {
+    "supports_sequence_range": true,
+    "supports_time_range": true,
+    "supports_type_filter": true,
+    "preserves_original_envelope": true,
+    "does_not_republish_by_default": true
+  }
+}

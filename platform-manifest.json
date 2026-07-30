@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.327",
-  "build": "2026-07-30T08:17:00+02:00",
+  "platform_version": "v2026.07.24.328",
+  "build": "2026-07-30T08:35:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Contract-Driven Service Resolution Runtime",
-  "generated_at": "2026-07-30T08:17:00+02:00",
+  "release_name": "Event Fabric Runtime",
+  "generated_at": "2026-07-30T08:35:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-30T08:17:00+02:00"
+    "build": "2026-07-30T08:35:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -179,16 +179,21 @@
     "audit_integrated": true
   },
   "event_engine": {
-    "version": "2.0.0",
+    "version": "3.0.0",
     "entry": "/core/casa-events.js",
     "registry": "/registry/event-contracts.json",
-    "history_limit": 500,
-    "contract_validation": true,
-    "audit_integration": true,
-    "channel_neutral": true,
-    "privacy_by_design": true,
+    "fabric_registry": "/registry/event-fabric.json",
+    "schema": "/schemas/event-fabric-envelope.schema.json",
+    "append_only": true,
+    "ordered_partitions": true,
+    "replayable": true,
+    "consumer_checkpoints": true,
+    "dead_letter_queue": true,
+    "integrity_verification": true,
     "idempotency": true,
-    "correlation": true
+    "correlation": true,
+    "persistence_adapter": "memory",
+    "durable_adapter_contract_ready": true
   },
   "diagnostics_framework": {
     "version": "1.31.0",
@@ -610,17 +615,22 @@
     "architecture_budget": true
   },
   "event_platform": {
-    "version": "2.0.0",
+    "version": "3.0.0",
     "entry": "/core/casa-events.js",
     "contracts": "/registry/event-contracts.json",
-    "schema": "/schemas/event-contract.schema.json",
+    "fabric": "/registry/event-fabric.json",
+    "schema": "/schemas/event-fabric-envelope.schema.json",
     "channel_neutral": true,
     "domain_neutral": true,
     "privacy_by_design": true,
-    "idempotency": true,
-    "correlation": true,
-    "persistence": "in-memory foundation; durable adapter deferred",
-    "max_runtime_history": 500
+    "append_only": true,
+    "ordered_partitions": true,
+    "replayable": true,
+    "consumer_groups": true,
+    "checkpoints": true,
+    "dead_letter_queue": true,
+    "integrity_signature": "fnv1a-32",
+    "persistence": "pluggable adapter; memory reference implementation"
   },
   "data_contracts": {
     "version": "1.0.0",
@@ -826,5 +836,14 @@
     "status": "active",
     "entry": "/core/casa-service-container.js",
     "registry": "/registry/service-bindings.json"
+  },
+  "event_fabric": {
+    "version": "1.0.0",
+    "runtime": "/core/casa-events.js",
+    "registry": "/registry/event-fabric.json",
+    "contracts": "/registry/event-contracts.json",
+    "schema": "/schemas/event-fabric-envelope.schema.json",
+    "transport_neutral": true,
+    "adapter_ready": true
   }
 }

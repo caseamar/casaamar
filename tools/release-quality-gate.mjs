@@ -368,3 +368,29 @@ for(const item of learningRegistry.entries||[]){
 }
 check(read('release-governance.html').includes('id="platform-intelligence"'),'Release control exposes Platform Intelligence');
 check(read('release-governance.html').includes('id="learning-registry"'),'Release control exposes Learning Registry');
+
+// v328 Event Fabric integrity gates
+const eventFabric=json('registry/event-fabric.json');
+const eventContractsV3=json('registry/event-contracts.json');
+check(manifest.event_platform?.version==='3.0.0','Event Fabric runtime version is current');
+check(eventFabric.principles?.append_only===true,'Event Fabric is append-only');
+check(eventFabric.principles?.ordered_partitions===true,'Event Fabric uses ordered partitions');
+check(eventFabric.principles?.consumer_checkpoints===true,'Event Fabric requires consumer checkpoints');
+check(eventFabric.principles?.dead_letter_on_failure===true,'Event Fabric makes failed delivery observable');
+check(eventFabric.replay_contract?.preserves_original_envelope===true,'Event replay preserves original envelopes');
+check(eventContractsV3.schema_version==='3.0','Event contracts use Event Fabric schema 3.0');
+check(fs.existsSync(path.join(root,'tools/event-fabric-test.mjs')),'Executable Event Fabric test is packaged');
+check(fs.existsSync(path.join(root,'platform/brain/decisions/ADR-028-EVENT-FABRIC.md')),'ADR-028 is packaged');
+
+// v328 Event Fabric integrity gates
+const eventFabricV328=json('registry/event-fabric.json');
+const eventContractsV328=json('registry/event-contracts.json');
+check(manifest.event_platform?.version==='3.0.0','Event Fabric runtime version is current');
+check(eventFabricV328.principles?.append_only===true,'Event Fabric is append-only');
+check(eventFabricV328.principles?.ordered_partitions===true,'Event Fabric uses ordered partitions');
+check(eventFabricV328.principles?.consumer_checkpoints===true,'Event Fabric requires consumer checkpoints');
+check(eventFabricV328.principles?.dead_letter_on_failure===true,'Event Fabric makes failed delivery observable');
+check(eventFabricV328.replay_contract?.preserves_original_envelope===true,'Event replay preserves original envelopes');
+check(eventContractsV328.schema_version==='3.0','Event contracts use Event Fabric schema 3.0');
+check(fs.existsSync(path.join(root,'tools/event-fabric-test.mjs')),'Executable Event Fabric test is packaged');
+check(fs.existsSync(path.join(root,'platform/brain/decisions/ADR-028-EVENT-FABRIC.md')),'ADR-028 is packaged');

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casaamar.es/schemas/event-fabric-envelope.schema.json",
+  "title": "Casa Amar Event Fabric Envelope",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "sequence",
+    "partition",
+    "occurred_at",
+    "source",
+    "payload",
+    "privacy",
+    "trace",
+    "integrity"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+)+$"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "partition": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object"
+    },
+    "payload": {},
+    "privacy": {
+      "type": "object"
+    },
+    "trace": {
+      "type": "object"
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "signature"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

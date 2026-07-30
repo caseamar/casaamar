@@ -1,5 +1,5 @@
 {
-  "schema_version":"2.0","version":"2.0.0","platform_version":"v2026.07.24.327","principle":"AI consumers depend on capability contracts, never provider or model names.",
+  "schema_version":"2.0","version":"2.0.0","platform_version":"v2026.07.24.328","principle":"AI consumers depend on capability contracts, never provider or model names.",
   "capabilities":[
     {"id":"intent","status":"ready-fallback","inputs":["query","locale","context"],"outputs":["intent","confidence"],"risk":"low"},
     {"id":"classification","status":"ready-fallback","inputs":["content","taxonomy"],"outputs":["labels","confidence"],"risk":"low"},
