@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "current_release": "v2026.07.24.325",
-  "target_release": "v2026.07.24.325",
+  "current_release": "v2026.07.24.326",
+  "target_release": "v2026.07.24.326",
   "current_epic": "Casa Amar Beta",
   "current_subsystem": "Beta Readiness and Quality",
-  "next_release": "v2026.07.24.325",
+  "next_release": "v2026.07.24.326",
   "strategy": {
     "visible_features_percent": 30,
     "platform_infrastructure_percent": 70,
@@ -82,7 +82,7 @@
       "id": "EPIC-16",
       "title": "Universal Action Framework",
       "status": "foundation-delivered",
-      "release": "v2026.07.24.325"
+      "release": "v2026.07.24.326"
     }
   ],
   "next_focus": [
@@ -92,5 +92,5 @@
   ],
   "updated_at": "2026-07-29T13:01:00+02:00",
   "current_focus": "Stable end-to-end Casa Amar beta",
-  "platform_version": "v2026.07.24.325"
+  "platform_version": "v2026.07.24.326"
 }

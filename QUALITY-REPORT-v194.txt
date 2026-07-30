@@ -1,5 +1,5 @@
 Casa Amar Platform Quality Report
-Release: v2026.07.24.325
+Release: v2026.07.24.326
 Name: Privacy-Safe Journey Signals
 Build: 2026-07-29T13:00:00+02:00
 

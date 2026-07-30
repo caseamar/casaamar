@@ -1,7 +1,7 @@
 # ADR-024 — Governed Capability Orchestration
 
 ## Status
-Accepted — v2026.07.24.325
+Accepted — v2026.07.24.326
 
 ## Context
 The strategic capability kernel introduced stable capability definitions and contracts, but did not yet provide a governed way to execute capabilities. Direct calls between experiences and services would recreate coupling, bypass lifecycle governance and make evidence inconsistent.

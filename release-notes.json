@@ -1,25 +1,26 @@
 {
-  "release": "v2026.07.24.325",
-  "name": "Dependency and Human Review Control Runtime",
-  "platform_version": "v2026.07.24.325",
-  "summary": "Enforces declared capability dependencies through completed correlated evidence and adds explicit, auditable human approval and rejection for manual-review executions.",
+  "release": "v2026.07.24.326",
+  "name": "Authoritative Platform Metadata Runtime",
+  "platform_version": "v2026.07.24.326",
+  "summary": "Introduces a machine-readable metadata runtime that indexes existing authoritative registries and provides deterministic discovery, semantic search, relationship traversal and impact analysis for AI and platform consumers.",
   "major_changes": [
-    "Dependency evidence enforcement for declared capability chains",
-    "Correlation-safe execution references",
-    "Explicit human approval and rejection decisions",
-    "Reviewer identity and decision evidence requirements",
-    "Fail-closed review and dependency violations",
-    "Blocked execution retry and cancellation",
-    "ADR-025 and Constitution Article 38"
+    "Authoritative platform metadata manifest",
+    "Read-only metadata indexing runtime",
+    "Stable entity identity across capabilities, contracts, reviews, services, experiences, events, policies and schemas",
+    "Deterministic semantic and AI-usage discovery",
+    "Relationship validation and impact traversal",
+    "Fail-closed unresolved-reference handling",
+    "ADR-026 and Constitution Article 39"
   ],
   "test_focus": [
     "Run the complete quality suite",
-    "Verify incomplete dependencies block execution",
-    "Verify completed correlated dependency evidence unlocks execution",
-    "Verify approval requires reviewer identity and evidence",
-    "Verify rejection fails closed and existing experiences remain unchanged"
+    "Verify all metadata sources and relationships resolve",
+    "Verify capability, service and experience discovery",
+    "Verify semantic and AI-usage search",
+    "Verify broken references fail closed",
+    "Confirm existing public and workspace experiences remain unchanged"
   ],
-  "release_name": "Dependency and Human Review Control Runtime",
-  "title": "Dependency and Human Review Control Runtime",
-  "build": "2026-07-30T07:45:00+02:00"
+  "release_name": "Authoritative Platform Metadata Runtime",
+  "title": "Authoritative Platform Metadata Runtime",
+  "build": "2026-07-30T08:05:00+02:00"
 }

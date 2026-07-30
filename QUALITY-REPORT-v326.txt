@@ -1,0 +1,24 @@
+Casa Amar Platform v2026.07.24.326
+Authoritative Platform Metadata Runtime
+
+RESULT: PASS
+
+Release Quality Gate: 1766 passed, 0 failed
+Platform Metadata Runtime: 8 entity types, 159 indexed entities, 119 resolved relationships
+Capability Kernel: 13 strategic capabilities, 13 contracts, 19 review capabilities
+Constitution Engine: 39 principles, 100% automated coverage
+Behaviour Governance: 194 passed
+Engineering Governance: 126 passed
+Platform Integrity: 255 passed
+Verification Governance: 61 passed
+Mutation Resistance: 4 mutations killed, 0 survived
+Public Experience Quality: 24 passed
+Cloudflare Asset Preflight: passed
+Full npm quality suite: passed
+
+Architecture outcome:
+- Existing registries remain authoritative.
+- One stable metadata contract exposes platform structure to AI and runtime consumers.
+- Discovery and impact analysis no longer require duplicated hardcoded lists.
+- Unknown sources, collections, identities and relationships fail closed.
+- Existing public and workspace experiences remain backward compatible.

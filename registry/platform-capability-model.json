@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "1.0.0",
-  "platform_version": "v2026.07.24.325",
+  "platform_version": "v2026.07.24.326",
   "purpose": "Authoritative strategic capability model. Atomic operations remain in registry/capabilities.json and are mapped through services.",
   "architecture_rule": "Value chain -> strategic capability -> stable contract -> service -> experience. Human roles are configurable assignees, not architecture.",
   "capabilities": [
@@ -326,7 +326,8 @@
       "services": [
         "configuration",
         "data-contracts",
-        "subsystem-registry"
+        "subsystem-registry",
+        "platform-metadata-runtime"
       ],
       "contracts": [
         "capability.configuration.v1"
@@ -392,7 +393,8 @@
         "diagnostics",
         "platform-intelligence",
         "ai-operations-center",
-        "event-engine"
+        "event-engine",
+        "platform-metadata-runtime"
       ],
       "contracts": [
         "capability.observability.v1"

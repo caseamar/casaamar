@@ -1,9 +1,9 @@
 {
-  "platform_version": "v2026.07.24.325",
-  "build": "2026-07-30T07:45:00+02:00",
+  "platform_version": "v2026.07.24.326",
+  "build": "2026-07-30T08:05:00+02:00",
   "worker_version": "15.59-release-version-sync",
-  "release_name": "Dependency and Human Review Control Runtime",
-  "generated_at": "2026-07-30T07:45:00+02:00",
+  "release_name": "Authoritative Platform Metadata Runtime",
+  "generated_at": "2026-07-30T08:05:00+02:00",
   "build_timezone": "Europe/Copenhagen",
   "release_engine_version": "2.0",
   "release_schema_current": "2.0",
@@ -22,7 +22,7 @@
   "timestamp_semantics": {
     "platform_confirmed_at": "First successful manifest/Worker consistency confirmation for this version in the browser.",
     "content_live_at": "Time of the second successful public release match.",
-    "build": "2026-07-30T07:45:00+02:00"
+    "build": "2026-07-30T08:05:00+02:00"
   },
   "release_lifecycle": {
     "platform_update": "Never starts content monitoring.",
@@ -812,5 +812,13 @@
     "review_schema": "/schemas/capability-review.schema.json",
     "dependency_evidence_required": true,
     "human_review_decision_required": true
+  },
+  "platform_metadata_runtime": {
+    "version": "1.0.0",
+    "entry": "/core/casa-platform-metadata.js",
+    "manifest": "/registry/platform-metadata.json",
+    "authoritative_sources_only": true,
+    "fail_closed": true,
+    "ai_discovery_ready": true
   }
 }

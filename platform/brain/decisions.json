@@ -36,6 +36,13 @@
       "title": "Manifest is release source of truth",
       "status": "accepted",
       "decision": "Runtime consistency is based on manifest and Worker metadata, not stale URL parameters."
+    },
+    {
+      "id": "ADR-026",
+      "title": "Authoritative Platform Metadata Runtime",
+      "status": "accepted",
+      "date": "2026-07-30",
+      "document": "/platform/brain/ADR-026-AUTHORITATIVE-PLATFORM-METADATA-RUNTIME.md"
     }
   ]
 }

@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const root=new URL('..',import.meta.url).pathname;
+const json=path=>JSON.parse(fs.readFileSync(root+path,'utf8'));
+const manifest=json('registry/platform-metadata.json');
+const documents=Object.fromEntries([...new Set(manifest.entity_types.map(x=>x.source))].map(source=>[source,json(source.slice(1))]));
+const listeners=[];const context={window:{dispatchEvent:event=>listeners.push(event)},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail}},console};context.window.window=context.window;
+vm.createContext(context);vm.runInContext(fs.readFileSync(root+'core/casa-platform-metadata.js','utf8'),context);
+const runtime=context.window.CasaPlatformMetadata.createRuntime(manifest,documents),health=runtime.validate(),fail=[];const check=(ok,msg)=>{if(!ok)fail.push(msg)};
+check(manifest.platform_version==='v2026.07.24.326','metadata platform version');
+check(manifest.entity_types.length>=8,'metadata type coverage');
+check(health.errors.length===0,'metadata references resolve');
+check(health.summary.entities>=50,'metadata entity coverage');
+check(runtime.get('capability','understanding')?.data?.mission,'capability lookup');
+check(runtime.list('capability').length>=13,'capability list');
+check(runtime.search({text:'release'}).length>0,'semantic search');
+check(runtime.search({ai_usage:'impact-analysis'}).length>0,'AI usage search');
+const impact=runtime.impact('capability','understanding');check(impact.entities.length>1,'relationship impact traversal');
+check(runtime.snapshot().types.includes('service'),'metadata snapshot');
+check(listeners.some(x=>x.type==='casa:platform-metadata-ready'),'runtime ready event');
+const broken=structuredClone(documents);broken['/registry/platform-capability-model.json'].capabilities[0].services.push('missing-service-for-test');
+check(context.window.CasaPlatformMetadata.createRuntime(manifest,broken).validate().status==='fail','unresolved references fail closed');
+if(fail.length){console.error('Platform Metadata Runtime FAILED\n- '+fail.join('\n- '));process.exit(1)}
+console.log(`Platform Metadata Runtime VERIFIED: ${health.summary.types} types, ${health.summary.entities} entities, ${health.summary.relationships} relationships`);

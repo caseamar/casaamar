@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "platform_version": "v2026.07.24.326",
+  "updated_at": "2026-07-30T08:05:00+02:00",
+  "purpose": "Authoritative machine-readable catalogue of platform building blocks and their relationships.",
+  "principles": {
+    "authoritative_sources_only": true,
+    "stable_ids_required": true,
+    "display_names_are_not_keys": true,
+    "unknown_references_fail_closed": true,
+    "runtime_discovery_over_hardcoded_lists": true,
+    "ai_retrieval_metadata_required": true
+  },
+  "entity_types": [
+    {
+      "id": "capability",
+      "source": "/registry/platform-capability-model.json",
+      "collection": "capabilities",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {
+        "dependencies": "capability",
+        "contracts": "capability-contract",
+        "reviews": "review-capability",
+        "services": "service"
+      },
+      "semantic_fields": [
+        "name",
+        "mission",
+        "outcomes",
+        "metrics"
+      ],
+      "ai_usage": [
+        "planning",
+        "impact-analysis",
+        "capability-routing"
+      ]
+    },
+    {
+      "id": "capability-contract",
+      "source": "/registry/capability-contracts.json",
+      "collection": "contracts",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "id",
+        "capability_id",
+        "inputs",
+        "outputs",
+        "events"
+      ],
+      "ai_usage": [
+        "contract-selection",
+        "validation",
+        "explanation"
+      ]
+    },
+    {
+      "id": "review-capability",
+      "source": "/registry/review-capabilities.json",
+      "collection": "reviews",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "name",
+        "purpose",
+        "required_evidence"
+      ],
+      "ai_usage": [
+        "governance-planning",
+        "human-handoff"
+      ]
+    },
+    {
+      "id": "service",
+      "source": "/registry/subsystems.json",
+      "collection": "subsystems",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "display_name",
+        "description",
+        "owner"
+      ],
+      "ai_usage": [
+        "service-resolution",
+        "impact-analysis"
+      ]
+    },
+    {
+      "id": "experience",
+      "source": "/registry/experiences.json",
+      "collection": "touchpoints",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "id",
+        "stage",
+        "audiences",
+        "content_refs"
+      ],
+      "ai_usage": [
+        "experience-composition",
+        "impact-analysis"
+      ]
+    },
+    {
+      "id": "event-contract",
+      "source": "/registry/event-contracts.json",
+      "collection": "contracts",
+      "id_field": "type",
+      "version_field": "contract_version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "type",
+        "owner",
+        "category",
+        "required_payload"
+      ],
+      "ai_usage": [
+        "event-discovery",
+        "workflow-planning",
+        "trace-explanation"
+      ]
+    },
+    {
+      "id": "policy",
+      "source": "/registry/policies.json",
+      "collection": "policies",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "id",
+        "description",
+        "applies_to",
+        "effect"
+      ],
+      "ai_usage": [
+        "constraint-retrieval",
+        "decision-explanation"
+      ]
+    },
+    {
+      "id": "schema-contract",
+      "source": "/registry/schema-registry.json",
+      "collection": "contracts",
+      "id_field": "id",
+      "version_field": "version",
+      "relationship_fields": {},
+      "semantic_fields": [
+        "description",
+        "owner",
+        "layer"
+      ],
+      "ai_usage": [
+        "data-contract-selection",
+        "compatibility-checking"
+      ]
+    }
+  ],
+  "query_contract": {
+    "filters": [
+      "type",
+      "id",
+      "text",
+      "ai_usage"
+    ],
+    "operations": [
+      "get",
+      "list",
+      "search",
+      "relationships",
+      "impact",
+      "snapshot"
+    ],
+    "deterministic_order": true,
+    "explainable_results": true
+  },
+  "health_policy": {
+    "duplicate_ids": "fail",
+    "missing_sources": "fail",
+    "missing_collections": "fail",
+    "unresolved_relationships": "fail",
+    "missing_semantic_content": "manual_review",
+    "missing_versions": "manual_review"
+  }
+}

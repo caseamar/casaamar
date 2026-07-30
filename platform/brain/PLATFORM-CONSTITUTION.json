@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "version": "4.1.0",
-  "platform_version": "v2026.07.24.325",
+  "platform_version": "v2026.07.24.326",
   "title": "Casa Amar Platform Constitution",
   "articles": [
     {
@@ -229,9 +229,16 @@
       "rule": "A capability may execute only when all declared capability dependencies are backed by completed, correlated execution evidence. Consequential manual-review states may become complete only through an explicit human decision with reviewer identity and evidence; rejection fails closed.",
       "blocking": true,
       "automated_rule": "capability-dependency-review-integrity"
+    },
+    {
+      "id": "ARTICLE-39",
+      "title": "Authoritative Metadata and Runtime Discovery",
+      "rule": "Platform building blocks must be discoverable through authoritative versioned metadata. Runtime consumers and AI must resolve entities and relationships through stable identifiers rather than duplicated or hardcoded lists, and unresolved references fail closed.",
+      "blocking": true,
+      "automated_rule": "platform-metadata-runtime-integrity"
     }
   ],
-  "updated_at": "2026-07-30T07:45:00+02:00",
+  "updated_at": "2026-07-30T08:05:00+02:00",
   "executable": true,
   "enforcement": {
     "engine": "constitution-engine",
